@@ -1,0 +1,11 @@
+framework module LUTFilter {
+  umbrella header "LUTFilter.h"
+
+  export *
+  module * { export * }
+}
+
+module LUTFilter.Swift {
+    header "LUTFilter-Swift.h"
+    requires objc
+}
