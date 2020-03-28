@@ -37,5 +37,5 @@ Agile Software Developement using Scrum with a Kanban Board
 
 ### 👏 Report
 
-Please [**file**](https://github.com/YAPP-16th/Team_iOS_2_Client/issues) issues to send feedback or report a bug. Thank you !
+Please [**issues**](https://github.com/YAPP-16th/Team_iOS_2_Client/issues) to send feedback or report a bug. Thank you !
 
