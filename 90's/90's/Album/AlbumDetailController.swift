@@ -115,15 +115,6 @@ extension AlbumDetailController : UICollectionViewDataSource {
         cell.photoImageView.image = AlbumModel.albumList[albumIndex!].photos[indexPath.row]
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        /** 다연 : 이미지 순서바꾸기 만들 시 버튼으로 변경해줘야 함 */
-        let vc = storyboard?.instantiateViewController(identifier: "imageRenderVC") as! ImageRenderVC
-        vc.albumIndexNumber = albumIndex!
-        vc.photoIndexNumber = indexPath.row
-        vc.image = AlbumModel.albumList[albumIndex!].photos[indexPath.row]
-        navigationController?.pushViewController(vc, animated: true)
-    }
 }
 
 
