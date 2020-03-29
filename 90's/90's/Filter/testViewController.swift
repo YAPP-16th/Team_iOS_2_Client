@@ -8,7 +8,7 @@
 
 import UIKit
 import AVFoundation
-import LUTFilter
+//import LUTFilter
 
 struct Filter {
     let filterName : String
@@ -296,7 +296,8 @@ class testViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
             var newImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
             
             UIGraphicsEndImageContext()
-            self.filteredImage.image = newImage.applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
+            // 다연: 시물레이터로 돌리기 위해 아래 주석처리
+//            self.filteredImage.image = newImage.applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
 
 //            self.filteredImage.image = newImage.applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
 //            self.filteredImage.image = filteredImage

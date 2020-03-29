@@ -18,24 +18,21 @@ class ImageRenderVC: UIViewController {
     @IBOutlet weak var sticker3: UIView!
     
     @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var beforeImageBtn: UIButton!
-    @IBOutlet weak var nextImageBtn: UIButton!
     
     var location = CGPoint(x: 0, y: 0)
-    
-    
-    var albumIndexNumber : Int = 0
-    var photoIndexNumber : Int = 0
     var image : UIImage?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // test 
+        if image == nil {
+            image = UIImage(named: "husky")
+        }
         renderImage.image = image
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("start : \(photoIndexNumber)")
         stickerSetting()
         buttonSetting()
         keyboardSetting()
@@ -74,15 +71,6 @@ class ImageRenderVC: UIViewController {
 extension ImageRenderVC {
     private func buttonSetting(){
         saveBtn.addTarget(self, action: #selector(touchSaveBtn), for: .touchUpInside)
-        beforeImageBtn.addTarget(self, action: #selector(touchBeforeBtn), for: .touchUpInside)
-        nextImageBtn.addTarget(self, action: #selector(touchNextBtn), for: .touchUpInside)
-        
-        if photoIndexNumber == 0 {
-            beforeImageBtn.isEnabled = false
-        }
-        else if photoIndexNumber == AlbumModel.albumList[albumIndexNumber].photos.count - 1 {
-            nextImageBtn.isEnabled = false
-        }
     }
     
     private func stickerSetting(){
@@ -138,35 +126,8 @@ extension ImageRenderVC {
     @objc func touchSaveBtn(){
         self.renderViewAsImage()
     }
-    
-    @objc func touchBeforeBtn(){
-        if photoIndexNumber > 0 {
-            nextImageBtn.isEnabled = true
-            beforeImageBtn.isEnabled = true
-            photoIndexNumber -= 1
-            image = AlbumModel.albumList[albumIndexNumber].photos[photoIndexNumber]
-            renderImage.image = image
-        
-            
-            if photoIndexNumber == 0 {
-                beforeImageBtn.isEnabled = false
-            }
-        }
-    }
-    @objc func touchNextBtn(){
-        if photoIndexNumber < AlbumModel.albumList[albumIndexNumber].photos.count - 1 {
-            nextImageBtn.isEnabled = true
-            beforeImageBtn.isEnabled = true
-            photoIndexNumber += 1
-            image = AlbumModel.albumList[albumIndexNumber].photos[photoIndexNumber]
-            renderImage.image = image
-            
-            if photoIndexNumber == AlbumModel.albumList[albumIndexNumber].photos.count - 1 {
-                nextImageBtn.isEnabled = false
-            }
-        }
-    }
 }
+
 
 extension ImageRenderVC : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
