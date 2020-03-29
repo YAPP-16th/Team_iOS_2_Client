@@ -110,6 +110,12 @@ class testViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
 
             UIImageWriteToSavedPhotosAlbum(self.filteredImage.image! , nil, nil, nil)
 
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "CheckPhotoViewController") as! CheckPhotoViewController
+                        vc.tempImage = self.filteredImage.image
+                        vc.modalTransitionStyle = .crossDissolve
+                        vc.modalPresentationStyle = .overCurrentContext
+                        self.present(vc, animated: true, completion: nil)
+            //            self.navigationController?.pushViewController(vc, animated: true)
             
         }
     

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		392F7790242F4BC70000BC3C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 392F778F242F4BC70000BC3C /* Default-568h@2x.png */; };
+		39411378243061A500087E1B /* CheckPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39411377243061A500087E1B /* CheckPhotoViewController.swift */; };
 		3958515C242F45E600014CB0 /* Sticker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3958515B242F45E600014CB0 /* Sticker.storyboard */; };
 		3958515E242F460000014CB0 /* Filter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3958515D242F460000014CB0 /* Filter.storyboard */; };
 		39585160242F461800014CB0 /* Album.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3958515F242F461800014CB0 /* Album.storyboard */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		392F778F242F4BC70000BC3C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		39411377243061A500087E1B /* CheckPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckPhotoViewController.swift; sourceTree = "<group>"; };
 		3958515B242F45E600014CB0 /* Sticker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sticker.storyboard; sourceTree = "<group>"; };
 		3958515D242F460000014CB0 /* Filter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Filter.storyboard; sourceTree = "<group>"; };
 		3958515F242F461800014CB0 /* Album.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Album.storyboard; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				9B142B0E242F22CD005ABE17 /* testViewController.swift */,
+				39411377243061A500087E1B /* CheckPhotoViewController.swift */,
 				3958515D242F460000014CB0 /* Filter.storyboard */,
 			);
 			path = Filter;
@@ -282,6 +285,7 @@
 				9B44EDE12429FC9100B0D774 /* ImageRenderVC.swift in Sources */,
 				A36B88B724252AF3001FCD50 /* AlbumPrintController.swift in Sources */,
 				A33376302420EA9D000DC7C4 /* AlbumCell.swift in Sources */,
+				39411378243061A500087E1B /* CheckPhotoViewController.swift in Sources */,
 				9B44EDE32429FCC300B0D774 /* ImageCollectionViewCell.swift in Sources */,
 				A36DC86F24236386001B3767 /* AlbumDetailController.swift in Sources */,
 				9B142B0F242F22CD005ABE17 /* testViewController.swift in Sources */,
