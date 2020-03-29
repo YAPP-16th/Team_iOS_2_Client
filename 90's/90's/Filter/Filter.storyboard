@@ -10,7 +10,7 @@
         <!--Test View Controller-->
         <scene sceneID="elI-J8-42H">
             <objects>
-                <viewController storyboardIdentifier="testViewController" id="VYO-y6-G1L" customClass="testViewController" customModule="AlbumExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="testViewController" id="VYO-y6-G1L" customClass="testViewController" customModule="_0_s" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TIz-Xv-5yB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,6 +57,46 @@
                 <swipeGestureRecognizer delaysTouchesBegan="YES" direction="right" id="tdE-KZ-5Fu" userLabel="Right Swipe Gesture Recognizer"/>
             </objects>
             <point key="canvasLocation" x="4317" y="80"/>
+        </scene>
+        <!--Check Photo View Controller-->
+        <scene sceneID="YHu-nv-2RK">
+            <objects>
+                <viewController storyboardIdentifier="CheckPhotoViewController" id="V6L-oJ-z8H" customClass="CheckPhotoViewController" customModule="_0_s" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="O6t-4U-yi5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hqn-js-Wcb">
+                                <rect key="frame" x="20" y="44" width="375" height="450"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dc8-gW-Chh">
+                                <rect key="frame" x="65" y="547" width="80" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveAction:" destination="V6L-oJ-z8H" eventType="touchUpInside" id="WuB-Fb-a7S"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IOE-UV-eFj">
+                                <rect key="frame" x="271" y="547" width="80" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="Cancel:" destination="V6L-oJ-z8H" eventType="touchUpInside" id="kud-bq-liv"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="B8p-PC-cM2"/>
+                    </view>
+                    <connections>
+                        <outlet property="CheckImageView" destination="Hqn-js-Wcb" id="98R-JG-KUC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="amj-8f-BbP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5386" y="80"/>
         </scene>
     </scenes>
 </document>
