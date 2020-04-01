@@ -10,21 +10,27 @@ import UIKit
 
 class ImageRenderVC: UIViewController {
     @IBOutlet weak var renderImage: UIImageView!
-    @IBOutlet weak var polaroidView: UIView!
     @IBOutlet weak var saveBtn: UIButton!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var filterBtn: UIButton!
+    @IBOutlet weak var stickerBtn: UIButton!
     
-    @IBOutlet weak var sticker1: UIView!
-    @IBOutlet weak var sticker2: UIView!
-    @IBOutlet weak var sticker3: UIView!
-    
-    @IBOutlet weak var textField: UITextField!
-    
-    var location = CGPoint(x: 0, y: 0)
+    // get image from other view
     var image : UIImage?
+    // for sticker
+    fileprivate var location : CGPoint = CGPoint(x: 0, y: 0)
+    fileprivate let stickerArray : [String] = ["heartimage", "starimage", "smileimage"]
+    // for filter
+    fileprivate let context = CIContext(options: nil)
+    fileprivate var filterIndex = 0
+    fileprivate let filterArray : [String] = ["LUT", "LUT2", "LUT3", "LUT4", "LUT5", "LUT6"]
+    
+    fileprivate var filterImages : [UIImage]? // Array for apply LUT filters before viewAppear. And place on collectioncell
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // test 
+        // test
         if image == nil {
             image = UIImage(named: "husky")
         }
@@ -33,81 +39,57 @@ class ImageRenderVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        stickerSetting()
         buttonSetting()
-        keyboardSetting()
         delegateSetting()
-        polaroidView.addShadowEffect()
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent!) {
-        var touch : UITouch! = touches.first! as UITouch
-        location = touch.location(in: view)
-        
-        if sticker1.frame.contains(location) {
-            sticker1.center = location
-        } else if sticker2.frame.contains(location){
-            sticker2.center = location
-        } else if sticker3.frame.contains(location){
-            sticker3.center = location
-        }
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        var touch : UITouch! = touches.first! as UITouch
-        location = touch.location(in: view)
-        
-        if sticker1.frame.contains(location) {
-            sticker1.center = location
-        } else if sticker2.frame.contains(location){
-            sticker2.center = location
-        } else if sticker3.frame.contains(location){
-            sticker3.center = location
-        }
-    }
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent!) {
+//        let touch : UITouch! = touches.first! as UITouch
+//        location = touch.location(in: view)
+//
+//        if sticker1.frame.contains(location) {
+//            sticker1.center = location
+//        }
+//    }
+//
+//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        let touch : UITouch! = touches.first! as UITouch
+//        location = touch.location(in: view)
+//
+//        if sticker1.frame.contains(location) {
+//            sticker1.center = location
+//        }
+//    }
 }
 
 
 extension ImageRenderVC {
     private func buttonSetting(){
         saveBtn.addTarget(self, action: #selector(touchSaveBtn), for: .touchUpInside)
-    }
-    
-    private func stickerSetting(){
-        let imageView1 = UIImageView(image: UIImage(named: "starimage")!)
-        let imageView2 = UIImageView(image: UIImage(named: "heartimage")!)
-        let imageView3 = UIImageView(image: UIImage(named: "smileimage")!)
-        imageView1.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        imageView2.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        imageView3.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        sticker1.addSubview(imageView1)
-        sticker2.addSubview(imageView2)
-        sticker3.addSubview(imageView3)
-    }
-    
-    private func keyboardSetting(){
-        self.hideKeyboardWhenTappedAround()
+        filterBtn.addTarget(self, action: #selector(touchFilterBtn), for: .touchUpInside)
+        stickerBtn.addTarget(self, action: #selector(touchStickerBtn), for: .touchUpInside)
     }
     
     private func delegateSetting(){
-        self.textField.delegate = self
+        collectionView.dataSource = self
+        collectionView.delegate = self
     }
+//    private func stickerSetting(){
+//        let imageView1 = UIImageView(image: UIImage(named: "starimage")!)
+//        imageView1.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+//        sticker1.addSubview(imageView1)
+//    }
     
+
     private func renderViewAsImage(){
-        if polaroidView.frame.contains(sticker1.frame) {
-            sticker1.bounds.origin.y = 88
-            polaroidView.addSubview(sticker1)
-        } else if polaroidView.frame.contains(sticker2.frame){
-            sticker2.bounds.origin.y = 88
-            polaroidView.addSubview(sticker2)
-        } else if polaroidView.frame.contains(sticker3.frame){
-            sticker3.bounds.origin.y = 88
-            polaroidView.addSubview(sticker3)
-        }
+//        if polaroidView.frame.contains(sticker1.frame) {
+//            sticker1.bounds.origin.y = 49
+//            polaroidView.addSubview(sticker1)
+//        }
         
-        let renderer = UIGraphicsImageRenderer(size: polaroidView.bounds.size)
+        let renderer = UIGraphicsImageRenderer(size: renderImage.bounds.size)
         let image = renderer.image { ctx in
-            polaroidView.drawHierarchy(in: polaroidView.bounds, afterScreenUpdates: true)
+            renderImage.drawHierarchy(in: renderImage.bounds, afterScreenUpdates: true)
         }
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
@@ -126,15 +108,38 @@ extension ImageRenderVC {
     @objc func touchSaveBtn(){
         self.renderViewAsImage()
     }
+    
+    @objc func touchFilterBtn(){
+        
+    }
+    
+    @objc func touchStickerBtn(){
+        
+    }
 }
 
 
-extension ImageRenderVC : UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.textField.resignFirstResponder()
-        self.dismiss(animated: true)
-        return true
+extension ImageRenderVC {
+    func applyLUTtoImage(file: String) -> UIImage {
+        let colorcube = colorCubeFilterFromLUT(imageName: filterArray[filterIndex], originalImage: image!)
+        let result = colorcube?.outputImage
+        let image = UIImage.init(cgImage: context.createCGImage(result!, from: result!.extent)!)
+        return image
     }
+}
+
+
+extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return stickerArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photofiltercollectioncell", for: indexPath) as! photoFilterCollectionCell
+        cell.imageView.image = UIImage(named: stickerArray[indexPath.row])
+        return cell
+    }
+    
 }
 
 
