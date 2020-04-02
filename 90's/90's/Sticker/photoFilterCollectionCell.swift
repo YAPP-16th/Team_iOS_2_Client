@@ -11,3 +11,13 @@ import UIKit
 class photoFilterCollectionCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
 }
+
+extension photoFilterCollectionCell {
+    func toggleSelected(){
+        if (isSelected){
+            // checked image on
+        } else {
+            // checked image off
+        }
+    }
+}
