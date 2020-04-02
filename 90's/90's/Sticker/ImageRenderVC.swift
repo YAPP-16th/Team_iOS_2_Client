@@ -49,24 +49,6 @@ class ImageRenderVC: UIViewController {
         buttonSetting()
         delegateSetting()
     }
-    
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent!) {
-//        let touch : UITouch! = touches.first! as UITouch
-//        location = touch.location(in: view)
-//
-//        if sticker1.frame.contains(location) {
-//            sticker1.center = location
-//        }
-//    }
-//
-//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        let touch : UITouch! = touches.first! as UITouch
-//        location = touch.location(in: view)
-//
-//        if sticker1.frame.contains(location) {
-//            sticker1.center = location
-//        }
-//    }
 }
 
 
@@ -80,49 +62,48 @@ extension ImageRenderVC {
         collectionView.dataSource = self
         collectionView.delegate = self
     }
-//    private func stickerSetting(){
-//        let imageView1 = UIImageView(image: UIImage(named: "starimage")!)
-//        imageView1.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-//        sticker1.addSubview(imageView1)
-//    }
-    
 
-//    private func renderViewAsImage(){
-////        if polaroidView.frame.contains(sticker1.frame) {
-////            sticker1.bounds.origin.y = 49
-////            polaroidView.addSubview(sticker1)
-////        }
-//
-//        let renderer = UIGraphicsImageRenderer(size: renderImage.bounds.size)
-//        let image = renderer.image { ctx in
-//            renderImage.drawHierarchy(in: renderImage.bounds, afterScreenUpdates: true)
-//        }
-//        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
-//    }
 }
 
 
 extension ImageRenderVC {
     @objc func touchFilterBtn(){
-        
+        isFilterSelected = true
+        collectionView.reloadData()
     }
     
     @objc func touchStickerBtn(){
-        
+        isFilterSelected = false
+        collectionView.reloadData()
     }
 }
 
 
 
 extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return filterImages.count
+        if isFilterSelected == true {
+            // filter collection
+            return filterImages.count
+        } else {
+            // sticker collection
+            return stickerArray.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filtercell", for: indexPath) as! photoFilterCollectionCell
-        cell.imageView.image = filterImages[indexPath.row]
-        return cell
+        if isFilterSelected == true {
+            // filter collection
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filtercell", for: indexPath) as! photoFilterCollectionCell
+            cell.imageView.image = filterImages[indexPath.row]
+            return cell
+        } else {
+            // sticker collection
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "stickercell", for: indexPath) as! photoStickerCollectionCell
+            cell.imageView.image = UIImage(named: stickerArray[indexPath.row])
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -140,6 +121,30 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10.0
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if isFilterSelected == true {
+            // filter collection
+            let cell = collectionView.cellForItem(at: indexPath) as! photoFilterCollectionCell
+            renderImage.image = filterImages[indexPath.row]
+            cell.toggleSelected()
+        } else {
+            // sticker collection
+            let cell = collectionView.cellForItem(at: indexPath) as! photoStickerCollectionCell
+            cell.touchCell()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if isFilterSelected == true {
+            // filter collection
+            let cell = collectionView.cellForItem(at: indexPath) as! photoFilterCollectionCell
+            cell.toggleSelected()
+        } else {
+            let cell = collectionView.cellForItem(at: indexPath) as! photoStickerCollectionCell
+            cell.touchCell()
+        }
+    }
 }
 
 
@@ -147,7 +152,7 @@ extension ImageRenderVC {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GoToSaveVC" {
             let dest = segue.destination as? SavePhotoVC
-            dest?.image = image
+            dest?.image = renderImage.image
             print("send segue")
         }
     }

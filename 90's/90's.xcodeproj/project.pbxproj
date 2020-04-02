@@ -19,10 +19,8 @@
 		9B142B0F242F22CD005ABE17 /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B142B0E242F22CD005ABE17 /* testViewController.swift */; };
 		9B31E1942434BBB400A139C6 /* photoFilterCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B31E1932434BBB400A139C6 /* photoFilterCollectionCell.swift */; };
 		9B44EDE12429FC9100B0D774 /* ImageRenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B44EDE02429FC9100B0D774 /* ImageRenderVC.swift */; };
-		9B44EDE32429FCC300B0D774 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B44EDE22429FCC300B0D774 /* ImageCollectionViewCell.swift */; };
 		9B44EDE52429FCDF00B0D774 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B44EDE42429FCDF00B0D774 /* Extension.swift */; };
-		9B44EDE72429FD3F00B0D774 /* FilterListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B44EDE62429FD3F00B0D774 /* FilterListVC.swift */; };
-		9B9D97282432F89000CF8028 /* photoStickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9D97272432F89000CF8028 /* photoStickerCollectionViewCell.swift */; };
+		9BC16B1A2435B68F007F106C /* photoStickerCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC16B192435B68F007F106C /* photoStickerCollectionCell.swift */; };
 		A33376162420CFB3000DC7C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33376152420CFB3000DC7C4 /* AppDelegate.swift */; };
 		A33376182420CFB3000DC7C4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33376172420CFB3000DC7C4 /* SceneDelegate.swift */; };
 		A333761A2420CFB3000DC7C4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33376192420CFB3000DC7C4 /* MainViewController.swift */; };
@@ -55,10 +53,8 @@
 		9B142B10242F2475005ABE17 /* LUTFilter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LUTFilter.framework; sourceTree = "<group>"; };
 		9B31E1932434BBB400A139C6 /* photoFilterCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoFilterCollectionCell.swift; sourceTree = "<group>"; };
 		9B44EDE02429FC9100B0D774 /* ImageRenderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRenderVC.swift; sourceTree = "<group>"; };
-		9B44EDE22429FCC300B0D774 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		9B44EDE42429FCDF00B0D774 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
-		9B44EDE62429FD3F00B0D774 /* FilterListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterListVC.swift; sourceTree = "<group>"; };
-		9B9D97272432F89000CF8028 /* photoStickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoStickerCollectionViewCell.swift; sourceTree = "<group>"; };
+		9BC16B192435B68F007F106C /* photoStickerCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoStickerCollectionCell.swift; sourceTree = "<group>"; };
 		A33376122420CFB3000DC7C4 /* 90's.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "90's.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A33376152420CFB3000DC7C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A33376172420CFB3000DC7C4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -153,12 +149,10 @@
 		9B44EDDF2429EF1500B0D774 /* Sticker */ = {
 			isa = PBXGroup;
 			children = (
-				9B44EDE02429FC9100B0D774 /* ImageRenderVC.swift */,
-				9B44EDE22429FCC300B0D774 /* ImageCollectionViewCell.swift */,
-				9B44EDE62429FD3F00B0D774 /* FilterListVC.swift */,
 				3958515B242F45E600014CB0 /* Sticker.storyboard */,
-				9B9D97272432F89000CF8028 /* photoStickerCollectionViewCell.swift */,
+				9B44EDE02429FC9100B0D774 /* ImageRenderVC.swift */,
 				9B31E1932434BBB400A139C6 /* photoFilterCollectionCell.swift */,
+				9BC16B192435B68F007F106C /* photoStickerCollectionCell.swift */,
 				9B0B806F24357929009D7B17 /* SavePhotoVC.swift */,
 			);
 			path = Sticker;
@@ -288,16 +282,14 @@
 				A33376162420CFB3000DC7C4 /* AppDelegate.swift in Sources */,
 				A33376182420CFB3000DC7C4 /* SceneDelegate.swift in Sources */,
 				A36DC86B24235667001B3767 /* ThemeCell.swift in Sources */,
-				9B44EDE72429FD3F00B0D774 /* FilterListVC.swift in Sources */,
 				9B0B807024357929009D7B17 /* SavePhotoVC.swift in Sources */,
 				9B44EDE12429FC9100B0D774 /* ImageRenderVC.swift in Sources */,
 				A36B88B724252AF3001FCD50 /* AlbumPrintController.swift in Sources */,
-				9B9D97282432F89000CF8028 /* photoStickerCollectionViewCell.swift in Sources */,
 				A33376302420EA9D000DC7C4 /* AlbumCell.swift in Sources */,
 				39411378243061A500087E1B /* CheckPhotoViewController.swift in Sources */,
-				9B44EDE32429FCC300B0D774 /* ImageCollectionViewCell.swift in Sources */,
 				A36DC86F24236386001B3767 /* AlbumDetailController.swift in Sources */,
 				9B142B0F242F22CD005ABE17 /* testViewController.swift in Sources */,
+				9BC16B1A2435B68F007F106C /* photoStickerCollectionCell.swift in Sources */,
 				A36DC86924235395001B3767 /* AlbumThemeController.swift in Sources */,
 				9B31E1942434BBB400A139C6 /* photoFilterCollectionCell.swift in Sources */,
 				A36DC87124236E45001B3767 /* PhotoCell.swift in Sources */,
