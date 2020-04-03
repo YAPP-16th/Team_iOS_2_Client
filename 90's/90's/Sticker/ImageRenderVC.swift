@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImageRenderVC: UIViewController {
+class ImageRenderVC: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var renderImage: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var filterBtn: UIButton!
@@ -26,7 +26,7 @@ class ImageRenderVC: UIViewController {
     
     fileprivate var isFilterSelected : Bool = true
     fileprivate var filterImages : [UIImage] = []// Array for apply LUT filters before viewAppear. And place on collectioncell
-    
+    fileprivate var pan : UIPanGestureRecognizer?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -48,6 +48,8 @@ class ImageRenderVC: UIViewController {
         super.viewDidLoad()
         buttonSetting()
         delegateSetting()
+        pan = UIPanGestureRecognizer(target: self, action: Selector("handlePanGesture:"))
+        pan!.delegate = self
     }
 }
 
@@ -63,6 +65,14 @@ extension ImageRenderVC {
         collectionView.delegate = self
     }
 
+    
+    private func createStickerView(image : UIImage){
+        let imageView = UIImageView(image: image)
+        imageView.frame = CGRect(x: self.renderImage.frame.width / 2 - 50, y:renderImage.frame.height / 2 - 50, width: 100, height: 100)
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(pan!)
+        renderImage.addSubview(imageView)
+    }
 }
 
 
@@ -131,7 +141,7 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
         } else {
             // sticker collection
             let cell = collectionView.cellForItem(at: indexPath) as! photoStickerCollectionCell
-            cell.touchCell()
+            createStickerView(image: cell.imageView.image!)
         }
     }
     
@@ -142,7 +152,7 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
             cell.toggleSelected()
         } else {
             let cell = collectionView.cellForItem(at: indexPath) as! photoStickerCollectionCell
-            cell.touchCell()
+            
         }
     }
 }
