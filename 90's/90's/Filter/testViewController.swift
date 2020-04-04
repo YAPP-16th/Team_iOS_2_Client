@@ -27,7 +27,7 @@ struct Filter {
 
 class testViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
-    
+    @IBOutlet weak var filterNameLabel: UILabel!
     @IBOutlet weak var filteredImage: UIImageView!
     @IBOutlet weak var takeButton: UIButton!
     
@@ -42,13 +42,13 @@ class testViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     let context = CIContext()
     var filterIndex: Int = 0 // 스와이프로 필터를 선택 시에 현재 필터 인덱스를 저장할 프로퍼티
     var filterName: String = "CILinearToSRGBToneCurve" // CIFilter를 적용할 때 필요한 필터 이름
-//    var filterName: String?
+    //    var filterName: String?
     var photoMode: AddPhotoMode? // 카메라, 사진앨범 모드인지 구분하는 저장 프로퍼티
     var topImage = UIImage(named: "frame_landscape")
     let minimumZoom: CGFloat = 1.0
     let maximumZoom: CGFloat = 3.0
     var lastZoomFactor: CGFloat = 1.0
-
+    
     override func viewDidLoad() {
         
         takeButton.layer.cornerRadius = takeButton.frame.size.width / 2
@@ -59,16 +59,16 @@ class testViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         setupDevice()
         setupInputOutput()
         
-//        filterName = PhotoEditorTypes.filterNameArray[filterIndex]
+        //        filterName = PhotoEditorTypes.filterNameArray[filterIndex]
         
         let leftSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
-           let rightSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
-               
-           leftSwipeGestureRecognizer.direction = .left
-           rightSwipeGestureRecognizer.direction = .right
-
-           view.addGestureRecognizer(leftSwipeGestureRecognizer)
-           view.addGestureRecognizer(rightSwipeGestureRecognizer)
+        let rightSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
+        
+        leftSwipeGestureRecognizer.direction = .left
+        rightSwipeGestureRecognizer.direction = .right
+        
+        view.addGestureRecognizer(leftSwipeGestureRecognizer)
+        view.addGestureRecognizer(rightSwipeGestureRecognizer)
         
         let pinchRecognizer = UIPinchGestureRecognizer(target: self, action:#selector(pinch(_:)))
         view.addGestureRecognizer(pinchRecognizer)
@@ -84,40 +84,40 @@ class testViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         if AVCaptureDevice.authorizationStatus(for: AVMediaType.video) != .authorized
         {
             AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler:
-            { (authorized) in
-                DispatchQueue.main.async
-                {
-                    if authorized
-                    {
-                        self.setupInputOutput()
+                { (authorized) in
+                    DispatchQueue.main.async
+                        {
+                            if authorized
+                            {
+                                self.setupInputOutput()
+                            }
                     }
-                }
             })
         }
     }
     
-        @IBAction func ontapTakePhoto(_ sender: Any) {
-            
-            if #available(iOS 9.0, *) {
-                AudioServicesPlaySystemSoundWithCompletion(SystemSoundID(1108), nil)
-            } else {
-                AudioServicesPlaySystemSound(1108)
-            }
-            
-            print("!!!!!!!!!!!!")
-            print(self.filteredImage.image)
-            print("!!!!!!!!!!!!")
-
-            UIImageWriteToSavedPhotosAlbum(self.filteredImage.image! , nil, nil, nil)
-
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "CheckPhotoViewController") as! CheckPhotoViewController
-                        vc.tempImage = self.filteredImage.image
-                        vc.modalTransitionStyle = .crossDissolve
-                        vc.modalPresentationStyle = .overCurrentContext
-                        self.present(vc, animated: true, completion: nil)
-            //            self.navigationController?.pushViewController(vc, animated: true)
-            
+    @IBAction func ontapTakePhoto(_ sender: Any) {
+        
+        if #available(iOS 9.0, *) {
+            AudioServicesPlaySystemSoundWithCompletion(SystemSoundID(1108), nil)
+        } else {
+            AudioServicesPlaySystemSound(1108)
         }
+        
+        print("!!!!!!!!!!!!")
+        print(self.filteredImage.image)
+        print("!!!!!!!!!!!!")
+        
+        UIImageWriteToSavedPhotosAlbum(self.filteredImage.image! , nil, nil, nil)
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CheckPhotoViewController") as! CheckPhotoViewController
+        vc.tempImage = self.filteredImage.image
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: true, completion: nil)
+        //            self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
     
     // MARK:- Change Camera Effect Filter From Swipe Gesture
     
@@ -127,7 +127,7 @@ class testViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
             filterIndex = (filterIndex + 1) % PhotoEditorTypes.numberOfFilterType()
             
         }
-            
+        
         if (sender.direction == .right) {
             NSLog("Swipe Right")
             print(PhotoEditorTypes.numberOfFilterType())
@@ -139,19 +139,24 @@ class testViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         }
         
         if filterIndex == filterIndex {
-        print(filterIndex, filterName)
-        filterName = PhotoEditorTypes.filterNameArray[filterIndex]
+            print(filterIndex, filterName)
+            filterName = PhotoEditorTypes.filterNameArray[filterIndex]
+            filterNameLabel.text = filterName.replacingOccurrences(of: PhotoEditorTypes.replacingOccurrencesWord, with: "")
+            fadeViewInThenOut(view: filterNameLabel, delay: PhotoEditorTypes.filterNameLabelAnimationDelay)
+        }
     }
-    }
+    
+    
+    
     
     @objc func pinch(_ pinch: UIPinchGestureRecognizer) {
         guard let device = captureDevice else { return }
-
+        
         // Return zoom value between the minimum and maximum zoom values
         func minMaxZoom(_ factor: CGFloat) -> CGFloat {
             return min(min(max(factor, minimumZoom), maximumZoom), device.activeFormat.videoMaxZoomFactor)
         }
-
+        
         func update(scale factor: CGFloat) {
             do {
                 try device.lockForConfiguration()
@@ -161,9 +166,9 @@ class testViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
                 print("\(error.localizedDescription)")
             }
         }
-
+        
         let newScaleFactor = minMaxZoom(pinch.scale * lastZoomFactor)
-
+        
         switch pinch.state {
         case .began: fallthrough
         case .changed: update(scale: newScaleFactor)
@@ -173,10 +178,10 @@ class testViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         default: break
         }
     }
-
     
-        
-     
+    
+    
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -189,9 +194,9 @@ class testViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
             if let device = captureDevice {
                 do {
                     try device.lockForConfiguration()
-
+                    
                     device.focusPointOfInterest = focusPoint
-//                    device.focusMode = .continuousAutoFocus
+                    //                    device.focusMode = .continuousAutoFocus
                     device.focusMode = .autoFocus
                     //device.focusMode = .locked
                     device.exposurePointOfInterest = focusPoint
@@ -206,6 +211,7 @@ class testViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     }
     
     func setupDevice() {
+        filteredImage.contentMode = .scaleAspectFill
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInWideAngleCamera], mediaType: AVMediaType.video, position: AVCaptureDevice.Position.unspecified)
         let devices = deviceDiscoverySession.devices
         
@@ -273,33 +279,33 @@ class testViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue.main)
         
         let comicEffect = CIFilter(name: "CIColorCube")
-
+        
         let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
         let cameraImage = CIImage(cvImageBuffer: pixelBuffer!)
-
+        
         comicEffect!.setValue(cameraImage, forKey: kCIInputImageKey)
         
         let cgImage = self.context.createCGImage((comicEffect?.outputImage!)!, from: cameraImage.extent)!
-//        let cgImage = self.context.createCGImage(filter.outputImage!, from: cameraImage.extent)!
+        //        let cgImage = self.context.createCGImage(filter.outputImage!, from: cameraImage.extent)!
         
         DispatchQueue.main.async {
             let size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
             let filteredImage = UIImage(cgImage: cgImage)
             
             UIGraphicsBeginImageContext(size)
-
+            
             let areaSize = CGRect(x: 0, y: 0, width: size.width, height: size.height)
             filteredImage.draw(in: areaSize)
             
             self.topImage!.draw(in: areaSize, blendMode: .normal, alpha: 0.8)
-
+            
             var newImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
             
             UIGraphicsEndImageContext()
             self.filteredImage.image = newImage.applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
-
-//            self.filteredImage.image = newImage.applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
-//            self.filteredImage.image = filteredImage
+            
+            //            self.filteredImage.image = newImage.applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
+            //            self.filteredImage.image = filteredImage
             
         }
     }
@@ -333,19 +339,19 @@ extension testViewController : AVCapturePhotoCaptureDelegate {
         
         print(capturedImage)
         
-//        사진을 저장하는건 사실 여기서 되는건데 임의로 작업을 수정함
+        //        사진을 저장하는건 사실 여기서 되는건데 임의로 작업을 수정함
         
-//        if let testImage = capturedImage {
-//            let inputImage = CIImage(image: testImage)
-//            let filteredImage = inputImage?.applyingFilter("CILinearToSRGBToneCurve")
-//            let filteredExtent = (filteredImage?.extent)!
-//            let renderedImage = context.createCGImage(filteredImage!, from: filteredExtent)
-//            //               testImage =  UIImage(cgImage: renderedImage!)
-//            // Save our captured image to photos album
-//            UIImageWriteToSavedPhotosAlbum(UIImage(cgImage: renderedImage! ) , nil, nil, nil)
-//        }
-//        UIImageWriteToSavedPhotosAlbum(capturedImage! , nil, nil, nil)
-
+        //        if let testImage = capturedImage {
+        //            let inputImage = CIImage(image: testImage)
+        //            let filteredImage = inputImage?.applyingFilter("CILinearToSRGBToneCurve")
+        //            let filteredExtent = (filteredImage?.extent)!
+        //            let renderedImage = context.createCGImage(filteredImage!, from: filteredExtent)
+        //            //               testImage =  UIImage(cgImage: renderedImage!)
+        //            // Save our captured image to photos album
+        //            UIImageWriteToSavedPhotosAlbum(UIImage(cgImage: renderedImage! ) , nil, nil, nil)
+        //        }
+        //        UIImageWriteToSavedPhotosAlbum(capturedImage! , nil, nil, nil)
+        
     }
 }
 
@@ -369,25 +375,25 @@ extension testViewController {
     // LUT Filter apply
     func colorCubeFilterFromLUT(imageName : String)-> CIFilter? {
         let size = 64
-
+        
         let lutImage    = UIImage(named: imageName)!.cgImage
         let lutWidth    = lutImage!.width
         let lutHeight   = lutImage!.height
         let rowCount    = lutHeight / size
         let columnCount = lutWidth / size
-
+        
         if ((lutWidth % size != 0) || (lutHeight % size != 0) || (rowCount * columnCount != size)) {
             NSLog("Invalid colorLUT %@", imageName);
             return nil
         }
-
+        
         let bitmap  = getBytesFromImage(image: UIImage(named: imageName))!
         let floatSize = MemoryLayout<Float>.size
-
+        
         let cubeData = UnsafeMutablePointer<Float>.allocate(capacity: size * size * size * 4 * floatSize)
         var z = 0
         var bitmapOffset = 0
-
+        
         for _ in 0 ..< rowCount {
             for y in 0 ..< size {
                 let tmp = z
@@ -398,7 +404,7 @@ extension testViewController {
                         let green   = Float(bitmap[bitmapOffset+2]) / 255.0
                         let blue    = Float(bitmap[bitmapOffset+3]) / 255.0
                         let dataOffset = (z * size * size + y * size + x) * 4
-
+                        
                         cubeData[dataOffset + 3] = alpha
                         cubeData[dataOffset + 2] = red
                         cubeData[dataOffset + 1] = green
@@ -411,74 +417,74 @@ extension testViewController {
             }
             z += columnCount
         }
-
+        
         let colorCubeData = NSData(bytesNoCopy: cubeData, length: size * size * size * 4 * floatSize, freeWhenDone: true)
-
+        
         // create CIColorCube Filter
         let filter = CIFilter(name: "CIColorCube")
         filter?.setValue(colorCubeData, forKey: "inputCubeData")
         filter?.setValue(size, forKey: "inputCubeDimension")
-
+        
         return filter
     }
-//
-//    func colorCubeFilterFromLUT(imageName : String)-> CIFilter? {
-//        let size = 64
-//
-//        let lutImage    = UIImage(named: "LUT")!.cgImage
-//        let lutWidth    = lutImage!.width
-//        let lutHeight   = lutImage!.height
-//        let rowCount    = lutHeight / size
-//        let columnCount = lutWidth / size
-//
-//        if ((lutWidth % size != 0) || (lutHeight % size != 0) || (rowCount * columnCount != size)) {
-//            NSLog("Invalid colorLUT %@", "LUT");
-//            return nil
-//        }
-//
-//        let bitmap  = getBytesFromImage(image: UIImage(named: "LUT"))!
-//        let floatSize = MemoryLayout<Float>.size
-//
-//        let cubeData = UnsafeMutablePointer<Float>.allocate(capacity: size * size * size * 4 * floatSize)
-//        var z = 0
-//        var bitmapOffset = 0
-//
-//        for _ in 0 ..< rowCount {
-//            for y in 0 ..< size {
-//                let tmp = z
-//                for _ in 0 ..< columnCount {
-//                    for x in 0 ..< size {
-//                        let alpha   = Float(bitmap[bitmapOffset]) / 255.0
-//                        let red     = Float(bitmap[bitmapOffset+1]) / 255.0
-//                        let green   = Float(bitmap[bitmapOffset+2]) / 255.0
-//                        let blue    = Float(bitmap[bitmapOffset+3]) / 255.0
-//                        let dataOffset = (z * size * size + y * size + x) * 4
-//
-//                        cubeData[dataOffset + 3] = alpha
-//                        cubeData[dataOffset + 2] = red
-//                        cubeData[dataOffset + 1] = green
-//                        cubeData[dataOffset + 0] = blue
-//                        bitmapOffset += 4
-//                    }
-//                    z += 1
-//                }
-//                z = tmp
-//            }
-//            z += columnCount
-//        }
-//
-//        let colorCubeData = NSData(bytesNoCopy: cubeData, length: size * size * size * 4 * floatSize, freeWhenDone: true)
-//
-//        // create CIColorCube Filter
-//        let filter = CIFilter(name: "CIColorCube")
-//        filter?.setValue(colorCubeData, forKey: "inputCubeData")
-//        filter?.setValue(size, forKey: "inputCubeDimension")
-//
-//        return filter
-//    }
+    //
+    //    func colorCubeFilterFromLUT(imageName : String)-> CIFilter? {
+    //        let size = 64
+    //
+    //        let lutImage    = UIImage(named: "LUT")!.cgImage
+    //        let lutWidth    = lutImage!.width
+    //        let lutHeight   = lutImage!.height
+    //        let rowCount    = lutHeight / size
+    //        let columnCount = lutWidth / size
+    //
+    //        if ((lutWidth % size != 0) || (lutHeight % size != 0) || (rowCount * columnCount != size)) {
+    //            NSLog("Invalid colorLUT %@", "LUT");
+    //            return nil
+    //        }
+    //
+    //        let bitmap  = getBytesFromImage(image: UIImage(named: "LUT"))!
+    //        let floatSize = MemoryLayout<Float>.size
+    //
+    //        let cubeData = UnsafeMutablePointer<Float>.allocate(capacity: size * size * size * 4 * floatSize)
+    //        var z = 0
+    //        var bitmapOffset = 0
+    //
+    //        for _ in 0 ..< rowCount {
+    //            for y in 0 ..< size {
+    //                let tmp = z
+    //                for _ in 0 ..< columnCount {
+    //                    for x in 0 ..< size {
+    //                        let alpha   = Float(bitmap[bitmapOffset]) / 255.0
+    //                        let red     = Float(bitmap[bitmapOffset+1]) / 255.0
+    //                        let green   = Float(bitmap[bitmapOffset+2]) / 255.0
+    //                        let blue    = Float(bitmap[bitmapOffset+3]) / 255.0
+    //                        let dataOffset = (z * size * size + y * size + x) * 4
+    //
+    //                        cubeData[dataOffset + 3] = alpha
+    //                        cubeData[dataOffset + 2] = red
+    //                        cubeData[dataOffset + 1] = green
+    //                        cubeData[dataOffset + 0] = blue
+    //                        bitmapOffset += 4
+    //                    }
+    //                    z += 1
+    //                }
+    //                z = tmp
+    //            }
+    //            z += columnCount
+    //        }
+    //
+    //        let colorCubeData = NSData(bytesNoCopy: cubeData, length: size * size * size * 4 * floatSize, freeWhenDone: true)
+    //
+    //        // create CIColorCube Filter
+    //        let filter = CIFilter(name: "CIColorCube")
+    //        filter?.setValue(colorCubeData, forKey: "inputCubeData")
+    //        filter?.setValue(size, forKey: "inputCubeDimension")
+    //
+    //        return filter
+    //    }
     
-
-
+    
+    
     func applyFilterTo(image: UIImage, filterEffect: Filter) -> UIImage? {
         let ciImage = CIImage(image: UIView().createImage())
         let filter = CIFilter(name: filterEffect.filterName)
@@ -511,7 +517,7 @@ struct PhotoEditorTypes{
     static let replacingOccurrencesWord : String = "CIPhotoEffect"
     static let filterNameLabelAnimationDelay: TimeInterval = TimeInterval(1)
     
-//    static let filterNameArray: [String] = ["CIPhotoEffectTransfer", "CIPhotoEffectInstant", "Normal", "CIPhotoEffectMono", "CIPhotoEffectNoir", "CIPhotoEffectTonal", "CIPhotoEffectFade", "CIPhotoEffectChrome", "CIPhotoEffectTransfer"].sorted(by: >)
+    //    static let filterNameArray: [String] = ["CIPhotoEffectTransfer", "CIPhotoEffectInstant", "Normal", "CIPhotoEffectMono", "CIPhotoEffectNoir", "CIPhotoEffectTonal", "CIPhotoEffectFade", "CIPhotoEffectChrome", "CIPhotoEffectTransfer"].sorted(by: >)
     
     static let filterNameArray: [String] = ["arapaho", "arapaho", "LUT", "LUT2", "LUT3", "LUT4", "LUT5", "arapaho"].sorted(by: >)
     
@@ -529,28 +535,28 @@ struct PhotoEditorTypes{
     
 }
 func fadeViewInThenOut(view : UIView, delay: TimeInterval) {
-      
-      // 포토 라이브러리에서 이미지를 가져온 경우 return
-//      if photoMode == .photoLibrary {
-//          return
-//      }
-      let animationDuration = 0.25
-      
-      // Fade in the view
-      UIView.animate(withDuration: animationDuration, animations: { () -> Void in
-          view.alpha = 1
-      }) { (Bool) -> Void in
-          
-          // After the animation completes, fade out the view after a delay
-          
-          UIView.animate(withDuration: animationDuration, delay: delay, options: .curveEaseInOut, animations: { () -> Void in
-              view.alpha = 0
-              
-          },
-                         completion: nil)
-      }
-  }
-  
+    
+    // 포토 라이브러리에서 이미지를 가져온 경우 return
+    //      if photoMode == .photoLibrary {
+    //          return
+    //      }
+    let animationDuration = 0.25
+    
+    // Fade in the view
+    UIView.animate(withDuration: animationDuration, animations: { () -> Void in
+        view.alpha = 1
+    }) { (Bool) -> Void in
+        
+        // After the animation completes, fade out the view after a delay
+        
+        UIView.animate(withDuration: animationDuration, delay: delay, options: .curveEaseInOut, animations: { () -> Void in
+            view.alpha = 0
+            
+        },
+                       completion: nil)
+    }
+}
+
 enum AddPhotoMode {
     case photoLibrary
     case camera
