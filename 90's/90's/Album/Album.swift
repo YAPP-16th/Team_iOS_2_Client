@@ -24,21 +24,13 @@ class Album {
             self.photos += initialPhoto
         }
         
-        self.period = "2Month"
-        self.numOfPhotos = 5
-        selectTheme = ThemeModel.themeList[0]
+      
     }
     
 }
 
 class AlbumModel{
-    static var albumList = [Album(index: 0, isShare: false, albumName: "강아지 콩이",
-                                  photo: [UIImage(named:"dog1")!,
-                                          UIImage(named:"dog2")!,
-                                          UIImage(named:"dog3")!,
-                                          UIImage(named:"dog4")!,
-                                          UIImage(named:"dog5")!]),
-                            Album(index: 1, isShare: false, albumName: "제주도 여행", photo: nil)]
+    static var albumList :[Album] = []
 
     
 }

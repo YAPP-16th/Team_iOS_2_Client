@@ -302,7 +302,8 @@ class testViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
             var newImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
             
             UIGraphicsEndImageContext()
-//            self.filteredImage.image = newImage.applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
+
+           // self.filteredImage.image = newImage.applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
             
             //            self.filteredImage.image = newImage.applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
             //            self.filteredImage.image = filteredImage
