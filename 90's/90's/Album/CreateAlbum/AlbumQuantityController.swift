@@ -1,12 +1,17 @@
 import Foundation
 import UIKit
 
-class AlbumSettingController : UIViewController {
+class AlbumQuantityController : UIViewController {
     var shareIndex:Bool?
     var albumIndex:Int?
     
     @IBOutlet weak var tfPeriod : UITextField!
     @IBOutlet weak var tfNumOfPhotos: UITextField!
+    
+    var albumName:String?
+    var startDate:String?
+    var expireDate:String?
+    
     
     @IBAction func goToRoot(_ sender: Any) {
         navigationController?.popViewController(animated: true)
@@ -25,7 +30,7 @@ class AlbumSettingController : UIViewController {
             alert.addAction(action)
             present(alert, animated: true)
         } else {
-            AlbumModel.albumList[albumIndex!].period = period
+          //  AlbumModel.albumList[albumIndex!].period = period
             AlbumModel.albumList[albumIndex!].numOfPhotos = Int(photoNum)
             
             let albumThemeVC = storyboard?.instantiateViewController(identifier: "albumThemeVC") as! AlbumThemeController
@@ -112,7 +117,7 @@ class AlbumSettingController : UIViewController {
 }
 
 
-extension AlbumSettingController : UIPickerViewDelegate {
+extension AlbumQuantityController : UIPickerViewDelegate {
     //pickerView에 표시될 내용
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if(pickerView == self.periodPicker){
@@ -132,7 +137,7 @@ extension AlbumSettingController : UIPickerViewDelegate {
     }
 }
 
-extension AlbumSettingController : UIPickerViewDataSource {
+extension AlbumQuantityController : UIPickerViewDataSource {
     //몇 개씩 보여줄지 결정(pickerView 열의 개수)
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
