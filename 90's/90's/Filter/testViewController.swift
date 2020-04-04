@@ -8,7 +8,7 @@
 
 import UIKit
 import AVFoundation
-import LUTFilter
+//import LUTFilter
 
 struct Filter {
     let filterName : String
@@ -306,6 +306,7 @@ class testViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
             
             //            self.filteredImage.image = newImage.applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
             //            self.filteredImage.image = filteredImage
+
             
         }
     }

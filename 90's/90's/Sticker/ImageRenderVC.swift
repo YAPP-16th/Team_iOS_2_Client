@@ -8,180 +8,161 @@
 
 import UIKit
 
-class ImageRenderVC: UIViewController {
+class ImageRenderVC: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var renderImage: UIImageView!
-    @IBOutlet weak var polaroidView: UIView!
-    @IBOutlet weak var saveBtn: UIButton!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var filterBtn: UIButton!
+    @IBOutlet weak var stickerBtn: UIButton!
     
-    @IBOutlet weak var sticker1: UIView!
-    @IBOutlet weak var sticker2: UIView!
-    @IBOutlet weak var sticker3: UIView!
-    
-    @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var beforeImageBtn: UIButton!
-    @IBOutlet weak var nextImageBtn: UIButton!
-    
-    var location = CGPoint(x: 0, y: 0)
-    
-    
-    var albumIndexNumber : Int = 0
-    var photoIndexNumber : Int = 0
+    // get image from other view
     var image : UIImage?
+    // for sticker
+    fileprivate var location : CGPoint = CGPoint(x: 0, y: 0)
+    fileprivate let stickerArray : [String] = ["heartimage", "starimage", "smileimage"]
+    // for filter
+    fileprivate let context = CIContext(options: nil)
+    fileprivate var filterIndex = 0
+    fileprivate let filterArray : [String] = ["LUT", "LUT2", "LUT3", "LUT4", "LUT5", "LUT6"]
+    
+    fileprivate var isFilterSelected : Bool = true
+    fileprivate var filterImages : [UIImage] = []// Array for apply LUT filters before viewAppear. And place on collectioncell
+    fileprivate var pan : UIPanGestureRecognizer?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // test
+        if image == nil {
+            image = UIImage(named: "husky")
+        }
         renderImage.image = image
+        
+        filterImages = filterArray.map({ (v : String) -> UIImage in
+            let colorcube = colorCubeFilterFromLUT(imageName: v, originalImage: image!)
+            let result = colorcube?.outputImage
+            let image = UIImage.init(cgImage: context.createCGImage(result!, from: result!.extent)!)
+            return image
+        })
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("start : \(photoIndexNumber)")
-        stickerSetting()
         buttonSetting()
-        keyboardSetting()
         delegateSetting()
-        polaroidView.addShadowEffect()
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent!) {
-        var touch : UITouch! = touches.first! as UITouch
-        location = touch.location(in: view)
-        
-        if sticker1.frame.contains(location) {
-            sticker1.center = location
-        } else if sticker2.frame.contains(location){
-            sticker2.center = location
-        } else if sticker3.frame.contains(location){
-            sticker3.center = location
-        }
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        var touch : UITouch! = touches.first! as UITouch
-        location = touch.location(in: view)
-        
-        if sticker1.frame.contains(location) {
-            sticker1.center = location
-        } else if sticker2.frame.contains(location){
-            sticker2.center = location
-        } else if sticker3.frame.contains(location){
-            sticker3.center = location
-        }
+        pan = UIPanGestureRecognizer(target: self, action: Selector("handlePanGesture:"))
+        pan!.delegate = self
     }
 }
 
 
 extension ImageRenderVC {
     private func buttonSetting(){
-        saveBtn.addTarget(self, action: #selector(touchSaveBtn), for: .touchUpInside)
-        beforeImageBtn.addTarget(self, action: #selector(touchBeforeBtn), for: .touchUpInside)
-        nextImageBtn.addTarget(self, action: #selector(touchNextBtn), for: .touchUpInside)
-        
-        if photoIndexNumber == 0 {
-            beforeImageBtn.isEnabled = false
-        }
-        else if photoIndexNumber == AlbumModel.albumList[albumIndexNumber].photos.count - 1 {
-            nextImageBtn.isEnabled = false
-        }
-    }
-    
-    private func stickerSetting(){
-        let imageView1 = UIImageView(image: UIImage(named: "starimage")!)
-        let imageView2 = UIImageView(image: UIImage(named: "heartimage")!)
-        let imageView3 = UIImageView(image: UIImage(named: "smileimage")!)
-        imageView1.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        imageView2.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        imageView3.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        sticker1.addSubview(imageView1)
-        sticker2.addSubview(imageView2)
-        sticker3.addSubview(imageView3)
-    }
-    
-    private func keyboardSetting(){
-        self.hideKeyboardWhenTappedAround()
+        filterBtn.addTarget(self, action: #selector(touchFilterBtn), for: .touchUpInside)
+        stickerBtn.addTarget(self, action: #selector(touchStickerBtn), for: .touchUpInside)
     }
     
     private func delegateSetting(){
-        self.textField.delegate = self
+        collectionView.dataSource = self
+        collectionView.delegate = self
     }
+
     
-    private func renderViewAsImage(){
-        if polaroidView.frame.contains(sticker1.frame) {
-            sticker1.bounds.origin.y = 88
-            polaroidView.addSubview(sticker1)
-        } else if polaroidView.frame.contains(sticker2.frame){
-            sticker2.bounds.origin.y = 88
-            polaroidView.addSubview(sticker2)
-        } else if polaroidView.frame.contains(sticker3.frame){
-            sticker3.bounds.origin.y = 88
-            polaroidView.addSubview(sticker3)
-        }
-        
-        let renderer = UIGraphicsImageRenderer(size: polaroidView.bounds.size)
-        let image = renderer.image { ctx in
-            polaroidView.drawHierarchy(in: polaroidView.bounds, afterScreenUpdates: true)
-        }
-        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+    private func createStickerView(image : UIImage){
+        let imageView = UIImageView(image: image)
+        imageView.frame = CGRect(x: self.renderImage.frame.width / 2 - 50, y:renderImage.frame.height / 2 - 50, width: 100, height: 100)
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(pan!)
+        renderImage.addSubview(imageView)
     }
 }
 
 
 extension ImageRenderVC {
-    @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer){
-        if let error = error {
-            print(error.localizedDescription)
-        } else {
-            print("Image saved")
-        }
+    @objc func touchFilterBtn(){
+        isFilterSelected = true
+        collectionView.reloadData()
     }
     
-    @objc func touchSaveBtn(){
-        self.renderViewAsImage()
-    }
-    
-    @objc func touchBeforeBtn(){
-        if photoIndexNumber > 0 {
-            nextImageBtn.isEnabled = true
-            beforeImageBtn.isEnabled = true
-            photoIndexNumber -= 1
-            image = AlbumModel.albumList[albumIndexNumber].photos[photoIndexNumber]
-            renderImage.image = image
-        
-            
-            if photoIndexNumber == 0 {
-                beforeImageBtn.isEnabled = false
-            }
-        }
-    }
-    @objc func touchNextBtn(){
-        if photoIndexNumber < AlbumModel.albumList[albumIndexNumber].photos.count - 1 {
-            nextImageBtn.isEnabled = true
-            beforeImageBtn.isEnabled = true
-            photoIndexNumber += 1
-            image = AlbumModel.albumList[albumIndexNumber].photos[photoIndexNumber]
-            renderImage.image = image
-            
-            if photoIndexNumber == AlbumModel.albumList[albumIndexNumber].photos.count - 1 {
-                nextImageBtn.isEnabled = false
-            }
-        }
+    @objc func touchStickerBtn(){
+        isFilterSelected = false
+        collectionView.reloadData()
     }
 }
 
-extension ImageRenderVC : UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.textField.resignFirstResponder()
-        self.dismiss(animated: true)
-        return true
+
+
+extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if isFilterSelected == true {
+            // filter collection
+            return filterImages.count
+        } else {
+            // sticker collection
+            return stickerArray.count
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if isFilterSelected == true {
+            // filter collection
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filtercell", for: indexPath) as! photoFilterCollectionCell
+            cell.imageView.image = filterImages[indexPath.row]
+            return cell
+        } else {
+            // sticker collection
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "stickercell", for: indexPath) as! photoStickerCollectionCell
+            cell.imageView.image = UIImage(named: stickerArray[indexPath.row])
+            return cell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 73, height: 88)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1.0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout
+        collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if isFilterSelected == true {
+            // filter collection
+            let cell = collectionView.cellForItem(at: indexPath) as! photoFilterCollectionCell
+            renderImage.image = filterImages[indexPath.row]
+            cell.toggleSelected()
+        } else {
+            // sticker collection
+            let cell = collectionView.cellForItem(at: indexPath) as! photoStickerCollectionCell
+            createStickerView(image: cell.imageView.image!)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if isFilterSelected == true {
+            // filter collection
+            let cell = collectionView.cellForItem(at: indexPath) as! photoFilterCollectionCell
+            cell.toggleSelected()
+        } else {
+            let cell = collectionView.cellForItem(at: indexPath) as! photoStickerCollectionCell
+            
+        }
     }
 }
 
 
 extension ImageRenderVC {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "GoToFilterVC" {
-            let dest = segue.destination as? FilterListVC
-            dest?.image = image
+        if segue.identifier == "GoToSaveVC" {
+            let dest = segue.destination as? SavePhotoVC
+            dest?.image = renderImage.image
             print("send segue")
         }
     }
