@@ -6,7 +6,8 @@ class Album {
     var index : Int!
     var isShare : Bool!
     var albumName : String!
-    var period : String?
+    var startDate : String?
+    var expireDate : String?
     var numOfPhotos : Int?
     var selectTheme : Theme!
     var photos : [UIImage]

@@ -14,14 +14,7 @@ class AlbumNameController : UIViewController, UITextFieldDelegate {
     @IBOutlet weak var tfAlbumName: UITextField!
     @IBOutlet weak var selectorImageView: UIImageView!
     @IBOutlet weak var nextBtn: UIButton!
-    
-    //다음 버튼 클릭 시 기간설정 화면으로 넘어가는 액션
-    @IBAction func clickNextBtn(_ sender : Any){
-        let albumPeriodVC = storyboard?.instantiateViewController(withIdentifier : "AlbumPeriodController") as! AlbumPeriodController
         
-        self.navigationController?.pushViewController(albumPeriodVC, animated: true)
-    }
-    
     
     override func viewDidLoad() {
         tfAlbumName.delegate = self
@@ -44,6 +37,17 @@ class AlbumNameController : UIViewController, UITextFieldDelegate {
             
         })
         
+    }
+    
+    
+    //다음 버튼 클릭 시 기간설정 화면으로 넘어가는 액션
+    @IBAction func clickNextBtn(_ sender : Any){
+        let albumPeriodVC = storyboard?.instantiateViewController(withIdentifier : "AlbumPeriodController") as! AlbumPeriodController
+        
+        let albumName = tfAlbumName.text!
+        albumPeriodVC.albumName = albumName
+        
+        self.navigationController?.pushViewController(albumPeriodVC, animated: true)
     }
     
     
