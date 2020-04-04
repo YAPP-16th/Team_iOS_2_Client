@@ -5,10 +5,11 @@ import UIKit
 class Album {
     var index : Int!
     var isShare : Bool!
+    
     var albumName : String!
     var startDate : String?
     var expireDate : String?
-    var numOfPhotos : Int?
+    var quantity : Int?
     var selectTheme : Theme!
     var photos : [UIImage]
 

@@ -138,7 +138,7 @@ extension AlbumMainController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlbumCell", for: indexPath) as! AlbumCell
         let data = AlbumModel.albumList[indexPath.row]
-        if let photoNum = data.numOfPhotos {
+        if let photoNum = data.quantity {
             if(photoNum == data.photos.count){
                 cell.isFull = true
             }

@@ -262,76 +262,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앨범 기간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kE8-Z0-q6q">
-                                <rect key="frame" x="35" y="364.5" width="64" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="장" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDe-Hq-PKX">
+                                <rect key="frame" x="107" y="320" width="21" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KNj-k0-eFC">
-                                <rect key="frame" x="35" y="486.5" width="344" height="40"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="BUg-Il-eNk"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDy-IC-0Tw">
+                                <rect key="frame" x="35" y="189" width="294" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">앨범에 들어갈
+사진의 수량을 정해 주세요</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KrC-jV-UKl">
+                                <rect key="frame" x="35" y="397" width="336" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="다음">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="saveSetting:" destination="gz1-Rl-FHX" eventType="touchUpInside" id="9yf-iG-kO9"/>
+                                    <action selector="clickNextBtn:" destination="und-gY-ieh" eventType="touchUpInside" id="QxA-RN-mlP"/>
+                                    <action selector="clickNextBtn:" destination="gz1-Rl-FHX" eventType="touchUpInside" id="g3g-tb-iim"/>
+                                    <action selector="clickNextBtn:" destination="Kmr-fc-Mig" eventType="touchUpInside" id="njF-7B-5DC"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사진 개수" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDe-Hq-PKX">
-                                <rect key="frame" x="35" y="415.5" width="64" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="개수를 설정해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sG0-uv-ffg">
-                                <rect key="frame" x="114" y="409" width="190" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="190" id="ypc-at-pZA"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앨범 수량" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8SP-ix-jEC">
-                                <rect key="frame" x="35" y="182" width="110.5" height="36"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="기간을 설정해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Ma-um-fvt">
-                                <rect key="frame" x="114" y="358" width="190" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="190" id="UxM-hm-cU2"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="txg-3P-eaz">
+                                <rect key="frame" x="52" y="358" width="50" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sG0-uv-ffg">
+                                <rect key="frame" x="53" y="315" width="50" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="KNj-k0-eFC" firstAttribute="top" secondItem="JDe-Hq-PKX" secondAttribute="bottom" constant="50" id="AGD-9M-VUH"/>
-                            <constraint firstItem="8SP-ix-jEC" firstAttribute="top" secondItem="DMi-XU-Ug0" secondAttribute="top" constant="94" id="D3J-8D-eYx"/>
-                            <constraint firstItem="DMi-XU-Ug0" firstAttribute="trailing" secondItem="KNj-k0-eFC" secondAttribute="trailing" constant="35" id="HPJ-0A-R8B"/>
-                            <constraint firstItem="kE8-Z0-q6q" firstAttribute="centerY" secondItem="DMi-XU-Ug0" secondAttribute="centerY" constant="-100" id="RUN-In-9yd"/>
-                            <constraint firstItem="JDe-Hq-PKX" firstAttribute="top" secondItem="kE8-Z0-q6q" secondAttribute="bottom" constant="30" id="TWn-dD-jg1"/>
-                            <constraint firstItem="JDe-Hq-PKX" firstAttribute="leading" secondItem="kE8-Z0-q6q" secondAttribute="leading" id="XJm-fI-HM0"/>
-                            <constraint firstItem="0Ma-um-fvt" firstAttribute="leading" secondItem="kE8-Z0-q6q" secondAttribute="trailing" constant="15" id="Z18-Gm-3RP"/>
-                            <constraint firstItem="0Ma-um-fvt" firstAttribute="centerY" secondItem="kE8-Z0-q6q" secondAttribute="centerY" id="bMJ-30-c34"/>
-                            <constraint firstItem="sG0-uv-ffg" firstAttribute="centerY" secondItem="JDe-Hq-PKX" secondAttribute="centerY" id="isG-GH-l8Z"/>
-                            <constraint firstItem="kE8-Z0-q6q" firstAttribute="leading" secondItem="8SP-ix-jEC" secondAttribute="leading" id="kuo-Ju-Ug9"/>
-                            <constraint firstItem="8SP-ix-jEC" firstAttribute="leading" secondItem="DMi-XU-Ug0" secondAttribute="leading" constant="35" id="nEs-BG-phW"/>
-                            <constraint firstItem="KNj-k0-eFC" firstAttribute="leading" secondItem="DMi-XU-Ug0" secondAttribute="leading" constant="35" id="nRe-iz-qiO"/>
-                            <constraint firstItem="sG0-uv-ffg" firstAttribute="leading" secondItem="JDe-Hq-PKX" secondAttribute="trailing" constant="15" id="zjh-7y-zZr"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="DMi-XU-Ug0"/>
                     </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="tfNumOfPhotos" destination="sG0-uv-ffg" id="jhD-EF-rcX"/>
-                        <outlet property="tfPeriod" destination="0Ma-um-fvt" id="ZLS-aE-GBd"/>
+                        <outlet property="nextBtn" destination="KrC-jV-UKl" id="aZg-6o-cde"/>
+                        <outlet property="selectorImageVIew" destination="txg-3P-eaz" id="8e7-VV-dVy"/>
+                        <outlet property="tfQuantity" destination="sG0-uv-ffg" id="9Up-aB-7AD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Was-P8-Dvd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -341,13 +322,13 @@
         <!--테마 선택-->
         <scene sceneID="7es-Ik-Mic">
             <objects>
-                <viewController storyboardIdentifier="albumThemeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ql5-GL-7tV" customClass="AlbumThemeController" customModule="_0_s" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AlbumThemeController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ql5-GL-7tV" customClass="AlbumThemeController" customModule="_0_s" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Ru-lf-k2q">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="130" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QSD-kg-h7r">
-                                <rect key="frame" x="0.0" y="204" width="414" height="643"/>
+                                <rect key="frame" x="0.0" y="160" width="414" height="687"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="themeCell" rowHeight="130" id="M8H-Kp-9iV" customClass="ThemeCell" customModule="_0_s" customModuleProvider="target">
@@ -387,7 +368,7 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="테마 선택" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8SA-sh-D81">
-                                <rect key="frame" x="20" y="138" width="110.5" height="36"/>
+                                <rect key="frame" x="20" y="94" width="110.5" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -412,7 +393,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="themeTableView" destination="QSD-kg-h7r" id="Iq9-aD-5f7"/>
                     </connections>
