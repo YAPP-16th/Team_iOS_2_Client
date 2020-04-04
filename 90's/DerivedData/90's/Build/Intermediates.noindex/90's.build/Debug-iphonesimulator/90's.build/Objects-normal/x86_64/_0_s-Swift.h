@@ -254,16 +254,48 @@ SWIFT_CLASS("_TtC4_0_s21AlbumDetailController")
 @end
 
 
-SWIFT_CLASS("_TtC4_0_s20AlbumPrintController")
-@interface AlbumPrintController : UIViewController
+SWIFT_CLASS("_TtC4_0_s19AlbumMainController")
+@interface AlbumMainController : UIViewController
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified albumMakeBtn;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified albumIntroLabel;
+@property (nonatomic, weak) IBOutlet UICollectionView * _Null_unspecified albumCollectionView;
+- (IBAction)clickMakeBtn:(id _Nonnull)sender;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)animated;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+
+@interface AlbumMainController (SWIFT_EXTENSION(_0_s)) <UICollectionViewDelegateFlowLayout>
+- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (void)collectionView:(UICollectionView * _Nonnull)collectionView didSelectItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+@end
+
+
+@interface AlbumMainController (SWIFT_EXTENSION(_0_s)) <UICollectionViewDataSource>
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView * _Nonnull)collectionView SWIFT_WARN_UNUSED_RESULT;
+- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @class UITextField;
 @class UITouch;
 @class UIEvent;
+
+SWIFT_CLASS("_TtC4_0_s19AlbumNameController")
+@interface AlbumNameController : UIViewController <UITextFieldDelegate>
+@property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified tfAlbumName;
+@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified selectorImageView;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified nextBtn;
+- (void)viewDidLoad;
+- (void)touchesBegan:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 
 SWIFT_CLASS("_TtC4_0_s22AlbumSettingController")
 @interface AlbumSettingController : UIViewController
@@ -377,45 +409,6 @@ SWIFT_CLASS("_TtC4_0_s13ImageRenderVC")
 @end
 
 
-SWIFT_CLASS("_TtC4_0_s18MainViewController")
-@interface MainViewController : UIViewController
-@property (nonatomic, weak) IBOutlet UICollectionView * _Null_unspecified albumCollectionView;
-- (IBAction)navigationBtnClick:(id _Nonnull)sender;
-- (void)viewDidLoad;
-- (void)viewWillAppear:(BOOL)animated;
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-@interface MainViewController (SWIFT_EXTENSION(_0_s)) <UICollectionViewDelegateFlowLayout>
-- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-- (void)collectionView:(UICollectionView * _Nonnull)collectionView didSelectItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
-@end
-
-
-@interface MainViewController (SWIFT_EXTENSION(_0_s)) <UICollectionViewDataSource>
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView * _Nonnull)collectionView SWIFT_WARN_UNUSED_RESULT;
-- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
-- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-@end
-
-@class NSLayoutConstraint;
-@class UIView;
-
-SWIFT_CLASS("_TtC4_0_s20OptionViewController")
-@interface OptionViewController : UIViewController
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint * _Null_unspecified bottomViewConstraint;
-@property (nonatomic, weak) IBOutlet UIView * _Null_unspecified optionView;
-@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified completeBtn;
-- (void)viewDidLoad;
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
 SWIFT_CLASS("_TtC4_0_s9PhotoCell")
 @interface PhotoCell : UICollectionViewCell
 @property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified photoImageView;
@@ -423,6 +416,8 @@ SWIFT_CLASS("_TtC4_0_s9PhotoCell")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class NSLayoutConstraint;
+@class UIView;
 
 SWIFT_CLASS("_TtC4_0_s19PrintViewController")
 @interface PrintViewController : UIViewController
