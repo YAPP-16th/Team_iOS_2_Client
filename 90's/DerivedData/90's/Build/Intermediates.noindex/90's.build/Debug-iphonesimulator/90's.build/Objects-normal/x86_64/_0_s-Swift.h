@@ -311,15 +311,15 @@ SWIFT_CLASS("_TtC4_0_s22AlbumSettingController")
 
 @class UIPickerView;
 
-@interface AlbumSettingController (SWIFT_EXTENSION(_0_s)) <UIPickerViewDelegate>
-- (NSString * _Nullable)pickerView:(UIPickerView * _Nonnull)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component SWIFT_WARN_UNUSED_RESULT;
-- (void)pickerView:(UIPickerView * _Nonnull)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component;
-@end
-
-
 @interface AlbumSettingController (SWIFT_EXTENSION(_0_s)) <UIPickerViewDataSource>
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView * _Nonnull)pickerView SWIFT_WARN_UNUSED_RESULT;
 - (NSInteger)pickerView:(UIPickerView * _Nonnull)pickerView numberOfRowsInComponent:(NSInteger)component SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface AlbumSettingController (SWIFT_EXTENSION(_0_s)) <UIPickerViewDelegate>
+- (NSString * _Nullable)pickerView:(UIPickerView * _Nonnull)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component SWIFT_WARN_UNUSED_RESULT;
+- (void)pickerView:(UIPickerView * _Nonnull)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component;
 @end
 
 @class UITableView;
@@ -408,6 +408,19 @@ SWIFT_CLASS("_TtC4_0_s13ImageRenderVC")
 - (void)collectionView:(UICollectionView * _Nonnull)collectionView didDeselectItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 @end
 
+@class NSLayoutConstraint;
+@class UIView;
+
+SWIFT_CLASS("_TtC4_0_s20OptionViewController")
+@interface OptionViewController : UIViewController
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint * _Null_unspecified bottomViewConstraint;
+@property (nonatomic, weak) IBOutlet UIView * _Null_unspecified optionView;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified completeBtn;
+- (void)viewDidLoad;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 
 SWIFT_CLASS("_TtC4_0_s9PhotoCell")
 @interface PhotoCell : UICollectionViewCell
@@ -416,8 +429,27 @@ SWIFT_CLASS("_TtC4_0_s9PhotoCell")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+SWIFT_CLASS("_TtC4_0_s19PrintViewController")
+@interface PrintViewController : UIViewController
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint * _Null_unspecified bottomViewConstraint;
+@property (nonatomic, weak) IBOutlet UIView * _Null_unspecified optionView;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified completeBtn;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint * _Null_unspecified firstOptionConstraint;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint * _Null_unspecified secondOptionConstraint;
+@property (nonatomic, weak) IBOutlet UIView * _Null_unspecified firstOptionView;
+@property (nonatomic, weak) IBOutlet UIView * _Null_unspecified secondOptionView;
+- (void)viewDidLoad;
+- (IBAction)optionClick:(id _Nonnull)sender;
+- (IBAction)cancelAction:(id _Nonnull)sender;
+- (IBAction)completeBtn:(id _Nonnull)sender;
+- (IBAction)firstOptionClick:(id _Nonnull)sender;
+- (IBAction)secondOptionClick:(id _Nonnull)sender;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @class UISwitch;
-@class UIView;
 
 SWIFT_CLASS("_TtC4_0_s11SavePhotoVC")
 @interface SavePhotoVC : UIViewController
@@ -470,11 +502,11 @@ SWIFT_CLASS("_TtC4_0_s9ThemeCell")
 
 
 
-
-
 @interface UIViewController (SWIFT_EXTENSION(_0_s))
 - (void)dismissKeyboard;
 @end
+
+
 
 
 SWIFT_CLASS("_TtC4_0_s25photoFilterCollectionCell")
