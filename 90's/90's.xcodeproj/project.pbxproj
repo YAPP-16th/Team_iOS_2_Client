@@ -21,6 +21,7 @@
 		9B44EDE12429FC9100B0D774 /* ImageRenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B44EDE02429FC9100B0D774 /* ImageRenderVC.swift */; };
 		9B44EDE52429FCDF00B0D774 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B44EDE42429FCDF00B0D774 /* Extension.swift */; };
 		9B45BD012438734E00497EA5 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B45BD002438734E00497EA5 /* Profile.storyboard */; };
+		9B45BD0624387F5200497EA5 /* Invite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B45BD0524387F5200497EA5 /* Invite.storyboard */; };
 		9BC16B1A2435B68F007F106C /* photoStickerCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC16B192435B68F007F106C /* photoStickerCollectionCell.swift */; };
 		A31BA4D3243876F0007CA89D /* AlbumNameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31BA4D2243876F0007CA89D /* AlbumNameController.swift */; };
 		A33376162420CFB3000DC7C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33376152420CFB3000DC7C4 /* AppDelegate.swift */; };
@@ -56,6 +57,7 @@
 		9B44EDE02429FC9100B0D774 /* ImageRenderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRenderVC.swift; sourceTree = "<group>"; };
 		9B44EDE42429FCDF00B0D774 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		9B45BD002438734E00497EA5 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		9B45BD0524387F5200497EA5 /* Invite.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Invite.storyboard; sourceTree = "<group>"; };
 		9BC16B192435B68F007F106C /* photoStickerCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoStickerCollectionCell.swift; sourceTree = "<group>"; };
 		A31BA4D2243876F0007CA89D /* AlbumNameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumNameController.swift; sourceTree = "<group>"; };
 		A33376122420CFB3000DC7C4 /* 90's.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "90's.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,7 +137,7 @@
 			children = (
 				A33376292420DA36000DC7C4 /* Album.swift */,
 				A333762F2420EA9D000DC7C4 /* AlbumCell.swift */,
-				A33376192420CFB3000DC7C4 /* MainViewController.swift */,
+				A33376192420CFB3000DC7C4 /* AlbumMainController.swift */,
 				9B45BD03243873FC00497EA5 /* DetailAlbum */,
 				9B45BD02243873F000497EA5 /* CreateAlbum */,
 				3958515F242F461800014CB0 /* Album.storyboard */,
@@ -184,6 +186,14 @@
 			path = DetailAlbum;
 			sourceTree = "<group>";
 		};
+		9B45BD0424387F3D00497EA5 /* Invite */ = {
+			isa = PBXGroup;
+			children = (
+				9B45BD0524387F5200497EA5 /* Invite.storyboard */,
+			);
+			path = Invite;
+			sourceTree = "<group>";
+		};
 		A33376092420CFB3000DC7C4 = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +215,7 @@
 		A33376142420CFB3000DC7C4 /* 90's */ = {
 			isa = PBXGroup;
 			children = (
+				9B45BD0424387F3D00497EA5 /* Invite */,
 				9B44EDE42429FCDF00B0D774 /* Extension.swift */,
 				9B45BCFF2438734200497EA5 /* Profile */,
 				39585165242F49C400014CB0 /* SignUp */,
@@ -288,6 +299,7 @@
 				392F7790242F4BC70000BC3C /* Default-568h@2x.png in Resources */,
 				A333761F2420CFB6000DC7C4 /* Assets.xcassets in Resources */,
 				39585160242F461800014CB0 /* Album.storyboard in Resources */,
+				9B45BD0624387F5200497EA5 /* Invite.storyboard in Resources */,
 				3958515E242F460000014CB0 /* Filter.storyboard in Resources */,
 				3958515C242F45E600014CB0 /* Sticker.storyboard in Resources */,
 				A333761D2420CFB3000DC7C4 /* Main.storyboard in Resources */,
