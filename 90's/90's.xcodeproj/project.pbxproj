@@ -15,6 +15,8 @@
 		39585163242F46D500014CB0 /* Print.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39585162242F46D500014CB0 /* Print.storyboard */; };
 		39585167242F49EA00014CB0 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39585166242F49EA00014CB0 /* SignIn.storyboard */; };
 		39585169242F49F300014CB0 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39585168242F49F300014CB0 /* SignUp.storyboard */; };
+		3965787A24386982007B6721 /* PrintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3965787924386982007B6721 /* PrintViewController.swift */; };
+		3965787C24386A80007B6721 /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3965787B24386A80007B6721 /* OptionViewController.swift */; };
 		9B0B807024357929009D7B17 /* SavePhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0B806F24357929009D7B17 /* SavePhotoVC.swift */; };
 		9B142B0F242F22CD005ABE17 /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B142B0E242F22CD005ABE17 /* testViewController.swift */; };
 		9B31E1942434BBB400A139C6 /* photoFilterCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B31E1932434BBB400A139C6 /* photoFilterCollectionCell.swift */; };
@@ -47,6 +49,8 @@
 		39585162242F46D500014CB0 /* Print.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Print.storyboard; sourceTree = "<group>"; };
 		39585166242F49EA00014CB0 /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		39585168242F49F300014CB0 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		3965787924386982007B6721 /* PrintViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintViewController.swift; sourceTree = "<group>"; };
+		3965787B24386A80007B6721 /* OptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
 		9B0B806F24357929009D7B17 /* SavePhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePhotoVC.swift; sourceTree = "<group>"; };
 		9B142B09242F2228005ABE17 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KakaoOpenSDK.framework; path = "../../Downloads/CameraFilter-master/KakaoOpenSDK.framework"; sourceTree = "<group>"; };
 		9B142B0E242F22CD005ABE17 /* testViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				39585162242F46D500014CB0 /* Print.storyboard */,
+				3965787924386982007B6721 /* PrintViewController.swift */,
+				3965787B24386A80007B6721 /* OptionViewController.swift */,
 			);
 			path = Print;
 			sourceTree = "<group>";
@@ -285,7 +291,9 @@
 				9B0B807024357929009D7B17 /* SavePhotoVC.swift in Sources */,
 				9B44EDE12429FC9100B0D774 /* ImageRenderVC.swift in Sources */,
 				A36B88B724252AF3001FCD50 /* AlbumPrintController.swift in Sources */,
+				3965787C24386A80007B6721 /* OptionViewController.swift in Sources */,
 				A33376302420EA9D000DC7C4 /* AlbumCell.swift in Sources */,
+				3965787A24386982007B6721 /* PrintViewController.swift in Sources */,
 				39411378243061A500087E1B /* CheckPhotoViewController.swift in Sources */,
 				A36DC86F24236386001B3767 /* AlbumDetailController.swift in Sources */,
 				9B142B0F242F22CD005ABE17 /* testViewController.swift in Sources */,

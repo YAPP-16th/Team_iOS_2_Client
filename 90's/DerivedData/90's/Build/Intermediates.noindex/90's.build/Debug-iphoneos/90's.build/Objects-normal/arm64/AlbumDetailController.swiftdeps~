@@ -26,7 +26,6 @@ depends-top-level:
 - "CGSize"
 - "CastingPrecedence"
 - !private "FloatLiteralType"
-- !private "ImageRenderVC"
 - "IndexPath"
 - "Int"
 - !private "IntegerLiteralType"
@@ -54,7 +53,6 @@ depends-member:
 - !private ["4_0_s5AlbumC", "selectTheme"]
 - !private ["4_0_s21AlbumDetailControllerC", "AlbumModel"]
 - ["4_0_s21AlbumDetailControllerC", "CGSize"]
-- !private ["4_0_s21AlbumDetailControllerC", "ImageRenderVC"]
 - ["4_0_s21AlbumDetailControllerC", "IndexPath"]
 - ["4_0_s21AlbumDetailControllerC", "Int"]
 - !private ["4_0_s21AlbumDetailControllerC", "PhotoCell"]
@@ -148,7 +146,6 @@ depends-member:
 - ["s7CVarArgP", ""]
 - !private ["s7CVarArgP", "addAction"]
 - !private ["s7CVarArgP", "albumIndex"]
-- !private ["s7CVarArgP", "albumIndexNumber"]
 - !private ["s7CVarArgP", "albumNameLabel"]
 - !private ["s7CVarArgP", "append"]
 - ["s7CVarArgP", "collectionView"]
@@ -176,7 +173,6 @@ depends-member:
 - !private ["s7CVarArgP", "openLibary"]
 - !private ["s7CVarArgP", "photoCollectionView"]
 - !private ["s7CVarArgP", "photoImageView"]
-- !private ["s7CVarArgP", "photoIndexNumber"]
 - !private ["s7CVarArgP", "picker"]
 - !private ["s7CVarArgP", "popToRootViewController"]
 - !private ["s7CVarArgP", "present"]
@@ -227,7 +223,6 @@ depends-member:
 - ["s28CustomDebugStringConvertibleP", ""]
 - !private ["s28CustomDebugStringConvertibleP", "addAction"]
 - !private ["s28CustomDebugStringConvertibleP", "albumIndex"]
-- !private ["s28CustomDebugStringConvertibleP", "albumIndexNumber"]
 - !private ["s28CustomDebugStringConvertibleP", "albumName"]
 - !private ["s28CustomDebugStringConvertibleP", "albumNameLabel"]
 - !private ["s28CustomDebugStringConvertibleP", "append"]
@@ -257,7 +252,6 @@ depends-member:
 - !private ["s28CustomDebugStringConvertibleP", "openLibary"]
 - !private ["s28CustomDebugStringConvertibleP", "photoCollectionView"]
 - !private ["s28CustomDebugStringConvertibleP", "photoImageView"]
-- !private ["s28CustomDebugStringConvertibleP", "photoIndexNumber"]
 - !private ["s28CustomDebugStringConvertibleP", "photos"]
 - !private ["s28CustomDebugStringConvertibleP", "picker"]
 - !private ["s28CustomDebugStringConvertibleP", "popToRootViewController"]
@@ -315,7 +309,6 @@ depends-member:
 - ["s23CustomStringConvertibleP", ""]
 - !private ["s23CustomStringConvertibleP", "addAction"]
 - !private ["s23CustomStringConvertibleP", "albumIndex"]
-- !private ["s23CustomStringConvertibleP", "albumIndexNumber"]
 - !private ["s23CustomStringConvertibleP", "albumName"]
 - !private ["s23CustomStringConvertibleP", "albumNameLabel"]
 - !private ["s23CustomStringConvertibleP", "append"]
@@ -344,7 +337,6 @@ depends-member:
 - !private ["s23CustomStringConvertibleP", "openLibary"]
 - !private ["s23CustomStringConvertibleP", "photoCollectionView"]
 - !private ["s23CustomStringConvertibleP", "photoImageView"]
-- !private ["s23CustomStringConvertibleP", "photoIndexNumber"]
 - !private ["s23CustomStringConvertibleP", "photos"]
 - !private ["s23CustomStringConvertibleP", "picker"]
 - !private ["s23CustomStringConvertibleP", "popToRootViewController"]
@@ -418,7 +410,6 @@ depends-member:
 - !private ["SQ", "actionSheet"]
 - !private ["SQ", "addAction"]
 - !private ["SQ", "albumIndex"]
-- !private ["SQ", "albumIndexNumber"]
 - !private ["SQ", "albumName"]
 - !private ["SQ", "albumNameLabel"]
 - !private ["SQ", "alert"]
@@ -453,7 +444,6 @@ depends-member:
 - !private ["SQ", "originalImage"]
 - !private ["SQ", "photoCollectionView"]
 - !private ["SQ", "photoImageView"]
-- !private ["SQ", "photoIndexNumber"]
 - !private ["SQ", "photoLibrary"]
 - !private ["SQ", "photos"]
 - !private ["SQ", "picker"]
@@ -511,7 +501,6 @@ depends-member:
 - !private ["SH", "actionSheet"]
 - !private ["SH", "addAction"]
 - !private ["SH", "albumIndex"]
-- !private ["SH", "albumIndexNumber"]
 - !private ["SH", "albumName"]
 - !private ["SH", "albumNameLabel"]
 - !private ["SH", "alert"]
@@ -545,7 +534,6 @@ depends-member:
 - !private ["SH", "originalImage"]
 - !private ["SH", "photoCollectionView"]
 - !private ["SH", "photoImageView"]
-- !private ["SH", "photoIndexNumber"]
 - !private ["SH", "photoLibrary"]
 - !private ["SH", "photos"]
 - !private ["SH", "picker"]
@@ -577,9 +565,6 @@ depends-member:
 - !private ["SH", "themePhoto"]
 - ["SH", "viewForZooming"]
 - ["SH", "viewForZoomingInScrollView"]
-- !private ["4_0_s13ImageRenderVCC", "albumIndexNumber"]
-- !private ["4_0_s13ImageRenderVCC", "image"]
-- !private ["4_0_s13ImageRenderVCC", "photoIndexNumber"]
 - !private ["10Foundation9IndexPathV", "row"]
 - !private ["So30UIImagePickerControllerInfoKeya", "originalImage"]
 - !private ["SM", "albumName"]
@@ -602,7 +587,6 @@ depends-member:
 - ["So8NSCodingP", ""]
 - !private ["So8NSCodingP", "addAction"]
 - !private ["So8NSCodingP", "albumIndex"]
-- !private ["So8NSCodingP", "albumIndexNumber"]
 - !private ["So8NSCodingP", "albumNameLabel"]
 - ["So8NSCodingP", "collectionView"]
 - ["So8NSCodingP", "collectionViewDidEndMultipleSelectionInteraction"]
@@ -627,7 +611,6 @@ depends-member:
 - !private ["So8NSCodingP", "openLibary"]
 - !private ["So8NSCodingP", "photoCollectionView"]
 - !private ["So8NSCodingP", "photoImageView"]
-- !private ["So8NSCodingP", "photoIndexNumber"]
 - !private ["So8NSCodingP", "picker"]
 - !private ["So8NSCodingP", "popToRootViewController"]
 - !private ["So8NSCodingP", "present"]
@@ -664,13 +647,11 @@ depends-member:
 - ["So26NSExtensionRequestHandlingP", ""]
 - !private ["So26NSExtensionRequestHandlingP", "addAction"]
 - !private ["So26NSExtensionRequestHandlingP", "albumIndex"]
-- !private ["So26NSExtensionRequestHandlingP", "albumIndexNumber"]
 - !private ["So26NSExtensionRequestHandlingP", "albumNameLabel"]
 - ["So26NSExtensionRequestHandlingP", "collectionView"]
 - ["So26NSExtensionRequestHandlingP", "collectionViewDidEndMultipleSelectionInteraction"]
 - !private ["So26NSExtensionRequestHandlingP", "delegate"]
 - !private ["So26NSExtensionRequestHandlingP", "dismiss"]
-- !private ["So26NSExtensionRequestHandlingP", "image"]
 - ["So26NSExtensionRequestHandlingP", "imagePickerController"]
 - ["So26NSExtensionRequestHandlingP", "imagePickerControllerDidCancel"]
 - ["So26NSExtensionRequestHandlingP", "indexPathForPreferredFocusedView"]
@@ -685,7 +666,6 @@ depends-member:
 - ["So26NSExtensionRequestHandlingP", "numberOfSectionsInCollectionView"]
 - !private ["So26NSExtensionRequestHandlingP", "openLibary"]
 - !private ["So26NSExtensionRequestHandlingP", "photoCollectionView"]
-- !private ["So26NSExtensionRequestHandlingP", "photoIndexNumber"]
 - !private ["So26NSExtensionRequestHandlingP", "picker"]
 - !private ["So26NSExtensionRequestHandlingP", "popToRootViewController"]
 - !private ["So26NSExtensionRequestHandlingP", "present"]
@@ -713,7 +693,6 @@ depends-member:
 - !private ["So21NSItemProviderWritingP", "init"]
 - !private ["So8NSObjectC", "AlbumModel"]
 - ["So8NSObjectC", "CGSize"]
-- !private ["So8NSObjectC", "ImageRenderVC"]
 - ["So8NSObjectC", "IndexPath"]
 - ["So8NSObjectC", "InfoKey"]
 - ["So8NSObjectC", "Int"]
@@ -730,7 +709,6 @@ depends-member:
 - !private ["So8NSObjectC", "addAction"]
 - ["So8NSObjectC", "addPhoto"]
 - ["So8NSObjectC", "albumIndex"]
-- !private ["So8NSObjectC", "albumIndexNumber"]
 - ["So8NSObjectC", "albumNameLabel"]
 - ["So8NSObjectC", "collectionView"]
 - ["So8NSObjectC", "collectionViewDidEndMultipleSelectionInteraction"]
@@ -758,7 +736,6 @@ depends-member:
 - ["So8NSObjectC", "openLibary"]
 - ["So8NSObjectC", "photoCollectionView"]
 - !private ["So8NSObjectC", "photoImageView"]
-- !private ["So8NSObjectC", "photoIndexNumber"]
 - ["So8NSObjectC", "picker"]
 - !private ["So8NSObjectC", "popToRootViewController"]
 - !private ["So8NSObjectC", "present"]
@@ -797,7 +774,6 @@ depends-member:
 - ["So8NSObjectP", ""]
 - !private ["So8NSObjectP", "addAction"]
 - !private ["So8NSObjectP", "albumIndex"]
-- !private ["So8NSObjectP", "albumIndexNumber"]
 - !private ["So8NSObjectP", "albumNameLabel"]
 - ["So8NSObjectP", "collectionView"]
 - ["So8NSObjectP", "collectionViewDidEndMultipleSelectionInteraction"]
@@ -823,7 +799,6 @@ depends-member:
 - !private ["So8NSObjectP", "openLibary"]
 - !private ["So8NSObjectP", "photoCollectionView"]
 - !private ["So8NSObjectP", "photoImageView"]
-- !private ["So8NSObjectP", "photoIndexNumber"]
 - !private ["So8NSObjectP", "picker"]
 - !private ["So8NSObjectP", "popToRootViewController"]
 - !private ["So8NSObjectP", "present"]
@@ -923,7 +898,6 @@ depends-member:
 - ["So21UIAppearanceContainerP", ""]
 - !private ["So21UIAppearanceContainerP", "addAction"]
 - !private ["So21UIAppearanceContainerP", "albumIndex"]
-- !private ["So21UIAppearanceContainerP", "albumIndexNumber"]
 - !private ["So21UIAppearanceContainerP", "albumNameLabel"]
 - ["So21UIAppearanceContainerP", "collectionView"]
 - ["So21UIAppearanceContainerP", "collectionViewDidEndMultipleSelectionInteraction"]
@@ -948,7 +922,6 @@ depends-member:
 - !private ["So21UIAppearanceContainerP", "openLibary"]
 - !private ["So21UIAppearanceContainerP", "photoCollectionView"]
 - !private ["So21UIAppearanceContainerP", "photoImageView"]
-- !private ["So21UIAppearanceContainerP", "photoIndexNumber"]
 - !private ["So21UIAppearanceContainerP", "picker"]
 - !private ["So21UIAppearanceContainerP", "popToRootViewController"]
 - !private ["So21UIAppearanceContainerP", "present"]
@@ -1126,13 +1099,11 @@ depends-member:
 - ["So18UIContentContainerP", ""]
 - !private ["So18UIContentContainerP", "addAction"]
 - !private ["So18UIContentContainerP", "albumIndex"]
-- !private ["So18UIContentContainerP", "albumIndexNumber"]
 - !private ["So18UIContentContainerP", "albumNameLabel"]
 - ["So18UIContentContainerP", "collectionView"]
 - ["So18UIContentContainerP", "collectionViewDidEndMultipleSelectionInteraction"]
 - !private ["So18UIContentContainerP", "delegate"]
 - !private ["So18UIContentContainerP", "dismiss"]
-- !private ["So18UIContentContainerP", "image"]
 - ["So18UIContentContainerP", "imagePickerController"]
 - ["So18UIContentContainerP", "imagePickerControllerDidCancel"]
 - ["So18UIContentContainerP", "indexPathForPreferredFocusedView"]
@@ -1147,7 +1118,6 @@ depends-member:
 - ["So18UIContentContainerP", "numberOfSectionsInCollectionView"]
 - !private ["So18UIContentContainerP", "openLibary"]
 - !private ["So18UIContentContainerP", "photoCollectionView"]
-- !private ["So18UIContentContainerP", "photoIndexNumber"]
 - !private ["So18UIContentContainerP", "picker"]
 - !private ["So18UIContentContainerP", "popToRootViewController"]
 - !private ["So18UIContentContainerP", "present"]
@@ -1203,7 +1173,6 @@ depends-member:
 - ["So18UIFocusEnvironmentP", ""]
 - !private ["So18UIFocusEnvironmentP", "addAction"]
 - !private ["So18UIFocusEnvironmentP", "albumIndex"]
-- !private ["So18UIFocusEnvironmentP", "albumIndexNumber"]
 - !private ["So18UIFocusEnvironmentP", "albumNameLabel"]
 - ["So18UIFocusEnvironmentP", "collectionView"]
 - ["So18UIFocusEnvironmentP", "collectionViewDidEndMultipleSelectionInteraction"]
@@ -1228,7 +1197,6 @@ depends-member:
 - !private ["So18UIFocusEnvironmentP", "openLibary"]
 - !private ["So18UIFocusEnvironmentP", "photoCollectionView"]
 - !private ["So18UIFocusEnvironmentP", "photoImageView"]
-- !private ["So18UIFocusEnvironmentP", "photoIndexNumber"]
 - !private ["So18UIFocusEnvironmentP", "picker"]
 - !private ["So18UIFocusEnvironmentP", "popToRootViewController"]
 - !private ["So18UIFocusEnvironmentP", "present"]
@@ -1397,7 +1365,6 @@ depends-member:
 - ["So30UIPasteConfigurationSupportingP", ""]
 - !private ["So30UIPasteConfigurationSupportingP", "addAction"]
 - !private ["So30UIPasteConfigurationSupportingP", "albumIndex"]
-- !private ["So30UIPasteConfigurationSupportingP", "albumIndexNumber"]
 - !private ["So30UIPasteConfigurationSupportingP", "albumNameLabel"]
 - ["So30UIPasteConfigurationSupportingP", "collectionView"]
 - ["So30UIPasteConfigurationSupportingP", "collectionViewDidEndMultipleSelectionInteraction"]
@@ -1422,7 +1389,6 @@ depends-member:
 - !private ["So30UIPasteConfigurationSupportingP", "openLibary"]
 - !private ["So30UIPasteConfigurationSupportingP", "photoCollectionView"]
 - !private ["So30UIPasteConfigurationSupportingP", "photoImageView"]
-- !private ["So30UIPasteConfigurationSupportingP", "photoIndexNumber"]
 - !private ["So30UIPasteConfigurationSupportingP", "picker"]
 - !private ["So30UIPasteConfigurationSupportingP", "popToRootViewController"]
 - !private ["So30UIPasteConfigurationSupportingP", "present"]
@@ -1450,7 +1416,6 @@ depends-member:
 - ["So30UIPasteConfigurationSupportingP", "viewForZoomingInScrollView"]
 - !private ["So11UIResponderC", "AlbumModel"]
 - ["So11UIResponderC", "CGSize"]
-- !private ["So11UIResponderC", "ImageRenderVC"]
 - ["So11UIResponderC", "IndexPath"]
 - ["So11UIResponderC", "InfoKey"]
 - ["So11UIResponderC", "Int"]
@@ -1467,7 +1432,6 @@ depends-member:
 - !private ["So11UIResponderC", "addAction"]
 - ["So11UIResponderC", "addPhoto"]
 - ["So11UIResponderC", "albumIndex"]
-- !private ["So11UIResponderC", "albumIndexNumber"]
 - ["So11UIResponderC", "albumNameLabel"]
 - ["So11UIResponderC", "collectionView"]
 - ["So11UIResponderC", "collectionViewDidEndMultipleSelectionInteraction"]
@@ -1494,7 +1458,6 @@ depends-member:
 - ["So11UIResponderC", "openLibary"]
 - ["So11UIResponderC", "photoCollectionView"]
 - !private ["So11UIResponderC", "photoImageView"]
-- !private ["So11UIResponderC", "photoIndexNumber"]
 - ["So11UIResponderC", "picker"]
 - !private ["So11UIResponderC", "popToRootViewController"]
 - !private ["So11UIResponderC", "present"]
@@ -1533,7 +1496,6 @@ depends-member:
 - ["So30UIResponderStandardEditActionsP", ""]
 - !private ["So30UIResponderStandardEditActionsP", "addAction"]
 - !private ["So30UIResponderStandardEditActionsP", "albumIndex"]
-- !private ["So30UIResponderStandardEditActionsP", "albumIndexNumber"]
 - !private ["So30UIResponderStandardEditActionsP", "albumNameLabel"]
 - ["So30UIResponderStandardEditActionsP", "collectionView"]
 - ["So30UIResponderStandardEditActionsP", "collectionViewDidEndMultipleSelectionInteraction"]
@@ -1558,7 +1520,6 @@ depends-member:
 - !private ["So30UIResponderStandardEditActionsP", "openLibary"]
 - !private ["So30UIResponderStandardEditActionsP", "photoCollectionView"]
 - !private ["So30UIResponderStandardEditActionsP", "photoImageView"]
-- !private ["So30UIResponderStandardEditActionsP", "photoIndexNumber"]
 - !private ["So30UIResponderStandardEditActionsP", "picker"]
 - !private ["So30UIResponderStandardEditActionsP", "popToRootViewController"]
 - !private ["So30UIResponderStandardEditActionsP", "present"]
@@ -1651,13 +1612,11 @@ depends-member:
 - ["So16UIStateRestoringP", ""]
 - !private ["So16UIStateRestoringP", "addAction"]
 - !private ["So16UIStateRestoringP", "albumIndex"]
-- !private ["So16UIStateRestoringP", "albumIndexNumber"]
 - !private ["So16UIStateRestoringP", "albumNameLabel"]
 - ["So16UIStateRestoringP", "collectionView"]
 - ["So16UIStateRestoringP", "collectionViewDidEndMultipleSelectionInteraction"]
 - !private ["So16UIStateRestoringP", "delegate"]
 - !private ["So16UIStateRestoringP", "dismiss"]
-- !private ["So16UIStateRestoringP", "image"]
 - ["So16UIStateRestoringP", "imagePickerController"]
 - ["So16UIStateRestoringP", "imagePickerControllerDidCancel"]
 - ["So16UIStateRestoringP", "indexPathForPreferredFocusedView"]
@@ -1672,7 +1631,6 @@ depends-member:
 - ["So16UIStateRestoringP", "numberOfSectionsInCollectionView"]
 - !private ["So16UIStateRestoringP", "openLibary"]
 - !private ["So16UIStateRestoringP", "photoCollectionView"]
-- !private ["So16UIStateRestoringP", "photoIndexNumber"]
 - !private ["So16UIStateRestoringP", "picker"]
 - !private ["So16UIStateRestoringP", "popToRootViewController"]
 - !private ["So16UIStateRestoringP", "present"]
@@ -1697,9 +1655,6 @@ depends-member:
 - ["So16UIStateRestoringP", "viewForZooming"]
 - ["So16UIStateRestoringP", "viewForZoomingInScrollView"]
 - !private ["So12UIStoryboardC", "instantiateViewController"]
-- !private ["So19UITextFieldDelegateP", "albumIndexNumber"]
-- !private ["So19UITextFieldDelegateP", "image"]
-- !private ["So19UITextFieldDelegateP", "photoIndexNumber"]
 - !private ["So18UITraitEnvironmentP", "AlbumModel"]
 - !private ["So18UITraitEnvironmentP", "CGSize"]
 - ["So18UITraitEnvironmentP", "InfoKey"]
@@ -1710,7 +1665,6 @@ depends-member:
 - ["So18UITraitEnvironmentP", ""]
 - !private ["So18UITraitEnvironmentP", "addAction"]
 - !private ["So18UITraitEnvironmentP", "albumIndex"]
-- !private ["So18UITraitEnvironmentP", "albumIndexNumber"]
 - !private ["So18UITraitEnvironmentP", "albumNameLabel"]
 - ["So18UITraitEnvironmentP", "collectionView"]
 - ["So18UITraitEnvironmentP", "collectionViewDidEndMultipleSelectionInteraction"]
@@ -1735,7 +1689,6 @@ depends-member:
 - !private ["So18UITraitEnvironmentP", "openLibary"]
 - !private ["So18UITraitEnvironmentP", "photoCollectionView"]
 - !private ["So18UITraitEnvironmentP", "photoImageView"]
-- !private ["So18UITraitEnvironmentP", "photoIndexNumber"]
 - !private ["So18UITraitEnvironmentP", "picker"]
 - !private ["So18UITraitEnvironmentP", "popToRootViewController"]
 - !private ["So18UITraitEnvironmentP", "present"]
@@ -1771,7 +1724,6 @@ depends-member:
 - ["So23UIUserActivityRestoringP", ""]
 - !private ["So23UIUserActivityRestoringP", "addAction"]
 - !private ["So23UIUserActivityRestoringP", "albumIndex"]
-- !private ["So23UIUserActivityRestoringP", "albumIndexNumber"]
 - !private ["So23UIUserActivityRestoringP", "albumNameLabel"]
 - ["So23UIUserActivityRestoringP", "collectionView"]
 - ["So23UIUserActivityRestoringP", "collectionViewDidEndMultipleSelectionInteraction"]
@@ -1796,7 +1748,6 @@ depends-member:
 - !private ["So23UIUserActivityRestoringP", "openLibary"]
 - !private ["So23UIUserActivityRestoringP", "photoCollectionView"]
 - !private ["So23UIUserActivityRestoringP", "photoImageView"]
-- !private ["So23UIUserActivityRestoringP", "photoIndexNumber"]
 - !private ["So23UIUserActivityRestoringP", "picker"]
 - !private ["So23UIUserActivityRestoringP", "popToRootViewController"]
 - !private ["So23UIUserActivityRestoringP", "present"]
@@ -1832,7 +1783,6 @@ depends-member:
 - !private ["So6UIViewC", "text"]
 - !private ["So16UIViewControllerC", "AlbumModel"]
 - ["So16UIViewControllerC", "CGSize"]
-- !private ["So16UIViewControllerC", "ImageRenderVC"]
 - ["So16UIViewControllerC", "IndexPath"]
 - ["So16UIViewControllerC", "InfoKey"]
 - ["So16UIViewControllerC", "Int"]
@@ -1850,14 +1800,12 @@ depends-member:
 - !private ["So16UIViewControllerC", "addAction"]
 - ["So16UIViewControllerC", "addPhoto"]
 - ["So16UIViewControllerC", "albumIndex"]
-- !private ["So16UIViewControllerC", "albumIndexNumber"]
 - ["So16UIViewControllerC", "albumNameLabel"]
 - ["So16UIViewControllerC", "collectionView"]
 - ["So16UIViewControllerC", "collectionViewDidEndMultipleSelectionInteraction"]
 - !private ["So16UIViewControllerC", "delegate"]
 - !private ["So16UIViewControllerC", "dismiss"]
 - ["So16UIViewControllerC", "goToRoot"]
-- !private ["So16UIViewControllerC", "image"]
 - ["So16UIViewControllerC", "imagePickerController"]
 - ["So16UIViewControllerC", "imagePickerControllerDidCancel"]
 - ["So16UIViewControllerC", "indexPathForPreferredFocusedView"]
@@ -1873,7 +1821,6 @@ depends-member:
 - ["So16UIViewControllerC", "openCamera"]
 - ["So16UIViewControllerC", "openLibary"]
 - ["So16UIViewControllerC", "photoCollectionView"]
-- !private ["So16UIViewControllerC", "photoIndexNumber"]
 - ["So16UIViewControllerC", "picker"]
 - !private ["So16UIViewControllerC", "popToRootViewController"]
 - !private ["So16UIViewControllerC", "present"]
@@ -1933,7 +1880,6 @@ depends-member:
 - ["10Foundation27_KeyValueCodingAndObservingP", ""]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "addAction"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "albumIndex"]
-- !private ["10Foundation27_KeyValueCodingAndObservingP", "albumIndexNumber"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "albumNameLabel"]
 - ["10Foundation27_KeyValueCodingAndObservingP", "collectionView"]
 - ["10Foundation27_KeyValueCodingAndObservingP", "collectionViewDidEndMultipleSelectionInteraction"]
@@ -1959,7 +1905,6 @@ depends-member:
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "openLibary"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "photoCollectionView"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "photoImageView"]
-- !private ["10Foundation27_KeyValueCodingAndObservingP", "photoIndexNumber"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "picker"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "popToRootViewController"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "present"]
@@ -1995,7 +1940,6 @@ depends-member:
 - ["10Foundation37_KeyValueCodingAndObservingPublishingP", ""]
 - !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "addAction"]
 - !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "albumIndex"]
-- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "albumIndexNumber"]
 - !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "albumNameLabel"]
 - ["10Foundation37_KeyValueCodingAndObservingPublishingP", "collectionView"]
 - ["10Foundation37_KeyValueCodingAndObservingPublishingP", "collectionViewDidEndMultipleSelectionInteraction"]
@@ -2021,7 +1965,6 @@ depends-member:
 - !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "openLibary"]
 - !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "photoCollectionView"]
 - !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "photoImageView"]
-- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "photoIndexNumber"]
 - !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "picker"]
 - !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "popToRootViewController"]
 - !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "present"]
@@ -2096,7 +2039,6 @@ depends-nominal:
 - !private "s30ExpressibleByDictionaryLiteralP"
 - !private "s23ExpressibleByNilLiteralP"
 - "SH"
-- !private "4_0_s13ImageRenderVCC"
 - !private "10Foundation9IndexPathV"
 - !private "So30UIImagePickerControllerInfoKeya"
 - !private "SM"
@@ -2158,7 +2100,6 @@ depends-nominal:
 - !private "So35UISpringLoadedInteractionSupportingP"
 - "So16UIStateRestoringP"
 - !private "So12UIStoryboardC"
-- !private "So19UITextFieldDelegateP"
 - "So18UITraitEnvironmentP"
 - "So23UIUserActivityRestoringP"
 - !private "So6UIViewC"
@@ -2178,7 +2119,6 @@ depends-dynamic-lookup:
 depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/ObjectiveC.swiftmodule/arm64.swiftinterface"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreMIDI.swiftmodule/arm64.swiftinterface"
-- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/ModelIO.swiftmodule/arm64.swiftinterface"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreMedia.swiftmodule/arm64.swiftinterface"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/simd.swiftmodule/arm64.swiftinterface"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreImage.swiftmodule/arm64.swiftinterface"
@@ -2186,42 +2126,34 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Dispatch.swiftmodule/arm64.swiftinterface"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Metal.swiftmodule/arm64.swiftinterface"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Darwin.swiftmodule/arm64.swiftinterface"
-- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreLocation.swiftmodule/arm64.swiftinterface"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Foundation.swiftmodule/arm64.swiftinterface"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/AVFoundation.swiftmodule/arm64.swiftinterface"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreFoundation.swiftmodule/arm64.swiftinterface"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreAudio.swiftmodule/arm64.swiftinterface"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreGraphics.swiftmodule/arm64.swiftinterface"
-- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Photos.swiftmodule/arm64.swiftinterface"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Swift.swiftmodule/arm64.swiftinterface"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/UIKit.swiftmodule/arm64.swiftinterface"
-- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/GLKit.swiftmodule/arm64.swiftinterface"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/SwiftOnoneSupport.swiftmodule/arm64.swiftinterface"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Combine.framework/Modules/Combine.swiftmodule/arm64-apple-ios.swiftinterface"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/ObjectiveC.swiftmodule/arm64.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreMIDI.swiftmodule/arm64.swiftmodule"
-- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/ModelIO.swiftmodule/arm64.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreMedia.swiftmodule/arm64.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/simd.swiftmodule/arm64.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreImage.swiftmodule/arm64.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/QuartzCore.swiftmodule/arm64.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Dispatch.swiftmodule/arm64.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Metal.swiftmodule/arm64.swiftmodule"
-- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreLocation.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Darwin.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Foundation.swiftmodule/arm64.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/AVFoundation.swiftmodule/arm64.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreFoundation.swiftmodule/arm64.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreAudio.swiftmodule/arm64.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreGraphics.swiftmodule/arm64.swiftmodule"
-- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Photos.swiftmodule/arm64.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Swift.swiftmodule/arm64.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/UIKit.swiftmodule/arm64.swiftmodule"
-- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/GLKit.swiftmodule/arm64.swiftmodule"
-- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/LUTFilter.framework/Modules/LUTFilter.swiftmodule/arm64-apple-ios.swiftmodule"
-- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/LUTFilter.framework/Headers/LUTFilter.h"
-- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/LUTFilter.framework/Headers/LUTFilter-Swift.h"
-- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/LUTFilter.framework/Modules/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/SwiftOnoneSupport.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Combine.swiftmodule/arm64-apple-ios.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/include/objc/ObjectiveC.apinotes"
-- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/ModelIO.framework/Headers/ModelIO.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/OpenGLES.framework/Headers/OpenGLES.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CoreMedia.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
@@ -2229,17 +2161,14 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/apinotes/Dispatch.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/include/Darwin.apinotes"
-- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CoreLocation.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/AVFoundation.framework/Headers/AVFoundation.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/CoreAudioTypes.framework/Headers/CoreAudioTypes.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/UserNotifications.framework/Headers/UserNotifications.apinotes"
-- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Photos.framework/Headers/Photos.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.apinotes"
-- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/GLKit.framework/Headers/GLKit.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/MediaToolbox.framework/Headers/MediaToolbox.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/AudioToolbox.framework/Headers/AudioToolbox.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
-interface-hash: "20c7278e32d8319247e54bbacc6617ab"
+interface-hash: "b3f63ace1c3a58fd040101c05e067b66"

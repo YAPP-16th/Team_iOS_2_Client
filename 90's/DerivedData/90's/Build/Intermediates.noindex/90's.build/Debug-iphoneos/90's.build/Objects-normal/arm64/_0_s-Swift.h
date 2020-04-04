@@ -251,7 +251,6 @@ SWIFT_CLASS("_TtC4_0_s21AlbumDetailController")
 - (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView * _Nonnull)collectionView SWIFT_WARN_UNUSED_RESULT;
 - (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-- (void)collectionView:(UICollectionView * _Nonnull)collectionView didSelectItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 @end
 
 
@@ -340,62 +339,14 @@ SWIFT_CLASS("_TtC4_0_s24CheckPhotoViewController")
 @end
 
 
-SWIFT_CLASS("_TtC4_0_s12FilterListVC")
-@interface FilterListVC : UIViewController
-@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified imageView;
-@property (nonatomic, weak) IBOutlet UICollectionView * _Null_unspecified collectionView;
-@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified cancleBtn;
-@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified saveBtn;
-- (void)viewWillAppear:(BOOL)animated;
-- (void)viewDidLoad;
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-@class UIImage;
-@class NSError;
-
-@interface FilterListVC (SWIFT_EXTENSION(_0_s))
-- (void)touchSaveBtn;
-- (void)image:(UIImage * _Nonnull)image didFinishSavingWithError:(NSError * _Nullable)error contextInfo:(void const * _Nonnull)contextInfo;
-- (void)touchCancleBtn;
-@end
-
-
-@interface FilterListVC (SWIFT_EXTENSION(_0_s)) <UICollectionViewDataSource, UICollectionViewDelegate>
-- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
-- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-- (void)collectionView:(UICollectionView * _Nonnull)collectionView didSelectItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
-@end
-
-
-SWIFT_CLASS("_TtC4_0_s23ImageCollectionViewCell")
-@interface ImageCollectionViewCell : UICollectionViewCell
-@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified imageView;
-@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified imageLabel;
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-@class UIView;
-
 SWIFT_CLASS("_TtC4_0_s13ImageRenderVC")
-@interface ImageRenderVC : UIViewController
+@interface ImageRenderVC : UIViewController <UIGestureRecognizerDelegate>
 @property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified renderImage;
-@property (nonatomic, weak) IBOutlet UIView * _Null_unspecified polaroidView;
-@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified saveBtn;
-@property (nonatomic, weak) IBOutlet UIView * _Null_unspecified sticker1;
-@property (nonatomic, weak) IBOutlet UIView * _Null_unspecified sticker2;
-@property (nonatomic, weak) IBOutlet UIView * _Null_unspecified sticker3;
-@property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified textField;
-@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified beforeImageBtn;
-@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified nextImageBtn;
+@property (nonatomic, weak) IBOutlet UICollectionView * _Null_unspecified collectionView;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified filterBtn;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified stickerBtn;
 - (void)viewWillAppear:(BOOL)animated;
 - (void)viewDidLoad;
-- (void)touchesBegan:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Null_unspecified)event;
-- (void)touchesMoved:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -407,19 +358,23 @@ SWIFT_CLASS("_TtC4_0_s13ImageRenderVC")
 @end
 
 
-@interface ImageRenderVC (SWIFT_EXTENSION(_0_s)) <UITextFieldDelegate>
-- (BOOL)textFieldShouldReturn:(UITextField * _Nonnull)textField SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
 @interface ImageRenderVC (SWIFT_EXTENSION(_0_s))
-- (void)image:(UIImage * _Nonnull)image didFinishSavingWithError:(NSError * _Nullable)error contextInfo:(void const * _Nonnull)contextInfo;
-- (void)touchSaveBtn;
-- (void)touchBeforeBtn;
-- (void)touchNextBtn;
+- (void)touchFilterBtn;
+- (void)touchStickerBtn;
 @end
 
 
+
+
+@interface ImageRenderVC (SWIFT_EXTENSION(_0_s)) <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (CGFloat)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (CGFloat)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (void)collectionView:(UICollectionView * _Nonnull)collectionView didSelectItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (void)collectionView:(UICollectionView * _Nonnull)collectionView didDeselectItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+@end
 
 
 SWIFT_CLASS("_TtC4_0_s18MainViewController")
@@ -447,12 +402,60 @@ SWIFT_CLASS("_TtC4_0_s18MainViewController")
 - (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
 
+@class NSLayoutConstraint;
+@class UIView;
+
+SWIFT_CLASS("_TtC4_0_s20OptionViewController")
+@interface OptionViewController : UIViewController
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint * _Null_unspecified bottomViewConstraint;
+@property (nonatomic, weak) IBOutlet UIView * _Null_unspecified optionView;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified completeBtn;
+- (void)viewDidLoad;
+- (void)touchColorView;
+- (void)completeAction;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 
 SWIFT_CLASS("_TtC4_0_s9PhotoCell")
 @interface PhotoCell : UICollectionViewCell
 @property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified photoImageView;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC4_0_s19PrintViewController")
+@interface PrintViewController : UIViewController
+- (void)viewDidLoad;
+- (IBAction)optionClick:(id _Nonnull)sender;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UISwitch;
+
+SWIFT_CLASS("_TtC4_0_s11SavePhotoVC")
+@interface SavePhotoVC : UIViewController
+@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified imageView;
+@property (nonatomic, weak) IBOutlet UISwitch * _Null_unspecified switchBtn;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified saveBtn;
+@property (nonatomic, weak) IBOutlet UIView * _Null_unspecified dateView;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified dateLabel;
+- (void)viewWillAppear:(BOOL)animated;
+- (void)viewDidLoad;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UIImage;
+@class NSError;
+
+@interface SavePhotoVC (SWIFT_EXTENSION(_0_s))
+- (void)touchSaveBtn;
+- (void)image:(UIImage * _Nonnull)image didFinishSavingWithError:(NSError * _Nullable)error contextInfo:(void const * _Nonnull)contextInfo;
+- (void)touchSwitchBtn;
 @end
 
 @class UIWindow;
@@ -489,6 +492,26 @@ SWIFT_CLASS("_TtC4_0_s9ThemeCell")
 @interface UIViewController (SWIFT_EXTENSION(_0_s))
 - (void)dismissKeyboard;
 @end
+
+
+SWIFT_CLASS("_TtC4_0_s25photoFilterCollectionCell")
+@interface photoFilterCollectionCell : UICollectionViewCell
+@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified imageView;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+
+SWIFT_CLASS("_TtC4_0_s26photoStickerCollectionCell")
+@interface photoStickerCollectionCell : UICollectionViewCell
+@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified imageView;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 
 @class UISwipeGestureRecognizer;
 @class UIPinchGestureRecognizer;
