@@ -153,9 +153,7 @@ extension AlbumMainController : UICollectionViewDataSource {
 
 extension AlbumMainController : PrintDelegate {
     func goPrintVC(){
-        let albumPrintVC = storyboard?.instantiateViewController(identifier: "albumPrintVC") as! AlbumPrintController
-        
-        navigationController?.pushViewController(albumPrintVC, animated: true)
+        //
     }
     
 }
