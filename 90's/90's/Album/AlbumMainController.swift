@@ -19,8 +19,11 @@ class AlbumMainController: UIViewController {
     //앨범 목록을 보여줄 CollectionView
     @IBOutlet weak var albumCollectionView: UICollectionView!
     
+    //앨범 만들기 버튼 클릭 시 앨범이름설정VC로 이동
     @IBAction func clickMakeBtn(_ sender: Any){
+        let albumNameVC = storyboard?.instantiateViewController(withIdentifier : "AlbumNameController") as! AlbumNameController
         
+        self.navigationController?.pushViewController(albumNameVC, animated: true)
     }
         
     
