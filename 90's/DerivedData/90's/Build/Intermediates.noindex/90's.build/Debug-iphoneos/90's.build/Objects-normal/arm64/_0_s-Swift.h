@@ -280,15 +280,15 @@ SWIFT_CLASS("_TtC4_0_s22AlbumSettingController")
 
 @class UIPickerView;
 
-@interface AlbumSettingController (SWIFT_EXTENSION(_0_s)) <UIPickerViewDataSource>
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView * _Nonnull)pickerView SWIFT_WARN_UNUSED_RESULT;
-- (NSInteger)pickerView:(UIPickerView * _Nonnull)pickerView numberOfRowsInComponent:(NSInteger)component SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
 @interface AlbumSettingController (SWIFT_EXTENSION(_0_s)) <UIPickerViewDelegate>
 - (NSString * _Nullable)pickerView:(UIPickerView * _Nonnull)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component SWIFT_WARN_UNUSED_RESULT;
 - (void)pickerView:(UIPickerView * _Nonnull)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component;
+@end
+
+
+@interface AlbumSettingController (SWIFT_EXTENSION(_0_s)) <UIPickerViewDataSource>
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView * _Nonnull)pickerView SWIFT_WARN_UNUSED_RESULT;
+- (NSInteger)pickerView:(UIPickerView * _Nonnull)pickerView numberOfRowsInComponent:(NSInteger)component SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @class UITableView;
@@ -326,6 +326,17 @@ SWIFT_CLASS("_TtC4_0_s11AppDelegate")
 - (UISceneConfiguration * _Nonnull)application:(UIApplication * _Nonnull)application configurationForConnectingSceneSession:(UISceneSession * _Nonnull)connectingSceneSession options:(UISceneConnectionOptions * _Nonnull)options SWIFT_WARN_UNUSED_RESULT;
 - (void)application:(UIApplication * _Nonnull)application didDiscardSceneSessions:(NSSet<UISceneSession *> * _Nonnull)sceneSessions;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC4_0_s24CheckPhotoViewController")
+@interface CheckPhotoViewController : UIViewController
+@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified CheckImageView;
+- (void)viewDidLoad;
+- (IBAction)saveAction:(id _Nonnull)sender;
+- (IBAction)Cancel:(id _Nonnull)sender;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -486,6 +497,7 @@ SWIFT_CLASS("_TtC4_0_s9ThemeCell")
 
 SWIFT_CLASS("_TtC4_0_s18testViewController")
 @interface testViewController : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate>
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified filterNameLabel;
 @property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified filteredImage;
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified takeButton;
 - (void)viewDidLoad;

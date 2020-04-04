@@ -24,7 +24,7 @@
                                 </connections>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTt-pO-v45">
-                                <rect key="frame" x="177" y="641" width="60" height="60"/>
+                                <rect key="frame" x="177" y="682" width="60" height="60"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="0FK-eV-gvH"/>
@@ -35,19 +35,32 @@
                                     <action selector="ontapTakePhoto:" destination="VYO-y6-G1L" eventType="touchUpInside" id="2dR-Bj-Qbm"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cx2-hh-z7C">
+                                <rect key="frame" x="44" y="92" width="326" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Nol-lc-gFA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bTt-pO-v45" firstAttribute="centerX" secondItem="dUG-1S-fF1" secondAttribute="centerX" id="1ab-mN-iHh"/>
+                            <constraint firstItem="cx2-hh-z7C" firstAttribute="top" secondItem="OYt-tk-txm" secondAttribute="top" constant="48" id="GN2-5r-eva"/>
                             <constraint firstItem="OYt-tk-txm" firstAttribute="trailing" secondItem="dUG-1S-fF1" secondAttribute="trailing" id="JDG-dv-Sr1"/>
-                            <constraint firstItem="OYt-tk-txm" firstAttribute="bottom" secondItem="bTt-pO-v45" secondAttribute="bottom" constant="161" id="LAn-vw-UTu"/>
+                            <constraint firstItem="OYt-tk-txm" firstAttribute="bottom" secondItem="bTt-pO-v45" secondAttribute="bottom" constant="120" id="LAn-vw-UTu"/>
                             <constraint firstItem="dUG-1S-fF1" firstAttribute="leading" secondItem="OYt-tk-txm" secondAttribute="leading" id="Lu7-YA-VHC"/>
                             <constraint firstItem="OYt-tk-txm" firstAttribute="bottom" secondItem="dUG-1S-fF1" secondAttribute="bottom" id="RbC-sl-arW"/>
+                            <constraint firstItem="cx2-hh-z7C" firstAttribute="leading" secondItem="OYt-tk-txm" secondAttribute="leading" constant="44" id="gjg-jp-GDG"/>
+                            <constraint firstItem="cx2-hh-z7C" firstAttribute="centerX" secondItem="bTt-pO-v45" secondAttribute="centerX" id="hgs-5e-U9f"/>
                             <constraint firstItem="dUG-1S-fF1" firstAttribute="top" secondItem="TIz-Xv-5yB" secondAttribute="top" id="tRp-7D-dsc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OYt-tk-txm"/>
                     </view>
                     <connections>
+                        <outlet property="filterNameLabel" destination="cx2-hh-z7C" id="STC-dz-6en"/>
                         <outlet property="filteredImage" destination="dUG-1S-fF1" id="LSV-zn-Ycv"/>
                         <outlet property="takeButton" destination="bTt-pO-v45" id="8dt-Hu-6hU"/>
                     </connections>
@@ -56,7 +69,7 @@
                 <swipeGestureRecognizer delaysTouchesBegan="YES" direction="left" id="quT-Rf-QPJ" userLabel="Left Swipe Gesture Recognizer"/>
                 <swipeGestureRecognizer delaysTouchesBegan="YES" direction="right" id="tdE-KZ-5Fu" userLabel="Right Swipe Gesture Recognizer"/>
             </objects>
-            <point key="canvasLocation" x="4317" y="80"/>
+            <point key="canvasLocation" x="4315.9420289855079" y="79.6875"/>
         </scene>
         <!--Check Photo View Controller-->
         <scene sceneID="YHu-nv-2RK">
