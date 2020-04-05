@@ -19,7 +19,7 @@ class AlbumDetailController : UIViewController {
     @IBAction func addPhoto(_ sender: Any) {
         let albumData = AlbumModel.albumList[albumIndex!]
         let currentPhotoCount = albumData.photos.count
-        let restrictCount = albumData.numOfPhotos!
+        let restrictCount = albumData.quantity!
         
         if(restrictCount == currentPhotoCount){
             let alert = UIAlertController(title: "사진 추가 불가", message: "제한개수를 모두 채웠습니다.", preferredStyle: .alert)

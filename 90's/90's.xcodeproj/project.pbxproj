@@ -37,7 +37,7 @@
 		A333761F2420CFB6000DC7C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A333761E2420CFB6000DC7C4 /* Assets.xcassets */; };
 		A33376222420CFB6000DC7C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A33376202420CFB6000DC7C4 /* LaunchScreen.storyboard */; };
 		A333762A2420DA36000DC7C4 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33376292420DA36000DC7C4 /* Album.swift */; };
-		A333762E2420E9D0000DC7C4 /* AlbumSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A333762D2420E9D0000DC7C4 /* AlbumSettingController.swift */; };
+		A333762E2420E9D0000DC7C4 /* AlbumQuantityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A333762D2420E9D0000DC7C4 /* AlbumQuantityController.swift */; };
 		A33376302420EA9D000DC7C4 /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A333762F2420EA9D000DC7C4 /* AlbumCell.swift */; };
 		A36DC86924235395001B3767 /* AlbumThemeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36DC86824235395001B3767 /* AlbumThemeController.swift */; };
 		A36DC86B24235667001B3767 /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36DC86A24235667001B3767 /* ThemeCell.swift */; };
@@ -81,7 +81,7 @@
 		A33376212420CFB6000DC7C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A33376232420CFB6000DC7C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A33376292420DA36000DC7C4 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
-		A333762D2420E9D0000DC7C4 /* AlbumSettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSettingController.swift; sourceTree = "<group>"; };
+		A333762D2420E9D0000DC7C4 /* AlbumQuantityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumQuantityController.swift; sourceTree = "<group>"; };
 		A333762F2420EA9D000DC7C4 /* AlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCell.swift; sourceTree = "<group>"; };
 		A36DC86824235395001B3767 /* AlbumThemeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumThemeController.swift; sourceTree = "<group>"; };
 		A36DC86A24235667001B3767 /* ThemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
@@ -191,7 +191,7 @@
 				A36DC86C24235C11001B3767 /* Theme.swift */,
 				A36DC86A24235667001B3767 /* ThemeCell.swift */,
 				A36DC86824235395001B3767 /* AlbumThemeController.swift */,
-				A333762D2420E9D0000DC7C4 /* AlbumSettingController.swift */,
+				A333762D2420E9D0000DC7C4 /* AlbumQuantityController.swift */,
 				A311E5912438A880005EEC29 /* AlbumPeriodController.swift */,
 			);
 			path = CreateAlbum;
@@ -340,7 +340,7 @@
 				A36DC86D24235C11001B3767 /* Theme.swift in Sources */,
 				A333762A2420DA36000DC7C4 /* Album.swift in Sources */,
 				A333761A2420CFB3000DC7C4 /* AlbumMainController.swift in Sources */,
-				A333762E2420E9D0000DC7C4 /* AlbumSettingController.swift in Sources */,
+				A333762E2420E9D0000DC7C4 /* AlbumQuantityController.swift in Sources */,
 				A33376162420CFB3000DC7C4 /* AppDelegate.swift in Sources */,
 				A311E5922438A880005EEC29 /* AlbumPeriodController.swift in Sources */,
 				A33376182420CFB3000DC7C4 /* SceneDelegate.swift in Sources */,
