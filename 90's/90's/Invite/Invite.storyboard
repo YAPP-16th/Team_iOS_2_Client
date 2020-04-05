@@ -7,20 +7,39 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--InviteVC-->
         <scene sceneID="9s8-21-YDG">
             <objects>
-                <viewController id="px4-xN-PW2" sceneMemberID="viewController">
+                <viewController id="px4-xN-PW2" customClass="InviteVC" customModule="_0_s" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f4G-KZ-yb8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aa6-Sh-w5a">
+                                <rect key="frame" x="35.5" y="731" width="343" height="81"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="343" id="F0I-El-de2"/>
+                                    <constraint firstAttribute="height" constant="81" id="wvM-NR-HAu"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="kakaoInviteBtn:" destination="GV6-9F-oZm" eventType="touchUpInside" id="T4v-GU-orY"/>
+                                    <action selector="kakaoInviteBtn:" destination="px4-xN-PW2" eventType="touchUpInside" id="abS-TG-XOh"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="9kd-Ew-ZbU" firstAttribute="bottom" secondItem="aa6-Sh-w5a" secondAttribute="bottom" constant="50" id="R5N-8E-Jo5"/>
+                            <constraint firstItem="aa6-Sh-w5a" firstAttribute="centerX" secondItem="9kd-Ew-ZbU" secondAttribute="centerX" id="pEe-qF-04y"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="9kd-Ew-ZbU"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oNH-ue-BYq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="GV6-9F-oZm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="300" y="-254"/>
+            <point key="canvasLocation" x="298.55072463768118" y="-254.46428571428569"/>
         </scene>
     </scenes>
 </document>
