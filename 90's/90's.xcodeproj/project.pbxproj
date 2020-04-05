@@ -23,6 +23,11 @@
 		9B45BD012438734E00497EA5 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B45BD002438734E00497EA5 /* Profile.storyboard */; };
 		9B45BD0624387F5200497EA5 /* Invite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B45BD0524387F5200497EA5 /* Invite.storyboard */; };
 		9BC16B1A2435B68F007F106C /* photoStickerCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC16B192435B68F007F106C /* photoStickerCollectionCell.swift */; };
+		9BD31D37243A05F700D0D719 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD31D36243A05F700D0D719 /* KakaoOpenSDK.framework */; };
+		9BD31D3A243A0A9100D0D719 /* InviteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD31D39243A0A9100D0D719 /* InviteVC.swift */; };
+		9BD31D3E243A110600D0D719 /* KakaoLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD31D3D243A110600D0D719 /* KakaoLink.framework */; };
+		9BD31D40243A111A00D0D719 /* KakaoMessageTemplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD31D3F243A111A00D0D719 /* KakaoMessageTemplate.framework */; };
+		9BD31D42243A11BF00D0D719 /* KakaoCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD31D41243A11BF00D0D719 /* KakaoCommon.framework */; };
 		A311E5922438A880005EEC29 /* AlbumPeriodController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A311E5912438A880005EEC29 /* AlbumPeriodController.swift */; };
 		A31BA4D3243876F0007CA89D /* AlbumNameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31BA4D2243876F0007CA89D /* AlbumNameController.swift */; };
 		A33376162420CFB3000DC7C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33376152420CFB3000DC7C4 /* AppDelegate.swift */; };
@@ -51,7 +56,6 @@
 		39585166242F49EA00014CB0 /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		39585168242F49F300014CB0 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		9B0B806F24357929009D7B17 /* SavePhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePhotoVC.swift; sourceTree = "<group>"; };
-		9B142B09242F2228005ABE17 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KakaoOpenSDK.framework; path = "../../Downloads/CameraFilter-master/KakaoOpenSDK.framework"; sourceTree = "<group>"; };
 		9B142B0E242F22CD005ABE17 /* testViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
 		9B142B10242F2475005ABE17 /* LUTFilter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LUTFilter.framework; sourceTree = "<group>"; };
 		9B31E1932434BBB400A139C6 /* photoFilterCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoFilterCollectionCell.swift; sourceTree = "<group>"; };
@@ -60,6 +64,12 @@
 		9B45BD002438734E00497EA5 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		9B45BD0524387F5200497EA5 /* Invite.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Invite.storyboard; sourceTree = "<group>"; };
 		9BC16B192435B68F007F106C /* photoStickerCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoStickerCollectionCell.swift; sourceTree = "<group>"; };
+		9BD31D36243A05F700D0D719 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
+		9BD31D38243A08CE00D0D719 /* KakaoOpenSDK-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KakaoOpenSDK-Bridging-Header.h"; sourceTree = "<group>"; };
+		9BD31D39243A0A9100D0D719 /* InviteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteVC.swift; sourceTree = "<group>"; };
+		9BD31D3D243A110600D0D719 /* KakaoLink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KakaoLink.framework; path = "../../../Downloads/KakaoOpenSDK-1/KakaoLink.framework"; sourceTree = "<group>"; };
+		9BD31D3F243A111A00D0D719 /* KakaoMessageTemplate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoMessageTemplate.framework; sourceTree = "<group>"; };
+		9BD31D41243A11BF00D0D719 /* KakaoCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoCommon.framework; sourceTree = "<group>"; };
 		A311E5912438A880005EEC29 /* AlbumPeriodController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumPeriodController.swift; sourceTree = "<group>"; };
 		A31BA4D2243876F0007CA89D /* AlbumNameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumNameController.swift; sourceTree = "<group>"; };
 		A33376122420CFB3000DC7C4 /* 90's.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "90's.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +95,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BD31D37243A05F700D0D719 /* KakaoOpenSDK.framework in Frameworks */,
+				9BD31D42243A11BF00D0D719 /* KakaoCommon.framework in Frameworks */,
+				9BD31D40243A111A00D0D719 /* KakaoMessageTemplate.framework in Frameworks */,
+				9BD31D3E243A110600D0D719 /* KakaoLink.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,8 +142,11 @@
 		9B142B04242F2226005ABE17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9BD31D41243A11BF00D0D719 /* KakaoCommon.framework */,
+				9BD31D3F243A111A00D0D719 /* KakaoMessageTemplate.framework */,
+				9BD31D3D243A110600D0D719 /* KakaoLink.framework */,
+				9BD31D36243A05F700D0D719 /* KakaoOpenSDK.framework */,
 				9B142B10242F2475005ABE17 /* LUTFilter.framework */,
-				9B142B09242F2228005ABE17 /* KakaoOpenSDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -193,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				9B45BD0524387F5200497EA5 /* Invite.storyboard */,
+				9BD31D39243A0A9100D0D719 /* InviteVC.swift */,
 			);
 			path = Invite;
 			sourceTree = "<group>";
@@ -200,6 +218,7 @@
 		A33376092420CFB3000DC7C4 = {
 			isa = PBXGroup;
 			children = (
+				9BD31D38243A08CE00D0D719 /* KakaoOpenSDK-Bridging-Header.h */,
 				392F778F242F4BC70000BC3C /* Default-568h@2x.png */,
 				A33376142420CFB3000DC7C4 /* 90's */,
 				A33376132420CFB3000DC7C4 /* Products */,
@@ -329,6 +348,7 @@
 				9B0B807024357929009D7B17 /* SavePhotoVC.swift in Sources */,
 				9B44EDE12429FC9100B0D774 /* ImageRenderVC.swift in Sources */,
 				A33376302420EA9D000DC7C4 /* AlbumCell.swift in Sources */,
+				9BD31D3A243A0A9100D0D719 /* InviteVC.swift in Sources */,
 				39411378243061A500087E1B /* CheckPhotoViewController.swift in Sources */,
 				A36DC86F24236386001B3767 /* AlbumDetailController.swift in Sources */,
 				9B142B0F242F22CD005ABE17 /* testViewController.swift in Sources */,
@@ -491,8 +511,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = "yappiOS2.90-s";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "KakaoOpenSDK-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -513,8 +539,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = "yappiOS2.90-s";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "KakaoOpenSDK-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
