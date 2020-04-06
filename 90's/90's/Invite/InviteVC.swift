@@ -8,11 +8,25 @@
 
 import UIKit
 
+// 카카오 공유하기 기능
 class InviteVC: UIViewController {
-    @IBAction func kakaoInviteBtn(_ sender: UIButton) {
+    @IBOutlet weak var kakaoInviteBtn: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        ButtonSetting()
+    }
+}
+
+
+extension InviteVC {
+    func ButtonSetting(){
+        kakaoInviteBtn.addTarget(self, action: #selector(touchInviteBtn), for: .touchUpInside)
+    }
+    
+    @objc func touchInviteBtn(){
         // Location 타입 템플릿 오브젝트 생성
         let templete = KMTLocationTemplate.init { (KMTLocationTemplateBuilder) in
-            
             // 컨텐츠
             KMTLocationTemplateBuilder.content = KMTContentObject.init(builderBlock: { (KMTContentBuilder) in
                 KMTContentBuilder.title = "현창이의 공유 앨범" // 공유앨범 이름으로 변경해야 함
@@ -30,13 +44,13 @@ class InviteVC: UIViewController {
                     KMTLinkBuilder.mobileWebURL = URL(string: "https://developers.kakao.com")
                 })
             }))
+            
             KMTLocationTemplateBuilder.addButton(KMTButtonObject(builderBlock: { (KMTButtonBuilder) in
                 KMTButtonBuilder.title = "앱으로 열기"
                 KMTButtonBuilder.link = KMTLinkObject(builderBlock: { (KMTLinkBuilder) in
                     KMTLinkBuilder.iosExecutionParams = "param1=value1&param2=value2" // url
                     //KMTlinkBuilder.androidExecutionParams = "param1=value1&param2=value2"
                 })
-                
             }))
         }
         
@@ -45,7 +59,6 @@ class InviteVC: UIViewController {
          let serverCallbackArgs = ["user_id": "abcd",
          "product_id": "1234"]
          */
-        
         // 카카오링크 실행
         KLKTalkLinkCenter.shared().sendDefault(with: templete, success: { (warningMsg, argumentMsg) in
             // 성공
@@ -55,27 +68,5 @@ class InviteVC: UIViewController {
             // 실패
             print("error \(error)")
         })
-        
-//        // 카카오링크 실행
-//                KLKTalkLinkCenter.shared().sendDefault(with: template, success: { (warningMsg, argumentMsg) in
-//
-//                    // 성공
-//                    print("warning message: \(String(describing: warningMsg))")
-//                    print("argument message: \(String(describing: argumentMsg))")
-//
-//                }, failure: { (error) in
-//
-//                    // 실패
-//                    self.alert(error.localizedDescription)
-//                    print("error \(error)")
-//
-//                })
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
 }
