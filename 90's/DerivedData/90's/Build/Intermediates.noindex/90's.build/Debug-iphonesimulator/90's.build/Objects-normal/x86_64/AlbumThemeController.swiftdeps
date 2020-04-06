@@ -1,0 +1,321 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "AlbumThemeController"
+provides-nominal:
+- "4_0_s20AlbumThemeControllerC"
+provides-member:
+- ["4_0_s20AlbumThemeControllerC", ""]
+provides-dynamic-lookup:
+- "goToRoot"
+- "themeTableView"
+- "viewDidLoad"
+depends-top-level:
+- "AlbumThemeController"
+- !private "BooleanLiteralType"
+- "Int"
+- "String"
+- "UITableView"
+- "UIViewController"
+depends-member:
+- ["4_0_s20AlbumThemeControllerC", "Int"]
+- ["4_0_s20AlbumThemeControllerC", "String"]
+- ["4_0_s20AlbumThemeControllerC", "UITableView"]
+- ["4_0_s20AlbumThemeControllerC", "albumName"]
+- ["4_0_s20AlbumThemeControllerC", "deinit"]
+- ["4_0_s20AlbumThemeControllerC", "expireDate"]
+- ["4_0_s20AlbumThemeControllerC", "goToRoot"]
+- ["4_0_s20AlbumThemeControllerC", "init"]
+- !private ["4_0_s20AlbumThemeControllerC", "navigationController"]
+- ["4_0_s20AlbumThemeControllerC", "quantity"]
+- ["4_0_s20AlbumThemeControllerC", "setThemeTableView"]
+- ["4_0_s20AlbumThemeControllerC", "startDate"]
+- ["4_0_s20AlbumThemeControllerC", "themeTableView"]
+- ["4_0_s20AlbumThemeControllerC", "viewDidLoad"]
+- ["s7CVarArgP", ""]
+- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "navigationController"]
+- !private ["s7CVarArgP", "popToRootViewController"]
+- !private ["s7CVarArgP", "setThemeTableView"]
+- ["s28CustomDebugStringConvertibleP", ""]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "navigationController"]
+- !private ["s28CustomDebugStringConvertibleP", "popToRootViewController"]
+- !private ["s28CustomDebugStringConvertibleP", "setThemeTableView"]
+- ["s23CustomStringConvertibleP", ""]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "navigationController"]
+- !private ["s23CustomStringConvertibleP", "popToRootViewController"]
+- !private ["s23CustomStringConvertibleP", "setThemeTableView"]
+- ["SQ", ""]
+- !private ["SQ", "init"]
+- !private ["SQ", "navigationController"]
+- !private ["SQ", "popToRootViewController"]
+- !private ["SQ", "setThemeTableView"]
+- ["SH", ""]
+- !private ["SH", "init"]
+- !private ["SH", "navigationController"]
+- !private ["SH", "popToRootViewController"]
+- !private ["SH", "setThemeTableView"]
+- ["So8NSCodingP", ""]
+- !private ["So8NSCodingP", "init"]
+- !private ["So8NSCodingP", "navigationController"]
+- !private ["So8NSCodingP", "popToRootViewController"]
+- !private ["So8NSCodingP", "setThemeTableView"]
+- ["So26NSExtensionRequestHandlingP", ""]
+- !private ["So26NSExtensionRequestHandlingP", "init"]
+- !private ["So26NSExtensionRequestHandlingP", "navigationController"]
+- !private ["So26NSExtensionRequestHandlingP", "popToRootViewController"]
+- !private ["So26NSExtensionRequestHandlingP", "setThemeTableView"]
+- ["So8NSObjectC", "Int"]
+- ["So8NSObjectC", "String"]
+- ["So8NSObjectC", "UITableView"]
+- ["So8NSObjectC", "albumName"]
+- ["So8NSObjectC", "expireDate"]
+- ["So8NSObjectC", "goToRoot"]
+- ["So8NSObjectC", "init"]
+- !private ["So8NSObjectC", "navigationController"]
+- !private ["So8NSObjectC", "popToRootViewController"]
+- ["So8NSObjectC", "quantity"]
+- ["So8NSObjectC", "setThemeTableView"]
+- ["So8NSObjectC", "startDate"]
+- ["So8NSObjectC", "themeTableView"]
+- ["So8NSObjectC", "viewDidLoad"]
+- ["So8NSObjectP", ""]
+- !private ["So8NSObjectP", "init"]
+- !private ["So8NSObjectP", "navigationController"]
+- !private ["So8NSObjectP", "popToRootViewController"]
+- !private ["So8NSObjectP", "setThemeTableView"]
+- ["So21UIAppearanceContainerP", ""]
+- !private ["So21UIAppearanceContainerP", "init"]
+- !private ["So21UIAppearanceContainerP", "navigationController"]
+- !private ["So21UIAppearanceContainerP", "popToRootViewController"]
+- !private ["So21UIAppearanceContainerP", "setThemeTableView"]
+- ["So18UIContentContainerP", ""]
+- !private ["So18UIContentContainerP", "init"]
+- !private ["So18UIContentContainerP", "navigationController"]
+- !private ["So18UIContentContainerP", "popToRootViewController"]
+- !private ["So18UIContentContainerP", "setThemeTableView"]
+- ["So18UIFocusEnvironmentP", ""]
+- !private ["So18UIFocusEnvironmentP", "init"]
+- !private ["So18UIFocusEnvironmentP", "navigationController"]
+- !private ["So18UIFocusEnvironmentP", "popToRootViewController"]
+- !private ["So18UIFocusEnvironmentP", "setThemeTableView"]
+- !private ["So22UINavigationControllerC", "popToRootViewController"]
+- ["So30UIPasteConfigurationSupportingP", ""]
+- !private ["So30UIPasteConfigurationSupportingP", "init"]
+- !private ["So30UIPasteConfigurationSupportingP", "navigationController"]
+- !private ["So30UIPasteConfigurationSupportingP", "popToRootViewController"]
+- !private ["So30UIPasteConfigurationSupportingP", "setThemeTableView"]
+- ["So11UIResponderC", "Int"]
+- ["So11UIResponderC", "String"]
+- ["So11UIResponderC", "UITableView"]
+- ["So11UIResponderC", "albumName"]
+- ["So11UIResponderC", "expireDate"]
+- ["So11UIResponderC", "goToRoot"]
+- ["So11UIResponderC", "init"]
+- !private ["So11UIResponderC", "navigationController"]
+- !private ["So11UIResponderC", "popToRootViewController"]
+- ["So11UIResponderC", "quantity"]
+- ["So11UIResponderC", "setThemeTableView"]
+- ["So11UIResponderC", "startDate"]
+- ["So11UIResponderC", "themeTableView"]
+- ["So11UIResponderC", "viewDidLoad"]
+- ["So30UIResponderStandardEditActionsP", ""]
+- !private ["So30UIResponderStandardEditActionsP", "init"]
+- !private ["So30UIResponderStandardEditActionsP", "navigationController"]
+- !private ["So30UIResponderStandardEditActionsP", "popToRootViewController"]
+- !private ["So30UIResponderStandardEditActionsP", "setThemeTableView"]
+- ["So16UIStateRestoringP", ""]
+- !private ["So16UIStateRestoringP", "init"]
+- !private ["So16UIStateRestoringP", "navigationController"]
+- !private ["So16UIStateRestoringP", "popToRootViewController"]
+- !private ["So16UIStateRestoringP", "setThemeTableView"]
+- ["So18UITraitEnvironmentP", ""]
+- !private ["So18UITraitEnvironmentP", "init"]
+- !private ["So18UITraitEnvironmentP", "navigationController"]
+- !private ["So18UITraitEnvironmentP", "popToRootViewController"]
+- !private ["So18UITraitEnvironmentP", "setThemeTableView"]
+- ["So23UIUserActivityRestoringP", ""]
+- !private ["So23UIUserActivityRestoringP", "init"]
+- !private ["So23UIUserActivityRestoringP", "navigationController"]
+- !private ["So23UIUserActivityRestoringP", "popToRootViewController"]
+- !private ["So23UIUserActivityRestoringP", "setThemeTableView"]
+- ["So16UIViewControllerC", "Int"]
+- ["So16UIViewControllerC", "String"]
+- ["So16UIViewControllerC", "UITableView"]
+- ["So16UIViewControllerC", ""]
+- ["So16UIViewControllerC", "albumName"]
+- ["So16UIViewControllerC", "expireDate"]
+- ["So16UIViewControllerC", "goToRoot"]
+- ["So16UIViewControllerC", "init"]
+- !private ["So16UIViewControllerC", "navigationController"]
+- !private ["So16UIViewControllerC", "popToRootViewController"]
+- ["So16UIViewControllerC", "quantity"]
+- ["So16UIViewControllerC", "setThemeTableView"]
+- ["So16UIViewControllerC", "startDate"]
+- ["So16UIViewControllerC", "themeTableView"]
+- ["So16UIViewControllerC", "viewDidLoad"]
+- ["10Foundation27_KeyValueCodingAndObservingP", ""]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "navigationController"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "popToRootViewController"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "setThemeTableView"]
+- ["10Foundation37_KeyValueCodingAndObservingPublishingP", ""]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "init"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "navigationController"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "popToRootViewController"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "setThemeTableView"]
+depends-nominal:
+- "4_0_s20AlbumThemeControllerC"
+- "s7CVarArgP"
+- "s28CustomDebugStringConvertibleP"
+- "s23CustomStringConvertibleP"
+- "SQ"
+- "SH"
+- "So8NSCodingP"
+- "So26NSExtensionRequestHandlingP"
+- "So8NSObjectC"
+- "So8NSObjectP"
+- "So21UIAppearanceContainerP"
+- "So18UIContentContainerP"
+- "So18UIFocusEnvironmentP"
+- !private "So22UINavigationControllerC"
+- "So30UIPasteConfigurationSupportingP"
+- "So11UIResponderC"
+- "So30UIResponderStandardEditActionsP"
+- "So16UIStateRestoringP"
+- "So18UITraitEnvironmentP"
+- "So23UIUserActivityRestoringP"
+- "So16UIViewControllerC"
+- "10Foundation27_KeyValueCodingAndObservingP"
+- "10Foundation37_KeyValueCodingAndObservingPublishingP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/ObjectiveC.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/CoreMIDI.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/CoreMedia.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/simd.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/CoreImage.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/QuartzCore.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/Dispatch.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/Metal.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/Darwin.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/Foundation.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/AVFoundation.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/CoreFoundation.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/CoreAudio.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/CoreGraphics.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/Swift.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/UIKit.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/SwiftOnoneSupport.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/Combine.framework/Modules/Combine.swiftmodule/x86_64-apple-ios-simulator.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/ObjectiveC.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/CoreMIDI.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/CoreMedia.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/simd.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/CoreImage.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/QuartzCore.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/Metal.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/Darwin.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/Foundation.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/AVFoundation.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/CoreAudio.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/CoreGraphics.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/UIKit.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/SwiftOnoneSupport.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/Combine.swiftmodule/x86_64-apple-ios-simulator.swiftmodule"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask+FriendAPI.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask+AppFriendAPI.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask+PushAPI.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask+AgeAuthAPI.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask+TalkAPI.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask+TokenAPI.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask+UserManagementAPI.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask+StoryAPI.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KakaoOpenSDK.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOFriend.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOAppFriend.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOHTTPMethod.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOUserMe.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoLink.framework/Headers/KLKImageStorage.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOTalkProfile.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOStoryProfile.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoLink.framework/Headers/KLKTalkLinkCore.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTTemplate.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTFeedTemplate.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTCommerceTemplate.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KakaoMessageTemplate.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTLocationTemplate.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTListTemplate.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTTextTemplate.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOTalkMessageSending.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoLink.framework/Headers/KakaoLink.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KakaoPushMessagePropertyForGcm.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOToken.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSession.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOFriendOperation.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoCommon.framework/Headers/KCMConfiguration.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoCommon.framework/Headers/KCMException.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoCommon.framework/Headers/KakaoCommon.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOLoginButton.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOStoryMyStoryImageInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOStoryLikeInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOStoryLinkInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOPushTokenInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOAccessTokenInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOUserInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOStoryActorInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOStoryCommentInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOStoryPostInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOStoryMyStoryInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOChatMember.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK-Bridging-Header.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOAgeAuthQueryStringBuilder.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoLink.framework/Headers/KLKTalkLinkCenter.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoLink.framework/Headers/KLKError.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoCommon.framework/Headers/KCMError.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOError.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOTalkPlusFriends.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOImages.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoCommon.framework/Headers/KCMUtils.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOUtils.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOUserServiceTerms.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KakaoPushMessagePropertyForApns.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOUserShippingAddress.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOChat.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTCommerceObject.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KakaoPushMessageObject.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTLinkObject.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTSocialObject.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTParamObject.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTButtonObject.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTContentObject.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoCommon.framework/Headers/KCMAgent.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOFriendContext.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOAppFriendContext.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOBaseContext.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOChatContext.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Modules/module.modulemap"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Modules/module.modulemap"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoLink.framework/Modules/module.modulemap"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoCommon.framework/Modules/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/OpenGLES.framework/Headers/OpenGLES.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CoreMedia.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/apinotes/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/AVFoundation.framework/Headers/AVFoundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/CoreAudioTypes.framework/Headers/CoreAudioTypes.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/UserNotifications.framework/Headers/UserNotifications.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/MediaToolbox.framework/Headers/MediaToolbox.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/AudioToolbox.framework/Headers/AudioToolbox.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "e9db671548897b18103b820885aa553c"
