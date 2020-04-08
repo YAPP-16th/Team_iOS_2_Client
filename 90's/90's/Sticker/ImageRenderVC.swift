@@ -64,7 +64,6 @@ extension ImageRenderVC {
         collectionView.dataSource = self
         collectionView.delegate = self
     }
-
     
     private func createStickerView(image : UIImage){
         let imageView = UIImageView(image: image)
@@ -87,7 +86,6 @@ extension ImageRenderVC {
         collectionView.reloadData()
     }
 }
-
 
 
 extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -151,8 +149,9 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
             let cell = collectionView.cellForItem(at: indexPath) as! photoFilterCollectionCell
             cell.toggleSelected()
         } else {
+            // sticker collection
             let cell = collectionView.cellForItem(at: indexPath) as! photoStickerCollectionCell
-            
+            //cell.createSticker(image: UIImage(named: "husky"))
         }
     }
 }

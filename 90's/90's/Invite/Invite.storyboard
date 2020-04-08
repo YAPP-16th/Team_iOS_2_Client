@@ -21,12 +21,17 @@
                                     <constraint firstAttribute="width" constant="343" id="F0I-El-de2"/>
                                     <constraint firstAttribute="height" constant="81" id="wvM-NR-HAu"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="카카오 공유하기"/>
                                 <connections>
                                     <action selector="kakaoInviteBtn:" destination="GV6-9F-oZm" eventType="touchUpInside" id="T4v-GU-orY"/>
-                                    <action selector="kakaoInviteBtn:" destination="px4-xN-PW2" eventType="touchUpInside" id="abS-TG-XOh"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FRt-k0-j59">
+                                <rect key="frame" x="87" y="321" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -35,6 +40,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9kd-Ew-ZbU"/>
                     </view>
+                    <connections>
+                        <outlet property="kakaoInviteBtn" destination="aa6-Sh-w5a" id="Xvt-2b-gLe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oNH-ue-BYq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="GV6-9F-oZm" userLabel="Exit" sceneMemberID="exit"/>
