@@ -35,6 +35,12 @@
 		9BD31D40243A111A00D0D719 /* KakaoMessageTemplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD31D3F243A111A00D0D719 /* KakaoMessageTemplate.framework */; };
 		9BD31D42243A11BF00D0D719 /* KakaoCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD31D41243A11BF00D0D719 /* KakaoCommon.framework */; };
 		A311E5922438A880005EEC29 /* AlbumPeriodController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A311E5912438A880005EEC29 /* AlbumPeriodController.swift */; };
+		A318AC72243E290C00245434 /* TermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A318AC71243E290C00245434 /* TermViewController.swift */; };
+		A318AC74243E291D00245434 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A318AC73243E291D00245434 /* EmailViewController.swift */; };
+		A318AC76243E292600245434 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A318AC75243E292600245434 /* PasswordViewController.swift */; };
+		A318AC78243E2A2500245434 /* TelephoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A318AC77243E2A2500245434 /* TelephoneViewController.swift */; };
+		A318AC7A243E2A5B00245434 /* TelephoneAuthenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A318AC79243E2A5B00245434 /* TelephoneAuthenViewController.swift */; };
+		A318AC7C243E2A7600245434 /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A318AC7B243E2A7600245434 /* CompleteViewController.swift */; };
 		A31BA4D3243876F0007CA89D /* AlbumNameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31BA4D2243876F0007CA89D /* AlbumNameController.swift */; };
 		A33376162420CFB3000DC7C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33376152420CFB3000DC7C4 /* AppDelegate.swift */; };
 		A33376182420CFB3000DC7C4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33376172420CFB3000DC7C4 /* SceneDelegate.swift */; };
@@ -80,6 +86,12 @@
 		9BD31D3F243A111A00D0D719 /* KakaoMessageTemplate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoMessageTemplate.framework; sourceTree = "<group>"; };
 		9BD31D41243A11BF00D0D719 /* KakaoCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoCommon.framework; sourceTree = "<group>"; };
 		A311E5912438A880005EEC29 /* AlbumPeriodController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumPeriodController.swift; sourceTree = "<group>"; };
+		A318AC71243E290C00245434 /* TermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermViewController.swift; sourceTree = "<group>"; };
+		A318AC73243E291D00245434 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
+		A318AC75243E292600245434 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
+		A318AC77243E2A2500245434 /* TelephoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelephoneViewController.swift; sourceTree = "<group>"; };
+		A318AC79243E2A5B00245434 /* TelephoneAuthenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelephoneAuthenViewController.swift; sourceTree = "<group>"; };
+		A318AC7B243E2A7600245434 /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
 		A31BA4D2243876F0007CA89D /* AlbumNameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumNameController.swift; sourceTree = "<group>"; };
 		A33376122420CFB3000DC7C4 /* 90's.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "90's.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A33376152420CFB3000DC7C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +154,12 @@
 			isa = PBXGroup;
 			children = (
 				39585168242F49F300014CB0 /* SignUp.storyboard */,
+				A318AC71243E290C00245434 /* TermViewController.swift */,
+				A318AC73243E291D00245434 /* EmailViewController.swift */,
+				A318AC75243E292600245434 /* PasswordViewController.swift */,
+				A318AC77243E2A2500245434 /* TelephoneViewController.swift */,
+				A318AC79243E2A5B00245434 /* TelephoneAuthenViewController.swift */,
+				A318AC7B243E2A7600245434 /* CompleteViewController.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -362,10 +380,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B44EDE52429FCDF00B0D774 /* Extension.swift in Sources */,
+				A318AC72243E290C00245434 /* TermViewController.swift in Sources */,
 				9B180808243E10F300AF1CE6 /* StickerPopupVC.swift in Sources */,
+				A318AC78243E2A2500245434 /* TelephoneViewController.swift in Sources */,
 				A333762A2420DA36000DC7C4 /* Album.swift in Sources */,
 				A333761A2420CFB3000DC7C4 /* AlbumMainController.swift in Sources */,
 				A333762E2420E9D0000DC7C4 /* AlbumQuantityController.swift in Sources */,
+				A318AC7A243E2A5B00245434 /* TelephoneAuthenViewController.swift in Sources */,
 				A33376162420CFB3000DC7C4 /* AppDelegate.swift in Sources */,
 				A311E5922438A880005EEC29 /* AlbumPeriodController.swift in Sources */,
 				A33376182420CFB3000DC7C4 /* SceneDelegate.swift in Sources */,
@@ -377,8 +398,11 @@
 				9BD31D3A243A0A9100D0D719 /* InviteVC.swift in Sources */,
 				39411378243061A500087E1B /* CheckPhotoViewController.swift in Sources */,
 				A36DC86F24236386001B3767 /* AlbumDetailController.swift in Sources */,
+				A318AC76243E292600245434 /* PasswordViewController.swift in Sources */,
 				9B180804243E001A00AF1CE6 /* Theme.swift in Sources */,
 				9B180806243E096000AF1CE6 /* AlbumDetailPopupVC.swift in Sources */,
+				A318AC74243E291D00245434 /* EmailViewController.swift in Sources */,
+				A318AC7C243E2A7600245434 /* CompleteViewController.swift in Sources */,
 				9B142B0F242F22CD005ABE17 /* testViewController.swift in Sources */,
 				9BC16B1A2435B68F007F106C /* photoStickerCollectionCell.swift in Sources */,
 				9B31E1942434BBB400A139C6 /* photoFilterCollectionCell.swift in Sources */,
