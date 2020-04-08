@@ -22,14 +22,8 @@ class AlbumQuantityController : UIViewController {
     }
     
     @IBAction func clickNextBtn(_ sender: Any) {
-        let albumThemeVC = storyboard?.instantiateViewController(withIdentifier : "AlbumThemeController") as! AlbumThemeController
-              
-        albumThemeVC.albumName = albumName
-        albumThemeVC.startDate = startDate
-        albumThemeVC.expireDate = expireDate
-        albumThemeVC.quantity = quantity
-        
-              self.navigationController?.pushViewController(albumThemeVC, animated: true)
+        let albumDetailVC = storyboard?.instantiateViewController(identifier: "albumDetailVC") as! AlbumDetailController
+        self.navigationController?.pushViewController(albumDetailVC, animated: true)
     }
     
     

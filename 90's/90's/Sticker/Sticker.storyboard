@@ -289,10 +289,10 @@
             </objects>
             <point key="canvasLocation" x="5300" y="814"/>
         </scene>
-        <!--View Controller-->
+        <!--Sticker PopupVC-->
         <scene sceneID="5zh-JG-w65">
             <objects>
-                <viewController id="YLb-ki-jRt" sceneMemberID="viewController">
+                <viewController id="YLb-ki-jRt" customClass="StickerPopupVC" customModule="_0_s" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="35O-uB-Pbr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -338,6 +338,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GlD-L1-rD5"/>
                     </view>
+                    <connections>
+                        <outlet property="touchView" destination="2Os-Rc-2Vn" id="JWA-3C-d0s"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4IS-vr-EwZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

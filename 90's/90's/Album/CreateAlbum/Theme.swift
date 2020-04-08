@@ -1,5 +1,7 @@
 import Foundation
 
+let ThemeDatabase : ThemeModel = ThemeModel()
+
 class Theme {
     var index:Int!
     var themeName:String!
@@ -16,10 +18,14 @@ class Theme {
 }
 
 class ThemeModel {
-    static var themeList = [Theme(index: 0, themeName: "70s", previewPhoto: "theme0", themePhoto: "theme0"),
-                            Theme(index: 1, themeName: "80s", previewPhoto: "theme1", themePhoto: "theme1"),
-                            Theme(index: 2, themeName: "90s", previewPhoto: "theme2", themePhoto: "theme2"),
-                            Theme(index: 3, themeName: "00s", previewPhoto: "theme3", themePhoto: "theme3"),
-                            Theme(index: 4, themeName: "10s", previewPhoto: "theme4", themePhoto: "theme4")]
+    var arrayList : [Theme] = []
     
+    func defaultData() -> Array<Theme> {
+        let stock = Theme(index: 0, themeName: "pink", previewPhoto: "dog1", themePhoto: "dog2")
+        return [stock]
+    }
+    
+    init() {
+        arrayList = defaultData()
+    }
 }
