@@ -2,22 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <!-- 공통 -->
-        <string>kakao9c1279f7fccd7de16ae66d216e1d8780</string>
-
-        <!-- 간편로그인 -->
-        <string>kakaokompassauth</string>
-        <string>storykompassauth</string>
-
-        <!-- 카카오톡링크 -->
-        <string>kakaolink</string>
-        <string>kakaotalk-5.9.7</string>
-
-        <!-- 카카오스토리링크 -->
-        <string>storylink</string>
-    </array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>kakao9c1279f7fccd7de16ae66d216e1d8780</string>
+		<string>kakaokompassauth</string>
+		<string>storykompassauth</string>
+		<string>kakaolink</string>
+		<string>kakaotalk-5.9.7</string>
+		<string>storylink</string>
+	</array>
 	<key>KAKAO_APP_KEY</key>
 	<string>9c1279f7fccd7de16ae66d216e1d8780</string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -69,7 +62,7 @@
 					<key>UISceneDelegateClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
 					<key>UISceneStoryboardFile</key>
-					<string>Main</string>
+					<string>Print</string>
 				</dict>
 			</array>
 		</dict>
@@ -77,7 +70,7 @@
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
+	<string>Print</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
