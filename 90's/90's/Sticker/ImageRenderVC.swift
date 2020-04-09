@@ -30,10 +30,6 @@ class ImageRenderVC: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // test
-        if image == nil {
-            image = UIImage(named: "husky")
-        }
         renderImage.image = image
         
         filterImages = filterArray.map({ (v : String) -> UIImage in
@@ -48,8 +44,6 @@ class ImageRenderVC: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         buttonSetting()
         delegateSetting()
-        pan = UIPanGestureRecognizer(target: self, action: Selector("handlePanGesture:"))
-        pan!.delegate = self
     }
 }
 
