@@ -13,7 +13,6 @@ class TermCell: UITableViewCell {
     @IBOutlet weak var agreeBtn: UIButton!
     @IBOutlet weak var termTitle: UILabel!
     var clickDelegate: ClickDelegate!
-    var indexPath: IndexPath!
     var isClicked : Bool = false {
         didSet {
             if(isClicked){
