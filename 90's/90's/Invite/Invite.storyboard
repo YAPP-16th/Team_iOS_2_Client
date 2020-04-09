@@ -10,7 +10,7 @@
         <!--InviteVC-->
         <scene sceneID="9s8-21-YDG">
             <objects>
-                <viewController id="px4-xN-PW2" customClass="InviteVC" customModule="_0_s" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController interfaceStyle="light" id="px4-xN-PW2" customClass="InviteVC" customModule="_0_s" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f4G-KZ-yb8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,11 +27,6 @@
                                     <action selector="kakaoInviteBtn:" destination="GV6-9F-oZm" eventType="touchUpInside" id="T4v-GU-orY"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FRt-k0-j59">
-                                <rect key="frame" x="87" y="321" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -40,6 +35,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9kd-Ew-ZbU"/>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="kakaoInviteBtn" destination="aa6-Sh-w5a" id="Xvt-2b-gLe"/>
                     </connections>

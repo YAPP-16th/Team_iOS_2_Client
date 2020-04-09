@@ -2,6 +2,8 @@ import Foundation
 import UIKit
 //메인 앨범에 들어갈 클래스
 
+let AlbumDatabase : AlbumModel = AlbumModel()
+
 class Album {
     var index : Int!
     var isShare : Bool!
@@ -32,9 +34,17 @@ class Album {
 }
 
 class AlbumModel{
-    static var albumList :[Album] = []
-
+    var albumList :[Album] = []
     
+    func defaultData() -> Array<Album> {
+        let stock = Album(index : 0, isShare :false, albumName : "test", photo: [UIImage(named: "husky")!]
+        )
+        return [stock]
+    }
+    
+    init() {
+        albumList = defaultData()
+    }
 }
 
 

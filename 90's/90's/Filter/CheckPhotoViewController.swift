@@ -20,7 +20,7 @@ class CheckPhotoViewController : UIViewController {
 
     @IBAction func saveAction(_ sender: Any) {
         print("!!!!!")
-        AlbumModel.albumList[0].photos.append(CheckImageView.image!)
+        AlbumDatabase.albumList[0].photos.append(CheckImageView.image!)
         self.dismiss(animated: true, completion: nil)
         print("!!!!!")
     }

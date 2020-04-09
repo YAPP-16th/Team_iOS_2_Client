@@ -22,15 +22,13 @@ class AlbumMainController: UIViewController {
     override func viewDidLoad() {
          super.viewDidLoad()
          
-         
          //앨범이 있냐 없냐에 따라
-         if(AlbumModel.albumList.count == 0){
+         if(AlbumDatabase.albumList.count == 0){
              albumCollectionView.isHidden = true
          }else {
              albumMakeBtn.isHidden = true
              albumIntroLabel.isHidden = true
          }
-         
          
          settingCollectionView()
         // settingActionSheet()
@@ -97,21 +95,20 @@ extension AlbumMainController : UICollectionViewDelegateFlowLayout {
     //cell 클릭시 엑션
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let index = indexPath.row
-        let data = AlbumModel.albumList[indexPath.row]
+        let data = AlbumDatabase.albumList[indexPath.row]
         
         //cell 클릭 시 넘어갈 화면 분기
         //앨범 설정값이 nil -> AlbumSettingVC
         //앨범 설정값이 있고 테마값이 nil -> AlbumThemeVC
         //다 있으면 -> AlbumDetailVC
         
+        let albumDetailVC = storyboard?.instantiateViewController(identifier: "albumDetailVC") as! AlbumDetailController
+        albumDetailVC.albumIndex = index
+        navigationController?.pushViewController(albumDetailVC, animated: true)
 //        if(data.period == nil){
 //            let albumSettingVC = storyboard?.instantiateViewController(identifier: "albumSettingVC") as! AlbumSettingController
 //            albumSettingVC.albumIndex = index
 //            navigationController?.pushViewController(albumSettingVC, animated: true)
-//        }else if(data.selectTheme == nil){
-//            let albumThemeVC = storyboard?.instantiateViewController(identifier: "albumThemeVC") as! AlbumThemeController
-//            albumThemeVC.albumIndex = index
-//            navigationController?.pushViewController(albumThemeVC, animated: true)
 //        }else {
 //            let albumDetailVC = storyboard?.instantiateViewController(identifier: "albumDetailVC") as! AlbumDetailController
 //            albumDetailVC.albumIndex = index
@@ -131,13 +128,13 @@ extension AlbumMainController : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return AlbumModel.albumList.count
+        return AlbumDatabase.albumList.count
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlbumCell", for: indexPath) as! AlbumCell
-        let data = AlbumModel.albumList[indexPath.row]
+        let data = AlbumDatabase.albumList[indexPath.row]
         if let photoNum = data.quantity {
             if(photoNum == data.photos.count){
                 cell.isFull = true

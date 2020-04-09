@@ -9,10 +9,12 @@
         <!--SignIn-->
         <scene sceneID="fel-st-z0z">
             <objects>
-                <viewControllerPlaceholder storyboardName="SignIn" id="MNM-7F-7XR" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="SignIn" id="MNM-7F-7XR" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="yKo-E4-Z2T"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nfZ-qy-4LS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1175" y="-797"/>
+            <point key="canvasLocation" x="272" y="209"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="DAW-fU-tA5">
@@ -29,11 +31,13 @@
                         <segue destination="Bhq-Lv-tFv" kind="relationship" relationship="viewControllers" id="2cP-iT-tEc"/>
                         <segue destination="CRU-fT-1Nn" kind="relationship" relationship="viewControllers" id="rU3-J4-Pky"/>
                         <segue destination="mrQ-AR-UXF" kind="relationship" relationship="viewControllers" id="Nd3-Rl-BvO"/>
+                        <segue destination="Z34-8U-FbG" kind="relationship" relationship="viewControllers" id="PeR-d6-yfz"/>
+                        <segue destination="Gkw-iW-SCn" kind="relationship" relationship="viewControllers" id="UQ1-N1-Ywg"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="deS-4W-e0O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-301" y="-672"/>
+            <point key="canvasLocation" x="1518.840579710145" y="-672.32142857142856"/>
         </scene>
         <!--Filter-->
         <scene sceneID="vPH-Ay-2RE">
@@ -135,10 +139,12 @@
         <!--SignUp-->
         <scene sceneID="bdB-Zk-RYP">
             <objects>
-                <viewControllerPlaceholder storyboardName="SignUp" id="OMg-Up-Bb0" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="SignUp" id="OMg-Up-Bb0" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="2g4-5I-i8j"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R4v-iX-Y8n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1180" y="-552"/>
+            <point key="canvasLocation" x="-271.01449275362319" y="-552.45535714285711"/>
         </scene>
         <!--Sticker-->
         <scene sceneID="IvB-mr-CyZ">
@@ -176,7 +182,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cq1-pE-vAJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="651" y="-672"/>
+            <point key="canvasLocation" x="2471.0144927536235" y="-672.32142857142856"/>
         </scene>
         <!--Invite-->
         <scene sceneID="guU-8p-Mf1">
@@ -215,6 +221,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IkX-8d-CJw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="651" y="1740"/>
+        </scene>
+        <!--SignIn-->
+        <scene sceneID="ThV-jR-xZD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gkw-iW-SCn" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="SignIn" id="v8e-lR-gZv"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Y7q-ew-EXu">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MNM-7F-7XR" kind="relationship" relationship="rootViewController" id="3rD-zO-PLf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jMv-zq-SRF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-238" y="132"/>
+        </scene>
+        <!--SignUp-->
+        <scene sceneID="XlO-hh-gVg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Z34-8U-FbG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="SignUp" id="ZSD-Hp-aKQ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UAm-EE-n1z">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="OMg-Up-Bb0" kind="relationship" relationship="rootViewController" id="mEn-YX-eNK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="riC-CH-gqW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1181.1594202898552" y="-552.45535714285711"/>
         </scene>
     </scenes>
 </document>
