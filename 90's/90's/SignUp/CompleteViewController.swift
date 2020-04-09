@@ -10,6 +10,7 @@ import UIKit
 
 class CompleteViewController: UIViewController {
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,14 +18,9 @@ class CompleteViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func goLoginVC(_ sender: Any) {
+       //로그인 화면으로 가는 로직 구현
     }
-    */
+
 
 }

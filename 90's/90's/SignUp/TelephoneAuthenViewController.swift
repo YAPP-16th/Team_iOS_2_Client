@@ -84,5 +84,15 @@ class TelephoneAuthenViewController: UIViewController {
         }
     }
     
+    //화면 터치시 키보드 내림
+       override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+           tfTelephone.endEditing(true)
+       }
+       
+       //키보드 리턴 버튼 클릭 시 키보드 내림
+       func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+           tfTelephone.resignFirstResponder()
+           return true
+       }
     
 }
