@@ -100,11 +100,10 @@
         <!--Album-->
         <scene sceneID="24U-wQ-6yZ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1Nt-8A-ufl" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="1Nt-8A-ufl" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Album" id="kiH-6S-w8N"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5Mq-Nv-Bae">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -147,11 +146,10 @@
         <!--Sticker-->
         <scene sceneID="IvB-mr-CyZ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vpH-H9-PQR" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="vpH-H9-PQR" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Sticker" id="u3s-eu-Ayy"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lw9-no-U8i">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

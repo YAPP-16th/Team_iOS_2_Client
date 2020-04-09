@@ -9,8 +9,7 @@
 import UIKit
 
 class AlbumCoverCollectionCell: UICollectionViewCell {
-    @IBOutlet weak var coverImageView: UIImageView!
-    @IBOutlet weak var coverLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
     
     // 셀 클릭시 체크 이미지를 addsubview로 올릴 예정 (hidden 대신 사용) -> cell에 extension으로 붙이기
 }
