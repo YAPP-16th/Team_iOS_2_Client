@@ -14,7 +14,6 @@ class AlbumNameController : UIViewController, UITextFieldDelegate {
     @IBOutlet weak var tfAlbumName: UITextField!
     @IBOutlet weak var selectorImageView: UIImageView!
     @IBOutlet weak var nextBtn: UIButton!
-        
     
     override func viewDidLoad() {
         tfAlbumName.delegate = self
@@ -34,9 +33,7 @@ class AlbumNameController : UIViewController, UITextFieldDelegate {
                 self.nextBtn.backgroundColor = UIColor.gray
                 self.nextBtn.isEnabled = false
             }
-            
         })
-        
     }
     
     
@@ -62,8 +59,5 @@ class AlbumNameController : UIViewController, UITextFieldDelegate {
         tfAlbumName.resignFirstResponder()
         return true
     }
-    
-    
-    
 }
 

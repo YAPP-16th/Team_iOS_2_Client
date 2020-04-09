@@ -9,22 +9,23 @@
 import UIKit
 
 class AlbumDetailPopupVC: UIViewController {
-    @IBOutlet weak var photoBtn: UIButton!
-    @IBOutlet weak var albumBtn: UIButton!
     @IBOutlet weak var touchView: UIView!
     @IBAction func touchAlbumBtn(_ sender: UIButton) {
         galleryPicker.sourceType = .photoLibrary
         galleryPicker.delegate = self
         present(galleryPicker, animated: true)
     }
-    
+    @IBAction func touchCameraBtn(_ sender: UIButton) {
+        let storyBoard = UIStoryboard(name: "Filter", bundle: nil)
+        let goNextVC = storyBoard.instantiateViewController(withIdentifier: "testViewController") as! testViewController
+        self.present(goNextVC, animated: true)
+    }
     
     private let galleryPicker = UIImagePickerController()
     var albumIndex : Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideKeyboardWhenTappedAround()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -35,19 +36,6 @@ class AlbumDetailPopupVC: UIViewController {
 }
 
 
-extension AlbumDetailPopupVC {
-    /** addTarget이 왜 objc 함수를 못찾는지 이유를 모르겠음 */
-//    @objc func openAlbumPicker(){
-//        print("openAlbumPicker work")
-//        galleryPicker.sourceType = .photoLibrary
-//        galleryPicker.delegate = self
-//        present(galleryPicker, animated: true)
-//    }
-//
-//    func ButtonSetting(){
-//        albumBtn.addTarget(self, action: #selector(openAlbumPicker), for: .touchUpInside)
-//    }
-}
 
 
 extension AlbumDetailPopupVC : UIImagePickerControllerDelegate, UINavigationControllerDelegate {

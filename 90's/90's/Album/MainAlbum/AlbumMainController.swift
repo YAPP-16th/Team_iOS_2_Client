@@ -2,20 +2,12 @@
 
 import UIKit
 
-protocol PrintDelegate : NSObjectProtocol {
-    func goPrintVC()
-}
-
-
 
 class AlbumMainController: UIViewController {
-    
     //앨범 만들기 버튼
     @IBOutlet weak var albumMakeBtn:UIButton!
-    
     //앨범 없을 시 멘트 라벨
     @IBOutlet weak var albumIntroLabel: UILabel!
-    
     //앨범 목록을 보여줄 CollectionView
     @IBOutlet weak var albumCollectionView: UICollectionView!
     
@@ -34,12 +26,9 @@ class AlbumMainController: UIViewController {
         // settingActionSheet()
      }
      
-    
      override func viewWillAppear(_ animated: Bool) {
          albumCollectionView.reloadData()
      }
-     
-    
     
     //앨범 만들기 버튼 클릭 시 앨범이름설정VC로 이동
     @IBAction func clickMakeBtn(_ sender: Any){
@@ -145,17 +134,8 @@ extension AlbumMainController : UICollectionViewDataSource {
         
         cell.albumImageView.image =  data.photos.first ?? UIImage()
         cell.albumNameLabel.text = data.albumName
-        cell.delegate = self
     
         return cell
     }
-    
-    
 }
 
-extension AlbumMainController : PrintDelegate {
-    func goPrintVC(){
-        //
-    }
-    
-}

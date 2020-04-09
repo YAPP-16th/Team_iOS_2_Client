@@ -13,8 +13,6 @@ class AlbumDetailController : UIViewController {
     }
     
     
-    
-    
     //navigation + 버튼 클릭 시 사진 추가 액션시트 출력
     @IBAction func addPhoto(_ sender: Any) {
         let albumData = AlbumDatabase.albumList[albumIndex!]

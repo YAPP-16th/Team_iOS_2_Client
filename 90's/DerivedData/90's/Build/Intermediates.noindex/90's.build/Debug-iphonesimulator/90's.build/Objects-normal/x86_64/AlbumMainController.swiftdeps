@@ -1,12 +1,9 @@
 ### Swift dependencies file v0 ###
 provides-top-level:
-- "PrintDelegate"
 - "AlbumMainController"
 provides-nominal:
-- "4_0_s13PrintDelegateP"
 - "4_0_s19AlbumMainControllerC"
 provides-member:
-- ["4_0_s13PrintDelegateP", ""]
 - ["4_0_s19AlbumMainControllerC", ""]
 provides-dynamic-lookup:
 - "albumCollectionView"
@@ -36,8 +33,6 @@ depends-top-level:
 - "IndexPath"
 - "Int"
 - !private "IntegerLiteralType"
-- "NSObjectProtocol"
-- "PrintDelegate"
 - !private "StringLiteralType"
 - "UIButton"
 - "UICollectionView"
@@ -54,7 +49,6 @@ depends-member:
 - !private ["4_0_s5AlbumC", "quantity"]
 - !private ["4_0_s9AlbumCellC", "albumImageView"]
 - !private ["4_0_s9AlbumCellC", "albumNameLabel"]
-- !private ["4_0_s9AlbumCellC", "delegate"]
 - !private ["4_0_s9AlbumCellC", "isFull"]
 - !private ["4_0_s21AlbumDetailControllerC", "albumIndex"]
 - !private ["4_0_s19AlbumMainControllerC", "AlbumCell"]
@@ -78,7 +72,6 @@ depends-member:
 - ["4_0_s19AlbumMainControllerC", "collectionView"]
 - ["4_0_s19AlbumMainControllerC", "collectionViewDidEndMultipleSelectionInteraction"]
 - ["4_0_s19AlbumMainControllerC", "deinit"]
-- ["4_0_s19AlbumMainControllerC", "goPrintVC"]
 - ["4_0_s19AlbumMainControllerC", "indexPathForPreferredFocusedView"]
 - ["4_0_s19AlbumMainControllerC", "indexPathForPreferredFocusedViewInCollectionView"]
 - ["4_0_s19AlbumMainControllerC", "indexTitles"]
@@ -147,7 +140,6 @@ depends-member:
 - !private ["s7CVarArgP", "dequeueReusableCell"]
 - !private ["s7CVarArgP", "first"]
 - !private ["s7CVarArgP", "frame"]
-- ["s7CVarArgP", "goPrintVC"]
 - !private ["s7CVarArgP", "image"]
 - ["s7CVarArgP", "indexPathForPreferredFocusedView"]
 - ["s7CVarArgP", "indexPathForPreferredFocusedViewInCollectionView"]
@@ -209,7 +201,6 @@ depends-member:
 - !private ["s28CustomDebugStringConvertibleP", "dequeueReusableCell"]
 - !private ["s28CustomDebugStringConvertibleP", "first"]
 - !private ["s28CustomDebugStringConvertibleP", "frame"]
-- ["s28CustomDebugStringConvertibleP", "goPrintVC"]
 - !private ["s28CustomDebugStringConvertibleP", "height"]
 - !private ["s28CustomDebugStringConvertibleP", "image"]
 - ["s28CustomDebugStringConvertibleP", "indexPathForPreferredFocusedView"]
@@ -280,7 +271,6 @@ depends-member:
 - !private ["s23CustomStringConvertibleP", "dequeueReusableCell"]
 - !private ["s23CustomStringConvertibleP", "first"]
 - !private ["s23CustomStringConvertibleP", "frame"]
-- ["s23CustomStringConvertibleP", "goPrintVC"]
 - !private ["s23CustomStringConvertibleP", "image"]
 - ["s23CustomStringConvertibleP", "indexPathForPreferredFocusedView"]
 - ["s23CustomStringConvertibleP", "indexPathForPreferredFocusedViewInCollectionView"]
@@ -366,7 +356,6 @@ depends-member:
 - !private ["SQ", "dequeueReusableCell"]
 - !private ["SQ", "first"]
 - !private ["SQ", "frame"]
-- ["SQ", "goPrintVC"]
 - !private ["SQ", "height"]
 - !private ["SQ", "image"]
 - ["SQ", "indexPathForPreferredFocusedView"]
@@ -434,7 +423,6 @@ depends-member:
 - !private ["SH", "dequeueReusableCell"]
 - !private ["SH", "first"]
 - !private ["SH", "frame"]
-- ["SH", "goPrintVC"]
 - !private ["SH", "image"]
 - ["SH", "indexPathForPreferredFocusedView"]
 - ["SH", "indexPathForPreferredFocusedViewInCollectionView"]
@@ -495,7 +483,6 @@ depends-member:
 - !private ["So8NSCodingP", "delegate"]
 - !private ["So8NSCodingP", "dequeueReusableCell"]
 - !private ["So8NSCodingP", "frame"]
-- ["So8NSCodingP", "goPrintVC"]
 - !private ["So8NSCodingP", "image"]
 - ["So8NSCodingP", "indexPathForPreferredFocusedView"]
 - ["So8NSCodingP", "indexPathForPreferredFocusedViewInCollectionView"]
@@ -539,7 +526,6 @@ depends-member:
 - !private ["So26NSExtensionRequestHandlingP", "albumMakeBtn"]
 - ["So26NSExtensionRequestHandlingP", "collectionView"]
 - ["So26NSExtensionRequestHandlingP", "collectionViewDidEndMultipleSelectionInteraction"]
-- ["So26NSExtensionRequestHandlingP", "goPrintVC"]
 - ["So26NSExtensionRequestHandlingP", "indexPathForPreferredFocusedView"]
 - ["So26NSExtensionRequestHandlingP", "indexPathForPreferredFocusedViewInCollectionView"]
 - ["So26NSExtensionRequestHandlingP", "indexTitles"]
@@ -597,7 +583,6 @@ depends-member:
 - !private ["So8NSObjectC", "delegate"]
 - !private ["So8NSObjectC", "dequeueReusableCell"]
 - !private ["So8NSObjectC", "frame"]
-- ["So8NSObjectC", "goPrintVC"]
 - !private ["So8NSObjectC", "image"]
 - ["So8NSObjectC", "indexPathForPreferredFocusedView"]
 - ["So8NSObjectC", "indexPathForPreferredFocusedViewInCollectionView"]
@@ -649,7 +634,6 @@ depends-member:
 - !private ["So8NSObjectP", "delegate"]
 - !private ["So8NSObjectP", "dequeueReusableCell"]
 - !private ["So8NSObjectP", "frame"]
-- ["So8NSObjectP", "goPrintVC"]
 - !private ["So8NSObjectP", "image"]
 - ["So8NSObjectP", "indexPathForPreferredFocusedView"]
 - ["So8NSObjectP", "indexPathForPreferredFocusedViewInCollectionView"]
@@ -692,41 +676,6 @@ depends-member:
 - !private ["Sq", "isHidden"]
 - !private ["Sq", "reloadData"]
 - !private ["Sq", "text"]
-- !private ["4_0_s13PrintDelegateP", "AlbumDatabase"]
-- !private ["4_0_s13PrintDelegateP", "CGSize"]
-- !private ["4_0_s13PrintDelegateP", "UIImage"]
-- ["4_0_s13PrintDelegateP", ""]
-- !private ["4_0_s13PrintDelegateP", "albumCollectionView"]
-- !private ["4_0_s13PrintDelegateP", "albumIntroLabel"]
-- !private ["4_0_s13PrintDelegateP", "albumMakeBtn"]
-- ["4_0_s13PrintDelegateP", "collectionView"]
-- ["4_0_s13PrintDelegateP", "collectionViewDidEndMultipleSelectionInteraction"]
-- ["4_0_s13PrintDelegateP", "goPrintVC"]
-- ["4_0_s13PrintDelegateP", "indexPathForPreferredFocusedView"]
-- ["4_0_s13PrintDelegateP", "indexPathForPreferredFocusedViewInCollectionView"]
-- ["4_0_s13PrintDelegateP", "indexTitles"]
-- ["4_0_s13PrintDelegateP", "indexTitlesForCollectionView"]
-- !private ["4_0_s13PrintDelegateP", "navigationController"]
-- ["4_0_s13PrintDelegateP", "numberOfSections"]
-- ["4_0_s13PrintDelegateP", "numberOfSectionsInCollectionView"]
-- ["4_0_s13PrintDelegateP", "scrollViewDidChangeAdjustedContentInset"]
-- ["4_0_s13PrintDelegateP", "scrollViewDidEndDecelerating"]
-- ["4_0_s13PrintDelegateP", "scrollViewDidEndDragging"]
-- ["4_0_s13PrintDelegateP", "scrollViewDidEndScrollingAnimation"]
-- ["4_0_s13PrintDelegateP", "scrollViewDidEndZooming"]
-- ["4_0_s13PrintDelegateP", "scrollViewDidScroll"]
-- ["4_0_s13PrintDelegateP", "scrollViewDidScrollToTop"]
-- ["4_0_s13PrintDelegateP", "scrollViewDidZoom"]
-- ["4_0_s13PrintDelegateP", "scrollViewShouldScrollToTop"]
-- ["4_0_s13PrintDelegateP", "scrollViewWillBeginDecelerating"]
-- ["4_0_s13PrintDelegateP", "scrollViewWillBeginDragging"]
-- ["4_0_s13PrintDelegateP", "scrollViewWillBeginZooming"]
-- ["4_0_s13PrintDelegateP", "scrollViewWillEndDragging"]
-- !private ["4_0_s13PrintDelegateP", "settingCollectionView"]
-- !private ["4_0_s13PrintDelegateP", "storyboard"]
-- !private ["4_0_s13PrintDelegateP", "view"]
-- ["4_0_s13PrintDelegateP", "viewForZooming"]
-- ["4_0_s13PrintDelegateP", "viewForZoomingInScrollView"]
 - !private ["Sk", "count"]
 - !private ["Sk", "first"]
 - !private ["Sk", "row"]
@@ -780,7 +729,6 @@ depends-member:
 - !private ["So21UIAppearanceContainerP", "delegate"]
 - !private ["So21UIAppearanceContainerP", "dequeueReusableCell"]
 - !private ["So21UIAppearanceContainerP", "frame"]
-- ["So21UIAppearanceContainerP", "goPrintVC"]
 - !private ["So21UIAppearanceContainerP", "image"]
 - ["So21UIAppearanceContainerP", "indexPathForPreferredFocusedView"]
 - ["So21UIAppearanceContainerP", "indexPathForPreferredFocusedViewInCollectionView"]
@@ -817,7 +765,6 @@ depends-member:
 - !private ["So8UIButtonC", "isHidden"]
 - !private ["So24UICollectionReusableViewC", "albumImageView"]
 - !private ["So24UICollectionReusableViewC", "albumNameLabel"]
-- !private ["So24UICollectionReusableViewC", "delegate"]
 - !private ["So24UICollectionReusableViewC", "isFull"]
 - !private ["So16UICollectionViewC", "dataSource"]
 - !private ["So16UICollectionViewC", "delegate"]
@@ -826,7 +773,6 @@ depends-member:
 - !private ["So16UICollectionViewC", "reloadData"]
 - !private ["So20UICollectionViewCellC", "albumImageView"]
 - !private ["So20UICollectionViewCellC", "albumNameLabel"]
-- !private ["So20UICollectionViewCellC", "delegate"]
 - !private ["So20UICollectionViewCellC", "isFull"]
 - !private ["So26UICollectionViewDataSourceP", "AlbumDatabase"]
 - !private ["So26UICollectionViewDataSourceP", "CGSize"]
@@ -838,7 +784,6 @@ depends-member:
 - !private ["So26UICollectionViewDataSourceP", "albumMakeBtn"]
 - ["So26UICollectionViewDataSourceP", "collectionView"]
 - ["So26UICollectionViewDataSourceP", "collectionViewDidEndMultipleSelectionInteraction"]
-- ["So26UICollectionViewDataSourceP", "goPrintVC"]
 - ["So26UICollectionViewDataSourceP", "indexPathForPreferredFocusedView"]
 - ["So26UICollectionViewDataSourceP", "indexPathForPreferredFocusedViewInCollectionView"]
 - ["So26UICollectionViewDataSourceP", "indexTitles"]
@@ -874,7 +819,6 @@ depends-member:
 - !private ["So24UICollectionViewDelegateP", "albumMakeBtn"]
 - ["So24UICollectionViewDelegateP", "collectionView"]
 - ["So24UICollectionViewDelegateP", "collectionViewDidEndMultipleSelectionInteraction"]
-- ["So24UICollectionViewDelegateP", "goPrintVC"]
 - ["So24UICollectionViewDelegateP", "indexPathForPreferredFocusedView"]
 - ["So24UICollectionViewDelegateP", "indexPathForPreferredFocusedViewInCollectionView"]
 - ["So24UICollectionViewDelegateP", "indexTitles"]
@@ -910,7 +854,6 @@ depends-member:
 - !private ["So34UICollectionViewDelegateFlowLayoutP", "albumMakeBtn"]
 - ["So34UICollectionViewDelegateFlowLayoutP", "collectionView"]
 - ["So34UICollectionViewDelegateFlowLayoutP", "collectionViewDidEndMultipleSelectionInteraction"]
-- ["So34UICollectionViewDelegateFlowLayoutP", "goPrintVC"]
 - ["So34UICollectionViewDelegateFlowLayoutP", "indexPathForPreferredFocusedView"]
 - ["So34UICollectionViewDelegateFlowLayoutP", "indexPathForPreferredFocusedViewInCollectionView"]
 - ["So34UICollectionViewDelegateFlowLayoutP", "indexTitles"]
@@ -946,7 +889,6 @@ depends-member:
 - !private ["So18UIContentContainerP", "albumMakeBtn"]
 - ["So18UIContentContainerP", "collectionView"]
 - ["So18UIContentContainerP", "collectionViewDidEndMultipleSelectionInteraction"]
-- ["So18UIContentContainerP", "goPrintVC"]
 - ["So18UIContentContainerP", "indexPathForPreferredFocusedView"]
 - ["So18UIContentContainerP", "indexPathForPreferredFocusedViewInCollectionView"]
 - ["So18UIContentContainerP", "indexTitles"]
@@ -1021,7 +963,6 @@ depends-member:
 - !private ["So18UIFocusEnvironmentP", "delegate"]
 - !private ["So18UIFocusEnvironmentP", "dequeueReusableCell"]
 - !private ["So18UIFocusEnvironmentP", "frame"]
-- ["So18UIFocusEnvironmentP", "goPrintVC"]
 - !private ["So18UIFocusEnvironmentP", "image"]
 - ["So18UIFocusEnvironmentP", "indexPathForPreferredFocusedView"]
 - ["So18UIFocusEnvironmentP", "indexPathForPreferredFocusedViewInCollectionView"]
@@ -1117,7 +1058,6 @@ depends-member:
 - !private ["So30UIPasteConfigurationSupportingP", "delegate"]
 - !private ["So30UIPasteConfigurationSupportingP", "dequeueReusableCell"]
 - !private ["So30UIPasteConfigurationSupportingP", "frame"]
-- ["So30UIPasteConfigurationSupportingP", "goPrintVC"]
 - !private ["So30UIPasteConfigurationSupportingP", "image"]
 - ["So30UIPasteConfigurationSupportingP", "indexPathForPreferredFocusedView"]
 - ["So30UIPasteConfigurationSupportingP", "indexPathForPreferredFocusedViewInCollectionView"]
@@ -1178,7 +1118,6 @@ depends-member:
 - !private ["So11UIResponderC", "delegate"]
 - !private ["So11UIResponderC", "dequeueReusableCell"]
 - !private ["So11UIResponderC", "frame"]
-- ["So11UIResponderC", "goPrintVC"]
 - !private ["So11UIResponderC", "image"]
 - ["So11UIResponderC", "indexPathForPreferredFocusedView"]
 - ["So11UIResponderC", "indexPathForPreferredFocusedViewInCollectionView"]
@@ -1229,7 +1168,6 @@ depends-member:
 - !private ["So30UIResponderStandardEditActionsP", "delegate"]
 - !private ["So30UIResponderStandardEditActionsP", "dequeueReusableCell"]
 - !private ["So30UIResponderStandardEditActionsP", "frame"]
-- ["So30UIResponderStandardEditActionsP", "goPrintVC"]
 - !private ["So30UIResponderStandardEditActionsP", "image"]
 - ["So30UIResponderStandardEditActionsP", "indexPathForPreferredFocusedView"]
 - ["So30UIResponderStandardEditActionsP", "indexPathForPreferredFocusedViewInCollectionView"]
@@ -1278,7 +1216,6 @@ depends-member:
 - !private ["So20UIScrollViewDelegateP", "albumMakeBtn"]
 - ["So20UIScrollViewDelegateP", "collectionView"]
 - ["So20UIScrollViewDelegateP", "collectionViewDidEndMultipleSelectionInteraction"]
-- ["So20UIScrollViewDelegateP", "goPrintVC"]
 - ["So20UIScrollViewDelegateP", "indexPathForPreferredFocusedView"]
 - ["So20UIScrollViewDelegateP", "indexPathForPreferredFocusedViewInCollectionView"]
 - ["So20UIScrollViewDelegateP", "indexTitles"]
@@ -1319,7 +1256,6 @@ depends-member:
 - !private ["So16UIStateRestoringP", "albumMakeBtn"]
 - ["So16UIStateRestoringP", "collectionView"]
 - ["So16UIStateRestoringP", "collectionViewDidEndMultipleSelectionInteraction"]
-- ["So16UIStateRestoringP", "goPrintVC"]
 - ["So16UIStateRestoringP", "indexPathForPreferredFocusedView"]
 - ["So16UIStateRestoringP", "indexPathForPreferredFocusedViewInCollectionView"]
 - ["So16UIStateRestoringP", "indexTitles"]
@@ -1365,7 +1301,6 @@ depends-member:
 - !private ["So18UITraitEnvironmentP", "delegate"]
 - !private ["So18UITraitEnvironmentP", "dequeueReusableCell"]
 - !private ["So18UITraitEnvironmentP", "frame"]
-- ["So18UITraitEnvironmentP", "goPrintVC"]
 - !private ["So18UITraitEnvironmentP", "image"]
 - ["So18UITraitEnvironmentP", "indexPathForPreferredFocusedView"]
 - ["So18UITraitEnvironmentP", "indexPathForPreferredFocusedViewInCollectionView"]
@@ -1415,7 +1350,6 @@ depends-member:
 - !private ["So23UIUserActivityRestoringP", "delegate"]
 - !private ["So23UIUserActivityRestoringP", "dequeueReusableCell"]
 - !private ["So23UIUserActivityRestoringP", "frame"]
-- ["So23UIUserActivityRestoringP", "goPrintVC"]
 - !private ["So23UIUserActivityRestoringP", "image"]
 - ["So23UIUserActivityRestoringP", "indexPathForPreferredFocusedView"]
 - ["So23UIUserActivityRestoringP", "indexPathForPreferredFocusedViewInCollectionView"]
@@ -1482,7 +1416,6 @@ depends-member:
 - ["So16UIViewControllerC", "clickMakeBtn"]
 - ["So16UIViewControllerC", "collectionView"]
 - ["So16UIViewControllerC", "collectionViewDidEndMultipleSelectionInteraction"]
-- ["So16UIViewControllerC", "goPrintVC"]
 - ["So16UIViewControllerC", "indexPathForPreferredFocusedView"]
 - ["So16UIViewControllerC", "indexPathForPreferredFocusedViewInCollectionView"]
 - ["So16UIViewControllerC", "indexTitles"]
@@ -1544,7 +1477,6 @@ depends-member:
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "delegate"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "dequeueReusableCell"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "frame"]
-- ["10Foundation27_KeyValueCodingAndObservingP", "goPrintVC"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "image"]
 - ["10Foundation27_KeyValueCodingAndObservingP", "indexPathForPreferredFocusedView"]
 - ["10Foundation27_KeyValueCodingAndObservingP", "indexPathForPreferredFocusedViewInCollectionView"]
@@ -1595,7 +1527,6 @@ depends-member:
 - !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "delegate"]
 - !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "dequeueReusableCell"]
 - !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "frame"]
-- ["10Foundation37_KeyValueCodingAndObservingPublishingP", "goPrintVC"]
 - !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "image"]
 - ["10Foundation37_KeyValueCodingAndObservingPublishingP", "indexPathForPreferredFocusedView"]
 - ["10Foundation37_KeyValueCodingAndObservingPublishingP", "indexPathForPreferredFocusedViewInCollectionView"]
@@ -1691,7 +1622,6 @@ depends-nominal:
 - "So8NSObjectP"
 - !private "So14NSSecureCodingP"
 - !private "Sq"
-- "4_0_s13PrintDelegateP"
 - !private "Sk"
 - !private "Sm"
 - !private "10Foundation20ReferenceConvertibleP"
@@ -1879,4 +1809,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/MediaToolbox.framework/Headers/MediaToolbox.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/AudioToolbox.framework/Headers/AudioToolbox.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
-interface-hash: "41b80c04bca4177d2f02b681719d977f"
+interface-hash: "eabc5716c4529c42c8a942961fc247cc"

@@ -213,14 +213,34 @@ SWIFT_CLASS("_TtC4_0_s9AlbumCell")
 @property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified albumImageView;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified albumNameLabel;
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified printBtn;
-- (IBAction)selectPrintBtn:(id _Nonnull)sender;
 - (void)prepareForReuse;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC4_0_s24AlbumCoverCollectionCell")
+@interface AlbumCoverCollectionCell : UICollectionViewCell
+@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified coverImageView;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified coverLabel;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 @class UICollectionView;
 @class NSBundle;
+
+SWIFT_CLASS("_TtC4_0_s12AlbumCoverVC")
+@interface AlbumCoverVC : UIViewController
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified completeBtn;
+@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified coverImageView;
+@property (nonatomic, weak) IBOutlet UICollectionView * _Null_unspecified coverCollectionView;
+- (IBAction)touchBackBtn:(UIButton * _Nonnull)sender;
+- (void)viewDidLoad;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 
 SWIFT_CLASS("_TtC4_0_s21AlbumDetailController")
 @interface AlbumDetailController : UIViewController
@@ -265,17 +285,14 @@ SWIFT_CLASS("_TtC4_0_s21AlbumDetailController")
 
 SWIFT_CLASS("_TtC4_0_s18AlbumDetailPopupVC")
 @interface AlbumDetailPopupVC : UIViewController
-@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified photoBtn;
-@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified albumBtn;
 @property (nonatomic, weak) IBOutlet UIView * _Null_unspecified touchView;
 - (IBAction)touchAlbumBtn:(UIButton * _Nonnull)sender;
+- (IBAction)touchCameraBtn:(UIButton * _Nonnull)sender;
 - (void)viewDidLoad;
 - (void)touchesBegan:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
-
-
 
 
 @interface AlbumDetailPopupVC (SWIFT_EXTENSION(_0_s)) <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
@@ -305,8 +322,6 @@ SWIFT_CLASS("_TtC4_0_s19AlbumMainController")
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
-
-
 
 
 @interface AlbumMainController (SWIFT_EXTENSION(_0_s)) <UICollectionViewDelegateFlowLayout>
@@ -663,11 +678,11 @@ SWIFT_CLASS("_TtC4_0_s18TermViewController")
 
 
 
-
-
 @interface UIViewController (SWIFT_EXTENSION(_0_s))
 - (void)dismissKeyboard;
 @end
+
+
 
 
 SWIFT_CLASS("_TtC4_0_s25albumLayoutCollectionCell")
