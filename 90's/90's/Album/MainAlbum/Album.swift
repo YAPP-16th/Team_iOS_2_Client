@@ -38,7 +38,7 @@ class AlbumModel{
     }
     
     init() {
-        albumList = defaultData()
+        //albumList = defaultData()
     }
 }
 
