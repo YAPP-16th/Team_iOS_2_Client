@@ -27,8 +27,6 @@ class AlbumQuantityController : UIViewController {
     }
     
     
-    
-    
     func setQuantityPicker(){
         quantityPicker.delegate = self
         quantityPicker.dataSource = self
@@ -58,7 +56,7 @@ extension AlbumQuantityController : UIPickerViewDelegate {
                    self.nextBtn.backgroundColor = UIColor.black
                    self.nextBtn.isEnabled = true
                    initialFlag = false
-               }
+        }
     }
 }
 
@@ -72,7 +70,4 @@ extension AlbumQuantityController : UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
             return quantityArr.count
     }
-    
-
-    
 }

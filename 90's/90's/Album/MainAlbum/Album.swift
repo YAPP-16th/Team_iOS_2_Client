@@ -1,7 +1,6 @@
-import Foundation
-import UIKit
-//메인 앨범에 들어갈 클래스
 
+
+//메인 앨범에 들어갈 클래스
 let AlbumDatabase : AlbumModel = AlbumModel()
 
 class Album {
@@ -14,7 +13,6 @@ class Album {
     var quantity : Int?
     var selectTheme : Theme!
     var photos : [UIImage]
-
     
     init(index : Int, isShare: Bool, albumName: String, photo: [UIImage]?) {
         self.index = index
@@ -27,10 +25,7 @@ class Album {
         if let initialPhoto = photo {
             self.photos += initialPhoto
         }
-        
-      
     }
-    
 }
 
 class AlbumModel{
