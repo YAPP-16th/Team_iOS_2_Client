@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		390A33EE243F6A52002E9F57 /* OrderFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390A33ED243F6A52002E9F57 /* OrderFinishViewController.swift */; };
 		392F7790242F4BC70000BC3C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 392F778F242F4BC70000BC3C /* Default-568h@2x.png */; };
 		39411378243061A500087E1B /* CheckPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39411377243061A500087E1B /* CheckPhotoViewController.swift */; };
 		3958515C242F45E600014CB0 /* Sticker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3958515B242F45E600014CB0 /* Sticker.storyboard */; };
@@ -59,6 +60,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		390A33ED243F6A52002E9F57 /* OrderFinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFinishViewController.swift; sourceTree = "<group>"; };
 		392F778F242F4BC70000BC3C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		39411377243061A500087E1B /* CheckPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckPhotoViewController.swift; sourceTree = "<group>"; };
 		3958515B242F45E600014CB0 /* Sticker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sticker.storyboard; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			children = (
 				9BB9B554243D694C00B5150F /* OptionViewController.swift */,
 				39585162242F46D500014CB0 /* Print.storyboard */,
+				390A33ED243F6A52002E9F57 /* OrderFinishViewController.swift */,
 			);
 			path = Print;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				A318AC76243E292600245434 /* PasswordViewController.swift in Sources */,
 				9B180804243E001A00AF1CE6 /* Theme.swift in Sources */,
 				9B180806243E096000AF1CE6 /* AlbumDetailPopupVC.swift in Sources */,
+				390A33EE243F6A52002E9F57 /* OrderFinishViewController.swift in Sources */,
 				9BBBA3DF243F6848002904AC /* AlbumCoverVC.swift in Sources */,
 				A318AC74243E291D00245434 /* EmailViewController.swift in Sources */,
 				A318AC7C243E2A7600245434 /* CompleteViewController.swift in Sources */,
