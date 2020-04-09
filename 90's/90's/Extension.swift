@@ -9,6 +9,18 @@
 import Foundation
 import UIKit
 
+
+extension String {
+    //이메일 정규식 검증
+    public func validateEmail() -> Bool {
+          let emailRegEx = "^.+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2}[A-Za-z]*$"
+          
+          let predicate = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+          return predicate.evaluate(with: self)
+      }
+}
+
+
 extension UIView {
     public func addShadowEffect(){
         self.layer.shadowRadius = 2

@@ -27,6 +27,7 @@ class TermViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        okBtn.isEnabled = false
         termTableView.delegate = self
         termTableView.dataSource = self
     }
@@ -48,14 +49,19 @@ class TermViewController: UIViewController {
         if(isAllTermBtnClicked){
             agreeAllTermBtn.backgroundColor = UIColor.black
             okBtn.backgroundColor = UIColor.black
+            okBtn.isEnabled = true
         }else {
             agreeAllTermBtn.backgroundColor = UIColor.gray
             okBtn.backgroundColor = UIColor.gray
+            okBtn.isEnabled = false
         }
         self.termTableView.reloadData()
     }
     
     @IBAction func clickOkBtn(_ sender: Any) {
+        let emailVC = storyboard?.instantiateViewController(identifier: "EmailViewController") as! EmailViewController
+        print("hi")
+        self.navigationController?.pushViewController(emailVC, animated: true)
     }
     
 }
