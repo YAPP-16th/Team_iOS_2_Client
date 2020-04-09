@@ -14,6 +14,8 @@ class TelephoneViewController: UIViewController {
     @IBOutlet weak var selectorImageView: UIImageView!
     @IBOutlet weak var athenticationBtn: UIButton!
 
+    var email:String!
+    var pwd:String!
     var isInitial1 = false
     var isInitial2 = false
     
@@ -52,6 +54,9 @@ class TelephoneViewController: UIViewController {
     
     @IBAction func goAuthenVC(_ sender: Any) {
         let telePhoneAuthenVC = storyboard?.instantiateViewController(identifier: "TelephoneAuthenViewController") as! TelephoneAuthenViewController
+        telePhoneAuthenVC.email = self.email
+        telePhoneAuthenVC.pwd = self.pwd
+        telePhoneAuthenVC.telephone = self.tfTelephone.text!
         navigationController?.pushViewController(telePhoneAuthenVC, animated: true)
     }
     

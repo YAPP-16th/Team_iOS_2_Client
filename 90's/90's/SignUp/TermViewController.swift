@@ -81,11 +81,8 @@ extension TermViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TermCell") as! TermCell
-        
         cell.clickDelegate = self
         cell.termTitle.text = termTitle[indexPath.row]
-        cell.indexPath = indexPath
-        
         
         return cell
     }

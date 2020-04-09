@@ -17,6 +17,7 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var validationLabel: UILabel!
     @IBOutlet weak var nextBtn: UIButton!
     
+    var email:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +71,8 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
         let confirmPass = tfConfirmPass.text!
         if(newPass == confirmPass){
             let telephoneVC = storyboard?.instantiateViewController(identifier: "TelephoneViewController") as! TelephoneViewController
+            telephoneVC.email = email
+            telephoneVC.pwd = newPass
             navigationController?.pushViewController(telephoneVC, animated: true)
         }else {
             validationLabel.isHidden = false

@@ -45,6 +45,7 @@ class EmailViewController: UIViewController, UITextFieldDelegate {
         if(email.validateEmail()){
             emailValidationLabel.isHidden = true
             let passwordVC = storyboard?.instantiateViewController(identifier: "PasswordViewController") as! PasswordViewController
+            passwordVC.email = email
             navigationController?.pushViewController(passwordVC, animated: true)
         }else {
             emailValidationLabel.isHidden = false
