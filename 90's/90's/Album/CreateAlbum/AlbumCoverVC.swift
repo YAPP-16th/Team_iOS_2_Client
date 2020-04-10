@@ -9,17 +9,32 @@
 import UIKit
 
 class AlbumCoverVC: UIViewController {
-    @IBOutlet weak var completeBtn: UIButton!
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var coverCollectionView: UICollectionView!
-    
     @IBAction func touchBackBtn(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
+    @IBAction func completeBtn(_ sender: UIButton) {
+        let nextVC = storyboard?.instantiateViewController(identifier: "AlbumLayoutVC") as! AlbumLayoutVC
+        
+        nextVC.albumName = albumName
+        nextVC.albumStartDate = albumStartDate
+        nextVC.albumEndDate = albumEndDate
+        nextVC.albumMaxCount = albumMaxCount
+        nextVC.albumCover = albumCover
+               
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
     
     fileprivate var coverStringArray : [String] = ["cover1", "cover2", "cover3", "cover4"]
     fileprivate var coverArray : [UIImage] = []
-    fileprivate var selectIndex : Int = 0
+    
+    var albumName : String!
+    var albumStartDate : String!
+    var albumEndDate : String!
+    var albumMaxCount : Int!
+    var albumCover : UIImage!
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,8 +43,8 @@ class AlbumCoverVC: UIViewController {
         coverArray = coverStringArray.map({ (value : String) -> UIImage in
             return UIImage(named: value)!
         })
-        
-        coverImageView.image = coverArray[selectIndex]
+        coverImageView.image = coverArray[0]
+        albumCover = coverArray[0]
     }
     
     override func viewDidLoad() {
@@ -59,8 +74,8 @@ extension AlbumCoverVC : UICollectionViewDelegate, UICollectionViewDataSource, U
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectIndex = indexPath.row
-        coverImageView.image = coverArray[selectIndex]
+        albumCover = coverArray[indexPath.row]
+        coverImageView.image = coverArray[indexPath.row]
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

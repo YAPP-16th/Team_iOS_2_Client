@@ -47,7 +47,7 @@ extension AlbumDetailPopupVC : UIImagePickerControllerDelegate, UINavigationCont
         if let url = info[UIImagePickerController.InfoKey.phAsset] as? URL,
             let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             UserDefaults.standard.set(url, forKey: "assetURL")
-            AlbumDatabase.albumList[albumIndex!].photos.append(image)
+            AlbumDatabase.arrayList[albumIndex!].photos.append(image)
         }
 
         dismiss(animated: true)

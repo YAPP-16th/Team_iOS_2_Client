@@ -65,7 +65,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ijB-xR-vGx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1352" y="1740"/>
+            <point key="canvasLocation" x="1357" y="952"/>
         </scene>
         <!--Print-->
         <scene sceneID="YX6-A6-avv">
@@ -76,16 +76,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1xH-Id-37D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1343" y="-672"/>
-        </scene>
-        <!--Invite-->
-        <scene sceneID="dHY-6W-jrM">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Invite" id="eq0-Vo-SJ2" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="ONC-t9-yQm"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="o5T-cc-kAA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1351" y="952"/>
         </scene>
         <!--Album-->
         <scene sceneID="IKz-GO-7SI">
@@ -180,25 +170,6 @@
             </objects>
             <point key="canvasLocation" x="651" y="-672"/>
         </scene>
-        <!--Invite-->
-        <scene sceneID="guU-8p-Mf1">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CRU-fT-1Nn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Invite" id="6yI-uE-xQz"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TQ6-EG-52y">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="eq0-Vo-SJ2" kind="relationship" relationship="rootViewController" id="5Sx-9v-BFz"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jbX-Xk-evc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="651" y="952"/>
-        </scene>
         <!--Profile-->
         <scene sceneID="9T7-gU-5jh">
             <objects>
@@ -216,7 +187,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IkX-8d-CJw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="651" y="1740"/>
+            <point key="canvasLocation" x="651" y="952"/>
         </scene>
         <!--SignIn-->
         <scene sceneID="ThV-jR-xZD">
