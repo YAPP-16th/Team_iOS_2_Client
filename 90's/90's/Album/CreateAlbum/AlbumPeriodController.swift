@@ -78,7 +78,5 @@ class AlbumPeriodController : UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         tfExpireDate.endEditing(true)
     }
-    
-    
 }
 

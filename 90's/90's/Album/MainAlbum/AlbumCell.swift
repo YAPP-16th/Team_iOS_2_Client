@@ -2,7 +2,9 @@ import UIKit
 
 
 class AlbumCell : UICollectionViewCell {
-    weak var delegate : PrintDelegate!
+    @IBOutlet weak var albumImageView : UIImageView!
+    @IBOutlet weak var albumNameLabel : UILabel!
+    @IBOutlet weak var printBtn: UIButton!
     
     var isFull: Bool = false{
         didSet{
@@ -14,20 +16,7 @@ class AlbumCell : UICollectionViewCell {
         }
     }
     
-    @IBOutlet weak var albumImageView : UIImageView!
-    @IBOutlet weak var albumNameLabel : UILabel!
-    @IBOutlet weak var printBtn: UIButton!
-
-    
-    @IBAction func selectPrintBtn(_ sender: Any) {
-        self.delegate.goPrintVC()
-    }
-    
-    
     override func prepareForReuse() {
         self.printBtn.isHidden = true
     }
-    
-    
-    
 }

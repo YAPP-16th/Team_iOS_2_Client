@@ -8,8 +8,6 @@
 
 import UIKit
 
-
 class albumLayoutCollectionCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
-    
 }
