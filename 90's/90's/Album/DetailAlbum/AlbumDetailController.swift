@@ -102,8 +102,11 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
 extension AlbumDetailController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GoToAlbumPopupVC" {
-            let dest = segue.description as? AlbumDetailPopupVC
-            dest?.albumIndex = albumIndex!
+            guard let dest = segue.description as? AlbumDetailPopupVC else {return}
+            dest.albumIndex = albumIndex!
+        } else if segue.identifier == "GoToInfoVC" {
+            guard let dest = segue.description as? AlbumInfoVC else {return}
+            dest.albumIndex = albumIndex!
         }
     }
 }
