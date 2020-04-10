@@ -13,10 +13,12 @@ protocol AlbumMainVCProtocol {
 }
 
 class AlbumMainController: UIViewController {
-    
+
+
     @IBOutlet weak var albumMakeBtn:UIButton!
     @IBOutlet weak var albumIntroLabel: UILabel!
     @IBOutlet weak var introView: UIView!
+    @IBOutlet weak var albumView: UIView!
     @IBOutlet weak var albumCollectionView: UICollectionView!
     @IBAction func clickMakeBtn(_ sender: Any){
         let nextVC = storyboard?.instantiateViewController(withIdentifier : "AlbumNameController") as! AlbumNameController
@@ -41,9 +43,7 @@ class AlbumMainController: UIViewController {
 extension AlbumMainController : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (self.view.frame.width / 2) - 15
-        let height = self.view.frame.height / 4.5
-        return CGSize(width: width, height: height)
+        return CGSize(width: 180, height: 220)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -55,13 +55,13 @@ extension AlbumMainController : UICollectionViewDelegateFlowLayout {
         
         let albumDetailVC = storyboard?.instantiateViewController(identifier: "albumDetailVC") as! AlbumDetailController
         albumDetailVC.albumIndex = indexPath.row
+        print("MainVC : album index = \(indexPath.row)")
         navigationController?.pushViewController(albumDetailVC, animated: true)
     }
 }
 
 
 extension AlbumMainController : UICollectionViewDataSource {
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -72,17 +72,9 @@ extension AlbumMainController : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlbumCell", for: indexPath) as! AlbumCell
-        let data = AlbumDatabase.arrayList[indexPath.row]
-        if let photoNum = data.albumMaxCount {
-            if(photoNum == data.photos.count){
-                cell.isFull = true
-            }
-        }else {
-            cell.isFull = false
-        }
         
-        cell.albumImageView.image =  data.photos.first ?? UIImage()
-        cell.albumNameLabel.text = data.albumName
+        cell.albumImageView.image =  AlbumDatabase.arrayList[indexPath.row].albumCover
+        cell.albumNameLabel.text = AlbumDatabase.arrayList[indexPath.row].albumName
     
         return cell
     }
@@ -97,9 +89,11 @@ extension AlbumMainController {
     
     func defaultSetting(){
         if(AlbumDatabase.arrayList.count != 0){
-           introView.isHidden = true
+            introView.isHidden = true
+            albumView.isHidden = false
         }else {
-           introView.isHidden = false
+            introView.isHidden = false
+            albumView.isHidden = true
         }
         self.tabBarController?.tabBar.isHidden = false
     }
@@ -110,4 +104,9 @@ extension AlbumMainController : AlbumMainVCProtocol {
     func reloadView() {
         self.albumCollectionView.reloadData()
     }
+}
+
+
+extension AlbumMainController {
+    
 }

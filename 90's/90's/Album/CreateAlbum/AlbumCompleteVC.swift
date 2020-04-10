@@ -15,18 +15,16 @@ class AlbumCompleteVC: UIViewController {
     @IBOutlet weak var albumDateLabel: UILabel!
     @IBOutlet weak var albumCountLabel: UILabel!
     @IBAction func cancleBtn(_ sender: UIButton) {
-        // 이 버튼 용도 질문 (아예 처음 화면으로 가는건가요?)
         self.navigationController?.popToRootViewController(animated: true)
     }
     @IBAction func backBtn(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func completeBtn(_ sender: UIButton) {
-        let newAlbum = Album(albumIndex: 0, albumName: self.albumName, albumStartDate: self.albumStartDate, albumEndDate: self.albumEndDate, albumCover: self.albumCover, albumLayout: self.albumLayout, albumMaxCount: self.albumMaxCount, photo: [])
+        let number = AlbumDatabase.arrayList.count + 1
+        let newAlbum = Album(albumIndex: number, albumName: self.albumName, albumStartDate: self.albumStartDate, albumEndDate: self.albumEndDate, albumCover: self.albumCover, albumLayout: self.albumLayout, albumMaxCount: self.albumMaxCount, photo: [])
         AlbumDatabase.arrayList.append(newAlbum)
-        
         mainProtocol?.reloadView()
-        
         self.navigationController?.popToRootViewController(animated: true)
     }
     
