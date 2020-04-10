@@ -188,15 +188,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9B180801243DFCB000AF1CE6 /* LayoutAlbum */ = {
-			isa = PBXGroup;
-			children = (
-				9B1807FD243DEE7A00AF1CE6 /* AlbumLayoutVC.swift */,
-				9B1807FF243DF53200AF1CE6 /* albumLayoutCollectionCell.swift */,
-			);
-			path = LayoutAlbum;
-			sourceTree = "<group>";
-		};
 		9B180802243DFCDA00AF1CE6 /* MainAlbum */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,7 +204,6 @@
 				9B180802243DFCDA00AF1CE6 /* MainAlbum */,
 				9B45BD03243873FC00497EA5 /* DetailAlbum */,
 				9B45BD02243873F000497EA5 /* CreateAlbum */,
-				9B180801243DFCB000AF1CE6 /* LayoutAlbum */,
 				3958515F242F461800014CB0 /* Album.storyboard */,
 			);
 			path = Album;
@@ -245,10 +235,12 @@
 			children = (
 				9B180803243E001A00AF1CE6 /* Theme.swift */,
 				A31BA4D2243876F0007CA89D /* AlbumNameController.swift */,
-				A333762D2420E9D0000DC7C4 /* AlbumQuantityController.swift */,
 				A311E5912438A880005EEC29 /* AlbumPeriodController.swift */,
+				A333762D2420E9D0000DC7C4 /* AlbumQuantityController.swift */,
 				9BBBA3DE243F6848002904AC /* AlbumCoverVC.swift */,
 				9BBBA3E0243F690B002904AC /* AlbumCoverCollectionCell.swift */,
+				9B1807FD243DEE7A00AF1CE6 /* AlbumLayoutVC.swift */,
+				9B1807FF243DF53200AF1CE6 /* albumLayoutCollectionCell.swift */,
 				9BBBA3E2243F6FD5002904AC /* AlbumCompleteVC.swift */,
 			);
 			path = CreateAlbum;
@@ -273,6 +265,14 @@
 			path = Invite;
 			sourceTree = "<group>";
 		};
+		9B6A13442440933E00E78E66 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				9B44EDE42429FCDF00B0D774 /* Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		A33376092420CFB3000DC7C4 = {
 			isa = PBXGroup;
 			children = (
@@ -295,7 +295,7 @@
 		A33376142420CFB3000DC7C4 /* 90's */ = {
 			isa = PBXGroup;
 			children = (
-				9B44EDE42429FCDF00B0D774 /* Extension.swift */,
+				9B6A13442440933E00E78E66 /* Extension */,
 				9B45BD0424387F3D00497EA5 /* Invite */,
 				9B45BCFF2438734200497EA5 /* Profile */,
 				39585165242F49C400014CB0 /* SignUp */,

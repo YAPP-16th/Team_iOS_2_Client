@@ -15,9 +15,9 @@ class AlbumDetailController : UIViewController {
     
     //navigation + 버튼 클릭 시 사진 추가 액션시트 출력
     @IBAction func addPhoto(_ sender: Any) {
-        let albumData = AlbumDatabase.albumList[albumIndex!]
-        let currentPhotoCount = albumData.photos.count
-        let restrictCount = albumData.quantity!
+        let album = AlbumDatabase.arrayList[albumIndex!]
+        let currentPhotoCount = album.photos.count
+        let restrictCount = album.albumMaxCount
         
         if(restrictCount == currentPhotoCount){
             let alert = UIAlertController(title: "사진 추가 불가", message: "제한개수를 모두 채웠습니다.", preferredStyle: .alert)
@@ -58,7 +58,7 @@ class AlbumDetailController : UIViewController {
         settingCollectionView()
         picker.delegate = self
         
-        albumNameLabel.text = "\(AlbumDatabase.albumList[albumIndex!].photos.count)개의 추억이\n쌓였습니다"
+        albumNameLabel.text = "\(AlbumDatabase.arrayList[albumIndex!].photos.count)개의 추억이\n쌓였습니다"
     }
     
     func settingCollectionView(){
@@ -100,7 +100,7 @@ extension AlbumDetailController : UICollectionViewDelegateFlowLayout {
 
 extension AlbumDetailController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return AlbumDatabase.albumList[albumIndex!].photos.count
+        return AlbumDatabase.arrayList[albumIndex!].photos.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -109,7 +109,7 @@ extension AlbumDetailController : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCell
-        cell.photoImageView.image = AlbumDatabase.albumList[albumIndex!].photos[indexPath.row]
+        cell.photoImageView.image = AlbumDatabase.arrayList[albumIndex!].photos[indexPath.row]
         return cell
     }
 }
@@ -119,7 +119,7 @@ extension AlbumDetailController : UIImagePickerControllerDelegate, UINavigationC
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            AlbumDatabase.albumList[albumIndex!].photos.append(image)
+            AlbumDatabase.arrayList[albumIndex!].photos.append(image)
         }
         dismiss(animated: true){
             self.photoCollectionView.reloadData()

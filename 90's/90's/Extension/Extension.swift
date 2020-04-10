@@ -6,7 +6,6 @@
 //  Copyright © 2020 홍정민. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 
@@ -27,19 +26,6 @@ extension UIView {
         self.layer.shadowOpacity = 0.2
         self.layer.shadowOffset = CGSize(width: 5, height: 7)
         self.clipsToBounds = false
-    }
-}
-
-
-extension UIViewController {
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
     }
 }
 
@@ -126,4 +112,6 @@ extension UIViewController{
            return pixelValues!
        }
 }
+
+
 
