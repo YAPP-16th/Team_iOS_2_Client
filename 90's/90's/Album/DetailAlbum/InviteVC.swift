@@ -11,17 +11,22 @@ import UIKit
 // 카카오 공유하기 기능
 class InviteVC: UIViewController {
     @IBOutlet weak var kakaoInviteBtn: UIButton!
+    @IBOutlet weak var inviteLabel: UILabel!
+    @IBAction func cancleBtn(_ sender: UIButton) {
+        dismiss(animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ButtonSetting()
+        defaultSetting()
     }
 }
 
 
 extension InviteVC {
-    func ButtonSetting(){
+    func defaultSetting(){
         kakaoInviteBtn.addTarget(self, action: #selector(touchInviteBtn), for: .touchUpInside)
+        inviteLabel.text = "친구를 초대하고\n함께 추억을 쌓아보세요!"
     }
     
     @objc func touchInviteBtn(){

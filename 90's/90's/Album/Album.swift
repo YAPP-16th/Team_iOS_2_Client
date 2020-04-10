@@ -38,7 +38,7 @@ class AlbumModel {
     func defaultData() -> Array<Album> {
         let stock = Album(albumIndex: 0, albumName: "default data", albumStartDate : "2020.04.10", albumEndDate : "2020.06.28", albumCover : UIImage(named: "cover1"), albumLayout: 1, albumMaxCount: 30, photo: [])
         let stock2 = Album(albumIndex: 1, albumName: "default data2", albumStartDate : "2020.04.10", albumEndDate : "2020.05.28", albumCover : UIImage(named: "cover2"), albumLayout: 1, albumMaxCount: 10, photo: [])
-        let stock3 = Album(albumIndex: 2, albumName: "default data3", albumStartDate : "2020.04.10", albumEndDate : "2020.09.08", albumCover : UIImage(named: "cover3"), albumLayout: 1, albumMaxCount: 5, photo: [])
+        let stock3 = Album(albumIndex: 2, albumName: "default data3", albumStartDate : "2020.04.10", albumEndDate : "2020.09.08", albumCover : UIImage(named: "cover3"), albumLayout: 1, albumMaxCount: 6, photo: [])
         return [stock, stock2, stock3]
     }
     

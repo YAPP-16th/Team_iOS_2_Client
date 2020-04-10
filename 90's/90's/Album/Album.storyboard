@@ -891,6 +891,7 @@
                                         <connections>
                                             <action selector="cancleBtn:" destination="gz1-Rl-FHX" eventType="touchUpInside" id="gMG-Xr-1h7"/>
                                             <action selector="completeBtn:" destination="XiB-jK-VCz" eventType="touchUpInside" id="wBL-2C-cGJ"/>
+                                            <segue destination="WkB-LK-QBw" kind="presentation" identifier="GoToAlbumPopupVC" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="brx-KZ-5Qp"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DvY-V8-aaG">
@@ -951,6 +952,9 @@
                                             <constraint firstAttribute="height" constant="59" id="pkV-II-6CO"/>
                                         </constraints>
                                         <state key="normal" title="초대"/>
+                                        <connections>
+                                            <segue destination="nqt-h9-TBU" kind="presentation" identifier="GoToInviteVC" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="9OG-ps-LOX"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0YD-Gg-ahy">
                                         <rect key="frame" x="348" y="13" width="58" height="59"/>
@@ -1085,9 +1089,6 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ikZ-rn-k85">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <segue destination="WkB-LK-QBw" kind="presentation" identifier="GoToAlbumPopupVC" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="Iah-vW-Zbi"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -1251,7 +1252,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h8n-JR-6kH">
-                                <rect key="frame" x="0.0" y="612" width="414" height="250"/>
+                                <rect key="frame" x="0.0" y="612" width="414" height="284"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SyL-CK-K9g">
                                         <rect key="frame" x="229" y="57" width="149" height="136"/>
@@ -1282,19 +1283,20 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="svU-L2-zHV" firstAttribute="leading" secondItem="h8n-JR-6kH" secondAttribute="leading" constant="36" id="5WW-bQ-Qlu"/>
-                                    <constraint firstItem="SyL-CK-K9g" firstAttribute="centerY" secondItem="h8n-JR-6kH" secondAttribute="centerY" id="6iX-Sj-0ew"/>
-                                    <constraint firstAttribute="trailing" secondItem="SyL-CK-K9g" secondAttribute="trailing" constant="36" id="V95-za-lVx"/>
-                                    <constraint firstAttribute="height" constant="250" id="VKv-O1-eNt"/>
-                                    <constraint firstItem="svU-L2-zHV" firstAttribute="centerY" secondItem="h8n-JR-6kH" secondAttribute="centerY" id="Wc0-Oc-uNb"/>
+                                    <constraint firstItem="svU-L2-zHV" firstAttribute="leading" secondItem="h8n-JR-6kH" secondAttribute="leading" constant="36" id="Ary-2U-NfH"/>
+                                    <constraint firstAttribute="trailing" secondItem="SyL-CK-K9g" secondAttribute="trailing" constant="36" id="EFo-in-ssh"/>
+                                    <constraint firstItem="SyL-CK-K9g" firstAttribute="top" secondItem="h8n-JR-6kH" secondAttribute="top" constant="57" id="NNc-p2-eer"/>
+                                    <constraint firstAttribute="width" constant="414" id="kcT-lQ-aj7"/>
+                                    <constraint firstAttribute="height" constant="284" id="rIP-fA-Y6z"/>
+                                    <constraint firstItem="svU-L2-zHV" firstAttribute="top" secondItem="h8n-JR-6kH" secondAttribute="top" constant="57" id="wy5-ox-Ema"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.67000000000000004" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="h8n-JR-6kH" firstAttribute="trailing" secondItem="2Pk-qB-QzC" secondAttribute="trailing" id="WlT-fY-cqK"/>
-                            <constraint firstItem="h8n-JR-6kH" firstAttribute="leading" secondItem="2Pk-qB-QzC" secondAttribute="leading" id="ker-9z-f7u"/>
-                            <constraint firstItem="h8n-JR-6kH" firstAttribute="bottom" secondItem="2Pk-qB-QzC" secondAttribute="bottom" id="yGa-Kc-teo"/>
+                            <constraint firstItem="h8n-JR-6kH" firstAttribute="leading" secondItem="2Pk-qB-QzC" secondAttribute="leading" id="VZE-lV-hdJ"/>
+                            <constraint firstAttribute="bottom" secondItem="h8n-JR-6kH" secondAttribute="bottom" id="afQ-eH-O1A"/>
+                            <constraint firstItem="h8n-JR-6kH" firstAttribute="trailing" secondItem="2Pk-qB-QzC" secondAttribute="trailing" id="oJC-Ty-CXc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2Pk-qB-QzC"/>
                     </view>
@@ -1523,6 +1525,81 @@
             </objects>
             <point key="canvasLocation" x="5598.5507246376819" y="126.5625"/>
         </scene>
+        <!--InviteVC-->
+        <scene sceneID="NxS-JN-q3H">
+            <objects>
+                <viewController id="nqt-h9-TBU" customClass="InviteVC" customModule="_0_s" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Y4m-y1-fkN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aWs-jY-J6B">
+                                <rect key="frame" x="0.0" y="612" width="414" height="284"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kF6-52-KXT">
+                                        <rect key="frame" x="35.5" y="144" width="343" height="81"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="81" id="e2S-VN-GN7"/>
+                                            <constraint firstAttribute="width" constant="343" id="ftX-tT-J4c"/>
+                                        </constraints>
+                                        <state key="normal" image="kakaoinviteimage"/>
+                                        <connections>
+                                            <action selector="kakaoInviteBtn:" destination="0dd-5Q-a3e" eventType="touchUpInside" id="juG-ze-PVh"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="deZ-ea-jcA">
+                                        <rect key="frame" x="337" y="0.0" width="77" height="74"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="77" id="XkV-df-iBZ"/>
+                                            <constraint firstAttribute="height" constant="74" id="bS2-qm-6KZ"/>
+                                        </constraints>
+                                        <state key="normal" image="cancleicon"/>
+                                        <connections>
+                                            <action selector="cancleBtn:" destination="nqt-h9-TBU" eventType="touchUpInside" id="deS-NT-WJU"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ps3-26-0WR">
+                                        <rect key="frame" x="83" y="44" width="248" height="62"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="62" id="j2l-cW-qTh"/>
+                                            <constraint firstAttribute="width" constant="248" id="ywz-ys-USh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="ps3-26-0WR" firstAttribute="centerX" secondItem="aWs-jY-J6B" secondAttribute="centerX" id="4LI-af-usN"/>
+                                    <constraint firstItem="ps3-26-0WR" firstAttribute="top" secondItem="aWs-jY-J6B" secondAttribute="top" constant="44" id="BPS-xg-39Z"/>
+                                    <constraint firstAttribute="trailing" secondItem="deZ-ea-jcA" secondAttribute="trailing" id="DOQ-5V-MJE"/>
+                                    <constraint firstItem="deZ-ea-jcA" firstAttribute="top" secondItem="aWs-jY-J6B" secondAttribute="top" id="cBs-n6-5mb"/>
+                                    <constraint firstAttribute="height" constant="284" id="eIb-8d-Egg"/>
+                                    <constraint firstItem="kF6-52-KXT" firstAttribute="top" secondItem="aWs-jY-J6B" secondAttribute="top" constant="144" id="hDS-dp-zoE"/>
+                                    <constraint firstItem="kF6-52-KXT" firstAttribute="centerX" secondItem="aWs-jY-J6B" secondAttribute="centerX" id="mF8-So-zDk"/>
+                                    <constraint firstAttribute="width" constant="414" id="x1Y-WU-ArG"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="aWs-jY-J6B" secondAttribute="bottom" id="IrW-Jc-4D0"/>
+                            <constraint firstItem="aWs-jY-J6B" firstAttribute="trailing" secondItem="xzr-Em-jBy" secondAttribute="trailing" id="IzO-cd-7Lx"/>
+                            <constraint firstItem="aWs-jY-J6B" firstAttribute="leading" secondItem="xzr-Em-jBy" secondAttribute="leading" id="WBh-wc-JEd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xzr-Em-jBy"/>
+                    </view>
+                    <connections>
+                        <outlet property="inviteLabel" destination="ps3-26-0WR" id="Df3-Zr-qnR"/>
+                        <outlet property="kakaoInviteBtn" destination="kF6-52-KXT" id="384-J6-ZDJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9qH-aU-LRk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="0dd-5Q-a3e" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1889.8550724637682" y="1534.8214285714284"/>
+        </scene>
     </scenes>
     <resources>
         <image name="90image" width="116" height="96"/>
@@ -1531,6 +1608,7 @@
         <image name="cancleicon" width="267" height="267"/>
         <image name="cover1" width="180" height="185"/>
         <image name="emptyimage" width="382" height="406"/>
+        <image name="kakaoinviteimage" width="682" height="158"/>
         <image name="plusimage" width="267" height="267"/>
     </resources>
 </document>
