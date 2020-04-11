@@ -294,13 +294,13 @@ SWIFT_CLASS("_TtC4_0_s21AlbumDetailController")
 @end
 
 
+
+
 @interface AlbumDetailController (SWIFT_EXTENSION(_0_s))
 - (void)touchAddPhotoBtn;
 - (void)touchInviteBtn;
 - (void)touchInfoBtn;
 @end
-
-
 
 
 @interface AlbumDetailController (SWIFT_EXTENSION(_0_s)) <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
@@ -495,15 +495,15 @@ SWIFT_CLASS("_TtC4_0_s23AlbumQuantityController")
 
 @class UIPickerView;
 
-@interface AlbumQuantityController (SWIFT_EXTENSION(_0_s)) <UIPickerViewDataSource>
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView * _Nonnull)pickerView SWIFT_WARN_UNUSED_RESULT;
-- (NSInteger)pickerView:(UIPickerView * _Nonnull)pickerView numberOfRowsInComponent:(NSInteger)component SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
 @interface AlbumQuantityController (SWIFT_EXTENSION(_0_s)) <UIPickerViewDelegate>
 - (NSString * _Nullable)pickerView:(UIPickerView * _Nonnull)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component SWIFT_WARN_UNUSED_RESULT;
 - (void)pickerView:(UIPickerView * _Nonnull)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component;
+@end
+
+
+@interface AlbumQuantityController (SWIFT_EXTENSION(_0_s)) <UIPickerViewDataSource>
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView * _Nonnull)pickerView SWIFT_WARN_UNUSED_RESULT;
+- (NSInteger)pickerView:(UIPickerView * _Nonnull)pickerView numberOfRowsInComponent:(NSInteger)component SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -582,6 +582,7 @@ SWIFT_CLASS("_TtC4_0_s20FilterViewController")
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * _Null_unspecified captureBtnConstraint;
 @property (nonatomic, weak) IBOutlet UICollectionView * _Null_unspecified filterCollectionView;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * _Null_unspecified outputimageViewConstraint;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified changeCameraBtn;
 - (void)viewDidLoad;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidAppear:(BOOL)animated;
@@ -855,6 +856,8 @@ SWIFT_CLASS("_TtC4_0_s18TermViewController")
 - (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
+
+
 
 
 
