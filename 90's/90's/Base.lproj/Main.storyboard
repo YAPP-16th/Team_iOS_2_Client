@@ -225,11 +225,10 @@
         <!--SignIn-->
         <scene sceneID="ThV-jR-xZD">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gkw-iW-SCn" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Gkw-iW-SCn" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="SignIn" id="v8e-lR-gZv"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Y7q-ew-EXu">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -244,11 +243,10 @@
         <!--SignUp-->
         <scene sceneID="XlO-hh-gVg">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Z34-8U-FbG" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Z34-8U-FbG" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="SignUp" id="ZSD-Hp-aKQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UAm-EE-n1z">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
