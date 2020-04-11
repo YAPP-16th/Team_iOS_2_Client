@@ -19,9 +19,7 @@ class AlbumCoverCollectionCell: UICollectionViewCell {
 }
 
 extension AlbumCoverCollectionCell {
-    func subViewSetting(){
-        let screen = UIScreen.main.bounds
-        
+    func subViewSetting(){        
         imageView.topAnchor.constraint(equalTo: self.contentView.topAnchor,constant: 0.0).isActive = true
         imageView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 0.0).isActive = true
         imageView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: 0.0).isActive = true

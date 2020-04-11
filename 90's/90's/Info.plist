@@ -2,17 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>kakao9c1279f7fccd7de16ae66d216e1d8780</string>
-		<string>kakaokompassauth</string>
-		<string>storykompassauth</string>
-		<string>kakaolink</string>
-		<string>kakaotalk-5.9.7</string>
-		<string>storylink</string>
-	</array>
-	<key>KAKAO_APP_KEY</key>
-	<string>9c1279f7fccd7de16ae66d216e1d8780</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -40,6 +29,17 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>KAKAO_APP_KEY</key>
+	<string>9c1279f7fccd7de16ae66d216e1d8780</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>kakao9c1279f7fccd7de16ae66d216e1d8780</string>
+		<string>kakaokompassauth</string>
+		<string>storykompassauth</string>
+		<string>kakaolink</string>
+		<string>kakaotalk-5.9.7</string>
+		<string>storylink</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
@@ -62,7 +62,7 @@
 					<key>UISceneDelegateClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
 					<key>UISceneStoryboardFile</key>
-					<string>Filter</string>
+					<string>Main</string>
 				</dict>
 			</array>
 		</dict>

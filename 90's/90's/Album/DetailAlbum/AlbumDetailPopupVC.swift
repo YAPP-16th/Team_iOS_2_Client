@@ -21,8 +21,9 @@ class AlbumDetailPopupVC: UIViewController {
         self.present(goNextVC, animated: true)
     }
     
-    private let galleryPicker = UIImagePickerController()
+    let galleryPicker = UIImagePickerController()
     var albumIndex : Int!
+    var detailProtocol : AlbumDetailVCProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,18 @@ class AlbumDetailPopupVC: UIViewController {
         let touch = touches.first
         if touch?.view != self.touchView
         { self.dismiss(animated: true)}
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        
+        if let beforeVC = presentingViewController as? AlbumDetailController {
+            DispatchQueue.main.async {
+                print("view will disappear")
+                beforeVC.photoCollectionView.reloadData()
+            }
+        }
     }
 }
 
@@ -44,13 +57,16 @@ extension AlbumDetailPopupVC : UIImagePickerControllerDelegate, UINavigationCont
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let url = info[UIImagePickerController.InfoKey.phAsset] as? URL,
+        
+        if let url = info[UIImagePickerController.InfoKey.referenceURL] as? URL,
             let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             UserDefaults.standard.set(url, forKey: "assetURL")
             AlbumDatabase.arrayList[albumIndex!].photos.append(image)
         }
-
-        dismiss(animated: true)
+        
+        dismiss(animated: true, completion: {
+            self.detailProtocol?.reloadView()
+        })
     }
 }
 

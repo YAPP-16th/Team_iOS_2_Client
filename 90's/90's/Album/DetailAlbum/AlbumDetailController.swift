@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol AlbumDetailVCProtocol {
+    func reloadView()
+}
+
 class AlbumDetailController : UIViewController {
     @IBOutlet weak var photoCollectionView: UICollectionView!
     @IBOutlet weak var albumNameLabel: UILabel!
@@ -24,6 +28,7 @@ class AlbumDetailController : UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        photoCollectionView.reloadData()
         self.tabBarController?.tabBar.isHidden = true
     }
     
@@ -102,14 +107,20 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
 extension AlbumDetailController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GoToAlbumPopupVC" {
-            guard let dest = segue.description as? AlbumDetailPopupVC else {return}
+            let dest = segue.destination as! AlbumDetailPopupVC
             dest.albumIndex = albumIndex!
         } else if segue.identifier == "GoToInfoVC" {
-            guard let dest = segue.description as? AlbumInfoVC else {return}
+            let dest = segue.destination as! AlbumInfoVC
             dest.albumIndex = albumIndex!
         }
     }
 }
 
 
-
+extension AlbumDetailController : AlbumDetailVCProtocol {
+    func reloadView() {
+        self.photoCollectionView.reloadData()
+        self.viewWillAppear(true)
+        print("AlbumDetailVC reloaddata")
+    }
+}
