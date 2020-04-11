@@ -17,7 +17,7 @@ class AlbumDetailPopupVC: UIViewController {
     }
     @IBAction func touchCameraBtn(_ sender: UIButton) {
         let storyBoard = UIStoryboard(name: "Filter", bundle: nil)
-        let goNextVC = storyBoard.instantiateViewController(withIdentifier: "testViewController") as! testViewController
+        let goNextVC = storyBoard.instantiateViewController(withIdentifier: "FilterViewController") as! FilterViewController
         self.present(goNextVC, animated: true)
     }
     
