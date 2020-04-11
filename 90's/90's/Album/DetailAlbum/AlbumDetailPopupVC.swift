@@ -25,6 +25,7 @@ class AlbumDetailPopupVC: UIViewController {
     var albumIndex : Int!
     var detailProtocol : AlbumDetailVCProtocol!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -38,17 +39,13 @@ class AlbumDetailPopupVC: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        
         if let beforeVC = presentingViewController as? AlbumDetailController {
             DispatchQueue.main.async {
-                print("view will disappear")
                 beforeVC.photoCollectionView.reloadData()
             }
         }
     }
 }
-
-
 
 
 extension AlbumDetailPopupVC : UIImagePickerControllerDelegate, UINavigationControllerDelegate {

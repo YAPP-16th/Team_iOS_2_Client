@@ -14,7 +14,7 @@ class AlbumCell : UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        subImageViewSetting(imageView: imageView, top: 0, left: 0, right: 0, bottom: -30)
+        subImageViewSetting(imageView: imageView, top: 0, left: 0, right: 0, bottom: 30)
     }
 }
 

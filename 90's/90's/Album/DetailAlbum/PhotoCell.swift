@@ -11,9 +11,7 @@ class PhotoCell : UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        subImageViewSetting(imageView: photoImageView, top: 10, left: 8, right: -8, bottom: -40)
-        photoImageView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
-        print("contentview size : \(self.contentView.frame.size), imageview : \(self.photoImageView.frame.size)")
+        subImageViewSetting(imageView: photoImageView, top: 10, left: 8, right: 8, bottom: 40)
     }
 }
 

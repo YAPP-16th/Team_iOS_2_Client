@@ -36,12 +36,11 @@ extension UICollectionViewCell {
         
         imageView.topAnchor.constraint(equalTo: self.contentView.topAnchor,constant: top).isActive = true
         imageView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: left).isActive = true
-        imageView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: right).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: bottom).isActive = true
+        imageView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -right).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -bottom).isActive = true
     
         imageView.contentMode = .scaleToFill
     }
-   
 }
 
 

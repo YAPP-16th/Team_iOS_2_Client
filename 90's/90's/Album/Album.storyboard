@@ -1262,7 +1262,7 @@
                                 <rect key="frame" x="0.0" y="612" width="414" height="284"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SyL-CK-K9g">
-                                        <rect key="frame" x="229" y="57" width="149" height="136"/>
+                                        <rect key="frame" x="229" y="74" width="149" height="136"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="136" id="Gj9-Ik-sEp"/>
                                             <constraint firstAttribute="width" constant="149" id="mD7-bH-JrS"/>
@@ -1275,7 +1275,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svU-L2-zHV">
-                                        <rect key="frame" x="36" y="57" width="149" height="136"/>
+                                        <rect key="frame" x="36" y="74" width="149" height="136"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="136" id="76R-TI-zdS"/>
                                             <constraint firstAttribute="width" constant="149" id="snQ-3c-gRB"/>
@@ -1290,12 +1290,12 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="svU-L2-zHV" firstAttribute="leading" secondItem="h8n-JR-6kH" secondAttribute="leading" constant="36" id="Ary-2U-NfH"/>
-                                    <constraint firstAttribute="trailing" secondItem="SyL-CK-K9g" secondAttribute="trailing" constant="36" id="EFo-in-ssh"/>
-                                    <constraint firstItem="SyL-CK-K9g" firstAttribute="top" secondItem="h8n-JR-6kH" secondAttribute="top" constant="57" id="NNc-p2-eer"/>
+                                    <constraint firstItem="svU-L2-zHV" firstAttribute="leading" secondItem="h8n-JR-6kH" secondAttribute="leading" constant="36" id="BB1-O5-VxR"/>
+                                    <constraint firstAttribute="trailing" secondItem="SyL-CK-K9g" secondAttribute="trailing" constant="36" id="NAL-i6-p22"/>
                                     <constraint firstAttribute="width" constant="414" id="kcT-lQ-aj7"/>
+                                    <constraint firstItem="SyL-CK-K9g" firstAttribute="centerY" secondItem="h8n-JR-6kH" secondAttribute="centerY" id="nf6-zA-6Op"/>
+                                    <constraint firstItem="svU-L2-zHV" firstAttribute="centerY" secondItem="h8n-JR-6kH" secondAttribute="centerY" id="oIB-tZ-Diu"/>
                                     <constraint firstAttribute="height" constant="284" id="rIP-fA-Y6z"/>
-                                    <constraint firstItem="svU-L2-zHV" firstAttribute="top" secondItem="h8n-JR-6kH" secondAttribute="top" constant="57" id="wy5-ox-Ema"/>
                                 </constraints>
                             </view>
                         </subviews>
