@@ -13,9 +13,27 @@ class AlbumPeriodController : UIViewController {
     
     @IBOutlet weak var tfOpenDate: UITextField!
     @IBOutlet weak var tfExpireDate: UITextField!
+    @IBOutlet weak var backView: UIView!
     @IBOutlet weak var nextBtn: UIButton!
+    @IBOutlet weak var buttonConstraint: NSLayoutConstraint!
     @IBOutlet weak var selectorImageView1: UIImageView!
     @IBOutlet weak var selectorImageView2: UIImageView!
+    @IBAction func cancleBtn(_ sender: UIButton) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    @IBAction func backBtn(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    //다음 버튼 눌렀을 시 액션
+    @IBAction func clickNextBtn(_ sender: Any) {
+        let nextVC = storyboard?.instantiateViewController(withIdentifier : "AlbumQuantityController") as! AlbumQuantityController
+           
+        nextVC.albumName = albumName
+        nextVC.albumStartDate = tfOpenDate.text!
+        nextVC.albumEndDate = tfExpireDate.text!
+           
+        self.navigationController?.pushViewController(nextVC, animated: true)
+       }
     
     var albumName:String!
     var initialFlag = true
@@ -24,36 +42,30 @@ class AlbumPeriodController : UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setOpenDate()
+        keyboardSetting()
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         setDatePicker()
     }
-    
-    
-    //다음 버튼 눌렀을 시 액션
-    @IBAction func clickNextBtn(_ sender: Any) {
-        let albumQuantityVC = storyboard?.instantiateViewController(withIdentifier : "AlbumQuantityController") as! AlbumQuantityController
-        
-        albumQuantityVC.albumName = albumName
-        albumQuantityVC.startDate = tfOpenDate.text!
-        albumQuantityVC.expireDate = tfExpireDate.text!
-        
+}
 
-            self.navigationController?.pushViewController(albumQuantityVC, animated: true)
-        
-    }
-    
+
+extension AlbumPeriodController {
     //앨범 시작일은 현재 날짜로 고정
     func setOpenDate(){
-        formatter.dateFormat = "yyyy년 M월 d일"
+        formatter.dateFormat = "yyyy.MM.dd"
         tfOpenDate.text = formatter.string(from: Date())
     }
     
     //앨범 마감일 설정 시 datePicker 설정
     func setDatePicker(){
         datePicker.datePickerMode = .date
+        datePicker.minimumDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())
+        datePicker.backgroundColor = .white
         
         //datePicker 한글 설정
         datePicker.locale = NSLocale(localeIdentifier: "ko-KO") as Locale
@@ -70,6 +82,7 @@ class AlbumPeriodController : UIViewController {
             self.selectorImageView1.backgroundColor = UIColor.black
             self.selectorImageView2.backgroundColor = UIColor.black
             self.nextBtn.backgroundColor = UIColor.black
+            self.backView.backgroundColor = UIColor.black
             self.nextBtn.isEnabled = true
             initialFlag = false
         }
@@ -80,3 +93,19 @@ class AlbumPeriodController : UIViewController {
     }
 }
 
+
+extension AlbumPeriodController {
+    func keyboardSetting(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        buttonConstraint.constant = 35 - datePicker.frame.height
+        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 1, initialSpringVelocity: 0.0, options: [], animations: {self.view.layoutIfNeeded()})
+       }
+
+    @objc func keyboardWillHide(_ notification: Notification) {
+        buttonConstraint.constant = 10
+    }
+}

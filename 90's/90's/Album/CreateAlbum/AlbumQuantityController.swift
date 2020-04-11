@@ -6,30 +6,48 @@ class AlbumQuantityController : UIViewController {
     @IBOutlet weak var tfQuantity: UITextField!
     @IBOutlet weak var selectorImageVIew: UIImageView!
     @IBOutlet weak var nextBtn: UIButton!
+    @IBOutlet weak var backView: UIView!
+    @IBOutlet weak var buttonConstraint: NSLayoutConstraint!
+    @IBAction func cancleBtn(_ sender: UIButton) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    @IBAction func backBtn(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    
     
     let quantityPicker = UIPickerView()
     
     var albumName:String!
-    var startDate:String!
-    var expireDate:String!
-    var quantity:Int!
+    var albumStartDate:String!
+    var albumEndDate:String!
+    var albumMaxCount:Int!
     
-    private var quantityArr = Array(1...30)
+    private var maxCountArray = Array(1...30)
     var initialFlag = true
     
     override func viewDidLoad() {
+        keyboardSetting()
         setQuantityPicker()
     }
     
     @IBAction func clickNextBtn(_ sender: Any) {
-        let albumDetailVC = storyboard?.instantiateViewController(identifier: "albumDetailVC") as! AlbumDetailController
-        self.navigationController?.pushViewController(albumDetailVC, animated: true)
+        let nextVC = storyboard?.instantiateViewController(identifier: "AlbumCoverVC") as! AlbumCoverVC
+        
+        nextVC.albumName = albumName
+        nextVC.albumStartDate = albumStartDate
+        nextVC.albumEndDate = albumEndDate
+        nextVC.albumMaxCount = albumMaxCount
+        
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     
     func setQuantityPicker(){
         quantityPicker.delegate = self
         quantityPicker.dataSource = self
+        quantityPicker.backgroundColor = .white
         tfQuantity.inputView = quantityPicker
     }
     
@@ -43,19 +61,20 @@ class AlbumQuantityController : UIViewController {
 extension AlbumQuantityController : UIPickerViewDelegate {
     //pickerView에 표시될 내용
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "\(quantityArr[row])"
+        return "\(maxCountArray[row])"
     }
     
     //pickerView 클릭 시 액션
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.quantity = quantityArr[row]
-        tfQuantity.text = "\(quantityArr[row])"
+        self.albumMaxCount = maxCountArray[row]
+        tfQuantity.text = "\(maxCountArray[row])"
         
         if(initialFlag){
-                   self.selectorImageVIew.backgroundColor = UIColor.black
-                   self.nextBtn.backgroundColor = UIColor.black
-                   self.nextBtn.isEnabled = true
-                   initialFlag = false
+            self.selectorImageVIew.backgroundColor = UIColor.black
+            self.nextBtn.backgroundColor = UIColor.black
+            self.backView.backgroundColor = UIColor.black
+            self.nextBtn.isEnabled = true
+            initialFlag = false
         }
     }
 }
@@ -68,6 +87,23 @@ extension AlbumQuantityController : UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-            return quantityArr.count
+        return maxCountArray.count
+    }
+}
+
+
+extension AlbumQuantityController {
+    func keyboardSetting(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        buttonConstraint.constant = 35 - quantityPicker.frame.height
+        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 1, initialSpringVelocity: 0.0, options: [], animations: {self.view.layoutIfNeeded()})
+       }
+
+    @objc func keyboardWillHide(_ notification: Notification) {
+        buttonConstraint.constant = 10
     }
 }
