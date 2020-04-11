@@ -17,5 +17,3 @@ extension ContentslabelProtocol {
         return .black
     }
 }
-
-
