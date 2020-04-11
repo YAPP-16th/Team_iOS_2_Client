@@ -16,8 +16,15 @@ class OrderFinishViewController : UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+//           self.tabBarController?.tabBar.isHidden = false
+           self.navigationController?.navigationBar.isHidden = false
+       }
+    
+    
     @IBAction func cancelgotoAlbum(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+//        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     

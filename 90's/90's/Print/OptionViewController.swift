@@ -25,6 +25,7 @@ class OptionViewController : UIViewController {
     @IBOutlet weak var SecondOptionView: UIView!
     @IBOutlet weak var countOptionView: UIView!
     
+    @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var totalSum1: UILabel!
     @IBOutlet weak var totalSum2: UILabel!
     @IBOutlet weak var totalCount: UILabel!
@@ -36,7 +37,7 @@ class OptionViewController : UIViewController {
     override func viewDidLoad() {
         self.view.backgroundColor = .white
         super.viewDidLoad()
-        
+                
         self.totalCount.text = "00"
         
         if !isTotalOptionViewAppear {
@@ -49,8 +50,12 @@ class OptionViewController : UIViewController {
             self.stackViewConnected.constant = 63.5
             self.countOptionViewConstraint.constant = self.view.frame.height
         }
-        
-        
+    
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     //MARK: View IBAction
@@ -145,15 +150,18 @@ class OptionViewController : UIViewController {
         
         self.view.backgroundColor = .white
         self.countOptionViewConstraint.constant = self.view.frame.height
-//
-//        UIView.animate(withDuration: 1, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations: {self.view.layoutIfNeeded()})
+        //
+        //        UIView.animate(withDuration: 1, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations: {self.view.layoutIfNeeded()})
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrderFinishViewController") as! OrderFinishViewController
-
-//        self.navigationController?.title = "결제 내역"
+        
+        //        self.navigationController?.title = "결제 내역"
         vc.modalPresentationStyle = .fullScreen
-//        self.navigationController?.pushViewController(vc, animated: true)
-        self.show(vc, sender: nil)
+        
+//        self.navigationController?.show(vc, sender: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
+//        self.show(vc, sender: nil)
+        
     }
     
     @IBAction func minusBtnAction(_ sender: Any) {
