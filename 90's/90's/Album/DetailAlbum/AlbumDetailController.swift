@@ -94,7 +94,7 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 184, height: 223)
+        return CGSize(width: view.frame.width/2 - 26, height: view.frame.height/4 + 10)
     }
 }
 

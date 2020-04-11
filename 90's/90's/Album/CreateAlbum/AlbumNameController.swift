@@ -6,8 +6,8 @@
 //  Copyright © 2020 홍정민. All rights reserved.
 //
 
-import Foundation
 import UIKit
+
 
 class AlbumNameController : UIViewController {
     @IBOutlet weak var buttonConstraint: NSLayoutConstraint!
@@ -24,6 +24,7 @@ class AlbumNameController : UIViewController {
         nextVC.albumName = tfAlbumName.text!
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -88,7 +89,17 @@ extension AlbumNameController {
         let userInfo = notification.userInfo
         let keyboardSize = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
         let keyboardHeight = keyboardSize.cgRectValue.height
-        buttonConstraint.constant = 35 - keyboardHeight
+        
+        // iphone8 : 260, 11 : 346
+        if keyboardHeight > 300 { // iphone 11 !
+            buttonConstraint.constant = nextBtn.frame.height/2 - keyboardHeight
+            backView.isHidden = false
+        }else { // iphone ~ 8
+            buttonConstraint.constant = 10 - keyboardHeight
+            backView.isHidden = true
+            isDeviseVersionLow = true
+        }
+        
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 1, initialSpringVelocity: 0.0, options: [], animations: {self.view.layoutIfNeeded()})
        }
 

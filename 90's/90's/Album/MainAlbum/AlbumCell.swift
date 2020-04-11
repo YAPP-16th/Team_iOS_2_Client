@@ -2,21 +2,12 @@ import UIKit
 
 
 class AlbumCell : UICollectionViewCell {
-    @IBOutlet weak var albumImageView : UIImageView!
-    @IBOutlet weak var albumNameLabel : UILabel!
-    @IBOutlet weak var printBtn: UIButton!
+    @IBOutlet weak var imageView : UIImageView!
+    @IBOutlet weak var nameLabel : UILabel!
     
-    var isFull: Bool = false{
-        didSet{
-            if(!isFull){
-                printBtn.isHidden = true
-            }else {
-                printBtn.isHidden = false
-            }
-        }
-    }
-    
-    override func prepareForReuse() {
-        self.printBtn.isHidden = true
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        subImageViewSetting(imageView: imageView)
     }
 }
+

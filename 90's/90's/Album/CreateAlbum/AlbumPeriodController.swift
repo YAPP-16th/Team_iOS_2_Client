@@ -40,7 +40,6 @@ class AlbumPeriodController : UIViewController {
     let datePicker = UIDatePicker()
     let formatter = DateFormatter()
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setOpenDate()
@@ -50,6 +49,7 @@ class AlbumPeriodController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setDatePicker()
+        checkDeviseVersion(backView: backView)
     }
 }
 
@@ -95,13 +95,14 @@ extension AlbumPeriodController {
 
 
 extension AlbumPeriodController {
+    
     func keyboardSetting(){
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
-        buttonConstraint.constant = 35 - datePicker.frame.height
+        buttonConstraint.constant = 10 - datePicker.frame.height
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 1, initialSpringVelocity: 0.0, options: [], animations: {self.view.layoutIfNeeded()})
        }
 

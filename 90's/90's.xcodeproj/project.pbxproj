@@ -38,6 +38,7 @@
 		9BD31D3E243A110600D0D719 /* KakaoLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD31D3D243A110600D0D719 /* KakaoLink.framework */; };
 		9BD31D40243A111A00D0D719 /* KakaoMessageTemplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD31D3F243A111A00D0D719 /* KakaoMessageTemplate.framework */; };
 		9BD31D42243A11BF00D0D719 /* KakaoCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD31D41243A11BF00D0D719 /* KakaoCommon.framework */; };
+		9BFC148A2441C14500F38AFF /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFC14892441C14500F38AFF /* Protocol.swift */; };
 		A311E5922438A880005EEC29 /* AlbumPeriodController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A311E5912438A880005EEC29 /* AlbumPeriodController.swift */; };
 		A318AC72243E290C00245434 /* TermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A318AC71243E290C00245434 /* TermViewController.swift */; };
 		A318AC74243E291D00245434 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A318AC73243E291D00245434 /* EmailViewController.swift */; };
@@ -94,6 +95,7 @@
 		9BD31D3D243A110600D0D719 /* KakaoLink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KakaoLink.framework; path = "../../../Downloads/KakaoOpenSDK-1/KakaoLink.framework"; sourceTree = "<group>"; };
 		9BD31D3F243A111A00D0D719 /* KakaoMessageTemplate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoMessageTemplate.framework; sourceTree = "<group>"; };
 		9BD31D41243A11BF00D0D719 /* KakaoCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoCommon.framework; sourceTree = "<group>"; };
+		9BFC14892441C14500F38AFF /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		A311E5912438A880005EEC29 /* AlbumPeriodController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumPeriodController.swift; sourceTree = "<group>"; };
 		A318AC71243E290C00245434 /* TermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermViewController.swift; sourceTree = "<group>"; };
 		A318AC73243E291D00245434 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				9B44EDE42429FCDF00B0D774 /* Extension.swift */,
+				9BFC14892441C14500F38AFF /* Protocol.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				9B44EDE12429FC9100B0D774 /* ImageRenderVC.swift in Sources */,
 				A33376302420EA9D000DC7C4 /* AlbumCell.swift in Sources */,
 				9B180800243DF53200AF1CE6 /* albumLayoutCollectionCell.swift in Sources */,
+				9BFC148A2441C14500F38AFF /* Protocol.swift in Sources */,
 				9B6A134C2440CE9400E78E66 /* AlbumInfoVC.swift in Sources */,
 				9BD31D3A243A0A9100D0D719 /* InviteVC.swift in Sources */,
 				9BBBA3E1243F690B002904AC /* AlbumCoverCollectionCell.swift in Sources */,

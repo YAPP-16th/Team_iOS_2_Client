@@ -8,13 +8,13 @@
 
 import UIKit
 
+var isDeviseVersionLow : Bool = false // 이건 임시방편....
+
 protocol AlbumMainVCProtocol {
     func reloadView()
 }
 
 class AlbumMainController: UIViewController {
-
-
     @IBOutlet weak var albumMakeBtn:UIButton!
     @IBOutlet weak var albumIntroLabel: UILabel!
     @IBOutlet weak var introView: UIView!
@@ -43,7 +43,7 @@ class AlbumMainController: UIViewController {
 extension AlbumMainController : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 180, height: 220)
+        return CGSize(width: view.frame.width/2 - 26, height: view.frame.height/4 + 10)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -73,8 +73,8 @@ extension AlbumMainController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlbumCell", for: indexPath) as! AlbumCell
         
-        cell.albumImageView.image =  AlbumDatabase.arrayList[indexPath.row].albumCover
-        cell.albumNameLabel.text = AlbumDatabase.arrayList[indexPath.row].albumName
+        cell.imageView.image =  AlbumDatabase.arrayList[indexPath.row].albumCover
+        cell.nameLabel.text = AlbumDatabase.arrayList[indexPath.row].albumName
     
         return cell
     }
@@ -104,9 +104,4 @@ extension AlbumMainController : AlbumMainVCProtocol {
     func reloadView() {
         self.albumCollectionView.reloadData()
     }
-}
-
-
-extension AlbumMainController {
-    
 }

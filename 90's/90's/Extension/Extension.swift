@@ -30,7 +30,28 @@ extension UIView {
 }
 
 
+extension UICollectionViewCell {
+    func subImageViewSetting(imageView : UIImageView!){
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        imageView.topAnchor.constraint(equalTo: self.contentView.topAnchor,constant: 0.0).isActive = true
+        imageView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 0.0).isActive = true
+        imageView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: 0.0).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -30).isActive = true
+        imageView.contentMode = .scaleAspectFit
+    }
+}
+
+
+
 extension UIViewController{
+    func checkDeviseVersion(backView: UIView!){
+        if isDeviseVersionLow == false {
+            backView.isHidden = false
+        }else {
+            backView.isHidden = true
+        }
+    }
     
        // LUT Filter apply
     func colorCubeFilterFromLUT(imageName : String, originalImage : UIImage)-> CIFilter? {
@@ -112,6 +133,5 @@ extension UIViewController{
            return pixelValues!
        }
 }
-
 
 

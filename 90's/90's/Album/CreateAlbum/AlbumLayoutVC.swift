@@ -36,11 +36,17 @@ class AlbumLayoutVC: UIViewController {
     var albumMaxCount : Int!
     var albumCover : UIImage!
     var albumLayout : Int!
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        defaultSetting()
+    }
+}
+
+
+extension AlbumLayoutVC {
+    func defaultSetting(){
         albumLayout = 0
         layoutArray = layoutStringArray.map({(value : String) -> UIImage in
             return UIImage(named: value)!
