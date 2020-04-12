@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol AlbumDetailVCProtocol {
+    func reloadView()
+}
+
 class AlbumDetailController : UIViewController {
     @IBOutlet weak var photoCollectionView: UICollectionView!
     @IBOutlet weak var albumNameLabel: UILabel!
@@ -24,6 +28,7 @@ class AlbumDetailController : UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        photoCollectionView.reloadData()
         self.tabBarController?.tabBar.isHidden = true
     }
     
@@ -44,7 +49,7 @@ extension AlbumDetailController {
     
     func defaultSetting(){
         albumNameLabel.text = AlbumDatabase.arrayList[albumIndex!].albumName
-        albumCountLabel.text = "\(AlbumDatabase.arrayList[albumIndex!].photos.count)개의 추억이\n쌓였습니다"
+        albumCountLabel.text = "\(AlbumDatabase.arrayList[albumIndex!].photos.count - 1) 개의 추억이\n쌓였습니다"
     }
     
     func buttonSetting(){
@@ -80,7 +85,7 @@ extension AlbumDetailController {
 
 extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return AlbumDatabase.arrayList[albumIndex!].photos.count
+        return AlbumDatabase.arrayList[albumIndex!].photos.count - 1
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -89,7 +94,7 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCell
-        cell.photoImageView.image = AlbumDatabase.arrayList[albumIndex!].photos[indexPath.row]
+        cell.photoImageView.image = AlbumDatabase.arrayList[albumIndex!].photos[indexPath.row+1]
         return cell
     }
     
@@ -102,14 +107,20 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
 extension AlbumDetailController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GoToAlbumPopupVC" {
-            guard let dest = segue.description as? AlbumDetailPopupVC else {return}
+            let dest = segue.destination as! AlbumDetailPopupVC
             dest.albumIndex = albumIndex!
         } else if segue.identifier == "GoToInfoVC" {
-            guard let dest = segue.description as? AlbumInfoVC else {return}
+            let dest = segue.destination as! AlbumInfoVC
             dest.albumIndex = albumIndex!
         }
     }
 }
 
 
-
+extension AlbumDetailController : AlbumDetailVCProtocol {
+    func reloadView() {
+        self.photoCollectionView.reloadData()
+        self.viewWillAppear(true)
+        print("AlbumDetailVC reloaddata")
+    }
+}
