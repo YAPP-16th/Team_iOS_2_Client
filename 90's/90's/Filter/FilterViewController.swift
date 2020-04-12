@@ -38,7 +38,8 @@ struct PhotoEditorTypes{
     
     //    static let filterNameArray: [String] = ["CIPhotoEffectTransfer", "CIPhotoEffectInstant", "Normal", "CIPhotoEffectMono", "CIPhotoEffectNoir", "CIPhotoEffectTonal", "CIPhotoEffectFade", "CIPhotoEffectChrome", "CIPhotoEffectTransfer"].sorted(by: >)
     
-    static let filterNameArray: [String] = ["arapaho", "arapaho", "LUT", "LUT2", "LUT3", "LUT4", "LUT5", "CIPhotoEffectFade"].sorted(by: >)
+    static let filterNameArray: [String] = ["lut_1", "arapaho", "LUT3", "LUT2", "LUT", "LUT4", "LUT5", "na9Qc"]
+    //        .sorted(by: >)
     
     static func numberOfFilterType() -> Int {
         return filterNameArray.count
@@ -64,6 +65,8 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     @IBOutlet weak var filterCollectionView: UICollectionView!
     
     @IBOutlet weak var outputimageViewConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var changeCameraBtn: UIButton!
     
     var captureSession = AVCaptureSession()
     var backCamera: AVCaptureDevice?
@@ -96,20 +99,26 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         setupInputOutput()
         delegateSetting()
         
-        self.captureBtnConstraint.constant = self.view.frame.height / 30
-//        self.outputimageViewConstraint.constant = 88
+        self.captureBtnConstraint.constant = self.view.frame.height / 25
         
         if UIScreen.main.nativeBounds.height == 1792.0 {
-            self.outputimageViewConstraint.constant = 145
+            self.outputimageViewConstraint.constant = 0
+            
+            //            self.outputimageViewConstraint.constant = 135
         }
         else if UIScreen.main.nativeBounds.height == 1334.0
         {
-            self.outputimageViewConstraint.constant = 88
+            self.outputimageViewConstraint.constant = 0
+            
+            //            self.outputimageViewConstraint.constant = 88
         }
         
+        print(self.filteredImage.frame)
         print(UIScreen.main.nativeBounds.height)
         
         filterName = PhotoEditorTypes.filterNameArray[filterIndex]
+        filterCollectionView.selectItem(at: [0,0], animated: true, scrollPosition: .centeredHorizontally)
+        
         
         let leftSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
         let rightSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
@@ -145,8 +154,6 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             })
         }
     }
-    
-    
     
     @IBAction func ontapTakePhoto(_ sender: Any) {
         
@@ -195,6 +202,10 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             filterName = PhotoEditorTypes.filterNameArray[filterIndex]
             filterNameLabel.text = filterName.replacingOccurrences(of: PhotoEditorTypes.replacingOccurrencesWord, with: "")
             fadeViewInThenOut(view: filterNameLabel, delay: PhotoEditorTypes.filterNameLabelAnimationDelay)
+            
+            filterCollectionView.selectItem(at: [0,filterIndex], animated: true, scrollPosition: .centeredHorizontally)
+            
+            
         }
     }
     
@@ -231,10 +242,6 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         }
     }
     
-    
-    
-    
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         let screenSize = self.view.bounds.size
@@ -252,7 +259,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                     device.focusMode = .autoFocus
                     //device.focusMode = .locked
                     device.exposurePointOfInterest = focusPoint
-                    device.exposureMode = AVCaptureDevice.ExposureMode.continuousAutoExposure
+                    device.exposureMode = AVCaptureDevice.ExposureMode.autoExpose
                     device.unlockForConfiguration()
                 }
                 catch {
@@ -264,7 +271,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     func setupDevice() {
         
-        filteredImage.contentMode = .scaleToFill
+        filteredImage.contentMode = .scaleAspectFill
         
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInWideAngleCamera], mediaType: AVMediaType.video, position: AVCaptureDevice.Position.unspecified)
         let devices = deviceDiscoverySession.devices
@@ -341,23 +348,12 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
         let cgImage = self.context.createCGImage((comicEffect?.outputImage!)!, from: cameraImage.extent)!
         
+        
         DispatchQueue.main.async {
-            let size = CGSize(width: self.filteredImage.frame.width, height: self.filteredImage.frame.height)
             let filteredImage = UIImage(cgImage: cgImage)
             
-            UIGraphicsBeginImageContext(size)
-            
-            let areaSize = CGRect(x: 0, y:  0, width: self.filteredImage.frame.width, height: self.filteredImage.frame.height)
-            filteredImage.draw(in: areaSize)
-            
-            self.topImage!.draw(in: areaSize, blendMode: .normal, alpha: 0.8)
-            
-            var newImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-            
-            UIGraphicsEndImageContext()
-            
-//            self.filteredImage.image = newImage.applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
-//            self.filteredImage.image = filteredImage
+            //self.filteredImage.image = filteredImage.mergeWith(topImage: self.topImage!).applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
+
             
             
         }
@@ -547,6 +543,23 @@ extension FilterViewController {
     }
 }
 
+extension UIImage {
+    func mergeWith(topImage: UIImage) -> UIImage {
+        let bottomImage = self
+        
+        UIGraphicsBeginImageContext(size)
+        
+        let areaSize = CGRect(x: 0, y: 0, width: bottomImage.size.width, height: bottomImage.size.height)
+        bottomImage.draw(in: areaSize)
+        
+        topImage.draw(in: areaSize, blendMode: .normal, alpha: 1.0)
+        
+        let mergedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return mergedImage
+    }
+}
+
 extension UIView {
     public func createImage() -> UIImage {
         UIGraphicsBeginImageContextWithOptions(
@@ -584,6 +597,7 @@ extension FilterViewController : UICollectionViewDelegate, UICollectionViewDataS
     func delegateSetting(){
         filterCollectionView.delegate = self
         filterCollectionView.dataSource = self
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -595,7 +609,8 @@ extension FilterViewController : UICollectionViewDelegate, UICollectionViewDataS
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FilterCell", for: indexPath) as! FilterCell
         cell.FilterImageView.image = UIImage(named: PhotoEditorTypes.filterNameArray[indexPath.row])
         cell.FilterLabel.text = PhotoEditorTypes.filterNameArray[indexPath.row]
-//        cell.FilterImageView.contentMode = .scaleToFill
+        
+        //        cell.FilterImageView.contentMode = .scaleToFill
         return cell
     }
     
@@ -604,7 +619,6 @@ extension FilterViewController : UICollectionViewDelegate, UICollectionViewDataS
         filterName = PhotoEditorTypes.filterNameArray[indexPath.row]
         filterNameLabel.text = filterName.replacingOccurrences(of: PhotoEditorTypes.replacingOccurrencesWord, with: "")
         fadeViewInThenOut(view: filterNameLabel, delay: PhotoEditorTypes.filterNameLabelAnimationDelay)
-
         
     }
     
@@ -612,6 +626,7 @@ extension FilterViewController : UICollectionViewDelegate, UICollectionViewDataS
         return CGSize(width: 50, height: 80)
     }
 }
+
 
 
 
