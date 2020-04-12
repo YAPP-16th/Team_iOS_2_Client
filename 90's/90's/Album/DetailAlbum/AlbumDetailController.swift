@@ -49,7 +49,7 @@ extension AlbumDetailController {
     
     func defaultSetting(){
         albumNameLabel.text = AlbumDatabase.arrayList[albumIndex!].albumName
-        albumCountLabel.text = "\(AlbumDatabase.arrayList[albumIndex!].photos.count)개의 추억이\n쌓였습니다"
+        albumCountLabel.text = "\(AlbumDatabase.arrayList[albumIndex!].photos.count - 1) 개의 추억이\n쌓였습니다"
     }
     
     func buttonSetting(){
@@ -85,7 +85,7 @@ extension AlbumDetailController {
 
 extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return AlbumDatabase.arrayList[albumIndex!].photos.count
+        return AlbumDatabase.arrayList[albumIndex!].photos.count - 1
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -94,7 +94,7 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCell
-        cell.photoImageView.image = AlbumDatabase.arrayList[albumIndex!].photos[indexPath.row]
+        cell.photoImageView.image = AlbumDatabase.arrayList[albumIndex!].photos[indexPath.row+1]
         return cell
     }
     
