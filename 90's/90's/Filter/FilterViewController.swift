@@ -8,7 +8,7 @@
 
 import UIKit
 import AVFoundation
-import LUTFilter
+//import LUTFilter
 
 struct Filter {
     let filterName : String
@@ -38,7 +38,7 @@ struct PhotoEditorTypes{
     
     //    static let filterNameArray: [String] = ["CIPhotoEffectTransfer", "CIPhotoEffectInstant", "Normal", "CIPhotoEffectMono", "CIPhotoEffectNoir", "CIPhotoEffectTonal", "CIPhotoEffectFade", "CIPhotoEffectChrome", "CIPhotoEffectTransfer"].sorted(by: >)
     
-    static let filterNameArray: [String] = ["lut_1", "arapaho", "LUT3", "LUT2", "LUT", "LUT4", "LUT5", "na9Qc"]
+    static let filterNameArray: [String] = ["lut_1", "arapaho", "LUT3", "LUT2", "LUT", "LUT4", "LUT5", "LUT64"]
     //        .sorted(by: >)
     
     static func numberOfFilterType() -> Int {
@@ -61,10 +61,10 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     @IBOutlet weak var filteredImage: UIImageView!
     @IBOutlet weak var takeButton: UIButton!
     @IBOutlet weak var captureBtnConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var filterCollectionView: UICollectionView!
-    
     @IBOutlet weak var outputimageViewConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     
     @IBOutlet weak var changeCameraBtn: UIButton!
     
@@ -75,11 +75,11 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     let captureDevice = AVCaptureDevice.default(for: AVMediaType.video)
     var photoOutput: AVCapturePhotoOutput?
     var orientation: AVCaptureVideoOrientation = .portrait
+    var isCollectionViewAppear = true
     
     let context = CIContext()
     var filterIndex: Int = 0 // 스와이프로 필터를 선택 시에 현재 필터 인덱스를 저장할 프로퍼티
     var filterName: String = "CILinearToSRGBToneCurve" // CIFilter를 적용할 때 필요한 필터 이름
-    //    var filterName: String?
     var photoMode: AddPhotoMode? // 카메라, 사진앨범 모드인지 구분하는 저장 프로퍼티
     var topImage = UIImage(named: "frame_landscape")
     let minimumZoom: CGFloat = 1.0
@@ -88,6 +88,8 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     var FilterArray: [String] = []
     
+    var new_image : UIImage!
+
     override func viewDidLoad() {
         
         takeButton.layer.cornerRadius = takeButton.frame.size.width / 2
@@ -99,7 +101,17 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         setupInputOutput()
         delegateSetting()
         
+        
+        let size = CGSize(width:   self.filteredImage.frame.width  , height: self.filteredImage.frame.height )
+        let rect = CGRect(x: self.filteredImage.frame.origin.x, y: self.filteredImage.frame.origin.y, width: size.width, height: size.height)
+        UIGraphicsBeginImageContextWithOptions(size, false, 1.0)
+        self.topImage!.draw(in: rect)
+        new_image = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+                
         self.captureBtnConstraint.constant = self.view.frame.height / 25
+        
         
         if UIScreen.main.nativeBounds.height == 1792.0 {
             self.outputimageViewConstraint.constant = 0
@@ -113,8 +125,6 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             //            self.outputimageViewConstraint.constant = 88
         }
         
-        print(self.filteredImage.frame)
-        print(UIScreen.main.nativeBounds.height)
         
         filterName = PhotoEditorTypes.filterNameArray[filterIndex]
         filterCollectionView.selectItem(at: [0,0], animated: true, scrollPosition: .centeredHorizontally)
@@ -131,6 +141,9 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
         let pinchRecognizer = UIPinchGestureRecognizer(target: self, action:#selector(pinch(_:)))
         view.addGestureRecognizer(pinchRecognizer)
+        
+        self.collectionViewHeight.constant = 1
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -177,6 +190,24 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         //            self.navigationController?.pushViewController(vc, animated: true)
         
     }
+    @IBAction func showFilter(_ sender: Any) {
+        
+        
+        
+        if isCollectionViewAppear {
+            self.collectionViewHeight.constant = 1
+             
+        }
+        else {
+            self.collectionViewHeight.constant = 80
+        }
+        
+        UIView.animate(withDuration: 1, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations: {self.view.layoutIfNeeded()})
+        
+        isCollectionViewAppear  = !isCollectionViewAppear
+    }
+    
+    
     
     // MARK:- Change Camera Effect Filter From Swipe Gesture
     
@@ -340,19 +371,18 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue.main)
         
         let comicEffect = CIFilter(name: "CIColorCube")
-        
         let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
         let cameraImage = CIImage(cvImageBuffer: pixelBuffer!)
-        
         comicEffect!.setValue(cameraImage, forKey: kCIInputImageKey)
-        
         let cgImage = self.context.createCGImage((comicEffect?.outputImage!)!, from: cameraImage.extent)!
         
+//        let test = self.topImage?.resizeImage(targetSize: CGSize(width: 375, height: 436.5))
+
         
         DispatchQueue.main.async {
             let filteredImage = UIImage(cgImage: cgImage)
-            
-            self.filteredImage.image = filteredImage.mergeWith(topImage: self.topImage!).applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
+        
+//            self.filteredImage.image = filteredImage.mergeWith(topImage: self.topImage! , bottomImage: filteredImage).applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
             
             
         }
@@ -398,20 +428,6 @@ extension FilterViewController : AVCapturePhotoCaptureDelegate {
         
     }
 }
-
-
-extension UIInterfaceOrientation {
-    var videoOrientation: AVCaptureVideoOrientation? {
-        switch self {
-        case .portraitUpsideDown: return .portraitUpsideDown
-        case .landscapeRight: return .landscapeRight
-        case .landscapeLeft: return .landscapeLeft
-        case .portrait: return .portrait
-        default: return nil
-        }
-    }
-}
-
 
 
 extension FilterViewController {
@@ -541,35 +557,6 @@ extension FilterViewController {
         return filteredImage
     }
 }
-
-extension UIImage {
-    func mergeWith(topImage: UIImage) -> UIImage {
-        let bottomImage = self
-        
-        UIGraphicsBeginImageContext(size)
-        
-        let areaSize = CGRect(x: 0, y: 0, width: bottomImage.size.width, height: bottomImage.size.height)
-        bottomImage.draw(in: areaSize)
-        
-        topImage.draw(in: areaSize, blendMode: .normal, alpha: 1.0)
-        
-        let mergedImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        return mergedImage
-    }
-}
-
-extension UIView {
-    public func createImage() -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(
-            CGSize(width: self.frame.width, height: self.frame.height), true, 1)
-        self.layer.render(in: UIGraphicsGetCurrentContext()!)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return image!
-    }
-}
-
 
 
 func fadeViewInThenOut(view : UIView, delay: TimeInterval) {

@@ -205,19 +205,18 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 @class UIImageView;
 @class UILabel;
-@class UIButton;
 @class NSCoder;
 
 SWIFT_CLASS("_TtC4_0_s9AlbumCell")
 @interface AlbumCell : UICollectionViewCell
-@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified albumImageView;
-@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified albumNameLabel;
-@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified printBtn;
-- (void)prepareForReuse;
+@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified imageView;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified nameLabel;
+- (void)awakeFromNib;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class UIButton;
 @class NSBundle;
 
 SWIFT_CLASS("_TtC4_0_s15AlbumCompleteVC")
@@ -242,9 +241,12 @@ SWIFT_CLASS("_TtC4_0_s15AlbumCompleteVC")
 SWIFT_CLASS("_TtC4_0_s24AlbumCoverCollectionCell")
 @interface AlbumCoverCollectionCell : UICollectionViewCell
 @property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified imageView;
+- (void)awakeFromNib;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
+
+
 
 @class UICollectionView;
 
@@ -372,6 +374,8 @@ SWIFT_CLASS("_TtC4_0_s13AlbumLayoutVC")
 @end
 
 
+
+
 @interface AlbumLayoutVC (SWIFT_EXTENSION(_0_s)) <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 - (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
@@ -393,8 +397,6 @@ SWIFT_CLASS("_TtC4_0_s19AlbumMainController")
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
-
-
 
 
 
@@ -495,15 +497,15 @@ SWIFT_CLASS("_TtC4_0_s23AlbumQuantityController")
 
 @class UIPickerView;
 
-@interface AlbumQuantityController (SWIFT_EXTENSION(_0_s)) <UIPickerViewDelegate>
-- (NSString * _Nullable)pickerView:(UIPickerView * _Nonnull)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component SWIFT_WARN_UNUSED_RESULT;
-- (void)pickerView:(UIPickerView * _Nonnull)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component;
-@end
-
-
 @interface AlbumQuantityController (SWIFT_EXTENSION(_0_s)) <UIPickerViewDataSource>
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView * _Nonnull)pickerView SWIFT_WARN_UNUSED_RESULT;
 - (NSInteger)pickerView:(UIPickerView * _Nonnull)pickerView numberOfRowsInComponent:(NSInteger)component SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface AlbumQuantityController (SWIFT_EXTENSION(_0_s)) <UIPickerViewDelegate>
+- (NSString * _Nullable)pickerView:(UIPickerView * _Nonnull)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component SWIFT_WARN_UNUSED_RESULT;
+- (void)pickerView:(UIPickerView * _Nonnull)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component;
 @end
 
 
@@ -523,6 +525,34 @@ SWIFT_CLASS("_TtC4_0_s11AppDelegate")
 - (UISceneConfiguration * _Nonnull)application:(UIApplication * _Nonnull)application configurationForConnectingSceneSession:(UISceneSession * _Nonnull)connectingSceneSession options:(UISceneConnectionOptions * _Nonnull)options SWIFT_WARN_UNUSED_RESULT;
 - (void)application:(UIApplication * _Nonnull)application didDiscardSceneSessions:(NSSet<UISceneSession *> * _Nonnull)sceneSessions;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC4_0_s13BookCoverCell")
+@interface BookCoverCell : UICollectionViewCell
+@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified coverView;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC4_0_s23BookCoverViewController")
+@interface BookCoverViewController : UIViewController
+@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified coverImageView;
+@property (nonatomic, weak) IBOutlet UICollectionView * _Null_unspecified coverCollectionView;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified nextBtn;
+- (void)viewDidLoad;
+- (IBAction)coverCheckBtn:(id _Nonnull)sender;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface BookCoverViewController (SWIFT_EXTENSION(_0_s)) <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (void)collectionView:(UICollectionView * _Nonnull)collectionView didSelectItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -582,11 +612,13 @@ SWIFT_CLASS("_TtC4_0_s20FilterViewController")
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * _Null_unspecified captureBtnConstraint;
 @property (nonatomic, weak) IBOutlet UICollectionView * _Null_unspecified filterCollectionView;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * _Null_unspecified outputimageViewConstraint;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint * _Null_unspecified collectionViewHeight;
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified changeCameraBtn;
 - (void)viewDidLoad;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidAppear:(BOOL)animated;
 - (IBAction)ontapTakePhoto:(id _Nonnull)sender;
+- (IBAction)showFilter:(id _Nonnull)sender;
 - (void)handleSwipes:(UISwipeGestureRecognizer * _Nonnull)sender;
 - (void)pinch:(UIPinchGestureRecognizer * _Nonnull)pinch;
 - (void)touchesBegan:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
@@ -684,6 +716,7 @@ SWIFT_CLASS("_TtC4_0_s20OptionViewController")
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * _Null_unspecified SecondOptionConstraint;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * _Null_unspecified stackViewConnected;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * _Null_unspecified countOptionViewConstraint;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint * _Null_unspecified completeBtnConstraint;
 @property (nonatomic, weak) IBOutlet UIView * _Null_unspecified OptionView;
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified CompleteBtn;
 @property (nonatomic, weak) IBOutlet UIView * _Null_unspecified FirstOptionView;
@@ -693,6 +726,9 @@ SWIFT_CLASS("_TtC4_0_s20OptionViewController")
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified totalSum1;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified totalSum2;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified totalCount;
+@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified coverImageView;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified firstFlapBtn;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified secondFlapBtn;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)animated;
 - (IBAction)OptionClick:(id _Nonnull)sender;
@@ -856,6 +892,8 @@ SWIFT_CLASS("_TtC4_0_s18TermViewController")
 - (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
+
+
 
 
 

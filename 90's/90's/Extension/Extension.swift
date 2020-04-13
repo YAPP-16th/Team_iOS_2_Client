@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 
 extension String {
@@ -135,3 +136,61 @@ extension UIViewController{
 }
 
 
+extension UIImage {
+    
+    func resizeImage(targetSize: CGSize) -> UIImage {
+      let size = self.size
+      let widthRatio  = targetSize.width  / size.width
+      let heightRatio = targetSize.height / size.height
+      let newSize = widthRatio > heightRatio ?  CGSize(width: size.width * heightRatio, height: size.height * heightRatio) : CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
+      let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+
+      UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+      self.draw(in: rect)
+      let newImage = UIGraphicsGetImageFromCurrentImageContext()
+      UIGraphicsEndImageContext()
+
+      return newImage!
+    }
+
+    
+    func mergeWith(topImage: UIImage , bottomImage : UIImage) -> UIImage {
+        UIGraphicsBeginImageContext(size)
+        let areaSize = CGRect(x: 0, y: 0, width: bottomImage.size.width, height: bottomImage.size.height)
+        bottomImage.draw(in: areaSize)
+        topImage.draw(in: areaSize, blendMode: .normal, alpha: 0.8)
+        
+//        print("!!!!!!!!!!!!")
+//        print(topImage.size)
+//        print(bottomImage.size)
+//        print("!!!!!!!!!!!!")
+        
+        let mergedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        
+        UIGraphicsEndImageContext()
+        return mergedImage
+    }
+}
+
+extension UIView {
+    public func createImage() -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(
+            CGSize(width: self.frame.width, height: self.frame.height), true, 1)
+        self.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
+    }
+}
+
+extension UIInterfaceOrientation {
+    var videoOrientation: AVCaptureVideoOrientation? {
+        switch self {
+        case .portraitUpsideDown: return .portraitUpsideDown
+        case .landscapeRight: return .landscapeRight
+        case .landscapeLeft: return .landscapeLeft
+        case .portrait: return .portrait
+        default: return nil
+        }
+    }
+}
