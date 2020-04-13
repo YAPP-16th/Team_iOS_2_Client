@@ -9,22 +9,36 @@
 import UIKit
 
 class MakeNewPassViewController: UIViewController {
-
+    @IBOutlet weak var tfNewPass: UITextField!
+    @IBOutlet weak var tfConfirmPass: UITextField!
+    @IBOutlet weak var selectorImageView1: UIImageView!
+    @IBOutlet weak var selectorImageView2: UIImageView!
+    @IBOutlet weak var validationLabel: UILabel!
+    @IBOutlet weak var nextBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func goBack(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
-    */
+    
+    //화면 터치시 키보드 내림
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        tfNewPass.endEditing(true)
+        tfConfirmPass.endEditing(true)
+    }
+    
+    //키보드 리턴 버튼 클릭 시 키보드 내림
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if(textField == tfNewPass){
+            tfConfirmPass.becomeFirstResponder()
+        }
+        return true
+    }
 
 }

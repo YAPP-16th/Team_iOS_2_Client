@@ -439,13 +439,16 @@
                                 <rect key="frame" x="20" y="86" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="arrowRightBlackCopy4"/>
+                                <connections>
+                                    <action selector="goBack:" destination="jQ7-5J-vea" eventType="touchUpInside" id="2sH-e1-137"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="djw-Mb-H73"/>
                     </view>
                     <connections>
-                        <outlet property="nextBtn" destination="Bu5-XJ-eUY" id="0VG-ge-GmI"/>
+                        <outlet property="nextBtn" destination="Bu5-XJ-eUY" id="vTc-Fb-38O"/>
                         <outlet property="selectorImageView1" destination="efA-u6-fXa" id="UkL-eX-phW"/>
                         <outlet property="selectorImageView2" destination="UtS-C9-fTN" id="E7f-p5-ri2"/>
                         <outlet property="tfConfirmPass" destination="BHq-Ht-ZI2" id="epG-lq-6Iw"/>

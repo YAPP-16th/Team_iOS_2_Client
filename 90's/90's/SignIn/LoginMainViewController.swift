@@ -46,12 +46,14 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
     @IBAction func goFindPass(_ sender: Any) {
         let authenVC = storyboard?.instantiateViewController(withIdentifier: "AuthenViewController") as!
         AuthenViewController
+        authenVC.authenType = "findPass"
         self.navigationController?.pushViewController(authenVC, animated: true)
     }
     
     @IBAction func goFindEmail(_ sender: Any) {
         let authenVC =  storyboard?.instantiateViewController(withIdentifier: "AuthenViewController") as!
         AuthenViewController
+        authenVC.authenType = "findEmail"
         self.navigationController?.pushViewController(authenVC, animated: true)
     }
     

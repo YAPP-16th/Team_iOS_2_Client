@@ -23,6 +23,7 @@ class AuthenViewController: UIViewController {
     var isClicked = false
     var isInitial1 = false
     var isInitial2 = false
+    var authenType: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +46,7 @@ class AuthenViewController: UIViewController {
             self.tfTelephone.isEnabled = false
             isClicked = !isClicked
         }else{
-            goAuthen()
+            goAuthen(authenType: authenType)
         }
     }
     
@@ -99,20 +100,29 @@ class AuthenViewController: UIViewController {
         })
     }
     
-    func goAuthen(){
+    func goAuthen(authenType : String){
         //인증번호가 맞는지 서버에 요청을 보내는 메소드 필요, 임시 인증번호(1111)
         //현재는 화면만 넘어가게 구현
         //인증번호가 맞고, 이메일이 존재할 시 이메일 확인 화면으로
         //인증번호가 맞고, 이메일이 존재하지 않을 시 이메일 확인 에러 화면으로 가야함
         let authenNumber = tfAuthenNumber.text!
         if(authenNumber == "1111"){
-            if(tfTelephone.text == "111-1111-1111"){
-                let findEmailVC = storyboard?.instantiateViewController(identifier: "FindEmailViewController") as! FindEmailViewController
-                navigationController?.pushViewController(findEmailVC, animated: true)
-            }else{
-                let findEmailErrVC = storyboard?.instantiateViewController(identifier: "FindEmailErrViewController") as! FindEmailErrViewController
-                navigationController?.pushViewController(findEmailErrVC, animated: true)
+            switch authenType {
+            case "findEmail":
+                if(tfTelephone.text == "111-1111-1111"){
+                    let findEmailVC = storyboard?.instantiateViewController(identifier: "FindEmailViewController") as! FindEmailViewController
+                    navigationController?.pushViewController(findEmailVC, animated: true)
+                }else{
+                    let findEmailErrVC = storyboard?.instantiateViewController(identifier: "FindEmailErrViewController") as! FindEmailErrViewController
+                    navigationController?.pushViewController(findEmailErrVC, animated: true)
+                }
+            case "findPass":
+                let makePassVC = storyboard?.instantiateViewController(identifier: "MakeNewPassViewController") as! MakeNewPassViewController
+                navigationController?.pushViewController(makePassVC, animated: true)
+            default:
+                print("")
             }
+            
         }else{
             validationLabel.isHidden = false
         }
