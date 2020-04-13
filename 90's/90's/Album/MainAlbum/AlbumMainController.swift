@@ -73,7 +73,7 @@ extension AlbumMainController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlbumCell", for: indexPath) as! AlbumCell
         
-        cell.imageView.image =  AlbumDatabase.arrayList[indexPath.row].albumCover
+        cell.imageView.image =  AlbumDatabase.arrayList[indexPath.row].photos[0]
         cell.nameLabel.text = AlbumDatabase.arrayList[indexPath.row].albumName
     
         return cell

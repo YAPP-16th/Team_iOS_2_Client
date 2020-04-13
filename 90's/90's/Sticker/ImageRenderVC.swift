@@ -144,7 +144,7 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
             cell.toggleSelected()
         } else {
             // sticker collection
-            let cell = collectionView.cellForItem(at: indexPath) as! photoStickerCollectionCell
+//            let cell = collectionView.cellForItem(at: indexPath) as! photoStickerCollectionCell
             //cell.createSticker(image: UIImage(named: "husky"))
         }
     }

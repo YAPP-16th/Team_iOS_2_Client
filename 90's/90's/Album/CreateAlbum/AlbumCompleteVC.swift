@@ -22,7 +22,8 @@ class AlbumCompleteVC: UIViewController {
     }
     @IBAction func completeBtn(_ sender: UIButton) {
         let number = AlbumDatabase.arrayList.count + 1
-        let newAlbum = Album(albumIndex: number, albumName: self.albumName, albumStartDate: self.albumStartDate, albumEndDate: self.albumEndDate, albumCover: self.albumCover, albumLayout: self.albumLayout, albumMaxCount: self.albumMaxCount, photo: [])
+        let user = "temp user"
+        let newAlbum = Album(user : [user], albumIndex: number, albumName: self.albumName, albumStartDate: self.albumStartDate, albumEndDate: self.albumEndDate, albumLayout: self.albumLayout, albumMaxCount: self.albumMaxCount, photo: [])
         AlbumDatabase.arrayList.append(newAlbum)
         mainProtocol?.reloadView()
         self.navigationController?.popToRootViewController(animated: true)

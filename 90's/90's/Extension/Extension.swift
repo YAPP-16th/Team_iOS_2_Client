@@ -32,14 +32,15 @@ extension UIView {
 
 
 extension UICollectionViewCell {
-    func subImageViewSetting(imageView : UIImageView!){
+    func subImageViewSetting(imageView : UIImageView!, top : CGFloat!, left : CGFloat!, right: CGFloat!, bottom: CGFloat!){
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
-        imageView.topAnchor.constraint(equalTo: self.contentView.topAnchor,constant: 0.0).isActive = true
-        imageView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 0.0).isActive = true
-        imageView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: 0.0).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -30).isActive = true
-        imageView.contentMode = .scaleAspectFit
+        imageView.topAnchor.constraint(equalTo: self.contentView.topAnchor,constant: top).isActive = true
+        imageView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: left).isActive = true
+        imageView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -right).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -bottom).isActive = true
+    
+        imageView.contentMode = .scaleToFill
     }
 }
 

@@ -46,7 +46,7 @@ class AlbumInfoVC: UIViewController {
 extension AlbumInfoVC {
     func defaultSetting(){
         let album = AlbumDatabase.arrayList[albumIndex]
-        albumCoverImageView.image = album.albumCover
+        albumCoverImageView.image = album.photos[0]
         albumNameLabel.text = album.albumName
         albumDateLabel.text = "\(album.albumStartDate!)  ~  \(album.albumEndDate!)"
         albumCountLabel.text = String(album.albumMaxCount)
