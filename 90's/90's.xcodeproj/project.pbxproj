@@ -33,6 +33,9 @@
 		9BBBA3DF243F6848002904AC /* AlbumCoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBBA3DE243F6848002904AC /* AlbumCoverVC.swift */; };
 		9BBBA3E1243F690B002904AC /* AlbumCoverCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBBA3E0243F690B002904AC /* AlbumCoverCollectionCell.swift */; };
 		9BBBA3E3243F6FD5002904AC /* AlbumCompleteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBBA3E2243F6FD5002904AC /* AlbumCompleteVC.swift */; };
+		9BC0DBB22444788F00CA90F7 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0DBB12444788F00CA90F7 /* ProfileVC.swift */; };
+		9BC0DBB4244478A600CA90F7 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0DBB3244478A600CA90F7 /* ProfileTableViewCell.swift */; };
+		9BC0DBB62444802A00CA90F7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0DBB52444802A00CA90F7 /* User.swift */; };
 		9BC16B1A2435B68F007F106C /* photoStickerCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC16B192435B68F007F106C /* photoStickerCollectionCell.swift */; };
 		9BD31D37243A05F700D0D719 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD31D36243A05F700D0D719 /* KakaoOpenSDK.framework */; };
 		9BD31D3A243A0A9100D0D719 /* InviteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD31D39243A0A9100D0D719 /* InviteVC.swift */; };
@@ -92,6 +95,9 @@
 		9BBBA3DE243F6848002904AC /* AlbumCoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCoverVC.swift; sourceTree = "<group>"; };
 		9BBBA3E0243F690B002904AC /* AlbumCoverCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCoverCollectionCell.swift; sourceTree = "<group>"; };
 		9BBBA3E2243F6FD5002904AC /* AlbumCompleteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCompleteVC.swift; sourceTree = "<group>"; };
+		9BC0DBB12444788F00CA90F7 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		9BC0DBB3244478A600CA90F7 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		9BC0DBB52444802A00CA90F7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9BC16B192435B68F007F106C /* photoStickerCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoStickerCollectionCell.swift; sourceTree = "<group>"; };
 		9BD31D36243A05F700D0D719 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
 		9BD31D38243A08CE00D0D719 /* KakaoOpenSDK-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KakaoOpenSDK-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -242,6 +248,9 @@
 			isa = PBXGroup;
 			children = (
 				9B45BD002438734E00497EA5 /* Profile.storyboard */,
+				9BC0DBB12444788F00CA90F7 /* ProfileVC.swift */,
+				9BC0DBB3244478A600CA90F7 /* ProfileTableViewCell.swift */,
+				9BC0DBB52444802A00CA90F7 /* User.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -421,9 +430,11 @@
 				9B180800243DF53200AF1CE6 /* albumLayoutCollectionCell.swift in Sources */,
 				9BFC148A2441C14500F38AFF /* Protocol.swift in Sources */,
 				9B6A134C2440CE9400E78E66 /* AlbumInfoVC.swift in Sources */,
+				9BC0DBB62444802A00CA90F7 /* User.swift in Sources */,
 				9BD31D3A243A0A9100D0D719 /* InviteVC.swift in Sources */,
 				9BBBA3E1243F690B002904AC /* AlbumCoverCollectionCell.swift in Sources */,
 				39411378243061A500087E1B /* CheckPhotoViewController.swift in Sources */,
+				9BC0DBB22444788F00CA90F7 /* ProfileVC.swift in Sources */,
 				9BB1C5742441EEBA0035DEBF /* FilterCell.swift in Sources */,
 				9BBBA3E3243F6FD5002904AC /* AlbumCompleteVC.swift in Sources */,
 				A36DC86F24236386001B3767 /* AlbumDetailController.swift in Sources */,
@@ -435,6 +446,7 @@
 				A318AC7C243E2A7600245434 /* CompleteViewController.swift in Sources */,
 				A318AC7E243E2F9E00245434 /* TermCell.swift in Sources */,
 				9BC16B1A2435B68F007F106C /* photoStickerCollectionCell.swift in Sources */,
+				9BC0DBB4244478A600CA90F7 /* ProfileTableViewCell.swift in Sources */,
 				9BB1C5762441EEC30035DEBF /* FilterViewController.swift in Sources */,
 				9B6A134E2440D0C500E78E66 /* MemberTableViewCell.swift in Sources */,
 				9B31E1942434BBB400A139C6 /* photoFilterCollectionCell.swift in Sources */,
