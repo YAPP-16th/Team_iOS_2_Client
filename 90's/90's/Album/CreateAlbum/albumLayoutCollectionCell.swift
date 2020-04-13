@@ -10,4 +10,12 @@ import UIKit
 
 class albumLayoutCollectionCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var selectImageView: UIImageView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        subImageViewSetting(imageView: imageView, top: 0, left: 0, right: 0, bottom: 0)
+        subImageViewSetting(imageView: selectImageView, top: 0, left: 0, right: 0, bottom: 0)
+        selectImageView.isHidden = true
+    }
 }

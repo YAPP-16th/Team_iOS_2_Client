@@ -22,7 +22,6 @@ class AlbumMainController: UIViewController {
     @IBOutlet weak var albumCollectionView: UICollectionView!
     @IBAction func clickMakeBtn(_ sender: Any){
         let nextVC = storyboard?.instantiateViewController(withIdentifier : "AlbumNameController") as! AlbumNameController
-        
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
@@ -47,15 +46,8 @@ extension AlbumMainController : UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        //cell 클릭 시 넘어갈 화면 분기
-        //앨범 설정값이 nil -> AlbumSettingVC
-        //앨범 설정값이 있고 테마값이 nil -> AlbumThemeVC
-        //다 있으면 -> AlbumDetailVC
-        
         let albumDetailVC = storyboard?.instantiateViewController(identifier: "albumDetailVC") as! AlbumDetailController
         albumDetailVC.albumIndex = indexPath.row
-        print("MainVC : album index = \(indexPath.row)")
         navigationController?.pushViewController(albumDetailVC, animated: true)
     }
 }

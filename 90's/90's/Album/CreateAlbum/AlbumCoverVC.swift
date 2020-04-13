@@ -15,15 +15,17 @@ class AlbumCoverVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func completeBtn(_ sender: UIButton) {
-        let nextVC = storyboard?.instantiateViewController(identifier: "AlbumLayoutVC") as! AlbumLayoutVC
-        
-        nextVC.albumName = albumName
-        nextVC.albumStartDate = albumStartDate
-        nextVC.albumEndDate = albumEndDate
-        nextVC.albumMaxCount = albumMaxCount
-        nextVC.albumCover = albumCover
-               
-        self.navigationController?.pushViewController(nextVC, animated: true)
+        if initialFlag == false {
+            let nextVC = storyboard?.instantiateViewController(identifier: "AlbumLayoutVC") as! AlbumLayoutVC
+            
+            nextVC.albumName = albumName
+            nextVC.albumStartDate = albumStartDate
+            nextVC.albumEndDate = albumEndDate
+            nextVC.albumMaxCount = albumMaxCount
+            nextVC.photo = photo
+                   
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }
     }
     
     
@@ -34,17 +36,18 @@ class AlbumCoverVC: UIViewController {
     var albumStartDate : String!
     var albumEndDate : String!
     var albumMaxCount : Int!
-    var albumCover : UIImage!
+    var photo : UIImage!
     
+    var initialFlag : Bool = true
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         coverArray = coverStringArray.map({ (value : String) -> UIImage in
             return UIImage(named: value)!
         })
-        coverImageView.image = coverArray[0]
-        albumCover = coverArray[0]
+        if photo == nil {
+            coverImageView.image = UIImage(named: "emptyimage")
+        }
     }
     
     override func viewDidLoad() {
@@ -58,6 +61,11 @@ extension AlbumCoverVC {
     func delegateSetting(){
         coverCollectionView.delegate = self
         coverCollectionView.dataSource = self
+    }
+    
+    func layoutSetting(){
+        
+        
     }
 }
 
@@ -74,11 +82,19 @@ extension AlbumCoverVC : UICollectionViewDelegate, UICollectionViewDataSource, U
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        albumCover = coverArray[indexPath.row]
+        let cell = collectionView.cellForItem(at: indexPath) as! AlbumCoverCollectionCell
+        cell.selectImageView.isHidden = false
+        initialFlag = false
+        photo = coverArray[indexPath.row]
         coverImageView.image = coverArray[indexPath.row]
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! AlbumCoverCollectionCell
+        cell.selectImageView.isHidden = true
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 104, height: 108)
+        return CGSize(width: self.view.frame.width/3 , height: self.view.frame.height/5)
     }
 }

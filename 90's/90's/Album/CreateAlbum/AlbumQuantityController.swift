@@ -31,17 +31,20 @@ class AlbumQuantityController : UIViewController {
         keyboardSetting()
         setQuantityPicker()
         checkDeviseVersion(backView: backView)
+        initialFlag = true
     }
     
     @IBAction func clickNextBtn(_ sender: Any) {
-        let nextVC = storyboard?.instantiateViewController(identifier: "AlbumCoverVC") as! AlbumCoverVC
-        
-        nextVC.albumName = albumName
-        nextVC.albumStartDate = albumStartDate
-        nextVC.albumEndDate = albumEndDate
-        nextVC.albumMaxCount = albumMaxCount
-        
-        self.navigationController?.pushViewController(nextVC, animated: true)
+        if initialFlag == false {
+            let nextVC = storyboard?.instantiateViewController(identifier: "AlbumCoverVC") as! AlbumCoverVC
+            
+            nextVC.albumName = albumName
+            nextVC.albumStartDate = albumStartDate
+            nextVC.albumEndDate = albumEndDate
+            nextVC.albumMaxCount = albumMaxCount
+            
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }
     }
     
     
@@ -50,6 +53,7 @@ class AlbumQuantityController : UIViewController {
         quantityPicker.dataSource = self
         quantityPicker.backgroundColor = .white
         tfQuantity.inputView = quantityPicker
+        tfQuantity.becomeFirstResponder()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -24,16 +24,18 @@ class AlbumPeriodController : UIViewController {
     @IBAction func backBtn(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
-    //다음 버튼 눌렀을 시 액션
     @IBAction func clickNextBtn(_ sender: Any) {
-        let nextVC = storyboard?.instantiateViewController(withIdentifier : "AlbumQuantityController") as! AlbumQuantityController
+        if initialFlag == false {
+            let nextVC = storyboard?.instantiateViewController(withIdentifier : "AlbumQuantityController") as! AlbumQuantityController
            
-        nextVC.albumName = albumName
-        nextVC.albumStartDate = tfOpenDate.text!
-        nextVC.albumEndDate = tfExpireDate.text!
+            nextVC.albumName = albumName
+            nextVC.albumStartDate = tfOpenDate.text!
+            nextVC.albumEndDate = tfExpireDate.text!
            
-        self.navigationController?.pushViewController(nextVC, animated: true)
-       }
+            self.navigationController?.pushViewController(nextVC, animated: true)
+            
+        }
+    }
     
     var albumName:String!
     var initialFlag = true
@@ -50,6 +52,10 @@ class AlbumPeriodController : UIViewController {
         super.viewDidLoad()
         setDatePicker()
         checkDeviseVersion(backView: backView)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        tfExpireDate.endEditing(true)
     }
 }
 
@@ -69,6 +75,7 @@ extension AlbumPeriodController {
         
         //datePicker 한글 설정
         datePicker.locale = NSLocale(localeIdentifier: "ko-KO") as Locale
+        tfExpireDate.becomeFirstResponder()
         
         tfExpireDate.inputView = datePicker
         datePicker.addTarget(self, action:#selector(changePickerValue), for: .valueChanged)
@@ -86,10 +93,6 @@ extension AlbumPeriodController {
             self.nextBtn.isEnabled = true
             initialFlag = false
         }
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        tfExpireDate.endEditing(true)
     }
 }
 

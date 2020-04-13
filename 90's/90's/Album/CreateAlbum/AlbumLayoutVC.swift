@@ -12,16 +12,18 @@ class AlbumLayoutVC: UIViewController {
     @IBOutlet weak var layoutImageView: UIImageView!
     @IBOutlet weak var layoutCollectionView: UICollectionView!
     @IBAction func completeBtn(_ sender: UIButton) {
-        let nextVC = storyboard?.instantiateViewController(identifier: "AlbumCompleteVC") as! AlbumCompleteVC
-               
-        nextVC.albumName = albumName
-        nextVC.albumStartDate = albumStartDate
-        nextVC.albumEndDate = albumEndDate
-        nextVC.albumMaxCount = albumMaxCount
-        nextVC.albumCover = albumCover
-        nextVC.albumLayout = albumLayout
-                
-        self.navigationController?.pushViewController(nextVC, animated: true)
+        if initialFlag == false {
+            let nextVC = storyboard?.instantiateViewController(identifier: "AlbumCompleteVC") as! AlbumCompleteVC
+                   
+            nextVC.albumName = albumName
+            nextVC.albumStartDate = albumStartDate
+            nextVC.albumEndDate = albumEndDate
+            nextVC.albumMaxCount = albumMaxCount
+            nextVC.photo = photo
+            nextVC.albumLayout = albumLayout
+                    
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }
     }
     @IBAction func backBtn(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -34,9 +36,15 @@ class AlbumLayoutVC: UIViewController {
     var albumStartDate : String!
     var albumEndDate : String!
     var albumMaxCount : Int!
-    var albumCover : UIImage!
+    var photo : UIImage!
     var albumLayout : Int!
-
+    
+    var initialFlag : Bool = true
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,12 +55,12 @@ class AlbumLayoutVC: UIViewController {
 
 extension AlbumLayoutVC {
     func defaultSetting(){
-        albumLayout = 0
         layoutArray = layoutStringArray.map({(value : String) -> UIImage in
             return UIImage(named: value)!
         })
-        layoutImageView.image = layoutArray[0]
-        
+        if albumLayout == nil {
+            layoutImageView.image = UIImage(named: "emptyimage")
+        }
         layoutCollectionView.delegate = self
         layoutCollectionView.dataSource = self
     }
@@ -73,6 +81,14 @@ extension AlbumLayoutVC : UICollectionViewDelegate, UICollectionViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         layoutImageView.image = layoutArray[indexPath.row]
         albumLayout = indexPath.row
+        initialFlag = false
+        let cell = collectionView.cellForItem(at: indexPath) as! albumLayoutCollectionCell
+        cell.selectImageView.isHidden = false
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! albumLayoutCollectionCell
+        cell.selectImageView.isHidden = true
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
