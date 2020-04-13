@@ -17,6 +17,7 @@ class OptionViewController : UIViewController {
     @IBOutlet weak var stackViewConnected: NSLayoutConstraint!
     @IBOutlet weak var countOptionViewConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var completeBtnConstraint: NSLayoutConstraint!
     
     //MARK: View IBOutlet
     @IBOutlet weak var OptionView: UIView!
@@ -29,9 +30,16 @@ class OptionViewController : UIViewController {
     @IBOutlet weak var totalSum1: UILabel!
     @IBOutlet weak var totalSum2: UILabel!
     @IBOutlet weak var totalCount: UILabel!
+
+    @IBOutlet weak var coverImageView: UIImageView!
+//    @IBOutlet weak var coverCollectionView: UICollectionView!
+    @IBOutlet weak var firstFlapBtn: UIButton!
+    @IBOutlet weak var secondFlapBtn: UIButton!
+    
     var isTotalOptionViewAppear = false
     var isFirstOptionViewAppear = true
     var isSecondOptionViewAppear = true
+    var coverImage : UIImage? = nil
     
     
     override func viewDidLoad() {
@@ -47,16 +55,20 @@ class OptionViewController : UIViewController {
             self.countOptionView.isHidden = true
             self.FirstOptionConstraint.constant = 0
             self.SecondOptionConstraint.constant = 0
-            self.stackViewConnected.constant = 63.5
+            self.completeBtnConstraint.constant = 0
+//            self.stackViewConnected.constant = 63.5
             self.countOptionViewConstraint.constant = self.view.frame.height
         }
+        
+        self.coverImageView.image = coverImage
     
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
-        self.navigationController?.navigationBar.isHidden = true
+//        self.navigationController?.navigationBar.isHidden = true
     }
+
     
     //MARK: View IBAction
     @IBAction func OptionClick(_ sender: Any) {
@@ -68,7 +80,19 @@ class OptionViewController : UIViewController {
             self.BottomViewConstraint.constant = self.view.frame.height
         } else {
             self.view.backgroundColor = .darkGray
-            self.BottomViewConstraint.constant = 450
+            
+            if UIScreen.main.nativeBounds.height == 1792.0 {
+                
+                self.BottomViewConstraint.constant = 450 - 145
+                
+                //            self.outputimageViewConstraint.constant = 135
+            }
+            else if UIScreen.main.nativeBounds.height == 1334.0
+            {
+                self.BottomViewConstraint.constant = 450 - 88
+                
+                //            self.outputimageViewConstraint.constant = 88
+            }
         }
         UIView.animate(withDuration: 1, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations: {self.view.layoutIfNeeded()})
         
@@ -86,8 +110,18 @@ class OptionViewController : UIViewController {
         self.view.backgroundColor = .darkGray
         
         self.BottomViewConstraint.constant = self.view.frame.height
+        print(self.view.frame.height)
+        if UIScreen.main.nativeBounds.height == 1792.0 {
+            self.countOptionViewConstraint.constant = self.view.frame.height - 443
+            
+            //            self.outputimageViewConstraint.constant = 135
+        }
+        else if UIScreen.main.nativeBounds.height == 1334.0
+        {
+            self.countOptionViewConstraint.constant = self.view.frame.height - 443             
+            //            self.outputimageViewConstraint.constant = 88
+        }
         
-        self.countOptionViewConstraint.constant = 431
         self.countOptionView.isHidden = false
         
         UIView.animate(withDuration: 1, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations: {self.view.layoutIfNeeded()})
@@ -155,12 +189,8 @@ class OptionViewController : UIViewController {
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrderFinishViewController") as! OrderFinishViewController
         
-        //        self.navigationController?.title = "결제 내역"
         vc.modalPresentationStyle = .fullScreen
-        
-//        self.navigationController?.show(vc, sender: nil)
         self.navigationController?.pushViewController(vc, animated: true)
-//        self.show(vc, sender: nil)
         
     }
     

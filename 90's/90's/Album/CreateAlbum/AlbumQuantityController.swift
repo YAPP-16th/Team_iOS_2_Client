@@ -30,6 +30,7 @@ class AlbumQuantityController : UIViewController {
     override func viewDidLoad() {
         keyboardSetting()
         setQuantityPicker()
+        checkDeviseVersion(backView: backView)
     }
     
     @IBAction func clickNextBtn(_ sender: Any) {
@@ -99,7 +100,12 @@ extension AlbumQuantityController {
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
-        buttonConstraint.constant = 35 - quantityPicker.frame.height
+        if isDeviseVersionLow == true {
+            buttonConstraint.constant =  10 - quantityPicker.frame.height
+        } else {
+            buttonConstraint.constant = nextBtn.frame.height/2 - quantityPicker.frame.height
+        }
+        
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 1, initialSpringVelocity: 0.0, options: [], animations: {self.view.layoutIfNeeded()})
        }
 

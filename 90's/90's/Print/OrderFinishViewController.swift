@@ -24,8 +24,10 @@ class OrderFinishViewController : UIViewController {
     
     @IBAction func cancelgotoAlbum(_ sender: Any) {
 //        self.dismiss(animated: true, completion: nil)
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
+//        self.navigationController?.popViewController(animated: true)
     }
     
     
 }
+
