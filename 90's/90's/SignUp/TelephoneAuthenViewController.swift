@@ -9,8 +9,8 @@
 import UIKit
 
 class TelephoneAuthenViewController: UIViewController {
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tfTelephone: UITextField!
-    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var selectorImageView1: UIImageView!
     @IBOutlet weak var selectorImageView2: UIImageView!
     @IBOutlet weak var tfAuthenNumber: UITextField!
@@ -20,41 +20,85 @@ class TelephoneAuthenViewController: UIViewController {
     var email:String!
     var pwd:String!
     var telephone:String!
-    var time = 180
-    var timer = Timer()
-    var isStartTimer = false
+    var isClicked = false
+    var isInitial1 = false
+    var isInitial2 = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tfTelephone.text = telephone
-        tfTelephone.isEnabled = false
+        setUI()
+        setObserver()
+    }
+    
+    @IBAction func goBack(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func clickOkBtn(_ sender: Any) {
+        if(!isClicked){
+            self.tfAuthenNumber.isHidden = false
+            selectorImageView2.isHidden = false
+            self.okBtn.setTitle("확인", for: .normal)
+            self.okBtn.isEnabled = false
+            self.titleLabel.text = "인증번호를\n입력해주세요"
+            self.tfTelephone.isEnabled = false
+            isClicked = !isClicked
+        }else{
+            goAuthen()
+        }
+    }
+    
+    func setUI(){
+        tfAuthenNumber.isHidden = true
+        selectorImageView2.isHidden = true
         validationLabel.isHidden = true
         okBtn.isEnabled = false
-        
-        startTimer()
+    }
+    
+    func setObserver(){
+        NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: tfTelephone, queue: .main, using : {
+            _ in
+            let str = self.tfTelephone.text!.trimmingCharacters(in: .whitespaces)
+            
+            if(str != ""){
+                if(str.count == 3 && !self.isInitial1 ){
+                    self.tfTelephone.text = self.tfTelephone.text! + "-"
+                    self.isInitial1 = true
+                }else if(str.count == 8 && !self.isInitial2){
+                    self.tfTelephone.text = self.tfTelephone.text! + "-"
+                    self.isInitial2 = true
+                }
+                self.selectorImageView1.backgroundColor = UIColor.black
+                self.okBtn.backgroundColor = UIColor.black
+                self.okBtn.isEnabled = true
+            }else {
+                self.isInitial1 = false
+                self.isInitial2 = false
+                self.selectorImageView1.backgroundColor = UIColor.gray
+                self.okBtn.backgroundColor = UIColor.gray
+                self.okBtn.isEnabled = false
+            }
+            
+        })
         
         NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: tfAuthenNumber, queue: .main, using : {
             _ in
             let str = self.tfAuthenNumber.text!.trimmingCharacters(in: .whitespaces)
             
             if(str != ""){
-                self.selectorImageView1.backgroundColor = UIColor.black
                 self.selectorImageView2.backgroundColor = UIColor.black
                 self.okBtn.backgroundColor = UIColor.black
                 self.okBtn.isEnabled = true
             }else {
-                self.selectorImageView1.backgroundColor = UIColor.gray
-                self.selectorImageView2.backgroundColor = UIColor.black
-                self.okBtn.backgroundColor = UIColor.black
-                self.okBtn.isEnabled = true
+                self.selectorImageView2.backgroundColor = UIColor.gray
+                self.okBtn.backgroundColor = UIColor.gray
+                self.okBtn.isEnabled = false
             }
             
         })
-        
-        
     }
     
-    @IBAction func clickOkBtn(_ sender: Any) {
+    func goAuthen(){
         //인증번호가 맞는지 서버에 요청을 보내는 메소드 필요, 임시 인증번호(1111)
         let authenNumber = tfAuthenNumber.text!
         if(authenNumber == "1111"){
@@ -67,32 +111,15 @@ class TelephoneAuthenViewController: UIViewController {
         }
     }
     
-    //타이머 실행 메소드
-    //타임아웃이 될 때 어떤식으로 화면이 전환되는지에 대해 논의 필요!!!
-    func startTimer(){
-        if(!isStartTimer){
-            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true){
-                _ in
-                if(self.time > 0){
-                    self.time -= 1
-                    self.timeLabel.text = "\(self.time/60):\(self.time%60)"
-                }else{
-                    self.isStartTimer = true
-                    self.timer.invalidate()
-                }
-            }
-        }
+    //화면 터치시 키보드 내림
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        tfTelephone.endEditing(true)
     }
     
-    //화면 터치시 키보드 내림
-       override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-           tfTelephone.endEditing(true)
-       }
-       
-       //키보드 리턴 버튼 클릭 시 키보드 내림
-       func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-           tfTelephone.resignFirstResponder()
-           return true
-       }
+    //키보드 리턴 버튼 클릭 시 키보드 내림
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        tfTelephone.resignFirstResponder()
+        return true
+    }
     
 }
