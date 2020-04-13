@@ -42,6 +42,10 @@ extension UICollectionViewCell {
     
         imageView.contentMode = .scaleToFill
     }
+    
+    func clickSetting(imageView : UIImageView!, hidden : Bool){
+        imageView.isHidden = !imageView.isHidden
+    }
 }
 
 

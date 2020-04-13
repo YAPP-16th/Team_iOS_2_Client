@@ -24,7 +24,9 @@ class AlbumCompleteVC: UIViewController {
         let number = AlbumDatabase.arrayList.count + 1
         let user = "temp user"
         let newAlbum = Album(user : [user], albumIndex: number, albumName: self.albumName, albumStartDate: self.albumStartDate, albumEndDate: self.albumEndDate, albumLayout: self.albumLayout, albumMaxCount: self.albumMaxCount, photo: [])
+        newAlbum.photos.append(photo)
         AlbumDatabase.arrayList.append(newAlbum)
+        print("new album = \(newAlbum.photos)")
         mainProtocol?.reloadView()
         self.navigationController?.popToRootViewController(animated: true)
     }
@@ -35,13 +37,14 @@ class AlbumCompleteVC: UIViewController {
     var albumStartDate : String!
     var albumEndDate : String!
     var albumMaxCount : Int!
-    var albumCover : UIImage!
+    var photo : UIImage!
     var albumLayout : Int!
     
     var mainProtocol : AlbumMainVCProtocol?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("photo = \(photo)")
         Setting()
     }
     
@@ -53,7 +56,7 @@ class AlbumCompleteVC: UIViewController {
 
 extension AlbumCompleteVC {
     func Setting(){
-        albumImageView.image = albumCover
+        albumImageView.image = photo
         albumTitleLabel.text = albumName
         albumDateLabel.text = "\(albumStartDate!)  ~  \(albumEndDate!)"
         albumCountLabel.text = String(albumMaxCount)

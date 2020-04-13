@@ -79,6 +79,8 @@
 		9B180805243E096000AF1CE6 /* AlbumDetailPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailPopupVC.swift; sourceTree = "<group>"; };
 		9B180807243E10F300AF1CE6 /* StickerPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerPopupVC.swift; sourceTree = "<group>"; };
 		9B31E1932434BBB400A139C6 /* photoFilterCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoFilterCollectionCell.swift; sourceTree = "<group>"; };
+		9B3DC42E244443750035E025 /* neodgm.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = neodgm.ttf; sourceTree = "<group>"; };
+		9B3DC42F244443760035E025 /* neodgm_code.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = neodgm_code.ttf; sourceTree = "<group>"; };
 		9B44EDE02429FC9100B0D774 /* ImageRenderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRenderVC.swift; sourceTree = "<group>"; };
 		9B44EDE42429FCDF00B0D774 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		9B45BD002438734E00497EA5 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
@@ -202,6 +204,15 @@
 			path = MainAlbum;
 			sourceTree = "<group>";
 		};
+		9B3DC4302444437F0035E025 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				9B3DC42F244443760035E025 /* neodgm_code.ttf */,
+				9B3DC42E244443750035E025 /* neodgm.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		9B44EDDE2429ED9200B0D774 /* Album */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,6 +277,7 @@
 		9B6A13442440933E00E78E66 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				9B3DC4302444437F0035E025 /* Font */,
 				9B44EDE42429FCDF00B0D774 /* Extension.swift */,
 				9BFC14892441C14500F38AFF /* Protocol.swift */,
 			);

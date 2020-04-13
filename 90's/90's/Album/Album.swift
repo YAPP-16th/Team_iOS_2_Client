@@ -9,14 +9,12 @@
 
 let AlbumDatabase : AlbumModel = AlbumModel()
 
-
 class Album {
     var user : [String]
     var albumIndex : Int!
     var albumName : String!
     var albumStartDate : String?
     var albumEndDate : String?
-//    var albumCover : UIImage?
     var albumLayout : Int!
     var albumMaxCount : Int!
     var photos : [UIImage]
@@ -29,7 +27,7 @@ class Album {
         self.albumEndDate = albumEndDate
         self.albumLayout = albumLayout
         self.albumMaxCount = albumMaxCount
-        self.photos = [UIImage(named: "layoutimg1")!, UIImage(named: "layoutimg2")!, UIImage(named: "layoutimg3")!, UIImage(named: "layoutimg4")!, UIImage(named: "layoutimg5")!, UIImage(named: "layoutimg6")!]
+        self.photos = []
     }
 }
 
@@ -46,6 +44,7 @@ class AlbumModel {
     init() {
         arrayList = defaultData()
         arrayList[0].photos.insert(UIImage(named: "cover1")!, at: 0)
+        arrayList[0].photos.append(UIImage(named: "layoutimg2")!)
         arrayList[1].photos.insert(UIImage(named: "cover2")!, at: 0)
         arrayList[2].photos.insert(UIImage(named: "cover3")!, at: 0)
     }
