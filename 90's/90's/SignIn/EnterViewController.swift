@@ -26,20 +26,14 @@ class EnterViewController: UIViewController {
     
     //로그인 버튼 클릭 시
     @IBAction func goSignIn(_ sender: Any) {
-        
         let loginMainVC = storyboard?.instantiateViewController(withIdentifier: "LoginMainViewController") as! LoginMainViewController
-        
         navigationController?.pushViewController(loginMainVC, animated: true)
-        
     }
     
     //회원가입 버튼 클릭 시
     @IBAction func goSignUp(_ sender: Any) {
-        let sb = UIStoryboard(name: "SignUp", bundle: nil)
-        let termVC = sb.instantiateViewController(withIdentifier: "TermViewController") as! TermViewController
-        
+        let termVC = storyboard?.instantiateViewController(withIdentifier: "TermViewController") as! TermViewController
         navigationController?.pushViewController(termVC, animated: true)
-        
     }
     
     

@@ -40,6 +40,7 @@ class AuthenViewController: UIViewController {
             selectorImageView2.isHidden = false
             self.okBtn.setTitle("확인", for: .normal)
             self.okBtn.isEnabled = false
+            self.okBtn.backgroundColor = UIColor.gray
             self.titleLabel.text = "인증번호를\n입력해주세요"
             self.tfTelephone.isEnabled = false
             isClicked = !isClicked

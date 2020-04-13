@@ -219,12 +219,16 @@
                                 </state>
                                 <connections>
                                     <action selector="clickOkBtn:" destination="J73-gp-eJa" eventType="touchUpInside" id="qIh-B0-LS4"/>
+                                    <action selector="goLogin:" destination="YLc-aX-d6L" eventType="touchUpInside" id="BcQ-R5-1Iq"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N4B-6h-Ic0">
                                 <rect key="frame" x="20" y="79" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="arrowRightBlackCopy4"/>
+                                <connections>
+                                    <action selector="goBack:" destination="YLc-aX-d6L" eventType="touchUpInside" id="gcr-Au-Ktu"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -260,6 +264,7 @@
                                 </state>
                                 <connections>
                                     <action selector="clickOkBtn:" destination="J73-gp-eJa" eventType="touchUpInside" id="hpR-LU-jwe"/>
+                                    <action selector="reFindEmail:" destination="gUI-Tl-yiP" eventType="touchUpInside" id="dIG-qg-9XM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atb-dY-1Mg">
@@ -272,12 +277,16 @@
                                 </state>
                                 <connections>
                                     <action selector="clickOkBtn:" destination="J73-gp-eJa" eventType="touchUpInside" id="KH8-I9-POB"/>
+                                    <action selector="goLogin:" destination="gUI-Tl-yiP" eventType="touchUpInside" id="wJs-Eb-qoK"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="53D-fZ-6ND">
                                 <rect key="frame" x="31" y="80" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="arrowRightBlackCopy4"/>
+                                <connections>
+                                    <action selector="goBack:" destination="gUI-Tl-yiP" eventType="touchUpInside" id="kof-w6-OrB"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
