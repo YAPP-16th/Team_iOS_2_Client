@@ -16,31 +16,17 @@ class EmailViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        emailValidationLabel.isHidden = true
-        tfEmail.delegate = self
-        tfEmail.becomeFirstResponder()
-           
-           NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: tfEmail, queue: .main, using : {
-               _ in
-               let str = self.tfEmail.text!.trimmingCharacters(in: .whitespaces)
-               
-               if(str != ""){
-                   self.selectorImageView.backgroundColor = UIColor.black
-                   self.nextBtn.backgroundColor = UIColor.black
-                   self.nextBtn.isEnabled = true
-               }else {
-                   self.selectorImageView.backgroundColor = UIColor.gray
-                   self.nextBtn.backgroundColor = UIColor.gray
-                   self.nextBtn.isEnabled = false
-               }
-               
-           })
+        setUI()
+        setObserver()
+    }
+    
+    @IBAction func goBack(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func clickNextBtn(_ sender: Any) {
         let email = tfEmail.text!
-    
+        
         //string extension을 통해 정규식 검증
         if(email.validateEmail()){
             emailValidationLabel.isHidden = true
@@ -50,6 +36,30 @@ class EmailViewController: UIViewController, UITextFieldDelegate {
         }else {
             emailValidationLabel.isHidden = false
         }
+    }
+    
+    func setUI(){
+        tfEmail.delegate = self
+        tfEmail.becomeFirstResponder()
+        emailValidationLabel.isHidden = true
+    }
+    
+    func setObserver(){
+        NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: tfEmail, queue: .main, using : {
+            _ in
+            let str = self.tfEmail.text!.trimmingCharacters(in: .whitespaces)
+            
+            if(str != ""){
+                self.selectorImageView.backgroundColor = UIColor.black
+                self.nextBtn.backgroundColor = UIColor.black
+                self.nextBtn.isEnabled = true
+            }else {
+                self.selectorImageView.backgroundColor = UIColor.gray
+                self.nextBtn.backgroundColor = UIColor.gray
+                self.nextBtn.isEnabled = false
+            }
+            
+        })
     }
     
     //화면 터치시 키보드 내림
