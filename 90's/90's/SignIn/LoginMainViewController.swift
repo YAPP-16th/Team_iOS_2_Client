@@ -16,9 +16,7 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passValidationLabel: UILabel!
     @IBOutlet weak var selectorImageView2: UIImageView!
     @IBOutlet weak var loginBtn: UIButton!
-    
-    let signSB = UIStoryboard.init(name: "SignUp", bundle: nil)
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         tfPass.delegate = self
@@ -46,15 +44,14 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func goFindPass(_ sender: Any) {
-        let authenVC =  signSB.instantiateViewController(withIdentifier: "TelephoneAuthenViewController") as!
-        TelephoneAuthenViewController
+        let authenVC = storyboard?.instantiateViewController(withIdentifier: "AuthenViewController") as!
+        AuthenViewController
         self.navigationController?.pushViewController(authenVC, animated: true)
-        
     }
     
     @IBAction func goFindEmail(_ sender: Any) {
-        let authenVC =  signSB.instantiateViewController(withIdentifier: "TelephoneAuthenViewController") as!
-        TelephoneAuthenViewController
+        let authenVC =  storyboard?.instantiateViewController(withIdentifier: "AuthenViewController") as!
+        AuthenViewController
         self.navigationController?.pushViewController(authenVC, animated: true)
     }
     

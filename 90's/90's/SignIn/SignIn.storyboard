@@ -267,7 +267,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.84705882352941175" green="0.28627450980392155" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" title="다시 찾기">
+                                <state key="normal" title="로그인">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -288,19 +288,19 @@
             </objects>
             <point key="canvasLocation" x="1316" y="771"/>
         </scene>
-        <!--View Controller-->
+        <!--Authen View Controller-->
         <scene sceneID="Rbl-cg-Vgw">
             <objects>
-                <viewController id="J73-gp-eJa" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AuthenViewController" id="J73-gp-eJa" customClass="AuthenViewController" customModule="_0_s" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qaL-wi-aZY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="010-1234-5678" placeholder="전화번호 입력" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fMQ-dQ-zC6">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="전화번호 입력" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fMQ-dQ-zC6">
                                 <rect key="frame" x="33" y="286" width="352" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RlX-bF-mL9">
                                 <rect key="frame" x="33" y="327" width="352" height="1"/>
@@ -348,6 +348,9 @@
                                 <rect key="frame" x="20" y="80" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="arrowRightBlackCopy4"/>
+                                <connections>
+                                    <action selector="goBack:" destination="J73-gp-eJa" eventType="touchUpInside" id="lcy-lr-9af"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -358,13 +361,14 @@
                         <outlet property="selectorImageView1" destination="RlX-bF-mL9" id="ht2-ZX-K4j"/>
                         <outlet property="selectorImageView2" destination="6O9-4L-xgH" id="Gv1-EJ-1II"/>
                         <outlet property="tfAuthenNumber" destination="gMJ-ie-ywj" id="KQ2-QG-Fvu"/>
-                        <outlet property="tfTelephone" destination="fMQ-dQ-zC6" id="EYd-qr-X0U"/>
+                        <outlet property="tfTelephone" destination="fMQ-dQ-zC6" id="aCp-9M-ZTp"/>
+                        <outlet property="titleLabel" destination="oiW-eZ-AVW" id="ivT-PB-gEc"/>
                         <outlet property="validationLabel" destination="4dp-Bd-xjH" id="XQU-oq-Lyl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Lq-PB-mGR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-210" y="772"/>
+            <point key="canvasLocation" x="-226" y="771"/>
         </scene>
         <!--Make New Pass View Controller-->
         <scene sceneID="seX-0H-cYg">
