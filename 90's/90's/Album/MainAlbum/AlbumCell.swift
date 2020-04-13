@@ -1,33 +1,20 @@
+//
+//  AlbumCoverCollectionCell.swift
+//  90's
+//
+//  Created by 성다연 on 2020/04/11.
+//  Copyright © 2020 홍정민. All rights reserved.
+//
+
 import UIKit
 
-
 class AlbumCell : UICollectionViewCell {
-    weak var delegate : PrintDelegate!
+    @IBOutlet weak var imageView : UIImageView!
+    @IBOutlet weak var nameLabel : UILabel!
     
-    var isFull: Bool = false{
-        didSet{
-            if(!isFull){
-                printBtn.isHidden = true
-            }else {
-                printBtn.isHidden = false
-            }
-        }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        subImageViewSetting(imageView: imageView, top: 0, left: 0, right: 0, bottom: 30)
     }
-    
-    @IBOutlet weak var albumImageView : UIImageView!
-    @IBOutlet weak var albumNameLabel : UILabel!
-    @IBOutlet weak var printBtn: UIButton!
-
-    
-    @IBAction func selectPrintBtn(_ sender: Any) {
-        self.delegate.goPrintVC()
-    }
-    
-    
-    override func prepareForReuse() {
-        self.printBtn.isHidden = true
-    }
-    
-    
-    
 }
+

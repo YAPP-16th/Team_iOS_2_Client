@@ -10,9 +10,7 @@ import UIKit
 
 protocol ClickDelegate : NSObjectProtocol {
     func cellClick(isClicked : Bool)
-    
 }
-
 
 
 class TermViewController: UIViewController {
@@ -27,9 +25,11 @@ class TermViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        okBtn.isEnabled = false
-        termTableView.delegate = self
-        termTableView.dataSource = self
+        setUI()
+    }
+    
+    @IBAction func goBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func agreeAllTerms(_ sender: Any) {
@@ -60,14 +60,18 @@ class TermViewController: UIViewController {
     
     @IBAction func clickOkBtn(_ sender: Any) {
         let emailVC = storyboard?.instantiateViewController(identifier: "EmailViewController") as! EmailViewController
-        print("hi")
         self.navigationController?.pushViewController(emailVC, animated: true)
     }
     
+    func setUI(){
+        navigationController?.isNavigationBarHidden = true
+        tabBarController?.tabBar.isHidden = true
+        termTableView.delegate = self
+        termTableView.dataSource = self
+        okBtn.isEnabled = false
+    }
+    
 }
-
-
-
 
 
 extension TermViewController : UITableViewDelegate {
