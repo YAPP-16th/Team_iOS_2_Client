@@ -1012,7 +1012,7 @@
                                         </constraints>
                                         <state key="normal" title="정보"/>
                                         <connections>
-                                            <segue destination="ZwE-5H-XaB" kind="presentation" identifier="GoToInfoVC" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="9zf-2U-Aeg"/>
+                                            <segue destination="ZwE-5H-XaB" kind="show" identifier="GoToInfoVC" id="9zf-2U-Aeg"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1264,36 +1264,49 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h8n-JR-6kH">
                                 <rect key="frame" x="0.0" y="612" width="414" height="284"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SyL-CK-K9g">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SyL-CK-K9g">
                                         <rect key="frame" x="229" y="74" width="149" height="136"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="136" id="Gj9-Ik-sEp"/>
                                             <constraint firstAttribute="width" constant="149" id="mD7-bH-JrS"/>
                                         </constraints>
-                                        <state key="normal" title="앨범에서 열기">
+                                        <state key="normal" image="takealbumimage">
                                             <color key="titleColor" red="0.19598248600000001" green="0.1883642673" blue="0.18039122220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
                                             <action selector="touchAlbumBtn:" destination="WkB-LK-QBw" eventType="touchUpInside" id="r38-Zl-OrU"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svU-L2-zHV">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svU-L2-zHV">
                                         <rect key="frame" x="36" y="74" width="149" height="136"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="136" id="76R-TI-zdS"/>
                                             <constraint firstAttribute="width" constant="149" id="snQ-3c-gRB"/>
                                         </constraints>
-                                        <state key="normal" title="사진 찍기">
+                                        <state key="normal" image="takephotoimage">
                                             <color key="titleColor" red="0.19598248600000001" green="0.1883642673" blue="0.18039122220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
                                             <action selector="touchCameraBtn:" destination="WkB-LK-QBw" eventType="touchUpInside" id="lf7-bI-wi8"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jnj-FK-ddr">
+                                        <rect key="frame" x="354" y="0.0" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="MHy-fy-DlX"/>
+                                            <constraint firstAttribute="height" constant="60" id="VcY-E7-otN"/>
+                                        </constraints>
+                                        <state key="normal" image="cancleicon"/>
+                                        <connections>
+                                            <action selector="cancleBtn:" destination="WkB-LK-QBw" eventType="touchUpInside" id="Gjx-2a-hk0"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="jnj-FK-ddr" secondAttribute="trailing" id="4Aa-pL-MpM"/>
                                     <constraint firstItem="svU-L2-zHV" firstAttribute="leading" secondItem="h8n-JR-6kH" secondAttribute="leading" constant="36" id="BB1-O5-VxR"/>
+                                    <constraint firstItem="jnj-FK-ddr" firstAttribute="top" secondItem="h8n-JR-6kH" secondAttribute="top" id="Cl8-H9-mHs"/>
                                     <constraint firstAttribute="trailing" secondItem="SyL-CK-K9g" secondAttribute="trailing" constant="36" id="NAL-i6-p22"/>
                                     <constraint firstAttribute="width" constant="414" id="kcT-lQ-aj7"/>
                                     <constraint firstItem="SyL-CK-K9g" firstAttribute="centerY" secondItem="h8n-JR-6kH" secondAttribute="centerY" id="nf6-zA-6Op"/>
@@ -1317,18 +1330,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Pc-kF-t4c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1891" y="836"/>
+            <point key="canvasLocation" x="1889.8550724637682" y="835.71428571428567"/>
         </scene>
         <!--Album InfoVC-->
         <scene sceneID="QVh-Qg-haT">
             <objects>
                 <viewController storyboardIdentifier="AlbumInfoVC" id="ZwE-5H-XaB" customClass="AlbumInfoVC" customModule="_0_s" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fph-iD-syO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C9U-jv-BTd" userLabel="TopView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="78"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08y-WT-NNF">
                                         <rect key="frame" x="0.0" y="0.0" width="103" height="78"/>
@@ -1381,7 +1394,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jC4-MJ-SUu" userLabel="InfoView">
-                                <rect key="frame" x="21.5" y="143" width="371" height="293"/>
+                                <rect key="frame" x="21.5" y="99" width="371" height="293"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LM7-kk-Lp6">
                                         <rect key="frame" x="115" y="24" width="141" height="146"/>
@@ -1471,7 +1484,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xy-ew-9ut" userLabel="line">
-                                <rect key="frame" x="18" y="459" width="378" height="1"/>
+                                <rect key="frame" x="18" y="415" width="378" height="1"/>
                                 <color key="backgroundColor" red="0.85512512919999994" green="0.86231267450000004" blue="0.88627898689999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="HMW-nS-4Ln"/>
@@ -1482,7 +1495,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="참여 멤버" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSF-Oq-AqN">
-                                <rect key="frame" x="18" y="497" width="116" height="27"/>
+                                <rect key="frame" x="18" y="453" width="116" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="XrI-7n-clT"/>
                                     <constraint firstAttribute="width" constant="116" id="pzJ-Cf-8Cf"/>
@@ -1492,7 +1505,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pj7-Nw-P4u">
-                                <rect key="frame" x="0.0" y="539" width="414" height="243"/>
+                                <rect key="frame" x="0.0" y="495" width="414" height="233"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="G5n-v1-ZYm">
@@ -1540,7 +1553,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="membertablecell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="membertablecell" rowHeight="80" id="RqV-V5-H9y" customClass="MemberTableViewCell" customModule="_0_s" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="membertablecell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="membertablecell" rowHeight="80" id="RqV-V5-H9y" customClass="MemberTableViewCell" customModule="_0_s" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="108" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RqV-V5-H9y" id="bpc-UL-Ix9">
@@ -1592,7 +1605,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fO-Pc-rcl">
-                                <rect key="frame" x="0.0" y="782" width="414" height="80"/>
+                                <rect key="frame" x="0.0" y="728" width="414" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="qwt-eY-x9t"/>
                                 </constraints>
@@ -1602,7 +1615,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fz7-Ep-JFz">
-                                <rect key="frame" x="305" y="479" width="109" height="59"/>
+                                <rect key="frame" x="305" y="435" width="109" height="59"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="109" id="DpS-dL-TI8"/>
                                     <constraint firstAttribute="height" constant="59" id="MFq-Ie-vaN"/>
@@ -1637,6 +1650,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gwo-dn-GqF"/>
                     </view>
+                    <navigationItem key="navigationItem" id="CFO-Kb-gn7"/>
                     <connections>
                         <outlet property="albumCountLabel" destination="i4y-WA-AyI" id="eaa-Ss-XvH"/>
                         <outlet property="albumCoverImageView" destination="LM7-kk-Lp6" id="WuT-hU-Cb8"/>
@@ -1953,5 +1967,7 @@
         <image name="kakaoinviteimage" width="682" height="158"/>
         <image name="ownerimage" width="100" height="104"/>
         <image name="plusimage" width="267" height="267"/>
+        <image name="takealbumimage" width="272" height="244"/>
+        <image name="takephotoimage" width="278" height="278"/>
     </resources>
 </document>

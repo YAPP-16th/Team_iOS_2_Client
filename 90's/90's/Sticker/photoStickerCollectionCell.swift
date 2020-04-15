@@ -10,6 +10,7 @@ import UIKit
 
 class photoStickerCollectionCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var checkImageView: UIImageView!
 }
 
 extension photoStickerCollectionCell {

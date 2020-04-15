@@ -16,7 +16,7 @@ class AlbumInfoVC: UIViewController {
     @IBOutlet weak var albumCoverImageView: UIImageView!
     @IBOutlet weak var memberTableView: UITableView!
     @IBAction func backBtn(_ sender: UIButton) {
-        dismiss(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     @IBAction func inviteBtn(_ sender: UIButton) {
         let templeteId = "23118";
