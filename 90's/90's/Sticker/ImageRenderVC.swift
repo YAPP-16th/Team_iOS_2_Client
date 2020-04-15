@@ -9,6 +9,7 @@
 import UIKit
 
 class ImageRenderVC: UIViewController, UIGestureRecognizerDelegate {
+    @IBOutlet weak var polaroidView: UIView!
     @IBOutlet weak var renderImage: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var filterBtn: UIButton!
@@ -22,7 +23,8 @@ class ImageRenderVC: UIViewController, UIGestureRecognizerDelegate {
     // for filter
     fileprivate let context = CIContext(options: nil)
     fileprivate var filterIndex = 0
-    fileprivate let filterArray : [String] = ["LUT", "LUT2", "LUT3", "LUT4", "LUT5", "LUT6"]
+    fileprivate let filterNameArray : [String] = ["Noise", "Grunge", "Wrap","Light", "Aura", "Old"]
+    fileprivate let filterLutArray : [String] = ["LUT", "LUT2", "LUT3", "LUT4", "LUT5", "LUT6"]
     
     fileprivate var isFilterSelected : Bool = true
     fileprivate var filterImages : [UIImage] = []// Array for apply LUT filters before viewAppear. And place on collectioncell
@@ -30,9 +32,14 @@ class ImageRenderVC: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if image == nil { // for test
+            image = UIImage(named: "husky")
+        }
+        
         renderImage.image = image
         
-        filterImages = filterArray.map({ (v : String) -> UIImage in
+        filterImages = filterLutArray.map({ (v : String) -> UIImage in
             let colorcube = colorCubeFilterFromLUT(imageName: v, originalImage: image!)
             let result = colorcube?.outputImage
             let image = UIImage.init(cgImage: context.createCGImage(result!, from: result!.extent)!)
@@ -85,11 +92,9 @@ extension ImageRenderVC {
 extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if isFilterSelected == true {
-            // filter collection
+        if isFilterSelected == true {   // filter collection
             return filterImages.count
-        } else {
-            // sticker collection
+        } else {                        // sticker collection
             return stickerArray.count
         }
     }
@@ -99,6 +104,7 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
             // filter collection
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filtercell", for: indexPath) as! photoFilterCollectionCell
             cell.imageView.image = filterImages[indexPath.row]
+            cell.filterLabel.text = filterNameArray[indexPath.row]
             return cell
         } else {
             // sticker collection
@@ -109,7 +115,7 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 73, height: 88)
+        return CGSize(width: 74, height: 88)
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -129,11 +135,12 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
             // filter collection
             let cell = collectionView.cellForItem(at: indexPath) as! photoFilterCollectionCell
             renderImage.image = filterImages[indexPath.row]
-            cell.toggleSelected()
+            cell.checkImageView.isHidden = false
         } else {
             // sticker collection
             let cell = collectionView.cellForItem(at: indexPath) as! photoStickerCollectionCell
-            createStickerView(image: cell.imageView.image!)
+            cell.imageView.image = UIImage(named: stickerArray[indexPath.row])
+            cell.checkImageView.isHidden = false
         }
     }
     
@@ -141,11 +148,11 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
         if isFilterSelected == true {
             // filter collection
             let cell = collectionView.cellForItem(at: indexPath) as! photoFilterCollectionCell
-            cell.toggleSelected()
+            cell.checkImageView.isHidden = true
         } else {
             // sticker collection
-//            let cell = collectionView.cellForItem(at: indexPath) as! photoStickerCollectionCell
-            //cell.createSticker(image: UIImage(named: "husky"))
+            let cell = collectionView.cellForItem(at: indexPath) as! photoStickerCollectionCell
+            cell.checkImageView.isHidden = true
         }
     }
 }

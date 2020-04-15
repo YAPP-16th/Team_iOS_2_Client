@@ -1264,36 +1264,49 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h8n-JR-6kH">
                                 <rect key="frame" x="0.0" y="612" width="414" height="284"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SyL-CK-K9g">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SyL-CK-K9g">
                                         <rect key="frame" x="229" y="74" width="149" height="136"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="136" id="Gj9-Ik-sEp"/>
                                             <constraint firstAttribute="width" constant="149" id="mD7-bH-JrS"/>
                                         </constraints>
-                                        <state key="normal" title="앨범에서 열기">
+                                        <state key="normal" image="takealbumimage">
                                             <color key="titleColor" red="0.19598248600000001" green="0.1883642673" blue="0.18039122220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
                                             <action selector="touchAlbumBtn:" destination="WkB-LK-QBw" eventType="touchUpInside" id="r38-Zl-OrU"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svU-L2-zHV">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svU-L2-zHV">
                                         <rect key="frame" x="36" y="74" width="149" height="136"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="136" id="76R-TI-zdS"/>
                                             <constraint firstAttribute="width" constant="149" id="snQ-3c-gRB"/>
                                         </constraints>
-                                        <state key="normal" title="사진 찍기">
+                                        <state key="normal" image="takephotoimage">
                                             <color key="titleColor" red="0.19598248600000001" green="0.1883642673" blue="0.18039122220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
                                             <action selector="touchCameraBtn:" destination="WkB-LK-QBw" eventType="touchUpInside" id="lf7-bI-wi8"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jnj-FK-ddr">
+                                        <rect key="frame" x="354" y="0.0" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="MHy-fy-DlX"/>
+                                            <constraint firstAttribute="height" constant="60" id="VcY-E7-otN"/>
+                                        </constraints>
+                                        <state key="normal" image="cancleicon"/>
+                                        <connections>
+                                            <action selector="cancleBtn:" destination="WkB-LK-QBw" eventType="touchUpInside" id="Gjx-2a-hk0"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="jnj-FK-ddr" secondAttribute="trailing" id="4Aa-pL-MpM"/>
                                     <constraint firstItem="svU-L2-zHV" firstAttribute="leading" secondItem="h8n-JR-6kH" secondAttribute="leading" constant="36" id="BB1-O5-VxR"/>
+                                    <constraint firstItem="jnj-FK-ddr" firstAttribute="top" secondItem="h8n-JR-6kH" secondAttribute="top" id="Cl8-H9-mHs"/>
                                     <constraint firstAttribute="trailing" secondItem="SyL-CK-K9g" secondAttribute="trailing" constant="36" id="NAL-i6-p22"/>
                                     <constraint firstAttribute="width" constant="414" id="kcT-lQ-aj7"/>
                                     <constraint firstItem="SyL-CK-K9g" firstAttribute="centerY" secondItem="h8n-JR-6kH" secondAttribute="centerY" id="nf6-zA-6Op"/>
@@ -1317,7 +1330,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Pc-kF-t4c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1891" y="836"/>
+            <point key="canvasLocation" x="1889.8550724637682" y="835.71428571428567"/>
         </scene>
         <!--Album InfoVC-->
         <scene sceneID="QVh-Qg-haT">
@@ -1954,5 +1967,7 @@
         <image name="kakaoinviteimage" width="682" height="158"/>
         <image name="ownerimage" width="100" height="104"/>
         <image name="plusimage" width="267" height="267"/>
+        <image name="takealbumimage" width="272" height="244"/>
+        <image name="takephotoimage" width="278" height="278"/>
     </resources>
 </document>

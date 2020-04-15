@@ -10,6 +10,9 @@ import UIKit
 
 class AlbumDetailPopupVC: UIViewController {
     @IBOutlet weak var touchView: UIView!
+    @IBAction func cancleBtn(_ sender: UIButton) {
+        dismiss(animated: true)
+    }
     @IBAction func touchAlbumBtn(_ sender: UIButton) {
         galleryPicker.sourceType = .photoLibrary
         galleryPicker.delegate = self
