@@ -8,7 +8,7 @@
 
 import UIKit
 import AVFoundation
-//import LUTFilter
+import LUTFilter
 
 struct Filter {
     let filterName : String
@@ -65,7 +65,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     @IBOutlet weak var outputimageViewConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
-    
+        
     @IBOutlet weak var changeCameraBtn: UIButton!
     
     var captureSession = AVCaptureSession()
@@ -101,15 +101,6 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         setupInputOutput()
         delegateSetting()
         
-        
-        let size = CGSize(width:   self.filteredImage.frame.width  , height: self.filteredImage.frame.height )
-        let rect = CGRect(x: self.filteredImage.frame.origin.x, y: self.filteredImage.frame.origin.y, width: size.width, height: size.height)
-        UIGraphicsBeginImageContextWithOptions(size, false, 1.0)
-        self.topImage!.draw(in: rect)
-        new_image = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        
-                
         self.captureBtnConstraint.constant = self.view.frame.height / 25
         
         
@@ -142,7 +133,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         let pinchRecognizer = UIPinchGestureRecognizer(target: self, action:#selector(pinch(_:)))
         view.addGestureRecognizer(pinchRecognizer)
         
-        self.collectionViewHeight.constant = 1
+        self.collectionViewHeight.constant = -80
         
     }
     
@@ -166,6 +157,21 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                     }
             })
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        let size = CGSize(width:   self.filteredImage.frame.width  , height: self.filteredImage.frame.height )
+        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        UIGraphicsBeginImageContextWithOptions(size, false, 1.0)
+
+        self.topImage!.draw(in: rect)
+        new_image = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        UIApplication.shared.isStatusBarHidden = true
+        UIApplication.shared.setStatusBarHidden(true, with: .slide) // .none, .slide, .fade
+//        UIApplication.shared.setStatusBarHidden(true, with: UIStatusBarAnimation.none)
     }
     
     @IBAction func ontapTakePhoto(_ sender: Any) {
@@ -195,11 +201,11 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
         
         if isCollectionViewAppear {
-            self.collectionViewHeight.constant = 1
+            self.collectionViewHeight.constant = 0
              
         }
         else {
-            self.collectionViewHeight.constant = 80
+            self.collectionViewHeight.constant = -80
         }
         
         UIView.animate(withDuration: 1, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations: {self.view.layoutIfNeeded()})
@@ -381,13 +387,13 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
         DispatchQueue.main.async {
             let filteredImage = UIImage(cgImage: cgImage)
-        
-//            self.filteredImage.image = filteredImage.mergeWith(topImage: self.topImage! , bottomImage: filteredImage).applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
+            self.filteredImage.image = filteredImage.mergeWith(topImage: self.topImage! , bottomImage: filteredImage).applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
 
             
             
         }
     }
+    
 }
 
 extension FilterViewController : AVCapturePhotoCaptureDelegate {
