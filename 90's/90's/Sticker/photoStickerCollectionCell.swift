@@ -25,4 +25,12 @@ extension photoStickerCollectionCell {
         
         return imageView
     }
+    
+    func toggleSetting(){
+        if checkImageView.isHidden == true {
+            checkImageView.isHidden = false
+        }else {
+            checkImageView.isHidden = true
+        }
+    }
 }
