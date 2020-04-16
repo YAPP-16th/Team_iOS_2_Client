@@ -45,6 +45,9 @@ class AlbumModel {
         arrayList = defaultData()
         arrayList[0].photos.insert(UIImage(named: "cover1")!, at: 0)
         arrayList[0].photos.append(UIImage(named: "layoutimg2")!)
+        arrayList[0].photos.append(UIImage(named: "layoutimg3")!)
+        arrayList[0].photos.append(UIImage(named: "layoutimg4")!)
+        arrayList[0].photos.append(UIImage(named: "layoutimg5")!)
         arrayList[1].photos.insert(UIImage(named: "cover2")!, at: 0)
         arrayList[2].photos.insert(UIImage(named: "cover3")!, at: 0)
     }

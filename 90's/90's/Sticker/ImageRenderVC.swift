@@ -17,6 +17,7 @@ class ImageRenderVC: UIViewController, UIGestureRecognizerDelegate {
     
     // get image from other view
     var image : UIImage?
+    var panGesture = UIPanGestureRecognizer()
     // for sticker
     fileprivate var location : CGPoint = CGPoint(x: 0, y: 0)
     fileprivate let stickerArray : [String] = ["heartimage", "starimage", "smileimage"]
@@ -29,7 +30,6 @@ class ImageRenderVC: UIViewController, UIGestureRecognizerDelegate {
     
     fileprivate var isFilterSelected : Bool = true
     fileprivate var filterImages : [UIImage] = []// Array for apply LUT filters before viewAppear. And place on collectioncell
-    fileprivate var pan : UIPanGestureRecognizer?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -38,7 +38,7 @@ class ImageRenderVC: UIViewController, UIGestureRecognizerDelegate {
         if image == nil { // for test
             image = UIImage(named: "husky")
         }
-        
+        panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(recognizer:)))
         renderImage.image = image
         
         filterImages = filterLutArray.map({ (v : String) -> UIImage in
@@ -52,7 +52,16 @@ class ImageRenderVC: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         buttonSetting()
-        delegateSetting()
+        defaultSetting()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // doesn't work
+        if selectIndex != nil {
+            resetCheckImage()
+        }
     }
 }
 
@@ -63,18 +72,39 @@ extension ImageRenderVC {
         stickerBtn.addTarget(self, action: #selector(touchStickerBtn), for: .touchUpInside)
     }
     
-    private func delegateSetting(){
+    private func defaultSetting(){
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.allowsMultipleSelection = false
+        polaroidView.addShadowEffect()
     }
     
     private func createStickerView(image : UIImage){
         let imageView = UIImageView(image: image)
         imageView.frame = CGRect(x: self.renderImage.frame.width / 2 - 50, y:renderImage.frame.height / 2 - 50, width: 100, height: 100)
         imageView.isUserInteractionEnabled = true
-        imageView.addGestureRecognizer(pan!)
+        
+        
+//        let panGesture = UIPanGestureRecognizer()
+//        let transition = panGesture.translation(in: imageView)
+//        imageView.center = CGPoint(x: imageView.center.x + transition.x, y: imageView.center.y + transition.y)
+//        panGesture.setTranslation(CGPoint.zero, in: imageView)
+        imageView.addGestureRecognizer(panGesture)
         renderImage.addSubview(imageView)
+        
+        
+    }
+    
+    private func resetCheckImage(){
+        if isFilterSelected == true {
+            // filter collection
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filtercell", for: selectIndex!) as! photoFilterCollectionCell
+            cell.toggleSetting()
+        } else {
+            // sticker collection
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "stickercell", for: selectIndex!) as! photoStickerCollectionCell
+            cell.toggleSetting()
+        }
     }
 }
 
@@ -88,6 +118,19 @@ extension ImageRenderVC {
     @objc func touchStickerBtn(){
         isFilterSelected = false
         collectionView.reloadData()
+    }
+    
+    @objc func handlePanGesture(recognizer : UIPanGestureRecognizer){
+        let transition = recognizer.translation(in: self.view)
+        if let myView = recognizer.view {
+            myView.center = CGPoint(x: myView.center.x + transition.x, y: myView.center.y + transition.y)
+        }
+        recognizer.setTranslation(CGPoint(x: 0, y: 0), in: self.view)
+//        if ((recognizer.state != UIGestureRecognizer.State.ended) &&
+//            (recognizer.state != UIGestureRecognizer.State.failed)) {
+//            recognizer.view?.center = recognizer.location(in: recognizer.view?.superview)
+//        }
+        print("\n------- call handlePanGesture ------\n")
     }
 }
 
@@ -103,6 +146,7 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        selectIndex = indexPath
         
         if isFilterSelected == true {
             // filter collection
@@ -147,8 +191,10 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
             let cell = collectionView.cellForItem(at: indexPath) as! photoStickerCollectionCell
             cell.imageView.image = UIImage(named: stickerArray[indexPath.row])
             cell.checkImageView.isHidden = false
+            createStickerView(image: UIImage(named: stickerArray[indexPath.row])!)
         }
-        print("collection select = \(collectionView.indexPathsForSelectedItems)")
+        
+        print("collection index = \(selectIndex)")
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -163,8 +209,6 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
             let cell = collectionView.cellForItem(at: indexPath) as! photoStickerCollectionCell
             cell.checkImageView.isHidden = true
         }
-        
-        self.collectionView.deselectItem(at: indexPath, animated: true)
     }
 }
 

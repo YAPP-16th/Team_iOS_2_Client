@@ -262,6 +262,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="zXm-V4-cfp" firstAttribute="bottom" secondItem="6uv-IX-MBZ" secondAttribute="bottom" id="0n4-tN-DaJ"/>
                             <constraint firstItem="6uv-IX-MBZ" firstAttribute="trailing" secondItem="KS0-2x-KK5" secondAttribute="trailing" constant="120" id="5WP-ia-oJE"/>
@@ -431,6 +432,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Fy-rS-eYg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5298.5507246376819" y="813.61607142857144"/>
+        </scene>
+        <!--PanVC-->
+        <scene sceneID="NJq-dR-4tP">
+            <objects>
+                <viewController id="6vv-AC-Smc" customClass="panVC" customModule="_0_s" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tQZ-Ew-kaa">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bpH-CX-BKM">
+                                <rect key="frame" x="100" y="350" width="160" height="146"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGray4Color" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fxl-ti-dNb">
+                                <rect key="frame" x="154" y="734" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tKE-tj-OHe">
+                                <rect key="frame" x="299" y="485" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
+                        <viewLayoutGuide key="safeArea" id="rPH-x7-0KM"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="ZvN-Id-Mox" appends="YES" id="Mek-FZ-gon"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="panGesture" destination="ZvN-Id-Mox" id="gR8-sq-ouL"/>
+                        <outlet property="testView" destination="bpH-CX-BKM" id="pmg-bo-EYI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zM1-by-DG2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="ZvN-Id-Mox">
+                    <connections>
+                        <action selector="pan:" destination="6vv-AC-Smc" id="pw2-C1-Hjh"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="6047.826086956522" y="813.61607142857144"/>
         </scene>
         <!--Sticker PopupVC-->
         <scene sceneID="5zh-JG-w65">
