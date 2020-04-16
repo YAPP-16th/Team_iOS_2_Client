@@ -14,18 +14,6 @@ class photoStickerCollectionCell: UICollectionViewCell {
 }
 
 extension photoStickerCollectionCell {
-    func createSticker(image: UIImage) -> UIImageView{
-        let imageView = UIImageView(image: image)
-        imageView.frame = CGRect(x: super.contentView.frame.width/2 - 50,y: super.contentView.frame.height/2 - 50, width: 100, height: 100)
-        imageView.isUserInteractionEnabled = true
-        
-        let pan = UIPanGestureRecognizer(target: self, action: Selector("handlePanGesture:"))
-        imageView.isUserInteractionEnabled = true
-        imageView.addGestureRecognizer(pan)
-        
-        return imageView
-    }
-    
     func toggleSetting(){
         if checkImageView.isHidden == true {
             checkImageView.isHidden = false
