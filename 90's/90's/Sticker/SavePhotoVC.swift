@@ -9,34 +9,66 @@
 import UIKit
 
 class SavePhotoVC: UIViewController {
-    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var switchBtn: UISwitch!
     @IBOutlet weak var saveBtn: UIButton!
-    @IBOutlet weak var dateView: UIView!
+    @IBOutlet weak var photoView: UIView!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBAction func backBtn(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
     
+    var location = CGPoint(x: 0.0, y: 0.0)
     var image : UIImage?
+    var originalView : UIView?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        dateLabel.isHidden = false
-        imageView.image = image!
+        defaultSetting()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        buttonSetting()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent!) {
+        var touch : UITouch! = touches.first! as UITouch
+        location = touch.location(in: view)
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        var touch : UITouch! = touches.first! as UITouch
+        location = touch.location(in: view)
+    }
+}
+
+
+extension SavePhotoVC {
+    func buttonSetting(){
         saveBtn.addTarget(self, action: #selector(touchSaveBtn), for: .touchUpInside)
         switchBtn.addTarget(self, action: #selector(touchSwitchBtn), for: .touchUpInside)
+    }
+    
+    func defaultSetting(){
+        dateLabel.isHidden = false
+        
+        photoView.addSubview(originalView!)
+        originalView?.translatesAutoresizingMaskIntoConstraints = false
+        originalView?.topAnchor.constraint(equalTo: photoView.topAnchor, constant: 0).isActive = true
+        originalView?.leftAnchor.constraint(equalTo: photoView.leftAnchor, constant: 0).isActive = true
+        originalView?.rightAnchor.constraint(equalTo: photoView.rightAnchor, constant: 0).isActive = true
+        originalView?.bottomAnchor.constraint(equalTo: photoView.bottomAnchor, constant: 0).isActive = true
     }
 }
 
 
 extension SavePhotoVC {
     @objc func touchSaveBtn(){
-        imageView.addSubview(dateView)
-        let renderer = UIGraphicsImageRenderer(size: imageView.bounds.size)
+        photoView.addSubview(dateLabel)
+        let renderer = UIGraphicsImageRenderer(size: photoView.bounds.size)
         let image = renderer.image { ctx in
-            imageView.drawHierarchy(in: imageView.bounds, afterScreenUpdates: true)
+            photoView.drawHierarchy(in: photoView.bounds, afterScreenUpdates: true)
         }
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
         dismiss(animated: true)

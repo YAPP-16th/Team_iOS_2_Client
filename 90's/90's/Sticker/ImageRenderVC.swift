@@ -23,6 +23,7 @@ class ImageRenderVC: UIViewController, UIGestureRecognizerDelegate {
     // for filter
     fileprivate let context = CIContext(options: nil)
     fileprivate var filterIndex = 0
+    fileprivate var selectIndex : IndexPath?
     fileprivate let filterNameArray : [String] = ["Noise", "Grunge", "Wrap","Light", "Aura", "Old"]
     fileprivate let filterLutArray : [String] = ["LUT", "LUT2", "LUT3", "LUT4", "LUT5", "LUT6"]
     
@@ -32,6 +33,7 @@ class ImageRenderVC: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        collectionView.reloadData()
         
         if image == nil { // for test
             image = UIImage(named: "husky")
@@ -64,6 +66,7 @@ extension ImageRenderVC {
     private func delegateSetting(){
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.allowsMultipleSelection = false
     }
     
     private func createStickerView(image : UIImage){
@@ -100,6 +103,7 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         if isFilterSelected == true {
             // filter collection
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filtercell", for: indexPath) as! photoFilterCollectionCell
@@ -131,6 +135,8 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectIndex = indexPath
+        
         if isFilterSelected == true {
             // filter collection
             let cell = collectionView.cellForItem(at: indexPath) as! photoFilterCollectionCell
@@ -142,9 +148,12 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
             cell.imageView.image = UIImage(named: stickerArray[indexPath.row])
             cell.checkImageView.isHidden = false
         }
+        print("collection select = \(collectionView.indexPathsForSelectedItems)")
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        selectIndex = indexPath
+        
         if isFilterSelected == true {
             // filter collection
             let cell = collectionView.cellForItem(at: indexPath) as! photoFilterCollectionCell
@@ -154,6 +163,8 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
             let cell = collectionView.cellForItem(at: indexPath) as! photoStickerCollectionCell
             cell.checkImageView.isHidden = true
         }
+        
+        self.collectionView.deselectItem(at: indexPath, animated: true)
     }
 }
 
@@ -163,6 +174,8 @@ extension ImageRenderVC {
         if segue.identifier == "GoToSaveVC" {
             let dest = segue.destination as? SavePhotoVC
             dest?.image = renderImage.image
+            dest?.originalView = polaroidView
+            
             print("send segue")
         }
     }
