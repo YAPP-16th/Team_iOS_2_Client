@@ -42,7 +42,7 @@
                                     <constraint firstAttribute="height" constant="3" id="bD2-TQ-Ega"/>
                                 </constraints>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wM9-d1-5LI">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wM9-d1-5LI">
                                 <rect key="frame" x="20" y="277" width="374" height="156"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -62,7 +62,7 @@
                                                         <constraint firstAttribute="width" constant="24" id="Byz-WS-L9F"/>
                                                         <constraint firstAttribute="height" constant="24" id="cIs-Yx-DF9"/>
                                                     </constraints>
-                                                    <state key="normal" image="checkboxgray"/>
+                                                    <state key="normal" backgroundImage="checkboxgray"/>
                                                     <connections>
                                                         <action selector="clickAgreeBtn:" destination="iTX-Nb-Psb" eventType="touchUpInside" id="VwX-M7-N2H"/>
                                                     </connections>
@@ -113,7 +113,7 @@
                                     <constraint firstAttribute="height" constant="24" id="ALI-ij-QsP"/>
                                     <constraint firstAttribute="width" constant="24" id="ALk-Dc-lCp"/>
                                 </constraints>
-                                <state key="normal" image="checkboxgray"/>
+                                <state key="normal" backgroundImage="checkboxgray"/>
                                 <connections>
                                     <action selector="agreeAllTerms:" destination="QAs-Yh-TjA" eventType="touchUpInside" id="n9s-oU-PHK"/>
                                 </connections>
@@ -211,7 +211,7 @@
                                 <rect key="frame" x="0.0" y="164" width="414" height="5836"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sqs-nK-Jgy">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="5636"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="5616"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accessTerms" translatesAutoresizingMaskIntoConstraints="NO" id="7rL-aC-kEo">
                                                 <rect key="frame" x="36" y="0.0" width="342" height="5616"/>
@@ -220,9 +220,9 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="7rL-aC-kEo" firstAttribute="leading" secondItem="sqs-nK-Jgy" secondAttribute="leading" constant="36" id="2zq-0K-i7J"/>
-                                            <constraint firstAttribute="height" constant="5636" id="JuU-yB-Ksm"/>
+                                            <constraint firstAttribute="height" constant="5616" id="JuU-yB-Ksm"/>
                                             <constraint firstAttribute="trailing" secondItem="7rL-aC-kEo" secondAttribute="trailing" constant="36" id="LUa-Is-XSf"/>
-                                            <constraint firstAttribute="bottom" secondItem="7rL-aC-kEo" secondAttribute="bottom" constant="20" id="wU3-5q-L4O"/>
+                                            <constraint firstAttribute="bottom" secondItem="7rL-aC-kEo" secondAttribute="bottom" id="wU3-5q-L4O"/>
                                             <constraint firstItem="7rL-aC-kEo" firstAttribute="top" secondItem="sqs-nK-Jgy" secondAttribute="top" id="zpY-lL-4OS"/>
                                         </constraints>
                                     </view>
@@ -252,6 +252,8 @@
                     <size key="freeformSize" width="414" height="6000"/>
                     <connections>
                         <outlet property="scrollView" destination="u9S-qx-riX" id="EEZ-7v-HRn"/>
+                        <outlet property="termImageView" destination="7rL-aC-kEo" id="YYa-tX-iYk"/>
+                        <outlet property="viewHeightConst" destination="JuU-yB-Ksm" id="g0m-xo-iwV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aOI-pM-hk7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

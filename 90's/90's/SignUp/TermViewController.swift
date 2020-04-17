@@ -99,17 +99,8 @@ extension TermViewController : UITableViewDataSource {
 extension TermViewController : ClickDelegate {
     func indicatorClick(index: Int) {
         let termDetailVC = storyboard?.instantiateViewController(identifier: "TermDetailViewController") as! TermDetailViewController
+        termDetailVC.index = index
         self.navigationController?.pushViewController(termDetailVC, animated: true)
-//        switch index {
-//        case 0:
-//
-//        case 1:
-//
-//        case 2:
-//
-//        default:
-//
-//        }
     }
     
     func cellClick(isClicked: Bool) {
