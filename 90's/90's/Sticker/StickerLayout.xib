@@ -8,52 +8,75 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB" customClass="StickerLayout" customModule="_0_s" customModuleProvider="target">
+        <view contentMode="scaleToFill" restorationIdentifier="stickerlayout" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB" customClass="StickerLayout" customModule="_0_s" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5V5-uX-9kp">
-                    <rect key="frame" x="84" y="0.0" width="36" height="36"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Jf-St-2Hx">
+                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8yc-vt-zpZ">
+                            <rect key="frame" x="20" y="20" width="80" height="80"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4E-CT-7WG">
+                            <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="36" id="CRp-Dk-YdC"/>
+                                <constraint firstAttribute="width" constant="36" id="JHQ-en-p7T"/>
+                            </constraints>
+                            <state key="normal" title="크기"/>
+                            <connections>
+                                <action selector="sizeBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="JGP-ak-AY6"/>
+                                <action selector="turnBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="QXb-zw-8Ud"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRG-h1-v5s">
+                            <rect key="frame" x="84" y="84" width="36" height="36"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="36" id="0Eh-FF-cg7"/>
+                                <constraint firstAttribute="width" constant="36" id="OUe-nw-AAb"/>
+                            </constraints>
+                            <state key="normal" title="회전"/>
+                            <connections>
+                                <action selector="turnBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="QO4-c7-I6U"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5V5-uX-9kp">
+                            <rect key="frame" x="84" y="0.0" width="36" height="36"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="36" id="cch-9s-lza"/>
+                                <constraint firstAttribute="width" constant="36" id="i3X-oU-Z4x"/>
+                            </constraints>
+                            <state key="normal" image="blackcancelimg"/>
+                            <connections>
+                                <action selector="cancleBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="z0L-d0-y4h"/>
+                            </connections>
+                        </button>
+                    </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="36" id="cch-9s-lza"/>
-                        <constraint firstAttribute="width" constant="36" id="i3X-oU-Z4x"/>
+                        <constraint firstItem="d4E-CT-7WG" firstAttribute="top" secondItem="4Jf-St-2Hx" secondAttribute="top" id="CFJ-fG-1z6"/>
+                        <constraint firstItem="d4E-CT-7WG" firstAttribute="leading" secondItem="4Jf-St-2Hx" secondAttribute="leading" id="EwY-fi-4jU"/>
+                        <constraint firstAttribute="bottom" secondItem="YRG-h1-v5s" secondAttribute="bottom" id="Fce-pX-e9e"/>
+                        <constraint firstItem="5V5-uX-9kp" firstAttribute="top" secondItem="4Jf-St-2Hx" secondAttribute="top" id="LCo-2G-wAj"/>
+                        <constraint firstAttribute="trailing" secondItem="8yc-vt-zpZ" secondAttribute="trailing" constant="20" id="Mha-9s-OAc"/>
+                        <constraint firstItem="8yc-vt-zpZ" firstAttribute="top" secondItem="4Jf-St-2Hx" secondAttribute="top" constant="20" id="O0Y-r6-tnc"/>
+                        <constraint firstAttribute="bottom" secondItem="8yc-vt-zpZ" secondAttribute="bottom" constant="20" id="fa4-5T-Vak"/>
+                        <constraint firstItem="8yc-vt-zpZ" firstAttribute="leading" secondItem="4Jf-St-2Hx" secondAttribute="leading" constant="20" id="oVI-hn-Zgg"/>
+                        <constraint firstAttribute="trailing" secondItem="5V5-uX-9kp" secondAttribute="trailing" id="sZV-1T-DcL"/>
+                        <constraint firstAttribute="trailing" secondItem="YRG-h1-v5s" secondAttribute="trailing" id="tDQ-yj-ysb"/>
                     </constraints>
-                    <state key="normal" image="blackcancelimg"/>
-                    <connections>
-                        <action selector="cancleBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="z0L-d0-y4h"/>
-                    </connections>
-                </button>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8yc-vt-zpZ">
-                    <rect key="frame" x="20" y="20" width="80" height="80"/>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRG-h1-v5s">
-                    <rect key="frame" x="84" y="84" width="36" height="36"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="36" id="0Eh-FF-cg7"/>
-                        <constraint firstAttribute="width" constant="36" id="OUe-nw-AAb"/>
-                    </constraints>
-                    <state key="normal" title="회전"/>
-                    <connections>
-                        <action selector="turnBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="QO4-c7-I6U"/>
-                    </connections>
-                </button>
+                </view>
             </subviews>
-            <color key="backgroundColor" red="0.93353021140000003" green="0.94081169369999995" blue="0.96078830959999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="8yc-vt-zpZ" secondAttribute="trailing" constant="20" id="1at-JZ-Kvk"/>
-                <constraint firstItem="8yc-vt-zpZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="25O-dv-VMa"/>
-                <constraint firstItem="5V5-uX-9kp" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="GE1-7V-sfN"/>
-                <constraint firstItem="8yc-vt-zpZ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="LzQ-sb-gCk"/>
-                <constraint firstAttribute="trailing" secondItem="YRG-h1-v5s" secondAttribute="trailing" id="NzF-a6-OCT"/>
-                <constraint firstAttribute="trailing" secondItem="5V5-uX-9kp" secondAttribute="trailing" id="UZf-TJ-cEl"/>
-                <constraint firstAttribute="bottom" secondItem="8yc-vt-zpZ" secondAttribute="bottom" constant="20" id="acn-QH-Pdj"/>
-                <constraint firstItem="8yc-vt-zpZ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="dfz-d4-7iG"/>
-                <constraint firstAttribute="bottom" secondItem="YRG-h1-v5s" secondAttribute="bottom" id="j2I-ak-bDg"/>
-                <constraint firstItem="8yc-vt-zpZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="wlO-4o-Wh9"/>
+                <constraint firstItem="4Jf-St-2Hx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="9mp-qN-Jgi"/>
+                <constraint firstAttribute="bottom" secondItem="4Jf-St-2Hx" secondAttribute="bottom" id="Efh-vR-g6T"/>
+                <constraint firstAttribute="trailing" secondItem="4Jf-St-2Hx" secondAttribute="trailing" id="dha-GQ-YIX"/>
+                <constraint firstItem="4Jf-St-2Hx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="o56-F2-l8D"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="stickerImageView" destination="8yc-vt-zpZ" id="bQB-6w-rVV"/>
+                <outlet property="stickerView" destination="4Jf-St-2Hx" id="IfF-eG-b8S"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="101.78571428571428"/>
         </view>
