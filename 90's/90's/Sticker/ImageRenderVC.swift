@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImageRenderVC: UIViewController, UIGestureRecognizerDelegate {
+class ImageRenderVC: UIViewController {
     @IBOutlet weak var polaroidView: UIView!
     @IBOutlet weak var renderImage: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -17,7 +17,13 @@ class ImageRenderVC: UIViewController, UIGestureRecognizerDelegate {
     
     // get image from other view
     var image : UIImage?
-    var panGesture = UIPanGestureRecognizer()
+    var tempsticker : UIImageView?
+    var sticker : UIView?
+    // value for checkimageview showing while collection cells changes
+    fileprivate var isFilterSelected : Bool = true
+    fileprivate var testFilterCell : photoFilterCollectionCell?
+    fileprivate var testStickerCell : photoStickerCollectionCell?
+    fileprivate var testFilterCount = 0, testStickerCount = 0
     // for sticker
     fileprivate var location : CGPoint = CGPoint(x: 0, y: 0)
     fileprivate let stickerArray : [String] = ["heartimage", "starimage", "smileimage"]
@@ -27,9 +33,10 @@ class ImageRenderVC: UIViewController, UIGestureRecognizerDelegate {
     fileprivate var selectIndex : IndexPath?
     fileprivate let filterNameArray : [String] = ["Noise", "Grunge", "Wrap","Light", "Aura", "Old"]
     fileprivate let filterLutArray : [String] = ["LUT", "LUT2", "LUT3", "LUT4", "LUT5", "LUT6"]
+    // Array for apply LUT filters & Sticker before viewAppear. And place on collectioncell
+    fileprivate var filterImages : [UIImage] = []
+    fileprivate var stickerImages : [UIImage] = []
     
-    fileprivate var isFilterSelected : Bool = true
-    fileprivate var filterImages : [UIImage] = []// Array for apply LUT filters before viewAppear. And place on collectioncell
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -38,30 +45,15 @@ class ImageRenderVC: UIViewController, UIGestureRecognizerDelegate {
         if image == nil { // for test
             image = UIImage(named: "husky")
         }
-        panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(recognizer:)))
-        renderImage.image = image
         
-        filterImages = filterLutArray.map({ (v : String) -> UIImage in
-            let colorcube = colorCubeFilterFromLUT(imageName: v, originalImage: image!)
-            let result = colorcube?.outputImage
-            let image = UIImage.init(cgImage: context.createCGImage(result!, from: result!.extent)!)
-            return image
-        })
+        renderImage.image = image
+        initializeArrays()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         buttonSetting()
         defaultSetting()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        // doesn't work
-        if selectIndex != nil {
-            resetCheckImage()
-        }
     }
 }
 
@@ -79,31 +71,51 @@ extension ImageRenderVC {
         polaroidView.addShadowEffect()
     }
     
-    private func createStickerView(image : UIImage){
-        let imageView = UIImageView(image: image)
-        imageView.frame = CGRect(x: self.renderImage.frame.width / 2 - 50, y:renderImage.frame.height / 2 - 50, width: 100, height: 100)
-        imageView.isUserInteractionEnabled = true
+    private func initializeArrays(){
+        filterImages = filterLutArray.map({ (v : String) -> UIImage in
+            let colorcube = colorCubeFilterFromLUT(imageName: v, originalImage: image!)
+            let result = colorcube?.outputImage
+            let image = UIImage.init(cgImage: context.createCGImage(result!, from: result!.extent)!)
+            return image
+        })
+        stickerImages = stickerArray.map({ ( v : String ) -> UIImage in
+            return UIImage(named: v)!
+        })
+    }
+    
+    private func createPan(view : UIView){
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.handlePanGesture(panGesture:)))
+        view.addGestureRecognizer(panGesture)
+    }
+    
+    private func createStickerView(image : UIImage, indexPathRow : Int){
+//        let imageView = UIImageView(image: image)
+//        imageView.frame = CGRect(x: view.frame.width / 2 - 50, y: view.frame.height / 3 - 50, width: 100, height: 100)
+//        imageView.isUserInteractionEnabled = true
+//        tempsticker = imageView
+//        createPan(view: imageView)
+//        self.view.addSubview(imageView)
         
-        
-//        let panGesture = UIPanGestureRecognizer()
-//        let transition = panGesture.translation(in: imageView)
-//        imageView.center = CGPoint(x: imageView.center.x + transition.x, y: imageView.center.y + transition.y)
-//        panGesture.setTranslation(CGPoint.zero, in: imageView)
-        imageView.addGestureRecognizer(panGesture)
-        renderImage.addSubview(imageView)
-        
-        
+        let stickerView = Bundle.main.loadNibNamed("StickerLayout", owner: nil, options: nil)?.first as! StickerLayout//StickerLayout(frame: CGRect(x: view.frame.width/2 - 50, y: view.frame.height/3 - 50, width: 100, height: 100))
+        stickerView.frame = CGRect(x: view.frame.width/2 - 50, y: view.frame.height/3 - 50, width: 100, height: 100)
+        stickerView.stickerImageView.image = stickerImages[indexPathRow]
+        stickerView.isUserInteractionEnabled = true
+        sticker = stickerView
+        print("stickerView = \(stickerView)")
+        createPan(view: stickerView)
+
+        self.polaroidView.addSubview(stickerView)
     }
     
     private func resetCheckImage(){
         if isFilterSelected == true {
             // filter collection
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filtercell", for: selectIndex!) as! photoFilterCollectionCell
-            cell.toggleSetting()
+            cell.hideimage()
         } else {
             // sticker collection
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "stickercell", for: selectIndex!) as! photoStickerCollectionCell
-            cell.toggleSetting()
+            cell.hideimage()
         }
     }
 }
@@ -120,17 +132,16 @@ extension ImageRenderVC {
         collectionView.reloadData()
     }
     
-    @objc func handlePanGesture(recognizer : UIPanGestureRecognizer){
-        let transition = recognizer.translation(in: self.view)
-        if let myView = recognizer.view {
-            myView.center = CGPoint(x: myView.center.x + transition.x, y: myView.center.y + transition.y)
-        }
-        recognizer.setTranslation(CGPoint(x: 0, y: 0), in: self.view)
-//        if ((recognizer.state != UIGestureRecognizer.State.ended) &&
-//            (recognizer.state != UIGestureRecognizer.State.failed)) {
-//            recognizer.view?.center = recognizer.location(in: recognizer.view?.superview)
-//        }
-        print("\n------- call handlePanGesture ------\n")
+    @objc func handlePanGesture(panGesture: UIPanGestureRecognizer){
+        let transition = panGesture.translation(in: sticker)
+        panGesture.setTranslation(CGPoint.zero, in: sticker)
+        
+        let imageView = panGesture.view as! StickerLayout
+        imageView.center = CGPoint(x: imageView.center.x + transition.x, y: imageView.center.y + transition.y)
+        imageView.isUserInteractionEnabled = true
+        imageView.isMultipleTouchEnabled = false
+        
+        self.polaroidView.addSubview(imageView)
     }
 }
 
@@ -157,10 +168,12 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
         } else {
             // sticker collection
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "stickercell", for: indexPath) as! photoStickerCollectionCell
-            cell.imageView.image = UIImage(named: stickerArray[indexPath.row])
+            cell.imageView.image = stickerImages[indexPath.row]
             return cell
         }
     }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 74, height: 88)
@@ -180,34 +193,41 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectIndex = indexPath
-        
-        if isFilterSelected == true {
-            // filter collection
-            let cell = collectionView.cellForItem(at: indexPath) as! photoFilterCollectionCell
+       
+        if let cell = collectionView.cellForItem(at: indexPath) as? photoFilterCollectionCell {
+            cell.showimage()
             renderImage.image = filterImages[indexPath.row]
-            cell.checkImageView.isHidden = false
-        } else {
-            // sticker collection
-            let cell = collectionView.cellForItem(at: indexPath) as! photoStickerCollectionCell
-            cell.imageView.image = UIImage(named: stickerArray[indexPath.row])
-            cell.checkImageView.isHidden = false
-            createStickerView(image: UIImage(named: stickerArray[indexPath.row])!)
+            
+            testFilterCount += 1
+            if testFilterCount <= 1 {
+                testFilterCell = cell
+            } else {
+                testFilterCell?.hideimage()
+                testFilterCell = nil
+            }
+        } else if let cell = collectionView.cellForItem(at: indexPath) as? photoStickerCollectionCell {
+            cell.showimage()
+            createStickerView(image: stickerImages[indexPath.row], indexPathRow: indexPath.row)
+            
+            testStickerCount += 1
+            if testStickerCount <= 1 {
+                testStickerCell = cell
+            } else {
+                testStickerCell?.hideimage()
+                testStickerCell = nil
+            }
         }
-        
-        print("collection index = \(selectIndex)")
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         selectIndex = indexPath
         
-        if isFilterSelected == true {
-            // filter collection
-            let cell = collectionView.cellForItem(at: indexPath) as! photoFilterCollectionCell
-            cell.checkImageView.isHidden = true
-        } else {
-            // sticker collection
-            let cell = collectionView.cellForItem(at: indexPath) as! photoStickerCollectionCell
-            cell.checkImageView.isHidden = true
+        if let cell = collectionView.cellForItem(at: indexPath) as? photoFilterCollectionCell {
+            cell.hideimage()
+            testFilterCount = 0
+        } else if let cell = collectionView.cellForItem(at: indexPath) as? photoStickerCollectionCell {
+            testStickerCount = 0
+            cell.hideimage()
         }
     }
 }
@@ -219,7 +239,6 @@ extension ImageRenderVC {
             let dest = segue.destination as? SavePhotoVC
             dest?.image = renderImage.image
             dest?.originalView = polaroidView
-            
             print("send segue")
         }
     }

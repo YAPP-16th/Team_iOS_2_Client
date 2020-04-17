@@ -457,24 +457,15 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="rPH-x7-0KM"/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="ZvN-Id-Mox" appends="YES" id="Mek-FZ-gon"/>
-                        </connections>
                     </view>
                     <connections>
-                        <outlet property="panGesture" destination="ZvN-Id-Mox" id="gR8-sq-ouL"/>
                         <outlet property="testView" destination="bpH-CX-BKM" id="pmg-bo-EYI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zM1-by-DG2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="ZvN-Id-Mox">
-                    <connections>
-                        <action selector="pan:" destination="6vv-AC-Smc" id="pw2-C1-Hjh"/>
-                    </connections>
-                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="6047.826086956522" y="813.61607142857144"/>
         </scene>

@@ -15,11 +15,10 @@ class photoFilterCollectionCell: UICollectionViewCell {
 }
 
 extension photoFilterCollectionCell {
-    func toggleSetting(){
-        if checkImageView.isHidden == true {
-            checkImageView.isHidden = false
-        }else {
-            checkImageView.isHidden = true
-        }
+    func hideimage(){
+        checkImageView.isHidden = true
+    }
+    func showimage(){
+        checkImageView.isHidden = false
     }
 }

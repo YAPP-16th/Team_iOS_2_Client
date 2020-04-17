@@ -38,6 +38,8 @@
 		9BC0DBB62444802A00CA90F7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0DBB52444802A00CA90F7 /* User.swift */; };
 		9BC16B1A2435B68F007F106C /* photoStickerCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC16B192435B68F007F106C /* photoStickerCollectionCell.swift */; };
 		9BC98F0424488113002629AF /* panVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC98F0324488113002629AF /* panVC.swift */; };
+		9BC98F062448B3CD002629AF /* StickerLayout.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BC98F052448B3CD002629AF /* StickerLayout.xib */; };
+		9BC98F082448B74E002629AF /* StickerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC98F072448B74E002629AF /* StickerLayout.swift */; };
 		9BD31D37243A05F700D0D719 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD31D36243A05F700D0D719 /* KakaoOpenSDK.framework */; };
 		9BD31D3A243A0A9100D0D719 /* InviteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD31D39243A0A9100D0D719 /* InviteVC.swift */; };
 		9BD31D3E243A110600D0D719 /* KakaoLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD31D3D243A110600D0D719 /* KakaoLink.framework */; };
@@ -106,6 +108,8 @@
 		9BC0DBB52444802A00CA90F7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9BC16B192435B68F007F106C /* photoStickerCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoStickerCollectionCell.swift; sourceTree = "<group>"; };
 		9BC98F0324488113002629AF /* panVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = panVC.swift; sourceTree = "<group>"; };
+		9BC98F052448B3CD002629AF /* StickerLayout.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StickerLayout.xib; sourceTree = "<group>"; };
+		9BC98F072448B74E002629AF /* StickerLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerLayout.swift; sourceTree = "<group>"; };
 		9BD31D36243A05F700D0D719 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
 		9BD31D38243A08CE00D0D719 /* KakaoOpenSDK-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KakaoOpenSDK-Bridging-Header.h"; sourceTree = "<group>"; };
 		9BD31D39243A0A9100D0D719 /* InviteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteVC.swift; sourceTree = "<group>"; };
@@ -258,6 +262,8 @@
 				9B0B806F24357929009D7B17 /* SavePhotoVC.swift */,
 				9B180807243E10F300AF1CE6 /* StickerPopupVC.swift */,
 				9BC98F0324488113002629AF /* panVC.swift */,
+				9BC98F052448B3CD002629AF /* StickerLayout.xib */,
+				9BC98F072448B74E002629AF /* StickerLayout.swift */,
 			);
 			path = Sticker;
 			sourceTree = "<group>";
@@ -418,6 +424,7 @@
 				39585160242F461800014CB0 /* Album.storyboard in Resources */,
 				3958515E242F460000014CB0 /* Filter.storyboard in Resources */,
 				3958515C242F45E600014CB0 /* Sticker.storyboard in Resources */,
+				9BC98F062448B3CD002629AF /* StickerLayout.xib in Resources */,
 				A333761D2420CFB3000DC7C4 /* Main.storyboard in Resources */,
 				39585169242F49F300014CB0 /* SignUp.storyboard in Resources */,
 			);
@@ -463,6 +470,7 @@
 				A3025CA02441ADCA00041723 /* EnterViewController.swift in Sources */,
 				A3025C9E2441AD9000041723 /* LoginMainViewController.swift in Sources */,
 				9B180806243E096000AF1CE6 /* AlbumDetailPopupVC.swift in Sources */,
+				9BC98F082448B74E002629AF /* StickerLayout.swift in Sources */,
 				A3D8758F24448BCE0085F17B /* AuthenViewController.swift in Sources */,
 				390A33EE243F6A52002E9F57 /* OrderFinishViewController.swift in Sources */,
 				9BBBA3DF243F6848002904AC /* AlbumCoverVC.swift in Sources */,
