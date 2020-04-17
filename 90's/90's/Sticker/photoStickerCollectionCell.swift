@@ -14,11 +14,10 @@ class photoStickerCollectionCell: UICollectionViewCell {
 }
 
 extension photoStickerCollectionCell {
-    func toggleSetting(){
-        if checkImageView.isHidden == true {
-            checkImageView.isHidden = false
-        }else {
-            checkImageView.isHidden = true
-        }
+    func hideimage(){
+        checkImageView.isHidden = true
+    }
+    func showimage(){
+        checkImageView.isHidden = false
     }
 }

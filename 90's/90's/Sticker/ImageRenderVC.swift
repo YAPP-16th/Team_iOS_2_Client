@@ -19,6 +19,11 @@ class ImageRenderVC: UIViewController {
     var image : UIImage?
     var tempsticker : UIImageView?
     var sticker : UIView?
+    // value for checkimageview showing while collection cells changes
+    fileprivate var isFilterSelected : Bool = true
+    fileprivate var testFilterCell : photoFilterCollectionCell?
+    fileprivate var testStickerCell : photoStickerCollectionCell?
+    fileprivate var testFilterCount = 0, testStickerCount = 0
     // for sticker
     fileprivate var location : CGPoint = CGPoint(x: 0, y: 0)
     fileprivate let stickerArray : [String] = ["heartimage", "starimage", "smileimage"]
@@ -28,9 +33,9 @@ class ImageRenderVC: UIViewController {
     fileprivate var selectIndex : IndexPath?
     fileprivate let filterNameArray : [String] = ["Noise", "Grunge", "Wrap","Light", "Aura", "Old"]
     fileprivate let filterLutArray : [String] = ["LUT", "LUT2", "LUT3", "LUT4", "LUT5", "LUT6"]
+    // Array for apply LUT filters before viewAppear. And place on collectioncell
+    fileprivate var filterImages : [UIImage] = []
     
-    fileprivate var isFilterSelected : Bool = true
-    fileprivate var filterImages : [UIImage] = []// Array for apply LUT filters before viewAppear. And place on collectioncell
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -54,14 +59,6 @@ class ImageRenderVC: UIViewController {
         super.viewDidLoad()
         buttonSetting()
         defaultSetting()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        // doesn't work
-        if selectIndex != nil {
-            resetCheckImage()
-        }
     }
 }
 
@@ -105,11 +102,11 @@ extension ImageRenderVC {
         if isFilterSelected == true {
             // filter collection
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filtercell", for: selectIndex!) as! photoFilterCollectionCell
-            cell.toggleSetting()
+            cell.hideimage()
         } else {
             // sticker collection
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "stickercell", for: selectIndex!) as! photoStickerCollectionCell
-            cell.toggleSetting()
+            cell.hideimage()
         }
     }
 }
@@ -118,11 +115,19 @@ extension ImageRenderVC {
 extension ImageRenderVC {
     @objc func touchFilterBtn(){
         isFilterSelected = true
+//        if testStickerCell != nil {
+//            testStickerCell?.hideimage()
+//            testStickerCell = nil
+//        }
         collectionView.reloadData()
     }
     
     @objc func touchStickerBtn(){
         isFilterSelected = false
+//        if testFilterCell != nil {
+//            testFilterCell?.hideimage()
+//            testFilterCell = nil
+//        }
         collectionView.reloadData()
     }
     
@@ -167,6 +172,8 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
         }
     }
     
+    
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 74, height: 88)
     }
@@ -185,33 +192,41 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectIndex = indexPath
-        
-        if isFilterSelected == true {
-            // filter collection
-            let cell = collectionView.cellForItem(at: indexPath) as! photoFilterCollectionCell
+       
+        if let cell = collectionView.cellForItem(at: indexPath) as? photoFilterCollectionCell {
+            cell.showimage()
             renderImage.image = filterImages[indexPath.row]
-            cell.checkImageView.isHidden = false
-        } else {
-            // sticker collection
-            let cell = collectionView.cellForItem(at: indexPath) as! photoStickerCollectionCell
-            cell.imageView.image = UIImage(named: stickerArray[indexPath.row])
-            cell.checkImageView.isHidden = false
+            
+            testFilterCount += 1
+            if testFilterCount <= 1 {
+                testFilterCell = cell
+            } else {
+                testFilterCell?.hideimage()
+                testFilterCell = nil
+            }
+        } else if let cell = collectionView.cellForItem(at: indexPath) as? photoStickerCollectionCell {
+            cell.showimage()
             createStickerView(image: UIImage(named: stickerArray[indexPath.row])!)
+            
+            testStickerCount += 1
+            if testStickerCount <= 1 {
+                testStickerCell = cell
+            } else {
+                testStickerCell?.hideimage()
+                testStickerCell = nil
+            }
         }
-//        print("collection index = \(selectIndex)")
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         selectIndex = indexPath
         
-        if isFilterSelected == true {
-            // filter collection
-            let cell = collectionView.cellForItem(at: indexPath) as! photoFilterCollectionCell
-            cell.checkImageView.isHidden = true
-        } else {
-            // sticker collection
-            let cell = collectionView.cellForItem(at: indexPath) as! photoStickerCollectionCell
-            cell.checkImageView.isHidden = true
+        if let cell = collectionView.cellForItem(at: indexPath) as? photoFilterCollectionCell {
+            cell.hideimage()
+            testFilterCount = 0
+        } else if let cell = collectionView.cellForItem(at: indexPath) as? photoStickerCollectionCell {
+            testStickerCount = 0
+            cell.hideimage()
         }
     }
 }
@@ -223,7 +238,6 @@ extension ImageRenderVC {
             let dest = segue.destination as? SavePhotoVC
             dest?.image = renderImage.image
             dest?.originalView = polaroidView
-            
             print("send segue")
         }
     }

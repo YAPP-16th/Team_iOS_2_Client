@@ -14,7 +14,6 @@ class SavePhotoVC: UIViewController {
     @IBOutlet weak var photoView: UIView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBAction func backBtn(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
     
