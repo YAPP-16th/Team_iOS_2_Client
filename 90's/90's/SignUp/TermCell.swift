@@ -12,14 +12,18 @@ class TermCell: UITableViewCell {
     
     @IBOutlet weak var agreeBtn: UIButton!
     @IBOutlet weak var termTitle: UILabel!
+    var indexNumber:Int!
     var clickDelegate: ClickDelegate!
     var isClicked : Bool = false {
         didSet {
             if(isClicked){
-                agreeBtn.backgroundColor = UIColor.black } else { agreeBtn.backgroundColor = UIColor.gray}
+                agreeBtn.setBackgroundImage(UIImage(named: "checkboxInact"), for: .normal) } else { agreeBtn.setBackgroundImage(UIImage(named: "checkboxgray"), for: .normal)}
         }
     }
     
+    @IBAction func ClickIndicatorBtn(_ sender: Any) {
+        self.clickDelegate.indicatorClick(index: indexNumber)
+    }
     
     @IBAction func clickAgreeBtn(_ sender: Any) {
         self.isClicked = !isClicked

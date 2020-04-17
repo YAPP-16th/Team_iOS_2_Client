@@ -74,6 +74,7 @@
 		A33E5B272449EF1800794169 /* NotoSansCJKkr-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = A33E5B242449EE7E00794169 /* NotoSansCJKkr-Light.otf */; };
 		A33E5B282449EF1B00794169 /* NotoSansCJKkr-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A33E5B202449EE7D00794169 /* NotoSansCJKkr-Medium.otf */; };
 		A33E5B292449EF1E00794169 /* NotoSansCJKkr-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = A33E5B212449EE7D00794169 /* NotoSansCJKkr-Regular.otf */; };
+		A33E5B2B244A047D00794169 /* TermDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33E5B2A244A047D00794169 /* TermDetailViewController.swift */; };
 		A36DC86F24236386001B3767 /* AlbumDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36DC86E24236386001B3767 /* AlbumDetailController.swift */; };
 		A36DC87124236E45001B3767 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36DC87024236E45001B3767 /* PhotoCell.swift */; };
 		A3D8758F24448BCE0085F17B /* AuthenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D8758E24448BCE0085F17B /* AuthenViewController.swift */; };
@@ -153,6 +154,7 @@
 		A33E5B222449EE7D00794169 /* NotoSansCJKkr-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansCJKkr-Bold.otf"; path = "../../../../Desktop/NotoSansCJKkr-Bold.otf"; sourceTree = "<group>"; };
 		A33E5B232449EE7E00794169 /* NotoSansCJKkr-DemiLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansCJKkr-DemiLight.otf"; path = "../../../../Desktop/NotoSansCJKkr-DemiLight.otf"; sourceTree = "<group>"; };
 		A33E5B242449EE7E00794169 /* NotoSansCJKkr-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansCJKkr-Light.otf"; path = "../../../../Desktop/NotoSansCJKkr-Light.otf"; sourceTree = "<group>"; };
+		A33E5B2A244A047D00794169 /* TermDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermDetailViewController.swift; sourceTree = "<group>"; };
 		A36DC86E24236386001B3767 /* AlbumDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailController.swift; sourceTree = "<group>"; };
 		A36DC87024236E45001B3767 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		A3D8758E24448BCE0085F17B /* AuthenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenViewController.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				A318AC79243E2A5B00245434 /* TelephoneAuthenViewController.swift */,
 				A318AC7B243E2A7600245434 /* CompleteViewController.swift */,
 				A318AC7D243E2F9E00245434 /* TermCell.swift */,
+				A33E5B2A244A047D00794169 /* TermDetailViewController.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -506,6 +509,7 @@
 				A3D8758F24448BCE0085F17B /* AuthenViewController.swift in Sources */,
 				390A33EE243F6A52002E9F57 /* OrderFinishViewController.swift in Sources */,
 				9BBBA3DF243F6848002904AC /* AlbumCoverVC.swift in Sources */,
+				A33E5B2B244A047D00794169 /* TermDetailViewController.swift in Sources */,
 				A318AC74243E291D00245434 /* EmailViewController.swift in Sources */,
 				A318AC7C243E2A7600245434 /* CompleteViewController.swift in Sources */,
 				A318AC7E243E2F9E00245434 /* TermCell.swift in Sources */,
