@@ -68,6 +68,7 @@
 		A333762A2420DA36000DC7C4 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33376292420DA36000DC7C4 /* Album.swift */; };
 		A333762E2420E9D0000DC7C4 /* AlbumQuantityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A333762D2420E9D0000DC7C4 /* AlbumQuantityController.swift */; };
 		A33376302420EA9D000DC7C4 /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A333762F2420EA9D000DC7C4 /* AlbumCell.swift */; };
+		A33E5B1F2449EA8600794169 /* neodgm.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A33E5B1E2449EA6700794169 /* neodgm.ttf */; };
 		A36DC86F24236386001B3767 /* AlbumDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36DC86E24236386001B3767 /* AlbumDetailController.swift */; };
 		A36DC87124236E45001B3767 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36DC87024236E45001B3767 /* PhotoCell.swift */; };
 		A3D8758F24448BCE0085F17B /* AuthenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D8758E24448BCE0085F17B /* AuthenViewController.swift */; };
@@ -141,6 +142,7 @@
 		A33376292420DA36000DC7C4 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		A333762D2420E9D0000DC7C4 /* AlbumQuantityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumQuantityController.swift; sourceTree = "<group>"; };
 		A333762F2420EA9D000DC7C4 /* AlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCell.swift; sourceTree = "<group>"; };
+		A33E5B1E2449EA6700794169 /* neodgm.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = neodgm.ttf; path = ../../../../Downloads/neodgm.ttf; sourceTree = "<group>"; };
 		A36DC86E24236386001B3767 /* AlbumDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailController.swift; sourceTree = "<group>"; };
 		A36DC87024236E45001B3767 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		A3D8758E24448BCE0085F17B /* AuthenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenViewController.swift; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 		A33376142420CFB3000DC7C4 /* 90's */ = {
 			isa = PBXGroup;
 			children = (
+				A33E5B1D2449EA5500794169 /* Font */,
 				9B6A13442440933E00E78E66 /* Extension */,
 				9B45BCFF2438734200497EA5 /* Profile */,
 				39585165242F49C400014CB0 /* SignUp */,
@@ -355,6 +358,14 @@
 				A33376232420CFB6000DC7C4 /* Info.plist */,
 			);
 			path = "90's";
+			sourceTree = "<group>";
+		};
+		A33E5B1D2449EA5500794169 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				A33E5B1E2449EA6700794169 /* neodgm.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -421,6 +432,7 @@
 				A33376222420CFB6000DC7C4 /* LaunchScreen.storyboard in Resources */,
 				392F7790242F4BC70000BC3C /* Default-568h@2x.png in Resources */,
 				A333761F2420CFB6000DC7C4 /* Assets.xcassets in Resources */,
+				A33E5B1F2449EA8600794169 /* neodgm.ttf in Resources */,
 				39585160242F461800014CB0 /* Album.storyboard in Resources */,
 				3958515E242F460000014CB0 /* Filter.storyboard in Resources */,
 				3958515C242F45E600014CB0 /* Sticker.storyboard in Resources */,
