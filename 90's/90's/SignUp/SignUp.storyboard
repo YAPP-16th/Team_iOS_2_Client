@@ -92,10 +92,10 @@
                                     <action selector="clickOkBtn:" destination="QAs-Yh-TjA" eventType="touchUpInside" id="eAJ-di-JTd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="66k-ti-tdQ">
-                                <rect key="frame" x="20" y="73" width="52" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="66k-ti-tdQ">
+                                <rect key="frame" x="39" y="77" width="14" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="뒤로가기"/>
+                                <state key="normal" image="iconBack"/>
                                 <connections>
                                     <action selector="goBack:" destination="QAs-Yh-TjA" eventType="touchUpInside" id="J6M-p3-V2f"/>
                                 </connections>
@@ -384,4 +384,7 @@
             <point key="canvasLocation" x="2691" y="40"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="iconBack" width="14" height="23"/>
+    </resources>
 </document>
