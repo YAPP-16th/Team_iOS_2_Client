@@ -28,3 +28,4 @@ class StickerLayout: UIView {
         super.init(coder: coder)
     }
 }
+
