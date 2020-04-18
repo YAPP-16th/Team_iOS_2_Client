@@ -88,23 +88,22 @@ extension ImageRenderVC {
         view.addGestureRecognizer(panGesture)
     }
     
+    private func createRotate(view : UIView){
+        let rotateGesture = UIRotationGestureRecognizer(target: self, action: #selector(self.handleRotateGesture(rotateGesture:)))
+        view.addGestureRecognizer(rotateGesture)
+    }
+    
     private func createStickerView(image : UIImage, indexPathRow : Int){
-//        let imageView = UIImageView(image: image)
-//        imageView.frame = CGRect(x: view.frame.width / 2 - 50, y: view.frame.height / 3 - 50, width: 100, height: 100)
-//        imageView.isUserInteractionEnabled = true
-//        tempsticker = imageView
-//        createPan(view: imageView)
-//        self.view.addSubview(imageView)
-        
-        let stickerView = Bundle.main.loadNibNamed("StickerLayout", owner: nil, options: nil)?.first as! StickerLayout//StickerLayout(frame: CGRect(x: view.frame.width/2 - 50, y: view.frame.height/3 - 50, width: 100, height: 100))
+        let stickerView = Bundle.main.loadNibNamed("StickerLayout", owner: nil, options: nil)?.first as! StickerLayout
         stickerView.frame = CGRect(x: view.frame.width/2 - 50, y: view.frame.height/3 - 50, width: 100, height: 100)
         stickerView.stickerImageView.image = stickerImages[indexPathRow]
         stickerView.isUserInteractionEnabled = true
         sticker = stickerView
-        print("stickerView = \(stickerView)")
+        
         createPan(view: stickerView)
+        createRotate(view: stickerView)
 
-        self.polaroidView.addSubview(stickerView)
+        self.view.addSubview(stickerView)
     }
     
     private func resetCheckImage(){
@@ -138,10 +137,18 @@ extension ImageRenderVC {
         
         let imageView = panGesture.view as! StickerLayout
         imageView.center = CGPoint(x: imageView.center.x + transition.x, y: imageView.center.y + transition.y)
+        print("pan gesture working")
         imageView.isUserInteractionEnabled = true
         imageView.isMultipleTouchEnabled = false
+    }
+    
+    @objc func handleRotateGesture(rotateGesture : UIRotationGestureRecognizer){
+//        let rotatePoint = rotateGesture.location(in: sticker)
+//        let firstView = sticker?.hitTest(rotatePoint, with: nil)
         
-        self.polaroidView.addSubview(imageView)
+        sticker!.transform = sticker!.transform.rotated(by: rotateGesture.rotation)
+        rotateGesture.rotation = 0
+        print("rotate gesture working")
     }
 }
 

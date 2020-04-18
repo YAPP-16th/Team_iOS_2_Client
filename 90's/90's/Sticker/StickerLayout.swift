@@ -17,6 +17,7 @@ class StickerLayout: UIView {
     @IBAction func sizeBtn(_ sender: UIButton) {
     }
     @IBAction func turnBtn(_ sender: UIButton) {
+        
     }
     
     override init(frame: CGRect) {
