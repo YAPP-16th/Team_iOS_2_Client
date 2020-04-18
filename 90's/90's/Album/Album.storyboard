@@ -7,6 +7,14 @@
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSansCJKkr-Regular.otf">
+            <string>NotoSansCJKkr-Regular</string>
+        </array>
+        <array key="neodgm.ttf">
+            <string>NeoDunggeunmo-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--AlbumMainController-->
         <scene sceneID="q5z-Mr-yAi">
@@ -264,86 +272,16 @@
                                     <constraint firstAttribute="height" constant="106" id="fbq-jc-2zn"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="piZ-Kt-JiQ">
-                                <rect key="frame" x="35" y="138" width="294" height="72"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="piZ-Kt-JiQ">
+                                <rect key="frame" x="20" y="138" width="359" height="72"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="294" id="H1T-PC-RKF"/>
+                                    <constraint firstAttribute="width" constant="359" id="H1T-PC-RKF"/>
                                     <constraint firstAttribute="height" constant="72" id="nYg-bt-eLt"/>
                                 </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content="이">
-                                        <attributes>
-                                            <font key="NSFont" metaFont="system" size="24"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" ">
-                                        <attributes>
-                                            <font key="NSFont" size="24" name="NotoSansKannada-Regular"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="앨범은">
-                                        <attributes>
-                                            <font key="NSFont" metaFont="system" size="24"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" ">
-                                        <attributes>
-                                            <font key="NSFont" size="24" name="NotoSansKannada-Regular"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="어떤">
-                                        <attributes>
-                                            <font key="NSFont" metaFont="system" size="24"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" ">
-                                        <attributes>
-                                            <font key="NSFont" size="24" name="NotoSansKannada-Regular"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="앨범인가요">
-                                        <attributes>
-                                            <font key="NSFont" metaFont="system" size="24"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment>
-                                        <string key="content">?
-</string>
-                                        <attributes>
-                                            <font key="NSFont" size="24" name="NotoSansKannada-Regular"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="이름을">
-                                        <attributes>
-                                            <font key="NSFont" metaFont="system" size="24"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" ">
-                                        <attributes>
-                                            <font key="NSFont" size="24" name="NotoSansKannada-Regular"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="정해">
-                                        <attributes>
-                                            <font key="NSFont" metaFont="system" size="24"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" ">
-                                        <attributes>
-                                            <font key="NSFont" size="24" name="NotoSansKannada-Regular"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="주세요">
-                                        <attributes>
-                                            <font key="NSFont" metaFont="system" size="24"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" :)">
-                                        <attributes>
-                                            <font key="NSFont" size="24" name="NotoSansKannada-Regular"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
+                                <string key="text">이 앨범은 어떤 앨범인가요?
+이름을 정해 주세요 :)</string>
+                                <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="24"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="앨범 이름 입력" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iW7-rn-GAu">
@@ -392,7 +330,7 @@
                             <constraint firstItem="bb4-ii-0MG" firstAttribute="bottom" secondItem="J80-he-hTM" secondAttribute="bottom" id="LAL-Uy-I6b"/>
                             <constraint firstItem="iW7-rn-GAu" firstAttribute="centerX" secondItem="J80-he-hTM" secondAttribute="centerX" id="NkR-cI-apf"/>
                             <constraint firstItem="piZ-Kt-JiQ" firstAttribute="top" secondItem="2An-ls-IV1" secondAttribute="bottom" constant="16" id="Oad-oh-B8x"/>
-                            <constraint firstItem="piZ-Kt-JiQ" firstAttribute="leading" secondItem="J80-he-hTM" secondAttribute="leading" constant="35" id="P5Y-Mw-xab"/>
+                            <constraint firstItem="piZ-Kt-JiQ" firstAttribute="leading" secondItem="J80-he-hTM" secondAttribute="leading" constant="20" id="P5Y-Mw-xab"/>
                             <constraint firstItem="DK3-2J-ygI" firstAttribute="trailing" secondItem="J80-he-hTM" secondAttribute="trailing" id="P64-ey-WUa"/>
                             <constraint firstItem="iW7-rn-GAu" firstAttribute="top" secondItem="piZ-Kt-JiQ" secondAttribute="bottom" constant="75" id="SuX-EO-Vg8"/>
                             <constraint firstItem="2An-ls-IV1" firstAttribute="trailing" secondItem="J80-he-hTM" secondAttribute="trailing" id="Wfo-iU-XWS"/>
@@ -547,13 +485,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앨범의 기간을 정해주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgC-i9-9kR">
-                                <rect key="frame" x="38" y="158" width="294" height="72"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앨범의 기간을 정해주세요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgC-i9-9kR">
+                                <rect key="frame" x="20" y="156" width="294" height="36"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="72" id="l6e-Kf-sXQ"/>
-                                    <constraint firstAttribute="width" constant="294" id="lbI-EJ-bcu"/>
+                                    <constraint firstAttribute="width" constant="294" id="G0g-lM-KQT"/>
+                                    <constraint firstAttribute="height" constant="36" id="xd4-pi-VjL"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -561,7 +499,6 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="8jM-ix-1Li" firstAttribute="leading" secondItem="VlB-Fq-AUg" secondAttribute="leading" constant="39" id="13d-N9-Qcd"/>
-                            <constraint firstItem="rgC-i9-9kR" firstAttribute="top" secondItem="AiF-Fm-aR8" secondAttribute="bottom" constant="36" id="1vp-gL-Gcf"/>
                             <constraint firstItem="4hu-f5-zm1" firstAttribute="top" secondItem="8su-4P-hsC" secondAttribute="bottom" constant="7" id="Hi2-A6-XIv"/>
                             <constraint firstItem="RQY-K9-EVx" firstAttribute="leading" secondItem="8jM-ix-1Li" secondAttribute="trailing" constant="9" id="IJW-mh-XAe"/>
                             <constraint firstItem="8su-4P-hsC" firstAttribute="leading" secondItem="VlB-Fq-AUg" secondAttribute="leading" constant="39" id="IQf-QY-6v5"/>
@@ -569,9 +506,11 @@
                             <constraint firstItem="7bH-xR-DvC" firstAttribute="top" secondItem="8jM-ix-1Li" secondAttribute="bottom" constant="8" id="Jbu-jy-cLD"/>
                             <constraint firstItem="AiF-Fm-aR8" firstAttribute="trailing" secondItem="VlB-Fq-AUg" secondAttribute="trailing" id="JtC-PK-hpQ"/>
                             <constraint firstItem="AiF-Fm-aR8" firstAttribute="top" secondItem="VlB-Fq-AUg" secondAttribute="top" id="LJu-JY-pca"/>
+                            <constraint firstItem="ymS-RA-KWa" firstAttribute="top" secondItem="rgC-i9-9kR" secondAttribute="bottom" constant="105" id="LPj-HM-8ta"/>
+                            <constraint firstItem="8su-4P-hsC" firstAttribute="top" secondItem="rgC-i9-9kR" secondAttribute="bottom" constant="102" id="LeY-6J-52q"/>
+                            <constraint firstItem="rgC-i9-9kR" firstAttribute="leading" secondItem="VlB-Fq-AUg" secondAttribute="leading" constant="20" id="PIU-ub-ib1"/>
                             <constraint firstItem="GJP-J7-lRP" firstAttribute="leading" secondItem="VlB-Fq-AUg" secondAttribute="leading" id="TYg-Dn-O6B"/>
-                            <constraint firstItem="rgC-i9-9kR" firstAttribute="leading" secondItem="VlB-Fq-AUg" secondAttribute="leading" constant="38" id="cOT-4D-db9"/>
-                            <constraint firstItem="8su-4P-hsC" firstAttribute="top" secondItem="rgC-i9-9kR" secondAttribute="bottom" constant="64" id="gYv-P1-bXu"/>
+                            <constraint firstItem="rgC-i9-9kR" firstAttribute="top" secondItem="AiF-Fm-aR8" secondAttribute="bottom" constant="34" id="aWb-LY-jWv"/>
                             <constraint firstItem="ymS-RA-KWa" firstAttribute="leading" secondItem="8su-4P-hsC" secondAttribute="trailing" constant="9" id="i2q-nw-4Ob"/>
                             <constraint firstItem="RQY-K9-EVx" firstAttribute="top" secondItem="ymS-RA-KWa" secondAttribute="bottom" constant="33" id="lKc-qG-xDH"/>
                             <constraint firstItem="GJP-J7-lRP" firstAttribute="bottom" secondItem="VlB-Fq-AUg" secondAttribute="bottom" id="lN3-f1-HBy"/>
@@ -580,7 +519,6 @@
                             <constraint firstItem="GJP-J7-lRP" firstAttribute="trailing" secondItem="VlB-Fq-AUg" secondAttribute="trailing" id="s8D-ms-neK"/>
                             <constraint firstItem="zWd-l9-156" firstAttribute="trailing" secondItem="VlB-Fq-AUg" secondAttribute="trailing" id="szf-8i-OVN"/>
                             <constraint firstItem="8jM-ix-1Li" firstAttribute="top" secondItem="4hu-f5-zm1" secondAttribute="bottom" constant="20" id="vSF-Vy-ZvG"/>
-                            <constraint firstItem="ymS-RA-KWa" firstAttribute="top" secondItem="rgC-i9-9kR" secondAttribute="bottom" constant="67" id="vlf-MV-YV4"/>
                             <constraint firstItem="7bH-xR-DvC" firstAttribute="leading" secondItem="Ahm-1T-0xG" secondAttribute="leadingMargin" constant="19" id="yLq-qh-Bkl"/>
                             <constraint firstItem="AiF-Fm-aR8" firstAttribute="leading" secondItem="VlB-Fq-AUg" secondAttribute="leading" id="yUC-mO-v1p"/>
                         </constraints>
@@ -712,24 +650,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앨범 커버를 선택해 주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZ7-jr-2XM">
-                                <rect key="frame" x="31" y="128" width="259" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앨범 커버를 선택해 주세요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZ7-jr-2XM">
+                                <rect key="frame" x="20" y="138" width="359" height="72"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="uzu-AM-rlT"/>
-                                    <constraint firstAttribute="width" constant="259" id="zmC-1p-F93"/>
+                                    <constraint firstAttribute="width" constant="359" id="XmW-SB-gbN"/>
+                                    <constraint firstAttribute="height" constant="72" id="n2m-cF-9B6"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="24"/>
                                 <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="실제 인화시 받는 앨범 커버와 다를 수 있습니다" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyS-7L-Cg1">
-                                <rect key="frame" x="33" y="171" width="203" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="203" id="bM2-iX-vZh"/>
-                                    <constraint firstAttribute="height" constant="40" id="wcF-OM-yec"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.79785507919999998" green="0.37851458789999998" blue="0.25486096740000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NfI-z8-F2Y">
@@ -741,18 +669,16 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="nyS-7L-Cg1" firstAttribute="top" secondItem="PZ7-jr-2XM" secondAttribute="bottom" constant="7" id="0gn-2J-aZ5"/>
                             <constraint firstItem="ehu-hz-X3a" firstAttribute="leading" secondItem="rQh-Dm-2md" secondAttribute="leading" id="7m1-Ll-FXW"/>
                             <constraint firstItem="NfI-z8-F2Y" firstAttribute="centerY" secondItem="rQh-Dm-2md" secondAttribute="centerY" id="Dhf-Ue-Cal"/>
+                            <constraint firstItem="PZ7-jr-2XM" firstAttribute="leading" secondItem="rQh-Dm-2md" secondAttribute="leading" constant="20" id="F2g-b1-Rto"/>
                             <constraint firstItem="NfI-z8-F2Y" firstAttribute="leading" secondItem="rQh-Dm-2md" secondAttribute="leading" constant="70.5" id="M2W-1y-hJ2"/>
                             <constraint firstItem="OeO-3M-aNO" firstAttribute="trailing" secondItem="rQh-Dm-2md" secondAttribute="trailing" id="Vk7-O6-Hjj"/>
-                            <constraint firstItem="PZ7-jr-2XM" firstAttribute="top" secondItem="rQh-Dm-2md" secondAttribute="top" constant="84" id="a0p-HG-dww"/>
                             <constraint firstItem="rQh-Dm-2md" firstAttribute="trailing" secondItem="NfI-z8-F2Y" secondAttribute="trailing" constant="70.5" id="aE2-MF-llQ"/>
-                            <constraint firstItem="nyS-7L-Cg1" firstAttribute="leading" secondItem="rQh-Dm-2md" secondAttribute="leading" constant="33" id="ihd-dp-pjr"/>
+                            <constraint firstItem="PZ7-jr-2XM" firstAttribute="top" secondItem="OeO-3M-aNO" secondAttribute="bottom" constant="16" id="iI3-We-GpE"/>
                             <constraint firstItem="OeO-3M-aNO" firstAttribute="top" secondItem="rQh-Dm-2md" secondAttribute="top" id="lqe-bM-mST"/>
                             <constraint firstItem="ehu-hz-X3a" firstAttribute="bottom" secondItem="rQh-Dm-2md" secondAttribute="bottom" id="nUr-vc-k0j"/>
                             <constraint firstItem="ehu-hz-X3a" firstAttribute="trailing" secondItem="rQh-Dm-2md" secondAttribute="trailing" id="omP-Ny-jgU"/>
-                            <constraint firstItem="PZ7-jr-2XM" firstAttribute="leading" secondItem="rQh-Dm-2md" secondAttribute="leading" constant="31" id="qtS-im-oaL"/>
                             <constraint firstItem="OeO-3M-aNO" firstAttribute="leading" secondItem="rQh-Dm-2md" secondAttribute="leading" id="vQh-wC-JeX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rQh-Dm-2md"/>
@@ -836,15 +762,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDy-IC-0Tw">
-                                <rect key="frame" x="35" y="189" width="294" height="72"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDy-IC-0Tw">
+                                <rect key="frame" x="20" y="138" width="359" height="72"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="294" id="baH-Md-CVo"/>
-                                    <constraint firstAttribute="height" constant="72" id="sJw-cE-jgZ"/>
+                                    <constraint firstAttribute="width" constant="359" id="A8C-dc-EAU"/>
+                                    <constraint firstAttribute="height" constant="72" id="Pr1-ZK-OMF"/>
                                 </constraints>
                                 <string key="text">앨범에 들어갈
 사진의 수량을 정해 주세요</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -888,18 +814,18 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="8ZY-AZ-9gF" secondAttribute="bottom" id="1uK-tp-9hd"/>
                             <constraint firstItem="JDe-Hq-PKX" firstAttribute="leading" secondItem="sG0-uv-ffg" secondAttribute="trailing" constant="4" id="23w-qe-nzm"/>
-                            <constraint firstItem="JDe-Hq-PKX" firstAttribute="top" secondItem="CDy-IC-0Tw" secondAttribute="bottom" constant="59" id="AR3-1J-Njv"/>
+                            <constraint firstItem="sG0-uv-ffg" firstAttribute="top" secondItem="CDy-IC-0Tw" secondAttribute="bottom" constant="105" id="7ia-ia-tdH"/>
                             <constraint firstItem="txg-3P-eaz" firstAttribute="leading" secondItem="37K-eO-SQ8" secondAttribute="leadingMargin" constant="32" id="Awj-MP-9pk"/>
                             <constraint firstItem="txg-3P-eaz" firstAttribute="top" secondItem="sG0-uv-ffg" secondAttribute="bottom" constant="9" id="CEg-j8-rLo"/>
+                            <constraint firstItem="CDy-IC-0Tw" firstAttribute="top" secondItem="xAJ-bm-MCP" secondAttribute="bottom" constant="16" id="D9L-HI-QDD"/>
                             <constraint firstItem="8ZY-AZ-9gF" firstAttribute="trailing" secondItem="DMi-XU-Ug0" secondAttribute="trailing" id="EXk-e0-ina"/>
                             <constraint firstItem="KrC-jV-UKl" firstAttribute="bottom" secondItem="DMi-XU-Ug0" secondAttribute="bottom" id="FyD-xp-HdU"/>
                             <constraint firstItem="sG0-uv-ffg" firstAttribute="leading" secondItem="DMi-XU-Ug0" secondAttribute="leading" constant="53" id="ZPV-DH-O6F"/>
+                            <constraint firstItem="JDe-Hq-PKX" firstAttribute="top" secondItem="CDy-IC-0Tw" secondAttribute="bottom" constant="110" id="aGr-Hh-ihk"/>
                             <constraint firstItem="8ZY-AZ-9gF" firstAttribute="leading" secondItem="DMi-XU-Ug0" secondAttribute="leading" id="axq-Kg-caF"/>
+                            <constraint firstItem="CDy-IC-0Tw" firstAttribute="leading" secondItem="DMi-XU-Ug0" secondAttribute="leading" constant="20" id="c0g-zF-5IK"/>
                             <constraint firstItem="xAJ-bm-MCP" firstAttribute="trailing" secondItem="DMi-XU-Ug0" secondAttribute="trailing" id="f0j-Uo-12U"/>
                             <constraint firstItem="KrC-jV-UKl" firstAttribute="leading" secondItem="DMi-XU-Ug0" secondAttribute="leading" id="iOx-7c-T0K"/>
-                            <constraint firstItem="sG0-uv-ffg" firstAttribute="top" secondItem="CDy-IC-0Tw" secondAttribute="bottom" constant="54" id="mba-7p-4YJ"/>
-                            <constraint firstItem="CDy-IC-0Tw" firstAttribute="leading" secondItem="DMi-XU-Ug0" secondAttribute="leading" constant="35" id="q7s-wW-y27"/>
-                            <constraint firstItem="CDy-IC-0Tw" firstAttribute="top" secondItem="xAJ-bm-MCP" secondAttribute="bottom" constant="67" id="qaD-0w-rcP"/>
                             <constraint firstItem="KrC-jV-UKl" firstAttribute="trailing" secondItem="DMi-XU-Ug0" secondAttribute="trailing" id="uMI-FK-FaY"/>
                             <constraint firstItem="xAJ-bm-MCP" firstAttribute="leading" secondItem="DMi-XU-Ug0" secondAttribute="leading" id="wKJ-Ha-dGU"/>
                             <constraint firstItem="xAJ-bm-MCP" firstAttribute="top" secondItem="DMi-XU-Ug0" secondAttribute="top" id="wPj-hC-HXn"/>
@@ -917,7 +843,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Was-P8-Dvd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3370" y="127"/>
+            <point key="canvasLocation" x="3369.5652173913045" y="126.5625"/>
         </scene>
         <!--AlbumDetailController-->
         <scene sceneID="Smp-ua-9ce">
@@ -1231,32 +1157,32 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앨범 레이아웃을 선택해 주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qf2-nH-qvg">
-                                <rect key="frame" x="31" y="128" width="306" height="37"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앨범 레이아웃을 선택해 주세요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qf2-nH-qvg">
+                                <rect key="frame" x="20" y="138" width="359" height="72"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="306" id="1mF-jh-oaS"/>
-                                    <constraint firstAttribute="height" constant="37" id="sOw-eE-bzn"/>
+                                    <constraint firstAttribute="width" constant="359" id="SCF-UN-WiD"/>
+                                    <constraint firstAttribute="height" constant="72" id="kj8-OR-Hpk"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WNZ-32-Aib">
-                                <rect key="frame" x="70" y="193" width="274" height="465"/>
+                                <rect key="frame" x="70" y="230" width="274" height="428"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="o4j-wg-9RT" firstAttribute="top" secondItem="Tiq-OO-IaX" secondAttribute="top" id="240-eg-1lO"/>
+                            <constraint firstItem="Qf2-nH-qvg" firstAttribute="leading" secondItem="Tiq-OO-IaX" secondAttribute="leading" constant="20" id="2la-8e-HAZ"/>
                             <constraint firstItem="h90-9n-Bhs" firstAttribute="width" secondItem="ZY7-AJ-FZx" secondAttribute="width" id="DFK-rd-gnJ"/>
                             <constraint firstItem="o4j-wg-9RT" firstAttribute="trailing" secondItem="Tiq-OO-IaX" secondAttribute="trailing" id="NCW-Qx-m3V"/>
-                            <constraint firstItem="Qf2-nH-qvg" firstAttribute="leading" secondItem="Tiq-OO-IaX" secondAttribute="leading" constant="31" id="Rcj-b1-WMA"/>
+                            <constraint firstItem="Qf2-nH-qvg" firstAttribute="top" secondItem="o4j-wg-9RT" secondAttribute="bottom" constant="16" id="S1M-7t-Qug"/>
                             <constraint firstItem="h90-9n-Bhs" firstAttribute="top" secondItem="WNZ-32-Aib" secondAttribute="bottom" constant="28" id="aWL-m7-X7G"/>
-                            <constraint firstItem="Qf2-nH-qvg" firstAttribute="top" secondItem="Tiq-OO-IaX" secondAttribute="top" constant="84" id="abl-d5-nzg"/>
+                            <constraint firstItem="WNZ-32-Aib" firstAttribute="top" secondItem="Qf2-nH-qvg" secondAttribute="bottom" constant="20" id="apm-UA-DPZ"/>
                             <constraint firstItem="o4j-wg-9RT" firstAttribute="leading" secondItem="Tiq-OO-IaX" secondAttribute="leading" id="cBn-DR-lRo"/>
                             <constraint firstItem="Tiq-OO-IaX" firstAttribute="trailing" secondItem="WNZ-32-Aib" secondAttribute="trailing" constant="70" id="fUg-Ru-cqP"/>
                             <constraint firstItem="Tiq-OO-IaX" firstAttribute="bottom" secondItem="h90-9n-Bhs" secondAttribute="bottom" id="fbQ-t4-gEc"/>
-                            <constraint firstItem="WNZ-32-Aib" firstAttribute="top" secondItem="Qf2-nH-qvg" secondAttribute="bottom" constant="28" id="hPj-jK-VkF"/>
                             <constraint firstItem="WNZ-32-Aib" firstAttribute="leading" secondItem="Tiq-OO-IaX" secondAttribute="leading" constant="70" id="hwz-Xy-350"/>
                             <constraint firstItem="h90-9n-Bhs" firstAttribute="centerX" secondItem="Tiq-OO-IaX" secondAttribute="centerX" id="njm-0S-FWF"/>
                         </constraints>
@@ -1270,7 +1196,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IGF-hM-m9F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4874" y="127"/>
+            <point key="canvasLocation" x="4873.913043478261" y="126.5625"/>
         </scene>
         <!--Album Detail PopupVC-->
         <scene sceneID="eKG-Uc-mrx">
@@ -1748,12 +1674,12 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앨범이 완성되었습니다!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAg-Si-sza">
-                                <rect key="frame" x="31" y="128" width="250" height="36"/>
+                                <rect key="frame" x="20" y="138" width="359" height="72"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="mxj-2a-RFD"/>
-                                    <constraint firstAttribute="width" constant="250" id="vJF-FF-xIg"/>
+                                    <constraint firstAttribute="width" constant="359" id="mwG-yM-6bP"/>
+                                    <constraint firstAttribute="height" constant="72" id="tup-MO-y8M"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1773,7 +1699,7 @@
                                             <constraint firstAttribute="width" constant="240" id="Raq-TM-54Y"/>
                                             <constraint firstAttribute="height" constant="27" id="ri4-nY-MTe"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1783,37 +1709,47 @@
                                             <constraint firstAttribute="width" constant="224" id="Zgf-ee-rK8"/>
                                             <constraint firstAttribute="height" constant="18" id="wX7-Bq-HB9"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60/60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YtE-CB-cts">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60/60" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YtE-CB-cts">
                                         <rect key="frame" x="159" y="113" width="168" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="168" id="dpx-Sv-SDa"/>
                                             <constraint firstAttribute="height" constant="18" id="uL0-dM-2uh"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="saM-uK-5EO">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Layout" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rr2-Sd-fgj">
+                                        <rect key="frame" x="87" y="143" width="65" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="18" id="fOs-Cb-SW9"/>
+                                            <constraint firstAttribute="width" constant="65" id="zSM-6J-Y7G"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="17"/>
+                                        <color key="textColor" red="0.65128552910000004" green="0.65818172689999999" blue="0.69412344690000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="saM-uK-5EO">
                                         <rect key="frame" x="87" y="83" width="65" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="X1v-sx-UIf"/>
                                             <constraint firstAttribute="width" constant="65" id="nbt-xC-gR3"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="17"/>
                                         <color key="textColor" red="0.65128552910000004" green="0.65818172689999999" blue="0.69412344690000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3x-Rg-av4">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3x-Rg-av4">
                                         <rect key="frame" x="87" y="113" width="65" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="DW6-oZ-Ewy"/>
                                             <constraint firstAttribute="width" constant="65" id="yTU-si-pdL"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="17"/>
                                         <color key="textColor" red="0.65128552910000004" green="0.65818172689999999" blue="0.69412344690000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1823,7 +1759,17 @@
                                             <constraint firstAttribute="height" constant="53" id="kvd-QU-AES"/>
                                             <constraint firstAttribute="width" constant="283" id="x7d-OF-9bf"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name=".AppleSDGothicNeoI-Regular" family=".AppleKoreanFont" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="16"/>
+                                        <color key="textColor" red="0.84471517799999996" green="0.3077619076" blue="0.2156409323" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Polaroid" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBo-T0-GW2">
+                                        <rect key="frame" x="159" y="143" width="168" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="168" id="jan-5Y-zYe"/>
+                                            <constraint firstAttribute="height" constant="18" id="pgb-oG-sY1"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1831,12 +1777,16 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="h3x-Rg-av4" firstAttribute="leading" secondItem="4dO-Am-UQG" secondAttribute="leading" constant="87" id="0oK-1Q-coM"/>
-                                    <constraint firstAttribute="trailing" secondItem="fYV-c1-EwF" secondAttribute="trailing" constant="31" id="A4g-Vm-mhG"/>
+                                    <constraint firstItem="fBo-T0-GW2" firstAttribute="top" secondItem="YtE-CB-cts" secondAttribute="bottom" constant="12" id="2W0-yd-ciX"/>
                                     <constraint firstItem="fYV-c1-EwF" firstAttribute="top" secondItem="2xQ-UF-IhK" secondAttribute="bottom" constant="22" id="HT3-m9-hr3"/>
+                                    <constraint firstItem="YtE-CB-cts" firstAttribute="leading" secondItem="h3x-Rg-av4" secondAttribute="trailing" constant="7" id="MtQ-bd-6nr"/>
                                     <constraint firstItem="w22-uL-NtZ" firstAttribute="centerX" secondItem="4dO-Am-UQG" secondAttribute="centerX" id="NfP-fk-i4x"/>
-                                    <constraint firstAttribute="trailing" secondItem="YtE-CB-cts" secondAttribute="trailing" constant="87" id="SAQ-zh-qeY"/>
-                                    <constraint firstItem="w22-uL-NtZ" firstAttribute="top" secondItem="YtE-CB-cts" secondAttribute="bottom" constant="62" id="cjY-ha-5aK"/>
+                                    <constraint firstItem="fYV-c1-EwF" firstAttribute="leading" secondItem="saM-uK-5EO" secondAttribute="trailing" constant="7" id="O19-jX-Jfd"/>
+                                    <constraint firstItem="w22-uL-NtZ" firstAttribute="top" secondItem="fBo-T0-GW2" secondAttribute="bottom" constant="32" id="Tzr-67-fXc"/>
+                                    <constraint firstItem="rr2-Sd-fgj" firstAttribute="leading" secondItem="4dO-Am-UQG" secondAttribute="leading" constant="87" id="Y0g-sr-QfH"/>
+                                    <constraint firstItem="rr2-Sd-fgj" firstAttribute="top" secondItem="h3x-Rg-av4" secondAttribute="bottom" constant="12" id="bsc-ik-AUc"/>
                                     <constraint firstItem="h3x-Rg-av4" firstAttribute="top" secondItem="saM-uK-5EO" secondAttribute="bottom" constant="12" id="f81-Hh-yLI"/>
+                                    <constraint firstItem="fBo-T0-GW2" firstAttribute="leading" secondItem="rr2-Sd-fgj" secondAttribute="trailing" constant="7" id="l6h-bA-KO1"/>
                                     <constraint firstItem="2xQ-UF-IhK" firstAttribute="top" secondItem="4dO-Am-UQG" secondAttribute="top" constant="34" id="mYb-Pa-z5p"/>
                                     <constraint firstItem="2xQ-UF-IhK" firstAttribute="centerX" secondItem="4dO-Am-UQG" secondAttribute="centerX" id="pOp-BD-eG0"/>
                                     <constraint firstItem="saM-uK-5EO" firstAttribute="top" secondItem="2xQ-UF-IhK" secondAttribute="bottom" constant="22" id="sfh-xi-zos"/>
@@ -1862,6 +1812,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Nuh-Z6-HhC" secondAttribute="bottom" id="3Aw-YL-KHi"/>
+                            <constraint firstItem="rAg-Si-sza" firstAttribute="leading" secondItem="S3S-B9-edo" secondAttribute="leading" constant="20" id="59M-zL-fmV"/>
+                            <constraint firstItem="l0j-a1-5Yj" firstAttribute="top" secondItem="rAg-Si-sza" secondAttribute="bottom" constant="16" id="62S-aB-bd4"/>
                             <constraint firstItem="S3S-B9-edo" firstAttribute="trailing" secondItem="zpU-0s-2nO" secondAttribute="trailing" id="B6I-uN-Szi"/>
                             <constraint firstItem="AQq-UQ-8hk" firstAttribute="width" secondItem="a9Q-AB-4pE" secondAttribute="width" id="Dlz-Xy-bpy"/>
                             <constraint firstItem="Nuh-Z6-HhC" firstAttribute="leading" secondItem="S3S-B9-edo" secondAttribute="leading" id="FIv-nA-MZM"/>
@@ -1869,13 +1821,11 @@
                             <constraint firstItem="AQq-UQ-8hk" firstAttribute="bottom" secondItem="S3S-B9-edo" secondAttribute="bottom" id="N2s-BZ-Ydi"/>
                             <constraint firstItem="Dbe-8N-4Ij" firstAttribute="trailing" secondItem="S3S-B9-edo" secondAttribute="trailing" id="Oyo-Jh-gIQ"/>
                             <constraint firstItem="zpU-0s-2nO" firstAttribute="leading" secondItem="a9Q-AB-4pE" secondAttribute="leading" id="P0l-AI-3lN"/>
-                            <constraint firstItem="rAg-Si-sza" firstAttribute="leading" secondItem="S3S-B9-edo" secondAttribute="leading" constant="31" id="PPH-gA-mlW"/>
+                            <constraint firstItem="rAg-Si-sza" firstAttribute="top" secondItem="Dbe-8N-4Ij" secondAttribute="bottom" constant="16" id="S9R-W2-GUF"/>
                             <constraint firstItem="4dO-Am-UQG" firstAttribute="trailing" secondItem="S3S-B9-edo" secondAttribute="trailing" id="WNB-RP-BcW"/>
                             <constraint firstItem="AQq-UQ-8hk" firstAttribute="trailing" secondItem="S3S-B9-edo" secondAttribute="trailing" id="XuU-nx-9MJ"/>
                             <constraint firstItem="4dO-Am-UQG" firstAttribute="leading" secondItem="S3S-B9-edo" secondAttribute="leading" id="ZE7-Lf-1ml"/>
-                            <constraint firstItem="l0j-a1-5Yj" firstAttribute="top" secondItem="rAg-Si-sza" secondAttribute="bottom" constant="62" id="gAa-R7-509"/>
                             <constraint firstItem="Dbe-8N-4Ij" firstAttribute="leading" secondItem="S3S-B9-edo" secondAttribute="leading" id="gNK-0B-SPK"/>
-                            <constraint firstItem="rAg-Si-sza" firstAttribute="top" secondItem="S3S-B9-edo" secondAttribute="top" constant="84" id="pSi-bG-2td"/>
                             <constraint firstItem="l0j-a1-5Yj" firstAttribute="centerX" secondItem="S3S-B9-edo" secondAttribute="centerX" id="pkg-YC-ppR"/>
                             <constraint firstItem="Nuh-Z6-HhC" firstAttribute="trailing" secondItem="S3S-B9-edo" secondAttribute="trailing" id="pyk-Rk-MDP"/>
                             <constraint firstItem="Dbe-8N-4Ij" firstAttribute="top" secondItem="S3S-B9-edo" secondAttribute="top" id="qjN-2q-4AS"/>
