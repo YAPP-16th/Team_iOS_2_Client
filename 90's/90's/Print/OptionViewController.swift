@@ -68,7 +68,7 @@ class OptionViewController : UIViewController {
             self.countOptionViewConstraint.constant = self.view.frame.height
         }
         
-        self.coverImageView.image = coverImage
+        self.coverImageView.image = UIImage(named: "testEmpty")
         
     }
     
