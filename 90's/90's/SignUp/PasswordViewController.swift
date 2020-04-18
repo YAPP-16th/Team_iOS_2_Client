@@ -41,6 +41,7 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
             navigationController?.pushViewController(telephoneAuthenVC, animated: true)
         }else {
             validationLabel.isHidden = false
+            selectorImageView2.image = UIImage(named: "path378Red")
         }
     }
     

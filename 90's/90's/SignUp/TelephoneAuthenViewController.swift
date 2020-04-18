@@ -16,6 +16,8 @@ class TelephoneAuthenViewController: UIViewController {
     @IBOutlet weak var tfAuthenNumber: UITextField!
     @IBOutlet weak var validationLabel: UILabel!
     @IBOutlet weak var okBtn: UIButton!
+    @IBOutlet weak var askNumberBtn: UIButton!
+    @IBOutlet weak var buttonConst: NSLayoutConstraint!
     
     var email:String!
     var pwd:String!
@@ -23,6 +25,7 @@ class TelephoneAuthenViewController: UIViewController {
     var isClicked = false
     var isInitial1 = false
     var isInitial2 = false
+    var authenFlag = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,24 +38,21 @@ class TelephoneAuthenViewController: UIViewController {
     }
     
     @IBAction func clickOkBtn(_ sender: Any) {
-        if(!isClicked){
-            self.tfAuthenNumber.isHidden = false
-            selectorImageView2.isHidden = false
-            self.okBtn.setTitle("확인", for: .normal)
-            self.okBtn.isEnabled = false
-            self.titleLabel.text = "인증번호를\n입력해주세요"
-            self.tfTelephone.isEnabled = false
-            isClicked = !isClicked
-        }else{
-            goAuthen()
-        }
+        goAuthen()
     }
     
+    @IBAction func askNumber(_ sender: Any) {
+        if(!authenFlag){
+            askNumberBtn.setTitle("재전송", for: .normal)
+            authenFlag = true
+        }
+        
+    }
     func setUI(){
-        tfAuthenNumber.isHidden = true
-        selectorImageView2.isHidden = true
         validationLabel.isHidden = true
         okBtn.isEnabled = false
+        okBtn.layer.cornerRadius = 8.0
+        askNumberBtn.layer.cornerRadius = 8.0
     }
     
     func setObserver(){
@@ -68,15 +68,15 @@ class TelephoneAuthenViewController: UIViewController {
                     self.tfTelephone.text = self.tfTelephone.text! + "-"
                     self.isInitial2 = true
                 }
-                self.selectorImageView1.backgroundColor = UIColor.black
-                self.okBtn.backgroundColor = UIColor.black
-                self.okBtn.isEnabled = true
+                self.selectorImageView1.image = UIImage(named: "path378Black")
+                self.askNumberBtn.backgroundColor = UIColor(displayP3Red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
+                self.askNumberBtn.isEnabled = true
             }else {
                 self.isInitial1 = false
                 self.isInitial2 = false
-                self.selectorImageView1.backgroundColor = UIColor.gray
-                self.okBtn.backgroundColor = UIColor.gray
-                self.okBtn.isEnabled = false
+                self.selectorImageView1.image = UIImage(named: "path378Grey1")
+                self.askNumberBtn.backgroundColor = UIColor(displayP3Red: 199/255, green: 201/255, blue: 208/255, alpha: 1.0)
+                self.askNumberBtn.isEnabled = false
             }
             
         })
@@ -86,16 +86,20 @@ class TelephoneAuthenViewController: UIViewController {
             let str = self.tfAuthenNumber.text!.trimmingCharacters(in: .whitespaces)
             
             if(str != ""){
-                self.selectorImageView2.backgroundColor = UIColor.black
-                self.okBtn.backgroundColor = UIColor.black
+                self.selectorImageView2.image = UIImage(named: "path378Black")
+                self.okBtn.backgroundColor = UIColor(displayP3Red: 227/255, green: 62/255, blue: 40/255, alpha: 1.0)
                 self.okBtn.isEnabled = true
             }else {
-                self.selectorImageView2.backgroundColor = UIColor.gray
-                self.okBtn.backgroundColor = UIColor.gray
+                self.selectorImageView2.image = UIImage(named: "path378Grey1")
+                self.okBtn.backgroundColor =  UIColor(displayP3Red: 199/255, green: 201/255, blue: 208/255, alpha: 1.0)
                 self.okBtn.isEnabled = false
             }
             
         })
+        
+        //키보드에 대한 Observer
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func goAuthen(){
@@ -110,6 +114,23 @@ class TelephoneAuthenViewController: UIViewController {
             validationLabel.isHidden = false
         }
     }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
+        let keyboardHeight = keyboardSize.cgRectValue.height
+        
+        if(keyboardHeight > 300){
+            buttonConst.constant = keyboardHeight - 18
+        }else{
+            buttonConst.constant = keyboardHeight + 18
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        buttonConst.constant = 18
+    }
+    
     
     //화면 터치시 키보드 내림
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
