@@ -168,14 +168,14 @@ extension UIImage {
     
     func mergeWith(topImage: UIImage , bottomImage : UIImage) -> UIImage {
         UIGraphicsBeginImageContext(size)
-        let areaSize = CGRect(x: 0, y: 0, width: bottomImage.size.width, height: bottomImage.size.height)
+        let areaSize = CGRect(x: 0, y: -100 , width: bottomImage.size.width, height: bottomImage.size.height)
         bottomImage.draw(in: areaSize)
         topImage.draw(in: areaSize, blendMode: .normal, alpha: 0.8)
         
-//        print("!!!!!!!!!!!!")
-//        print(topImage.size)
-//        print(bottomImage.size)
-//        print("!!!!!!!!!!!!")
+        print("!!!!!!!!!!!!")
+        print(topImage.size)
+        print(bottomImage.size)
+        print("!!!!!!!!!!!!")
         
         let mergedImage = UIGraphicsGetImageFromCurrentImageContext()!
         
