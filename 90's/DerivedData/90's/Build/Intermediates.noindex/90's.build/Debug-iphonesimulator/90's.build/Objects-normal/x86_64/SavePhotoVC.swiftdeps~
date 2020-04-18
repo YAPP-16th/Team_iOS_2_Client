@@ -1,0 +1,1187 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "SavePhotoVC"
+provides-nominal:
+- "4_0_s11SavePhotoVCC"
+provides-member:
+- ["4_0_s11SavePhotoVCC", ""]
+- ["4_0_s11SavePhotoVCC", "buttonSetting"]
+- ["4_0_s11SavePhotoVCC", "defaultSetting"]
+- ["4_0_s11SavePhotoVCC", "touchSaveBtn"]
+- ["4_0_s11SavePhotoVCC", "image"]
+- ["4_0_s11SavePhotoVCC", "touchSwitchBtn"]
+provides-dynamic-lookup:
+- "backBtn"
+- "dateLabel"
+- "image"
+- "photoView"
+- "saveBtn"
+- "switchBtn"
+- "touchSaveBtn"
+- "touchSwitchBtn"
+- "touchesBegan"
+- "touchesMoved"
+- "viewDidLoad"
+- "viewWillAppear"
+depends-top-level:
+- !private "=="
+- "AssignmentPrecedence"
+- "Bool"
+- !private "BooleanLiteralType"
+- "CGPoint"
+- "CastingPrecedence"
+- "FloatLiteralType"
+- !private "IntegerLiteralType"
+- "NSError"
+- "SavePhotoVC"
+- "Set"
+- !private "StringLiteralType"
+- "UIButton"
+- "UIEvent"
+- !private "UIGraphicsImageRenderer"
+- "UIImage"
+- !private "UIImageWriteToSavedPhotosAlbum"
+- "UILabel"
+- "UISwitch"
+- "UITouch"
+- "UIView"
+- "UIViewController"
+- "UnsafeRawPointer"
+- !private "print"
+depends-member:
+- !private ["So15CALayerDelegateP", "addSubview"]
+- !private ["So15CALayerDelegateP", "addTarget"]
+- !private ["So15CALayerDelegateP", "bottomAnchor"]
+- !private ["So15CALayerDelegateP", "bounds"]
+- !private ["So15CALayerDelegateP", "drawHierarchy"]
+- !private ["So15CALayerDelegateP", "isHidden"]
+- !private ["So15CALayerDelegateP", "leftAnchor"]
+- !private ["So15CALayerDelegateP", "rightAnchor"]
+- !private ["So15CALayerDelegateP", "topAnchor"]
+- !private ["So15CALayerDelegateP", "translatesAutoresizingMaskIntoConstraints"]
+- ["So7CGPointV", "init"]
+- !private ["So6CGRectV", "size"]
+- ["s7CVarArgP", "CGPoint"]
+- !private ["s7CVarArgP", "UIGraphicsImageRenderer"]
+- !private ["s7CVarArgP", "UIImageWriteToSavedPhotosAlbum"]
+- ["s7CVarArgP", ""]
+- !private ["s7CVarArgP", "addSubview"]
+- !private ["s7CVarArgP", "addTarget"]
+- !private ["s7CVarArgP", "bottomAnchor"]
+- !private ["s7CVarArgP", "bounds"]
+- !private ["s7CVarArgP", "buttonSetting"]
+- !private ["s7CVarArgP", "constraint"]
+- !private ["s7CVarArgP", "dateLabel"]
+- !private ["s7CVarArgP", "defaultSetting"]
+- !private ["s7CVarArgP", "dismiss"]
+- !private ["s7CVarArgP", "drawHierarchy"]
+- !private ["s7CVarArgP", "first"]
+- !private ["s7CVarArgP", "image"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "isActive"]
+- !private ["s7CVarArgP", "isHidden"]
+- !private ["s7CVarArgP", "leftAnchor"]
+- !private ["s7CVarArgP", "localizedDescription"]
+- !private ["s7CVarArgP", "location"]
+- !private ["s7CVarArgP", "originalView"]
+- !private ["s7CVarArgP", "photoView"]
+- !private ["s7CVarArgP", "print"]
+- !private ["s7CVarArgP", "rightAnchor"]
+- !private ["s7CVarArgP", "saveBtn"]
+- !private ["s7CVarArgP", "switchBtn"]
+- !private ["s7CVarArgP", "topAnchor"]
+- !private ["s7CVarArgP", "touchSaveBtn"]
+- !private ["s7CVarArgP", "touchSwitchBtn"]
+- !private ["s7CVarArgP", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["s7CVarArgP", "view"]
+- !private ["s7CVarArgP", "viewDidLoad"]
+- !private ["s7CVarArgP", "viewWillAppear"]
+- !private ["Sl", "first"]
+- ["s28CustomDebugStringConvertibleP", "CGPoint"]
+- !private ["s28CustomDebugStringConvertibleP", "UIGraphicsImageRenderer"]
+- !private ["s28CustomDebugStringConvertibleP", "UIImageWriteToSavedPhotosAlbum"]
+- ["s28CustomDebugStringConvertibleP", ""]
+- !private ["s28CustomDebugStringConvertibleP", "addSubview"]
+- !private ["s28CustomDebugStringConvertibleP", "addTarget"]
+- !private ["s28CustomDebugStringConvertibleP", "bottomAnchor"]
+- !private ["s28CustomDebugStringConvertibleP", "bounds"]
+- !private ["s28CustomDebugStringConvertibleP", "buttonSetting"]
+- !private ["s28CustomDebugStringConvertibleP", "constraint"]
+- !private ["s28CustomDebugStringConvertibleP", "dateLabel"]
+- !private ["s28CustomDebugStringConvertibleP", "defaultSetting"]
+- !private ["s28CustomDebugStringConvertibleP", "dismiss"]
+- !private ["s28CustomDebugStringConvertibleP", "drawHierarchy"]
+- !private ["s28CustomDebugStringConvertibleP", "first"]
+- !private ["s28CustomDebugStringConvertibleP", "image"]
+- ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "isActive"]
+- !private ["s28CustomDebugStringConvertibleP", "isHidden"]
+- !private ["s28CustomDebugStringConvertibleP", "leftAnchor"]
+- !private ["s28CustomDebugStringConvertibleP", "localizedDescription"]
+- !private ["s28CustomDebugStringConvertibleP", "location"]
+- !private ["s28CustomDebugStringConvertibleP", "originalView"]
+- !private ["s28CustomDebugStringConvertibleP", "photoView"]
+- !private ["s28CustomDebugStringConvertibleP", "print"]
+- !private ["s28CustomDebugStringConvertibleP", "rightAnchor"]
+- !private ["s28CustomDebugStringConvertibleP", "saveBtn"]
+- !private ["s28CustomDebugStringConvertibleP", "size"]
+- !private ["s28CustomDebugStringConvertibleP", "switchBtn"]
+- !private ["s28CustomDebugStringConvertibleP", "topAnchor"]
+- !private ["s28CustomDebugStringConvertibleP", "touchSaveBtn"]
+- !private ["s28CustomDebugStringConvertibleP", "touchSwitchBtn"]
+- !private ["s28CustomDebugStringConvertibleP", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["s28CustomDebugStringConvertibleP", "view"]
+- !private ["s28CustomDebugStringConvertibleP", "viewDidLoad"]
+- !private ["s28CustomDebugStringConvertibleP", "viewWillAppear"]
+- !private ["s17CustomReflectableP", "addSubview"]
+- !private ["s17CustomReflectableP", "addTarget"]
+- !private ["s17CustomReflectableP", "bottomAnchor"]
+- !private ["s17CustomReflectableP", "bounds"]
+- !private ["s17CustomReflectableP", "drawHierarchy"]
+- !private ["s17CustomReflectableP", "first"]
+- ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "isHidden"]
+- !private ["s17CustomReflectableP", "leftAnchor"]
+- !private ["s17CustomReflectableP", "location"]
+- !private ["s17CustomReflectableP", "rightAnchor"]
+- !private ["s17CustomReflectableP", "size"]
+- !private ["s17CustomReflectableP", "topAnchor"]
+- ["s23CustomStringConvertibleP", "CGPoint"]
+- !private ["s23CustomStringConvertibleP", "UIGraphicsImageRenderer"]
+- !private ["s23CustomStringConvertibleP", "UIImageWriteToSavedPhotosAlbum"]
+- ["s23CustomStringConvertibleP", ""]
+- !private ["s23CustomStringConvertibleP", "addSubview"]
+- !private ["s23CustomStringConvertibleP", "addTarget"]
+- !private ["s23CustomStringConvertibleP", "bottomAnchor"]
+- !private ["s23CustomStringConvertibleP", "bounds"]
+- !private ["s23CustomStringConvertibleP", "buttonSetting"]
+- !private ["s23CustomStringConvertibleP", "constraint"]
+- !private ["s23CustomStringConvertibleP", "dateLabel"]
+- !private ["s23CustomStringConvertibleP", "defaultSetting"]
+- !private ["s23CustomStringConvertibleP", "dismiss"]
+- !private ["s23CustomStringConvertibleP", "drawHierarchy"]
+- !private ["s23CustomStringConvertibleP", "first"]
+- !private ["s23CustomStringConvertibleP", "image"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "isActive"]
+- !private ["s23CustomStringConvertibleP", "isHidden"]
+- !private ["s23CustomStringConvertibleP", "leftAnchor"]
+- !private ["s23CustomStringConvertibleP", "localizedDescription"]
+- !private ["s23CustomStringConvertibleP", "location"]
+- !private ["s23CustomStringConvertibleP", "originalView"]
+- !private ["s23CustomStringConvertibleP", "photoView"]
+- !private ["s23CustomStringConvertibleP", "print"]
+- !private ["s23CustomStringConvertibleP", "rightAnchor"]
+- !private ["s23CustomStringConvertibleP", "saveBtn"]
+- !private ["s23CustomStringConvertibleP", "switchBtn"]
+- !private ["s23CustomStringConvertibleP", "topAnchor"]
+- !private ["s23CustomStringConvertibleP", "touchSaveBtn"]
+- !private ["s23CustomStringConvertibleP", "touchSwitchBtn"]
+- !private ["s23CustomStringConvertibleP", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["s23CustomStringConvertibleP", "view"]
+- !private ["s23CustomStringConvertibleP", "viewDidLoad"]
+- !private ["s23CustomStringConvertibleP", "viewWillAppear"]
+- !private ["Se", "addSubview"]
+- !private ["Se", "addTarget"]
+- !private ["Se", "bottomAnchor"]
+- !private ["Se", "bounds"]
+- !private ["Se", "drawHierarchy"]
+- !private ["Se", "first"]
+- ["Se", "init"]
+- !private ["Se", "isHidden"]
+- !private ["Se", "leftAnchor"]
+- !private ["Se", "location"]
+- !private ["Se", "rightAnchor"]
+- !private ["Se", "size"]
+- !private ["Se", "topAnchor"]
+- !private ["SE", "addSubview"]
+- !private ["SE", "addTarget"]
+- !private ["SE", "bottomAnchor"]
+- !private ["SE", "bounds"]
+- !private ["SE", "drawHierarchy"]
+- !private ["SE", "first"]
+- ["SE", "init"]
+- !private ["SE", "isHidden"]
+- !private ["SE", "leftAnchor"]
+- !private ["SE", "location"]
+- !private ["SE", "rightAnchor"]
+- !private ["SE", "size"]
+- !private ["SE", "topAnchor"]
+- ["SQ", "CGPoint"]
+- !private ["SQ", "UIGraphicsImageRenderer"]
+- !private ["SQ", "UIImageWriteToSavedPhotosAlbum"]
+- ["SQ", ""]
+- !private ["SQ", "addSubview"]
+- !private ["SQ", "addTarget"]
+- !private ["SQ", "bottomAnchor"]
+- !private ["SQ", "bounds"]
+- !private ["SQ", "buttonSetting"]
+- !private ["SQ", "constraint"]
+- !private ["SQ", "dateLabel"]
+- !private ["SQ", "defaultSetting"]
+- !private ["SQ", "dismiss"]
+- !private ["SQ", "drawHierarchy"]
+- !private ["SQ", "first"]
+- !private ["SQ", "image"]
+- ["SQ", "init"]
+- !private ["SQ", "isActive"]
+- !private ["SQ", "isHidden"]
+- !private ["SQ", "leftAnchor"]
+- !private ["SQ", "localizedDescription"]
+- !private ["SQ", "location"]
+- !private ["SQ", "originalView"]
+- !private ["SQ", "photoView"]
+- !private ["SQ", "print"]
+- !private ["SQ", "rightAnchor"]
+- !private ["SQ", "saveBtn"]
+- !private ["SQ", "size"]
+- !private ["SQ", "switchBtn"]
+- !private ["SQ", "topAnchor"]
+- !private ["SQ", "touchSaveBtn"]
+- !private ["SQ", "touchSwitchBtn"]
+- !private ["SQ", "touchUpInside"]
+- !private ["SQ", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["SQ", "view"]
+- !private ["SQ", "viewDidLoad"]
+- !private ["SQ", "viewWillAppear"]
+- !private ["s5ErrorP", "localizedDescription"]
+- !private ["So15UIControlEventsV", "touchUpInside"]
+- !private ["s25ExpressibleByArrayLiteralP", "first"]
+- !private ["s25ExpressibleByArrayLiteralP", "touchUpInside"]
+- !private ["s23ExpressibleByNilLiteralP", "addSubview"]
+- !private ["s23ExpressibleByNilLiteralP", "addTarget"]
+- !private ["s23ExpressibleByNilLiteralP", "bottomAnchor"]
+- !private ["s23ExpressibleByNilLiteralP", "bounds"]
+- !private ["s23ExpressibleByNilLiteralP", "drawHierarchy"]
+- !private ["s23ExpressibleByNilLiteralP", "isHidden"]
+- !private ["s23ExpressibleByNilLiteralP", "leftAnchor"]
+- !private ["s23ExpressibleByNilLiteralP", "location"]
+- !private ["s23ExpressibleByNilLiteralP", "rightAnchor"]
+- !private ["s23ExpressibleByNilLiteralP", "topAnchor"]
+- ["SH", "CGPoint"]
+- !private ["SH", "UIGraphicsImageRenderer"]
+- !private ["SH", "UIImageWriteToSavedPhotosAlbum"]
+- ["SH", ""]
+- !private ["SH", "addSubview"]
+- !private ["SH", "addTarget"]
+- !private ["SH", "bottomAnchor"]
+- !private ["SH", "bounds"]
+- !private ["SH", "buttonSetting"]
+- !private ["SH", "constraint"]
+- !private ["SH", "dateLabel"]
+- !private ["SH", "defaultSetting"]
+- !private ["SH", "dismiss"]
+- !private ["SH", "drawHierarchy"]
+- !private ["SH", "first"]
+- !private ["SH", "image"]
+- !private ["SH", "init"]
+- !private ["SH", "isActive"]
+- !private ["SH", "isHidden"]
+- !private ["SH", "leftAnchor"]
+- !private ["SH", "localizedDescription"]
+- !private ["SH", "location"]
+- !private ["SH", "originalView"]
+- !private ["SH", "photoView"]
+- !private ["SH", "print"]
+- !private ["SH", "rightAnchor"]
+- !private ["SH", "saveBtn"]
+- !private ["SH", "switchBtn"]
+- !private ["SH", "topAnchor"]
+- !private ["SH", "touchSaveBtn"]
+- !private ["SH", "touchSwitchBtn"]
+- !private ["SH", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["SH", "view"]
+- !private ["SH", "viewDidLoad"]
+- !private ["SH", "viewWillAppear"]
+- ["So8NSCodingP", "CGPoint"]
+- !private ["So8NSCodingP", "UIGraphicsImageRenderer"]
+- !private ["So8NSCodingP", "UIImageWriteToSavedPhotosAlbum"]
+- ["So8NSCodingP", ""]
+- !private ["So8NSCodingP", "addSubview"]
+- !private ["So8NSCodingP", "addTarget"]
+- !private ["So8NSCodingP", "bottomAnchor"]
+- !private ["So8NSCodingP", "bounds"]
+- !private ["So8NSCodingP", "buttonSetting"]
+- !private ["So8NSCodingP", "constraint"]
+- !private ["So8NSCodingP", "dateLabel"]
+- !private ["So8NSCodingP", "defaultSetting"]
+- !private ["So8NSCodingP", "dismiss"]
+- !private ["So8NSCodingP", "drawHierarchy"]
+- !private ["So8NSCodingP", "image"]
+- !private ["So8NSCodingP", "init"]
+- !private ["So8NSCodingP", "isHidden"]
+- !private ["So8NSCodingP", "leftAnchor"]
+- !private ["So8NSCodingP", "localizedDescription"]
+- !private ["So8NSCodingP", "location"]
+- !private ["So8NSCodingP", "originalView"]
+- !private ["So8NSCodingP", "photoView"]
+- !private ["So8NSCodingP", "print"]
+- !private ["So8NSCodingP", "rightAnchor"]
+- !private ["So8NSCodingP", "saveBtn"]
+- !private ["So8NSCodingP", "switchBtn"]
+- !private ["So8NSCodingP", "topAnchor"]
+- !private ["So8NSCodingP", "touchSaveBtn"]
+- !private ["So8NSCodingP", "touchSwitchBtn"]
+- !private ["So8NSCodingP", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["So8NSCodingP", "view"]
+- !private ["So8NSCodingP", "viewDidLoad"]
+- !private ["So8NSCodingP", "viewWillAppear"]
+- !private ["So9NSCopyingP", "constraint"]
+- !private ["So9NSCopyingP", "localizedDescription"]
+- !private ["So7NSErrorC", "localizedDescription"]
+- ["So26NSExtensionRequestHandlingP", "CGPoint"]
+- !private ["So26NSExtensionRequestHandlingP", "UIGraphicsImageRenderer"]
+- !private ["So26NSExtensionRequestHandlingP", "UIImageWriteToSavedPhotosAlbum"]
+- ["So26NSExtensionRequestHandlingP", ""]
+- !private ["So26NSExtensionRequestHandlingP", "buttonSetting"]
+- !private ["So26NSExtensionRequestHandlingP", "dateLabel"]
+- !private ["So26NSExtensionRequestHandlingP", "defaultSetting"]
+- !private ["So26NSExtensionRequestHandlingP", "dismiss"]
+- !private ["So26NSExtensionRequestHandlingP", "image"]
+- !private ["So26NSExtensionRequestHandlingP", "init"]
+- !private ["So26NSExtensionRequestHandlingP", "location"]
+- !private ["So26NSExtensionRequestHandlingP", "originalView"]
+- !private ["So26NSExtensionRequestHandlingP", "photoView"]
+- !private ["So26NSExtensionRequestHandlingP", "print"]
+- !private ["So26NSExtensionRequestHandlingP", "saveBtn"]
+- !private ["So26NSExtensionRequestHandlingP", "switchBtn"]
+- !private ["So26NSExtensionRequestHandlingP", "touchSaveBtn"]
+- !private ["So26NSExtensionRequestHandlingP", "touchSwitchBtn"]
+- !private ["So26NSExtensionRequestHandlingP", "view"]
+- !private ["So26NSExtensionRequestHandlingP", "viewDidLoad"]
+- !private ["So26NSExtensionRequestHandlingP", "viewWillAppear"]
+- !private ["So14NSLayoutAnchorC", "constraint"]
+- !private ["So18NSLayoutConstraintC", "isActive"]
+- !private ["So19NSLayoutXAxisAnchorC", "constraint"]
+- !private ["So19NSLayoutYAxisAnchorC", "constraint"]
+- ["So8NSObjectC", "Bool"]
+- ["So8NSObjectC", "CGPoint"]
+- ["So8NSObjectC", "NSError"]
+- ["So8NSObjectC", "Set"]
+- ["So8NSObjectC", "UIButton"]
+- ["So8NSObjectC", "UIEvent"]
+- !private ["So8NSObjectC", "UIGraphicsImageRenderer"]
+- ["So8NSObjectC", "UIImage"]
+- !private ["So8NSObjectC", "UIImageWriteToSavedPhotosAlbum"]
+- ["So8NSObjectC", "UILabel"]
+- ["So8NSObjectC", "UISwitch"]
+- ["So8NSObjectC", "UITouch"]
+- ["So8NSObjectC", "UIView"]
+- ["So8NSObjectC", "UnsafeRawPointer"]
+- !private ["So8NSObjectC", "addSubview"]
+- !private ["So8NSObjectC", "addTarget"]
+- ["So8NSObjectC", "backBtn"]
+- !private ["So8NSObjectC", "bottomAnchor"]
+- !private ["So8NSObjectC", "bounds"]
+- ["So8NSObjectC", "buttonSetting"]
+- !private ["So8NSObjectC", "constraint"]
+- ["So8NSObjectC", "dateLabel"]
+- ["So8NSObjectC", "defaultSetting"]
+- !private ["So8NSObjectC", "dismiss"]
+- !private ["So8NSObjectC", "drawHierarchy"]
+- ["So8NSObjectC", "image"]
+- ["So8NSObjectC", "init"]
+- !private ["So8NSObjectC", "isActive"]
+- !private ["So8NSObjectC", "isHidden"]
+- !private ["So8NSObjectC", "leftAnchor"]
+- !private ["So8NSObjectC", "localizedDescription"]
+- ["So8NSObjectC", "location"]
+- ["So8NSObjectC", "originalView"]
+- ["So8NSObjectC", "photoView"]
+- !private ["So8NSObjectC", "print"]
+- !private ["So8NSObjectC", "rightAnchor"]
+- ["So8NSObjectC", "saveBtn"]
+- ["So8NSObjectC", "switchBtn"]
+- !private ["So8NSObjectC", "topAnchor"]
+- ["So8NSObjectC", "touchSaveBtn"]
+- ["So8NSObjectC", "touchSwitchBtn"]
+- ["So8NSObjectC", "touchesBegan"]
+- ["So8NSObjectC", "touchesMoved"]
+- !private ["So8NSObjectC", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["So8NSObjectC", "view"]
+- ["So8NSObjectC", "viewDidLoad"]
+- ["So8NSObjectC", "viewWillAppear"]
+- ["So8NSObjectP", "CGPoint"]
+- !private ["So8NSObjectP", "UIGraphicsImageRenderer"]
+- !private ["So8NSObjectP", "UIImageWriteToSavedPhotosAlbum"]
+- ["So8NSObjectP", ""]
+- !private ["So8NSObjectP", "addSubview"]
+- !private ["So8NSObjectP", "addTarget"]
+- !private ["So8NSObjectP", "bottomAnchor"]
+- !private ["So8NSObjectP", "bounds"]
+- !private ["So8NSObjectP", "buttonSetting"]
+- !private ["So8NSObjectP", "constraint"]
+- !private ["So8NSObjectP", "dateLabel"]
+- !private ["So8NSObjectP", "defaultSetting"]
+- !private ["So8NSObjectP", "dismiss"]
+- !private ["So8NSObjectP", "drawHierarchy"]
+- !private ["So8NSObjectP", "image"]
+- !private ["So8NSObjectP", "init"]
+- !private ["So8NSObjectP", "isActive"]
+- !private ["So8NSObjectP", "isHidden"]
+- !private ["So8NSObjectP", "leftAnchor"]
+- !private ["So8NSObjectP", "localizedDescription"]
+- !private ["So8NSObjectP", "location"]
+- !private ["So8NSObjectP", "originalView"]
+- !private ["So8NSObjectP", "photoView"]
+- !private ["So8NSObjectP", "print"]
+- !private ["So8NSObjectP", "rightAnchor"]
+- !private ["So8NSObjectP", "saveBtn"]
+- !private ["So8NSObjectP", "switchBtn"]
+- !private ["So8NSObjectP", "topAnchor"]
+- !private ["So8NSObjectP", "touchSaveBtn"]
+- !private ["So8NSObjectP", "touchSwitchBtn"]
+- !private ["So8NSObjectP", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["So8NSObjectP", "view"]
+- !private ["So8NSObjectP", "viewDidLoad"]
+- !private ["So8NSObjectP", "viewWillAppear"]
+- !private ["So14NSSecureCodingP", "localizedDescription"]
+- !private ["s9OptionSetP", "touchUpInside"]
+- !private ["Sq", "addSubview"]
+- !private ["Sq", "addTarget"]
+- !private ["Sq", "bottomAnchor"]
+- !private ["Sq", "bounds"]
+- !private ["Sq", "drawHierarchy"]
+- !private ["Sq", "isHidden"]
+- !private ["Sq", "leftAnchor"]
+- !private ["Sq", "location"]
+- !private ["Sq", "rightAnchor"]
+- !private ["Sq", "topAnchor"]
+- !private ["SY", "touchUpInside"]
+- ["4_0_s11SavePhotoVCC", "Bool"]
+- ["4_0_s11SavePhotoVCC", "CGPoint"]
+- ["4_0_s11SavePhotoVCC", "NSError"]
+- ["4_0_s11SavePhotoVCC", "Set"]
+- ["4_0_s11SavePhotoVCC", "UIButton"]
+- ["4_0_s11SavePhotoVCC", "UIEvent"]
+- !private ["4_0_s11SavePhotoVCC", "UIGraphicsImageRenderer"]
+- ["4_0_s11SavePhotoVCC", "UIImage"]
+- !private ["4_0_s11SavePhotoVCC", "UIImageWriteToSavedPhotosAlbum"]
+- ["4_0_s11SavePhotoVCC", "UILabel"]
+- ["4_0_s11SavePhotoVCC", "UISwitch"]
+- ["4_0_s11SavePhotoVCC", "UITouch"]
+- ["4_0_s11SavePhotoVCC", "UIView"]
+- ["4_0_s11SavePhotoVCC", "UnsafeRawPointer"]
+- ["4_0_s11SavePhotoVCC", "backBtn"]
+- ["4_0_s11SavePhotoVCC", "buttonSetting"]
+- ["4_0_s11SavePhotoVCC", "dateLabel"]
+- ["4_0_s11SavePhotoVCC", "defaultSetting"]
+- ["4_0_s11SavePhotoVCC", "deinit"]
+- !private ["4_0_s11SavePhotoVCC", "dismiss"]
+- ["4_0_s11SavePhotoVCC", "image"]
+- ["4_0_s11SavePhotoVCC", "init"]
+- ["4_0_s11SavePhotoVCC", "location"]
+- ["4_0_s11SavePhotoVCC", "originalView"]
+- ["4_0_s11SavePhotoVCC", "photoView"]
+- !private ["4_0_s11SavePhotoVCC", "print"]
+- ["4_0_s11SavePhotoVCC", "saveBtn"]
+- ["4_0_s11SavePhotoVCC", "switchBtn"]
+- ["4_0_s11SavePhotoVCC", "touchSaveBtn"]
+- ["4_0_s11SavePhotoVCC", "touchSwitchBtn"]
+- ["4_0_s11SavePhotoVCC", "touchesBegan"]
+- ["4_0_s11SavePhotoVCC", "touchesMoved"]
+- !private ["4_0_s11SavePhotoVCC", "view"]
+- ["4_0_s11SavePhotoVCC", "viewDidLoad"]
+- ["4_0_s11SavePhotoVCC", "viewWillAppear"]
+- !private ["ST", "first"]
+- !private ["Sh", "first"]
+- !private ["s10SetAlgebraP", "first"]
+- !private ["s10SetAlgebraP", "touchUpInside"]
+- !private ["So48UIAccessibilityContentSizeCategoryImageAdjustingP", "addTarget"]
+- !private ["So29UIAccessibilityIdentificationP", "addSubview"]
+- !private ["So29UIAccessibilityIdentificationP", "addTarget"]
+- !private ["So29UIAccessibilityIdentificationP", "bottomAnchor"]
+- !private ["So29UIAccessibilityIdentificationP", "bounds"]
+- !private ["So29UIAccessibilityIdentificationP", "drawHierarchy"]
+- !private ["So29UIAccessibilityIdentificationP", "isHidden"]
+- !private ["So29UIAccessibilityIdentificationP", "leftAnchor"]
+- !private ["So29UIAccessibilityIdentificationP", "rightAnchor"]
+- !private ["So29UIAccessibilityIdentificationP", "topAnchor"]
+- !private ["So29UIAccessibilityIdentificationP", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["So12UIAppearanceP", "addSubview"]
+- !private ["So12UIAppearanceP", "addTarget"]
+- !private ["So12UIAppearanceP", "bottomAnchor"]
+- !private ["So12UIAppearanceP", "bounds"]
+- !private ["So12UIAppearanceP", "drawHierarchy"]
+- !private ["So12UIAppearanceP", "isHidden"]
+- !private ["So12UIAppearanceP", "leftAnchor"]
+- !private ["So12UIAppearanceP", "rightAnchor"]
+- !private ["So12UIAppearanceP", "topAnchor"]
+- !private ["So12UIAppearanceP", "translatesAutoresizingMaskIntoConstraints"]
+- ["So21UIAppearanceContainerP", "CGPoint"]
+- !private ["So21UIAppearanceContainerP", "UIGraphicsImageRenderer"]
+- !private ["So21UIAppearanceContainerP", "UIImageWriteToSavedPhotosAlbum"]
+- ["So21UIAppearanceContainerP", ""]
+- !private ["So21UIAppearanceContainerP", "addSubview"]
+- !private ["So21UIAppearanceContainerP", "addTarget"]
+- !private ["So21UIAppearanceContainerP", "bottomAnchor"]
+- !private ["So21UIAppearanceContainerP", "bounds"]
+- !private ["So21UIAppearanceContainerP", "buttonSetting"]
+- !private ["So21UIAppearanceContainerP", "dateLabel"]
+- !private ["So21UIAppearanceContainerP", "defaultSetting"]
+- !private ["So21UIAppearanceContainerP", "dismiss"]
+- !private ["So21UIAppearanceContainerP", "drawHierarchy"]
+- !private ["So21UIAppearanceContainerP", "image"]
+- !private ["So21UIAppearanceContainerP", "init"]
+- !private ["So21UIAppearanceContainerP", "isHidden"]
+- !private ["So21UIAppearanceContainerP", "leftAnchor"]
+- !private ["So21UIAppearanceContainerP", "location"]
+- !private ["So21UIAppearanceContainerP", "originalView"]
+- !private ["So21UIAppearanceContainerP", "photoView"]
+- !private ["So21UIAppearanceContainerP", "print"]
+- !private ["So21UIAppearanceContainerP", "rightAnchor"]
+- !private ["So21UIAppearanceContainerP", "saveBtn"]
+- !private ["So21UIAppearanceContainerP", "switchBtn"]
+- !private ["So21UIAppearanceContainerP", "topAnchor"]
+- !private ["So21UIAppearanceContainerP", "touchSaveBtn"]
+- !private ["So21UIAppearanceContainerP", "touchSwitchBtn"]
+- !private ["So21UIAppearanceContainerP", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["So21UIAppearanceContainerP", "view"]
+- !private ["So21UIAppearanceContainerP", "viewDidLoad"]
+- !private ["So21UIAppearanceContainerP", "viewWillAppear"]
+- !private ["So8UIButtonC", "addTarget"]
+- ["So18UIContentContainerP", "CGPoint"]
+- !private ["So18UIContentContainerP", "UIGraphicsImageRenderer"]
+- !private ["So18UIContentContainerP", "UIImageWriteToSavedPhotosAlbum"]
+- ["So18UIContentContainerP", ""]
+- !private ["So18UIContentContainerP", "buttonSetting"]
+- !private ["So18UIContentContainerP", "dateLabel"]
+- !private ["So18UIContentContainerP", "defaultSetting"]
+- !private ["So18UIContentContainerP", "dismiss"]
+- !private ["So18UIContentContainerP", "image"]
+- !private ["So18UIContentContainerP", "init"]
+- !private ["So18UIContentContainerP", "location"]
+- !private ["So18UIContentContainerP", "originalView"]
+- !private ["So18UIContentContainerP", "photoView"]
+- !private ["So18UIContentContainerP", "print"]
+- !private ["So18UIContentContainerP", "saveBtn"]
+- !private ["So18UIContentContainerP", "switchBtn"]
+- !private ["So18UIContentContainerP", "touchSaveBtn"]
+- !private ["So18UIContentContainerP", "touchSwitchBtn"]
+- !private ["So18UIContentContainerP", "view"]
+- !private ["So18UIContentContainerP", "viewDidLoad"]
+- !private ["So18UIContentContainerP", "viewWillAppear"]
+- !private ["So30UIContentSizeCategoryAdjustingP", "isHidden"]
+- !private ["So9UIControlC", "addTarget"]
+- !private ["So17UICoordinateSpaceP", "addSubview"]
+- !private ["So17UICoordinateSpaceP", "addTarget"]
+- !private ["So17UICoordinateSpaceP", "bottomAnchor"]
+- !private ["So17UICoordinateSpaceP", "bounds"]
+- !private ["So17UICoordinateSpaceP", "drawHierarchy"]
+- !private ["So17UICoordinateSpaceP", "isHidden"]
+- !private ["So17UICoordinateSpaceP", "leftAnchor"]
+- !private ["So17UICoordinateSpaceP", "rightAnchor"]
+- !private ["So17UICoordinateSpaceP", "topAnchor"]
+- !private ["So17UICoordinateSpaceP", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["So13UIDynamicItemP", "addSubview"]
+- !private ["So13UIDynamicItemP", "addTarget"]
+- !private ["So13UIDynamicItemP", "bottomAnchor"]
+- !private ["So13UIDynamicItemP", "bounds"]
+- !private ["So13UIDynamicItemP", "drawHierarchy"]
+- !private ["So13UIDynamicItemP", "isHidden"]
+- !private ["So13UIDynamicItemP", "leftAnchor"]
+- !private ["So13UIDynamicItemP", "rightAnchor"]
+- !private ["So13UIDynamicItemP", "topAnchor"]
+- !private ["So13UIDynamicItemP", "translatesAutoresizingMaskIntoConstraints"]
+- ["So18UIFocusEnvironmentP", "CGPoint"]
+- !private ["So18UIFocusEnvironmentP", "UIGraphicsImageRenderer"]
+- !private ["So18UIFocusEnvironmentP", "UIImageWriteToSavedPhotosAlbum"]
+- ["So18UIFocusEnvironmentP", ""]
+- !private ["So18UIFocusEnvironmentP", "addSubview"]
+- !private ["So18UIFocusEnvironmentP", "addTarget"]
+- !private ["So18UIFocusEnvironmentP", "bottomAnchor"]
+- !private ["So18UIFocusEnvironmentP", "bounds"]
+- !private ["So18UIFocusEnvironmentP", "buttonSetting"]
+- !private ["So18UIFocusEnvironmentP", "dateLabel"]
+- !private ["So18UIFocusEnvironmentP", "defaultSetting"]
+- !private ["So18UIFocusEnvironmentP", "dismiss"]
+- !private ["So18UIFocusEnvironmentP", "drawHierarchy"]
+- !private ["So18UIFocusEnvironmentP", "image"]
+- !private ["So18UIFocusEnvironmentP", "init"]
+- !private ["So18UIFocusEnvironmentP", "isHidden"]
+- !private ["So18UIFocusEnvironmentP", "leftAnchor"]
+- !private ["So18UIFocusEnvironmentP", "location"]
+- !private ["So18UIFocusEnvironmentP", "originalView"]
+- !private ["So18UIFocusEnvironmentP", "photoView"]
+- !private ["So18UIFocusEnvironmentP", "print"]
+- !private ["So18UIFocusEnvironmentP", "rightAnchor"]
+- !private ["So18UIFocusEnvironmentP", "saveBtn"]
+- !private ["So18UIFocusEnvironmentP", "switchBtn"]
+- !private ["So18UIFocusEnvironmentP", "topAnchor"]
+- !private ["So18UIFocusEnvironmentP", "touchSaveBtn"]
+- !private ["So18UIFocusEnvironmentP", "touchSwitchBtn"]
+- !private ["So18UIFocusEnvironmentP", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["So18UIFocusEnvironmentP", "view"]
+- !private ["So18UIFocusEnvironmentP", "viewDidLoad"]
+- !private ["So18UIFocusEnvironmentP", "viewWillAppear"]
+- !private ["So11UIFocusItemP", "addSubview"]
+- !private ["So11UIFocusItemP", "addTarget"]
+- !private ["So11UIFocusItemP", "bottomAnchor"]
+- !private ["So11UIFocusItemP", "bounds"]
+- !private ["So11UIFocusItemP", "drawHierarchy"]
+- !private ["So11UIFocusItemP", "isHidden"]
+- !private ["So11UIFocusItemP", "leftAnchor"]
+- !private ["So11UIFocusItemP", "rightAnchor"]
+- !private ["So11UIFocusItemP", "topAnchor"]
+- !private ["So11UIFocusItemP", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["So20UIFocusItemContainerP", "addSubview"]
+- !private ["So20UIFocusItemContainerP", "addTarget"]
+- !private ["So20UIFocusItemContainerP", "bottomAnchor"]
+- !private ["So20UIFocusItemContainerP", "bounds"]
+- !private ["So20UIFocusItemContainerP", "drawHierarchy"]
+- !private ["So20UIFocusItemContainerP", "isHidden"]
+- !private ["So20UIFocusItemContainerP", "leftAnchor"]
+- !private ["So20UIFocusItemContainerP", "rightAnchor"]
+- !private ["So20UIFocusItemContainerP", "topAnchor"]
+- !private ["So20UIFocusItemContainerP", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["So23UIGraphicsImageRendererC", "image"]
+- !private ["So23UIGraphicsImageRendererC", "init"]
+- !private ["So18UIGraphicsRendererC", "image"]
+- !private ["So18UIGraphicsRendererC", "init"]
+- !private ["So7UILabelC", "isHidden"]
+- !private ["So24UILargeContentViewerItemP", "addSubview"]
+- !private ["So24UILargeContentViewerItemP", "addTarget"]
+- !private ["So24UILargeContentViewerItemP", "bottomAnchor"]
+- !private ["So24UILargeContentViewerItemP", "bounds"]
+- !private ["So24UILargeContentViewerItemP", "drawHierarchy"]
+- !private ["So24UILargeContentViewerItemP", "isHidden"]
+- !private ["So24UILargeContentViewerItemP", "leftAnchor"]
+- !private ["So24UILargeContentViewerItemP", "rightAnchor"]
+- !private ["So24UILargeContentViewerItemP", "topAnchor"]
+- !private ["So24UILargeContentViewerItemP", "translatesAutoresizingMaskIntoConstraints"]
+- ["So30UIPasteConfigurationSupportingP", "CGPoint"]
+- !private ["So30UIPasteConfigurationSupportingP", "UIGraphicsImageRenderer"]
+- !private ["So30UIPasteConfigurationSupportingP", "UIImageWriteToSavedPhotosAlbum"]
+- ["So30UIPasteConfigurationSupportingP", ""]
+- !private ["So30UIPasteConfigurationSupportingP", "addSubview"]
+- !private ["So30UIPasteConfigurationSupportingP", "addTarget"]
+- !private ["So30UIPasteConfigurationSupportingP", "bottomAnchor"]
+- !private ["So30UIPasteConfigurationSupportingP", "bounds"]
+- !private ["So30UIPasteConfigurationSupportingP", "buttonSetting"]
+- !private ["So30UIPasteConfigurationSupportingP", "dateLabel"]
+- !private ["So30UIPasteConfigurationSupportingP", "defaultSetting"]
+- !private ["So30UIPasteConfigurationSupportingP", "dismiss"]
+- !private ["So30UIPasteConfigurationSupportingP", "drawHierarchy"]
+- !private ["So30UIPasteConfigurationSupportingP", "image"]
+- !private ["So30UIPasteConfigurationSupportingP", "init"]
+- !private ["So30UIPasteConfigurationSupportingP", "isHidden"]
+- !private ["So30UIPasteConfigurationSupportingP", "leftAnchor"]
+- !private ["So30UIPasteConfigurationSupportingP", "location"]
+- !private ["So30UIPasteConfigurationSupportingP", "originalView"]
+- !private ["So30UIPasteConfigurationSupportingP", "photoView"]
+- !private ["So30UIPasteConfigurationSupportingP", "print"]
+- !private ["So30UIPasteConfigurationSupportingP", "rightAnchor"]
+- !private ["So30UIPasteConfigurationSupportingP", "saveBtn"]
+- !private ["So30UIPasteConfigurationSupportingP", "switchBtn"]
+- !private ["So30UIPasteConfigurationSupportingP", "topAnchor"]
+- !private ["So30UIPasteConfigurationSupportingP", "touchSaveBtn"]
+- !private ["So30UIPasteConfigurationSupportingP", "touchSwitchBtn"]
+- !private ["So30UIPasteConfigurationSupportingP", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["So30UIPasteConfigurationSupportingP", "view"]
+- !private ["So30UIPasteConfigurationSupportingP", "viewDidLoad"]
+- !private ["So30UIPasteConfigurationSupportingP", "viewWillAppear"]
+- ["So11UIResponderC", "Bool"]
+- ["So11UIResponderC", "CGPoint"]
+- ["So11UIResponderC", "NSError"]
+- ["So11UIResponderC", "Set"]
+- ["So11UIResponderC", "UIButton"]
+- ["So11UIResponderC", "UIEvent"]
+- !private ["So11UIResponderC", "UIGraphicsImageRenderer"]
+- ["So11UIResponderC", "UIImage"]
+- !private ["So11UIResponderC", "UIImageWriteToSavedPhotosAlbum"]
+- ["So11UIResponderC", "UILabel"]
+- ["So11UIResponderC", "UISwitch"]
+- ["So11UIResponderC", "UITouch"]
+- ["So11UIResponderC", "UIView"]
+- ["So11UIResponderC", "UnsafeRawPointer"]
+- !private ["So11UIResponderC", "addSubview"]
+- !private ["So11UIResponderC", "addTarget"]
+- ["So11UIResponderC", "backBtn"]
+- !private ["So11UIResponderC", "bottomAnchor"]
+- !private ["So11UIResponderC", "bounds"]
+- ["So11UIResponderC", "buttonSetting"]
+- ["So11UIResponderC", "dateLabel"]
+- ["So11UIResponderC", "defaultSetting"]
+- !private ["So11UIResponderC", "dismiss"]
+- !private ["So11UIResponderC", "drawHierarchy"]
+- ["So11UIResponderC", "image"]
+- ["So11UIResponderC", "init"]
+- !private ["So11UIResponderC", "isHidden"]
+- !private ["So11UIResponderC", "leftAnchor"]
+- ["So11UIResponderC", "location"]
+- ["So11UIResponderC", "originalView"]
+- ["So11UIResponderC", "photoView"]
+- !private ["So11UIResponderC", "print"]
+- !private ["So11UIResponderC", "rightAnchor"]
+- ["So11UIResponderC", "saveBtn"]
+- ["So11UIResponderC", "switchBtn"]
+- !private ["So11UIResponderC", "topAnchor"]
+- ["So11UIResponderC", "touchSaveBtn"]
+- ["So11UIResponderC", "touchSwitchBtn"]
+- ["So11UIResponderC", "touchesBegan"]
+- ["So11UIResponderC", "touchesMoved"]
+- !private ["So11UIResponderC", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["So11UIResponderC", "view"]
+- ["So11UIResponderC", "viewDidLoad"]
+- ["So11UIResponderC", "viewWillAppear"]
+- ["So30UIResponderStandardEditActionsP", "CGPoint"]
+- !private ["So30UIResponderStandardEditActionsP", "UIGraphicsImageRenderer"]
+- !private ["So30UIResponderStandardEditActionsP", "UIImageWriteToSavedPhotosAlbum"]
+- ["So30UIResponderStandardEditActionsP", ""]
+- !private ["So30UIResponderStandardEditActionsP", "addSubview"]
+- !private ["So30UIResponderStandardEditActionsP", "addTarget"]
+- !private ["So30UIResponderStandardEditActionsP", "bottomAnchor"]
+- !private ["So30UIResponderStandardEditActionsP", "bounds"]
+- !private ["So30UIResponderStandardEditActionsP", "buttonSetting"]
+- !private ["So30UIResponderStandardEditActionsP", "dateLabel"]
+- !private ["So30UIResponderStandardEditActionsP", "defaultSetting"]
+- !private ["So30UIResponderStandardEditActionsP", "dismiss"]
+- !private ["So30UIResponderStandardEditActionsP", "drawHierarchy"]
+- !private ["So30UIResponderStandardEditActionsP", "image"]
+- !private ["So30UIResponderStandardEditActionsP", "init"]
+- !private ["So30UIResponderStandardEditActionsP", "isHidden"]
+- !private ["So30UIResponderStandardEditActionsP", "leftAnchor"]
+- !private ["So30UIResponderStandardEditActionsP", "location"]
+- !private ["So30UIResponderStandardEditActionsP", "originalView"]
+- !private ["So30UIResponderStandardEditActionsP", "photoView"]
+- !private ["So30UIResponderStandardEditActionsP", "print"]
+- !private ["So30UIResponderStandardEditActionsP", "rightAnchor"]
+- !private ["So30UIResponderStandardEditActionsP", "saveBtn"]
+- !private ["So30UIResponderStandardEditActionsP", "switchBtn"]
+- !private ["So30UIResponderStandardEditActionsP", "topAnchor"]
+- !private ["So30UIResponderStandardEditActionsP", "touchSaveBtn"]
+- !private ["So30UIResponderStandardEditActionsP", "touchSwitchBtn"]
+- !private ["So30UIResponderStandardEditActionsP", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["So30UIResponderStandardEditActionsP", "view"]
+- !private ["So30UIResponderStandardEditActionsP", "viewDidLoad"]
+- !private ["So30UIResponderStandardEditActionsP", "viewWillAppear"]
+- !private ["So35UISpringLoadedInteractionSupportingP", "addTarget"]
+- ["So16UIStateRestoringP", "CGPoint"]
+- !private ["So16UIStateRestoringP", "UIGraphicsImageRenderer"]
+- !private ["So16UIStateRestoringP", "UIImageWriteToSavedPhotosAlbum"]
+- ["So16UIStateRestoringP", ""]
+- !private ["So16UIStateRestoringP", "buttonSetting"]
+- !private ["So16UIStateRestoringP", "dateLabel"]
+- !private ["So16UIStateRestoringP", "defaultSetting"]
+- !private ["So16UIStateRestoringP", "dismiss"]
+- !private ["So16UIStateRestoringP", "image"]
+- !private ["So16UIStateRestoringP", "init"]
+- !private ["So16UIStateRestoringP", "location"]
+- !private ["So16UIStateRestoringP", "originalView"]
+- !private ["So16UIStateRestoringP", "photoView"]
+- !private ["So16UIStateRestoringP", "print"]
+- !private ["So16UIStateRestoringP", "saveBtn"]
+- !private ["So16UIStateRestoringP", "switchBtn"]
+- !private ["So16UIStateRestoringP", "touchSaveBtn"]
+- !private ["So16UIStateRestoringP", "touchSwitchBtn"]
+- !private ["So16UIStateRestoringP", "view"]
+- !private ["So16UIStateRestoringP", "viewDidLoad"]
+- !private ["So16UIStateRestoringP", "viewWillAppear"]
+- !private ["So8UISwitchC", "addTarget"]
+- !private ["So7UITouchC", "location"]
+- ["So18UITraitEnvironmentP", "CGPoint"]
+- !private ["So18UITraitEnvironmentP", "UIGraphicsImageRenderer"]
+- !private ["So18UITraitEnvironmentP", "UIImageWriteToSavedPhotosAlbum"]
+- ["So18UITraitEnvironmentP", ""]
+- !private ["So18UITraitEnvironmentP", "addSubview"]
+- !private ["So18UITraitEnvironmentP", "addTarget"]
+- !private ["So18UITraitEnvironmentP", "bottomAnchor"]
+- !private ["So18UITraitEnvironmentP", "bounds"]
+- !private ["So18UITraitEnvironmentP", "buttonSetting"]
+- !private ["So18UITraitEnvironmentP", "dateLabel"]
+- !private ["So18UITraitEnvironmentP", "defaultSetting"]
+- !private ["So18UITraitEnvironmentP", "dismiss"]
+- !private ["So18UITraitEnvironmentP", "drawHierarchy"]
+- !private ["So18UITraitEnvironmentP", "image"]
+- !private ["So18UITraitEnvironmentP", "init"]
+- !private ["So18UITraitEnvironmentP", "isHidden"]
+- !private ["So18UITraitEnvironmentP", "leftAnchor"]
+- !private ["So18UITraitEnvironmentP", "location"]
+- !private ["So18UITraitEnvironmentP", "originalView"]
+- !private ["So18UITraitEnvironmentP", "photoView"]
+- !private ["So18UITraitEnvironmentP", "print"]
+- !private ["So18UITraitEnvironmentP", "rightAnchor"]
+- !private ["So18UITraitEnvironmentP", "saveBtn"]
+- !private ["So18UITraitEnvironmentP", "switchBtn"]
+- !private ["So18UITraitEnvironmentP", "topAnchor"]
+- !private ["So18UITraitEnvironmentP", "touchSaveBtn"]
+- !private ["So18UITraitEnvironmentP", "touchSwitchBtn"]
+- !private ["So18UITraitEnvironmentP", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["So18UITraitEnvironmentP", "view"]
+- !private ["So18UITraitEnvironmentP", "viewDidLoad"]
+- !private ["So18UITraitEnvironmentP", "viewWillAppear"]
+- ["So23UIUserActivityRestoringP", "CGPoint"]
+- !private ["So23UIUserActivityRestoringP", "UIGraphicsImageRenderer"]
+- !private ["So23UIUserActivityRestoringP", "UIImageWriteToSavedPhotosAlbum"]
+- ["So23UIUserActivityRestoringP", ""]
+- !private ["So23UIUserActivityRestoringP", "addSubview"]
+- !private ["So23UIUserActivityRestoringP", "addTarget"]
+- !private ["So23UIUserActivityRestoringP", "bottomAnchor"]
+- !private ["So23UIUserActivityRestoringP", "bounds"]
+- !private ["So23UIUserActivityRestoringP", "buttonSetting"]
+- !private ["So23UIUserActivityRestoringP", "dateLabel"]
+- !private ["So23UIUserActivityRestoringP", "defaultSetting"]
+- !private ["So23UIUserActivityRestoringP", "dismiss"]
+- !private ["So23UIUserActivityRestoringP", "drawHierarchy"]
+- !private ["So23UIUserActivityRestoringP", "image"]
+- !private ["So23UIUserActivityRestoringP", "init"]
+- !private ["So23UIUserActivityRestoringP", "isHidden"]
+- !private ["So23UIUserActivityRestoringP", "leftAnchor"]
+- !private ["So23UIUserActivityRestoringP", "location"]
+- !private ["So23UIUserActivityRestoringP", "originalView"]
+- !private ["So23UIUserActivityRestoringP", "photoView"]
+- !private ["So23UIUserActivityRestoringP", "print"]
+- !private ["So23UIUserActivityRestoringP", "rightAnchor"]
+- !private ["So23UIUserActivityRestoringP", "saveBtn"]
+- !private ["So23UIUserActivityRestoringP", "switchBtn"]
+- !private ["So23UIUserActivityRestoringP", "topAnchor"]
+- !private ["So23UIUserActivityRestoringP", "touchSaveBtn"]
+- !private ["So23UIUserActivityRestoringP", "touchSwitchBtn"]
+- !private ["So23UIUserActivityRestoringP", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["So23UIUserActivityRestoringP", "view"]
+- !private ["So23UIUserActivityRestoringP", "viewDidLoad"]
+- !private ["So23UIUserActivityRestoringP", "viewWillAppear"]
+- !private ["So6UIViewC", "addSubview"]
+- !private ["So6UIViewC", "addTarget"]
+- !private ["So6UIViewC", "bottomAnchor"]
+- !private ["So6UIViewC", "bounds"]
+- !private ["So6UIViewC", "drawHierarchy"]
+- !private ["So6UIViewC", "isHidden"]
+- !private ["So6UIViewC", "leftAnchor"]
+- !private ["So6UIViewC", "rightAnchor"]
+- !private ["So6UIViewC", "topAnchor"]
+- !private ["So6UIViewC", "translatesAutoresizingMaskIntoConstraints"]
+- ["So16UIViewControllerC", "Bool"]
+- ["So16UIViewControllerC", "CGPoint"]
+- ["So16UIViewControllerC", "NSError"]
+- ["So16UIViewControllerC", "Set"]
+- ["So16UIViewControllerC", "UIButton"]
+- ["So16UIViewControllerC", "UIEvent"]
+- !private ["So16UIViewControllerC", "UIGraphicsImageRenderer"]
+- ["So16UIViewControllerC", "UIImage"]
+- !private ["So16UIViewControllerC", "UIImageWriteToSavedPhotosAlbum"]
+- ["So16UIViewControllerC", "UILabel"]
+- ["So16UIViewControllerC", "UISwitch"]
+- ["So16UIViewControllerC", "UITouch"]
+- ["So16UIViewControllerC", "UIView"]
+- ["So16UIViewControllerC", "UnsafeRawPointer"]
+- ["So16UIViewControllerC", ""]
+- ["So16UIViewControllerC", "backBtn"]
+- ["So16UIViewControllerC", "buttonSetting"]
+- ["So16UIViewControllerC", "dateLabel"]
+- ["So16UIViewControllerC", "defaultSetting"]
+- !private ["So16UIViewControllerC", "dismiss"]
+- ["So16UIViewControllerC", "image"]
+- ["So16UIViewControllerC", "init"]
+- ["So16UIViewControllerC", "location"]
+- ["So16UIViewControllerC", "originalView"]
+- ["So16UIViewControllerC", "photoView"]
+- !private ["So16UIViewControllerC", "print"]
+- ["So16UIViewControllerC", "saveBtn"]
+- ["So16UIViewControllerC", "switchBtn"]
+- ["So16UIViewControllerC", "touchSaveBtn"]
+- ["So16UIViewControllerC", "touchSwitchBtn"]
+- ["So16UIViewControllerC", "touchesBegan"]
+- ["So16UIViewControllerC", "touchesMoved"]
+- !private ["So16UIViewControllerC", "view"]
+- ["So16UIViewControllerC", "viewDidLoad"]
+- ["So16UIViewControllerC", "viewWillAppear"]
+- ["s30_CustomPlaygroundQuickLookableP", "init"]
+- !private ["s30_CustomPlaygroundQuickLookableP", "size"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "first"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "CGPoint"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "UIGraphicsImageRenderer"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "UIImageWriteToSavedPhotosAlbum"]
+- ["10Foundation27_KeyValueCodingAndObservingP", ""]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "addSubview"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "addTarget"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "bottomAnchor"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "bounds"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "buttonSetting"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "constraint"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "dateLabel"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "defaultSetting"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "dismiss"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "drawHierarchy"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "image"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "isActive"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "isHidden"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "leftAnchor"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "localizedDescription"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "location"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "originalView"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "photoView"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "print"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "rightAnchor"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "saveBtn"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "switchBtn"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "topAnchor"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "touchSaveBtn"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "touchSwitchBtn"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "view"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "viewDidLoad"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "viewWillAppear"]
+- ["10Foundation37_KeyValueCodingAndObservingPublishingP", "CGPoint"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "UIGraphicsImageRenderer"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "UIImageWriteToSavedPhotosAlbum"]
+- ["10Foundation37_KeyValueCodingAndObservingPublishingP", ""]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "addSubview"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "addTarget"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "bottomAnchor"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "bounds"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "buttonSetting"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "constraint"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "dateLabel"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "defaultSetting"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "dismiss"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "drawHierarchy"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "image"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "init"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "isActive"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "isHidden"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "leftAnchor"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "localizedDescription"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "location"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "originalView"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "photoView"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "print"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "rightAnchor"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "saveBtn"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "switchBtn"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "topAnchor"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "touchSaveBtn"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "touchSwitchBtn"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "view"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "viewDidLoad"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "viewWillAppear"]
+- !private ["s21_ObjectiveCBridgeableP", "addSubview"]
+- !private ["s21_ObjectiveCBridgeableP", "addTarget"]
+- !private ["s21_ObjectiveCBridgeableP", "bottomAnchor"]
+- !private ["s21_ObjectiveCBridgeableP", "bounds"]
+- !private ["s21_ObjectiveCBridgeableP", "drawHierarchy"]
+- !private ["s21_ObjectiveCBridgeableP", "first"]
+- ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "isHidden"]
+- !private ["s21_ObjectiveCBridgeableP", "leftAnchor"]
+- !private ["s21_ObjectiveCBridgeableP", "location"]
+- !private ["s21_ObjectiveCBridgeableP", "rightAnchor"]
+- !private ["s21_ObjectiveCBridgeableP", "size"]
+- !private ["s21_ObjectiveCBridgeableP", "topAnchor"]
+- !private ["s38__DefaultCustomPlaygroundQuickLookableP", "addSubview"]
+- !private ["s38__DefaultCustomPlaygroundQuickLookableP", "addTarget"]
+- !private ["s38__DefaultCustomPlaygroundQuickLookableP", "bottomAnchor"]
+- !private ["s38__DefaultCustomPlaygroundQuickLookableP", "bounds"]
+- !private ["s38__DefaultCustomPlaygroundQuickLookableP", "drawHierarchy"]
+- !private ["s38__DefaultCustomPlaygroundQuickLookableP", "isHidden"]
+- !private ["s38__DefaultCustomPlaygroundQuickLookableP", "leftAnchor"]
+- !private ["s38__DefaultCustomPlaygroundQuickLookableP", "rightAnchor"]
+- !private ["s38__DefaultCustomPlaygroundQuickLookableP", "topAnchor"]
+- !private ["s38__DefaultCustomPlaygroundQuickLookableP", "translatesAutoresizingMaskIntoConstraints"]
+depends-nominal:
+- !private "So15CALayerDelegateP"
+- "So7CGPointV"
+- !private "So6CGRectV"
+- "s7CVarArgP"
+- !private "Sl"
+- "s28CustomDebugStringConvertibleP"
+- "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- "Se"
+- "SE"
+- "SQ"
+- !private "s5ErrorP"
+- !private "So15UIControlEventsV"
+- !private "s25ExpressibleByArrayLiteralP"
+- !private "s23ExpressibleByNilLiteralP"
+- "SH"
+- "So8NSCodingP"
+- !private "So9NSCopyingP"
+- !private "So7NSErrorC"
+- "So26NSExtensionRequestHandlingP"
+- !private "So14NSLayoutAnchorC"
+- !private "So18NSLayoutConstraintC"
+- !private "So19NSLayoutXAxisAnchorC"
+- !private "So19NSLayoutYAxisAnchorC"
+- "So8NSObjectC"
+- "So8NSObjectP"
+- !private "So14NSSecureCodingP"
+- !private "s9OptionSetP"
+- !private "Sq"
+- !private "SY"
+- "4_0_s11SavePhotoVCC"
+- !private "ST"
+- !private "Sh"
+- !private "s10SetAlgebraP"
+- !private "So48UIAccessibilityContentSizeCategoryImageAdjustingP"
+- !private "So29UIAccessibilityIdentificationP"
+- !private "So12UIAppearanceP"
+- "So21UIAppearanceContainerP"
+- !private "So8UIButtonC"
+- "So18UIContentContainerP"
+- !private "So30UIContentSizeCategoryAdjustingP"
+- !private "So9UIControlC"
+- !private "So17UICoordinateSpaceP"
+- !private "So13UIDynamicItemP"
+- "So18UIFocusEnvironmentP"
+- !private "So11UIFocusItemP"
+- !private "So20UIFocusItemContainerP"
+- !private "So23UIGraphicsImageRendererC"
+- !private "So18UIGraphicsRendererC"
+- !private "So7UILabelC"
+- !private "So24UILargeContentViewerItemP"
+- "So30UIPasteConfigurationSupportingP"
+- "So11UIResponderC"
+- "So30UIResponderStandardEditActionsP"
+- !private "So35UISpringLoadedInteractionSupportingP"
+- "So16UIStateRestoringP"
+- !private "So8UISwitchC"
+- !private "So7UITouchC"
+- "So18UITraitEnvironmentP"
+- "So23UIUserActivityRestoringP"
+- !private "So6UIViewC"
+- "So16UIViewControllerC"
+- "s30_CustomPlaygroundQuickLookableP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- "10Foundation27_KeyValueCodingAndObservingP"
+- "10Foundation37_KeyValueCodingAndObservingPublishingP"
+- "s21_ObjectiveCBridgeableP"
+- !private "s38__DefaultCustomPlaygroundQuickLookableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/ObjectiveC.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/CoreMIDI.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/CoreMedia.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/simd.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/CoreImage.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/QuartzCore.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/Dispatch.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/Metal.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/Darwin.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/Foundation.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/AVFoundation.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/CoreFoundation.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/CoreAudio.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/CoreGraphics.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/Swift.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/UIKit.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/SwiftOnoneSupport.swiftmodule/x86_64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/Combine.framework/Modules/Combine.swiftmodule/x86_64-apple-ios-simulator.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/ObjectiveC.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/CoreMIDI.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/CoreMedia.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/simd.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/CoreImage.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/QuartzCore.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/Dispatch.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/Metal.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/Darwin.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/Foundation.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/AVFoundation.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/CoreFoundation.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/CoreAudio.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/CoreGraphics.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/Swift.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/UIKit.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/SwiftOnoneSupport.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/Combine.swiftmodule/x86_64-apple-ios-simulator.swiftmodule"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask+FriendAPI.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask+AppFriendAPI.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask+PushAPI.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask+AgeAuthAPI.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask+TalkAPI.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask+TokenAPI.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask+UserManagementAPI.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask+StoryAPI.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KakaoOpenSDK.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOFriend.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOAppFriend.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOHTTPMethod.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOUserMe.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoLink.framework/Headers/KLKImageStorage.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOTalkProfile.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOStoryProfile.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoLink.framework/Headers/KLKTalkLinkCore.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTTemplate.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTFeedTemplate.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTCommerceTemplate.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KakaoMessageTemplate.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTLocationTemplate.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTListTemplate.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTTextTemplate.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOTalkMessageSending.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoLink.framework/Headers/KakaoLink.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KakaoPushMessagePropertyForGcm.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOToken.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSession.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOFriendOperation.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoCommon.framework/Headers/KCMConfiguration.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoCommon.framework/Headers/KCMException.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoCommon.framework/Headers/KakaoCommon.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOLoginButton.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOStoryMyStoryImageInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOStoryLikeInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOStoryLinkInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOPushTokenInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOAccessTokenInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOUserInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOStoryActorInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOStoryCommentInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOStoryPostInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOStoryMyStoryInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOChatMember.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK-Bridging-Header.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOAgeAuthQueryStringBuilder.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/LUTFilter.framework/Headers/LUTFilter.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoLink.framework/Headers/KLKTalkLinkCenter.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoLink.framework/Headers/KLKError.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoCommon.framework/Headers/KCMError.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOError.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOTalkPlusFriends.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOImages.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoCommon.framework/Headers/KCMUtils.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOUtils.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOUserServiceTerms.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KakaoPushMessagePropertyForApns.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOUserShippingAddress.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOChat.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTCommerceObject.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KakaoPushMessageObject.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTLinkObject.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTSocialObject.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTParamObject.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTButtonObject.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTContentObject.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/LUTFilter.framework/Headers/LUTFilter-Swift.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoCommon.framework/Headers/KCMAgent.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOFriendContext.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOAppFriendContext.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOBaseContext.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOChatContext.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Modules/module.modulemap"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Modules/module.modulemap"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoLink.framework/Modules/module.modulemap"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoCommon.framework/Modules/module.modulemap"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/LUTFilter.framework/Modules/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/OpenGLES.framework/Headers/OpenGLES.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CoreMedia.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/apinotes/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/AVFoundation.framework/Headers/AVFoundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/CoreAudioTypes.framework/Headers/CoreAudioTypes.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/UserNotifications.framework/Headers/UserNotifications.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/MediaToolbox.framework/Headers/MediaToolbox.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/AudioToolbox.framework/Headers/AudioToolbox.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "da1d07e5b5d41ed3f61d94735779d47c"
