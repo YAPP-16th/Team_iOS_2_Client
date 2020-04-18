@@ -6,7 +6,6 @@ provides-nominal:
 provides-member:
 - ["4_0_s12AlbumCoverVCC", ""]
 - ["4_0_s12AlbumCoverVCC", "delegateSetting"]
-- ["4_0_s12AlbumCoverVCC", "layoutSetting"]
 provides-dynamic-lookup:
 - "collectionView"
 - "completeBtn"
@@ -77,7 +76,6 @@ depends-member:
 - ["4_0_s12AlbumCoverVCC", "indexTitlesForCollectionView"]
 - ["4_0_s12AlbumCoverVCC", "init"]
 - ["4_0_s12AlbumCoverVCC", "initialFlag"]
-- ["4_0_s12AlbumCoverVCC", "layoutSetting"]
 - !private ["4_0_s12AlbumCoverVCC", "navigationController"]
 - ["4_0_s12AlbumCoverVCC", "numberOfSections"]
 - ["4_0_s12AlbumCoverVCC", "numberOfSectionsInCollectionView"]
@@ -629,7 +627,6 @@ depends-member:
 - ["So8NSObjectC", "initialFlag"]
 - !private ["So8NSObjectC", "instantiateViewController"]
 - !private ["So8NSObjectC", "isHidden"]
-- ["So8NSObjectC", "layoutSetting"]
 - !private ["So8NSObjectC", "navigationController"]
 - ["So8NSObjectC", "numberOfSections"]
 - ["So8NSObjectC", "numberOfSectionsInCollectionView"]
@@ -1184,7 +1181,6 @@ depends-member:
 - ["So11UIResponderC", "init"]
 - ["So11UIResponderC", "initialFlag"]
 - !private ["So11UIResponderC", "isHidden"]
-- ["So11UIResponderC", "layoutSetting"]
 - !private ["So11UIResponderC", "navigationController"]
 - ["So11UIResponderC", "numberOfSections"]
 - ["So11UIResponderC", "numberOfSectionsInCollectionView"]
@@ -1509,7 +1505,6 @@ depends-member:
 - ["So16UIViewControllerC", "indexTitlesForCollectionView"]
 - ["So16UIViewControllerC", "init"]
 - ["So16UIViewControllerC", "initialFlag"]
-- ["So16UIViewControllerC", "layoutSetting"]
 - !private ["So16UIViewControllerC", "navigationController"]
 - ["So16UIViewControllerC", "numberOfSections"]
 - ["So16UIViewControllerC", "numberOfSectionsInCollectionView"]
@@ -1786,19 +1781,24 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/UIKit.swiftmodule/x86_64.swiftinterface"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/lib/swift/SwiftOnoneSupport.swiftmodule/x86_64.swiftinterface"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/Combine.framework/Modules/Combine.swiftmodule/x86_64-apple-ios-simulator.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/ObjectiveC.swiftmodule/x86_64.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/CoreMIDI.swiftmodule/x86_64.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/CoreMedia.swiftmodule/x86_64.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/simd.swiftmodule/x86_64.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/CoreImage.swiftmodule/x86_64.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/QuartzCore.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/Dispatch.swiftmodule/x86_64.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/Metal.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/Darwin.swiftmodule/x86_64.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/Foundation.swiftmodule/x86_64.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/AVFoundation.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/CoreFoundation.swiftmodule/x86_64.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/CoreAudio.swiftmodule/x86_64.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/CoreGraphics.swiftmodule/x86_64.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/Swift.swiftmodule/x86_64.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/UIKit.swiftmodule/x86_64.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/SwiftOnoneSupport.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/prebuilt-modules/Combine.swiftmodule/x86_64-apple-ios-simulator.swiftmodule"
 - "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask+FriendAPI.h"
 - "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask+AppFriendAPI.h"
 - "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask+PushAPI.h"
@@ -1847,7 +1847,6 @@ depends-external:
 - "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOChatMember.h"
 - "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK-Bridging-Header.h"
 - "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOAgeAuthQueryStringBuilder.h"
-- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/LUTFilter.framework/Headers/LUTFilter.h"
 - "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoLink.framework/Headers/KLKTalkLinkCenter.h"
 - "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoLink.framework/Headers/KLKError.h"
 - "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoCommon.framework/Headers/KCMError.h"
@@ -1867,7 +1866,6 @@ depends-external:
 - "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTParamObject.h"
 - "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTButtonObject.h"
 - "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTContentObject.h"
-- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/LUTFilter.framework/Headers/LUTFilter-Swift.h"
 - "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoCommon.framework/Headers/KCMAgent.h"
 - "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOFriendContext.h"
 - "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOAppFriendContext.h"
@@ -1877,7 +1875,6 @@ depends-external:
 - "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Modules/module.modulemap"
 - "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoLink.framework/Modules/module.modulemap"
 - "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoCommon.framework/Modules/module.modulemap"
-- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/LUTFilter.framework/Modules/module.modulemap"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/usr/include/objc/ObjectiveC.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/OpenGLES.framework/Headers/OpenGLES.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CoreMedia.apinotes"
@@ -1896,4 +1893,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/MediaToolbox.framework/Headers/MediaToolbox.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/AudioToolbox.framework/Headers/AudioToolbox.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
-interface-hash: "4e644c4bb0070539e91097c0d6bed92f"
+interface-hash: "2936e405c81786614702a708d36b4be0"

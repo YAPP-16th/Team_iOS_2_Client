@@ -69,8 +69,7 @@ class OptionViewController : UIViewController {
         }
         
         self.OptionView.frame.size = CGSize(width: self.view.frame.width, height: 516)
-        
-//        self.coverImageView.image = coverImage
+     
         self.coverImageView.image = UIImage(named: "testEmpty")
         
     }
