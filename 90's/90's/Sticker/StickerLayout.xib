@@ -18,25 +18,25 @@
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8yc-vt-zpZ">
                             <rect key="frame" x="20" y="20" width="80" height="80"/>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4E-CT-7WG">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4E-CT-7WG">
                             <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="36" id="CRp-Dk-YdC"/>
                                 <constraint firstAttribute="width" constant="36" id="JHQ-en-p7T"/>
                             </constraints>
-                            <state key="normal" title="크기"/>
+                            <state key="normal" image="sizeimage"/>
                             <connections>
                                 <action selector="sizeBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="JGP-ak-AY6"/>
                                 <action selector="turnBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="QXb-zw-8Ud"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRG-h1-v5s">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRG-h1-v5s">
                             <rect key="frame" x="84" y="84" width="36" height="36"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="36" id="0Eh-FF-cg7"/>
                                 <constraint firstAttribute="width" constant="36" id="OUe-nw-AAb"/>
                             </constraints>
-                            <state key="normal" title="회전"/>
+                            <state key="normal" image="rotateimage"/>
                             <connections>
                                 <action selector="turnBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="QO4-c7-I6U"/>
                             </connections>
@@ -83,5 +83,7 @@
     </objects>
     <resources>
         <image name="blackcancelimg" width="73" height="69"/>
+        <image name="rotateimage" width="256" height="256"/>
+        <image name="sizeimage" width="512" height="512"/>
     </resources>
 </document>
