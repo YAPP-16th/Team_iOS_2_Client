@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol AlbumDetailVCProtocol {
+protocol AlbumDetailVCProtocol : class {
     func reloadView()
 }
 
@@ -203,6 +203,7 @@ extension AlbumDetailController {
 extension AlbumDetailController : AlbumDetailVCProtocol {
     func reloadView() {
         self.photoCollectionView.reloadData()
+        print("call reload view")
 //        self.viewWillAppear(true)
     }
 }
