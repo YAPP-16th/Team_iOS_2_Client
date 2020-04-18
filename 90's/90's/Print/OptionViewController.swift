@@ -46,7 +46,6 @@ class OptionViewController : UIViewController {
     var cal4 = false
     var cal5 = false
     var cal6 = false
-    
     var calc : Int = 0
     
     
@@ -54,7 +53,7 @@ class OptionViewController : UIViewController {
         self.view.backgroundColor = .white
         super.viewDidLoad()
         
-        self.totalCount.text = "0"
+        self.totalCount.text = "1"
         
         if !isTotalOptionViewAppear {
             self.BottomViewConstraint.constant = self.view.frame.height
@@ -64,24 +63,30 @@ class OptionViewController : UIViewController {
             self.FirstOptionConstraint.constant = 0
             self.SecondOptionConstraint.constant = 0
             self.completeBtnConstraint.constant = 0
-//            self.stackViewConnected.constant = 63.5
+            self.stackViewConnected.constant = 63.5
             self.countOptionViewConstraint.constant = self.view.frame.height
+            
         }
         
-        self.coverImageView.image = coverImage
+        self.OptionView.frame.size = CGSize(width: self.view.frame.width, height: 516)
+        
+//        self.coverImageView.image = coverImage
+        self.coverImageView.image = UIImage(named: "testEmpty")
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
-        //        self.navigationController?.navigationBar.isHidden = true
+//        self.navigationController?.navigationBar.isHidden = false
     }
     
     
     //MARK: View IBAction
     @IBAction func OptionClick(_ sender: Any) {
         
+        print(self.OptionView.frame)
         isTotalOptionViewAppear = !isTotalOptionViewAppear
+        
         
         if isTotalOptionViewAppear {
             
@@ -91,13 +96,13 @@ class OptionViewController : UIViewController {
             
             if UIScreen.main.nativeBounds.height == 1792.0 {
                 
-                self.BottomViewConstraint.constant = 450 - 145
+                self.BottomViewConstraint.constant = (self.view.frame.height / 2) - 150
                 
                 //            self.outputimageViewConstraint.constant = 135
             }
             else if UIScreen.main.nativeBounds.height == 1334.0
             {
-                self.BottomViewConstraint.constant = 450 - 88
+                self.BottomViewConstraint.constant = (self.view.frame.height / 2) - 150
                 
                 //            self.outputimageViewConstraint.constant = 88
             }
@@ -122,13 +127,16 @@ class OptionViewController : UIViewController {
         self.totalSum2.text = String(calc)
         print(self.view.frame.height)
         if UIScreen.main.nativeBounds.height == 1792.0 {
-            self.countOptionViewConstraint.constant = self.view.frame.height - 443
+            self.countOptionViewConstraint.constant =
+                (self.view.frame.height / 2) - 150
+                //self.view.frame.height - 443
             
             //            self.outputimageViewConstraint.constant = 135
         }
         else if UIScreen.main.nativeBounds.height == 1334.0
         {
-            self.countOptionViewConstraint.constant = self.view.frame.height - 443             
+            self.countOptionViewConstraint.constant = (self.view.frame.height / 2) - 150
+//                self.view.frame.height - 443
             //            self.outputimageViewConstraint.constant = 88
         }
         
@@ -205,23 +213,25 @@ class OptionViewController : UIViewController {
     }
     
     @IBAction func minusBtnAction(_ sender: Any) {
-        let old = Int(self.totalCount.text ?? "0")
-        
-        self.totalCount.text = String(old! - 1)
-        self.totalSum1.text = String(calc * old!) + "원"
-        self.totalSum2.text = String(calc * old!) + "원"
+        var old = Int(self.totalCount.text ?? "1")
+        old! = old! - 1
+        self.totalCount.text = String(old!)
+        self.totalSum1.text = String(calc * old!)
+        self.totalSum2.text = String(calc * old!)
     }
     
     @IBAction func plusBtnAction(_ sender: Any) {
-        let old = Int(self.totalCount.text ?? "0")
-        self.totalCount.text = String(old! + 1)
-        self.totalSum1.text = String(calc * old!) + "원"
-        self.totalSum2.text = String(calc * old!) + "원"
+        var old = Int(self.totalCount.text ?? "1")
+        old! = old! + 1
+        self.totalCount.text = String(old!)
+        self.totalSum1.text = String(calc * old!)
+        self.totalSum2.text = String(calc * old!)
     }
     
     @IBAction func normalClick(_ sender: Any) {
         cal1 = !cal1
         calc =  0
+        print(calc)
     }
     
     @IBAction func adClick(_ sender: Any) {
@@ -232,6 +242,8 @@ class OptionViewController : UIViewController {
         else {
             calc = calc - 1500
         }
+        print(calc)
+
     }
     
     @IBAction func ad2Click(_ sender: Any) {
@@ -242,11 +254,15 @@ class OptionViewController : UIViewController {
         else {
             calc = calc - 3000
         }
+        print(calc)
+
     }
     
     @IBAction func normalShipClick(_ sender: Any) {
         cal4 = !cal4
         calc =  0
+        print(calc)
+
     }
     
     @IBAction func adShipClick(_ sender: Any) {
@@ -257,6 +273,8 @@ class OptionViewController : UIViewController {
         else {
             calc = calc - 1500
         }
+        print(calc)
+
     }
     
     @IBAction func ad2ShipClick(_ sender: Any) {
@@ -267,6 +285,8 @@ class OptionViewController : UIViewController {
         else {
             calc = calc - 3000
         }
+        print(calc)
+
     }
     
 }

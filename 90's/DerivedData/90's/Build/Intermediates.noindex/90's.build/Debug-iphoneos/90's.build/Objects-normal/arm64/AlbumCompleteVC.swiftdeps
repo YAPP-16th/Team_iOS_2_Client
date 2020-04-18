@@ -1,0 +1,983 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "AlbumCompleteVC"
+provides-nominal:
+- "4_0_s15AlbumCompleteVCC"
+provides-member:
+- ["4_0_s15AlbumCompleteVCC", ""]
+- ["4_0_s15AlbumCompleteVCC", "Setting"]
+provides-dynamic-lookup:
+- "albumCountLabel"
+- "albumDateLabel"
+- "albumImageView"
+- "albumTitleLabel"
+- "askLabel"
+- "backBtn"
+- "cancleBtn"
+- "completeBtn"
+- "viewDidLoad"
+- "viewWillAppear"
+depends-top-level:
+- !private "+"
+- !private "Album"
+- "AlbumCompleteVC"
+- !private "AlbumDatabase"
+- "AlbumMainVCProtocol"
+- "AssignmentPrecedence"
+- "Bool"
+- "BooleanLiteralType"
+- !private "FloatLiteralType"
+- "Int"
+- !private "IntegerLiteralType"
+- "String"
+- !private "StringLiteralType"
+- "UIButton"
+- "UIImage"
+- "UIImageView"
+- "UILabel"
+- "UIViewController"
+- !private "print"
+depends-member:
+- !private ["4_0_s5AlbumC", "init"]
+- !private ["4_0_s5AlbumC", "photos"]
+- !private ["4_0_s15AlbumCompleteVCC", "Album"]
+- !private ["4_0_s15AlbumCompleteVCC", "AlbumDatabase"]
+- ["4_0_s15AlbumCompleteVCC", "AlbumMainVCProtocol"]
+- ["4_0_s15AlbumCompleteVCC", "Bool"]
+- ["4_0_s15AlbumCompleteVCC", "Int"]
+- ["4_0_s15AlbumCompleteVCC", "Setting"]
+- ["4_0_s15AlbumCompleteVCC", "String"]
+- ["4_0_s15AlbumCompleteVCC", "UIButton"]
+- ["4_0_s15AlbumCompleteVCC", "UIImage"]
+- ["4_0_s15AlbumCompleteVCC", "UIImageView"]
+- ["4_0_s15AlbumCompleteVCC", "UILabel"]
+- ["4_0_s15AlbumCompleteVCC", "albumCountLabel"]
+- ["4_0_s15AlbumCompleteVCC", "albumDateLabel"]
+- ["4_0_s15AlbumCompleteVCC", "albumEndDate"]
+- ["4_0_s15AlbumCompleteVCC", "albumImageView"]
+- ["4_0_s15AlbumCompleteVCC", "albumLayout"]
+- ["4_0_s15AlbumCompleteVCC", "albumMaxCount"]
+- ["4_0_s15AlbumCompleteVCC", "albumName"]
+- ["4_0_s15AlbumCompleteVCC", "albumStartDate"]
+- ["4_0_s15AlbumCompleteVCC", "albumTitleLabel"]
+- ["4_0_s15AlbumCompleteVCC", "askLabel"]
+- ["4_0_s15AlbumCompleteVCC", "backBtn"]
+- ["4_0_s15AlbumCompleteVCC", "cancleBtn"]
+- ["4_0_s15AlbumCompleteVCC", "completeBtn"]
+- ["4_0_s15AlbumCompleteVCC", "deinit"]
+- ["4_0_s15AlbumCompleteVCC", "init"]
+- ["4_0_s15AlbumCompleteVCC", "isAllDataSettle"]
+- ["4_0_s15AlbumCompleteVCC", "mainProtocol"]
+- !private ["4_0_s15AlbumCompleteVCC", "navigationController"]
+- ["4_0_s15AlbumCompleteVCC", "photo"]
+- !private ["4_0_s15AlbumCompleteVCC", "print"]
+- ["4_0_s15AlbumCompleteVCC", "viewDidLoad"]
+- ["4_0_s15AlbumCompleteVCC", "viewWillAppear"]
+- !private ["4_0_s19AlbumMainVCProtocolP", "reloadView"]
+- !private ["4_0_s10AlbumModelC", "arrayList"]
+- !private ["Sa", "append"]
+- !private ["Sa", "count"]
+- !private ["SK", "append"]
+- !private ["SK", "count"]
+- !private ["SK", "init"]
+- !private ["So15CALayerDelegateP", "image"]
+- !private ["So15CALayerDelegateP", "text"]
+- !private ["s7CVarArgP", "Album"]
+- !private ["s7CVarArgP", "AlbumDatabase"]
+- !private ["s7CVarArgP", "Setting"]
+- !private ["s7CVarArgP", "String"]
+- ["s7CVarArgP", ""]
+- !private ["s7CVarArgP", "albumCountLabel"]
+- !private ["s7CVarArgP", "albumDateLabel"]
+- !private ["s7CVarArgP", "albumEndDate"]
+- !private ["s7CVarArgP", "albumImageView"]
+- !private ["s7CVarArgP", "albumLayout"]
+- !private ["s7CVarArgP", "albumMaxCount"]
+- !private ["s7CVarArgP", "albumName"]
+- !private ["s7CVarArgP", "albumStartDate"]
+- !private ["s7CVarArgP", "albumTitleLabel"]
+- !private ["s7CVarArgP", "append"]
+- !private ["s7CVarArgP", "askLabel"]
+- !private ["s7CVarArgP", "count"]
+- !private ["s7CVarArgP", "image"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "mainProtocol"]
+- !private ["s7CVarArgP", "navigationController"]
+- !private ["s7CVarArgP", "photo"]
+- !private ["s7CVarArgP", "popToRootViewController"]
+- !private ["s7CVarArgP", "popViewController"]
+- !private ["s7CVarArgP", "print"]
+- !private ["s7CVarArgP", "text"]
+- !private ["s7CVarArgP", "viewDidLoad"]
+- !private ["s7CVarArgP", "viewWillAppear"]
+- !private ["Sl", "append"]
+- !private ["Sl", "count"]
+- !private ["Sl", "init"]
+- !private ["SL", "init"]
+- !private ["10Foundation15ContiguousBytesP", "append"]
+- !private ["10Foundation15ContiguousBytesP", "count"]
+- !private ["s28CustomDebugStringConvertibleP", "Album"]
+- !private ["s28CustomDebugStringConvertibleP", "AlbumDatabase"]
+- !private ["s28CustomDebugStringConvertibleP", "Setting"]
+- !private ["s28CustomDebugStringConvertibleP", "String"]
+- ["s28CustomDebugStringConvertibleP", ""]
+- !private ["s28CustomDebugStringConvertibleP", "albumCountLabel"]
+- !private ["s28CustomDebugStringConvertibleP", "albumDateLabel"]
+- !private ["s28CustomDebugStringConvertibleP", "albumEndDate"]
+- !private ["s28CustomDebugStringConvertibleP", "albumImageView"]
+- !private ["s28CustomDebugStringConvertibleP", "albumLayout"]
+- !private ["s28CustomDebugStringConvertibleP", "albumMaxCount"]
+- !private ["s28CustomDebugStringConvertibleP", "albumName"]
+- !private ["s28CustomDebugStringConvertibleP", "albumStartDate"]
+- !private ["s28CustomDebugStringConvertibleP", "albumTitleLabel"]
+- !private ["s28CustomDebugStringConvertibleP", "append"]
+- !private ["s28CustomDebugStringConvertibleP", "askLabel"]
+- !private ["s28CustomDebugStringConvertibleP", "count"]
+- !private ["s28CustomDebugStringConvertibleP", "image"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "mainProtocol"]
+- !private ["s28CustomDebugStringConvertibleP", "navigationController"]
+- !private ["s28CustomDebugStringConvertibleP", "photo"]
+- !private ["s28CustomDebugStringConvertibleP", "popToRootViewController"]
+- !private ["s28CustomDebugStringConvertibleP", "popViewController"]
+- !private ["s28CustomDebugStringConvertibleP", "print"]
+- !private ["s28CustomDebugStringConvertibleP", "text"]
+- !private ["s28CustomDebugStringConvertibleP", "viewDidLoad"]
+- !private ["s28CustomDebugStringConvertibleP", "viewWillAppear"]
+- !private ["s17CustomReflectableP", "append"]
+- !private ["s17CustomReflectableP", "count"]
+- !private ["s17CustomReflectableP", "image"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "text"]
+- !private ["s23CustomStringConvertibleP", "Album"]
+- !private ["s23CustomStringConvertibleP", "AlbumDatabase"]
+- !private ["s23CustomStringConvertibleP", "Setting"]
+- !private ["s23CustomStringConvertibleP", "String"]
+- ["s23CustomStringConvertibleP", ""]
+- !private ["s23CustomStringConvertibleP", "albumCountLabel"]
+- !private ["s23CustomStringConvertibleP", "albumDateLabel"]
+- !private ["s23CustomStringConvertibleP", "albumEndDate"]
+- !private ["s23CustomStringConvertibleP", "albumImageView"]
+- !private ["s23CustomStringConvertibleP", "albumLayout"]
+- !private ["s23CustomStringConvertibleP", "albumMaxCount"]
+- !private ["s23CustomStringConvertibleP", "albumName"]
+- !private ["s23CustomStringConvertibleP", "albumStartDate"]
+- !private ["s23CustomStringConvertibleP", "albumTitleLabel"]
+- !private ["s23CustomStringConvertibleP", "append"]
+- !private ["s23CustomStringConvertibleP", "appendInterpolation"]
+- !private ["s23CustomStringConvertibleP", "appendLiteral"]
+- !private ["s23CustomStringConvertibleP", "askLabel"]
+- !private ["s23CustomStringConvertibleP", "count"]
+- !private ["s23CustomStringConvertibleP", "image"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "mainProtocol"]
+- !private ["s23CustomStringConvertibleP", "navigationController"]
+- !private ["s23CustomStringConvertibleP", "photo"]
+- !private ["s23CustomStringConvertibleP", "popToRootViewController"]
+- !private ["s23CustomStringConvertibleP", "popViewController"]
+- !private ["s23CustomStringConvertibleP", "print"]
+- !private ["s23CustomStringConvertibleP", "text"]
+- !private ["s23CustomStringConvertibleP", "viewDidLoad"]
+- !private ["s23CustomStringConvertibleP", "viewWillAppear"]
+- !private ["10Foundation12DataProtocolP", "append"]
+- !private ["10Foundation12DataProtocolP", "count"]
+- !private ["Se", "append"]
+- !private ["Se", "count"]
+- !private ["Se", "image"]
+- !private ["Se", "init"]
+- !private ["Se", "text"]
+- !private ["s26DefaultStringInterpolationV", "appendInterpolation"]
+- !private ["s26DefaultStringInterpolationV", "appendLiteral"]
+- !private ["SE", "append"]
+- !private ["SE", "count"]
+- !private ["SE", "image"]
+- !private ["SE", "init"]
+- !private ["SE", "text"]
+- !private ["SQ", "Album"]
+- !private ["SQ", "AlbumDatabase"]
+- !private ["SQ", "Setting"]
+- !private ["SQ", "String"]
+- ["SQ", ""]
+- !private ["SQ", "albumCountLabel"]
+- !private ["SQ", "albumDateLabel"]
+- !private ["SQ", "albumEndDate"]
+- !private ["SQ", "albumImageView"]
+- !private ["SQ", "albumLayout"]
+- !private ["SQ", "albumMaxCount"]
+- !private ["SQ", "albumName"]
+- !private ["SQ", "albumStartDate"]
+- !private ["SQ", "albumTitleLabel"]
+- !private ["SQ", "append"]
+- !private ["SQ", "askLabel"]
+- !private ["SQ", "count"]
+- !private ["SQ", "image"]
+- !private ["SQ", "init"]
+- !private ["SQ", "mainProtocol"]
+- !private ["SQ", "navigationController"]
+- !private ["SQ", "photo"]
+- !private ["SQ", "popToRootViewController"]
+- !private ["SQ", "popViewController"]
+- !private ["SQ", "print"]
+- !private ["SQ", "text"]
+- !private ["SQ", "viewDidLoad"]
+- !private ["SQ", "viewWillAppear"]
+- !private ["s25ExpressibleByArrayLiteralP", "append"]
+- !private ["s25ExpressibleByArrayLiteralP", "count"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s23ExpressibleByNilLiteralP", "image"]
+- !private ["s23ExpressibleByNilLiteralP", "text"]
+- !private ["s32ExpressibleByStringInterpolationP", "init"]
+- !private ["s26ExpressibleByStringLiteralP", "init"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- !private ["SH", "Album"]
+- !private ["SH", "AlbumDatabase"]
+- !private ["SH", "Setting"]
+- !private ["SH", "String"]
+- ["SH", ""]
+- !private ["SH", "albumCountLabel"]
+- !private ["SH", "albumDateLabel"]
+- !private ["SH", "albumEndDate"]
+- !private ["SH", "albumImageView"]
+- !private ["SH", "albumLayout"]
+- !private ["SH", "albumMaxCount"]
+- !private ["SH", "albumName"]
+- !private ["SH", "albumStartDate"]
+- !private ["SH", "albumTitleLabel"]
+- !private ["SH", "append"]
+- !private ["SH", "askLabel"]
+- !private ["SH", "count"]
+- !private ["SH", "image"]
+- !private ["SH", "init"]
+- !private ["SH", "mainProtocol"]
+- !private ["SH", "navigationController"]
+- !private ["SH", "photo"]
+- !private ["SH", "popToRootViewController"]
+- !private ["SH", "popViewController"]
+- !private ["SH", "print"]
+- !private ["SH", "text"]
+- !private ["SH", "viewDidLoad"]
+- !private ["SH", "viewWillAppear"]
+- !private ["s25LosslessStringConvertibleP", "init"]
+- !private ["s10MirrorPathP", "init"]
+- !private ["SM", "append"]
+- !private ["SM", "count"]
+- !private ["10Foundation19MutableDataProtocolP", "append"]
+- !private ["10Foundation19MutableDataProtocolP", "count"]
+- !private ["So8NSCodingP", "Album"]
+- !private ["So8NSCodingP", "AlbumDatabase"]
+- !private ["So8NSCodingP", "Setting"]
+- !private ["So8NSCodingP", "String"]
+- ["So8NSCodingP", ""]
+- !private ["So8NSCodingP", "albumCountLabel"]
+- !private ["So8NSCodingP", "albumDateLabel"]
+- !private ["So8NSCodingP", "albumEndDate"]
+- !private ["So8NSCodingP", "albumImageView"]
+- !private ["So8NSCodingP", "albumLayout"]
+- !private ["So8NSCodingP", "albumMaxCount"]
+- !private ["So8NSCodingP", "albumName"]
+- !private ["So8NSCodingP", "albumStartDate"]
+- !private ["So8NSCodingP", "albumTitleLabel"]
+- !private ["So8NSCodingP", "askLabel"]
+- !private ["So8NSCodingP", "image"]
+- !private ["So8NSCodingP", "init"]
+- !private ["So8NSCodingP", "mainProtocol"]
+- !private ["So8NSCodingP", "navigationController"]
+- !private ["So8NSCodingP", "photo"]
+- !private ["So8NSCodingP", "popToRootViewController"]
+- !private ["So8NSCodingP", "popViewController"]
+- !private ["So8NSCodingP", "print"]
+- !private ["So8NSCodingP", "text"]
+- !private ["So8NSCodingP", "viewDidLoad"]
+- !private ["So8NSCodingP", "viewWillAppear"]
+- !private ["So26NSExtensionRequestHandlingP", "Album"]
+- !private ["So26NSExtensionRequestHandlingP", "AlbumDatabase"]
+- !private ["So26NSExtensionRequestHandlingP", "Setting"]
+- !private ["So26NSExtensionRequestHandlingP", "String"]
+- ["So26NSExtensionRequestHandlingP", ""]
+- !private ["So26NSExtensionRequestHandlingP", "albumCountLabel"]
+- !private ["So26NSExtensionRequestHandlingP", "albumDateLabel"]
+- !private ["So26NSExtensionRequestHandlingP", "albumEndDate"]
+- !private ["So26NSExtensionRequestHandlingP", "albumImageView"]
+- !private ["So26NSExtensionRequestHandlingP", "albumLayout"]
+- !private ["So26NSExtensionRequestHandlingP", "albumMaxCount"]
+- !private ["So26NSExtensionRequestHandlingP", "albumName"]
+- !private ["So26NSExtensionRequestHandlingP", "albumStartDate"]
+- !private ["So26NSExtensionRequestHandlingP", "albumTitleLabel"]
+- !private ["So26NSExtensionRequestHandlingP", "askLabel"]
+- !private ["So26NSExtensionRequestHandlingP", "init"]
+- !private ["So26NSExtensionRequestHandlingP", "mainProtocol"]
+- !private ["So26NSExtensionRequestHandlingP", "navigationController"]
+- !private ["So26NSExtensionRequestHandlingP", "photo"]
+- !private ["So26NSExtensionRequestHandlingP", "popToRootViewController"]
+- !private ["So26NSExtensionRequestHandlingP", "popViewController"]
+- !private ["So26NSExtensionRequestHandlingP", "print"]
+- !private ["So26NSExtensionRequestHandlingP", "viewDidLoad"]
+- !private ["So26NSExtensionRequestHandlingP", "viewWillAppear"]
+- !private ["So8NSObjectC", "Album"]
+- !private ["So8NSObjectC", "AlbumDatabase"]
+- ["So8NSObjectC", "AlbumMainVCProtocol"]
+- ["So8NSObjectC", "Bool"]
+- ["So8NSObjectC", "Int"]
+- ["So8NSObjectC", "Setting"]
+- ["So8NSObjectC", "String"]
+- ["So8NSObjectC", "UIButton"]
+- ["So8NSObjectC", "UIImage"]
+- ["So8NSObjectC", "UIImageView"]
+- ["So8NSObjectC", "UILabel"]
+- ["So8NSObjectC", "albumCountLabel"]
+- ["So8NSObjectC", "albumDateLabel"]
+- ["So8NSObjectC", "albumEndDate"]
+- ["So8NSObjectC", "albumImageView"]
+- ["So8NSObjectC", "albumLayout"]
+- ["So8NSObjectC", "albumMaxCount"]
+- ["So8NSObjectC", "albumName"]
+- ["So8NSObjectC", "albumStartDate"]
+- ["So8NSObjectC", "albumTitleLabel"]
+- ["So8NSObjectC", "askLabel"]
+- ["So8NSObjectC", "backBtn"]
+- ["So8NSObjectC", "cancleBtn"]
+- ["So8NSObjectC", "completeBtn"]
+- !private ["So8NSObjectC", "image"]
+- ["So8NSObjectC", "init"]
+- ["So8NSObjectC", "isAllDataSettle"]
+- ["So8NSObjectC", "mainProtocol"]
+- !private ["So8NSObjectC", "navigationController"]
+- ["So8NSObjectC", "photo"]
+- !private ["So8NSObjectC", "popToRootViewController"]
+- !private ["So8NSObjectC", "popViewController"]
+- !private ["So8NSObjectC", "print"]
+- !private ["So8NSObjectC", "text"]
+- ["So8NSObjectC", "viewDidLoad"]
+- ["So8NSObjectC", "viewWillAppear"]
+- !private ["So8NSObjectP", "Album"]
+- !private ["So8NSObjectP", "AlbumDatabase"]
+- !private ["So8NSObjectP", "Setting"]
+- !private ["So8NSObjectP", "String"]
+- ["So8NSObjectP", ""]
+- !private ["So8NSObjectP", "albumCountLabel"]
+- !private ["So8NSObjectP", "albumDateLabel"]
+- !private ["So8NSObjectP", "albumEndDate"]
+- !private ["So8NSObjectP", "albumImageView"]
+- !private ["So8NSObjectP", "albumLayout"]
+- !private ["So8NSObjectP", "albumMaxCount"]
+- !private ["So8NSObjectP", "albumName"]
+- !private ["So8NSObjectP", "albumStartDate"]
+- !private ["So8NSObjectP", "albumTitleLabel"]
+- !private ["So8NSObjectP", "askLabel"]
+- !private ["So8NSObjectP", "image"]
+- !private ["So8NSObjectP", "init"]
+- !private ["So8NSObjectP", "mainProtocol"]
+- !private ["So8NSObjectP", "navigationController"]
+- !private ["So8NSObjectP", "photo"]
+- !private ["So8NSObjectP", "popToRootViewController"]
+- !private ["So8NSObjectP", "popViewController"]
+- !private ["So8NSObjectP", "print"]
+- !private ["So8NSObjectP", "text"]
+- !private ["So8NSObjectP", "viewDidLoad"]
+- !private ["So8NSObjectP", "viewWillAppear"]
+- !private ["Sq", "image"]
+- !private ["Sq", "text"]
+- !private ["Sk", "append"]
+- !private ["Sk", "count"]
+- !private ["Sm", "append"]
+- !private ["Sm", "count"]
+- !private ["Sm", "init"]
+- !private ["ST", "append"]
+- !private ["ST", "count"]
+- !private ["ST", "init"]
+- !private ["SS", "init"]
+- !private ["s27StringInterpolationProtocolP", "appendInterpolation"]
+- !private ["s27StringInterpolationProtocolP", "appendLiteral"]
+- !private ["Sy", "init"]
+- !private ["s16TextOutputStreamP", "appendInterpolation"]
+- !private ["s16TextOutputStreamP", "appendLiteral"]
+- !private ["s16TextOutputStreamP", "init"]
+- !private ["s20TextOutputStreamableP", "init"]
+- !private ["So48UIAccessibilityContentSizeCategoryImageAdjustingP", "image"]
+- !private ["So29UIAccessibilityIdentificationP", "image"]
+- !private ["So29UIAccessibilityIdentificationP", "text"]
+- !private ["So12UIAppearanceP", "image"]
+- !private ["So12UIAppearanceP", "text"]
+- !private ["So21UIAppearanceContainerP", "Album"]
+- !private ["So21UIAppearanceContainerP", "AlbumDatabase"]
+- !private ["So21UIAppearanceContainerP", "Setting"]
+- !private ["So21UIAppearanceContainerP", "String"]
+- ["So21UIAppearanceContainerP", ""]
+- !private ["So21UIAppearanceContainerP", "albumCountLabel"]
+- !private ["So21UIAppearanceContainerP", "albumDateLabel"]
+- !private ["So21UIAppearanceContainerP", "albumEndDate"]
+- !private ["So21UIAppearanceContainerP", "albumImageView"]
+- !private ["So21UIAppearanceContainerP", "albumLayout"]
+- !private ["So21UIAppearanceContainerP", "albumMaxCount"]
+- !private ["So21UIAppearanceContainerP", "albumName"]
+- !private ["So21UIAppearanceContainerP", "albumStartDate"]
+- !private ["So21UIAppearanceContainerP", "albumTitleLabel"]
+- !private ["So21UIAppearanceContainerP", "askLabel"]
+- !private ["So21UIAppearanceContainerP", "image"]
+- !private ["So21UIAppearanceContainerP", "init"]
+- !private ["So21UIAppearanceContainerP", "mainProtocol"]
+- !private ["So21UIAppearanceContainerP", "navigationController"]
+- !private ["So21UIAppearanceContainerP", "photo"]
+- !private ["So21UIAppearanceContainerP", "popToRootViewController"]
+- !private ["So21UIAppearanceContainerP", "popViewController"]
+- !private ["So21UIAppearanceContainerP", "print"]
+- !private ["So21UIAppearanceContainerP", "text"]
+- !private ["So21UIAppearanceContainerP", "viewDidLoad"]
+- !private ["So21UIAppearanceContainerP", "viewWillAppear"]
+- !private ["So18UIContentContainerP", "Album"]
+- !private ["So18UIContentContainerP", "AlbumDatabase"]
+- !private ["So18UIContentContainerP", "Setting"]
+- !private ["So18UIContentContainerP", "String"]
+- ["So18UIContentContainerP", ""]
+- !private ["So18UIContentContainerP", "albumCountLabel"]
+- !private ["So18UIContentContainerP", "albumDateLabel"]
+- !private ["So18UIContentContainerP", "albumEndDate"]
+- !private ["So18UIContentContainerP", "albumImageView"]
+- !private ["So18UIContentContainerP", "albumLayout"]
+- !private ["So18UIContentContainerP", "albumMaxCount"]
+- !private ["So18UIContentContainerP", "albumName"]
+- !private ["So18UIContentContainerP", "albumStartDate"]
+- !private ["So18UIContentContainerP", "albumTitleLabel"]
+- !private ["So18UIContentContainerP", "askLabel"]
+- !private ["So18UIContentContainerP", "init"]
+- !private ["So18UIContentContainerP", "mainProtocol"]
+- !private ["So18UIContentContainerP", "navigationController"]
+- !private ["So18UIContentContainerP", "photo"]
+- !private ["So18UIContentContainerP", "popToRootViewController"]
+- !private ["So18UIContentContainerP", "popViewController"]
+- !private ["So18UIContentContainerP", "print"]
+- !private ["So18UIContentContainerP", "viewDidLoad"]
+- !private ["So18UIContentContainerP", "viewWillAppear"]
+- !private ["So30UIContentSizeCategoryAdjustingP", "text"]
+- !private ["So17UICoordinateSpaceP", "image"]
+- !private ["So17UICoordinateSpaceP", "text"]
+- !private ["So13UIDynamicItemP", "image"]
+- !private ["So13UIDynamicItemP", "text"]
+- !private ["So18UIFocusEnvironmentP", "Album"]
+- !private ["So18UIFocusEnvironmentP", "AlbumDatabase"]
+- !private ["So18UIFocusEnvironmentP", "Setting"]
+- !private ["So18UIFocusEnvironmentP", "String"]
+- ["So18UIFocusEnvironmentP", ""]
+- !private ["So18UIFocusEnvironmentP", "albumCountLabel"]
+- !private ["So18UIFocusEnvironmentP", "albumDateLabel"]
+- !private ["So18UIFocusEnvironmentP", "albumEndDate"]
+- !private ["So18UIFocusEnvironmentP", "albumImageView"]
+- !private ["So18UIFocusEnvironmentP", "albumLayout"]
+- !private ["So18UIFocusEnvironmentP", "albumMaxCount"]
+- !private ["So18UIFocusEnvironmentP", "albumName"]
+- !private ["So18UIFocusEnvironmentP", "albumStartDate"]
+- !private ["So18UIFocusEnvironmentP", "albumTitleLabel"]
+- !private ["So18UIFocusEnvironmentP", "askLabel"]
+- !private ["So18UIFocusEnvironmentP", "image"]
+- !private ["So18UIFocusEnvironmentP", "init"]
+- !private ["So18UIFocusEnvironmentP", "mainProtocol"]
+- !private ["So18UIFocusEnvironmentP", "navigationController"]
+- !private ["So18UIFocusEnvironmentP", "photo"]
+- !private ["So18UIFocusEnvironmentP", "popToRootViewController"]
+- !private ["So18UIFocusEnvironmentP", "popViewController"]
+- !private ["So18UIFocusEnvironmentP", "print"]
+- !private ["So18UIFocusEnvironmentP", "text"]
+- !private ["So18UIFocusEnvironmentP", "viewDidLoad"]
+- !private ["So18UIFocusEnvironmentP", "viewWillAppear"]
+- !private ["So11UIFocusItemP", "image"]
+- !private ["So11UIFocusItemP", "text"]
+- !private ["So20UIFocusItemContainerP", "image"]
+- !private ["So20UIFocusItemContainerP", "text"]
+- !private ["So11UIImageViewC", "image"]
+- !private ["So7UILabelC", "text"]
+- !private ["So24UILargeContentViewerItemP", "image"]
+- !private ["So24UILargeContentViewerItemP", "text"]
+- !private ["So22UINavigationControllerC", "popToRootViewController"]
+- !private ["So22UINavigationControllerC", "popViewController"]
+- !private ["So30UIPasteConfigurationSupportingP", "Album"]
+- !private ["So30UIPasteConfigurationSupportingP", "AlbumDatabase"]
+- !private ["So30UIPasteConfigurationSupportingP", "Setting"]
+- !private ["So30UIPasteConfigurationSupportingP", "String"]
+- ["So30UIPasteConfigurationSupportingP", ""]
+- !private ["So30UIPasteConfigurationSupportingP", "albumCountLabel"]
+- !private ["So30UIPasteConfigurationSupportingP", "albumDateLabel"]
+- !private ["So30UIPasteConfigurationSupportingP", "albumEndDate"]
+- !private ["So30UIPasteConfigurationSupportingP", "albumImageView"]
+- !private ["So30UIPasteConfigurationSupportingP", "albumLayout"]
+- !private ["So30UIPasteConfigurationSupportingP", "albumMaxCount"]
+- !private ["So30UIPasteConfigurationSupportingP", "albumName"]
+- !private ["So30UIPasteConfigurationSupportingP", "albumStartDate"]
+- !private ["So30UIPasteConfigurationSupportingP", "albumTitleLabel"]
+- !private ["So30UIPasteConfigurationSupportingP", "askLabel"]
+- !private ["So30UIPasteConfigurationSupportingP", "image"]
+- !private ["So30UIPasteConfigurationSupportingP", "init"]
+- !private ["So30UIPasteConfigurationSupportingP", "mainProtocol"]
+- !private ["So30UIPasteConfigurationSupportingP", "navigationController"]
+- !private ["So30UIPasteConfigurationSupportingP", "photo"]
+- !private ["So30UIPasteConfigurationSupportingP", "popToRootViewController"]
+- !private ["So30UIPasteConfigurationSupportingP", "popViewController"]
+- !private ["So30UIPasteConfigurationSupportingP", "print"]
+- !private ["So30UIPasteConfigurationSupportingP", "text"]
+- !private ["So30UIPasteConfigurationSupportingP", "viewDidLoad"]
+- !private ["So30UIPasteConfigurationSupportingP", "viewWillAppear"]
+- !private ["So11UIResponderC", "Album"]
+- !private ["So11UIResponderC", "AlbumDatabase"]
+- ["So11UIResponderC", "AlbumMainVCProtocol"]
+- ["So11UIResponderC", "Bool"]
+- ["So11UIResponderC", "Int"]
+- ["So11UIResponderC", "Setting"]
+- ["So11UIResponderC", "String"]
+- ["So11UIResponderC", "UIButton"]
+- ["So11UIResponderC", "UIImage"]
+- ["So11UIResponderC", "UIImageView"]
+- ["So11UIResponderC", "UILabel"]
+- ["So11UIResponderC", "albumCountLabel"]
+- ["So11UIResponderC", "albumDateLabel"]
+- ["So11UIResponderC", "albumEndDate"]
+- ["So11UIResponderC", "albumImageView"]
+- ["So11UIResponderC", "albumLayout"]
+- ["So11UIResponderC", "albumMaxCount"]
+- ["So11UIResponderC", "albumName"]
+- ["So11UIResponderC", "albumStartDate"]
+- ["So11UIResponderC", "albumTitleLabel"]
+- ["So11UIResponderC", "askLabel"]
+- ["So11UIResponderC", "backBtn"]
+- ["So11UIResponderC", "cancleBtn"]
+- ["So11UIResponderC", "completeBtn"]
+- !private ["So11UIResponderC", "image"]
+- ["So11UIResponderC", "init"]
+- ["So11UIResponderC", "isAllDataSettle"]
+- ["So11UIResponderC", "mainProtocol"]
+- !private ["So11UIResponderC", "navigationController"]
+- ["So11UIResponderC", "photo"]
+- !private ["So11UIResponderC", "popToRootViewController"]
+- !private ["So11UIResponderC", "popViewController"]
+- !private ["So11UIResponderC", "print"]
+- !private ["So11UIResponderC", "text"]
+- ["So11UIResponderC", "viewDidLoad"]
+- ["So11UIResponderC", "viewWillAppear"]
+- !private ["So30UIResponderStandardEditActionsP", "Album"]
+- !private ["So30UIResponderStandardEditActionsP", "AlbumDatabase"]
+- !private ["So30UIResponderStandardEditActionsP", "Setting"]
+- !private ["So30UIResponderStandardEditActionsP", "String"]
+- ["So30UIResponderStandardEditActionsP", ""]
+- !private ["So30UIResponderStandardEditActionsP", "albumCountLabel"]
+- !private ["So30UIResponderStandardEditActionsP", "albumDateLabel"]
+- !private ["So30UIResponderStandardEditActionsP", "albumEndDate"]
+- !private ["So30UIResponderStandardEditActionsP", "albumImageView"]
+- !private ["So30UIResponderStandardEditActionsP", "albumLayout"]
+- !private ["So30UIResponderStandardEditActionsP", "albumMaxCount"]
+- !private ["So30UIResponderStandardEditActionsP", "albumName"]
+- !private ["So30UIResponderStandardEditActionsP", "albumStartDate"]
+- !private ["So30UIResponderStandardEditActionsP", "albumTitleLabel"]
+- !private ["So30UIResponderStandardEditActionsP", "askLabel"]
+- !private ["So30UIResponderStandardEditActionsP", "image"]
+- !private ["So30UIResponderStandardEditActionsP", "init"]
+- !private ["So30UIResponderStandardEditActionsP", "mainProtocol"]
+- !private ["So30UIResponderStandardEditActionsP", "navigationController"]
+- !private ["So30UIResponderStandardEditActionsP", "photo"]
+- !private ["So30UIResponderStandardEditActionsP", "popToRootViewController"]
+- !private ["So30UIResponderStandardEditActionsP", "popViewController"]
+- !private ["So30UIResponderStandardEditActionsP", "print"]
+- !private ["So30UIResponderStandardEditActionsP", "text"]
+- !private ["So30UIResponderStandardEditActionsP", "viewDidLoad"]
+- !private ["So30UIResponderStandardEditActionsP", "viewWillAppear"]
+- !private ["So16UIStateRestoringP", "Album"]
+- !private ["So16UIStateRestoringP", "AlbumDatabase"]
+- !private ["So16UIStateRestoringP", "Setting"]
+- !private ["So16UIStateRestoringP", "String"]
+- ["So16UIStateRestoringP", ""]
+- !private ["So16UIStateRestoringP", "albumCountLabel"]
+- !private ["So16UIStateRestoringP", "albumDateLabel"]
+- !private ["So16UIStateRestoringP", "albumEndDate"]
+- !private ["So16UIStateRestoringP", "albumImageView"]
+- !private ["So16UIStateRestoringP", "albumLayout"]
+- !private ["So16UIStateRestoringP", "albumMaxCount"]
+- !private ["So16UIStateRestoringP", "albumName"]
+- !private ["So16UIStateRestoringP", "albumStartDate"]
+- !private ["So16UIStateRestoringP", "albumTitleLabel"]
+- !private ["So16UIStateRestoringP", "askLabel"]
+- !private ["So16UIStateRestoringP", "init"]
+- !private ["So16UIStateRestoringP", "mainProtocol"]
+- !private ["So16UIStateRestoringP", "navigationController"]
+- !private ["So16UIStateRestoringP", "photo"]
+- !private ["So16UIStateRestoringP", "popToRootViewController"]
+- !private ["So16UIStateRestoringP", "popViewController"]
+- !private ["So16UIStateRestoringP", "print"]
+- !private ["So16UIStateRestoringP", "viewDidLoad"]
+- !private ["So16UIStateRestoringP", "viewWillAppear"]
+- !private ["So18UITraitEnvironmentP", "Album"]
+- !private ["So18UITraitEnvironmentP", "AlbumDatabase"]
+- !private ["So18UITraitEnvironmentP", "Setting"]
+- !private ["So18UITraitEnvironmentP", "String"]
+- ["So18UITraitEnvironmentP", ""]
+- !private ["So18UITraitEnvironmentP", "albumCountLabel"]
+- !private ["So18UITraitEnvironmentP", "albumDateLabel"]
+- !private ["So18UITraitEnvironmentP", "albumEndDate"]
+- !private ["So18UITraitEnvironmentP", "albumImageView"]
+- !private ["So18UITraitEnvironmentP", "albumLayout"]
+- !private ["So18UITraitEnvironmentP", "albumMaxCount"]
+- !private ["So18UITraitEnvironmentP", "albumName"]
+- !private ["So18UITraitEnvironmentP", "albumStartDate"]
+- !private ["So18UITraitEnvironmentP", "albumTitleLabel"]
+- !private ["So18UITraitEnvironmentP", "askLabel"]
+- !private ["So18UITraitEnvironmentP", "image"]
+- !private ["So18UITraitEnvironmentP", "init"]
+- !private ["So18UITraitEnvironmentP", "mainProtocol"]
+- !private ["So18UITraitEnvironmentP", "navigationController"]
+- !private ["So18UITraitEnvironmentP", "photo"]
+- !private ["So18UITraitEnvironmentP", "popToRootViewController"]
+- !private ["So18UITraitEnvironmentP", "popViewController"]
+- !private ["So18UITraitEnvironmentP", "print"]
+- !private ["So18UITraitEnvironmentP", "text"]
+- !private ["So18UITraitEnvironmentP", "viewDidLoad"]
+- !private ["So18UITraitEnvironmentP", "viewWillAppear"]
+- !private ["So23UIUserActivityRestoringP", "Album"]
+- !private ["So23UIUserActivityRestoringP", "AlbumDatabase"]
+- !private ["So23UIUserActivityRestoringP", "Setting"]
+- !private ["So23UIUserActivityRestoringP", "String"]
+- ["So23UIUserActivityRestoringP", ""]
+- !private ["So23UIUserActivityRestoringP", "albumCountLabel"]
+- !private ["So23UIUserActivityRestoringP", "albumDateLabel"]
+- !private ["So23UIUserActivityRestoringP", "albumEndDate"]
+- !private ["So23UIUserActivityRestoringP", "albumImageView"]
+- !private ["So23UIUserActivityRestoringP", "albumLayout"]
+- !private ["So23UIUserActivityRestoringP", "albumMaxCount"]
+- !private ["So23UIUserActivityRestoringP", "albumName"]
+- !private ["So23UIUserActivityRestoringP", "albumStartDate"]
+- !private ["So23UIUserActivityRestoringP", "albumTitleLabel"]
+- !private ["So23UIUserActivityRestoringP", "askLabel"]
+- !private ["So23UIUserActivityRestoringP", "image"]
+- !private ["So23UIUserActivityRestoringP", "init"]
+- !private ["So23UIUserActivityRestoringP", "mainProtocol"]
+- !private ["So23UIUserActivityRestoringP", "navigationController"]
+- !private ["So23UIUserActivityRestoringP", "photo"]
+- !private ["So23UIUserActivityRestoringP", "popToRootViewController"]
+- !private ["So23UIUserActivityRestoringP", "popViewController"]
+- !private ["So23UIUserActivityRestoringP", "print"]
+- !private ["So23UIUserActivityRestoringP", "text"]
+- !private ["So23UIUserActivityRestoringP", "viewDidLoad"]
+- !private ["So23UIUserActivityRestoringP", "viewWillAppear"]
+- !private ["So6UIViewC", "image"]
+- !private ["So6UIViewC", "text"]
+- !private ["So16UIViewControllerC", "Album"]
+- !private ["So16UIViewControllerC", "AlbumDatabase"]
+- ["So16UIViewControllerC", "AlbumMainVCProtocol"]
+- ["So16UIViewControllerC", "Bool"]
+- ["So16UIViewControllerC", "Int"]
+- ["So16UIViewControllerC", "Setting"]
+- ["So16UIViewControllerC", "String"]
+- ["So16UIViewControllerC", "UIButton"]
+- ["So16UIViewControllerC", "UIImage"]
+- ["So16UIViewControllerC", "UIImageView"]
+- ["So16UIViewControllerC", "UILabel"]
+- ["So16UIViewControllerC", ""]
+- ["So16UIViewControllerC", "albumCountLabel"]
+- ["So16UIViewControllerC", "albumDateLabel"]
+- ["So16UIViewControllerC", "albumEndDate"]
+- ["So16UIViewControllerC", "albumImageView"]
+- ["So16UIViewControllerC", "albumLayout"]
+- ["So16UIViewControllerC", "albumMaxCount"]
+- ["So16UIViewControllerC", "albumName"]
+- ["So16UIViewControllerC", "albumStartDate"]
+- ["So16UIViewControllerC", "albumTitleLabel"]
+- ["So16UIViewControllerC", "askLabel"]
+- ["So16UIViewControllerC", "backBtn"]
+- ["So16UIViewControllerC", "cancleBtn"]
+- ["So16UIViewControllerC", "completeBtn"]
+- ["So16UIViewControllerC", "init"]
+- ["So16UIViewControllerC", "isAllDataSettle"]
+- ["So16UIViewControllerC", "mainProtocol"]
+- !private ["So16UIViewControllerC", "navigationController"]
+- ["So16UIViewControllerC", "photo"]
+- !private ["So16UIViewControllerC", "popToRootViewController"]
+- !private ["So16UIViewControllerC", "popViewController"]
+- !private ["So16UIViewControllerC", "print"]
+- ["So16UIViewControllerC", "viewDidLoad"]
+- ["So16UIViewControllerC", "viewWillAppear"]
+- !private ["s14_ArrayProtocolP", "append"]
+- !private ["s14_ArrayProtocolP", "count"]
+- !private ["s30_CustomPlaygroundQuickLookableP", "init"]
+- !private ["s24_DestructorSafeContainerP", "append"]
+- !private ["s24_DestructorSafeContainerP", "count"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- !private ["s19_HasContiguousBytesP", "append"]
+- !private ["s19_HasContiguousBytesP", "count"]
+- !private ["s19_HasContiguousBytesP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "append"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "count"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "Album"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "AlbumDatabase"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "Setting"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "String"]
+- ["10Foundation27_KeyValueCodingAndObservingP", ""]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "albumCountLabel"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "albumDateLabel"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "albumEndDate"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "albumImageView"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "albumLayout"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "albumMaxCount"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "albumName"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "albumStartDate"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "albumTitleLabel"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "askLabel"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "image"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "mainProtocol"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "navigationController"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "photo"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "popToRootViewController"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "popViewController"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "print"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "text"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "viewDidLoad"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "viewWillAppear"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "Album"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "AlbumDatabase"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "Setting"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "String"]
+- ["10Foundation37_KeyValueCodingAndObservingPublishingP", ""]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "albumCountLabel"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "albumDateLabel"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "albumEndDate"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "albumImageView"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "albumLayout"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "albumMaxCount"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "albumName"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "albumStartDate"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "albumTitleLabel"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "askLabel"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "image"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "init"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "mainProtocol"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "navigationController"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "photo"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "popToRootViewController"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "popViewController"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "print"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "text"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "viewDidLoad"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "viewWillAppear"]
+- !private ["s21_ObjectiveCBridgeableP", "append"]
+- !private ["s21_ObjectiveCBridgeableP", "count"]
+- !private ["s21_ObjectiveCBridgeableP", "image"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "text"]
+- !private ["s38__DefaultCustomPlaygroundQuickLookableP", "image"]
+- !private ["s38__DefaultCustomPlaygroundQuickLookableP", "text"]
+depends-nominal:
+- !private "4_0_s5AlbumC"
+- "4_0_s15AlbumCompleteVCC"
+- !private "4_0_s19AlbumMainVCProtocolP"
+- !private "4_0_s10AlbumModelC"
+- !private "Sa"
+- !private "SK"
+- !private "So15CALayerDelegateP"
+- "s7CVarArgP"
+- !private "Sl"
+- !private "SL"
+- !private "10Foundation15ContiguousBytesP"
+- "s28CustomDebugStringConvertibleP"
+- !private "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- !private "10Foundation12DataProtocolP"
+- !private "Se"
+- !private "s26DefaultStringInterpolationV"
+- !private "SE"
+- "SQ"
+- !private "s25ExpressibleByArrayLiteralP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s23ExpressibleByNilLiteralP"
+- !private "s32ExpressibleByStringInterpolationP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
+- "SH"
+- !private "s25LosslessStringConvertibleP"
+- !private "s10MirrorPathP"
+- !private "SM"
+- !private "10Foundation19MutableDataProtocolP"
+- "So8NSCodingP"
+- "So26NSExtensionRequestHandlingP"
+- "So8NSObjectC"
+- "So8NSObjectP"
+- !private "Sq"
+- !private "Sk"
+- !private "Sm"
+- !private "ST"
+- !private "SS"
+- !private "s27StringInterpolationProtocolP"
+- !private "Sy"
+- !private "s16TextOutputStreamP"
+- !private "s20TextOutputStreamableP"
+- !private "So48UIAccessibilityContentSizeCategoryImageAdjustingP"
+- !private "So29UIAccessibilityIdentificationP"
+- !private "So12UIAppearanceP"
+- "So21UIAppearanceContainerP"
+- "So18UIContentContainerP"
+- !private "So30UIContentSizeCategoryAdjustingP"
+- !private "So17UICoordinateSpaceP"
+- !private "So13UIDynamicItemP"
+- "So18UIFocusEnvironmentP"
+- !private "So11UIFocusItemP"
+- !private "So20UIFocusItemContainerP"
+- !private "So11UIImageViewC"
+- !private "So7UILabelC"
+- !private "So24UILargeContentViewerItemP"
+- !private "So22UINavigationControllerC"
+- "So30UIPasteConfigurationSupportingP"
+- "So11UIResponderC"
+- "So30UIResponderStandardEditActionsP"
+- "So16UIStateRestoringP"
+- "So18UITraitEnvironmentP"
+- "So23UIUserActivityRestoringP"
+- !private "So6UIViewC"
+- "So16UIViewControllerC"
+- !private "s14_ArrayProtocolP"
+- !private "s30_CustomPlaygroundQuickLookableP"
+- !private "s24_DestructorSafeContainerP"
+- !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s19_HasContiguousBytesP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- "10Foundation27_KeyValueCodingAndObservingP"
+- "10Foundation37_KeyValueCodingAndObservingPublishingP"
+- !private "s21_ObjectiveCBridgeableP"
+- !private "s38__DefaultCustomPlaygroundQuickLookableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/ObjectiveC.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreMIDI.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/ModelIO.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreMedia.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/simd.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreImage.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/QuartzCore.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Dispatch.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Metal.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Darwin.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Foundation.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/AVFoundation.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreFoundation.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreAudio.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreGraphics.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Swift.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/UIKit.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/GLKit.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/SwiftOnoneSupport.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Combine.framework/Modules/Combine.swiftmodule/arm64-apple-ios.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/ObjectiveC.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreMIDI.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/ModelIO.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreMedia.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/simd.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreImage.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/QuartzCore.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Dispatch.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Metal.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Foundation.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/AVFoundation.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreFoundation.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreAudio.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreGraphics.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/UIKit.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/GLKit.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/SwiftOnoneSupport.swiftmodule/arm64.swiftmodule"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/LUTFilter.framework/Modules/LUTFilter.swiftmodule/arm64-apple-ios.swiftmodule"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask+FriendAPI.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask+AppFriendAPI.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask+PushAPI.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask+AgeAuthAPI.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask+TalkAPI.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask+TokenAPI.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask+UserManagementAPI.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask+StoryAPI.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KakaoOpenSDK.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOFriend.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOAppFriend.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOHTTPMethod.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOUserMe.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoLink.framework/Headers/KLKImageStorage.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOTalkProfile.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOStoryProfile.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoLink.framework/Headers/KLKTalkLinkCore.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTTemplate.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTFeedTemplate.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTCommerceTemplate.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KakaoMessageTemplate.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTLocationTemplate.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTListTemplate.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTTextTemplate.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOTalkMessageSending.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoLink.framework/Headers/KakaoLink.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSessionTask.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KakaoPushMessagePropertyForGcm.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOToken.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOSession.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOFriendOperation.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoCommon.framework/Headers/KCMConfiguration.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoCommon.framework/Headers/KCMException.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoCommon.framework/Headers/KakaoCommon.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOLoginButton.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOStoryMyStoryImageInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOStoryLikeInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOStoryLinkInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOPushTokenInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOAccessTokenInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOUserInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOStoryActorInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOStoryCommentInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOStoryPostInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOStoryMyStoryInfo.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOChatMember.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK-Bridging-Header.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOAgeAuthQueryStringBuilder.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/LUTFilter.framework/Headers/LUTFilter.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoLink.framework/Headers/KLKTalkLinkCenter.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoLink.framework/Headers/KLKError.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoCommon.framework/Headers/KCMError.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOError.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOTalkPlusFriends.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOImages.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoCommon.framework/Headers/KCMUtils.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOUtils.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOUserServiceTerms.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KakaoPushMessagePropertyForApns.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOUserShippingAddress.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOChat.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTCommerceObject.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KakaoPushMessageObject.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTLinkObject.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTSocialObject.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTParamObject.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTButtonObject.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Headers/KMTContentObject.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/LUTFilter.framework/Headers/LUTFilter-Swift.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoCommon.framework/Headers/KCMAgent.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOFriendContext.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOAppFriendContext.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOBaseContext.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Headers/KOChatContext.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoOpenSDK.framework/Modules/module.modulemap"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoMessageTemplate.framework/Modules/module.modulemap"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoLink.framework/Modules/module.modulemap"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/KakaoCommon.framework/Modules/module.modulemap"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/LUTFilter.framework/Modules/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/ModelIO.framework/Headers/ModelIO.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/OpenGLES.framework/Headers/OpenGLES.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CoreMedia.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/apinotes/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/AVFoundation.framework/Headers/AVFoundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/CoreAudioTypes.framework/Headers/CoreAudioTypes.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/UserNotifications.framework/Headers/UserNotifications.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/GLKit.framework/Headers/GLKit.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/MediaToolbox.framework/Headers/MediaToolbox.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/AudioToolbox.framework/Headers/AudioToolbox.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "16be8c4e3b8379796bce024fa6ea3de4"
