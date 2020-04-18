@@ -6,7 +6,6 @@ provides-nominal:
 provides-member:
 - ["4_0_s12AlbumCoverVCC", ""]
 - ["4_0_s12AlbumCoverVCC", "delegateSetting"]
-- ["4_0_s12AlbumCoverVCC", "layoutSetting"]
 provides-dynamic-lookup:
 - "collectionView"
 - "completeBtn"
@@ -77,7 +76,6 @@ depends-member:
 - ["4_0_s12AlbumCoverVCC", "indexTitlesForCollectionView"]
 - ["4_0_s12AlbumCoverVCC", "init"]
 - ["4_0_s12AlbumCoverVCC", "initialFlag"]
-- ["4_0_s12AlbumCoverVCC", "layoutSetting"]
 - !private ["4_0_s12AlbumCoverVCC", "navigationController"]
 - ["4_0_s12AlbumCoverVCC", "numberOfSections"]
 - ["4_0_s12AlbumCoverVCC", "numberOfSectionsInCollectionView"]
@@ -629,7 +627,6 @@ depends-member:
 - ["So8NSObjectC", "initialFlag"]
 - !private ["So8NSObjectC", "instantiateViewController"]
 - !private ["So8NSObjectC", "isHidden"]
-- ["So8NSObjectC", "layoutSetting"]
 - !private ["So8NSObjectC", "navigationController"]
 - ["So8NSObjectC", "numberOfSections"]
 - ["So8NSObjectC", "numberOfSectionsInCollectionView"]
@@ -1184,7 +1181,6 @@ depends-member:
 - ["So11UIResponderC", "init"]
 - ["So11UIResponderC", "initialFlag"]
 - !private ["So11UIResponderC", "isHidden"]
-- ["So11UIResponderC", "layoutSetting"]
 - !private ["So11UIResponderC", "navigationController"]
 - ["So11UIResponderC", "numberOfSections"]
 - ["So11UIResponderC", "numberOfSectionsInCollectionView"]
@@ -1509,7 +1505,6 @@ depends-member:
 - ["So16UIViewControllerC", "indexTitlesForCollectionView"]
 - ["So16UIViewControllerC", "init"]
 - ["So16UIViewControllerC", "initialFlag"]
-- ["So16UIViewControllerC", "layoutSetting"]
 - !private ["So16UIViewControllerC", "navigationController"]
 - ["So16UIViewControllerC", "numberOfSections"]
 - ["So16UIViewControllerC", "numberOfSectionsInCollectionView"]
@@ -1898,4 +1893,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/MediaToolbox.framework/Headers/MediaToolbox.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/AudioToolbox.framework/Headers/AudioToolbox.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
-interface-hash: "4e644c4bb0070539e91097c0d6bed92f"
+interface-hash: "2936e405c81786614702a708d36b4be0"
