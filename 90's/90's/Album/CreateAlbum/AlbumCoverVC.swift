@@ -28,7 +28,6 @@ class AlbumCoverVC: UIViewController {
         }
     }
     
-    
     fileprivate var coverStringArray : [String] = ["cover1", "cover2", "cover3", "cover4"]
     fileprivate var coverArray : [UIImage] = []
     
@@ -61,11 +60,6 @@ extension AlbumCoverVC {
     func delegateSetting(){
         coverCollectionView.delegate = self
         coverCollectionView.dataSource = self
-    }
-    
-    func layoutSetting(){
-        
-        
     }
 }
 
