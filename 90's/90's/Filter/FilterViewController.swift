@@ -65,7 +65,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     @IBOutlet weak var outputimageViewConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
-        
+    
     @IBOutlet weak var changeCameraBtn: UIButton!
     
     var captureSession = AVCaptureSession()
@@ -89,7 +89,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     var FilterArray: [String] = []
     
     var new_image : UIImage!
-
+    
     override func viewDidLoad() {
         
         takeButton.layer.cornerRadius = takeButton.frame.size.width / 2
@@ -106,13 +106,14 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
         if UIScreen.main.nativeBounds.height == 1792.0 {
             self.outputimageViewConstraint.constant = 0
+            self.collectionViewHeight.constant = -140
             
             //            self.outputimageViewConstraint.constant = 135
         }
         else if UIScreen.main.nativeBounds.height == 1334.0
         {
             self.outputimageViewConstraint.constant = 0
-            
+            self.collectionViewHeight.constant = -80
             //            self.outputimageViewConstraint.constant = 88
         }
         
@@ -133,7 +134,6 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         let pinchRecognizer = UIPinchGestureRecognizer(target: self, action:#selector(pinch(_:)))
         view.addGestureRecognizer(pinchRecognizer)
         
-        self.collectionViewHeight.constant = -80
         
     }
     
@@ -160,18 +160,21 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+       
         let size = CGSize(width:   self.filteredImage.frame.width  , height: self.filteredImage.frame.height )
         let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         UIGraphicsBeginImageContextWithOptions(size, false, 1.0)
-
+        
         self.topImage!.draw(in: rect)
         new_image = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
         UIApplication.shared.isStatusBarHidden = true
         UIApplication.shared.setStatusBarHidden(true, with: .slide) // .none, .slide, .fade
-//        UIApplication.shared.setStatusBarHidden(true, with: UIStatusBarAnimation.none)
+        //        UIApplication.shared.setStatusBarHidden(true, with: UIStatusBarAnimation.none)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+
     }
     
     @IBAction func ontapTakePhoto(_ sender: Any) {
@@ -197,15 +200,35 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
     }
     @IBAction func showFilter(_ sender: Any) {
-        
-        
-        
+                
         if isCollectionViewAppear {
-            self.collectionViewHeight.constant = 0
-             
+            
+            if UIScreen.main.nativeBounds.height == 1792.0 {
+                self.collectionViewHeight.constant = 0
+                
+                //            self.outputimageViewConstraint.constant = 135
+            }
+            else if UIScreen.main.nativeBounds.height == 1334.0
+            {
+                self.collectionViewHeight.constant = 0
+                //            self.outputimageViewConstraint.constant = 88
+            }
+            
+            
+            
         }
         else {
-            self.collectionViewHeight.constant = -80
+            if UIScreen.main.nativeBounds.height == 1792.0 {
+                self.collectionViewHeight.constant = -140
+                
+                //            self.outputimageViewConstraint.constant = 135
+            }
+            else if UIScreen.main.nativeBounds.height == 1334.0
+            {
+                self.collectionViewHeight.constant = -80
+                //            self.outputimageViewConstraint.constant = 88
+            }
+            
         }
         
         UIView.animate(withDuration: 1, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations: {self.view.layoutIfNeeded()})
@@ -382,13 +405,13 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         comicEffect!.setValue(cameraImage, forKey: kCIInputImageKey)
         let cgImage = self.context.createCGImage((comicEffect?.outputImage!)!, from: cameraImage.extent)!
         
-//        let test = self.topImage?.resizeImage(targetSize: CGSize(width: 375, height: 436.5))
-
+        //        let test = self.topImage?.resizeImage(targetSize: CGSize(width: 375, height: 436.5))
+        
         
         DispatchQueue.main.async {
             let filteredImage = UIImage(cgImage: cgImage)
             self.filteredImage.image = filteredImage.mergeWith(topImage: self.topImage! , bottomImage: filteredImage).applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
-
+            
             
             
         }

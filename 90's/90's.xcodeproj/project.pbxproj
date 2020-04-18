@@ -16,6 +16,8 @@
 		39585163242F46D500014CB0 /* Print.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39585162242F46D500014CB0 /* Print.storyboard */; };
 		39585167242F49EA00014CB0 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39585166242F49EA00014CB0 /* SignIn.storyboard */; };
 		39585169242F49F300014CB0 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39585168242F49F300014CB0 /* SignUp.storyboard */; };
+		39F4DE38244AE4CF00DA0A03 /* BookCoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F4DE36244AE4CE00DA0A03 /* BookCoverCell.swift */; };
+		39F4DE39244AE4CF00DA0A03 /* BookCoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F4DE37244AE4CE00DA0A03 /* BookCoverViewController.swift */; };
 		9B0B807024357929009D7B17 /* SavePhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0B806F24357929009D7B17 /* SavePhotoVC.swift */; };
 		9B1807FE243DEE7A00AF1CE6 /* AlbumLayoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1807FD243DEE7A00AF1CE6 /* AlbumLayoutVC.swift */; };
 		9B180800243DF53200AF1CE6 /* albumLayoutCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1807FF243DF53200AF1CE6 /* albumLayoutCollectionCell.swift */; };
@@ -80,6 +82,8 @@
 		39585162242F46D500014CB0 /* Print.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Print.storyboard; sourceTree = "<group>"; };
 		39585166242F49EA00014CB0 /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		39585168242F49F300014CB0 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		39F4DE36244AE4CE00DA0A03 /* BookCoverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCoverCell.swift; sourceTree = "<group>"; };
+		39F4DE37244AE4CE00DA0A03 /* BookCoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCoverViewController.swift; sourceTree = "<group>"; };
 		9B0B806F24357929009D7B17 /* SavePhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePhotoVC.swift; sourceTree = "<group>"; };
 		9B142B10242F2475005ABE17 /* LUTFilter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LUTFilter.framework; sourceTree = "<group>"; };
 		9B1807FD243DEE7A00AF1CE6 /* AlbumLayoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumLayoutVC.swift; sourceTree = "<group>"; };
@@ -169,6 +173,8 @@
 		39585161242F46C600014CB0 /* Print */ = {
 			isa = PBXGroup;
 			children = (
+				39F4DE36244AE4CE00DA0A03 /* BookCoverCell.swift */,
+				39F4DE37244AE4CE00DA0A03 /* BookCoverViewController.swift */,
 				9BB9B554243D694C00B5150F /* OptionViewController.swift */,
 				39585162242F46D500014CB0 /* Print.storyboard */,
 				390A33ED243F6A52002E9F57 /* OrderFinishViewController.swift */,
@@ -428,6 +434,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B44EDE52429FCDF00B0D774 /* Extension.swift in Sources */,
+				39F4DE39244AE4CF00DA0A03 /* BookCoverViewController.swift in Sources */,
 				A318AC72243E290C00245434 /* TermViewController.swift in Sources */,
 				9B180808243E10F300AF1CE6 /* StickerPopupVC.swift in Sources */,
 				A3025CA62441AED700041723 /* MakeNewPassViewController.swift in Sources */,
@@ -463,6 +470,7 @@
 				390A33EE243F6A52002E9F57 /* OrderFinishViewController.swift in Sources */,
 				9BBBA3DF243F6848002904AC /* AlbumCoverVC.swift in Sources */,
 				A318AC74243E291D00245434 /* EmailViewController.swift in Sources */,
+				39F4DE38244AE4CF00DA0A03 /* BookCoverCell.swift in Sources */,
 				A318AC7C243E2A7600245434 /* CompleteViewController.swift in Sources */,
 				A318AC7E243E2F9E00245434 /* TermCell.swift in Sources */,
 				9BC16B1A2435B68F007F106C /* photoStickerCollectionCell.swift in Sources */,
