@@ -93,6 +93,11 @@ extension ImageRenderVC {
         view.addGestureRecognizer(rotateGesture)
     }
     
+    private func createTap(view : UIView){
+        let tapGestue = UITapGestureRecognizer(target: self, action: #selector(self.handleTapGesture(tapGestrue:)))
+        view.addGestureRecognizer(tapGestue)
+    }
+    
     private func createStickerView(image : UIImage, indexPathRow : Int){
         let stickerView = Bundle.main.loadNibNamed("StickerLayout", owner: nil, options: nil)?.first as! StickerLayout
         stickerView.frame = CGRect(x: view.frame.width/2 - 50, y: view.frame.height/3 - 50, width: 100, height: 100)
@@ -102,6 +107,7 @@ extension ImageRenderVC {
         
         createPan(view: stickerView)
         createRotate(view: stickerView)
+        //createTap(view: stickerView)
 
         self.view.addSubview(stickerView)
     }
@@ -143,12 +149,23 @@ extension ImageRenderVC {
     }
     
     @objc func handleRotateGesture(rotateGesture : UIRotationGestureRecognizer){
-//        let rotatePoint = rotateGesture.location(in: sticker)
-//        let firstView = sticker?.hitTest(rotatePoint, with: nil)
-        
+        sticker!.layer.anchorPoint = CGPoint(x: sticker!.center.x, y: sticker!.center.y)
         sticker!.transform = sticker!.transform.rotated(by: rotateGesture.rotation)
+        
         rotateGesture.rotation = 0
         print("rotate gesture working")
+    }
+    
+    @objc func handleTapGesture(tapGestrue : UITapGestureRecognizer){
+        if tapGestrue.state == .changed {
+            let point = tapGestrue.location(in: tapGestrue.view)
+            
+        }
+    }
+    
+    @objc func handlePinGesture(pinGesture : UIPinchGestureRecognizer){
+        sticker!.transform = sticker!.transform.scaledBy(x: pinGesture.scale, y: pinGesture.scale)
+        pinGesture.scale = 1.0
     }
 }
 

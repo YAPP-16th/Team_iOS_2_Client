@@ -28,7 +28,6 @@ class AlbumDetailPopupVC: UIViewController {
     var albumIndex : Int!
     var detailProtocol : AlbumDetailVCProtocol!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -62,16 +61,9 @@ extension AlbumDetailPopupVC : UIImagePickerControllerDelegate, UINavigationCont
             let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             UserDefaults.standard.set(url, forKey: "assetURL")
             AlbumDatabase.arrayList[albumIndex!].photos.append(image)
-            
-//            let storyboard = UIStoryboard(name: "Sticker", bundle: nil)
-//            let nextVC = storyboard.instantiateViewController(withIdentifier: "imageRenderVC") as! ImageRenderVC
-//            self.navigationController?.show(nextVC, sender: nil)
-            //self.present(nextVC, animated: true, completion: nil)
         }
         
-        dismiss(animated: true, completion: {
-            self.detailProtocol?.reloadView()
-        })
+        dismiss(animated: true)
     }
 }
 
