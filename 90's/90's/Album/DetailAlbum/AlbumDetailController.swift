@@ -54,7 +54,8 @@ extension AlbumDetailController {
     
     func defaultSetting(){
         albumNameLabel.text = AlbumDatabase.arrayList[albumIndex!].albumName
-        albumCountLabel.text = "\(AlbumDatabase.arrayList[albumIndex!].photos.count - 1) 개의 추억이\n쌓였습니다"
+        albumCountLabel.text = "\(AlbumDatabase.arrayList[albumIndex!].photos.count - 1) 개의 추억이 쌓였습니다"
+        // 순서 바꾸기
         longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gesture:)))
         photoCollectionView.addGestureRecognizer(longPressGesture)
     }
