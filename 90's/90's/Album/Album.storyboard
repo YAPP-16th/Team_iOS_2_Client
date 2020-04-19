@@ -183,7 +183,7 @@
                                             <constraint firstAttribute="width" constant="91" id="Xz5-QH-PWU"/>
                                             <constraint firstAttribute="height" constant="72" id="h2T-Aw-YDs"/>
                                         </constraints>
-                                        <state key="normal" image="addalbumimage"/>
+                                        <state key="normal" image="iconAdd"/>
                                         <connections>
                                             <action selector="clickMakeBtn:" destination="XpK-CZ-a6E" eventType="touchUpInside" id="kK3-7c-6c1"/>
                                         </connections>
@@ -598,7 +598,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="104" height="108"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover1" translatesAutoresizingMaskIntoConstraints="NO" id="ZkG-H5-6ZP">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dreamy2121" translatesAutoresizingMaskIntoConstraints="NO" id="ZkG-H5-6ZP">
                                                     <rect key="frame" x="0.0" y="0.0" width="104" height="108"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="108" id="F2j-Fh-ePb"/>
@@ -981,6 +981,9 @@
                                     <constraint firstAttribute="height" constant="63" id="wBX-qU-id4"/>
                                 </constraints>
                                 <state key="normal" image="addPhotoButton"/>
+                                <connections>
+                                    <segue destination="WkB-LK-QBw" kind="presentation" identifier="GoToDetailPopupVC" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="ThJ-yU-uhq"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -1638,7 +1641,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="inviteimage" translatesAutoresizingMaskIntoConstraints="NO" id="XWX-EN-DEm">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XWX-EN-DEm">
                                                     <rect key="frame" x="20" y="15" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="Ev0-Te-ewc"/>
@@ -1749,13 +1752,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nuh-Z6-HhC" userLabel="BtnBackgroundView">
-                                <rect key="frame" x="0.0" y="786" width="414" height="110"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="110" id="ZJH-vF-i0u"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dbe-8N-4Ij" userLabel="TopView">
                                 <rect key="frame" x="0.0" y="44" width="414" height="78"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -1823,7 +1819,7 @@
                                     <constraint firstAttribute="width" constant="228" id="wF1-SH-jvb"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4dO-Am-UQG">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4dO-Am-UQG">
                                 <rect key="frame" x="0.0" y="462" width="414" height="324"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현창이의 행복한 앨범" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xQ-UF-IhK">
@@ -1927,12 +1923,10 @@
                                     <constraint firstItem="YtE-CB-cts" firstAttribute="top" secondItem="fYV-c1-EwF" secondAttribute="bottom" constant="12" id="wj9-I8-gJe"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AQq-UQ-8hk">
-                                <rect key="frame" x="0.0" y="786" width="414" height="76"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AQq-UQ-8hk">
+                                <rect key="frame" x="18" y="786" width="378" height="76"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="76" id="SWj-BB-1C9"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="결정하기">
                                     <color key="titleColor" red="0.90605252979999995" green="0.91741710899999995" blue="0.92941474909999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1944,35 +1938,29 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Nuh-Z6-HhC" secondAttribute="bottom" id="3Aw-YL-KHi"/>
                             <constraint firstItem="rAg-Si-sza" firstAttribute="leading" secondItem="S3S-B9-edo" secondAttribute="leading" constant="20" id="59M-zL-fmV"/>
                             <constraint firstItem="l0j-a1-5Yj" firstAttribute="top" secondItem="rAg-Si-sza" secondAttribute="bottom" constant="16" id="62S-aB-bd4"/>
                             <constraint firstItem="S3S-B9-edo" firstAttribute="trailing" secondItem="zpU-0s-2nO" secondAttribute="trailing" id="B6I-uN-Szi"/>
-                            <constraint firstItem="AQq-UQ-8hk" firstAttribute="width" secondItem="a9Q-AB-4pE" secondAttribute="width" id="Dlz-Xy-bpy"/>
-                            <constraint firstItem="Nuh-Z6-HhC" firstAttribute="leading" secondItem="S3S-B9-edo" secondAttribute="leading" id="FIv-nA-MZM"/>
                             <constraint firstItem="zpU-0s-2nO" firstAttribute="top" secondItem="S3S-B9-edo" secondAttribute="top" id="H3X-7P-Ma9"/>
-                            <constraint firstItem="AQq-UQ-8hk" firstAttribute="bottom" secondItem="S3S-B9-edo" secondAttribute="bottom" id="N2s-BZ-Ydi"/>
                             <constraint firstItem="Dbe-8N-4Ij" firstAttribute="trailing" secondItem="S3S-B9-edo" secondAttribute="trailing" id="Oyo-Jh-gIQ"/>
                             <constraint firstItem="zpU-0s-2nO" firstAttribute="leading" secondItem="a9Q-AB-4pE" secondAttribute="leading" id="P0l-AI-3lN"/>
                             <constraint firstItem="rAg-Si-sza" firstAttribute="top" secondItem="Dbe-8N-4Ij" secondAttribute="bottom" constant="16" id="S9R-W2-GUF"/>
                             <constraint firstItem="4dO-Am-UQG" firstAttribute="trailing" secondItem="S3S-B9-edo" secondAttribute="trailing" id="WNB-RP-BcW"/>
-                            <constraint firstItem="AQq-UQ-8hk" firstAttribute="trailing" secondItem="S3S-B9-edo" secondAttribute="trailing" id="XuU-nx-9MJ"/>
                             <constraint firstItem="4dO-Am-UQG" firstAttribute="leading" secondItem="S3S-B9-edo" secondAttribute="leading" id="ZE7-Lf-1ml"/>
                             <constraint firstItem="Dbe-8N-4Ij" firstAttribute="leading" secondItem="S3S-B9-edo" secondAttribute="leading" id="gNK-0B-SPK"/>
                             <constraint firstItem="l0j-a1-5Yj" firstAttribute="centerX" secondItem="S3S-B9-edo" secondAttribute="centerX" id="pkg-YC-ppR"/>
-                            <constraint firstItem="Nuh-Z6-HhC" firstAttribute="trailing" secondItem="S3S-B9-edo" secondAttribute="trailing" id="pyk-Rk-MDP"/>
                             <constraint firstItem="Dbe-8N-4Ij" firstAttribute="top" secondItem="S3S-B9-edo" secondAttribute="top" id="qjN-2q-4AS"/>
-                            <constraint firstItem="AQq-UQ-8hk" firstAttribute="leading" secondItem="S3S-B9-edo" secondAttribute="leading" id="rpG-5j-Ill"/>
-                            <constraint firstItem="AQq-UQ-8hk" firstAttribute="top" secondItem="4dO-Am-UQG" secondAttribute="bottom" id="tOo-xi-djB"/>
                             <constraint firstItem="4dO-Am-UQG" firstAttribute="top" secondItem="l0j-a1-5Yj" secondAttribute="bottom" id="xdx-vw-zdS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="S3S-B9-edo"/>
                     </view>
                     <navigationItem key="navigationItem" id="y8P-U3-HQK"/>
                     <connections>
+                        <outlet property="albumCompleteBtn" destination="AQq-UQ-8hk" id="Y5G-Wz-SCr"/>
                         <outlet property="albumCountLabel" destination="YtE-CB-cts" id="mZA-wV-eMK"/>
                         <outlet property="albumDateLabel" destination="fYV-c1-EwF" id="zJ5-nY-H6f"/>
                         <outlet property="albumImageView" destination="l0j-a1-5Yj" id="3Ac-Ux-okG"/>
+                        <outlet property="albumLayoutLabel" destination="fBo-T0-GW2" id="4y6-bt-9Dq"/>
                         <outlet property="albumTitleLabel" destination="2xQ-UF-IhK" id="hGg-3R-cfJ"/>
                         <outlet property="askLabel" destination="w22-uL-NtZ" id="pL6-Va-HCH"/>
                     </connections>
@@ -2060,18 +2048,18 @@
     <resources>
         <image name="90SLogo" width="41" height="20"/>
         <image name="addPhotoButton" width="63" height="63"/>
-        <image name="addalbumimage" width="262" height="246"/>
         <image name="backicon" width="267" height="267"/>
         <image name="cancleicon" width="267" height="267"/>
         <image name="checkimage" width="74" height="88"/>
         <image name="cover1" width="180" height="185"/>
+        <image name="dreamy2121" width="189" height="195"/>
         <image name="emptyAlbum" width="207" height="214"/>
         <image name="framePolaroid" width="184" height="213"/>
         <image name="husky" width="959" height="960"/>
+        <image name="iconAdd" width="22" height="22"/>
         <image name="iconCancel" width="21" height="21"/>
         <image name="iconInformation" width="24" height="25"/>
         <image name="iconInvitation" width="27" height="24"/>
-        <image name="inviteimage" width="102" height="100"/>
         <image name="kakaoinviteimage" width="682" height="158"/>
         <image name="layoutThumbnailPolaroid" width="74" height="102"/>
         <image name="ownerimage" width="100" height="104"/>

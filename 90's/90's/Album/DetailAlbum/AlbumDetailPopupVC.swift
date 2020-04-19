@@ -26,7 +26,7 @@ class AlbumDetailPopupVC: UIViewController {
     
     let galleryPicker = UIImagePickerController()
     var albumIndex : Int!
-    var detailProtocol : AlbumDetailVCProtocol!
+    var detailProtocol : AlbumDetailVCProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,16 +36,6 @@ class AlbumDetailPopupVC: UIViewController {
         let touch = touches.first
         if touch?.view != self.touchView
         { self.dismiss(animated: true)}
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        if let beforeVC = presentingViewController as? AlbumDetailController {
-            DispatchQueue.main.async {
-                beforeVC.photoCollectionView.reloadData()
-            }
-        }
     }
 }
 
@@ -60,11 +50,9 @@ extension AlbumDetailPopupVC : UIImagePickerControllerDelegate, UINavigationCont
         if let url = info[UIImagePickerController.InfoKey.referenceURL] as? URL,
             let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             UserDefaults.standard.set(url, forKey: "assetURL")
-            
-            
-//            AlbumDatabase.arrayList[albumIndex!].photos.append(image)
+            AlbumDatabase.arrayList[albumIndex!].photos.append(image)
         }
-        
+        // 이전 뷰에 숨기고 떠오르게 하는걸로 변경 
         dismiss(animated: true)
     }
 }
