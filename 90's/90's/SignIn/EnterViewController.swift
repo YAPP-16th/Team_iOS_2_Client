@@ -36,5 +36,34 @@ class EnterViewController: UIViewController {
         navigationController?.pushViewController(termVC, animated: true)
     }
     
+    //카카오톡 로그인
+    @IBAction func goKaKaoLogin(_ sender: Any) {
+        
+        //싱글톤 객체 생성
+        guard let session = KOSession.shared() else {
+           return
+         }
+         
+        //세션이 열려있다면 닫기
+         if session.isOpen() {
+           session.close()
+            print("hihiihii")
+         }
+         
+         session.open { (error) in
+            if((error) != nil) {print("\(error)")}
+            else {print("success")}
+            //user정보 가져오기
+           KOSessionTask.userMeTask(completion: { (error, user) in
+             guard let user = user,
+                let email = user.account?.email else { return }
+            print("\(error), \(user)")
+            let vc = self.storyboard?.instantiateViewController(identifier: "LoginMainViewController") as! LoginMainViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+           })
+            
+  
+        }
+    }
     
 }
