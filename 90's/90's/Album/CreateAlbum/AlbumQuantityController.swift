@@ -4,9 +4,8 @@ import UIKit
 class AlbumQuantityController : UIViewController {
     
     @IBOutlet weak var tfQuantity: UITextField!
-    @IBOutlet weak var selectorImageVIew: UIImageView!
+    @IBOutlet weak var selectorLabel: UILabel!
     @IBOutlet weak var nextBtn: UIButton!
-    @IBOutlet weak var backView: UIView!
     @IBOutlet weak var buttonConstraint: NSLayoutConstraint!
     @IBAction func cancleBtn(_ sender: UIButton) {
         self.navigationController?.popToRootViewController(animated: true)
@@ -30,7 +29,6 @@ class AlbumQuantityController : UIViewController {
     override func viewDidLoad() {
         keyboardSetting()
         setQuantityPicker()
-        checkDeviseVersion(backView: backView)
         initialFlag = true
     }
     
@@ -53,6 +51,7 @@ class AlbumQuantityController : UIViewController {
         quantityPicker.dataSource = self
         quantityPicker.backgroundColor = .white
         tfQuantity.inputView = quantityPicker
+        nextBtn.layer.cornerRadius = 10
         tfQuantity.becomeFirstResponder()
     }
     
@@ -75,9 +74,9 @@ extension AlbumQuantityController : UIPickerViewDelegate {
         tfQuantity.text = "\(maxCountArray[row])"
         
         if(initialFlag){
-            self.selectorImageVIew.backgroundColor = UIColor.black
+            self.selectorLabel.backgroundColor = UIColor.black
             self.nextBtn.backgroundColor = UIColor.black
-            self.backView.backgroundColor = UIColor.black
+            self.nextBtn.backgroundColor = UIColor.colorRGBHex(hex: 0xe33e28)
             self.nextBtn.isEnabled = true
             initialFlag = false
         }
@@ -104,16 +103,12 @@ extension AlbumQuantityController {
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
-        if isDeviseVersionLow == true {
-            buttonConstraint.constant =  10 - quantityPicker.frame.height
-        } else {
-            buttonConstraint.constant = nextBtn.frame.height/2 - quantityPicker.frame.height
-        }
-        
+        buttonConstraint.constant = quantityPicker.frame.height + 10
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 1, initialSpringVelocity: 0.0, options: [], animations: {self.view.layoutIfNeeded()})
        }
 
     @objc func keyboardWillHide(_ notification: Notification) {
-        buttonConstraint.constant = 10
+        buttonConstraint.constant = 16
+        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 1, initialSpringVelocity: 0.0, options: [], animations: {self.view.layoutIfNeeded()})
     }
 }
