@@ -8,6 +8,5 @@
 
 class FilterCell : UICollectionViewCell {
     @IBOutlet weak var FilterImageView: UIImageView!
-    @IBOutlet weak var FilterLabel: UILabel!
     
 }

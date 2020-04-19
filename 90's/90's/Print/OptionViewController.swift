@@ -67,9 +67,7 @@ class OptionViewController : UIViewController {
             self.countOptionViewConstraint.constant = self.view.frame.height
             
         }
-        
-        self.OptionView.frame.size = CGSize(width: self.view.frame.width, height: 516)
-     
+             
         self.coverImageView.image = UIImage(named: "testEmpty")
         
     }
@@ -93,17 +91,17 @@ class OptionViewController : UIViewController {
         } else {
             self.view.backgroundColor = .darkGray
             
+            // iPhone X..
             if UIScreen.main.nativeBounds.height == 1792.0 {
                 
-                self.BottomViewConstraint.constant = (self.view.frame.height / 2) - 150
+                self.BottomViewConstraint.constant = self.view.frame.height  - 516
                 
-                //            self.outputimageViewConstraint.constant = 135
             }
+            // iPhone 8..
             else if UIScreen.main.nativeBounds.height == 1334.0
             {
-                self.BottomViewConstraint.constant = (self.view.frame.height / 2) - 150
+                self.BottomViewConstraint.constant = self.view.frame.height  - 516 + 10
                 
-                //            self.outputimageViewConstraint.constant = 88
             }
         }
         UIView.animate(withDuration: 1, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations: {self.view.layoutIfNeeded()})
@@ -127,15 +125,14 @@ class OptionViewController : UIViewController {
         print(self.view.frame.height)
         if UIScreen.main.nativeBounds.height == 1792.0 {
             self.countOptionViewConstraint.constant =
-                (self.view.frame.height / 2) - 150
-                //self.view.frame.height - 443
+                self.view.frame.height - 443
             
             //            self.outputimageViewConstraint.constant = 135
         }
         else if UIScreen.main.nativeBounds.height == 1334.0
         {
-            self.countOptionViewConstraint.constant = (self.view.frame.height / 2) - 150
-//                self.view.frame.height - 443
+            self.countOptionViewConstraint.constant =
+                self.view.frame.height - 443
             //            self.outputimageViewConstraint.constant = 88
         }
         
@@ -150,9 +147,9 @@ class OptionViewController : UIViewController {
         
         if isFirstOptionViewAppear {
             
-            self.FirstOptionConstraint.constant = 260
+            self.FirstOptionConstraint.constant = 239
             self.SecondOptionConstraint.constant = 0
-            self.stackViewConnected.constant = 63.5 + 260
+            self.stackViewConnected.constant = 63.5 + 239
             self.FirstOptionView.isHidden = false
             self.SecondOptionView.isHidden = true
             
@@ -175,7 +172,7 @@ class OptionViewController : UIViewController {
         
         if isSecondOptionViewAppear {
             
-            self.SecondOptionConstraint.constant = 260
+            self.SecondOptionConstraint.constant = 239
             self.FirstOptionConstraint.constant = 0
             self.FirstOptionView.isHidden = true
             self.SecondOptionView.isHidden = false
