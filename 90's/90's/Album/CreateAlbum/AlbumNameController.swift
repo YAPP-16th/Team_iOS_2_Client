@@ -67,8 +67,8 @@ extension AlbumNameController {
                 self.nextBtn.backgroundColor = UIColor.colorRGBHex(hex: 0xe33e28)
                 self.nextBtn.isEnabled = true
             }else {
-                self.selectorLabel.backgroundColor = UIColor.gray
-                self.nextBtn.backgroundColor = UIColor.gray
+                self.selectorLabel.backgroundColor = UIColor.lightGray
+                self.nextBtn.backgroundColor = UIColor.lightGray
                 self.nextBtn.isEnabled = false
             }
         })

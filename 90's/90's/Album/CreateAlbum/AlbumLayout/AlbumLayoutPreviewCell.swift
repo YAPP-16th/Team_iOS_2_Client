@@ -11,4 +11,9 @@ import UIKit
 class AlbumLayoutPreviewCell: UICollectionViewCell {
     @IBOutlet weak var backimageView: UIImageView!
     @IBOutlet weak var imageView: UIImageView!
+    
+    @IBOutlet weak var backimageTop: NSLayoutConstraint!
+    @IBOutlet weak var backimageLeft: NSLayoutConstraint!
+    @IBOutlet weak var backimageRight: NSLayoutConstraint!
+    @IBOutlet weak var backimageBottom: NSLayoutConstraint!
 }

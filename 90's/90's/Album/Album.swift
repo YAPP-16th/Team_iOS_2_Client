@@ -49,13 +49,13 @@ enum AlbumLayout {
     
     var image : UIImage {
         switch self {
-        case .Polaroid : return UIImage(named: "layoutPolaroid")!
-        case .Mini : return UIImage(named: "layoutMini")!
-        case .Memory : return UIImage(named: "layoutMemory")!
-        case .Portrab : return UIImage(named: "layoutPortrab")!
-        case .Tape : return UIImage(named: "layoutTape")!
-        case .Portraw : return UIImage(named: "layoutPortraw")!
-        case .Filmroll : return UIImage(named: "layoutFilmroll")!
+        case .Polaroid : return UIImage(named: "framePolaroid")!
+        case .Mini : return UIImage(named: "frameMini")!
+        case .Memory : return UIImage(named: "frameMemory")!
+        case .Portrab : return UIImage(named: "framePortrab")!
+        case .Tape : return UIImage(named: "frameTape")!
+        case .Portraw : return UIImage(named: "framePortraw")!
+        case .Filmroll : return UIImage(named: "tempframeFilmroll")!
         }
     }
     

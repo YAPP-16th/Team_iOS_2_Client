@@ -1039,11 +1039,11 @@
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="50" height="173"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="15" minY="10" maxX="15" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="albumlayoutpreviewcell" id="Hct-U6-7uy" userLabel="PreviewCell" customClass="AlbumLayoutPreviewCell" customModule="_0_s" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="173" width="184" height="213"/>
+                                        <rect key="frame" x="15" y="183" width="184" height="213"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="EDP-Ki-ppJ">
                                             <rect key="frame" x="0.0" y="0.0" width="184" height="213"/>
@@ -1052,26 +1052,24 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="framePolaroid" translatesAutoresizingMaskIntoConstraints="NO" id="kqh-gI-eyj">
                                                     <rect key="frame" x="0.0" y="0.0" width="184" height="213"/>
                                                 </imageView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="husky" translatesAutoresizingMaskIntoConstraints="NO" id="qpI-Rr-Nj3">
-                                                    <rect key="frame" x="11" y="14" width="162" height="156"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="156" id="Lvv-3O-kJA"/>
-                                                        <constraint firstAttribute="width" constant="161" id="yfb-vi-Psr"/>
-                                                    </constraints>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="husky" translatesAutoresizingMaskIntoConstraints="NO" id="qpI-Rr-Nj3">
+                                                    <rect key="frame" x="11" y="14" width="165" height="156"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="kqh-gI-eyj" firstAttribute="width" secondItem="EDP-Ki-ppJ" secondAttribute="width" id="9pg-I3-JJQ"/>
-                                                <constraint firstAttribute="trailing" secondItem="qpI-Rr-Nj3" secondAttribute="trailing" constant="11" id="Aqp-K7-inQ"/>
-                                                <constraint firstItem="qpI-Rr-Nj3" firstAttribute="leading" secondItem="EDP-Ki-ppJ" secondAttribute="leading" constant="11" id="JYY-bO-SO5"/>
-                                                <constraint firstItem="kqh-gI-eyj" firstAttribute="centerX" secondItem="EDP-Ki-ppJ" secondAttribute="centerX" id="KSO-QS-y49"/>
-                                                <constraint firstItem="kqh-gI-eyj" firstAttribute="centerY" secondItem="EDP-Ki-ppJ" secondAttribute="centerY" id="NqE-xw-oKw"/>
-                                                <constraint firstItem="qpI-Rr-Nj3" firstAttribute="top" secondItem="EDP-Ki-ppJ" secondAttribute="top" constant="14" id="ff8-n8-pFI"/>
-                                                <constraint firstItem="kqh-gI-eyj" firstAttribute="height" secondItem="EDP-Ki-ppJ" secondAttribute="height" id="gZj-7W-mr4"/>
+                                                <constraint firstItem="kqh-gI-eyj" firstAttribute="top" secondItem="EDP-Ki-ppJ" secondAttribute="top" id="1PI-Rx-H3P"/>
+                                                <constraint firstAttribute="bottom" secondItem="kqh-gI-eyj" secondAttribute="bottom" id="i0l-hn-qoN"/>
+                                                <constraint firstItem="kqh-gI-eyj" firstAttribute="leading" secondItem="EDP-Ki-ppJ" secondAttribute="leading" id="qum-TF-eXr"/>
+                                                <constraint firstAttribute="trailing" secondItem="kqh-gI-eyj" secondAttribute="trailing" id="ylR-Fm-8Ra"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="184" height="213"/>
                                         <connections>
+                                            <outlet property="backimageBottom" destination="i0l-hn-qoN" id="Ole-xh-of0"/>
+                                            <outlet property="backimageLeft" destination="qum-TF-eXr" id="EWe-az-PPl"/>
+                                            <outlet property="backimageRight" destination="ylR-Fm-8Ra" id="9j3-Ok-jcA"/>
+                                            <outlet property="backimageTop" destination="1PI-Rx-H3P" id="RL4-ca-Sst"/>
                                             <outlet property="backimageView" destination="kqh-gI-eyj" id="yZw-5k-um9"/>
                                             <outlet property="imageView" destination="qpI-Rr-Nj3" id="vOD-qm-Hni"/>
                                         </connections>

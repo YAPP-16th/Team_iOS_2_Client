@@ -98,7 +98,6 @@ extension AlbumLayoutVC : UICollectionViewDelegate, UICollectionViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         layoutImageView.image = layoutImageArray[indexPath.row]
         albumLayout = LayoutDatabase.arrayList[indexPath.row]
-        print("album Layout = \(albumLayout)")
         initialFlag = false
         let cell = collectionView.cellForItem(at: indexPath) as! albumLayoutCollectionCell
         cell.selectImageView.isHidden = false
