@@ -13,11 +13,10 @@ class AlbumPeriodController : UIViewController {
     
     @IBOutlet weak var tfOpenDate: UITextField!
     @IBOutlet weak var tfExpireDate: UITextField!
-    @IBOutlet weak var backView: UIView!
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var buttonConstraint: NSLayoutConstraint!
-    @IBOutlet weak var selectorImageView1: UIImageView!
-    @IBOutlet weak var selectorImageView2: UIImageView!
+    @IBOutlet weak var selectorLabel1: UILabel!
+    @IBOutlet weak var selectorLabel2: UILabel!
     @IBAction func cancleBtn(_ sender: UIButton) {
         self.navigationController?.popToRootViewController(animated: true)
     }
@@ -51,7 +50,6 @@ class AlbumPeriodController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setDatePicker()
-        checkDeviseVersion(backView: backView)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -65,6 +63,8 @@ extension AlbumPeriodController {
     func setOpenDate(){
         formatter.dateFormat = "yyyy.MM.dd"
         tfOpenDate.text = formatter.string(from: Date())
+        tfExpireDate.placeholder = formatter.string(from: Date())
+        nextBtn.layer.cornerRadius = 10
     }
     
     //앨범 마감일 설정 시 datePicker 설정
@@ -86,10 +86,9 @@ extension AlbumPeriodController {
         tfExpireDate.text = formatter.string(from: datePicker.date)
         
         if(initialFlag){
-            self.selectorImageView1.backgroundColor = UIColor.black
-            self.selectorImageView2.backgroundColor = UIColor.black
-            self.nextBtn.backgroundColor = UIColor.black
-            self.backView.backgroundColor = UIColor.black
+            self.selectorLabel1.backgroundColor = UIColor.black
+            self.selectorLabel2.backgroundColor = UIColor.black
+            self.nextBtn.backgroundColor = UIColor.colorRGBHex(hex: 0xe33e28)
             self.nextBtn.isEnabled = true
             initialFlag = false
         }
@@ -98,18 +97,18 @@ extension AlbumPeriodController {
 
 
 extension AlbumPeriodController {
-    
     func keyboardSetting(){
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
-        buttonConstraint.constant = 10 - datePicker.frame.height
+        buttonConstraint.constant = datePicker.frame.height + 10
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 1, initialSpringVelocity: 0.0, options: [], animations: {self.view.layoutIfNeeded()})
        }
 
     @objc func keyboardWillHide(_ notification: Notification) {
-        buttonConstraint.constant = 10
+        buttonConstraint.constant = 16
+        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 1, initialSpringVelocity: 0.0, options: [], animations: {self.view.layoutIfNeeded()})
     }
 }

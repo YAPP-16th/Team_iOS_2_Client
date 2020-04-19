@@ -38,7 +38,7 @@ class AlbumCompleteVC: UIViewController {
     var albumEndDate : String!
     var albumMaxCount : Int!
     var photo : UIImage!
-    var albumLayout : Int!
+    var albumLayout : AlbumLayout!
     
     var mainProtocol : AlbumMainVCProtocol?
     

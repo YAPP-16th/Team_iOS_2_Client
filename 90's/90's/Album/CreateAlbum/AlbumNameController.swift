@@ -11,10 +11,8 @@ import UIKit
 
 class AlbumNameController : UIViewController {
     @IBOutlet weak var buttonConstraint: NSLayoutConstraint!
-    @IBOutlet weak var backView: UIView!
-    
     @IBOutlet weak var tfAlbumName: UITextField!
-    @IBOutlet weak var selectorImageView: UIImageView!
+    @IBOutlet weak var selectorLabel: UILabel!
     @IBOutlet weak var nextBtn: UIButton!
     @IBAction func backBtn(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -59,19 +57,18 @@ extension AlbumNameController {
     }
     
     func defaultSetting(){
+        nextBtn.layer.cornerRadius = 10
         NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: tfAlbumName, queue: .main, using : {
             _ in
             let str = self.tfAlbumName.text!.trimmingCharacters(in: .whitespaces)
             
-            if(str != ""){
-                self.selectorImageView.backgroundColor = UIColor.black
-                self.nextBtn.backgroundColor = UIColor.black
+            if !str.isEmpty {
+                self.selectorLabel.backgroundColor = UIColor.black
+                self.nextBtn.backgroundColor = UIColor.colorRGBHex(hex: 0xe33e28)
                 self.nextBtn.isEnabled = true
-                self.backView.backgroundColor = UIColor.black
             }else {
-                self.selectorImageView.backgroundColor = UIColor.gray
-                self.nextBtn.backgroundColor = UIColor.gray
-                self.backView.backgroundColor = UIColor.gray
+                self.selectorLabel.backgroundColor = UIColor.lightGray
+                self.nextBtn.backgroundColor = UIColor.lightGray
                 self.nextBtn.isEnabled = false
             }
         })
@@ -92,11 +89,9 @@ extension AlbumNameController {
         
         // iphone8 : 260, 11 : 346
         if keyboardHeight > 300 { // iphone 11 !
-            buttonConstraint.constant = nextBtn.frame.height/2 - keyboardHeight
-            backView.isHidden = false
+            buttonConstraint.constant = nextBtn.frame.height/2 - (keyboardHeight + 16)
         }else { // iphone ~ 8
-            buttonConstraint.constant = 10 - keyboardHeight
-            backView.isHidden = true
+            buttonConstraint.constant = -(keyboardHeight + 10)
             isDeviseVersionLow = true
         }
         
@@ -104,6 +99,6 @@ extension AlbumNameController {
        }
 
     @objc func keyboardWillHide(_ notification: Notification) {
-        buttonConstraint.constant = 10
+        buttonConstraint.constant = -16
     }
 }
