@@ -10,6 +10,7 @@ import UIKit
 
 class AlbumCoverVC: UIViewController {
     @IBOutlet weak var coverImageView: UIImageView!
+    @IBOutlet weak var coverLabel: UILabel!
     @IBOutlet weak var coverCollectionView: UICollectionView!
     @IBAction func touchBackBtn(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -28,7 +29,7 @@ class AlbumCoverVC: UIViewController {
         }
     }
     
-    fileprivate var coverStringArray : [String] = ["cover1", "cover2", "cover3", "cover4"]
+    fileprivate var coverStringArray : [String] = ["sweetholiday","happilyeverafter","fellinlove","mysweetyLovesyou","dreamy2121","90Svibe"]
     fileprivate var coverArray : [UIImage] = []
     
     var albumName : String!
@@ -51,15 +52,16 @@ class AlbumCoverVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegateSetting()
+        defaultSetting()
     }
 }
 
 
 extension AlbumCoverVC {
-    func delegateSetting(){
+    func defaultSetting(){
         coverCollectionView.delegate = self
         coverCollectionView.dataSource = self
+        coverLabel.text = "앨범 커버를\n선택해 주세요"
     }
 }
 

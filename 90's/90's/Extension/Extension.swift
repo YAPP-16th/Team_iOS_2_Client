@@ -168,38 +168,15 @@ extension UIViewController{
 
 
 extension UIImage {
-    
-    func resizeImage(targetSize: CGSize) -> UIImage {
-      let size = self.size
-      let widthRatio  = targetSize.width  / size.width
-      let heightRatio = targetSize.height / size.height
-      let newSize = widthRatio > heightRatio ?  CGSize(width: size.width * heightRatio, height: size.height * heightRatio) : CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
-      let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
-
-      UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
-      self.draw(in: rect)
-      let newImage = UIGraphicsGetImageFromCurrentImageContext()
-      UIGraphicsEndImageContext()
-
-      return newImage!
-    }
-
-    
-    func mergeWith(topImage: UIImage , bottomImage : UIImage) -> UIImage {
-        UIGraphicsBeginImageContext(size)
-        let areaSize = CGRect(x: 0, y: -100 , width: bottomImage.size.width, height: bottomImage.size.height)
-        bottomImage.draw(in: areaSize)
-        topImage.draw(in: areaSize, blendMode: .normal, alpha: 0.8)
+    func imageResize (sizeChange:CGSize)-> UIImage{
+        let hasAlpha = true
+        let scale: CGFloat = 0.0 // Use scale factor of main screen
         
-        print("!!!!!!!!!!!!")
-        print(topImage.size)
-        print(bottomImage.size)
-        print("!!!!!!!!!!!!")
-        
-        let mergedImage = UIGraphicsGetImageFromCurrentImageContext()!
-        
-        UIGraphicsEndImageContext()
-        return mergedImage
+        UIGraphicsBeginImageContextWithOptions(sizeChange, !hasAlpha, scale)
+        self.draw(in: CGRect(origin: CGPoint.zero, size: sizeChange))
+
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        return scaledImage!
     }
 }
 
@@ -223,5 +200,15 @@ extension UIInterfaceOrientation {
         case .portrait: return .portrait
         default: return nil
         }
+    }
+}
+
+
+extension UIColor {
+    class func colorRGBHex(hex:Int, alpha: Float = 1.0) -> UIColor {
+        let r = Float((hex >> 16) & 0xFF)
+        let g = Float((hex >> 8) & 0xFF)
+        let b = Float((hex) & 0xFF)
+        return UIColor(red: CGFloat(r/255.0), green: CGFloat(g/255.0), blue:CGFloat(b/255.0), alpha : CGFloat(alpha))
     }
 }

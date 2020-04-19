@@ -40,7 +40,6 @@ class AlbumMainController: UIViewController {
 
 
 extension AlbumMainController : UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width/2 - 26, height: view.frame.height/4 + 10)
     }
@@ -77,6 +76,8 @@ extension AlbumMainController {
     func settingCollectionView(){
         albumCollectionView.delegate = self
         albumCollectionView.dataSource = self
+        albumMakeBtn.layer.cornerRadius = 10
+        albumIntroLabel.text = "앨범을 만들어\n소중한 추억을 쌓아보세요"
     }
     
     func defaultSetting(){
