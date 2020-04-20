@@ -14,8 +14,6 @@ class AlbumDetailPopupVC: UIViewController {
         dismiss(animated: true)
     }
     @IBAction func touchAlbumBtn(_ sender: UIButton) {
-        galleryPicker.sourceType = .photoLibrary
-        galleryPicker.delegate = self
         present(galleryPicker, animated: true)
     }
     @IBAction func touchCameraBtn(_ sender: UIButton) {
@@ -24,7 +22,12 @@ class AlbumDetailPopupVC: UIViewController {
         self.present(goNextVC, animated: true)
     }
     
-    let galleryPicker = UIImagePickerController()
+    lazy var galleryPicker : UIImagePickerController = {
+        let picker : UIImagePickerController = UIImagePickerController()
+        picker.sourceType = .photoLibrary
+        picker.delegate = self
+        return picker
+    }()
     var albumIndex : Int!
     var detailProtocol : AlbumDetailVCProtocol?
     
@@ -42,6 +45,7 @@ class AlbumDetailPopupVC: UIViewController {
 
 extension AlbumDetailPopupVC : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        detailProtocol?.reloadView()
         dismiss(animated: true)
     }
     
@@ -52,8 +56,11 @@ extension AlbumDetailPopupVC : UIImagePickerControllerDelegate, UINavigationCont
             UserDefaults.standard.set(url, forKey: "assetURL")
             AlbumDatabase.arrayList[albumIndex!].photos.append(image)
         }
+        detailProtocol?.reloadView()
         // 이전 뷰에 숨기고 떠오르게 하는걸로 변경 
         dismiss(animated: true)
     }
+    
+    
 }
 
