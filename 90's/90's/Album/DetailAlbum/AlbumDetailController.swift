@@ -190,7 +190,7 @@ extension AlbumDetailController : UICollectionViewDropDelegate {
 
 extension AlbumDetailController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "GoToAlbumPopupVC" {
+        if segue.identifier == "GoToDetailPopupVC" {
             let dest = segue.destination as! AlbumDetailPopupVC
             dest.albumIndex = albumIndex!
         } else if segue.identifier == "GoToInfoVC" {
@@ -205,6 +205,5 @@ extension AlbumDetailController : AlbumDetailVCProtocol {
     func reloadView() {
         self.photoCollectionView.reloadData()
         print("call reload view")
-//        self.viewWillAppear(true)
     }
 }

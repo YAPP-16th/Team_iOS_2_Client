@@ -7,6 +7,7 @@
 //
 
 class PhotoCell : UICollectionViewCell {
+    @IBOutlet weak var backImageView: UIImageView!
     @IBOutlet weak var photoImageView: UIImageView!
     
     override func awakeFromNib() {
