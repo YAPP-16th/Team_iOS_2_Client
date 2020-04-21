@@ -8,7 +8,7 @@
 
 import UIKit
 import AVFoundation
-import LUTFilter
+//import LUTFilter
 
 struct Filter {
     let filterName : String
@@ -102,7 +102,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         super.viewDidLoad()
         
         setupDevice()
-        setupInputOutput()
+//        setupInputOutput()
         delegateSetting()
         
         filterName = PhotoEditorTypes.filterNameArray[filterIndex]
@@ -139,7 +139,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                         {
                             if authorized
                             {
-                                self.setupInputOutput()
+//                                self.setupInputOutput()
                             }
                     }
             })
@@ -433,8 +433,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
         DispatchQueue.main.async {
             let filteredImage = UIImage(cgImage: cgImage)
-            self.filteredImage.image = filteredImage.mergeWith(topImage: self.topImage! , bottomImage: filteredImage).applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
-            
+//            self.filteredImage.image = filteredImage.mergeWith(topImage: self.topImage! , bottomImage: filteredImage).applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
             
             
         }
@@ -677,14 +676,22 @@ extension FilterViewController : UIImagePickerControllerDelegate, UINavigationCo
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
+        var tempImage : UIImage? = nil
+        
         if let url = info[UIImagePickerController.InfoKey.referenceURL] as? URL,
             let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             UserDefaults.standard.set(url, forKey: "assetURL")
+            tempImage = image
+            print(tempImage)
             //            AlbumDatabase.arrayList[albumIndex!].photos.append(image)
         }
         
         dismiss(animated: true,completion: {
-            
+            let storyboard = UIStoryboard(name: "Sticker", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "imageRenderVC") as! ImageRenderVC
+//            vc.modalPresentationStyle = .fullScreen
+            vc.image = tempImage
+            self.present(vc, animated: true, completion: nil)
         })
     }
 }
