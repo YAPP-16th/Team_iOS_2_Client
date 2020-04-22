@@ -14,7 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        //카카오톡 사용자 토큰 주기적 갱신
+        KOSession.shared()?.isAutomaticPeriodicRefresh = true
         return true
     }
 
@@ -46,5 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        }
        return true
      }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        KOSession.handleDidEnterBackground()
+    }
 }
 
