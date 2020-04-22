@@ -121,6 +121,21 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         let pinchRecognizer = UIPinchGestureRecognizer(target: self, action:#selector(pinch(_:)))
         view.addGestureRecognizer(pinchRecognizer)
         
+        if UIScreen.main.nativeBounds.height == 1792.0 {
+            self.outputimageViewConstraint.constant = 115
+            self.collectionViewHeight.constant = -80
+            self.galleryConstraint.constant = 102
+            self.filterConstraint.constant = 102
+            
+        }
+        else if UIScreen.main.nativeBounds.height == 1334.0
+        {
+            self.outputimageViewConstraint.constant = 115
+            self.collectionViewHeight.constant = -80
+            self.galleryConstraint.constant = 102
+            self.filterConstraint.constant = 102
+        }
+        
         
     }
     
@@ -147,18 +162,6 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        
-        if UIScreen.main.nativeBounds.height == 1792.0 {
-            self.outputimageViewConstraint.constant = 115
-            self.collectionViewHeight.constant = -80
-            
-        }
-        else if UIScreen.main.nativeBounds.height == 1334.0
-        {
-            self.outputimageViewConstraint.constant = 115
-            self.collectionViewHeight.constant = -80
-        }
         
         
         let size = CGSize(width:   self.filteredImage.frame.width  , height: self.filteredImage.frame.height )
@@ -215,25 +218,26 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         if isCollectionViewAppear {
             
             filterBtn.setImage(UIImage(named: "path18Grey"), for: .normal)
-            takeButton.frame.size = CGSize(width: 20, height: 30)
+            takeButton.frame.size = CGSize(width: 15, height: 35)
             albumBtn.isHidden = true
             
             
             if UIScreen.main.nativeBounds.height == 1792.0 {
                 self.collectionViewHeight.constant = -5
                 self.captureBtnConstraint.constant = 15
-                self.filterConstraint.constant = -15
+                self.filterConstraint.constant = -20
             }
             else if UIScreen.main.nativeBounds.height == 1334.0
             {
                 self.collectionViewHeight.constant = -5
-                self.captureBtnConstraint.constant = 15
-                self.filterConstraint.constant = -15
+                self.captureBtnConstraint.constant = 40
+                self.filterConstraint.constant = -10
             }
             
             
             
         }
+            
         else {
                         
             filterBtn.setImage(UIImage(named: "iconFilterBlack"), for: .normal)
@@ -242,14 +246,18 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             
             if UIScreen.main.nativeBounds.height == 1792.0 {
                 self.collectionViewHeight.constant = -140
-                self.captureBtnConstraint.constant = 51
-                self.filterConstraint.constant = 68
+                self.captureBtnConstraint.constant = 85
+                self.filterConstraint.constant = 102
+                self.galleryConstraint.constant = 102
+                
             }
             else if UIScreen.main.nativeBounds.height == 1334.0
             {
                 self.collectionViewHeight.constant = -80
-                self.captureBtnConstraint.constant = 51
-                self.filterConstraint.constant = 68
+                self.captureBtnConstraint.constant = 85
+                self.filterConstraint.constant = 102
+                self.galleryConstraint.constant = 102
+
             }
             
         }
@@ -327,16 +335,17 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        let screenSize = self.filteredImage.bounds.size
+        let screenSize = self.view.bounds.size
+        print(screenSize)
         if let touchPoint = touches.first {
-            let x = touchPoint.location(in: self.view).y / screenSize.height
-            let y = 1.0 - touchPoint.location(in: self.view).x / screenSize.width
+            let x = touchPoint.location(in: self.filteredImage).y / screenSize.height
+            let y = 1.0 - touchPoint.location(in: self.filteredImage).x / screenSize.width
             let focusPoint = CGPoint(x: x, y: y)
             print(focusPoint)
             if let device = captureDevice {
                 do {
                     try device.lockForConfiguration()
-                    
+                    print("Focus")
                     device.focusPointOfInterest = focusPoint
                     //device.focusMode = .continuousAutoFocus
                     device.focusMode = .autoFocus
@@ -671,7 +680,8 @@ extension FilterViewController : UIImagePickerControllerDelegate, UINavigationCo
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.captureSession.startRunning()
-        dismiss(animated: true)
+//        dismiss(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -682,14 +692,13 @@ extension FilterViewController : UIImagePickerControllerDelegate, UINavigationCo
             let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             UserDefaults.standard.set(url, forKey: "assetURL")
             tempImage = image
-            print(tempImage)
-            //            AlbumDatabase.arrayList[albumIndex!].photos.append(image)
+
         }
         
         dismiss(animated: true,completion: {
             let storyboard = UIStoryboard(name: "Sticker", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "imageRenderVC") as! ImageRenderVC
-//            vc.modalPresentationStyle = .fullScreen
+            vc.modalPresentationStyle = .fullScreen
             vc.image = tempImage
             self.present(vc, animated: true, completion: nil)
         })

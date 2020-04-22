@@ -57,7 +57,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                             </collectionView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dUG-1S-fF1">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="90Svibe" translatesAutoresizingMaskIntoConstraints="NO" id="dUG-1S-fF1">
                                 <rect key="frame" x="0.0" y="115" width="375" height="365"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -66,7 +66,7 @@
                                 </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cx2-hh-z7C">
-                                <rect key="frame" x="44" y="165" width="0.0" height="50"/>
+                                <rect key="frame" x="44" y="165" width="287" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Nol-lc-gFA"/>
                                 </constraints>
@@ -82,7 +82,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wcM-Cb-A8D">
-                                <rect key="frame" x="0.0" y="480" width="375" height="187"/>
+                                <rect key="frame" x="0.0" y="480" width="375" height="221"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5K8-Yw-EcC">
                                         <rect key="frame" x="291" y="87" width="31" height="32"/>
@@ -116,12 +116,12 @@
                                     <constraint firstAttribute="trailing" secondItem="5K8-Yw-EcC" secondAttribute="trailing" constant="53" id="OdZ-FG-KRY"/>
                                     <constraint firstItem="5KV-zY-XKC" firstAttribute="top" secondItem="5K8-Yw-EcC" secondAttribute="top" id="PD3-sr-3YM"/>
                                     <constraint firstItem="5K8-Yw-EcC" firstAttribute="leading" secondItem="bTt-pO-v45" secondAttribute="trailing" constant="65" id="Ynd-7z-1Sp"/>
-                                    <constraint firstAttribute="bottom" secondItem="bTt-pO-v45" secondAttribute="bottom" constant="51" id="bYW-ta-3ck"/>
-                                    <constraint firstAttribute="bottom" secondItem="5KV-zY-XKC" secondAttribute="bottom" constant="68" id="biM-AT-hug"/>
+                                    <constraint firstAttribute="bottom" secondItem="bTt-pO-v45" secondAttribute="bottom" constant="85" id="bYW-ta-3ck"/>
+                                    <constraint firstAttribute="bottom" secondItem="5KV-zY-XKC" secondAttribute="bottom" constant="102" id="biM-AT-hug"/>
                                     <constraint firstItem="bTt-pO-v45" firstAttribute="leading" secondItem="5KV-zY-XKC" secondAttribute="trailing" constant="64" id="oW6-qU-mQo"/>
                                     <constraint firstItem="5KV-zY-XKC" firstAttribute="leading" secondItem="wcM-Cb-A8D" secondAttribute="leading" constant="53" id="qW3-a5-1Oi"/>
                                     <constraint firstItem="bTt-pO-v45" firstAttribute="centerX" secondItem="wcM-Cb-A8D" secondAttribute="centerX" id="qsb-ba-2Xb"/>
-                                    <constraint firstAttribute="bottom" secondItem="5K8-Yw-EcC" secondAttribute="bottom" constant="68" id="rz2-7h-sdL"/>
+                                    <constraint firstAttribute="bottom" secondItem="5K8-Yw-EcC" secondAttribute="bottom" constant="102" id="rz2-7h-sdL"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -130,7 +130,7 @@
                             <constraint firstItem="FFr-9r-zd7" firstAttribute="top" secondItem="dUG-1S-fF1" secondAttribute="bottom" id="1xD-FE-HR5"/>
                             <constraint firstItem="OYt-tk-txm" firstAttribute="trailing" secondItem="xhf-nz-I2A" secondAttribute="trailing" constant="20" id="3Bf-3P-j0e"/>
                             <constraint firstItem="wcM-Cb-A8D" firstAttribute="trailing" secondItem="OYt-tk-txm" secondAttribute="trailing" id="7iy-Ca-tPg"/>
-                            <constraint firstItem="wcM-Cb-A8D" firstAttribute="bottom" secondItem="OYt-tk-txm" secondAttribute="bottom" id="DHc-S5-6ka"/>
+                            <constraint firstItem="wcM-Cb-A8D" firstAttribute="bottom" secondItem="OYt-tk-txm" secondAttribute="bottom" constant="34" id="DHc-S5-6ka"/>
                             <constraint firstItem="cx2-hh-z7C" firstAttribute="top" secondItem="dUG-1S-fF1" secondAttribute="top" constant="50" id="GN2-5r-eva"/>
                             <constraint firstItem="FFr-9r-zd7" firstAttribute="leading" secondItem="dUG-1S-fF1" secondAttribute="leading" id="H4n-Ub-ctT"/>
                             <constraint firstItem="OYt-tk-txm" firstAttribute="trailing" secondItem="dUG-1S-fF1" secondAttribute="trailing" id="JDG-dv-Sr1"/>
@@ -142,6 +142,7 @@
                             <constraint firstItem="wcM-Cb-A8D" firstAttribute="top" secondItem="FFr-9r-zd7" secondAttribute="bottom" constant="-80" id="Xk3-ND-nj7"/>
                             <constraint firstItem="FFr-9r-zd7" firstAttribute="trailing" secondItem="dUG-1S-fF1" secondAttribute="trailing" id="Zlb-Em-wvB"/>
                             <constraint firstItem="cx2-hh-z7C" firstAttribute="leading" secondItem="OYt-tk-txm" secondAttribute="leading" constant="44" id="gjg-jp-GDG"/>
+                            <constraint firstItem="OYt-tk-txm" firstAttribute="trailing" secondItem="cx2-hh-z7C" secondAttribute="trailing" constant="44" id="j6N-t8-8LG"/>
                             <constraint firstItem="OYt-tk-txm" firstAttribute="bottom" secondItem="FFr-9r-zd7" secondAttribute="bottom" constant="107" id="lRO-Zq-UpU"/>
                             <constraint firstItem="dUG-1S-fF1" firstAttribute="top" secondItem="xhf-nz-I2A" secondAttribute="bottom" constant="23" id="nej-vI-aIt"/>
                             <constraint firstItem="dUG-1S-fF1" firstAttribute="top" secondItem="TIz-Xv-5yB" secondAttribute="top" constant="115" id="tRp-7D-dsc"/>
@@ -167,7 +168,7 @@
                 <swipeGestureRecognizer delaysTouchesBegan="YES" direction="left" id="quT-Rf-QPJ" userLabel="Left Swipe Gesture Recognizer"/>
                 <swipeGestureRecognizer delaysTouchesBegan="YES" direction="right" id="tdE-KZ-5Fu" userLabel="Right Swipe Gesture Recognizer"/>
             </objects>
-            <point key="canvasLocation" x="4314.3999999999996" y="79.610194902548727"/>
+            <point key="canvasLocation" x="4313.04347826087" y="79.017857142857139"/>
         </scene>
         <!--Check Photo View Controller-->
         <scene sceneID="YHu-nv-2RK">
@@ -194,7 +195,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hqn-js-Wcb">
-                                <rect key="frame" x="20" y="63" width="375" height="450"/>
+                                <rect key="frame" x="0.0" y="59" width="375" height="450"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -211,6 +212,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="90Svibe" width="188" height="195"/>
         <image name="cover2" width="178" height="185"/>
         <image name="iconCancel" width="21" height="21"/>
         <image name="iconFilterBlack" width="28" height="26"/>
