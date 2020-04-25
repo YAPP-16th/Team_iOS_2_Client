@@ -9,10 +9,12 @@
 import UIKit
 
 class FindEmailErrViewController: UIViewController {
+    @IBOutlet weak var findAgainBtn: UIButton!
+    @IBOutlet weak var loginBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setUI()
         // Do any additional setup after loading the view.
     }
     
@@ -27,6 +29,11 @@ class FindEmailErrViewController: UIViewController {
     
     @IBAction func goLogin(_ sender: Any) {
         navigationController?.popToViewController(self.navigationController!.viewControllers[1], animated: true)
+    }
+    
+    func setUI(){
+        findAgainBtn.layer.cornerRadius = 8.0
+        loginBtn.layer.cornerRadius = 8.0
     }
     
 }
