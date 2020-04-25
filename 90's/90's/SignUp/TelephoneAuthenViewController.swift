@@ -21,6 +21,7 @@ class TelephoneAuthenViewController: UIViewController {
     
     var email:String!
     var pwd:String!
+    var nickName:String!
     var telephone:String!
     var isClicked = false
     var isInitial1 = false

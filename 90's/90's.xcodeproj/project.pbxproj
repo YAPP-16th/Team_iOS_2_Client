@@ -78,6 +78,7 @@
 		A36DC87124236E45001B3767 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36DC87024236E45001B3767 /* PhotoCell.swift */; };
 		A3D8758F24448BCE0085F17B /* AuthenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D8758E24448BCE0085F17B /* AuthenViewController.swift */; };
 		A3E2DB7A2454576B00AB2156 /* CompleteNewPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E2DB792454576B00AB2156 /* CompleteNewPassViewController.swift */; };
+		A3E2DB7C2454694000AB2156 /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E2DB7B2454694000AB2156 /* NicknameViewController.swift */; };
 		A3F8CC1A244AEE24008D0046 /* neodgm.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A3F8CC19244AEE24008D0046 /* neodgm.ttf */; };
 		A3F8CC1B244AEE2E008D0046 /* NotoSansCJKkr-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A3F8CC14244AEC75008D0046 /* NotoSansCJKkr-Bold.otf */; };
 		A3F8CC1C244AEE30008D0046 /* NotoSansCJKkr-DemiLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = A3F8CC15244AEC75008D0046 /* NotoSansCJKkr-DemiLight.otf */; };
@@ -164,6 +165,7 @@
 		A36DC87024236E45001B3767 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		A3D8758E24448BCE0085F17B /* AuthenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenViewController.swift; sourceTree = "<group>"; };
 		A3E2DB792454576B00AB2156 /* CompleteNewPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteNewPassViewController.swift; sourceTree = "<group>"; };
+		A3E2DB7B2454694000AB2156 /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		A3F8CC13244AEC75008D0046 /* NotoSansCJKkr-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Regular.otf"; sourceTree = "<group>"; };
 		A3F8CC14244AEC75008D0046 /* NotoSansCJKkr-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Bold.otf"; sourceTree = "<group>"; };
 		A3F8CC15244AEC75008D0046 /* NotoSansCJKkr-DemiLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-DemiLight.otf"; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				A318AC7B243E2A7600245434 /* CompleteViewController.swift */,
 				A318AC7D243E2F9E00245434 /* TermCell.swift */,
 				A33E5B2A244A047D00794169 /* TermDetailViewController.swift */,
+				A3E2DB7B2454694000AB2156 /* NicknameViewController.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 				9B180808243E10F300AF1CE6 /* StickerPopupVC.swift in Sources */,
 				A3025CA62441AED700041723 /* MakeNewPassViewController.swift in Sources */,
 				A3025CA22441AE3700041723 /* FindEmailViewController.swift in Sources */,
+				A3E2DB7C2454694000AB2156 /* NicknameViewController.swift in Sources */,
 				9BC98F0424488113002629AF /* panVC.swift in Sources */,
 				9B1B7A6E244C2A9B008ED381 /* AlbumLayoutHeaderCell.swift in Sources */,
 				A333762A2420DA36000DC7C4 /* Album.swift in Sources */,

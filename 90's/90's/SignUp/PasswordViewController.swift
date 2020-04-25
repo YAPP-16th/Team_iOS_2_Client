@@ -35,10 +35,10 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
         let newPass = tfNewPass.text!
         let confirmPass = tfConfirmPass.text!
         if(newPass == confirmPass){
-            let telephoneAuthenVC = storyboard?.instantiateViewController(identifier: "TelephoneAuthenViewController") as! TelephoneAuthenViewController
-            telephoneAuthenVC.email = email
-            telephoneAuthenVC.pwd = newPass
-            navigationController?.pushViewController(telephoneAuthenVC, animated: true)
+            let nickNameVC = storyboard?.instantiateViewController(identifier: "NicknameViewController") as! NicknameViewController
+            nickNameVC.email = email
+            nickNameVC.pwd = newPass
+            navigationController?.pushViewController(nickNameVC, animated: true)
         }else {
             validationLabel.isHidden = false
             selectorImageView2.image = UIImage(named: "path378Red")
