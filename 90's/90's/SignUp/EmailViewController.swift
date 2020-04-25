@@ -7,13 +7,16 @@
 //
 
 import UIKit
+import Alamofire
 
-class EmailViewController: UIViewController, UITextFieldDelegate {
+class EmailViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var selectorImageView: UIImageView!
     @IBOutlet weak var emailValidationLabel: UILabel!
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var buttonConst: NSLayoutConstraint!
+    
+    var email:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,16 +29,15 @@ class EmailViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func clickNextBtn(_ sender: Any) {
-        let email = tfEmail.text!
+        self.email = tfEmail.text!
         
         //string extension을 통해 정규식 검증
         if(email.validateEmail()){
             emailValidationLabel.isHidden = true
-            let passwordVC = storyboard?.instantiateViewController(identifier: "PasswordViewController") as! PasswordViewController
-            passwordVC.email = email
-            navigationController?.pushViewController(passwordVC, animated: true)
+            checkEmail()
         }else {
             emailValidationLabel.isHidden = false
+            emailValidationLabel.text = "이메일 확인 후 재시도 해주세요"
             selectorImageView.image = UIImage(named: "path378Red")
         }
     }
@@ -95,6 +97,50 @@ class EmailViewController: UIViewController, UITextFieldDelegate {
         tfEmail.resignFirstResponder()
         return true
     }
+    
+    func goPassVC() {
+        let passwordVC = storyboard?.instantiateViewController(identifier: "PasswordViewController") as! PasswordViewController
+        passwordVC.email = self.email
+        navigationController?.pushViewController(passwordVC, animated: true)
+    }
+    
+}
+
+
+extension EmailViewController {
+    
+    func checkEmail(){
+        EmailCheckService.shared.emailCheck(email: self.email, completion: {
+            response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200:
+                    guard let data = response.data else { return }
+                    let decoder = JSONDecoder()
+                    let checkEmailResult = try? decoder.decode(CheckEmailResult.self, from: data)
+                    guard let isExist = checkEmailResult?.result else { return }
+                    if(isExist){
+                        self.emailValidationLabel.isHidden = false
+                        self.emailValidationLabel.text = "이미 존재하는 계정입니다"
+                    }else {
+                        self.goPassVC()
+                    }
+                    break
+                case 401...404:
+                    let alert = UIAlertController(title: "오류", message: "이메일 중복체크 불가", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "확인", style: .default)
+                    alert.addAction(action)
+                    self.present(alert, animated: true)
+                    break
+                default:
+                    return
+                }
+            }
+        })
+        
+    }
+    
+    
 }
 
 
