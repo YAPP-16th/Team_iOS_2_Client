@@ -142,7 +142,8 @@ class OptionViewController : UIViewController {
     }
     
     @IBAction func FirstOptionClick(_ sender: Any) {
-        
+        print(isFirstOptionViewAppear)
+        print(isSecondOptionViewAppear)
         isFirstOptionViewAppear = !isFirstOptionViewAppear
         
         if isFirstOptionViewAppear {
@@ -167,8 +168,17 @@ class OptionViewController : UIViewController {
     }
     
     @IBAction func SecondOptionClick(_ sender: Any) {
-        
+        print(isFirstOptionViewAppear)
+        print(isSecondOptionViewAppear)
         isSecondOptionViewAppear = !isSecondOptionViewAppear
+        
+        if isFirstOptionViewAppear {
+            self.FirstOptionConstraint.constant = 0
+            self.SecondOptionConstraint.constant = 239
+            self.stackViewConnected.constant = 63.5
+            self.FirstOptionView.isHidden = true
+            self.SecondOptionView.isHidden = false
+        }
         
         if isSecondOptionViewAppear {
             
@@ -181,6 +191,8 @@ class OptionViewController : UIViewController {
             self.FirstOptionConstraint.constant = 0
             self.FirstOptionView.isHidden = true
             self.SecondOptionView.isHidden = true
+            isFirstOptionViewAppear = false
+
         }
         UIView.animate(withDuration: 1, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations: {self.view.layoutIfNeeded()})
         
