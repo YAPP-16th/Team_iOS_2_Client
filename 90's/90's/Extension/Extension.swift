@@ -312,6 +312,7 @@ extension UIImage {
     UIGraphicsEndImageContext()
     return mergedImage
   }
+}
 
 extension UIImageView {
     func applyBackImageViewLayout(selectedLayout : AlbumLayout, imageView : UIImageView ) -> UIImageView{
