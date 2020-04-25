@@ -56,6 +56,7 @@
 		A3025CA42441AE9800041723 /* FindEmailErrViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3025CA32441AE9800041723 /* FindEmailErrViewController.swift */; };
 		A3025CA62441AED700041723 /* MakeNewPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3025CA52441AED700041723 /* MakeNewPassViewController.swift */; };
 		A311E5922438A880005EEC29 /* AlbumPeriodController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A311E5912438A880005EEC29 /* AlbumPeriodController.swift */; };
+		A314260E2450A9E1005487F3 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A314260D2450A9E1005487F3 /* LoginModel.swift */; };
 		A318AC72243E290C00245434 /* TermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A318AC71243E290C00245434 /* TermViewController.swift */; };
 		A318AC74243E291D00245434 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A318AC73243E291D00245434 /* EmailViewController.swift */; };
 		A318AC76243E292600245434 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A318AC75243E292600245434 /* PasswordViewController.swift */; };
@@ -138,6 +139,7 @@
 		A3025CA32441AE9800041723 /* FindEmailErrViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailErrViewController.swift; sourceTree = "<group>"; };
 		A3025CA52441AED700041723 /* MakeNewPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeNewPassViewController.swift; sourceTree = "<group>"; };
 		A311E5912438A880005EEC29 /* AlbumPeriodController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumPeriodController.swift; sourceTree = "<group>"; };
+		A314260D2450A9E1005487F3 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		A318AC71243E290C00245434 /* TermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermViewController.swift; sourceTree = "<group>"; };
 		A318AC73243E291D00245434 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
 		A318AC75243E292600245434 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				A3025CA32441AE9800041723 /* FindEmailErrViewController.swift */,
 				A3025CA52441AED700041723 /* MakeNewPassViewController.swift */,
 				A3D8758E24448BCE0085F17B /* AuthenViewController.swift */,
+				A314260D2450A9E1005487F3 /* LoginModel.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B44EDE52429FCDF00B0D774 /* Extension.swift in Sources */,
+				A314260E2450A9E1005487F3 /* LoginModel.swift in Sources */,
 				A318AC72243E290C00245434 /* TermViewController.swift in Sources */,
 				9B180808243E10F300AF1CE6 /* StickerPopupVC.swift in Sources */,
 				A3025CA62441AED700041723 /* MakeNewPassViewController.swift in Sources */,

@@ -9,13 +9,18 @@
 import UIKit
 
 class EnterViewController: UIViewController {
+    var loginData =  LoginModel()
+    @IBOutlet weak var loginBtn: UIButton!
+    @IBOutlet weak var signUpBtn: UIButton!
+    @IBOutlet weak var kakaoLoginBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
         tabBarController?.tabBar.isHidden = true
-        
-        // Do any additional setup after loading the view.
+        loginBtn.layer.cornerRadius = 8.0
+        signUpBtn.layer.cornerRadius = 8.0
+        kakaoLoginBtn.layer.cornerRadius = 8.0
     }
     
     //둘러보기 버튼 클릭 시
@@ -36,5 +41,50 @@ class EnterViewController: UIViewController {
         navigationController?.pushViewController(termVC, animated: true)
     }
     
+    //카카오톡 로그인
+    @IBAction func goKaKaoLogin(_ sender: Any) {
+        
+        //싱글톤 객체 생성
+        guard let session = KOSession.shared() else {
+            return
+        }
+        
+        //세션이 열려있다면 닫기
+        if session.isOpen() {
+            session.close()
+        }
+        
+        session.open { (error) in
+            if(session.isOpen()){
+                KOSessionTask.accessTokenInfoTask(completionHandler: {
+                    (accesstokenInfo, tokenErr) in
+                    if let error = tokenErr as NSError? {
+                        switch error.code{
+                        case 5:
+                            print("세션이 만료된(access_token, refresh_token이 모두 만료된 경우) 상태")
+                            break
+                        default:
+                            print("예기치 못한 에러, 서버에러 ")
+                            break
+                        }
+                    }else {
+                        print("success request - access token info: \(accesstokenInfo!)")
+                        self.loginData.token = accesstokenInfo!.id!.stringValue
+                    }
+                })
+                
+                KOSessionTask.userMeTask(completion: { (userInfoErr, user) in
+                    guard let user = user,
+                        let email = user.account?.email else { return }
+                    self.loginData.email = email
+                    print("\(self.loginData)")
+                })
+                
+             }else {
+                print("로그인 에러: \(error)")
+            }
+        }
+    
+    }
     
 }

@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VQc-BJ-DmD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VQc-BJ-DmD">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSansCJKkr-Bold.otf">
+            <string>NotoSansCJKkr-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Enter View Controller-->
         <scene sceneID="sXh-N2-t8l">
@@ -15,21 +20,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ejN-qd-Xgk">
-                                <rect key="frame" x="35" y="499" width="342" height="78"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" title="로그인">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="goSignIn:" destination="VQc-BJ-DmD" eventType="touchUpInside" id="hmu-Qx-FDe"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcs-xC-pc1">
-                                <rect key="frame" x="36" y="598" width="342" height="78"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcs-xC-pc1">
+                                <rect key="frame" x="18" y="682" width="378" height="78"/>
                                 <color key="backgroundColor" red="0.59999999999999998" green="0.61176470588235299" blue="0.65098039215686276" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="회원가입">
@@ -39,20 +31,77 @@
                                     <action selector="goSignUp:" destination="VQc-BJ-DmD" eventType="touchUpInside" id="ms8-n6-jLw"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2P-nx-y2c">
-                                <rect key="frame" x="325" y="80" width="63" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2P-nx-y2c">
+                                <rect key="frame" x="329" y="67" width="67" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="67" id="48t-Ra-feA"/>
+                                    <constraint firstAttribute="height" constant="27" id="RYz-Hr-vbZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="18"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="둘러보기"/>
                                 <connections>
                                     <action selector="takeALook:" destination="VQc-BJ-DmD" eventType="touchUpInside" id="2N0-1N-dBs"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jyp-vV-Xgl">
+                                <rect key="frame" x="18" y="776" width="378" height="72"/>
+                                <color key="backgroundColor" red="1" green="0.92549019610000005" blue="0.023529411760000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="9Jm-Dd-zbi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="18"/>
+                                <state key="normal" title="카카오톡 로그인">
+                                    <color key="titleColor" red="0.22352941179999999" green="0.1058823529" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="goKaKaoLogin:" destination="VQc-BJ-DmD" eventType="touchUpInside" id="Tfr-xo-yQ7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ejN-qd-Xgk">
+                                <rect key="frame" x="18" y="594" width="378" height="72"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="18"/>
+                                <state key="normal" title="로그인">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="goSignIn:" destination="VQc-BJ-DmD" eventType="touchUpInside" id="hmu-Qx-FDe"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kakaoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="JaN-68-Sqd">
+                                <rect key="frame" x="48" y="803" width="23" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="C0x-Bh-JJj"/>
+                                    <constraint firstAttribute="width" constant="23" id="U0D-mq-QHC"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="bcs-xC-pc1" firstAttribute="top" secondItem="ejN-qd-Xgk" secondAttribute="bottom" constant="16" id="4qD-Qb-Jpi"/>
+                            <constraint firstItem="Jyp-vV-Xgl" firstAttribute="leading" secondItem="Vbx-xt-N1B" secondAttribute="leading" constant="18" id="EAj-0j-yfw"/>
+                            <constraint firstItem="JaN-68-Sqd" firstAttribute="top" secondItem="Jyp-vV-Xgl" secondAttribute="top" constant="27" id="Hy7-j2-bGT"/>
+                            <constraint firstItem="Vbx-xt-N1B" firstAttribute="bottom" secondItem="Jyp-vV-Xgl" secondAttribute="bottom" constant="14" id="NvM-uN-Rqm"/>
+                            <constraint firstItem="ejN-qd-Xgk" firstAttribute="height" secondItem="bcs-xC-pc1" secondAttribute="height" multiplier="0.923077" id="SIt-jh-01L"/>
+                            <constraint firstItem="Vbx-xt-N1B" firstAttribute="trailing" secondItem="Jyp-vV-Xgl" secondAttribute="trailing" constant="18" id="Xl3-g2-y3N"/>
+                            <constraint firstItem="Vbx-xt-N1B" firstAttribute="trailing" secondItem="S2P-nx-y2c" secondAttribute="trailing" constant="18" id="YMJ-DD-Ioo"/>
+                            <constraint firstItem="Jyp-vV-Xgl" firstAttribute="top" secondItem="bcs-xC-pc1" secondAttribute="bottom" constant="16" id="auP-i1-JKf"/>
+                            <constraint firstItem="S2P-nx-y2c" firstAttribute="top" secondItem="Vbx-xt-N1B" secondAttribute="top" constant="23" id="bQN-cr-yE1"/>
+                            <constraint firstItem="ejN-qd-Xgk" firstAttribute="trailing" secondItem="bcs-xC-pc1" secondAttribute="trailing" id="lhk-zb-b91"/>
+                            <constraint firstItem="ejN-qd-Xgk" firstAttribute="leading" secondItem="bcs-xC-pc1" secondAttribute="leading" id="o59-ZF-b1n"/>
+                            <constraint firstItem="bcs-xC-pc1" firstAttribute="trailing" secondItem="Jyp-vV-Xgl" secondAttribute="trailing" id="sUL-9U-2AD"/>
+                            <constraint firstItem="bcs-xC-pc1" firstAttribute="height" secondItem="Jyp-vV-Xgl" secondAttribute="height" multiplier="1.08333" id="uLF-IF-yUJ"/>
+                            <constraint firstItem="bcs-xC-pc1" firstAttribute="leading" secondItem="Jyp-vV-Xgl" secondAttribute="leading" id="wdM-3N-UCo"/>
+                            <constraint firstItem="JaN-68-Sqd" firstAttribute="leading" secondItem="Jyp-vV-Xgl" secondAttribute="leading" constant="30" id="yry-UK-edX"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Vbx-xt-N1B"/>
                     </view>
+                    <connections>
+                        <outlet property="kakaoLoginBtn" destination="Jyp-vV-Xgl" id="28g-4y-1WZ"/>
+                        <outlet property="loginBtn" destination="ejN-qd-Xgk" id="vy7-2V-Vv2"/>
+                        <outlet property="signUpBtn" destination="bcs-xC-pc1" id="eeU-me-Y4d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="29k-uU-3cx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -463,5 +512,6 @@
     </scenes>
     <resources>
         <image name="arrowRightBlackCopy4" width="11" height="19"/>
+        <image name="kakaoIcon" width="24" height="20"/>
     </resources>
 </document>
