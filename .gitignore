@@ -2,6 +2,11 @@
 # Created by https://www.gitignore.io/api/macos,cocoapods
 # Edit at https://www.gitignore.io/?templates=macos,cocoapods
 
+### Xcode ###
+!*.xcodeproj/xcshareddata/
+!*.xcworkspace/contents.xcworkspacedata
+
+
 ### CocoaPods ###
 ## CocoaPods GitIgnore Template
 
@@ -37,5 +42,12 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+### Carthage ###
+# Carthage
+#
+# Add this line if you want to avoid checking in source code from Carthage dependencies.
+Carthage/Checkouts
+Carthage/Build
 
 # End of https://www.gitignore.io/api/macos,cocoapods
