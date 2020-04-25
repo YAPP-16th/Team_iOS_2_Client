@@ -2,15 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>neodgm</string>
-		<string>NotoSansCJKkr-Bold</string>
-		<string>NotoSansCJKkr-DemiLight</string>
-		<string>NotoSansCJKkr-Light</string>
-		<string>NotoSansCJKkr-Medium</string>
-		<string>NotoSansCJKkr-Regular</string>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -57,6 +48,15 @@
 	<string>사진 추가합니다!</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>test</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>neodgm</string>
+		<string>NotoSansCJKkr-Bold</string>
+		<string>NotoSansCJKkr-DemiLight</string>
+		<string>NotoSansCJKkr-Light</string>
+		<string>NotoSansCJKkr-Medium</string>
+		<string>NotoSansCJKkr-Regular</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import Alamofire
 
 class AlbumDetailPopupVC: UIViewController {
     @IBOutlet weak var touchView: UIView!

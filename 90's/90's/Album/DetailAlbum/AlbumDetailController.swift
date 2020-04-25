@@ -28,6 +28,7 @@ class AlbumDetailController : UIViewController {
     var openAlbumCount : Int! // 앨범 낡기 적용
     var isEnded: Bool = true
     var currentCell : UICollectionViewCell? = nil
+    var selectedLayout : AlbumLayout?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -55,6 +56,8 @@ extension AlbumDetailController {
     func defaultSetting(){
         albumNameLabel.text = AlbumDatabase.arrayList[albumIndex!].albumName
         albumCountLabel.text = "\(AlbumDatabase.arrayList[albumIndex!].photos.count - 1) 개의 추억이 쌓였습니다"
+        selectedLayout = AlbumDatabase.arrayList[albumIndex!].albumLayout
+        
         // 순서 바꾸기
         longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gesture:)))
         photoCollectionView.addGestureRecognizer(longPressGesture)
@@ -118,13 +121,17 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
             return currentCell!
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCell
-            cell.photoImageView.image = AlbumDatabase.arrayList[albumIndex!].photos[indexPath.row+1]
+            
+            cell.backImageView = applyBackImageViewLayout(selectedLayout: selectedLayout!, imageView: cell.backImageView)
+            cell.photoImageView = applyImageViewLayout(selectedLayout: selectedLayout!, imageView: cell.photoImageView, image: AlbumDatabase.arrayList[albumIndex!].photos[indexPath.row+1])
+            
             return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width/2 - 26, height: view.frame.height/4 + 10)
+        return returnLayoutSize(selectedLayout: selectedLayout!)
+        //return CGSize(width: view.frame.width/2 - 26, height: view.frame.height/4 + 10)
     }
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
