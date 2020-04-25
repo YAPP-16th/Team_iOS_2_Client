@@ -388,18 +388,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="해당 번호로 등록된 이메일이 없습니다" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekA-Kc-sIL">
-                                <rect key="frame" x="41" y="140" width="250" height="73"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="해당 번호로 등록된 이메일이 없습니다" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekA-Kc-sIL">
+                                <rect key="frame" x="41" y="135" width="216" height="58"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="58" id="MIP-Lr-mqx"/>
+                                    <constraint firstAttribute="width" constant="216" id="Pmd-ER-3dh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7p-Ee-BtJ">
-                                <rect key="frame" x="31" y="358" width="352" height="66"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="53D-fZ-6ND">
+                                <rect key="frame" x="22" y="71" width="14" height="23"/>
+                                <state key="normal" image="iconBack"/>
+                                <connections>
+                                    <action selector="goBack:" destination="gUI-Tl-yiP" eventType="touchUpInside" id="kof-w6-OrB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7p-Ee-BtJ">
+                                <rect key="frame" x="18" y="663" width="378" height="72"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="Fbv-Yc-Ep2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="18"/>
                                 <state key="normal" title="다시 찾기">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -407,11 +419,10 @@
                                     <action selector="reFindEmail:" destination="gUI-Tl-yiP" eventType="touchUpInside" id="dIG-qg-9XM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atb-dY-1Mg">
-                                <rect key="frame" x="31" y="454" width="352" height="66"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.84705882352941175" green="0.28627450980392155" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atb-dY-1Mg">
+                                <rect key="frame" x="18" y="750" width="378" height="72"/>
+                                <color key="backgroundColor" red="0.8901960784313725" green="0.24313725490196078" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="18"/>
                                 <state key="normal" title="로그인">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -419,18 +430,27 @@
                                     <action selector="goLogin:" destination="gUI-Tl-yiP" eventType="touchUpInside" id="wJs-Eb-qoK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="53D-fZ-6ND">
-                                <rect key="frame" x="31" y="80" width="25" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="arrowRightBlackCopy4"/>
-                                <connections>
-                                    <action selector="goBack:" destination="gUI-Tl-yiP" eventType="touchUpInside" id="kof-w6-OrB"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="atb-dY-1Mg" firstAttribute="leading" secondItem="y9N-35-Q6g" secondAttribute="leading" constant="18" id="3vl-Z5-ko4"/>
+                            <constraint firstItem="F7p-Ee-BtJ" firstAttribute="leading" secondItem="atb-dY-1Mg" secondAttribute="leading" id="8NB-Jm-yTy"/>
+                            <constraint firstItem="ekA-Kc-sIL" firstAttribute="leading" secondItem="y9N-35-Q6g" secondAttribute="leading" constant="41" id="Cl4-yE-gUW"/>
+                            <constraint firstItem="F7p-Ee-BtJ" firstAttribute="height" secondItem="atb-dY-1Mg" secondAttribute="height" id="DcB-RR-dag"/>
+                            <constraint firstItem="ekA-Kc-sIL" firstAttribute="top" secondItem="53D-fZ-6ND" secondAttribute="bottom" constant="41" id="UUd-73-j7P"/>
+                            <constraint firstItem="atb-dY-1Mg" firstAttribute="top" secondItem="F7p-Ee-BtJ" secondAttribute="bottom" constant="15" id="UbW-GY-2ps"/>
+                            <constraint firstItem="53D-fZ-6ND" firstAttribute="leading" secondItem="y9N-35-Q6g" secondAttribute="leading" constant="22" id="Wda-Dk-Erk"/>
+                            <constraint firstItem="53D-fZ-6ND" firstAttribute="top" secondItem="y9N-35-Q6g" secondAttribute="top" constant="27" id="cyc-O5-3al"/>
+                            <constraint firstItem="y9N-35-Q6g" firstAttribute="bottom" secondItem="atb-dY-1Mg" secondAttribute="bottom" constant="40" id="kxv-R3-zW2"/>
+                            <constraint firstItem="F7p-Ee-BtJ" firstAttribute="trailing" secondItem="atb-dY-1Mg" secondAttribute="trailing" id="wrx-fJ-JRZ"/>
+                            <constraint firstItem="y9N-35-Q6g" firstAttribute="trailing" secondItem="atb-dY-1Mg" secondAttribute="trailing" constant="18" id="zsn-oC-LjE"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="y9N-35-Q6g"/>
                     </view>
+                    <connections>
+                        <outlet property="findAgainBtn" destination="F7p-Ee-BtJ" id="oMD-vI-qNB"/>
+                        <outlet property="loginBtn" destination="atb-dY-1Mg" id="mWH-NV-JbI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tg8-QJ-da8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -724,7 +744,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrowRightBlackCopy4" width="11" height="19"/>
         <image name="iconBack" width="14" height="23"/>
         <image name="kakaoIcon" width="24" height="20"/>
         <image name="path11Grey" width="2" height="11"/>
