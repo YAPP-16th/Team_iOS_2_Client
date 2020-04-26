@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol DetailDelegate {
+    func goDetailVC(_ index : Int)
+}
+
 class ProfileVC: UIViewController {
     @IBOutlet weak var guestView: UIView!
     @IBOutlet weak var profileView: UIView!
@@ -54,8 +58,35 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell", for: indexPath) as! ProfileTableViewCell
         cell.settingLabel.text = menuArr[indexPath.row]
+        cell.detailDelegate = self
+        cell.indexPath = indexPath
         return cell
     }
-    
+}
 
+extension ProfileVC : DetailDelegate {
+    func goDetailVC(_ index: Int) {
+        switch index {
+        case 0:
+            pushView("OrderListViewController")
+            break
+        case 1:
+            pushView("ManageInfoViewController")
+            break
+        case 2:
+            pushView("FAQViewController")
+            break
+        case 3:
+            pushView("SettingViewController")
+            break
+        default:
+            return
+        }
+    }
+    
+    func pushView(_ vc: String){
+        guard let detailVC = self.storyboard?.instantiateViewController(identifier: vc) else { return }
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
 }
