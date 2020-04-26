@@ -245,8 +245,8 @@ extension UIViewController{
             imageView.image = image.imageResize(sizeChange: size)
             return imageView
         case .Filmroll:
-            size = CGSize(width: AlbumLayout.Filmroll.size.width - 72, height: AlbumLayout.Filmroll.size.height - 3)
-            imageView.frame = CGRect(x: 36, y: 3, width:size.width, height: size.height)
+            size = CGSize(width: AlbumLayout.Filmroll.size.width - 68, height: AlbumLayout.Filmroll.size.height - 3)
+            imageView.frame = CGRect(x: 34, y: 3, width:size.width, height: size.height)
             imageView.image = image.imageResize(sizeChange: size)
             return imageView
         }
