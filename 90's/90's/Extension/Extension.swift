@@ -177,7 +177,7 @@ extension UIViewController{
         }
     }
     
-    func applyBackImageViewLayout(selectedLayout : AlbumLayout, imageView : UIImageView ) -> UIImageView{
+    func applyBackImageViewLayout(selectedLayout : AlbumLayout, imageView : UIImageView ) -> UIImageView {
         switch selectedLayout {
             case .Polaroid:
                 imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Polaroid.size.width, height: AlbumLayout.Polaroid.size.height)
@@ -245,7 +245,9 @@ extension UIViewController{
             imageView.image = image.imageResize(sizeChange: size)
             return imageView
         case .Filmroll:
-            // 이미지 없어서 건너뜀
+            size = CGSize(width: AlbumLayout.Filmroll.size.width - 72, height: AlbumLayout.Filmroll.size.height - 3)
+            imageView.frame = CGRect(x: 36, y: 3, width:size.width, height: size.height)
+            imageView.image = image.imageResize(sizeChange: size)
             return imageView
         }
     }
@@ -297,6 +299,8 @@ extension UIColor {
         return UIColor(red: CGFloat(r/255.0), green: CGFloat(g/255.0), blue:CGFloat(b/255.0), alpha : CGFloat(alpha))
     }
 }
+
+
 extension UIImage {
     func mergeWith(topImage: UIImage,bottomImage: UIImage) -> UIImage {
 //    let bottomImage = self
@@ -312,79 +316,4 @@ extension UIImage {
     UIGraphicsEndImageContext()
     return mergedImage
   }
-}
-
-extension UIImageView {
-    func applyBackImageViewLayout(selectedLayout : AlbumLayout, imageView : UIImageView ) -> UIImageView{
-        switch selectedLayout {
-            case .Polaroid:
-                imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Polaroid.size.width, height: AlbumLayout.Polaroid.size.height)
-                imageView.image = AlbumLayout.Polaroid.image
-                return imageView
-            case .Mini:
-                imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Mini.size.width, height: AlbumLayout.Mini.size.height)
-                imageView.image = AlbumLayout.Mini.image
-                return imageView
-            case .Memory:
-                imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Memory.size.width, height: AlbumLayout.Memory.size.height)
-                imageView.image = AlbumLayout.Memory.image
-                return imageView
-            case .Portrab:
-                imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Portrab.size.width, height: AlbumLayout.Portrab.size.height)
-                imageView.image = AlbumLayout.Portrab.image
-                return imageView
-            case .Tape:
-                imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Tape.size.width, height: AlbumLayout.Tape.size.height)
-                imageView.image = AlbumLayout.Tape.image
-                return imageView
-            case .Portraw:
-                imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Portraw.size.width, height: AlbumLayout.Portraw.size.height)
-                imageView.image = AlbumLayout.Portraw.image
-                return imageView
-            case .Filmroll:
-                imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Filmroll.size.width, height: AlbumLayout.Filmroll.size.height)
-                imageView.image = AlbumLayout.Filmroll.image
-                return imageView
-            }
-    }
-    
-    func applyImageViewLayout(selectedLayout : AlbumLayout, imageView : UIImageView, image : UIImage) -> UIImageView {
-        var size : CGSize = CGSize(width: 0, height: 0)
-        
-        switch selectedLayout {
-        case .Polaroid:
-            size = CGSize(width: AlbumLayout.Polaroid.size.width - 20, height: AlbumLayout.Polaroid.size.height - 50)
-            imageView.frame = CGRect(x: 10, y: 10, width: size.width, height: size.height)
-            imageView.image = image.imageResize(sizeChange: size)
-            return imageView
-        case .Mini:
-            size =  CGSize(width: AlbumLayout.Mini.size.width - 24, height: AlbumLayout.Mini.size.height - 48)
-            imageView.frame = CGRect(x: 12, y: 9, width: size.width, height: size.height)
-            imageView.image = image.imageResize(sizeChange: size)
-            return imageView
-        case .Memory:
-            size = CGSize(width: AlbumLayout.Memory.size.width - 48, height: AlbumLayout.Memory.size.height - 52)
-            imageView.frame = CGRect(x: 24, y: 26, width: size.width, height: size.height)
-            imageView.image = image.imageResize(sizeChange: size)
-            return imageView
-        case .Portrab:
-            size = CGSize(width: AlbumLayout.Portrab.size.width - 20, height: AlbumLayout.Portrab.size.height - 24)
-            imageView.frame = CGRect(x: 10, y: 12, width: size.width, height: size.height)
-            imageView.image = image.imageResize(sizeChange: size)
-            return imageView
-        case .Tape:
-            size = CGSize(width: AlbumLayout.Tape.size.width - 44, height: AlbumLayout.Tape.size.height - 80)
-            imageView.frame = CGRect(x: 23, y: 43, width: size.width, height: size.height)
-            imageView.image = image.imageResize(sizeChange: size)
-            return imageView
-        case .Portraw:
-            size = CGSize(width: AlbumLayout.Portraw.size.width - 18, height: AlbumLayout.Portraw.size.height - 30)
-            imageView.frame = CGRect(x: 9, y: 15, width: size.width, height: size.height)
-            imageView.image = image.imageResize(sizeChange: size)
-            return imageView
-        case .Filmroll:
-            // 이미지 없어서 건너뜀
-            return imageView
-        }
-    }
 }
