@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oDX-VY-kOj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oDX-VY-kOj">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -31,6 +31,7 @@
                         <segue destination="Bhq-Lv-tFv" kind="relationship" relationship="viewControllers" id="2cP-iT-tEc"/>
                         <segue destination="Z34-8U-FbG" kind="relationship" relationship="viewControllers" id="PeR-d6-yfz"/>
                         <segue destination="Gkw-iW-SCn" kind="relationship" relationship="viewControllers" id="UQ1-N1-Ywg"/>
+                        <segue destination="VkZ-La-WgV" kind="relationship" relationship="viewControllers" id="dAV-Zy-PaN"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="deS-4W-e0O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -87,6 +88,16 @@
             </objects>
             <point key="canvasLocation" x="1353" y="-1500"/>
         </scene>
+        <!--Profile-->
+        <scene sceneID="jGm-ch-FdP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="tHE-kR-Bjw" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="b8f-NR-aC4"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ykc-VD-dcs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="654.34782608695662" y="-1314.5089285714284"/>
+        </scene>
         <!--Album-->
         <scene sceneID="24U-wQ-6yZ">
             <objects>
@@ -103,7 +114,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1dT-is-ATc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="651" y="-1500"/>
+            <point key="canvasLocation" x="1560.8695652173915" y="-1500"/>
         </scene>
         <!--Filter-->
         <scene sceneID="PKh-9i-hxV">
@@ -149,7 +160,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9MT-lv-HPf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1845" y="-1500"/>
+            <point key="canvasLocation" x="2755.072463768116" y="-1500"/>
         </scene>
         <!--Print-->
         <scene sceneID="VfE-Yj-Sot">
@@ -224,6 +235,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="riC-CH-gqW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-988" y="173"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="mAT-gf-wHX">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="VkZ-La-WgV" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" id="qr0-0P-wfK"/>
+                    <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RLs-pa-KhC">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="tHE-kR-Bjw" kind="relationship" relationship="rootViewController" id="WdU-AW-rkk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b49-oQ-s9l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="191" y="-1379"/>
         </scene>
     </scenes>
 </document>
