@@ -23,61 +23,39 @@ class ProfileVC: UIViewController {
     
     @IBOutlet weak var settingTableView: UITableView!
     
-    let settingArray : [String] = ["주문 내역", "내 정보 관리", "FAQ", "설정"]
+    let menuArr : [String] = ["주문 내역", "내 정보 관리", "FAQ", "설정"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        defaultSetting()
+        setUI()
+        profileView.isHidden = true
     }
-}
-
-
-extension ProfileVC {
-    func defaultSetting(){
+    
+    @IBAction func goLogin(_ sender: Any) {
+        let signSB = UIStoryboard.init(name: "SignIn", bundle: nil)
+        let enterVC = signSB.instantiateViewController(identifier: "EnterViewController") as! EnterViewController
+        navigationController?.pushViewController(enterVC, animated: true)
+    }
+    
+    func setUI(){
         settingTableView.delegate = self
         settingTableView.dataSource = self
-
-        guestViewSetting()
+        guestLoginBtn.layer.cornerRadius = 8.0
     }
     
-    func guestViewSetting(){
-        guestLabel.text = "로그인을 하고\n나만의 앨범을 만들어보세요"
-        guestLoginBtn.addTarget(self, action: #selector(touchLoginBtn), for: .touchUpInside)
-    }
-    
-    func profileViewSetting(){
-        profileName.text = UserDatabase.MemberList[0].name
-        profileEmail.text = UserDatabase.MemberList[0].email
-        profileImage.image = UserDatabase.MemberList[0].picture
-        profileImage.layer.cornerRadius = 15
-        
-        profileAlbumCount.text = "내 앨범 \(AlbumDatabase.arrayList.count)개"
-        profilePrintCount.text = "인화 0건"
-    }
-}
-
-
-extension ProfileVC {
-    @objc func touchLoginBtn(){
-        let signupStroyboard = UIStoryboard(name: "SginUp", bundle: nil)
-        let signupVC = signupStroyboard.instantiateViewController(withIdentifier: "TermVC") as! TermViewController // identifier 붙어야 함
-        self.present(signupVC, animated: true, completion: nil)
-    }
 }
 
 
 extension ProfileVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return menuArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "profiletablecell", for: indexPath) as! ProfileTableViewCell
-        cell.settingLabel.text = settingArray[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell", for: indexPath) as! ProfileTableViewCell
+        cell.settingLabel.text = menuArr[indexPath.row]
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
-    }
+
 }
