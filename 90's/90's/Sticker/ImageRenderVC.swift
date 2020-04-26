@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class ImageRenderVC: UIViewController {
     @IBOutlet weak var polaroidView: UIView!
     @IBOutlet weak var renderImage: UIImageView!
@@ -19,6 +20,7 @@ class ImageRenderVC: UIViewController {
     var image : UIImage?
     var tempsticker : UIImageView?
     var sticker : UIView?
+    var isStickerRotateClicked : Bool = false
     // value for checkimageview showing while collection cells changes
     fileprivate var isFilterSelected : Bool = true
     fileprivate var testFilterCell : photoFilterCollectionCell?
@@ -40,12 +42,12 @@ class ImageRenderVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        collectionView.reloadData()
         
-        if image == nil { // for test
-            image = UIImage(named: "husky")
+        if image == nil {
+            image = UIImage(named: "husky")!
         }
         
+        collectionView.reloadData()
         renderImage.image = image
         initializeArrays()
     }
@@ -88,10 +90,10 @@ extension ImageRenderVC {
         view.addGestureRecognizer(panGesture)
     }
     
-    private func createRotate(view : UIView){
-        let rotateGesture = UIRotationGestureRecognizer(target: self, action: #selector(self.handleRotateGesture(rotateGesture:)))
-        view.addGestureRecognizer(rotateGesture)
-    }
+//    private func createRotate(view : UIView){
+//        let rotateGesture = UIRotationGestureRecognizer(target: self, action: #selector(self.handleRotateGesture(rotateGesture:)))
+//        view.addGestureRecognizer(rotateGesture)
+//    }
     
     private func createTap(view : UIView){
         let tapGestue = UITapGestureRecognizer(target: self, action: #selector(self.handleTapGesture(tapGestrue:)))
@@ -105,8 +107,8 @@ extension ImageRenderVC {
         stickerView.isUserInteractionEnabled = true
         sticker = stickerView
         
-        createPan(view: stickerView)
-        createRotate(view: stickerView)
+        createPan(view: stickerView) // 이미지 옮기기
+        //createRotate(view: stickerView)
         //createTap(view: stickerView)
 
         self.view.addSubview(stickerView)
@@ -143,7 +145,6 @@ extension ImageRenderVC {
         
         let imageView = panGesture.view as! StickerLayout
         imageView.center = CGPoint(x: imageView.center.x + transition.x, y: imageView.center.y + transition.y)
-        print("pan gesture working")
         imageView.isUserInteractionEnabled = true
         imageView.isMultipleTouchEnabled = false
     }
@@ -258,6 +259,14 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
 
 
 extension ImageRenderVC {
+    func isRotateBtnClicked(){
+        isStickerRotateClicked = !isStickerRotateClicked
+        print("isClicked = \(isStickerRotateClicked)")
+    }
+}
+
+
+extension ImageRenderVC {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GoToSaveVC" {
             let dest = segue.destination as? SavePhotoVC
@@ -267,3 +276,5 @@ extension ImageRenderVC {
         }
     }
 }
+
+
