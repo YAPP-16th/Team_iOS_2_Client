@@ -37,7 +37,8 @@ class EnterViewController: UIViewController {
     
     //회원가입 버튼 클릭 시
     @IBAction func goSignUp(_ sender: Any) {
-        let termVC = storyboard?.instantiateViewController(withIdentifier: "TermViewController") as! TermViewController
+        let signUpSB = UIStoryboard(name: "SignUp", bundle: nil)
+        let termVC = signUpSB.instantiateViewController(withIdentifier: "TermViewController") as! TermViewController
         navigationController?.pushViewController(termVC, animated: true)
     }
     
