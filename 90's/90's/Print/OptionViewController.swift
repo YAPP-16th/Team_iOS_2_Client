@@ -19,6 +19,7 @@ class OptionViewController : UIViewController {
     
     @IBOutlet weak var completeBtnConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
     //MARK: View IBOutlet
     @IBOutlet weak var OptionView: UIView!
     @IBOutlet weak var CompleteBtn: UIButton!
@@ -50,8 +51,6 @@ class OptionViewController : UIViewController {
     @IBOutlet weak var previewImage: UIImageView!
     
     var isTotalOptionViewAppear = false
-    var isFirstOptionViewAppear = true
-    var isSecondOptionViewAppear = true
     var coverImage : UIImage? = nil
     var cal1 = false
     var cal2 = false
@@ -61,7 +60,7 @@ class OptionViewController : UIViewController {
     var cal6 = false
     var calc : Int = 0
     var tempImage: UIImage? = nil
-
+    
     
     override func viewDidLoad() {
         self.view.backgroundColor = .white
@@ -77,6 +76,19 @@ class OptionViewController : UIViewController {
         nextBtn.layer.cornerRadius = 10
         CompleteBtn.layer.cornerRadius = 10
         orderBtn.layer.cornerRadius = 10
+        
+        // iPhone X..
+        if UIScreen.main.nativeBounds.height == 1792.0 {
+            
+            self.topConstraint.constant = 115
+            
+        }
+            // iPhone 8..
+        else if UIScreen.main.nativeBounds.height == 1334.0
+        {
+            self.topConstraint.constant = 85
+            
+        }
         
         if !isTotalOptionViewAppear {
             self.BottomViewConstraint.constant = self.view.frame.height
@@ -163,10 +175,9 @@ class OptionViewController : UIViewController {
     @IBAction func FirstOptionClick(_ sender: Any) {
         
         firstFlapBtn.isSelected = !firstFlapBtn.isSelected
-        isFirstOptionViewAppear = !isFirstOptionViewAppear
         
         
-        if isFirstOptionViewAppear {
+        if firstFlapBtn.isSelected {
             
             self.FirstOptionConstraint.constant = 239
             self.SecondOptionConstraint.constant = 0
@@ -191,36 +202,35 @@ class OptionViewController : UIViewController {
     @IBAction func SecondOptionClick(_ sender: Any) {
         
         secondFlapBtn.isSelected = !secondFlapBtn.isSelected
-        isSecondOptionViewAppear = !isSecondOptionViewAppear
         
+        
+        if firstFlapBtn.isSelected {
+            self.FirstOptionConstraint.constant = 0
+            self.SecondOptionConstraint.constant = 239
+            self.stackViewConnected.constant = 50.5
+            self.FirstOptionView.isHidden = true
+            self.firstFlapBtn.isSelected = false
+            self.SecondOptionView.isHidden = false
+        }
+        
+        if secondFlapBtn.isSelected {
             
-            if isFirstOptionViewAppear {
-                self.FirstOptionConstraint.constant = 0
-                self.SecondOptionConstraint.constant = 239
-                self.stackViewConnected.constant = 50.5
-                self.FirstOptionView.isHidden = true
-                self.firstFlapBtn.isSelected = false
-                self.SecondOptionView.isHidden = false
-            }
+            self.SecondOptionConstraint.constant = 239
+            self.FirstOptionConstraint.constant = 0
+            self.FirstOptionView.isHidden = true
+            self.firstFlapBtn.isSelected = false
+            self.SecondOptionView.isHidden = false
             
-            if isSecondOptionViewAppear {
-                
-                self.SecondOptionConstraint.constant = 239
-                self.FirstOptionConstraint.constant = 0
-                self.FirstOptionView.isHidden = true
-                self.firstFlapBtn.isSelected = false
-                self.SecondOptionView.isHidden = false
-                
-            } else {
-                self.SecondOptionConstraint.constant = 0
-                self.FirstOptionConstraint.constant = 0
-                self.FirstOptionView.isHidden = true
-                self.SecondOptionView.isHidden = true
-                isFirstOptionViewAppear = false
-                
-                
-            }
+        } else {
+            self.SecondOptionConstraint.constant = 0
+            self.FirstOptionConstraint.constant = 0
+            self.FirstOptionView.isHidden = true
+            self.SecondOptionView.isHidden = true
+            firstFlapBtn.isSelected = false
             
+            
+        }
+        
         UIView.animate(withDuration: 1, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations: {self.view.layoutIfNeeded()})
         
         
@@ -237,8 +247,7 @@ class OptionViewController : UIViewController {
         
         self.view.backgroundColor = .white
         self.countOptionViewConstraint.constant = self.view.frame.height
-        //
-        //        UIView.animate(withDuration: 1, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations: {self.view.layoutIfNeeded()})
+        
         self.countOptionView.isHidden = true
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrderFinishViewController") as! OrderFinishViewController
@@ -281,7 +290,6 @@ class OptionViewController : UIViewController {
         
         if (noramlShipBtn.isSelected  == true || advanceBtn.isSelected == true || superAdBtn.isSelected == true) && ( normalBtn.isSelected == true || advanceShipBtn.isSelected == true || superAdShipBtn.isSelected == true)
         {
-            print(111)
             CompleteBtn.backgroundColor = .black
         }
         
@@ -304,7 +312,6 @@ class OptionViewController : UIViewController {
         
         if (noramlShipBtn.isSelected  == true || advanceBtn.isSelected == true || superAdBtn.isSelected == true) && ( normalBtn.isSelected == true || advanceShipBtn.isSelected == true || superAdShipBtn.isSelected == true)
         {
-            print(111)
             CompleteBtn.backgroundColor = .black
         }
         
@@ -327,7 +334,6 @@ class OptionViewController : UIViewController {
         
         if (noramlShipBtn.isSelected  == true || advanceBtn.isSelected == true || superAdBtn.isSelected == true) && ( normalBtn.isSelected == true || advanceShipBtn.isSelected == true || superAdShipBtn.isSelected == true)
         {
-            print(111)
             CompleteBtn.backgroundColor = .black
         }
         
@@ -345,7 +351,6 @@ class OptionViewController : UIViewController {
         
         if (noramlShipBtn.isSelected  == true || advanceBtn.isSelected == true || superAdBtn.isSelected == true) && ( normalBtn.isSelected == true || advanceShipBtn.isSelected == true || superAdShipBtn.isSelected == true)
         {
-            print(111)
             CompleteBtn.backgroundColor = .black
         }
     }
@@ -358,7 +363,6 @@ class OptionViewController : UIViewController {
         else {
             calc = calc - 1500
         }
-        print(calc)
         noramlShipBtn.isSelected = false
         advanceShipBtn.isSelected = true
         superAdShipBtn.isSelected = false
@@ -367,7 +371,6 @@ class OptionViewController : UIViewController {
         
         if (noramlShipBtn.isSelected  == true || advanceBtn.isSelected == true || superAdBtn.isSelected == true) && ( normalBtn.isSelected == true || advanceShipBtn.isSelected == true || superAdShipBtn.isSelected == true)
         {
-            print(111)
             CompleteBtn.backgroundColor = .black
         }
     }
@@ -380,7 +383,6 @@ class OptionViewController : UIViewController {
         else {
             calc = calc - 3000
         }
-        print(calc)
         noramlShipBtn.isSelected = false
         advanceShipBtn.isSelected = false
         superAdShipBtn.isSelected = true
@@ -389,7 +391,6 @@ class OptionViewController : UIViewController {
         
         if (noramlShipBtn.isSelected  == true || advanceBtn.isSelected == true || superAdBtn.isSelected == true) && ( normalBtn.isSelected == true || advanceShipBtn.isSelected == true || superAdShipBtn.isSelected == true)
         {
-            print(111)
             CompleteBtn.backgroundColor = .black
         }
         

@@ -51,6 +51,10 @@ class PrintListViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         
+        self.tabBarController?.tabBar.isHidden = false
+        //        self.navigationController?.navigationBar.isHidden = false
+
+        
         if array.count != 0 {
             demoAlbumImage.isHidden = true
             cautionTitle.isHidden = true

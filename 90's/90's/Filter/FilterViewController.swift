@@ -8,7 +8,7 @@
 
 import UIKit
 import AVFoundation
-import LUTFilter
+//import LUTFilter
 
 struct Filter {
     let filterName : String
@@ -107,7 +107,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         super.viewDidLoad()
         
         setupDevice()
-        setupInputOutput()
+//        setupInputOutput()
         delegateSetting()
         
         filterName = PhotoEditorTypes.filterNameArray[filterIndex]
@@ -158,7 +158,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                         {
                             if authorized
                             {
-                                self.setupInputOutput()
+//                                self.setupInputOutput()
                             }
                     }
             })
@@ -480,7 +480,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
         DispatchQueue.main.async {
             let filteredImage = UIImage(cgImage: cgImage)
-            self.filteredImage.image = filteredImage.mergeWith(topImage: self.topImage! , bottomImage: filteredImage).applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
+//            self.filteredImage.image = filteredImage.mergeWith(topImage: self.topImage! , bottomImage: filteredImage).applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
             
             
         }
@@ -511,20 +511,7 @@ extension FilterViewController : AVCapturePhotoCaptureDelegate {
         // Initialise an UIImage with our image data
         let capturedImage = self.filteredImage.image
         print(capturedImage)
-        
-        //        사진을 저장하는건 사실 여기서 되는건데 임의로 작업을 수정함
-        
-        //        if let testImage = capturedImage {
-        //            let inputImage = CIImage(image: testImage)
-        //            let filteredImage = inputImage?.applyingFilter("CILinearToSRGBToneCurve")
-        //            let filteredExtent = (filteredImage?.extent)!
-        //            let renderedImage = context.createCGImage(filteredImage!, from: filteredExtent)
-        //            //               testImage =  UIImage(cgImage: renderedImage!)
-        //            // Save our captured image to photos album
-        //            UIImageWriteToSavedPhotosAlbum(UIImage(cgImage: renderedImage! ) , nil, nil, nil)
-        //        }
-        //        UIImageWriteToSavedPhotosAlbum(capturedImage! , nil, nil, nil)
-        
+            
     }
 }
 
@@ -586,63 +573,7 @@ extension FilterViewController {
         
         return filter
     }
-    //
-    //    func colorCubeFilterFromLUT(imageName : String)-> CIFilter? {
-    //        let size = 64
-    //
-    //        let lutImage    = UIImage(named: "LUT")!.cgImage
-    //        let lutWidth    = lutImage!.width
-    //        let lutHeight   = lutImage!.height
-    //        let rowCount    = lutHeight / size
-    //        let columnCount = lutWidth / size
-    //
-    //        if ((lutWidth % size != 0) || (lutHeight % size != 0) || (rowCount * columnCount != size)) {
-    //            NSLog("Invalid colorLUT %@", "LUT");
-    //            return nil
-    //        }
-    //
-    //        let bitmap  = getBytesFromImage(image: UIImage(named: "LUT"))!
-    //        let floatSize = MemoryLayout<Float>.size
-    //
-    //        let cubeData = UnsafeMutablePointer<Float>.allocate(capacity: size * size * size * 4 * floatSize)
-    //        var z = 0
-    //        var bitmapOffset = 0
-    //
-    //        for _ in 0 ..< rowCount {
-    //            for y in 0 ..< size {
-    //                let tmp = z
-    //                for _ in 0 ..< columnCount {
-    //                    for x in 0 ..< size {
-    //                        let alpha   = Float(bitmap[bitmapOffset]) / 255.0
-    //                        let red     = Float(bitmap[bitmapOffset+1]) / 255.0
-    //                        let green   = Float(bitmap[bitmapOffset+2]) / 255.0
-    //                        let blue    = Float(bitmap[bitmapOffset+3]) / 255.0
-    //                        let dataOffset = (z * size * size + y * size + x) * 4
-    //
-    //                        cubeData[dataOffset + 3] = alpha
-    //                        cubeData[dataOffset + 2] = red
-    //                        cubeData[dataOffset + 1] = green
-    //                        cubeData[dataOffset + 0] = blue
-    //                        bitmapOffset += 4
-    //                    }
-    //                    z += 1
-    //                }
-    //                z = tmp
-    //            }
-    //            z += columnCount
-    //        }
-    //
-    //        let colorCubeData = NSData(bytesNoCopy: cubeData, length: size * size * size * 4 * floatSize, freeWhenDone: true)
-    //
-    //        // create CIColorCube Filter
-    //        let filter = CIFilter(name: "CIColorCube")
-    //        filter?.setValue(colorCubeData, forKey: "inputCubeData")
-    //        filter?.setValue(size, forKey: "inputCubeDimension")
-    //
-    //        return filter
-    //    }
-    
-    
+   
     
     func applyFilterTo(image: UIImage, filterEffect: Filter) -> UIImage? {
         let ciImage = CIImage(image: UIView().createImage())
