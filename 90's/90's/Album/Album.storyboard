@@ -605,7 +605,7 @@
                                                         <constraint firstAttribute="width" constant="104" id="pW1-Oc-eHy"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkimage" translatesAutoresizingMaskIntoConstraints="NO" id="KJ4-Zj-U9x">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="albumThumbnailCheckbox" translatesAutoresizingMaskIntoConstraints="NO" id="KJ4-Zj-U9x">
                                                     <rect key="frame" x="0.0" y="0.0" width="104" height="108"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="108" id="H4W-S7-xu3"/>
@@ -1231,7 +1231,7 @@
                                                         <constraint firstAttribute="height" constant="102" id="p4C-P2-sov"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkimage" translatesAutoresizingMaskIntoConstraints="NO" id="T2y-D1-X7F">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="layoutThumbnailCheckbox" translatesAutoresizingMaskIntoConstraints="NO" id="T2y-D1-X7F">
                                                     <rect key="frame" x="0.0" y="0.0" width="74" height="102"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="74" id="4fP-vz-vZb"/>
@@ -2054,9 +2054,9 @@
     <resources>
         <image name="90SLogo" width="41" height="20"/>
         <image name="addPhotoButton" width="63" height="63"/>
+        <image name="albumThumbnailCheckbox" width="104" height="108"/>
         <image name="backicon" width="267" height="267"/>
         <image name="cancleicon" width="267" height="267"/>
-        <image name="checkimage" width="74" height="88"/>
         <image name="emptyAlbum" width="207" height="214"/>
         <image name="framePolaroid" width="184" height="213"/>
         <image name="iconAdd" width="22" height="22"/>
@@ -2064,6 +2064,7 @@
         <image name="iconInformation" width="24" height="25"/>
         <image name="iconInvitation" width="27" height="24"/>
         <image name="kakaoinviteimage" width="682" height="158"/>
+        <image name="layoutThumbnailCheckbox" width="74" height="102"/>
         <image name="ownerimage" width="100" height="104"/>
         <image name="previewButton" width="102" height="26"/>
         <image name="takealbumimage" width="272" height="244"/>
