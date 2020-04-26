@@ -77,6 +77,8 @@
 		A36DC86F24236386001B3767 /* AlbumDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36DC86E24236386001B3767 /* AlbumDetailController.swift */; };
 		A36DC87124236E45001B3767 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36DC87024236E45001B3767 /* PhotoCell.swift */; };
 		A3CCD8432454B30300C73E31 /* EmailCheckService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCD8422454B30300C73E31 /* EmailCheckService.swift */; };
+		A3CCD8452454BE7B00C73E31 /* SignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCD8442454BE7B00C73E31 /* SignUpService.swift */; };
+		A3CCD8472454C31B00C73E31 /* SignUpResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCD8462454C31B00C73E31 /* SignUpResult.swift */; };
 		A3D8758F24448BCE0085F17B /* AuthenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D8758E24448BCE0085F17B /* AuthenViewController.swift */; };
 		A3E2DB7A2454576B00AB2156 /* CompleteNewPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E2DB792454576B00AB2156 /* CompleteNewPassViewController.swift */; };
 		A3E2DB7C2454694000AB2156 /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E2DB7B2454694000AB2156 /* NicknameViewController.swift */; };
@@ -167,6 +169,8 @@
 		A36DC86E24236386001B3767 /* AlbumDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailController.swift; sourceTree = "<group>"; };
 		A36DC87024236E45001B3767 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		A3CCD8422454B30300C73E31 /* EmailCheckService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCheckService.swift; sourceTree = "<group>"; };
+		A3CCD8442454BE7B00C73E31 /* SignUpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpService.swift; sourceTree = "<group>"; };
+		A3CCD8462454C31B00C73E31 /* SignUpResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResult.swift; sourceTree = "<group>"; };
 		A3D8758E24448BCE0085F17B /* AuthenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenViewController.swift; sourceTree = "<group>"; };
 		A3E2DB792454576B00AB2156 /* CompleteNewPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteNewPassViewController.swift; sourceTree = "<group>"; };
 		A3E2DB7B2454694000AB2156 /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
@@ -247,6 +251,8 @@
 				A3E2DB7B2454694000AB2156 /* NicknameViewController.swift */,
 				A3E2DB8124547A0800AB2156 /* CheckEmailResult.swift */,
 				A3CCD8422454B30300C73E31 /* EmailCheckService.swift */,
+				A3CCD8442454BE7B00C73E31 /* SignUpService.swift */,
+				A3CCD8462454C31B00C73E31 /* SignUpResult.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -536,6 +542,7 @@
 				9B44EDE52429FCDF00B0D774 /* Extension.swift in Sources */,
 				A314260E2450A9E1005487F3 /* LoginModel.swift in Sources */,
 				A318AC72243E290C00245434 /* TermViewController.swift in Sources */,
+				A3CCD8452454BE7B00C73E31 /* SignUpService.swift in Sources */,
 				9B180808243E10F300AF1CE6 /* StickerPopupVC.swift in Sources */,
 				A3025CA62441AED700041723 /* MakeNewPassViewController.swift in Sources */,
 				A3025CA22441AE3700041723 /* FindEmailViewController.swift in Sources */,
@@ -578,6 +585,7 @@
 				390A33EE243F6A52002E9F57 /* OrderFinishViewController.swift in Sources */,
 				9BBBA3DF243F6848002904AC /* AlbumCoverVC.swift in Sources */,
 				A33E5B2B244A047D00794169 /* TermDetailViewController.swift in Sources */,
+				A3CCD8472454C31B00C73E31 /* SignUpResult.swift in Sources */,
 				A318AC74243E291D00245434 /* EmailViewController.swift in Sources */,
 				9B1B7A65244C1045008ED381 /* AlbumLayoutPreviewVC.swift in Sources */,
 				A318AC7C243E2A7600245434 /* CompleteViewController.swift in Sources */,

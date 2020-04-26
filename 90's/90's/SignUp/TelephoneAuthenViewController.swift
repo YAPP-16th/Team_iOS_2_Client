@@ -39,6 +39,7 @@ class TelephoneAuthenViewController: UIViewController {
     }
     
     @IBAction func clickOkBtn(_ sender: Any) {
+        telephone = tfTelephone.text!
         goAuthen()
     }
     
@@ -109,12 +110,49 @@ class TelephoneAuthenViewController: UIViewController {
         if(authenNumber == "1111"){
             //인증번호가 맞으면 회원가입 할 email, pwd, telephoneNumber를 서버로 보내고 회원가입
             //현재는 화면만 넘어가게 구현
-            let completeVC = storyboard?.instantiateViewController(identifier: "CompleteViewController") as! CompleteViewController
-            navigationController?.pushViewController(completeVC, animated: true)
+            goSign()
         }else{
             validationLabel.isHidden = false
         }
     }
+    
+    func goSign(){
+        SignUpService.shared.signUp(email: email, name: nickName, password: pwd, phone: telephone, sosial: false, completion: {
+            response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200:
+                    guard let data = response.data else { return }
+                    let decoder = JSONDecoder()
+                    let signUpResult = try? decoder.decode(SignUpResult.self, from: data)
+                    guard let token = signUpResult?.token else { return }
+                    print("\(token)")
+                    let completeVC = self.storyboard?.instantiateViewController(identifier: "CompleteViewController") as! CompleteViewController
+                    self.navigationController?.pushViewController(completeVC, animated: true)
+                    break
+                case 400...404:
+                    self.showErrAlert()
+                    print("SignUp : client Err")
+                    break
+                case 500:
+                    self.showErrAlert()
+                    print("SignUp : server Err")
+                    break
+                default:
+                    return
+                }
+            }
+            
+        })
+    }
+    
+    func showErrAlert(){
+        let alert = UIAlertController(title: "오류", message: "회원가입 불가", preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(action)
+        self.present(alert, animated: true)
+    }
+    
     
     @objc func keyboardWillShow(_ notification: Notification) {
         let userInfo = notification.userInfo
