@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol AlbumDetailVCProtocol : class {
-    func reloadView()
-}
-
 class AlbumDetailController : UIViewController {
     @IBOutlet weak var photoCollectionView: UICollectionView!
     @IBOutlet weak var albumNameLabel: UILabel!
@@ -22,6 +18,16 @@ class AlbumDetailController : UIViewController {
     @IBAction func backBtn(_ sender: UIButton) {
         self.navigationController?.popToRootViewController(animated: true)
     }
+    // 사진 추가 버튼을 눌렀을 때
+    @IBOutlet weak var hideView: UIView!
+    @IBOutlet weak var hideWhiteView: UIView!
+    @IBOutlet weak var hidewhiteviewBottom: NSLayoutConstraint!
+    @IBOutlet weak var hideAddAlbumBtn: UIButton!
+    @IBOutlet weak var hideAddPhotoBtn: UIButton!
+    @IBAction func cancleHideView(_ sender: UIButton) {
+        switchHideView(value: true)
+    }
+    
     
     private var longPressGesture : UILongPressGestureRecognizer!
     var albumIndex:Int?
@@ -29,6 +35,20 @@ class AlbumDetailController : UIViewController {
     var isEnded: Bool = true
     var currentCell : UICollectionViewCell? = nil
     var selectedLayout : AlbumLayout?
+    var galleryPicker : UIImagePickerController = {
+        let picker : UIImagePickerController = UIImagePickerController()
+        picker.sourceType = .photoLibrary
+        return picker
+    }()
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if hideView.isHidden == false {
+            let touch = touches.first
+            if touch?.view != self.hideWhiteView {
+                switchHideView(value: true)
+            }
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -51,6 +71,7 @@ extension AlbumDetailController {
         photoCollectionView.dataSource = self
 //        photoCollectionView.dragDelegate = self
         photoCollectionView.dragInteractionEnabled = true
+        galleryPicker.delegate = self
     }
     
     func defaultSetting(){
@@ -58,6 +79,8 @@ extension AlbumDetailController {
         albumCountLabel.text = "\(AlbumDatabase.arrayList[albumIndex!].photos.count - 1) 개의 추억이 쌓였습니다"
         selectedLayout = AlbumDatabase.arrayList[albumIndex!].albumLayout
         
+        hideView.isHidden = true
+        hideWhiteView.layer.cornerRadius = 15
         // 순서 바꾸기
         longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gesture:)))
         photoCollectionView.addGestureRecognizer(longPressGesture)
@@ -65,11 +88,42 @@ extension AlbumDetailController {
     
     func buttonSetting(){
         addPhotoBtn.addTarget(self, action: #selector(touchAddPhotoBtn), for: .touchUpInside)
+        hideAddAlbumBtn.addTarget(self, action: #selector(touchAlbumBtn), for: .touchUpInside)
+        hideAddPhotoBtn.addTarget(self, action: #selector(touchCameraBtn), for: .touchUpInside)
+    }
+    
+    func switchHideView(value : Bool){
+        switch value {
+        case true:
+            self.hidewhiteviewBottom.constant = -self.hideWhiteView.frame.height
+            UIView.animate(withDuration: 0.5, delay: 0.25, animations: {
+                self.view.layoutIfNeeded()
+            }, completion: { finish in
+                self.hideView.isHidden = true
+            } )
+            
+        case false:
+            self.hidewhiteviewBottom.constant = 0
+            UIView.animate(withDuration: 0.5, delay: 0.25, animations: {
+                self.view.layoutIfNeeded()
+            })
+            self.hideView.isHidden = false
+        }
     }
 }
 
 
 extension AlbumDetailController {
+    @objc func touchCameraBtn(){
+        let storyBoard = UIStoryboard(name: "Filter", bundle: nil)
+        let goNextVC = storyBoard.instantiateViewController(withIdentifier: "FilterViewController") as! FilterViewController
+        self.present(goNextVC, animated: true)
+    }
+    
+    @objc func touchAlbumBtn(){
+        present(galleryPicker, animated: true)
+    }
+    
     @objc func touchAddPhotoBtn() {
         if (AlbumDatabase.arrayList[albumIndex!].photos.count >= AlbumDatabase.arrayList[albumIndex!].albumMaxCount) {
             addPhotoBtn.isEnabled = false
@@ -80,6 +134,7 @@ extension AlbumDetailController {
             present(alert,animated: true)
         } else {
             addPhotoBtn.isEnabled = true
+            switchHideView(value: false)
         }
     }
     
@@ -195,12 +250,36 @@ extension AlbumDetailController : UICollectionViewDropDelegate {
 }
 
 
+extension AlbumDetailController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.photoCollectionView.reloadData()
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        var tempImage : UIImage? = nil
+        
+        if let url = info[UIImagePickerController.InfoKey.referenceURL] as? URL,
+            let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            UserDefaults.standard.set(url, forKey: "assetURL")
+            AlbumDatabase.arrayList[albumIndex!].photos.append(image)
+            tempImage = image
+        }
+        
+        dismiss(animated: true){
+            let storyboard = UIStoryboard(name: "Sticker", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "imageRenderVC") as! ImageRenderVC
+            vc.modalPresentationStyle = .fullScreen
+            vc.image = tempImage
+            self.present(vc, animated: true, completion: nil)
+        }
+    }
+}
+
+
 extension AlbumDetailController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "GoToDetailPopupVC" {
-            let dest = segue.destination as! AlbumDetailPopupVC
-            dest.albumIndex = albumIndex!
-        } else if segue.identifier == "GoToInfoVC" {
+        if segue.identifier == "GoToInfoVC" {
             let dest = segue.destination as! AlbumInfoVC
             dest.albumIndex = albumIndex!
         }
@@ -208,9 +287,3 @@ extension AlbumDetailController {
 }
 
 
-extension AlbumDetailController : AlbumDetailVCProtocol {
-    func reloadView() {
-        self.photoCollectionView.reloadData()
-        print("call reload view")
-    }
-}
