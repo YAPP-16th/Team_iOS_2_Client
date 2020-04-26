@@ -16,6 +16,8 @@
 		39585163242F46D500014CB0 /* Print.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39585162242F46D500014CB0 /* Print.storyboard */; };
 		39585167242F49EA00014CB0 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39585166242F49EA00014CB0 /* SignIn.storyboard */; };
 		39585169242F49F300014CB0 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39585168242F49F300014CB0 /* SignUp.storyboard */; };
+		39DE24C724547143007E8D40 /* PrintListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DE24C624547143007E8D40 /* PrintListViewController.swift */; };
+		39DE24C9245472F4007E8D40 /* PrintListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DE24C8245472F4007E8D40 /* PrintListTableViewCell.swift */; };
 		9B0B807024357929009D7B17 /* SavePhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0B806F24357929009D7B17 /* SavePhotoVC.swift */; };
 		9B1807FE243DEE7A00AF1CE6 /* AlbumLayoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1807FD243DEE7A00AF1CE6 /* AlbumLayoutVC.swift */; };
 		9B180800243DF53200AF1CE6 /* albumLayoutCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1807FF243DF53200AF1CE6 /* albumLayoutCollectionCell.swift */; };
@@ -95,6 +97,8 @@
 		39585162242F46D500014CB0 /* Print.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Print.storyboard; sourceTree = "<group>"; };
 		39585166242F49EA00014CB0 /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		39585168242F49F300014CB0 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		39DE24C624547143007E8D40 /* PrintListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintListViewController.swift; sourceTree = "<group>"; };
+		39DE24C8245472F4007E8D40 /* PrintListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintListTableViewCell.swift; sourceTree = "<group>"; };
 		9B0B806F24357929009D7B17 /* SavePhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePhotoVC.swift; sourceTree = "<group>"; };
 		9B142B10242F2475005ABE17 /* LUTFilter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LUTFilter.framework; sourceTree = "<group>"; };
 		9B1807FD243DEE7A00AF1CE6 /* AlbumLayoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumLayoutVC.swift; sourceTree = "<group>"; };
@@ -203,6 +207,8 @@
 				9BB9B554243D694C00B5150F /* OptionViewController.swift */,
 				39585162242F46D500014CB0 /* Print.storyboard */,
 				390A33ED243F6A52002E9F57 /* OrderFinishViewController.swift */,
+				39DE24C624547143007E8D40 /* PrintListViewController.swift */,
+				39DE24C8245472F4007E8D40 /* PrintListTableViewCell.swift */,
 			);
 			path = Print;
 			sourceTree = "<group>";
@@ -542,6 +548,7 @@
 				9B6A134C2440CE9400E78E66 /* AlbumInfoVC.swift in Sources */,
 				9BC0DBB62444802A00CA90F7 /* User.swift in Sources */,
 				9BD31D3A243A0A9100D0D719 /* InviteVC.swift in Sources */,
+				39DE24C9245472F4007E8D40 /* PrintListTableViewCell.swift in Sources */,
 				9BBBA3E1243F690B002904AC /* AlbumCoverCollectionCell.swift in Sources */,
 				39411378243061A500087E1B /* CheckPhotoViewController.swift in Sources */,
 				9BC0DBB22444788F00CA90F7 /* ProfileVC.swift in Sources */,
@@ -564,6 +571,7 @@
 				A318AC7C243E2A7600245434 /* CompleteViewController.swift in Sources */,
 				A318AC7E243E2F9E00245434 /* TermCell.swift in Sources */,
 				9BC16B1A2435B68F007F106C /* photoStickerCollectionCell.swift in Sources */,
+				39DE24C724547143007E8D40 /* PrintListViewController.swift in Sources */,
 				9BC0DBB4244478A600CA90F7 /* ProfileTableViewCell.swift in Sources */,
 				9BB1C5762441EEC30035DEBF /* FilterViewController.swift in Sources */,
 				9B6A134E2440D0C500E78E66 /* MemberTableViewCell.swift in Sources */,

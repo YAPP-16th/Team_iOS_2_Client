@@ -13,11 +13,11 @@ import AVFoundation
 extension String {
     //이메일 정규식 검증
     public func validateEmail() -> Bool {
-          let emailRegEx = "^.+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2}[A-Za-z]*$"
-          
-          let predicate = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-          return predicate.evaluate(with: self)
-      }
+        let emailRegEx = "^.+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2}[A-Za-z]*$"
+        
+        let predicate = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return predicate.evaluate(with: self)
+    }
 }
 
 
@@ -32,18 +32,18 @@ extension UIView {
     func setAnchorPoint(_ point: CGPoint) {
         var newPoint = CGPoint(x: bounds.size.width * point.x, y: bounds.size.height * point.y)
         var oldPoint = CGPoint(x: bounds.size.width * layer.anchorPoint.x, y: bounds.size.height * layer.anchorPoint.y);
-
+        
         newPoint = newPoint.applying(transform)
         oldPoint = oldPoint.applying(transform)
-
+        
         var position = layer.position
-
+        
         position.x -= oldPoint.x
         position.x += newPoint.x
-
+        
         position.y -= oldPoint.y
         position.y += newPoint.y
-
+        
         layer.position = position
         layer.anchorPoint = point
     }
@@ -58,7 +58,7 @@ extension UICollectionViewCell {
         imageView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: left).isActive = true
         imageView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -right).isActive = true
         imageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -bottom).isActive = true
-    
+        
         imageView.contentMode = .scaleToFill
     }
     
@@ -85,85 +85,85 @@ extension UIViewController{
         }
     }
     
-       // LUT Filter apply
+    // LUT Filter apply
     func colorCubeFilterFromLUT(imageName : String, originalImage : UIImage)-> CIFilter? {
-           let size = 64
-
-           let lutImage    = UIImage(named: imageName)!.cgImage
-           let lutWidth    = lutImage!.width
-           let lutHeight   = lutImage!.height
-           let rowCount    = lutHeight / size
-           let columnCount = lutWidth / size
-
-           if ((lutWidth % size != 0) || (lutHeight % size != 0) || (rowCount * columnCount != size)) {
-               NSLog("Invalid colorLUT %@", imageName);
-               return nil
-           }
-
-           let bitmap  = getBytesFromImage(image: UIImage(named: imageName))!
-           let floatSize = MemoryLayout<Float>.size
-
-           let cubeData = UnsafeMutablePointer<Float>.allocate(capacity: size * size * size * 4 * floatSize)
-           var z = 0
-           var bitmapOffset = 0
-
-           for _ in 0 ..< rowCount {
-               for y in 0 ..< size {
-                   let tmp = z
-                   for _ in 0 ..< columnCount {
-                       for x in 0 ..< size {
-                           let alpha   = Float(bitmap[bitmapOffset]) / 255.0
-                           let red     = Float(bitmap[bitmapOffset+1]) / 255.0
-                           let green   = Float(bitmap[bitmapOffset+2]) / 255.0
-                           let blue    = Float(bitmap[bitmapOffset+3]) / 255.0
-                           let dataOffset = (z * size * size + y * size + x) * 4
-
-                           cubeData[dataOffset + 3] = alpha
-                           cubeData[dataOffset + 2] = red
-                           cubeData[dataOffset + 1] = green
-                           cubeData[dataOffset + 0] = blue
-                           bitmapOffset += 4
-                       }
-                       z += 1
-                   }
-                   z = tmp
-               }
-               z += columnCount
-           }
-
-           let colorCubeData = NSData(bytesNoCopy: cubeData, length: size * size * size * 4 * floatSize, freeWhenDone: true)
-           let ciOriginImage = CIImage(image: originalImage)
-
-           // create CIColorCube Filter
-           let filter = CIFilter(name: "CIColorCube")
-           filter?.setValue(ciOriginImage, forKey: kCIInputImageKey)
-           filter?.setValue(colorCubeData, forKey: "inputCubeData")
-           filter?.setValue(size, forKey: "inputCubeDimension")
-
-           return filter
-       }
-       
-       
-       func getBytesFromImage(image: UIImage?) -> [UInt8]? {
-           var pixelValues: [UInt8]?
-           if let imageRef = image?.cgImage {
-               let width = Int(imageRef.width)
-               let height = Int(imageRef.height)
-               let bitsPerComponent = 8
-               let bytesPerRow = width * 4
-               let totalBytes = height * bytesPerRow
-
-               let bitmapInfo = CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Little.rawValue
-               let colorSpace = CGColorSpaceCreateDeviceRGB()
-               var intensities = [UInt8](repeating: 0, count: totalBytes)
-
-               let contextRef = CGContext(data: &intensities, width: width, height: height, bitsPerComponent: bitsPerComponent, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo)
-               contextRef?.draw(imageRef, in: CGRect(x: 0.0, y: 0.0, width: CGFloat(width), height: CGFloat(height)))
-
-               pixelValues = intensities
-           }
-           return pixelValues!
-       }
+        let size = 64
+        
+        let lutImage    = UIImage(named: imageName)!.cgImage
+        let lutWidth    = lutImage!.width
+        let lutHeight   = lutImage!.height
+        let rowCount    = lutHeight / size
+        let columnCount = lutWidth / size
+        
+        if ((lutWidth % size != 0) || (lutHeight % size != 0) || (rowCount * columnCount != size)) {
+            NSLog("Invalid colorLUT %@", imageName);
+            return nil
+        }
+        
+        let bitmap  = getBytesFromImage(image: UIImage(named: imageName))!
+        let floatSize = MemoryLayout<Float>.size
+        
+        let cubeData = UnsafeMutablePointer<Float>.allocate(capacity: size * size * size * 4 * floatSize)
+        var z = 0
+        var bitmapOffset = 0
+        
+        for _ in 0 ..< rowCount {
+            for y in 0 ..< size {
+                let tmp = z
+                for _ in 0 ..< columnCount {
+                    for x in 0 ..< size {
+                        let alpha   = Float(bitmap[bitmapOffset]) / 255.0
+                        let red     = Float(bitmap[bitmapOffset+1]) / 255.0
+                        let green   = Float(bitmap[bitmapOffset+2]) / 255.0
+                        let blue    = Float(bitmap[bitmapOffset+3]) / 255.0
+                        let dataOffset = (z * size * size + y * size + x) * 4
+                        
+                        cubeData[dataOffset + 3] = alpha
+                        cubeData[dataOffset + 2] = red
+                        cubeData[dataOffset + 1] = green
+                        cubeData[dataOffset + 0] = blue
+                        bitmapOffset += 4
+                    }
+                    z += 1
+                }
+                z = tmp
+            }
+            z += columnCount
+        }
+        
+        let colorCubeData = NSData(bytesNoCopy: cubeData, length: size * size * size * 4 * floatSize, freeWhenDone: true)
+        let ciOriginImage = CIImage(image: originalImage)
+        
+        // create CIColorCube Filter
+        let filter = CIFilter(name: "CIColorCube")
+        filter?.setValue(ciOriginImage, forKey: kCIInputImageKey)
+        filter?.setValue(colorCubeData, forKey: "inputCubeData")
+        filter?.setValue(size, forKey: "inputCubeDimension")
+        
+        return filter
+    }
+    
+    
+    func getBytesFromImage(image: UIImage?) -> [UInt8]? {
+        var pixelValues: [UInt8]?
+        if let imageRef = image?.cgImage {
+            let width = Int(imageRef.width)
+            let height = Int(imageRef.height)
+            let bitsPerComponent = 8
+            let bytesPerRow = width * 4
+            let totalBytes = height * bytesPerRow
+            
+            let bitmapInfo = CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Little.rawValue
+            let colorSpace = CGColorSpaceCreateDeviceRGB()
+            var intensities = [UInt8](repeating: 0, count: totalBytes)
+            
+            let contextRef = CGContext(data: &intensities, width: width, height: height, bitsPerComponent: bitsPerComponent, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo)
+            contextRef?.draw(imageRef, in: CGRect(x: 0.0, y: 0.0, width: CGFloat(width), height: CGFloat(height)))
+            
+            pixelValues = intensities
+        }
+        return pixelValues!
+    }
     
     func returnLayoutSize(selectedLayout : AlbumLayout) -> CGSize{
         switch selectedLayout {
@@ -179,35 +179,35 @@ extension UIViewController{
     
     func applyBackImageViewLayout(selectedLayout : AlbumLayout, imageView : UIImageView ) -> UIImageView{
         switch selectedLayout {
-            case .Polaroid:
-                imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Polaroid.size.width, height: AlbumLayout.Polaroid.size.height)
-                imageView.image = AlbumLayout.Polaroid.image
-                return imageView
-            case .Mini:
-                imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Mini.size.width, height: AlbumLayout.Mini.size.height)
-                imageView.image = AlbumLayout.Mini.image
-                return imageView
-            case .Memory:
-                imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Memory.size.width, height: AlbumLayout.Memory.size.height)
-                imageView.image = AlbumLayout.Memory.image
-                return imageView
-            case .Portrab:
-                imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Portrab.size.width, height: AlbumLayout.Portrab.size.height)
-                imageView.image = AlbumLayout.Portrab.image
-                return imageView
-            case .Tape:
-                imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Tape.size.width, height: AlbumLayout.Tape.size.height)
-                imageView.image = AlbumLayout.Tape.image
-                return imageView
-            case .Portraw:
-                imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Portraw.size.width, height: AlbumLayout.Portraw.size.height)
-                imageView.image = AlbumLayout.Portraw.image
-                return imageView
-            case .Filmroll:
-                imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Filmroll.size.width, height: AlbumLayout.Filmroll.size.height)
-                imageView.image = AlbumLayout.Filmroll.image
-                return imageView
-            }
+        case .Polaroid:
+            imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Polaroid.size.width, height: AlbumLayout.Polaroid.size.height)
+            imageView.image = AlbumLayout.Polaroid.image
+            return imageView
+        case .Mini:
+            imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Mini.size.width, height: AlbumLayout.Mini.size.height)
+            imageView.image = AlbumLayout.Mini.image
+            return imageView
+        case .Memory:
+            imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Memory.size.width, height: AlbumLayout.Memory.size.height)
+            imageView.image = AlbumLayout.Memory.image
+            return imageView
+        case .Portrab:
+            imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Portrab.size.width, height: AlbumLayout.Portrab.size.height)
+            imageView.image = AlbumLayout.Portrab.image
+            return imageView
+        case .Tape:
+            imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Tape.size.width, height: AlbumLayout.Tape.size.height)
+            imageView.image = AlbumLayout.Tape.image
+            return imageView
+        case .Portraw:
+            imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Portraw.size.width, height: AlbumLayout.Portraw.size.height)
+            imageView.image = AlbumLayout.Portraw.image
+            return imageView
+        case .Filmroll:
+            imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Filmroll.size.width, height: AlbumLayout.Filmroll.size.height)
+            imageView.image = AlbumLayout.Filmroll.image
+            return imageView
+        }
     }
     
     func applyImageViewLayout(selectedLayout : AlbumLayout, imageView : UIImageView, image : UIImage) -> UIImageView {
@@ -259,7 +259,7 @@ extension UIImage {
         
         UIGraphicsBeginImageContextWithOptions(sizeChange, !hasAlpha, scale)
         self.draw(in: CGRect(origin: CGPoint.zero, size: sizeChange))
-
+        
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         return scaledImage!
     }
@@ -299,52 +299,53 @@ extension UIColor {
 }
 extension UIImage {
     func mergeWith(topImage: UIImage,bottomImage: UIImage) -> UIImage {
-//    let bottomImage = self
-
-    UIGraphicsBeginImageContext(size)
-
-    let areaSize = CGRect(x: 0, y: 0, width: bottomImage.size.width, height: bottomImage.size.height)
-    bottomImage.draw(in: areaSize)
-
-    topImage.draw(in: areaSize, blendMode: .normal, alpha: 1.0)
-
-    let mergedImage = UIGraphicsGetImageFromCurrentImageContext()!
-    UIGraphicsEndImageContext()
-    return mergedImage
-  }
+        //    let bottomImage = self
+        
+        UIGraphicsBeginImageContext(size)
+        
+        let areaSize = CGRect(x: 0, y: 0, width: bottomImage.size.width, height: bottomImage.size.height)
+        bottomImage.draw(in: areaSize)
+        
+        topImage.draw(in: areaSize, blendMode: .normal, alpha: 1.0)
+        
+        let mergedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return mergedImage
+    }
+}
 
 extension UIImageView {
     func applyBackImageViewLayout(selectedLayout : AlbumLayout, imageView : UIImageView ) -> UIImageView{
         switch selectedLayout {
-            case .Polaroid:
-                imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Polaroid.size.width, height: AlbumLayout.Polaroid.size.height)
-                imageView.image = AlbumLayout.Polaroid.image
-                return imageView
-            case .Mini:
-                imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Mini.size.width, height: AlbumLayout.Mini.size.height)
-                imageView.image = AlbumLayout.Mini.image
-                return imageView
-            case .Memory:
-                imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Memory.size.width, height: AlbumLayout.Memory.size.height)
-                imageView.image = AlbumLayout.Memory.image
-                return imageView
-            case .Portrab:
-                imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Portrab.size.width, height: AlbumLayout.Portrab.size.height)
-                imageView.image = AlbumLayout.Portrab.image
-                return imageView
-            case .Tape:
-                imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Tape.size.width, height: AlbumLayout.Tape.size.height)
-                imageView.image = AlbumLayout.Tape.image
-                return imageView
-            case .Portraw:
-                imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Portraw.size.width, height: AlbumLayout.Portraw.size.height)
-                imageView.image = AlbumLayout.Portraw.image
-                return imageView
-            case .Filmroll:
-                imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Filmroll.size.width, height: AlbumLayout.Filmroll.size.height)
-                imageView.image = AlbumLayout.Filmroll.image
-                return imageView
-            }
+        case .Polaroid:
+            imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Polaroid.size.width, height: AlbumLayout.Polaroid.size.height)
+            imageView.image = AlbumLayout.Polaroid.image
+            return imageView
+        case .Mini:
+            imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Mini.size.width, height: AlbumLayout.Mini.size.height)
+            imageView.image = AlbumLayout.Mini.image
+            return imageView
+        case .Memory:
+            imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Memory.size.width, height: AlbumLayout.Memory.size.height)
+            imageView.image = AlbumLayout.Memory.image
+            return imageView
+        case .Portrab:
+            imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Portrab.size.width, height: AlbumLayout.Portrab.size.height)
+            imageView.image = AlbumLayout.Portrab.image
+            return imageView
+        case .Tape:
+            imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Tape.size.width, height: AlbumLayout.Tape.size.height)
+            imageView.image = AlbumLayout.Tape.image
+            return imageView
+        case .Portraw:
+            imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Portraw.size.width, height: AlbumLayout.Portraw.size.height)
+            imageView.image = AlbumLayout.Portraw.image
+            return imageView
+        case .Filmroll:
+            imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Filmroll.size.width, height: AlbumLayout.Filmroll.size.height)
+            imageView.image = AlbumLayout.Filmroll.image
+            return imageView
+        }
     }
     
     func applyImageViewLayout(selectedLayout : AlbumLayout, imageView : UIImageView, image : UIImage) -> UIImageView {
@@ -384,6 +385,59 @@ extension UIImageView {
         case .Filmroll:
             // 이미지 없어서 건너뜀
             return imageView
+        }
+    }
+}
+
+extension UIView {
+    
+    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        layer.mask = mask
+    }
+    
+    
+    func setRoundedCorner() {
+        let roundedPath = UIBezierPath.init(roundedRect: UIView().bounds, byRoundingCorners: [.topRight , .bottomLeft , .bottomRight], cornerRadii: CGSize(width: 15, height: 15))
+        let roundedLayer = CAShapeLayer()
+        roundedLayer.path = roundedPath.cgPath
+        layer.masksToBounds = true
+        layer.mask = roundedLayer
+    }
+    
+    
+    // Set Rounded View
+    func makeRounded(cornerRadius : CGFloat?){
+        
+        // UIView 의 모서리가 둥근 정도를 설정
+        if let cornerRadius_ = cornerRadius {
+            self.layer.cornerRadius = cornerRadius_
+        }  else {
+            // cornerRadius 가 nil 일 경우의 default
+            self.layer.cornerRadius = self.layer.frame.height / 2
+        }
+        
+        self.layer.masksToBounds = true
+    }
+    
+    func setBorder(borderColor : UIColor?, borderWidth : CGFloat?) {
+        
+        // UIView 의 테두리 색상 설정
+        if let borderColor_ = borderColor {
+            self.layer.borderColor = borderColor_.cgColor
+        } else {
+            // borderColor 변수가 nil 일 경우의 default
+            self.layer.borderColor = UIColor(red: 205/255, green: 209/255, blue: 208/255, alpha: 1.0).cgColor
+        }
+        
+        // UIView 의 테두리 두께 설정
+        if let borderWidth_ = borderWidth {
+            self.layer.borderWidth = borderWidth_
+        } else {
+            // borderWidth 변수가 nil 일 경우의 default
+            self.layer.borderWidth = 1.0
         }
     }
 }

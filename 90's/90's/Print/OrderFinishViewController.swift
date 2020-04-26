@@ -11,9 +11,12 @@ import UIKit
 
 class OrderFinishViewController : UIViewController {
     
+    @IBOutlet weak var goBackAlbumBtn: UIButton!
+    @IBOutlet weak var copyBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        goBackAlbumBtn.layer.cornerRadius = 10
     }
     
     override func viewWillAppear(_ animated: Bool) {

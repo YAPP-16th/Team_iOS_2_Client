@@ -8,7 +8,7 @@
 
 import UIKit
 import AVFoundation
-//import LUTFilter
+import LUTFilter
 
 struct Filter {
     let filterName : String
@@ -107,7 +107,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         super.viewDidLoad()
         
         setupDevice()
-//        setupInputOutput()
+        setupInputOutput()
         delegateSetting()
         
         filterName = PhotoEditorTypes.filterNameArray[filterIndex]
@@ -158,7 +158,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                         {
                             if authorized
                             {
-//                                self.setupInputOutput()
+                                self.setupInputOutput()
                             }
                     }
             })
@@ -480,7 +480,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
         DispatchQueue.main.async {
             let filteredImage = UIImage(cgImage: cgImage)
-//            self.filteredImage.image = filteredImage.mergeWith(topImage: self.topImage! , bottomImage: filteredImage).applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
+            self.filteredImage.image = filteredImage.mergeWith(topImage: self.topImage! , bottomImage: filteredImage).applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
             
             
         }
