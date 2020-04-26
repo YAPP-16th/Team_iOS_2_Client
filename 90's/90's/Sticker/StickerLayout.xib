@@ -1,69 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" restorationIdentifier="stickerlayout" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB" customClass="StickerLayout" customModule="_0_s" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+            <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Jf-St-2Hx">
-                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                    <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8yc-vt-zpZ">
-                            <rect key="frame" x="20" y="20" width="80" height="80"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stickerControlBox" translatesAutoresizingMaskIntoConstraints="NO" id="8yc-vt-zpZ">
+                            <rect key="frame" x="18" y="18" width="134" height="134"/>
+                        </imageView>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smileimage" translatesAutoresizingMaskIntoConstraints="NO" id="BaX-aH-0y8">
+                            <rect key="frame" x="18" y="18" width="134" height="134"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4E-CT-7WG">
-                            <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+                            <rect key="frame" x="0.0" y="0.0" width="19" height="19"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="36" id="CRp-Dk-YdC"/>
-                                <constraint firstAttribute="width" constant="36" id="JHQ-en-p7T"/>
+                                <constraint firstAttribute="width" constant="19" id="OMD-P7-Rgd"/>
+                                <constraint firstAttribute="height" constant="19" id="qWx-GT-Een"/>
                             </constraints>
-                            <state key="normal" image="sizeimage"/>
+                            <state key="normal" image="stickerControlCancel"/>
                             <connections>
-                                <action selector="sizeBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="JGP-ak-AY6"/>
-                                <action selector="turnBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="QXb-zw-8Ud"/>
+                                <action selector="cancleBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ld6-e2-dEn"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRG-h1-v5s">
-                            <rect key="frame" x="84" y="84" width="36" height="36"/>
+                            <rect key="frame" x="151" y="151" width="19" height="19"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="36" id="0Eh-FF-cg7"/>
-                                <constraint firstAttribute="width" constant="36" id="OUe-nw-AAb"/>
+                                <constraint firstAttribute="height" constant="19" id="n6t-Sj-nhY"/>
+                                <constraint firstAttribute="width" constant="19" id="wRs-zF-fxc"/>
                             </constraints>
-                            <state key="normal" image="rotateimage"/>
+                            <state key="normal" image="stckerControlSize"/>
                             <connections>
-                                <action selector="turnBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="QO4-c7-I6U"/>
+                                <action selector="sizeBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="D6U-s9-ptU"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5V5-uX-9kp">
-                            <rect key="frame" x="84" y="0.0" width="36" height="36"/>
+                            <rect key="frame" x="151" y="0.0" width="19" height="19"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="36" id="cch-9s-lza"/>
-                                <constraint firstAttribute="width" constant="36" id="i3X-oU-Z4x"/>
+                                <constraint firstAttribute="width" constant="19" id="0Zo-dk-Hx6"/>
+                                <constraint firstAttribute="height" constant="19" id="N5g-Dy-Vie"/>
                             </constraints>
-                            <state key="normal" image="blackcancelimg"/>
+                            <state key="normal" image="stickerControlRotate"/>
                             <connections>
-                                <action selector="cancleBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="z0L-d0-y4h"/>
+                                <action selector="turnBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="lvj-T8-TXu"/>
                             </connections>
                         </button>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="d4E-CT-7WG" firstAttribute="top" secondItem="4Jf-St-2Hx" secondAttribute="top" id="CFJ-fG-1z6"/>
-                        <constraint firstItem="d4E-CT-7WG" firstAttribute="leading" secondItem="4Jf-St-2Hx" secondAttribute="leading" id="EwY-fi-4jU"/>
-                        <constraint firstAttribute="bottom" secondItem="YRG-h1-v5s" secondAttribute="bottom" id="Fce-pX-e9e"/>
-                        <constraint firstItem="5V5-uX-9kp" firstAttribute="top" secondItem="4Jf-St-2Hx" secondAttribute="top" id="LCo-2G-wAj"/>
-                        <constraint firstAttribute="trailing" secondItem="8yc-vt-zpZ" secondAttribute="trailing" constant="20" id="Mha-9s-OAc"/>
-                        <constraint firstItem="8yc-vt-zpZ" firstAttribute="top" secondItem="4Jf-St-2Hx" secondAttribute="top" constant="20" id="O0Y-r6-tnc"/>
-                        <constraint firstAttribute="bottom" secondItem="8yc-vt-zpZ" secondAttribute="bottom" constant="20" id="fa4-5T-Vak"/>
-                        <constraint firstItem="8yc-vt-zpZ" firstAttribute="leading" secondItem="4Jf-St-2Hx" secondAttribute="leading" constant="20" id="oVI-hn-Zgg"/>
-                        <constraint firstAttribute="trailing" secondItem="5V5-uX-9kp" secondAttribute="trailing" id="sZV-1T-DcL"/>
-                        <constraint firstAttribute="trailing" secondItem="YRG-h1-v5s" secondAttribute="trailing" id="tDQ-yj-ysb"/>
+                        <constraint firstItem="5V5-uX-9kp" firstAttribute="top" secondItem="4Jf-St-2Hx" secondAttribute="top" id="7O5-Uj-l68"/>
+                        <constraint firstItem="BaX-aH-0y8" firstAttribute="leading" secondItem="4Jf-St-2Hx" secondAttribute="leading" constant="18" id="9DC-RT-F6o"/>
+                        <constraint firstAttribute="bottom" secondItem="YRG-h1-v5s" secondAttribute="bottom" id="9zb-Ic-Jxe"/>
+                        <constraint firstAttribute="trailing" secondItem="BaX-aH-0y8" secondAttribute="trailing" constant="18" id="GJH-ZM-ubP"/>
+                        <constraint firstItem="d4E-CT-7WG" firstAttribute="leading" secondItem="4Jf-St-2Hx" secondAttribute="leading" id="LdR-x9-ueG"/>
+                        <constraint firstAttribute="trailing" secondItem="8yc-vt-zpZ" secondAttribute="trailing" constant="18" id="Mha-9s-OAc"/>
+                        <constraint firstItem="8yc-vt-zpZ" firstAttribute="top" secondItem="4Jf-St-2Hx" secondAttribute="top" constant="18" id="O0Y-r6-tnc"/>
+                        <constraint firstAttribute="bottom" secondItem="BaX-aH-0y8" secondAttribute="bottom" constant="18" id="Q9E-Ob-Gv7"/>
+                        <constraint firstAttribute="bottom" secondItem="8yc-vt-zpZ" secondAttribute="bottom" constant="18" id="fa4-5T-Vak"/>
+                        <constraint firstAttribute="trailing" secondItem="YRG-h1-v5s" secondAttribute="trailing" id="k0w-3d-kcI"/>
+                        <constraint firstAttribute="trailing" secondItem="5V5-uX-9kp" secondAttribute="trailing" id="lQv-yD-e1I"/>
+                        <constraint firstItem="8yc-vt-zpZ" firstAttribute="leading" secondItem="4Jf-St-2Hx" secondAttribute="leading" constant="18" id="oVI-hn-Zgg"/>
+                        <constraint firstItem="BaX-aH-0y8" firstAttribute="top" secondItem="4Jf-St-2Hx" secondAttribute="top" constant="18" id="sMA-kg-7l8"/>
+                        <constraint firstItem="d4E-CT-7WG" firstAttribute="top" secondItem="4Jf-St-2Hx" secondAttribute="top" id="vVJ-hf-MxE"/>
                     </constraints>
                 </view>
             </subviews>
@@ -75,15 +81,20 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="stickerImageView" destination="8yc-vt-zpZ" id="bQB-6w-rVV"/>
+                <outlet property="backImageView" destination="8yc-vt-zpZ" id="GQm-pK-yH9"/>
+                <outlet property="resizeBtn" destination="YRG-h1-v5s" id="Svv-QX-Did"/>
+                <outlet property="rotateBtn" destination="5V5-uX-9kp" id="Xoq-9t-26z"/>
+                <outlet property="stickerImageView" destination="BaX-aH-0y8" id="yuG-I1-lMG"/>
                 <outlet property="stickerView" destination="4Jf-St-2Hx" id="IfF-eG-b8S"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="101.78571428571428"/>
         </view>
     </objects>
     <resources>
-        <image name="blackcancelimg" width="73" height="69"/>
-        <image name="rotateimage" width="256" height="256"/>
-        <image name="sizeimage" width="512" height="512"/>
+        <image name="smileimage" width="480" height="480"/>
+        <image name="stckerControlSize" width="19" height="19"/>
+        <image name="stickerControlBox" width="168" height="168"/>
+        <image name="stickerControlCancel" width="19" height="19"/>
+        <image name="stickerControlRotate" width="19" height="19"/>
     </resources>
 </document>
