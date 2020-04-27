@@ -15,11 +15,18 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Jf-St-2Hx">
                     <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stickerControlBox" translatesAutoresizingMaskIntoConstraints="NO" id="8yc-vt-zpZ">
+                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BaX-aH-0y8">
                             <rect key="frame" x="18" y="18" width="134" height="134"/>
                         </imageView>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BaX-aH-0y8">
+                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stickerControlBox" translatesAutoresizingMaskIntoConstraints="NO" id="8yc-vt-zpZ">
                             <rect key="frame" x="18" y="18" width="134" height="134"/>
+                        </imageView>
+                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stickerControlRotate" translatesAutoresizingMaskIntoConstraints="NO" id="kg6-Dw-xYd">
+                            <rect key="frame" x="151" y="0.0" width="19" height="19"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="19" id="AaI-CT-vR0"/>
+                                <constraint firstAttribute="width" constant="19" id="EZV-wb-yuL"/>
+                            </constraints>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4E-CT-7WG">
                             <rect key="frame" x="0.0" y="0.0" width="19" height="19"/>
@@ -37,13 +44,6 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="19" id="P2T-gs-Avy"/>
                                 <constraint firstAttribute="width" constant="19" id="pP1-MY-q42"/>
-                            </constraints>
-                        </imageView>
-                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stickerControlRotate" translatesAutoresizingMaskIntoConstraints="NO" id="kg6-Dw-xYd">
-                            <rect key="frame" x="151" y="0.0" width="19" height="19"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="19" id="AaI-CT-vR0"/>
-                                <constraint firstAttribute="width" constant="19" id="EZV-wb-yuL"/>
                             </constraints>
                         </imageView>
                     </subviews>
