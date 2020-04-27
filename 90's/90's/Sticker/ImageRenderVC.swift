@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class ImageRenderVC: UIViewController {
     @IBOutlet weak var polaroidView: UIView!
     @IBOutlet weak var renderImage: UIImageView!
@@ -18,7 +19,10 @@ class ImageRenderVC: UIViewController {
     // get image from other view
     var image : UIImage?
     var tempsticker : UIImageView?
-    var sticker : UIView?
+    // sticker
+    var sticker : StickerLayout?
+    var initialAngle = CGFloat()
+    var angle = CGFloat()
     // value for checkimageview showing while collection cells changes
     fileprivate var isFilterSelected : Bool = true
     fileprivate var testFilterCell : photoFilterCollectionCell?
@@ -40,12 +44,12 @@ class ImageRenderVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        collectionView.reloadData()
         
-        if image == nil { // for test
-            image = UIImage(named: "husky")
+        if image == nil {
+            image = UIImage(named: "husky")!
         }
         
+        collectionView.reloadData()
         renderImage.image = image
         initializeArrays()
     }
@@ -54,6 +58,30 @@ class ImageRenderVC: UIViewController {
         super.viewDidLoad()
         buttonSetting()
         defaultSetting()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.initialAngle = pToA(touches.first!)
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first
+        
+        if touch!.view == sticker?.rotateImageView {
+            let ang = pToA(touch!) - self.initialAngle
+            let absoluteAngle = self.angle + ang
+            sticker?.transform = (sticker?.transform.rotated(by: ang))!
+            self.angle = absoluteAngle
+        }
+        else if touch!.view == sticker?.resizeImageView {
+            let position = touch!.location(in: self.view)
+            let target = sticker?.center
+            
+            let size = max((position.x / target!.x), (position.y / target!.y))
+            let scale = CGAffineTransform(scaleX: size, y: size)
+            let rotate = CGAffineTransform(rotationAngle: angle)
+            sticker?.transform = scale.concatenating(rotate)
+        }
     }
 }
 
@@ -83,31 +111,25 @@ extension ImageRenderVC {
         })
     }
     
-    private func createPan(view : UIView){
+    func pToA (_ t:UITouch) -> CGFloat {
+        let loc = t.location(in: sticker)
+        let c = sticker!.convert(sticker!.center, from:sticker!.superview!)
+        return atan2(loc.y - c.y, loc.x - c.x)
+    }
+    
+    private func createPan(view : UIImageView){
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.handlePanGesture(panGesture:)))
         view.addGestureRecognizer(panGesture)
     }
     
-    private func createRotate(view : UIView){
-        let rotateGesture = UIRotationGestureRecognizer(target: self, action: #selector(self.handleRotateGesture(rotateGesture:)))
-        view.addGestureRecognizer(rotateGesture)
-    }
-    
-    private func createTap(view : UIView){
-        let tapGestue = UITapGestureRecognizer(target: self, action: #selector(self.handleTapGesture(tapGestrue:)))
-        view.addGestureRecognizer(tapGestue)
-    }
-    
     private func createStickerView(image : UIImage, indexPathRow : Int){
-        let stickerView = Bundle.main.loadNibNamed("StickerLayout", owner: nil, options: nil)?.first as! StickerLayout
-        stickerView.frame = CGRect(x: view.frame.width/2 - 50, y: view.frame.height/3 - 50, width: 100, height: 100)
+        let stickerView = Bundle.main.loadNibNamed("StickerLayout", owner: self, options: nil)?.first as! StickerLayout
+        stickerView.frame = CGRect(x: view.frame.width/2 - 70, y: view.frame.height/2 - 100, width: 140, height: 140)
         stickerView.stickerImageView.image = stickerImages[indexPathRow]
         stickerView.isUserInteractionEnabled = true
         sticker = stickerView
         
-        createPan(view: stickerView)
-        createRotate(view: stickerView)
-        //createTap(view: stickerView)
+        createPan(view: stickerView.backImageView) // 이미지 옮기기
 
         self.view.addSubview(stickerView)
     }
@@ -140,27 +162,7 @@ extension ImageRenderVC {
     @objc func handlePanGesture(panGesture: UIPanGestureRecognizer){
         let transition = panGesture.translation(in: sticker)
         panGesture.setTranslation(CGPoint.zero, in: sticker)
-        
-        let imageView = panGesture.view as! StickerLayout
-        imageView.center = CGPoint(x: imageView.center.x + transition.x, y: imageView.center.y + transition.y)
-        print("pan gesture working")
-        imageView.isUserInteractionEnabled = true
-        imageView.isMultipleTouchEnabled = false
-    }
-    
-    @objc func handleRotateGesture(rotateGesture : UIRotationGestureRecognizer){
-        sticker!.layer.anchorPoint = CGPoint(x: sticker!.center.x, y: sticker!.center.y)
-        sticker!.transform = sticker!.transform.rotated(by: rotateGesture.rotation)
-        
-        rotateGesture.rotation = 0
-        print("rotate gesture working")
-    }
-    
-    @objc func handleTapGesture(tapGestrue : UITapGestureRecognizer){
-        if tapGestrue.state == .changed {
-            let point = tapGestrue.location(in: tapGestrue.view)
-            
-        }
+        sticker!.center = CGPoint(x: sticker!.center.x + transition.x, y: sticker!.center.y + transition.y)
     }
     
     @objc func handlePinGesture(pinGesture : UIPinchGestureRecognizer){
@@ -196,9 +198,7 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
             return cell
         }
     }
-    
-    
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 74, height: 88)
     }
@@ -267,3 +267,5 @@ extension ImageRenderVC {
         }
     }
 }
+
+

@@ -8,16 +8,14 @@
 
 import UIKit
 
+
 class StickerLayout: UIView {
-    @IBOutlet weak var stickerView: UIView!
+    @IBOutlet weak var stickerImageView: UIImageView!
+    @IBOutlet weak var backImageView: UIImageView!
+    @IBOutlet weak var rotateImageView: UIImageView!
+    @IBOutlet weak var resizeImageView: UIImageView!
     @IBAction func cancleBtn(_ sender: UIButton) {
         self.removeFromSuperview()
-    }
-    @IBOutlet weak var stickerImageView: UIImageView!
-    @IBAction func sizeBtn(_ sender: UIButton) {
-    }
-    @IBAction func turnBtn(_ sender: UIButton) {
-        
     }
     
     override init(frame: CGRect) {
@@ -26,6 +24,12 @@ class StickerLayout: UIView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+    
+    class func loadFromZib(image : UIImage) -> StickerLayout {
+        let view = Bundle.main.loadNibNamed("StickerLayout", owner: self, options: nil)?.first as! StickerLayout
+        view.stickerImageView.image = image
+        return view
     }
 }
 
