@@ -19,7 +19,7 @@ class ImageRenderVC: UIViewController {
     // get image from other view
     var image : UIImage?
     var tempsticker : UIImageView?
-    var sticker : UIView?
+    var sticker : StickerLayout?
     var isStickerRotateClicked : Bool = false
     // value for checkimageview showing while collection cells changes
     fileprivate var isFilterSelected : Bool = true
@@ -56,6 +56,21 @@ class ImageRenderVC: UIViewController {
         super.viewDidLoad()
         buttonSetting()
         defaultSetting()
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first
+    
+        if touch!.view == sticker?.resizeImageView {
+            let position = touch!.location(in: self.view)
+            let target = sticker?.center
+            let size = max((position.x / target!.x), (position.y / target!.y))
+            sticker?.transform = CGAffineTransform(scaleX: size, y: size)
+        } else if touch!.view == sticker {
+            // pan gesture
+        } else if touch!.view == sticker?.rotateImageView {
+            
+        }
     }
 }
 
@@ -160,7 +175,6 @@ extension ImageRenderVC {
     @objc func handleTapGesture(tapGestrue : UITapGestureRecognizer){
         if tapGestrue.state == .changed {
             let point = tapGestrue.location(in: tapGestrue.view)
-            
         }
     }
     
