@@ -14,9 +14,7 @@ class StickerLayout: UIView {
     @IBOutlet weak var backImageView: UIImageView!
     @IBOutlet weak var rotateImageView: UIImageView!
     @IBOutlet weak var resizeImageView: UIImageView!
-    @IBAction func cancleBtn(_ sender: UIButton) {
-        self.removeFromSuperview()
-    }
+    @IBOutlet weak var cancleImageView: UIImageView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

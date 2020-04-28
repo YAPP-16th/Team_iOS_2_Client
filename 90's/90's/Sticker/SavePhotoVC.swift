@@ -12,13 +12,14 @@ class SavePhotoVC: UIViewController {
     @IBOutlet weak var switchBtn: UISwitch!
     @IBOutlet weak var saveBtn: UIButton!
     @IBOutlet weak var photoView: UIView!
-    @IBOutlet weak var dateLabel: UILabel!
     @IBAction func backBtn(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
     
     var location = CGPoint(x: 0.0, y: 0.0)
-    var originalView : UIView?
+    var size = CGSize(width: 0,height: 0)
+    var originView : UIView!
+    var dateLabel : UILabel!
     var selectedLayout : AlbumLayout! = .Polaroid
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,6 +30,7 @@ class SavePhotoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         buttonSetting()
+        dateLabelSetting()
     }
 }
 
@@ -41,17 +43,33 @@ extension SavePhotoVC {
     }
     
     func defaultSetting(){
-        photoView = originalView
         setSaveViewLayout(view: photoView, selectLayout: selectedLayout)
+        photoView.addSubview(originView)
     }
     
-    
+    func dateLabelSetting(){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd"
+        
+        dateLabel = UILabel()
+        dateLabel.text = dateFormatter.string(from: Date()) /// 변경사항
+        dateLabel.font = UIFont.boldSystemFont(ofSize: 16) //UIFont(name: "", size: 16)
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        photoView.addSubview(dateLabel)
+               
+        dateLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50).isActive = true
+        dateLabel.bottomAnchor.constraint(equalTo: photoView.bottomAnchor, constant: -20).isActive = true
+        dateLabel.heightAnchor.constraint(equalToConstant: 21).isActive = true
+        dateLabel.widthAnchor.constraint(equalToConstant: 111).isActive = true
+        print("++ dateLabel = \(dateLabel)")
+    }
 }
 
 
 extension SavePhotoVC {
     @objc func touchSaveBtn(){
         photoView.addSubview(dateLabel)
+        print("====== photoview frame = \(photoView.frame)")
         let renderer = UIGraphicsImageRenderer(size: photoView.bounds.size)
         let image = renderer.image { ctx in
             photoView.drawHierarchy(in: photoView.bounds, afterScreenUpdates: true)
