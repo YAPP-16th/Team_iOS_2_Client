@@ -156,24 +156,23 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pLp-Cr-VwS">
-                                                    <rect key="frame" x="4" y="6" width="77" height="57"/>
+                                                    <rect key="frame" x="4" y="6" width="77" height="74"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="63" id="5uY-Vy-CMl"/>
-                                                        <constraint firstAttribute="width" constant="71" id="iOP-Bo-lbq"/>
+                                                        <constraint firstAttribute="height" constant="74" id="5uY-Vy-CMl"/>
+                                                        <constraint firstAttribute="width" constant="77" id="iOP-Bo-lbq"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thumbnailCheckbox" translatesAutoresizingMaskIntoConstraints="NO" id="LBE-Kh-dwo">
                                                     <rect key="frame" x="0.0" y="0.0" width="85" height="88"/>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.93353021140000003" green="0.94081169369999995" blue="0.96078830959999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
                                                 <constraint firstItem="pLp-Cr-VwS" firstAttribute="leading" secondItem="p1v-wG-nZY" secondAttribute="leading" constant="4" id="J4i-8U-IAy"/>
                                                 <constraint firstItem="LBE-Kh-dwo" firstAttribute="width" secondItem="p1v-wG-nZY" secondAttribute="width" id="LdR-jQ-vIR"/>
                                                 <constraint firstItem="LBE-Kh-dwo" firstAttribute="height" secondItem="p1v-wG-nZY" secondAttribute="height" id="M91-GU-LWB"/>
                                                 <constraint firstAttribute="trailing" secondItem="pLp-Cr-VwS" secondAttribute="trailing" constant="4" id="RYM-Gx-omN"/>
                                                 <constraint firstItem="LBE-Kh-dwo" firstAttribute="centerX" secondItem="p1v-wG-nZY" secondAttribute="centerX" id="WIU-YJ-oG3"/>
-                                                <constraint firstAttribute="bottom" secondItem="pLp-Cr-VwS" secondAttribute="bottom" constant="25" id="fNq-zs-9hq"/>
+                                                <constraint firstAttribute="bottom" secondItem="pLp-Cr-VwS" secondAttribute="bottom" constant="8" id="fNq-zs-9hq"/>
                                                 <constraint firstItem="LBE-Kh-dwo" firstAttribute="centerY" secondItem="p1v-wG-nZY" secondAttribute="centerY" id="i73-7K-A4s"/>
                                                 <constraint firstItem="pLp-Cr-VwS" firstAttribute="top" secondItem="p1v-wG-nZY" secondAttribute="top" constant="6" id="ntQ-L9-0Qq"/>
                                             </constraints>
@@ -299,7 +298,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y4A-NP-afi">
+                            <view autoresizesSubviews="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y4A-NP-afi">
                                 <rect key="frame" x="18" y="133" width="378" height="469"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -312,13 +311,6 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20.04.01" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Rc-Nb-NNE">
-                                <rect key="frame" x="248" y="471" width="111" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gNf-oE-ziU">
@@ -398,7 +390,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="K8v-qw-r3n"/>
                     <connections>
-                        <outlet property="dateLabel" destination="4Rc-Nb-NNE" id="S5j-ca-sVu"/>
                         <outlet property="photoView" destination="Y4A-NP-afi" id="EuL-Ot-naN"/>
                         <outlet property="saveBtn" destination="Dmo-i2-8bX" id="oY4-pe-Tbh"/>
                         <outlet property="switchBtn" destination="gNf-oE-ziU" id="NuY-dT-jnO"/>

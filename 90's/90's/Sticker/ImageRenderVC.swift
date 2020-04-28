@@ -87,6 +87,10 @@ class ImageRenderVC: UIViewController {
                 let rotate = CGAffineTransform(rotationAngle: angle)
                 sticker?.transform = scale.concatenating(rotate)
             }
+            else if touch!.view == sticker?.cancleImageView {
+                self.sticker?.removeFromSuperview()
+                self.sticker = nil
+            }
         }
     }
 }
@@ -171,13 +175,15 @@ extension ImageRenderVC {
     @objc func touchCompleteBtn(){
         if sticker != nil {
             let stickerImageView = sticker?.stickerImageView
+            stickerImageView?.translatesAutoresizingMaskIntoConstraints = false
             saveView.addSubview(stickerImageView!)
         }
         let nextVC = storyboard?.instantiateViewController(withIdentifier: "savePhotoVC") as! SavePhotoVC
-        nextVC.photoView = saveView
+        nextVC.originView = saveView
+        nextVC.selectedLayout = selectLayout
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
-    
+
     @objc func handlePanGesture(panGesture: UIPanGestureRecognizer){
         let transition = panGesture.translation(in: sticker)
         panGesture.setTranslation(CGPoint.zero, in: sticker)

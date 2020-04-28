@@ -269,6 +269,7 @@ extension UIViewController{
         view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 120).isActive = true
         view.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: distance).isActive = true
         view.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -distance).isActive = true
+        view.frame.size.height = size.height
         view.addShadowEffect()
     }
     
