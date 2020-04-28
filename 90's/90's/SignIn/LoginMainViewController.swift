@@ -18,6 +18,9 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var buttonConst: NSLayoutConstraint!
     
+    var email:String?
+    var pass:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tfPass.delegate = self
@@ -37,10 +40,10 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
         if(!email.validateEmail()){
             emailValidationLabel.isHidden = false
             selectorImageView1.image = UIImage(named: "path378Red")
-            
         }else{
             //로그인 통신
             //로그인 통신 후 로그인 실패시 메시지 표시
+            goLogin()
         }
         
     }
@@ -58,6 +61,47 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
         authenVC.authenType = "findEmail"
         self.navigationController?.pushViewController(authenVC, animated: true)
     }
+    
+    //로그인 서버통신 메소드
+    func goLogin(){
+        //이 화면으로 들어오는 경우는 social = false인 경우 밖에 없기때문에 고정적으로 social = false로
+        guard let email = tfEmail.text else { return }
+        guard let password = tfPass.text else { return }
+        LoginService.shared.login(email: email, password: password, sosial: false, completion: { response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200:
+                    guard let data = response.data else { return }
+                    let decoder = JSONDecoder()
+                    let loginResult = try? decoder.decode(SignUpResult.self, from: data)
+                    guard let jwt = loginResult?.jwt else { return }
+                    print("\(jwt)")
+                    print("\(loginResult!)")
+                    let mainSB = UIStoryboard(name: "Main", bundle: nil)
+                    let tabVC = mainSB.instantiateViewController(identifier: "TabBarController") as! UITabBarController
+                    self.navigationController?.pushViewController(tabVC, animated: true)
+                    break
+                case 400...404:
+                    self.passValidationLabel.isHidden = false
+                    print("SignIn : client Err \(status)")
+                    break
+                case 500:
+                    self.passValidationLabel.isHidden = false
+                    print("SignIn : server Err \(status)")
+                    break
+                default:
+                    return
+                }
+            }
+        })
+    }
+    
+    func showErrAlert(){
+           let alert = UIAlertController(title: "오류", message: "로그인 불가", preferredStyle: .alert)
+           let action = UIAlertAction(title: "확인", style: .default)
+           alert.addAction(action)
+           self.present(alert, animated: true)
+       }
     
     //화면 터치시 키보드 내림
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
