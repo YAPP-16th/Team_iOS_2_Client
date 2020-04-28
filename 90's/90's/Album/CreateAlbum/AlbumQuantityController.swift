@@ -14,8 +14,6 @@ class AlbumQuantityController : UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    
-    
     let quantityPicker = UIPickerView()
     
     var albumName:String!
