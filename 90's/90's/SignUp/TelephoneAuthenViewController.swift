@@ -27,6 +27,7 @@ class TelephoneAuthenViewController: UIViewController {
     var isInitial1 = false
     var isInitial2 = false
     var authenFlag = false
+    var authenNumber:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,18 +39,22 @@ class TelephoneAuthenViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func clickOkBtn(_ sender: Any) {
-        telephone = tfTelephone.text!
-        goAuthen()
-    }
-    
+    //전송 버튼 클릭 시
     @IBAction func askNumber(_ sender: Any) {
         if(!authenFlag){
             askNumberBtn.setTitle("재전송", for: .normal)
             authenFlag = true
         }
+        getAuthenNumber()
         
     }
+    
+    //확인 버튼 클릭 시
+    @IBAction func clickOkBtn(_ sender: Any) {
+        goAuthen()
+    }
+    
+    //UI
     func setUI(){
         validationLabel.isHidden = true
         okBtn.isEnabled = false
@@ -57,6 +62,7 @@ class TelephoneAuthenViewController: UIViewController {
         askNumberBtn.layer.cornerRadius = 8.0
     }
     
+    //Observer
     func setObserver(){
         NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: tfTelephone, queue: .main, using : {
             _ in
@@ -104,17 +110,45 @@ class TelephoneAuthenViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    func getAuthenNumber(){
+        telephone = tfTelephone.text!.replacingOccurrences(of: "-", with: "")
+        print("\(telephone)")
+        //서버에서 문자를 보내고, 보낸 인증번호 받는 메소드
+        TelephoneAuthService.shared.telephoneAuth(phone: telephone, completion: { response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200:
+                    guard let data = response.data else { return }
+                    let decoder = JSONDecoder()
+                    let telephoneAuthResult = try? decoder.decode(TelephoneAuthResult.self, from: data)
+                    guard let num = telephoneAuthResult?.num else { return }
+                    self.authenNumber = num
+                    break
+                case 401...404:
+                    let alert = UIAlertController(title: "오류", message: "인증번호 전송 불가", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "확인", style: .default)
+                    alert.addAction(action)
+                    self.present(alert, animated: true)
+                    break
+                default:
+                    return
+                }
+            }
+        })
+        
+    }
+    
     func goAuthen(){
-        //인증번호가 맞는지 서버에 요청을 보내는 메소드 필요, 임시 인증번호(1111)
-        let authenNumber = tfAuthenNumber.text!
-        if(authenNumber == "1111"){
-            //인증번호가 맞으면 회원가입 할 email, pwd, telephoneNumber를 서버로 보내고 회원가입
-            //현재는 화면만 넘어가게 구현
+        //서버에서 보내준 인증번호와 입력한 인증번호가 일치하는지 확인
+        guard let inputAuthenNumber = tfAuthenNumber.text else { return }
+        guard let number = authenNumber else { return }
+        if(inputAuthenNumber == number){
             goSign()
         }else{
             validationLabel.isHidden = false
         }
     }
+    
     
     func goSign(){
         SignUpService.shared.signUp(email: email, name: nickName, password: pwd, phone: telephone, sosial: false, completion: {
@@ -125,18 +159,18 @@ class TelephoneAuthenViewController: UIViewController {
                     guard let data = response.data else { return }
                     let decoder = JSONDecoder()
                     let signUpResult = try? decoder.decode(SignUpResult.self, from: data)
-                    guard let token = signUpResult?.token else { return }
-                    print("\(token)")
+                    guard let jwt = signUpResult?.jwt else { return }
+                    print("\(jwt)")
                     let completeVC = self.storyboard?.instantiateViewController(identifier: "CompleteViewController") as! CompleteViewController
                     self.navigationController?.pushViewController(completeVC, animated: true)
                     break
                 case 400...404:
                     self.showErrAlert()
-                    print("SignUp : client Err")
+                    print("SignUp : client Err \(response.error)")
                     break
                 case 500:
                     self.showErrAlert()
-                    print("SignUp : server Err")
+                    print("SignUp : server Err \(response.error)")
                     break
                 default:
                     return
