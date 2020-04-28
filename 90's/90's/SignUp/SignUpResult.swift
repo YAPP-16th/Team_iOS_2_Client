@@ -9,5 +9,5 @@
 import Foundation
 
 struct SignUpResult : Codable {
-    var token:String? //jwt token
+    var jwt:String? //jwt token
 }

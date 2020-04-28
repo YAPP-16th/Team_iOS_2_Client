@@ -77,6 +77,8 @@
 		A33E5B2B244A047D00794169 /* TermDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33E5B2A244A047D00794169 /* TermDetailViewController.swift */; };
 		A36DC86F24236386001B3767 /* AlbumDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36DC86E24236386001B3767 /* AlbumDetailController.swift */; };
 		A36DC87124236E45001B3767 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36DC87024236E45001B3767 /* PhotoCell.swift */; };
+		A38A2D0E24587170000BF82D /* TelephoneAuthResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38A2D0D24587170000BF82D /* TelephoneAuthResult.swift */; };
+		A38A2D102458719E000BF82D /* TelephoneAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38A2D0F2458719E000BF82D /* TelephoneAuthService.swift */; };
 		A3CCD8432454B30300C73E31 /* EmailCheckService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCD8422454B30300C73E31 /* EmailCheckService.swift */; };
 		A3CCD8452454BE7B00C73E31 /* SignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCD8442454BE7B00C73E31 /* SignUpService.swift */; };
 		A3CCD8472454C31B00C73E31 /* SignUpResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCD8462454C31B00C73E31 /* SignUpResult.swift */; };
@@ -187,6 +189,8 @@
 		A33E5B2A244A047D00794169 /* TermDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermDetailViewController.swift; sourceTree = "<group>"; };
 		A36DC86E24236386001B3767 /* AlbumDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailController.swift; sourceTree = "<group>"; };
 		A36DC87024236E45001B3767 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		A38A2D0D24587170000BF82D /* TelephoneAuthResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelephoneAuthResult.swift; sourceTree = "<group>"; };
+		A38A2D0F2458719E000BF82D /* TelephoneAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelephoneAuthService.swift; sourceTree = "<group>"; };
 		A3CCD8422454B30300C73E31 /* EmailCheckService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCheckService.swift; sourceTree = "<group>"; };
 		A3CCD8442454BE7B00C73E31 /* SignUpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpService.swift; sourceTree = "<group>"; };
 		A3CCD8462454C31B00C73E31 /* SignUpResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResult.swift; sourceTree = "<group>"; };
@@ -276,6 +280,8 @@
 				A3CCD8422454B30300C73E31 /* EmailCheckService.swift */,
 				A3CCD8442454BE7B00C73E31 /* SignUpService.swift */,
 				A3CCD8462454C31B00C73E31 /* SignUpResult.swift */,
+				A38A2D0D24587170000BF82D /* TelephoneAuthResult.swift */,
+				A38A2D0F2458719E000BF82D /* TelephoneAuthService.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -607,8 +613,10 @@
 				A3E133D624558988007950D8 /* OrderListViewController.swift in Sources */,
 				A3025CA42441AE9800041723 /* FindEmailErrViewController.swift in Sources */,
 				A3E2DB7A2454576B00AB2156 /* CompleteNewPassViewController.swift in Sources */,
+				A38A2D102458719E000BF82D /* TelephoneAuthService.swift in Sources */,
 				A3025CA02441ADCA00041723 /* EnterViewController.swift in Sources */,
 				A3025C9E2441AD9000041723 /* LoginMainViewController.swift in Sources */,
+				A38A2D0E24587170000BF82D /* TelephoneAuthResult.swift in Sources */,
 				A3E2DB7E24546E7200AB2156 /* APIMagager.swift in Sources */,
 				9B180806243E096000AF1CE6 /* AlbumDetailPopupVC.swift in Sources */,
 				9BC98F082448B74E002629AF /* StickerLayout.swift in Sources */,
