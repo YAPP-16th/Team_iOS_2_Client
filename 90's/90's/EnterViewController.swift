@@ -26,12 +26,14 @@ class EnterViewController: UIViewController {
     //둘러보기 버튼 클릭 시
     @IBAction func takeALook(_ sender: Any) {
         //default 유저 값 받아옴,메인화면으로 이동
-        tabBarController?.selectedIndex = 0
-    }
+        let tabBarVC = storyboard?.instantiateViewController(withIdentifier: "TabBarController")
+            as! UIViewController
+        navigationController?.pushViewController(tabBarVC, animated: true)    }
     
     //로그인 버튼 클릭 시
     @IBAction func goSignIn(_ sender: Any) {
-        let loginMainVC = storyboard?.instantiateViewController(withIdentifier: "LoginMainViewController") as! LoginMainViewController
+        let SignInSB = UIStoryboard(name: "SignIn", bundle: nil)
+        let loginMainVC = SignInSB.instantiateViewController(withIdentifier: "LoginMainViewController") as! LoginMainViewController
         navigationController?.pushViewController(loginMainVC, animated: true)
     }
     
@@ -81,11 +83,11 @@ class EnterViewController: UIViewController {
                     print("\(self.loginData)")
                 })
                 
-             }else {
+            }else {
                 print("로그인 에러: \(error)")
             }
         }
-    
+        
     }
     
 }
