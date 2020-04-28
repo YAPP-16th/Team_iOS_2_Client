@@ -18,8 +18,8 @@ class SavePhotoVC: UIViewController {
     }
     
     var location = CGPoint(x: 0.0, y: 0.0)
-    var image : UIImage?
     var originalView : UIView?
+    var selectedLayout : AlbumLayout! = .Polaroid
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -30,35 +30,22 @@ class SavePhotoVC: UIViewController {
         super.viewDidLoad()
         buttonSetting()
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent!) {
-        var touch : UITouch! = touches.first! as UITouch
-        location = touch.location(in: view)
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        var touch : UITouch! = touches.first! as UITouch
-        location = touch.location(in: view)
-    }
 }
 
 
 extension SavePhotoVC {
     func buttonSetting(){
+        saveBtn.layer.cornerRadius = 10
         saveBtn.addTarget(self, action: #selector(touchSaveBtn), for: .touchUpInside)
         switchBtn.addTarget(self, action: #selector(touchSwitchBtn), for: .touchUpInside)
     }
     
     func defaultSetting(){
-        dateLabel.isHidden = false
-        
-        photoView.addSubview(originalView!)
-        originalView?.translatesAutoresizingMaskIntoConstraints = false
-        originalView?.topAnchor.constraint(equalTo: photoView.topAnchor, constant: 0).isActive = true
-        originalView?.leftAnchor.constraint(equalTo: photoView.leftAnchor, constant: 0).isActive = true
-        originalView?.rightAnchor.constraint(equalTo: photoView.rightAnchor, constant: 0).isActive = true
-        originalView?.bottomAnchor.constraint(equalTo: photoView.bottomAnchor, constant: 0).isActive = true
+        photoView = originalView
+        setSaveViewLayout(view: photoView, selectLayout: selectedLayout)
     }
+    
+    
 }
 
 
@@ -70,7 +57,8 @@ extension SavePhotoVC {
             photoView.drawHierarchy(in: photoView.bounds, afterScreenUpdates: true)
         }
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
-        dismiss(animated: true)
+        
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer){
@@ -82,7 +70,6 @@ extension SavePhotoVC {
     }
     
     @objc func touchSwitchBtn(){
-        // date와 저장하려면 addSubview, View로 만들어야 함
         if dateLabel.isHidden == true {
             dateLabel.isHidden = false
         } else {

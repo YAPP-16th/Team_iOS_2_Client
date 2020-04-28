@@ -10,19 +10,25 @@ import UIKit
 
 
 class ImageRenderVC: UIViewController {
-    @IBOutlet weak var polaroidView: UIView!
+    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var saveView: UIView!
     @IBOutlet weak var renderImage: UIImageView!
+    @IBOutlet weak var layoutImage: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var filterBtn: UIButton!
     @IBOutlet weak var stickerBtn: UIButton!
+    @IBOutlet weak var completeBtn: UIButton!
+    @IBAction func cancleBtn(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
     
     // get image from other view
     var image : UIImage?
     var tempsticker : UIImageView?
+    var selectLayout : AlbumLayout! = .Polaroid
     // sticker
     var sticker : StickerLayout?
-    var initialAngle = CGFloat()
-    var angle = CGFloat()
+    var initialAngle = CGFloat(), angle = CGFloat()
     // value for checkimageview showing while collection cells changes
     fileprivate var isFilterSelected : Bool = true
     fileprivate var testFilterCell : photoFilterCollectionCell?
@@ -38,17 +44,11 @@ class ImageRenderVC: UIViewController {
     fileprivate let filterNameArray : [String] = ["Noise", "Grunge", "Wrap","Light", "Aura", "Old"]
     fileprivate let filterLutArray : [String] = ["LUT", "LUT2", "LUT3", "LUT4", "LUT5", "LUT6"]
     // Array for apply LUT filters & Sticker before viewAppear. And place on collectioncell
-    fileprivate var filterImages : [UIImage] = []
-    fileprivate var stickerImages : [UIImage] = []
+    fileprivate var filterImages : [UIImage] = [], stickerImages : [UIImage] = []
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        if image == nil {
-            image = UIImage(named: "husky")!
-        }
-        
         collectionView.reloadData()
         renderImage.image = image
         initializeArrays()
@@ -58,29 +58,35 @@ class ImageRenderVC: UIViewController {
         super.viewDidLoad()
         buttonSetting()
         defaultSetting()
+        setSaveViewLayout(view: saveView, selectLayout: selectLayout)
+        setRenderImageViewLayout()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.initialAngle = pToA(touches.first!)
+        if sticker != nil {
+            self.initialAngle = pToA(touches.first!)
+        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
         
-        if touch!.view == sticker?.rotateImageView {
-            let ang = pToA(touch!) - self.initialAngle
-            let absoluteAngle = self.angle + ang
-            sticker?.transform = (sticker?.transform.rotated(by: ang))!
-            self.angle = absoluteAngle
-        }
-        else if touch!.view == sticker?.resizeImageView {
-            let position = touch!.location(in: self.view)
-            let target = sticker?.center
-            
-            let size = max((position.x / target!.x), (position.y / target!.y))
-            let scale = CGAffineTransform(scaleX: size, y: size)
-            let rotate = CGAffineTransform(rotationAngle: angle)
-            sticker?.transform = scale.concatenating(rotate)
+        if sticker != nil {
+            if touch!.view == sticker?.rotateImageView {
+                let ang = pToA(touch!) - self.initialAngle
+                let absoluteAngle = self.angle + ang
+                sticker?.transform = (sticker?.transform.rotated(by: ang))!
+                self.angle = absoluteAngle
+            }
+            else if touch!.view == sticker?.resizeImageView {
+                let position = touch!.location(in: self.view)
+                let target = sticker?.center
+                
+                let size = max((position.x / target!.x), (position.y / target!.y))
+                let scale = CGAffineTransform(scaleX: size, y: size)
+                let rotate = CGAffineTransform(rotationAngle: angle)
+                sticker?.transform = scale.concatenating(rotate)
+            }
         }
     }
 }
@@ -90,13 +96,13 @@ extension ImageRenderVC {
     private func buttonSetting(){
         filterBtn.addTarget(self, action: #selector(touchFilterBtn), for: .touchUpInside)
         stickerBtn.addTarget(self, action: #selector(touchStickerBtn), for: .touchUpInside)
+        completeBtn.addTarget(self, action: #selector(touchCompleteBtn), for: .touchUpInside)
     }
     
     private func defaultSetting(){
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.allowsMultipleSelection = false
-        polaroidView.addShadowEffect()
     }
     
     private func initializeArrays(){
@@ -111,7 +117,7 @@ extension ImageRenderVC {
         })
     }
     
-    func pToA (_ t:UITouch) -> CGFloat {
+    private func pToA (_ t:UITouch) -> CGFloat {
         let loc = t.location(in: sticker)
         let c = sticker!.convert(sticker!.center, from:sticker!.superview!)
         return atan2(loc.y - c.y, loc.x - c.x)
@@ -123,15 +129,12 @@ extension ImageRenderVC {
     }
     
     private func createStickerView(image : UIImage, indexPathRow : Int){
-        let stickerView = Bundle.main.loadNibNamed("StickerLayout", owner: self, options: nil)?.first as! StickerLayout
-        stickerView.frame = CGRect(x: view.frame.width/2 - 70, y: view.frame.height/2 - 100, width: 140, height: 140)
-        stickerView.stickerImageView.image = stickerImages[indexPathRow]
-        stickerView.isUserInteractionEnabled = true
-        sticker = stickerView
-        
-        createPan(view: stickerView.backImageView) // 이미지 옮기기
+        let imageView = StickerLayout.loadFromZib(image: image)
+        imageView.frame = CGRect(x: self.view.frame.width / 2 - 60, y: self.view.frame.height / 2 - 60, width: 120, height: 120)
+        sticker = imageView
+        createPan(view: sticker!.backImageView) // 이미지 옮기기
 
-        self.view.addSubview(stickerView)
+        self.view.addSubview(imageView)
     }
     
     private func resetCheckImage(){
@@ -145,6 +148,12 @@ extension ImageRenderVC {
             cell.hideimage()
         }
     }
+    
+    private func setRenderImageViewLayout(){
+        let size = returnLayoutBigSize(selectedLayout: selectLayout)
+        layoutImage = applyBackImageViewLayout(selectedLayout: selectLayout, smallBig: size, imageView: layoutImage)
+        renderImage = applyImageViewLayout(selectedLayout: selectLayout, smallBig: size, imageView: renderImage, image: image!)
+    }
 }
 
 
@@ -157,6 +166,16 @@ extension ImageRenderVC {
     @objc func touchStickerBtn(){
         isFilterSelected = false
         collectionView.reloadData()
+    }
+    
+    @objc func touchCompleteBtn(){
+        if sticker != nil {
+            let stickerImageView = sticker?.stickerImageView
+            saveView.addSubview(stickerImageView!)
+        }
+        let nextVC = storyboard?.instantiateViewController(withIdentifier: "savePhotoVC") as! SavePhotoVC
+        nextVC.photoView = saveView
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     @objc func handlePanGesture(panGesture: UIPanGestureRecognizer){
@@ -200,7 +219,11 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 74, height: 88)
+        if isFilterSelected == true {
+            return CGSize(width: 74, height: 88)
+        } else {
+            return CGSize(width: 85, height: 88)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -255,17 +278,3 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
         }
     }
 }
-
-
-extension ImageRenderVC {
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "GoToSaveVC" {
-            let dest = segue.destination as? SavePhotoVC
-            dest?.image = renderImage.image
-            dest?.originalView = polaroidView
-            print("send segue")
-        }
-    }
-}
-
-

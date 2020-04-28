@@ -84,6 +84,18 @@ enum AlbumLayout {
         case .Filmroll : return CGSize(width: 286, height: 382)
         }
     }
+    
+    var bigsize : CGSize{
+        switch self {
+        case .Polaroid : return CGSize(width: 368, height: 447)
+        case .Mini : return CGSize(width: 338, height: 463)
+        case .Memory : return CGSize(width: 354, height: 320)
+        case .Portrab : return CGSize(width: 346, height: 414)
+        case .Tape : return CGSize(width: 354, height: 366)
+        case .Portraw : return CGSize(width: 361, height: 221)
+        case .Filmroll : return CGSize(width: 332, height: 444)
+        }
+    }
 }
 
 class LayoutModel {

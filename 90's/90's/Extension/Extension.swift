@@ -61,10 +61,6 @@ extension UICollectionViewCell {
     
         imageView.contentMode = .scaleToFill
     }
-    
-    func clickSetting(imageView : UIImageView!, hidden : Bool){
-        imageView.isHidden = !imageView.isHidden
-    }
 }
 
 
@@ -177,79 +173,119 @@ extension UIViewController{
         }
     }
     
-    func applyBackImageViewLayout(selectedLayout : AlbumLayout, imageView : UIImageView ) -> UIImageView {
+    func returnLayoutBigSize(selectedLayout : AlbumLayout) -> CGSize {
+        switch selectedLayout {
+        case .Polaroid : return AlbumLayout.Polaroid.bigsize
+        case .Mini : return AlbumLayout.Mini.bigsize
+        case .Memory : return AlbumLayout.Memory.bigsize
+        case .Portrab : return AlbumLayout.Portrab.bigsize
+        case .Tape : return AlbumLayout.Tape.bigsize
+        case .Portraw : return AlbumLayout.Portraw.bigsize
+        case .Filmroll : return AlbumLayout.Filmroll.bigsize
+        }
+    }
+    
+    func applyBackImageViewLayout(selectedLayout : AlbumLayout, smallBig: CGSize, imageView : UIImageView ) -> UIImageView {
         switch selectedLayout {
             case .Polaroid:
-                imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Polaroid.size.width, height: AlbumLayout.Polaroid.size.height)
+                imageView.frame = CGRect(x: 0, y: 0, width: smallBig.width, height: smallBig.height)
                 imageView.image = AlbumLayout.Polaroid.image
                 return imageView
             case .Mini:
-                imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Mini.size.width, height: AlbumLayout.Mini.size.height)
+                imageView.frame = CGRect(x: 0, y: 0, width: smallBig.width, height: smallBig.height)
                 imageView.image = AlbumLayout.Mini.image
                 return imageView
             case .Memory:
-                imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Memory.size.width, height: AlbumLayout.Memory.size.height)
+                imageView.frame = CGRect(x: 0, y: 0, width: smallBig.width, height: smallBig.height)
                 imageView.image = AlbumLayout.Memory.image
                 return imageView
             case .Portrab:
-                imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Portrab.size.width, height: AlbumLayout.Portrab.size.height)
+                imageView.frame = CGRect(x: 0, y: 0, width: smallBig.width, height: smallBig.height)
                 imageView.image = AlbumLayout.Portrab.image
                 return imageView
             case .Tape:
-                imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Tape.size.width, height: AlbumLayout.Tape.size.height)
+                imageView.frame = CGRect(x: 0, y: 0, width: smallBig.width, height: smallBig.height)
                 imageView.image = AlbumLayout.Tape.image
                 return imageView
             case .Portraw:
-                imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Portraw.size.width, height: AlbumLayout.Portraw.size.height)
+                imageView.frame = CGRect(x: 0, y: 0, width: smallBig.width, height: smallBig.height)
                 imageView.image = AlbumLayout.Portraw.image
                 return imageView
             case .Filmroll:
-                imageView.frame = CGRect(x: 0, y: 0, width: AlbumLayout.Filmroll.size.width, height: AlbumLayout.Filmroll.size.height)
+                imageView.frame = CGRect(x: 0, y: 0, width: smallBig.width, height: smallBig.height)
                 imageView.image = AlbumLayout.Filmroll.image
                 return imageView
             }
     }
     
-    func applyImageViewLayout(selectedLayout : AlbumLayout, imageView : UIImageView, image : UIImage) -> UIImageView {
+    func applyImageViewLayout(selectedLayout : AlbumLayout, smallBig: CGSize, imageView : UIImageView, image : UIImage) -> UIImageView {
         var size : CGSize = CGSize(width: 0, height: 0)
         
         switch selectedLayout {
         case .Polaroid:
-            size = CGSize(width: AlbumLayout.Polaroid.size.width - 20, height: AlbumLayout.Polaroid.size.height - 50)
+            size = CGSize(width: smallBig.width - 20, height: smallBig.height - 50)
             imageView.frame = CGRect(x: 10, y: 10, width: size.width, height: size.height)
             imageView.image = image.imageResize(sizeChange: size)
             return imageView
         case .Mini:
-            size =  CGSize(width: AlbumLayout.Mini.size.width - 24, height: AlbumLayout.Mini.size.height - 48)
+            size =  CGSize(width: smallBig.width - 24, height: smallBig.height - 48)
             imageView.frame = CGRect(x: 12, y: 9, width: size.width, height: size.height)
             imageView.image = image.imageResize(sizeChange: size)
             return imageView
         case .Memory:
-            size = CGSize(width: AlbumLayout.Memory.size.width - 48, height: AlbumLayout.Memory.size.height - 52)
+            size = CGSize(width: smallBig.width - 48, height: smallBig.height - 52)
             imageView.frame = CGRect(x: 24, y: 26, width: size.width, height: size.height)
             imageView.image = image.imageResize(sizeChange: size)
             return imageView
         case .Portrab:
-            size = CGSize(width: AlbumLayout.Portrab.size.width - 20, height: AlbumLayout.Portrab.size.height - 24)
+            size = CGSize(width: smallBig.width - 20, height: smallBig.height - 24)
             imageView.frame = CGRect(x: 10, y: 12, width: size.width, height: size.height)
             imageView.image = image.imageResize(sizeChange: size)
             return imageView
         case .Tape:
-            size = CGSize(width: AlbumLayout.Tape.size.width - 44, height: AlbumLayout.Tape.size.height - 80)
+            size = CGSize(width: smallBig.width - 44, height: smallBig.height - 80)
             imageView.frame = CGRect(x: 23, y: 43, width: size.width, height: size.height)
             imageView.image = image.imageResize(sizeChange: size)
             return imageView
         case .Portraw:
-            size = CGSize(width: AlbumLayout.Portraw.size.width - 18, height: AlbumLayout.Portraw.size.height - 30)
+            size = CGSize(width: smallBig.width - 18, height: smallBig.height - 30)
             imageView.frame = CGRect(x: 9, y: 15, width: size.width, height: size.height)
             imageView.image = image.imageResize(sizeChange: size)
             return imageView
         case .Filmroll:
-            size = CGSize(width: AlbumLayout.Filmroll.size.width - 68, height: AlbumLayout.Filmroll.size.height - 3)
+            size = CGSize(width: smallBig.width - 68, height: smallBig.height - 6)
             imageView.frame = CGRect(x: 34, y: 3, width:size.width, height: size.height)
             imageView.image = image.imageResize(sizeChange: size)
             return imageView
         }
+    }
+    
+    func setSaveViewLayout(view : UIView, selectLayout : AlbumLayout){
+        let size = returnLayoutBigSize(selectedLayout: selectLayout)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.frame.size = size
+        
+        let distance = (self.view.frame.width - view.frame.width) / 2
+        view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 120).isActive = true
+        view.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: distance).isActive = true
+        view.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -distance).isActive = true
+        view.addShadowEffect()
+    }
+    
+    // 제네릭 적용
+    func subLabelSetting(view : UILabel!, superView : UIView!, top : CGFloat?, left : CGFloat?, right: CGFloat?, bottom: CGFloat?){
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        if top != nil { view.topAnchor.constraint(equalTo: superView.topAnchor,constant: top!).isActive = true
+        }
+        else if left != nil { view.leftAnchor.constraint(equalTo: superView.leftAnchor, constant: left!).isActive = true
+        }
+        else if right != nil { view.rightAnchor.constraint(equalTo: superView.rightAnchor, constant: -right!).isActive = true
+        }
+        else if bottom != nil { view.bottomAnchor.constraint(equalTo: superView.bottomAnchor, constant: -bottom!).isActive = true
+        }
+    
+        view.contentMode = .scaleToFill
     }
 }
 
