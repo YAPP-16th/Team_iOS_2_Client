@@ -289,6 +289,18 @@ extension UIViewController{
     
         view.contentMode = .scaleToFill
     }
+    
+    func layoutSetting(albumLayout : AlbumLayout) -> String {
+        switch albumLayout {
+        case .Polaroid : return "Polaroid"
+        case .Mini : return "Mini"
+        case .Memory : return "Memory"
+        case .Portrab : return "Portrab"
+        case .Portraw : return "Portraw"
+        case .Filmroll : return "Filmroll"
+        case .Tape : return "Tape"
+        }
+    }
 }
 
 

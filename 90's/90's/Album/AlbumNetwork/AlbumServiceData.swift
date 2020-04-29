@@ -14,9 +14,38 @@ struct AlbumService : APIManager {
     let header : HTTPHeaders =  ["Content-Type" : "application/json"]
     let createAlbumUrl = url("/album/create")
     let addAlbumUserUrl = url("/album/addUser")
-    
+    let getAlbumUrl = url("/album")
+    let getAlbumListUrl = url("/album/get")
     typealias completeAlbumSerivce = (AFDataResponse<Any>) -> ()
     
+    
+    // Album, get
+    func getAlbum(completion : @escaping(completeAlbumSerivce)){
+        
+        AF.request(getAlbumUrl, method: .get, encoding: JSONEncoding.default).responseJSON(completionHandler: {
+            response in
+            switch response.result {
+            case .success:
+                completion(response)
+            case .failure(let err):
+                print("==> Error in GetAlbumService : \(err)")
+            }
+        })
+    }
+    
+    // getAlbum, get
+    func getAlbumList(accountNonExpired : Bool, accountNonLocked : Bool, authority : String, credentialsNonExpired : Bool, enabled : Bool, password: String, username : String, completion : @escaping(completeAlbumSerivce)){
+        
+        AF.request(getAlbumListUrl, method: .get, encoding: JSONEncoding.default).responseJSON(completionHandler: {
+            response in
+            switch response.result {
+            case .success:
+                completion(response)
+            case .failure(let err):
+                print("==> Error in GetAlbumListService : \(err)")
+            }
+        })
+    }
     
     // CreateAlbum, Post
     func createAlbum(endDate : String, layoutUid : Int, name : String, photoLimit : Int, completion : @escaping(completeAlbumSerivce)){
@@ -34,7 +63,6 @@ struct AlbumService : APIManager {
                 completion(response)
             case .failure(let err):
                 print("==> Error in CreateAlbumService : \(err)")
-                break
             }
         })
     }
@@ -54,7 +82,6 @@ struct AlbumService : APIManager {
                 completion(response)
             case .failure(let err):
                 print("==> Error in AddAlbumService : \(err)")
-                break
             }
         })
     }
