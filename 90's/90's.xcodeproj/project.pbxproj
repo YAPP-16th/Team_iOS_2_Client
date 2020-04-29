@@ -32,6 +32,8 @@
 		9B6A134C2440CE9400E78E66 /* AlbumInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A134B2440CE9400E78E66 /* AlbumInfoVC.swift */; };
 		9B6A134E2440D0C500E78E66 /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A134D2440D0C500E78E66 /* MemberTableViewCell.swift */; };
 		9BA5A9452454021F003A55DC /* KakaoLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD31D3D243A110600D0D719 /* KakaoLink.framework */; };
+		9BAAA96F24596215002567AF /* AlbumService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAAA96E24596215002567AF /* AlbumService.swift */; };
+		9BAAA9712459624B002567AF /* AlbumServiceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAAA9702459624B002567AF /* AlbumServiceData.swift */; };
 		9BB1C5742441EEBA0035DEBF /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB1C5732441EEBA0035DEBF /* FilterCell.swift */; };
 		9BB1C5762441EEC30035DEBF /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB1C5752441EEC30035DEBF /* FilterViewController.swift */; };
 		9BB9B555243D694C00B5150F /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB9B554243D694C00B5150F /* OptionViewController.swift */; };
@@ -518,6 +520,8 @@
 		9B986C6224557E3E00BE9E3C /* 28C17161-E888-3D79-9FEA-53431ADCB336.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "28C17161-E888-3D79-9FEA-53431ADCB336.bcsymbolmap"; sourceTree = "<group>"; };
 		9B986C6324557E3E00BE9E3C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 		9B986C6424557E3E00BE9E3C /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Alamofire.framework.dSYM; sourceTree = "<group>"; };
+		9BAAA96E24596215002567AF /* AlbumService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumService.swift; sourceTree = "<group>"; };
+		9BAAA9702459624B002567AF /* AlbumServiceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumServiceData.swift; sourceTree = "<group>"; };
 		9BB1C5732441EEBA0035DEBF /* FilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 		9BB1C5752441EEC30035DEBF /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		9BB9B554243D694C00B5150F /* OptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
@@ -714,6 +718,7 @@
 			isa = PBXGroup;
 			children = (
 				A33376292420DA36000DC7C4 /* Album.swift */,
+				9BAAA962245961F3002567AF /* AlbumNetwork */,
 				9B180802243DFCDA00AF1CE6 /* MainAlbum */,
 				9B45BD03243873FC00497EA5 /* DetailAlbum */,
 				9B45BD02243873F000497EA5 /* CreateAlbum */,
@@ -1562,6 +1567,15 @@
 			path = tvOS;
 			sourceTree = "<group>";
 		};
+		9BAAA962245961F3002567AF /* AlbumNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				9BAAA96E24596215002567AF /* AlbumService.swift */,
+				9BAAA9702459624B002567AF /* AlbumServiceData.swift */,
+			);
+			path = AlbumNetwork;
+			sourceTree = "<group>";
+		};
 		A33376092420CFB3000DC7C4 = {
 			isa = PBXGroup;
 			children = (
@@ -1831,6 +1845,7 @@
 				A3E2DB8224547A0800AB2156 /* CheckEmailResult.swift in Sources */,
 				A3E2DB7C2454694000AB2156 /* NicknameViewController.swift in Sources */,
 				9BC98F0424488113002629AF /* panVC.swift in Sources */,
+				9BAAA96F24596215002567AF /* AlbumService.swift in Sources */,
 				9B1B7A6E244C2A9B008ED381 /* AlbumLayoutHeaderCell.swift in Sources */,
 				A333762A2420DA36000DC7C4 /* Album.swift in Sources */,
 				A333761A2420CFB3000DC7C4 /* AlbumMainController.swift in Sources */,
@@ -1847,6 +1862,7 @@
 				9B180800243DF53200AF1CE6 /* albumLayoutCollectionCell.swift in Sources */,
 				9BFC148A2441C14500F38AFF /* Protocol.swift in Sources */,
 				9B6A134C2440CE9400E78E66 /* AlbumInfoVC.swift in Sources */,
+				9BAAA9712459624B002567AF /* AlbumServiceData.swift in Sources */,
 				9BC0DBB62444802A00CA90F7 /* User.swift in Sources */,
 				9BD31D3A243A0A9100D0D719 /* InviteVC.swift in Sources */,
 				39DE24C9245472F4007E8D40 /* PrintListTableViewCell.swift in Sources */,
