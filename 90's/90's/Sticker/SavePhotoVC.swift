@@ -45,10 +45,10 @@ extension SavePhotoVC {
     }
     
     func defaultSetting(){
-//        setSaveViewLayout(view: photoView, selectLayout: selectedLayout)
-//        photoView.addSubview(originView)
-        setSaveViewLayout(view: photoImageView, selectLayout: selectedLayout)
-        photoImageView.image = originImage
+        setSaveViewLayout(view: photoView, selectLayout: selectedLayout)
+        photoView.addSubview(originView)
+//        setSaveViewLayout(view: photoImageView, selectLayout: selectedLayout)
+//        photoImageView.image = originImage
     }
     
     func dateLabelSetting(){

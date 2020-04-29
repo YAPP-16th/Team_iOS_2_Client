@@ -578,7 +578,7 @@
                                     <constraint firstAttribute="bottom" secondItem="kRo-vk-HRx" secondAttribute="bottom" id="sMC-Mk-HSR"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ehu-hz-X3a">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ehu-hz-X3a">
                                 <rect key="frame" x="0.0" y="699" width="414" height="163"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -1263,7 +1263,7 @@
                                     <constraint firstItem="K7g-S4-jni" firstAttribute="top" secondItem="o4j-wg-9RT" secondAttribute="top" id="oqz-nC-3pc"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="h90-9n-Bhs">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="h90-9n-Bhs">
                                 <rect key="frame" x="0.0" y="726" width="414" height="110"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
