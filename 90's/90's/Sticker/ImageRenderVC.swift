@@ -19,11 +19,13 @@ class ImageRenderVC: UIViewController {
     @IBOutlet weak var stickerBtn: UIButton!
     @IBOutlet weak var completeBtn: UIButton!
     @IBAction func cancleBtn(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     // get image from other view
     var image : UIImage?
+    var photoView : UIView!
+    var photoImageView : UIImage?
     var tempsticker : UIImageView?
     var selectLayout : AlbumLayout! = .Polaroid
     // sticker
@@ -51,7 +53,7 @@ class ImageRenderVC: UIViewController {
         super.viewWillAppear(animated)
         collectionView.reloadData()
         renderImage.image = image
-        initializeArrays()
+        photoView = saveView
     }
     
     override func viewDidLoad() {
@@ -60,6 +62,7 @@ class ImageRenderVC: UIViewController {
         defaultSetting()
         setSaveViewLayout(view: saveView, selectLayout: selectLayout)
         setRenderImageViewLayout()
+        initializeArrays()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -137,8 +140,9 @@ extension ImageRenderVC {
         imageView.frame = CGRect(x: self.view.frame.width / 2 - 60, y: self.view.frame.height / 2 - 60, width: 120, height: 120)
         sticker = imageView
         createPan(view: sticker!.backImageView) // 이미지 옮기기
-
+        
         self.view.addSubview(imageView)
+        print("sticker frame = \(imageView)")
     }
     
     private func resetCheckImage(){
@@ -175,11 +179,22 @@ extension ImageRenderVC {
     @objc func touchCompleteBtn(){
         if sticker != nil {
             let stickerImageView = sticker?.stickerImageView
-            stickerImageView?.translatesAutoresizingMaskIntoConstraints = false
+            
+            //stickerImageView?.center = sticker!.center
+//            stickerImageView?.translatesAutoresizingMaskIntoConstraints = false
             saveView.addSubview(stickerImageView!)
+            sticker?.removeFromSuperview()
         }
+        photoView = saveView
+        let renderer = UIGraphicsImageRenderer(size: photoView.bounds.size)
+        let timage = renderer.image { ctx in
+            photoView.drawHierarchy(in: photoView.bounds, afterScreenUpdates: true)
+        }
+        photoImageView = timage
+        
         let nextVC = storyboard?.instantiateViewController(withIdentifier: "savePhotoVC") as! SavePhotoVC
-        nextVC.originView = saveView
+        nextVC.originView = photoView
+        nextVC.originImage = photoImageView
         nextVC.selectedLayout = selectLayout
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
