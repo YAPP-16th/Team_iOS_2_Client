@@ -12,13 +12,15 @@ class SavePhotoVC: UIViewController {
     @IBOutlet weak var switchBtn: UISwitch!
     @IBOutlet weak var saveBtn: UIButton!
     @IBOutlet weak var photoView: UIView!
+    @IBOutlet weak var photoImageView: UIImageView!
     @IBAction func backBtn(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     var location = CGPoint(x: 0.0, y: 0.0)
     var size = CGSize(width: 0,height: 0)
     var originView : UIView!
+    var originImage : UIImage!
     var dateLabel : UILabel!
     var selectedLayout : AlbumLayout! = .Polaroid
     
@@ -43,8 +45,10 @@ extension SavePhotoVC {
     }
     
     func defaultSetting(){
-        setSaveViewLayout(view: photoView, selectLayout: selectedLayout)
-        photoView.addSubview(originView)
+//        setSaveViewLayout(view: photoView, selectLayout: selectedLayout)
+//        photoView.addSubview(originView)
+        setSaveViewLayout(view: photoImageView, selectLayout: selectedLayout)
+        photoImageView.image = originImage
     }
     
     func dateLabelSetting(){
@@ -69,7 +73,6 @@ extension SavePhotoVC {
 extension SavePhotoVC {
     @objc func touchSaveBtn(){
         photoView.addSubview(dateLabel)
-        print("====== photoview frame = \(photoView.frame)")
         let renderer = UIGraphicsImageRenderer(size: photoView.bounds.size)
         let image = renderer.image { ctx in
             photoView.drawHierarchy(in: photoView.bounds, afterScreenUpdates: true)
