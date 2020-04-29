@@ -28,22 +28,18 @@
                                 <constraint firstAttribute="width" constant="19" id="EZV-wb-yuL"/>
                             </constraints>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4E-CT-7WG">
-                            <rect key="frame" x="0.0" y="0.0" width="19" height="19"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="19" id="OMD-P7-Rgd"/>
-                                <constraint firstAttribute="height" constant="19" id="qWx-GT-Een"/>
-                            </constraints>
-                            <state key="normal" image="stickerControlCancel"/>
-                            <connections>
-                                <action selector="cancleBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ld6-e2-dEn"/>
-                            </connections>
-                        </button>
                         <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stckerControlSize" translatesAutoresizingMaskIntoConstraints="NO" id="DrU-KH-0SN">
                             <rect key="frame" x="151" y="151" width="19" height="19"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="19" id="P2T-gs-Avy"/>
                                 <constraint firstAttribute="width" constant="19" id="pP1-MY-q42"/>
+                            </constraints>
+                        </imageView>
+                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stickerControlCancel" translatesAutoresizingMaskIntoConstraints="NO" id="iUk-eu-78S">
+                            <rect key="frame" x="0.0" y="0.0" width="19" height="19"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="19" id="Z4t-HV-oyw"/>
+                                <constraint firstAttribute="height" constant="19" id="bvB-ds-Zut"/>
                             </constraints>
                         </imageView>
                     </subviews>
@@ -52,16 +48,16 @@
                         <constraint firstAttribute="trailing" secondItem="DrU-KH-0SN" secondAttribute="trailing" id="96H-uS-Kap"/>
                         <constraint firstItem="BaX-aH-0y8" firstAttribute="leading" secondItem="4Jf-St-2Hx" secondAttribute="leading" constant="18" id="9DC-RT-F6o"/>
                         <constraint firstAttribute="trailing" secondItem="BaX-aH-0y8" secondAttribute="trailing" constant="18" id="GJH-ZM-ubP"/>
-                        <constraint firstItem="d4E-CT-7WG" firstAttribute="leading" secondItem="4Jf-St-2Hx" secondAttribute="leading" id="LdR-x9-ueG"/>
                         <constraint firstAttribute="trailing" secondItem="8yc-vt-zpZ" secondAttribute="trailing" constant="18" id="Mha-9s-OAc"/>
                         <constraint firstItem="8yc-vt-zpZ" firstAttribute="top" secondItem="4Jf-St-2Hx" secondAttribute="top" constant="18" id="O0Y-r6-tnc"/>
                         <constraint firstAttribute="bottom" secondItem="BaX-aH-0y8" secondAttribute="bottom" constant="18" id="Q9E-Ob-Gv7"/>
+                        <constraint firstItem="iUk-eu-78S" firstAttribute="top" secondItem="4Jf-St-2Hx" secondAttribute="top" id="Y7L-2d-ijt"/>
                         <constraint firstAttribute="bottom" secondItem="8yc-vt-zpZ" secondAttribute="bottom" constant="18" id="fa4-5T-Vak"/>
                         <constraint firstAttribute="bottom" secondItem="DrU-KH-0SN" secondAttribute="bottom" id="gvX-Qc-2GJ"/>
                         <constraint firstItem="kg6-Dw-xYd" firstAttribute="top" secondItem="4Jf-St-2Hx" secondAttribute="top" id="iYF-k5-Bpg"/>
                         <constraint firstItem="8yc-vt-zpZ" firstAttribute="leading" secondItem="4Jf-St-2Hx" secondAttribute="leading" constant="18" id="oVI-hn-Zgg"/>
                         <constraint firstItem="BaX-aH-0y8" firstAttribute="top" secondItem="4Jf-St-2Hx" secondAttribute="top" constant="18" id="sMA-kg-7l8"/>
-                        <constraint firstItem="d4E-CT-7WG" firstAttribute="top" secondItem="4Jf-St-2Hx" secondAttribute="top" id="vVJ-hf-MxE"/>
+                        <constraint firstItem="iUk-eu-78S" firstAttribute="leading" secondItem="4Jf-St-2Hx" secondAttribute="leading" id="t5i-vu-apt"/>
                     </constraints>
                 </view>
             </subviews>
@@ -74,6 +70,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="backImageView" destination="8yc-vt-zpZ" id="GQm-pK-yH9"/>
+                <outlet property="cancleImageView" destination="iUk-eu-78S" id="S9Q-2v-WHV"/>
                 <outlet property="resizeImageView" destination="DrU-KH-0SN" id="vh8-Uq-AKy"/>
                 <outlet property="rotateImageView" destination="kg6-Dw-xYd" id="0vZ-oM-Tjg"/>
                 <outlet property="stickerImageView" destination="BaX-aH-0y8" id="yuG-I1-lMG"/>

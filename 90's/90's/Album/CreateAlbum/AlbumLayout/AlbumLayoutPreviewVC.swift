@@ -49,9 +49,9 @@ extension AlbumLayoutPreviewVC : UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "albumlayoutpreviewcell", for: indexPath) as! AlbumLayoutPreviewCell
-
-        cell.backimageView = applyBackImageViewLayout(selectedLayout: selectedLayout, imageView: cell.backimageView)
-        cell.imageView = applyImageViewLayout(selectedLayout: selectedLayout, imageView: cell.imageView, image: photoArray[indexPath.row])
+        let size = returnLayoutSize(selectedLayout: selectedLayout)
+        cell.backimageView = applyBackImageViewLayout(selectedLayout: selectedLayout, smallBig: size,  imageView: cell.backimageView)
+        cell.imageView = applyImageViewLayout(selectedLayout: selectedLayout, smallBig: size, imageView: cell.imageView, image: photoArray[indexPath.row])
         
         return cell
     }

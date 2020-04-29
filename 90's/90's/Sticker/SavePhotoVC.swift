@@ -12,14 +12,17 @@ class SavePhotoVC: UIViewController {
     @IBOutlet weak var switchBtn: UISwitch!
     @IBOutlet weak var saveBtn: UIButton!
     @IBOutlet weak var photoView: UIView!
-    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var photoImageView: UIImageView!
     @IBAction func backBtn(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     var location = CGPoint(x: 0.0, y: 0.0)
-    var image : UIImage?
-    var originalView : UIView?
+    var size = CGSize(width: 0,height: 0)
+    var originView : UIView!
+    var originImage : UIImage!
+    var dateLabel : UILabel!
+    var selectedLayout : AlbumLayout! = .Polaroid
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -29,35 +32,40 @@ class SavePhotoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         buttonSetting()
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent!) {
-        var touch : UITouch! = touches.first! as UITouch
-        location = touch.location(in: view)
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        var touch : UITouch! = touches.first! as UITouch
-        location = touch.location(in: view)
+        dateLabelSetting()
     }
 }
 
 
 extension SavePhotoVC {
     func buttonSetting(){
+        saveBtn.layer.cornerRadius = 10
         saveBtn.addTarget(self, action: #selector(touchSaveBtn), for: .touchUpInside)
         switchBtn.addTarget(self, action: #selector(touchSwitchBtn), for: .touchUpInside)
     }
     
     func defaultSetting(){
-        dateLabel.isHidden = false
+//        setSaveViewLayout(view: photoView, selectLayout: selectedLayout)
+//        photoView.addSubview(originView)
+        setSaveViewLayout(view: photoImageView, selectLayout: selectedLayout)
+        photoImageView.image = originImage
+    }
+    
+    func dateLabelSetting(){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd"
         
-        photoView.addSubview(originalView!)
-        originalView?.translatesAutoresizingMaskIntoConstraints = false
-        originalView?.topAnchor.constraint(equalTo: photoView.topAnchor, constant: 0).isActive = true
-        originalView?.leftAnchor.constraint(equalTo: photoView.leftAnchor, constant: 0).isActive = true
-        originalView?.rightAnchor.constraint(equalTo: photoView.rightAnchor, constant: 0).isActive = true
-        originalView?.bottomAnchor.constraint(equalTo: photoView.bottomAnchor, constant: 0).isActive = true
+        dateLabel = UILabel()
+        dateLabel.text = dateFormatter.string(from: Date()) /// 변경사항
+        dateLabel.font = UIFont.boldSystemFont(ofSize: 16) //UIFont(name: "", size: 16)
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        photoView.addSubview(dateLabel)
+               
+        dateLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50).isActive = true
+        dateLabel.bottomAnchor.constraint(equalTo: photoView.bottomAnchor, constant: -20).isActive = true
+        dateLabel.heightAnchor.constraint(equalToConstant: 21).isActive = true
+        dateLabel.widthAnchor.constraint(equalToConstant: 111).isActive = true
+        print("++ dateLabel = \(dateLabel)")
     }
 }
 
@@ -70,7 +78,8 @@ extension SavePhotoVC {
             photoView.drawHierarchy(in: photoView.bounds, afterScreenUpdates: true)
         }
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
-        dismiss(animated: true)
+        
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer){
@@ -82,7 +91,6 @@ extension SavePhotoVC {
     }
     
     @objc func touchSwitchBtn(){
-        // date와 저장하려면 addSubview, View로 만들어야 함
         if dateLabel.isHidden == true {
             dateLabel.isHidden = false
         } else {

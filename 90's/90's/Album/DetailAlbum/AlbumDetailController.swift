@@ -176,9 +176,9 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
             return currentCell!
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCell
-            
-            cell.backImageView = applyBackImageViewLayout(selectedLayout: selectedLayout!, imageView: cell.backImageView)
-            cell.photoImageView = applyImageViewLayout(selectedLayout: selectedLayout!, imageView: cell.photoImageView, image: AlbumDatabase.arrayList[albumIndex!].photos[indexPath.row+1])
+            let size = returnLayoutSize(selectedLayout: selectedLayout!)
+            cell.backImageView = applyBackImageViewLayout(selectedLayout: selectedLayout!, smallBig: size, imageView: cell.backImageView)
+            cell.photoImageView = applyImageViewLayout(selectedLayout: selectedLayout!, smallBig: size, imageView: cell.photoImageView, image: AlbumDatabase.arrayList[albumIndex!].photos[indexPath.row+1])
             
             return cell
         }
@@ -271,7 +271,9 @@ extension AlbumDetailController : UIImagePickerControllerDelegate, UINavigationC
             let vc = storyboard.instantiateViewController(withIdentifier: "imageRenderVC") as! ImageRenderVC
             vc.modalPresentationStyle = .fullScreen
             vc.image = tempImage
-            self.present(vc, animated: true, completion: nil)
+            vc.selectLayout = self.selectedLayout
+            self.navigationController?.pushViewController(vc, animated: true)
+            //self.present(vc, animated: true, completion: nil)
         }
     }
 }
