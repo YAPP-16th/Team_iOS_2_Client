@@ -23,7 +23,9 @@ class CompleteViewController: UIViewController {
     }
     
     @IBAction func goLoginVC(_ sender: Any) {
-       //로그인 화면으로 가는 로직 구현
+        let signInSB = UIStoryboard(name: "SignIn", bundle: nil)
+        let loginVC = signInSB.instantiateViewController(identifier: "LoginMainViewController") as! LoginMainViewController
+        navigationController?.pushViewController(loginVC, animated: true)
     }
 
 
