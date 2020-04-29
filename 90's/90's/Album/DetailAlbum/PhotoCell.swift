@@ -9,10 +9,5 @@
 class PhotoCell : UICollectionViewCell {
     @IBOutlet weak var backImageView: UIImageView!
     @IBOutlet weak var photoImageView: UIImageView!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        subImageViewSetting(imageView: photoImageView, top: 10, left: 8, right: 8, bottom: 40)
-    }
 }
 

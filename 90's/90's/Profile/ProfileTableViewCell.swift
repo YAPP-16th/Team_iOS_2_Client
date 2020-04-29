@@ -11,8 +11,10 @@ import UIKit
 class ProfileTableViewCell: UITableViewCell {
     @IBOutlet weak var settingLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    var detailDelegate:DetailDelegate!
+    var indexPath:IndexPath!
+    
+    @IBAction func clickDetailBtn(_ sender: Any) {
+        self.detailDelegate.goDetailVC(indexPath.row)
     }
 }

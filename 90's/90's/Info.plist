@@ -2,15 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>neodgm</string>
-		<string>NotoSansCJKkr-Bold</string>
-		<string>NotoSansCJKkr-DemiLight</string>
-		<string>NotoSansCJKkr-Light</string>
-		<string>NotoSansCJKkr-Medium</string>
-		<string>NotoSansCJKkr-Regular</string>
-	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -32,17 +28,17 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>kakao9c1279f7fccd7de16ae66d216e1d8780</string>
+				<string>kakaod114f41f41597a7d7c592f05903c41fe</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>KAKAO_APP_KEY</key>
-	<string>9c1279f7fccd7de16ae66d216e1d8780</string>
+	<string>d114f41f41597a7d7c592f05903c41fe</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string>kakao9c1279f7fccd7de16ae66d216e1d8780</string>
+		<string>kakaod114f41f41597a7d7c592f05903c41fe</string>
 		<string>kakaokompassauth</string>
 		<string>storykompassauth</string>
 		<string>kakaolink</string>
@@ -57,6 +53,15 @@
 	<string>사진 추가합니다!</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>test</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>neodgm</string>
+		<string>NotoSansCJKkr-Bold</string>
+		<string>NotoSansCJKkr-DemiLight</string>
+		<string>NotoSansCJKkr-Light</string>
+		<string>NotoSansCJKkr-Medium</string>
+		<string>NotoSansCJKkr-Regular</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

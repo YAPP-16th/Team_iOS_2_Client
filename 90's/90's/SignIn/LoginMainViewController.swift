@@ -16,7 +16,8 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passValidationLabel: UILabel!
     @IBOutlet weak var selectorImageView2: UIImageView!
     @IBOutlet weak var loginBtn: UIButton!
-        
+    @IBOutlet weak var buttonConst: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tfPass.delegate = self
@@ -35,7 +36,8 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
         let email = tfEmail.text!
         if(!email.validateEmail()){
             emailValidationLabel.isHidden = false
-            selectorImageView1.backgroundColor = UIColor.red
+            selectorImageView1.image = UIImage(named: "path378Red")
+            
         }else{
             //로그인 통신
             //로그인 통신 후 로그인 실패시 메시지 표시
@@ -78,42 +80,63 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
         tfEmail.becomeFirstResponder()
         tfPass.isEnabled = false
         loginBtn.isEnabled = false
+        loginBtn.layer.cornerRadius = 8.0
     }
-
+    
     //TextField에 대한 옵저버 처리
     func setTextFieldObserver(){
-        //새로운 패스워드 TF에 대한 옵저버
+        //이메일 TF에 대한 옵저버
         NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: tfEmail, queue: .main, using : {
             _ in
             let str = self.tfEmail.text!.trimmingCharacters(in: .whitespaces)
             
             if(str != ""){
-                self.selectorImageView1.backgroundColor = UIColor.black
+                self.selectorImageView1.image = UIImage(named: "path378Black")
                 self.tfPass.isEnabled = true
             }else {
-                self.selectorImageView1.backgroundColor = UIColor.gray
+                self.selectorImageView1.image = UIImage(named: "path378Grey1")
                 self.tfPass.isEnabled = false
             }
             
         })
         
         
-        //패스워드 확인 TF에 대한 옵저버
+        //패스워드 TF에 대한 옵저버
         NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: tfPass, queue: .main, using : {
             _ in
             let str = self.tfPass.text!.trimmingCharacters(in: .whitespaces)
             
             if(str != ""){
-                self.selectorImageView2.backgroundColor = UIColor.black
-                self.loginBtn.backgroundColor = UIColor.black
+                self.selectorImageView2.image = UIImage(named: "path378Black")
+                self.loginBtn.backgroundColor = UIColor(displayP3Red: 227/255, green: 62/255, blue: 40/255, alpha: 1.0)
                 self.loginBtn.isEnabled = true
             }else {
-                self.selectorImageView2.backgroundColor = UIColor.gray
-                self.loginBtn.backgroundColor = UIColor.gray
+                self.selectorImageView2.image = UIImage(named: "path378Grey1")
+                self.loginBtn.backgroundColor = UIColor(displayP3Red: 199/255,green: 201/255, blue: 208/255, alpha: 1.0)
                 self.loginBtn.isEnabled = false
             }
             
         })
+        
+        //키보드에 대한 Observer
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
+        let keyboardHeight = keyboardSize.cgRectValue.height
+        
+        if(keyboardHeight > 300){
+            buttonConst.constant = keyboardHeight - 18
+        }else{
+            buttonConst.constant = keyboardHeight + 18
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        buttonConst.constant = 18
     }
     
     

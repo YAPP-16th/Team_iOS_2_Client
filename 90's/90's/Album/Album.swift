@@ -34,6 +34,20 @@ class Album {
 
 class AlbumModel {
     var arrayList : [Album] = []
+    
+    func defaultData() -> Array<Album> {
+        let stock = Album(user: ["test@gmail.com"], albumIndex: 0, albumName: "행복한 앨범", albumStartDate: "2020-04-26", albumEndDate: "2020-05-21", albumLayout: .Portrab, albumMaxCount: 5, photo: [])
+        let stock2 = Album(user: ["test1@gmail.com"], albumIndex: 1, albumName: "여행 기록", albumStartDate: "2020-04-25", albumEndDate: "2020-06-11", albumLayout: .Filmroll, albumMaxCount: 10, photo: [])
+        return [stock, stock2]
+    }
+    
+    init() {
+        arrayList = defaultData()
+        arrayList[0].photos.append(UIImage(named: "fellinlove")!)
+        arrayList[0].photos.append(UIImage(named: "husky")!)
+        arrayList[1].photos.append(UIImage(named: "dreamy2121")!)
+        arrayList[1].photos.append(UIImage(named: "husky")!)
+    }
 }
 
 
@@ -55,7 +69,7 @@ enum AlbumLayout {
         case .Portrab : return UIImage(named: "framePortrab")!
         case .Tape : return UIImage(named: "frameTape")!
         case .Portraw : return UIImage(named: "framePortraw")!
-        case .Filmroll : return UIImage(named: "tempframeFilmroll")!
+        case .Filmroll : return UIImage(named: "frameFilmroll")!
         }
     }
     
@@ -67,7 +81,19 @@ enum AlbumLayout {
         case .Portrab : return CGSize(width: 270, height: 325)
         case .Tape : return CGSize(width: 326, height: 336)
         case .Portraw : return CGSize(width: 356, height: 218)
-        case .Filmroll : return CGSize(width: 286, height: 388)
+        case .Filmroll : return CGSize(width: 286, height: 382)
+        }
+    }
+    
+    var bigsize : CGSize{
+        switch self {
+        case .Polaroid : return CGSize(width: 368, height: 447)
+        case .Mini : return CGSize(width: 338, height: 463)
+        case .Memory : return CGSize(width: 354, height: 320)
+        case .Portrab : return CGSize(width: 346, height: 414)
+        case .Tape : return CGSize(width: 354, height: 366)
+        case .Portraw : return CGSize(width: 361, height: 221)
+        case .Filmroll : return CGSize(width: 332, height: 444)
         }
     }
 }
