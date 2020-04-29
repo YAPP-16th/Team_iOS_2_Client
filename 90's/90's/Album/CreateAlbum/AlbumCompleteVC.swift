@@ -28,6 +28,7 @@ class AlbumCompleteVC: UIViewController {
         let newAlbum = Album(user : [user], albumIndex: number, albumName: self.albumName, albumStartDate: self.albumStartDate, albumEndDate: self.albumEndDate, albumLayout: self.albumLayout, albumMaxCount: self.albumMaxCount + 1, photo: [])
         newAlbum.photos.append(photo)
         AlbumDatabase.arrayList.append(newAlbum)
+//        NetworkSetting()
         mainProtocol?.reloadView()
         self.navigationController?.popToRootViewController(animated: true)
     }
@@ -40,7 +41,6 @@ class AlbumCompleteVC: UIViewController {
     var albumMaxCount : Int!
     var photo : UIImage!
     var albumLayout : AlbumLayout!
-    
     var mainProtocol : AlbumMainVCProtocol?
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,15 +49,15 @@ class AlbumCompleteVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Setting()
+        defaultSetting()
     }
 }
 
 
 extension AlbumCompleteVC {
-    func Setting(){
+    func defaultSetting(){
         albumCompleteBtn.layer.cornerRadius = 10
-        albumLayoutLabel.text = layoutSetting()
+        albumLayoutLabel.text = layoutSetting(albumLayout: albumLayout)
         albumImageView.image = photo
         albumTitleLabel.text = albumName
         albumDateLabel.text = "\(albumStartDate!)  ~  \(albumEndDate!)"
@@ -65,16 +65,21 @@ extension AlbumCompleteVC {
         askLabel.text = "이 앨범으로 결정하시겠습니까?\n한 번 앨범을 만들면 수정이 불가능 합니다"
     }
     
-    func layoutSetting() -> String {
-        switch albumLayout {
-        case .Polaroid : return "Polaroid"
-        case .Mini : return "Mini"
-        case .Memory : return "Memory"
-        case .Portrab : return "Portrab"
-        case .Portraw : return "Portraw"
-        case .Filmroll : return "Filmroll"
-        case .Tape : return "Tape"
-        default: return "None"
+    func NetworkSetting(){
+        AlbumService.shared.createAlbum(endDate: albumEndDate, layoutUid: albumLayout.layoutUid, name: albumName, photoLimit: albumMaxCount){ response in
+            guard let data = response.response?.statusCode else {return}
+            switch data {
+            case 200 :
+//                guard let value = response.data else {return}
+//                let body = try? JSONDecoder().decode(CreateAlbumData.self, from: value)
+                print("앨범 생성 완료")
+            case 201 :
+                print("앨범 생성 완료")
+            case 401...404 :
+                print("앨범을 찾을 수 없습니다.")
+            default:
+                return
+            }
         }
     }
 }
