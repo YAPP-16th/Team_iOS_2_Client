@@ -25,7 +25,7 @@ class ImageRenderVC: UIViewController {
     // get image from other view
     var image : UIImage?
     var photoView : UIView!
-    var photoImageView : UIImage?
+    var photoImage : UIImage?
     var tempsticker : UIImageView?
     var selectLayout : AlbumLayout! = .Polaroid
     // sticker
@@ -43,7 +43,7 @@ class ImageRenderVC: UIViewController {
     fileprivate let context = CIContext(options: nil)
     fileprivate var filterIndex = 0
     fileprivate var selectIndex : IndexPath?
-    fileprivate let filterNameArray : [String] = ["Noise", "Grunge", "Wrap","Light", "Aura", "Old"]
+    fileprivate let filterNameArray : [String] = ["Noise", "Grunge", "Wrap", "Light", "Aura", "Old"]
     fileprivate let filterLutArray : [String] = ["LUT", "LUT2", "LUT3", "LUT4", "LUT5", "LUT6"]
     // Array for apply LUT filters & Sticker before viewAppear. And place on collectioncell
     fileprivate var filterImages : [UIImage] = [], stickerImages : [UIImage] = []
@@ -52,8 +52,6 @@ class ImageRenderVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collectionView.reloadData()
-        renderImage.image = image
-        photoView = saveView
     }
     
     override func viewDidLoad() {
@@ -91,9 +89,20 @@ class ImageRenderVC: UIViewController {
                 sticker?.transform = scale.concatenating(rotate)
             }
             else if touch!.view == sticker?.cancleImageView {
-                self.sticker?.removeFromSuperview()
-                self.sticker = nil
+                sticker?.removeFromSuperview()
+                sticker = nil
             }
+            else if touch!.view == sticker?.backImageView {
+                let point = touch?.location(in: self.view)
+                sticker!.center = point!
+                print("----- touch moved! sticker : \(sticker!.frame)")
+            }
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if sticker != nil {
+            print("----- touch end, sticker : \(sticker!)")
         }
     }
 }
@@ -110,6 +119,8 @@ extension ImageRenderVC {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.allowsMultipleSelection = false
+        renderImage.image = image
+        photoView = saveView
     }
     
     private func initializeArrays(){
@@ -136,13 +147,17 @@ extension ImageRenderVC {
     }
     
     private func createStickerView(image : UIImage, indexPathRow : Int){
-        let imageView = StickerLayout.loadFromZib(image: image)
-        imageView.frame = CGRect(x: self.view.frame.width / 2 - 60, y: self.view.frame.height / 2 - 60, width: 120, height: 120)
-        sticker = imageView
+       // let imageView = StickerLayout.loadFromZib(image: image)
+//        imageView.bounds.size = CGSize(width: 120, height: 120)
+//        imageView.frame.origin = CGPoint(x: 200, y: 250)
+//        imageView.isUserInteractionEnabled = true
+        //imageView.frame = CGRect(x: saveView.center.x, y: saveView.center.y, width: 120, height: 120)
+        //self.view.addSubview(imageView)
+        sticker = StickerLayout.loadFromZib(image: image)
         createPan(view: sticker!.backImageView) // 이미지 옮기기
+        self.saveView.addSubview(sticker!)
         
-        self.view.addSubview(imageView)
-        print("sticker frame = \(imageView)")
+        print("imageview frame = \(sticker!.frame)")
     }
     
     private func resetCheckImage(){
@@ -180,29 +195,43 @@ extension ImageRenderVC {
         if sticker != nil {
             let stickerImageView = sticker?.stickerImageView
             
-            //stickerImageView?.center = sticker!.center
+//            stickerImageView?.center = sticker!.center
 //            stickerImageView?.translatesAutoresizingMaskIntoConstraints = false
-            saveView.addSubview(stickerImageView!)
+//            saveView.addSubview(stickerImageView!)
             sticker?.removeFromSuperview()
+            sticker = nil
         }
-        photoView = saveView
-        let renderer = UIGraphicsImageRenderer(size: photoView.bounds.size)
+        
+        let renderer = UIGraphicsImageRenderer(bounds: saveView.bounds)
         let timage = renderer.image { ctx in
-            photoView.drawHierarchy(in: photoView.bounds, afterScreenUpdates: true)
+            saveView.drawHierarchy(in: saveView.bounds, afterScreenUpdates: true)
         }
-        photoImageView = timage
+        UIImageWriteToSavedPhotosAlbum(timage, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        
+        print("image render finish :\(timage), \(saveView.bounds)")
+        photoImage = timage
         
         let nextVC = storyboard?.instantiateViewController(withIdentifier: "savePhotoVC") as! SavePhotoVC
-        nextVC.originView = photoView
-        nextVC.originImage = photoImageView
+        nextVC.originImage = photoImage
         nextVC.selectedLayout = selectLayout
         self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer){
+        if let error = error {
+            print(error.localizedDescription)
+        } else {
+            print("Image saved")
+        }
     }
 
     @objc func handlePanGesture(panGesture: UIPanGestureRecognizer){
         let transition = panGesture.translation(in: sticker)
         panGesture.setTranslation(CGPoint.zero, in: sticker)
-        sticker!.center = CGPoint(x: sticker!.center.x + transition.x, y: sticker!.center.y + transition.y)
+        if sticker != nil {
+            sticker!.center = CGPoint(x: sticker!.center.x + transition.x, y: sticker!.center.y + transition.y)
+            print("pan gesture active")
+        }
     }
     
     @objc func handlePinGesture(pinGesture : UIPinchGestureRecognizer){
@@ -280,9 +309,13 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
             testStickerCount += 1
             if testStickerCount <= 1 {
                 testStickerCell = cell
+                stickerBtn.isEnabled = false
+                filterBtn.isEnabled = true
             } else {
                 testStickerCell?.hideimage()
                 testStickerCell = nil
+                stickerBtn.isEnabled = true
+                filterBtn.isEnabled = false
             }
         }
     }

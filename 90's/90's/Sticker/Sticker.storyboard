@@ -372,10 +372,6 @@
                                     <constraint firstAttribute="bottom" secondItem="Hpn-RK-0YN" secondAttribute="bottom" id="unD-EW-Ngn"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nd1-y2-KKU">
-                                <rect key="frame" x="20" y="133" width="374" height="469"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -394,7 +390,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="K8v-qw-r3n"/>
                     <connections>
-                        <outlet property="photoImageView" destination="nd1-y2-KKU" id="kLe-be-Aa0"/>
                         <outlet property="photoView" destination="Y4A-NP-afi" id="EuL-Ot-naN"/>
                         <outlet property="saveBtn" destination="Dmo-i2-8bX" id="oY4-pe-Tbh"/>
                         <outlet property="switchBtn" destination="gNf-oE-ziU" id="NuY-dT-jnO"/>

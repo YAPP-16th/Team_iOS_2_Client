@@ -9,27 +9,27 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" restorationIdentifier="stickerlayout" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB" customClass="StickerLayout" customModule="_0_s" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
+            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Jf-St-2Hx">
-                    <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
+                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                     <subviews>
                         <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BaX-aH-0y8">
-                            <rect key="frame" x="18" y="18" width="134" height="134"/>
+                            <rect key="frame" x="18" y="18" width="84" height="84"/>
                         </imageView>
                         <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stickerControlBox" translatesAutoresizingMaskIntoConstraints="NO" id="8yc-vt-zpZ">
-                            <rect key="frame" x="18" y="18" width="134" height="134"/>
+                            <rect key="frame" x="18" y="18" width="84" height="84"/>
                         </imageView>
                         <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stickerControlRotate" translatesAutoresizingMaskIntoConstraints="NO" id="kg6-Dw-xYd">
-                            <rect key="frame" x="151" y="0.0" width="19" height="19"/>
+                            <rect key="frame" x="101" y="0.0" width="19" height="19"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="19" id="AaI-CT-vR0"/>
                                 <constraint firstAttribute="width" constant="19" id="EZV-wb-yuL"/>
                             </constraints>
                         </imageView>
                         <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stckerControlSize" translatesAutoresizingMaskIntoConstraints="NO" id="DrU-KH-0SN">
-                            <rect key="frame" x="151" y="151" width="19" height="19"/>
+                            <rect key="frame" x="101" y="101" width="19" height="19"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="19" id="P2T-gs-Avy"/>
                                 <constraint firstAttribute="width" constant="19" id="pP1-MY-q42"/>
