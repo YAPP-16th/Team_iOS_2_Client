@@ -10,5 +10,7 @@ import Foundation
 
 struct LoginModel {
     var email: String?
-    var token: String?
+    var password: String?
+    var social: Bool?
+    var kakaoToken: String?
 }

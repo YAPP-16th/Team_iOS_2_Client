@@ -75,8 +75,13 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
                     let decoder = JSONDecoder()
                     let loginResult = try? decoder.decode(SignUpResult.self, from: data)
                     guard let jwt = loginResult?.jwt else { return }
-                    print("\(jwt)")
                     print("\(loginResult!)")
+                    
+                    //로그인 성공 시 이메일과 패스워드, 소셜로그인 여부를 저장
+                    UserDefaults.standard.set(email, forKey: "email")
+                    UserDefaults.standard.set(password, forKey: "password")
+                    UserDefaults.standard.set(false, forKey: "social")
+                    
                     let mainSB = UIStoryboard(name: "Main", bundle: nil)
                     let tabVC = mainSB.instantiateViewController(identifier: "TabBarController") as! UITabBarController
                     self.navigationController?.pushViewController(tabVC, animated: true)
