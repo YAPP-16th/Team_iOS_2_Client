@@ -74,7 +74,7 @@ class ImageRenderVC: UIViewController {
         
         if sticker != nil {
             switch touch!.view {
-            case sticker?.rotateImageView:
+            case sticker?.rotateImageView :
                 let ang = pToA(touch!) - self.initialAngle
                 let absoluteAngle = self.angle + ang
                 sticker?.transform = (sticker?.transform.rotated(by: ang))!
@@ -90,8 +90,8 @@ class ImageRenderVC: UIViewController {
             case sticker?.cancleImageView :
                 sticker?.removeFromSuperview()
                 sticker = nil
-            default: break
-                //
+            default :
+                break
             }
         }
     }
@@ -177,26 +177,25 @@ extension ImageRenderVC {
     
     @objc func touchCompleteBtn(){
         if sticker != nil {
-            let stickerImageView = sticker?.stickerImageView
-            stickerImageView?.center = sticker!.center
-            stickerImageView?.translatesAutoresizingMaskIntoConstraints = false
-            saveView.addSubview(stickerImageView!)
-            let Xposition = savePosition.x - saveView.frame.origin.x
-            let Yposition = savePosition.y - saveView.frame.origin.y
-            print("position = \(Xposition), \(Yposition)")
-            stickerImageView?.transform = CGAffineTransform(scaleX: saveSize, y: saveSize).concatenating(CGAffineTransform(rotationAngle: angle)).concatenating(CGAffineTransform(translationX: Xposition, y: Yposition))
+            let takeStickerImageView = sticker?.stickerImageView
+            takeStickerImageView?.center = sticker!.center
+            takeStickerImageView?.translatesAutoresizingMaskIntoConstraints = false
+            saveView.addSubview(takeStickerImageView!)
+            let position = CGPoint(x: savePosition.x - saveView.frame.origin.x, y: savePosition.y - saveView.frame.origin.y)
+            
+            takeStickerImageView?.transform = CGAffineTransform(scaleX: saveSize, y: saveSize).concatenating(CGAffineTransform(rotationAngle: angle)).concatenating(CGAffineTransform(translationX: position.x, y: position.y))
             sticker?.removeFromSuperview()
             sticker = nil
         }
         
-        let renderer = UIGraphicsImageRenderer(bounds: saveView.bounds)
-        let timage = renderer.image { ctx in
-            saveView.drawHierarchy(in: saveView.bounds, afterScreenUpdates: true)
-        }
+        photoImage = saveView.createImage()
+        print("timage = \(photoImage!)")
+        angle = CGFloat()
+        saveSize = CGFloat()
         
         let nextVC = storyboard?.instantiateViewController(withIdentifier: "savePhotoVC") as! SavePhotoVC
         nextVC.photoView = photoView
-        //nextVC.originImage = timage
+        nextVC.originImage = photoImage
         nextVC.selectedLayout = selectLayout
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
@@ -211,11 +210,11 @@ extension ImageRenderVC {
 
     @objc func handlePanGesture(panGesture: UIPanGestureRecognizer){
         let transition = panGesture.translation(in: sticker)
+        /// todo : 팬에 기울기도 적용하기
         panGesture.setTranslation(CGPoint.zero, in: sticker)
         if sticker != nil {
             sticker!.center = CGPoint(x: sticker!.center.x + transition.x, y: sticker!.center.y + transition.y)
             savePosition = sticker!.frame.origin
-            print("savePosition = \(savePosition)")
         }
     }
 }
