@@ -24,6 +24,10 @@ struct Order {
     var albumNum:Int
 }
 
+protocol OrderDetailDelegate {
+    func clickDetailBtn(_ index : Int)
+}
+
 class OrderListViewController: UIViewController {
     @IBOutlet weak var noAlbumView: UIView!
     @IBOutlet weak var orderListTableView: UITableView!
@@ -35,7 +39,7 @@ class OrderListViewController: UIViewController {
         super.viewDidLoad()
         setUI()
     }
- 
+    
     @IBAction func goBack(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
@@ -59,6 +63,8 @@ extension OrderListViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OrderCell") as! OrderCell
         let orderData = orderList[indexPath.row]
+        cell.orderDetailDelegate = self
+        cell.indexPath = indexPath
         cell.albumImageView.image = UIImage(named: orderData.albumImage)
         
         switch orderData.albumStatus {
@@ -78,7 +84,13 @@ extension OrderListViewController : UITableViewDelegate, UITableViewDataSource {
         cell.orderNumberLabel.text = "\(orderData.albumNum)개"
         return cell
     }
-    
-    
+}
+
+extension OrderListViewController : OrderDetailDelegate {
+    func clickDetailBtn(_ index: Int) {
+        print("\(index)")
+        let orderDetailVC = self.storyboard?.instantiateViewController(identifier: "OrderDetailViewController") as! OrderDetailViewController
+        self.navigationController?.pushViewController(orderDetailVC, animated: true)
+    }
 }
 
