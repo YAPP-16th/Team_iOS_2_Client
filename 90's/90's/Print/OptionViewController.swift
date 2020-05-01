@@ -20,6 +20,10 @@ class OptionViewController : UIViewController {
     @IBOutlet weak var completeBtnConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    @IBOutlet weak var previewImageHeight: NSLayoutConstraint!
+    @IBOutlet weak var titleTopreviewConstraint: NSLayoutConstraint!
+    
+    
     //MARK: View IBOutlet
     @IBOutlet weak var OptionView: UIView!
     @IBOutlet weak var CompleteBtn: UIButton!
@@ -81,12 +85,15 @@ class OptionViewController : UIViewController {
         if UIScreen.main.nativeBounds.height == 1792.0 {
             
             self.topConstraint.constant = 115
-            
+            self.previewImageHeight.constant = 196
+            self.titleTopreviewConstraint.constant = 43.5
         }
             // iPhone 8..
         else if UIScreen.main.nativeBounds.height == 1334.0
         {
-            self.topConstraint.constant = 85
+            self.topConstraint.constant = 80
+            self.previewImageHeight.constant = 187
+            self.titleTopreviewConstraint.constant = 34
             
         }
         

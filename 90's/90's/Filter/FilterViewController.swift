@@ -8,7 +8,7 @@
 
 import UIKit
 import AVFoundation
-//import LUTFilter
+import LUTFilter
 
 struct Filter {
     let filterName : String
@@ -107,7 +107,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         super.viewDidLoad()
         
         setupDevice()
-//        setupInputOutput()
+        setupInputOutput()
         delegateSetting()
         
         filterName = PhotoEditorTypes.filterNameArray[filterIndex]
@@ -158,7 +158,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                         {
                             if authorized
                             {
-//                                self.setupInputOutput()
+                                self.setupInputOutput()
                             }
                     }
             })
@@ -184,7 +184,8 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }
     
     @IBAction func photoCancel(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        
+//        dismiss(animated: true, completion: nil)
 //        self.navigationController?.popViewController(animated: true)
 
     }
@@ -370,12 +371,31 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         default: break
         }
     }
-    
+    lazy var focusGesture: UITapGestureRecognizer = {
+         let instance = UITapGestureRecognizer(target: self, action: #selector(touchesBegan(_:with:)))
+         instance.cancelsTouchesInView = false
+         instance.numberOfTapsRequired = 1
+         instance.numberOfTouchesRequired = 1
+         return instance
+     }()
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
+//        let touchPoint: CGPoint = gesture.location(in: cameraView)
+//            let convertedPoint: CGPoint = previewLayer.captureDevicePointOfInterest(for: touchPoint)
+//            if device.isFocusPointOfInterestSupported && device.isFocusModeSupported(AVCaptureFocusMode.autoFocus) {
+//                do {
+//                    try device.lockForConfiguration()
+//                    device.focusPointOfInterest = convertedPoint
+//                    device.focusMode = AVCaptureFocusMode.autoFocus
+//                    device.unlockForConfiguration()
+            
+                    
         let screenSize = self.view.bounds.size
+        
         print(screenSize)
         if let touchPoint = touches.first {
+            
             let x = touchPoint.location(in: self.filteredImage).y / screenSize.height
             let y = 1.0 - touchPoint.location(in: self.filteredImage).x / screenSize.width
             let focusPoint = CGPoint(x: x, y: y)
@@ -385,7 +405,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                     try device.lockForConfiguration()
                     print("Focus")
                     device.focusPointOfInterest = focusPoint
-                    //device.focusMode = .continuousAutoFocus
+//                    device.focusMode = .continuousAutoFocus
                     device.focusMode = .autoFocus
                     //device.focusMode = .locked
                     device.exposurePointOfInterest = focusPoint
@@ -480,12 +500,15 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
         DispatchQueue.main.async {
             let filteredImage = UIImage(cgImage: cgImage)
-//            self.filteredImage.image = filteredImage.mergeWith(topImage: self.topImage! , bottomImage: filteredImage).applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
+            self.filteredImage.image = filteredImage.mergeWith(topImage: self.topImage! , bottomImage: filteredImage).applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
 
             
             
         }
     }
+    
+    
+    
     
 }
 
@@ -514,6 +537,8 @@ extension FilterViewController : AVCapturePhotoCaptureDelegate {
         print(capturedImage)
             
     }
+    
+     
 }
 
 
