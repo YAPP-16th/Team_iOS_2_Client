@@ -10,6 +10,7 @@ import UIKit
 
 class SavePhotoVC: UIViewController {
     @IBOutlet weak var switchBtn: UISwitch!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var saveBtn: UIButton!
     @IBOutlet weak var photoView: UIView!
     @IBAction func backBtn(_ sender: UIButton) {
@@ -29,6 +30,9 @@ class SavePhotoVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("savePhoto view = \(photoView)")
+        print("savePhoto imageView = \(imageView)")
+        print("image = \(originImage)")
         buttonSetting()
     }
 }
@@ -42,13 +46,12 @@ extension SavePhotoVC {
     }
     
     func defaultSetting(){
-        print("receive image = \(originImage)")
         setSaveViewLayout(view: photoView, selectLayout: selectedLayout)
-        
-        let imageView = UIImageView(image: originImage)
-        imageView.frame = photoView.frame
-        imageView.backgroundColor = .lightGray
-        photoView.addSubview(imageView)
+        imageView.image = originImage
+//        let imageView = UIImageView(image: originImage)
+//        imageView.frame = photoView.frame
+//        imageView.backgroundColor = .lightGray
+//        photoView.addSubview(imageView)
     }
     
     func dateLabelSetting(){
