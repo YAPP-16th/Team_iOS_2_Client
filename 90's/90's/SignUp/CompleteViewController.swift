@@ -10,12 +10,12 @@ import UIKit
 
 class CompleteViewController: UIViewController {
     @IBOutlet weak var loginBtn: UIButton!
+    var isSocial:Bool?
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         loginBtn.layer.cornerRadius = 8.0
-
+        
     }
     
     @IBAction func goBack(_ sender: Any) {
@@ -23,10 +23,17 @@ class CompleteViewController: UIViewController {
     }
     
     @IBAction func goLoginVC(_ sender: Any) {
-        let signInSB = UIStoryboard(name: "SignIn", bundle: nil)
-        let loginVC = signInSB.instantiateViewController(identifier: "LoginMainViewController") as! LoginMainViewController
-        navigationController?.pushViewController(loginVC, animated: true)
-    }
-
-
+        if let social = isSocial {
+            let mainSB = UIStoryboard(name: "Main", bundle: nil)
+            let tabBarVC = mainSB.instantiateViewController(withIdentifier: "TabBarController")
+            navigationController?.pushViewController(tabBarVC, animated: true)
+        }else {
+            let signInSB = UIStoryboard(name: "SignIn", bundle: nil)
+            let loginVC = signInSB.instantiateViewController(identifier: "LoginMainViewController") as! LoginMainViewController
+            navigationController?.pushViewController(loginVC, animated: true)
+        }
+        
+}
+    
+    
 }
