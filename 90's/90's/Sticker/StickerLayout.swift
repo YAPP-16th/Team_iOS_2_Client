@@ -28,6 +28,7 @@ class StickerLayout: UIView {
         let view = Bundle.main.loadNibNamed("StickerLayout", owner: self, options: nil)?.first as! StickerLayout
         view.stickerImageView.image = image.imageResize(sizeChange: CGSize(width: 100, height: 100))
         view.frame.size = CGSize(width: 120, height: 120)
+        view.layoutIfNeeded()
         return view
     }
 }

@@ -28,16 +28,16 @@ class ImageRenderVC: UIViewController {
     var photoImage : UIImage?
     var tempsticker : UIImageView?
     var selectLayout : AlbumLayout! = .Polaroid
-    // sticker
-    var sticker : StickerLayout?
-    var initialAngle = CGFloat(), angle = CGFloat()
+    
     // value for checkimageview showing while collection cells changes
     fileprivate var isFilterSelected : Bool = true
     fileprivate var testFilterCell : photoFilterCollectionCell?
     fileprivate var testStickerCell : photoStickerCollectionCell?
     fileprivate var testFilterCount = 0, testStickerCount = 0
     // for sticker
-    fileprivate var location : CGPoint = CGPoint(x: 0, y: 0)
+    fileprivate var sticker : StickerLayout?
+    fileprivate var initialAngle = CGFloat(), angle = CGFloat(), saveSize = CGFloat()
+    fileprivate var location : CGPoint = CGPoint(x: 0, y: 0), savePosition : CGPoint = CGPoint(x: 0, y: 0)
     fileprivate let stickerArray : [String] = ["heartimage", "starimage", "smileimage"]
     // for filter
     fileprivate let context = CIContext(options: nil)
@@ -73,36 +73,26 @@ class ImageRenderVC: UIViewController {
         let touch = touches.first
         
         if sticker != nil {
-            if touch!.view == sticker?.rotateImageView {
+            switch touch!.view {
+            case sticker?.rotateImageView:
                 let ang = pToA(touch!) - self.initialAngle
                 let absoluteAngle = self.angle + ang
                 sticker?.transform = (sticker?.transform.rotated(by: ang))!
                 self.angle = absoluteAngle
-            }
-            else if touch!.view == sticker?.resizeImageView {
+            case sticker?.resizeImageView :
                 let position = touch!.location(in: self.view)
                 let target = sticker?.center
-                
                 let size = max((position.x / target!.x), (position.y / target!.y))
                 let scale = CGAffineTransform(scaleX: size, y: size)
                 let rotate = CGAffineTransform(rotationAngle: angle)
+                saveSize = size
                 sticker?.transform = scale.concatenating(rotate)
-            }
-            else if touch!.view == sticker?.cancleImageView {
+            case sticker?.cancleImageView :
                 sticker?.removeFromSuperview()
                 sticker = nil
+            default: break
+                //
             }
-            else if touch!.view == sticker?.backImageView {
-                let point = touch?.location(in: self.view)
-                sticker!.center = point!
-                print("----- touch moved! sticker : \(sticker!.frame)")
-            }
-        }
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if sticker != nil {
-            print("----- touch end, sticker : \(sticker!)")
         }
     }
 }
@@ -147,17 +137,11 @@ extension ImageRenderVC {
     }
     
     private func createStickerView(image : UIImage, indexPathRow : Int){
-       // let imageView = StickerLayout.loadFromZib(image: image)
-//        imageView.bounds.size = CGSize(width: 120, height: 120)
-//        imageView.frame.origin = CGPoint(x: 200, y: 250)
-//        imageView.isUserInteractionEnabled = true
-        //imageView.frame = CGRect(x: saveView.center.x, y: saveView.center.y, width: 120, height: 120)
-        //self.view.addSubview(imageView)
         sticker = StickerLayout.loadFromZib(image: image)
+        sticker?.frame = CGRect(x: view.frame.size.width / 2 - 60, y: view.frame.size.height / 2 - 60, width: 120, height: 120)
         createPan(view: sticker!.backImageView) // 이미지 옮기기
-        self.saveView.addSubview(sticker!)
-        
-        print("imageview frame = \(sticker!.frame)")
+        sticker?.isUserInteractionEnabled = true
+        self.view.addSubview(sticker!)
     }
     
     private func resetCheckImage(){
@@ -194,10 +178,13 @@ extension ImageRenderVC {
     @objc func touchCompleteBtn(){
         if sticker != nil {
             let stickerImageView = sticker?.stickerImageView
-            
-//            stickerImageView?.center = sticker!.center
-//            stickerImageView?.translatesAutoresizingMaskIntoConstraints = false
-//            saveView.addSubview(stickerImageView!)
+            stickerImageView?.center = sticker!.center
+            stickerImageView?.translatesAutoresizingMaskIntoConstraints = false
+            saveView.addSubview(stickerImageView!)
+            let Xposition = savePosition.x - saveView.frame.origin.x
+            let Yposition = savePosition.y - saveView.frame.origin.y
+            print("position = \(Xposition), \(Yposition)")
+            stickerImageView?.transform = CGAffineTransform(scaleX: saveSize, y: saveSize).concatenating(CGAffineTransform(rotationAngle: angle)).concatenating(CGAffineTransform(translationX: Xposition, y: Yposition))
             sticker?.removeFromSuperview()
             sticker = nil
         }
@@ -206,13 +193,10 @@ extension ImageRenderVC {
         let timage = renderer.image { ctx in
             saveView.drawHierarchy(in: saveView.bounds, afterScreenUpdates: true)
         }
-        UIImageWriteToSavedPhotosAlbum(timage, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
-        
-        print("image render finish :\(timage), \(saveView.bounds)")
-        photoImage = timage
         
         let nextVC = storyboard?.instantiateViewController(withIdentifier: "savePhotoVC") as! SavePhotoVC
-        nextVC.originImage = photoImage
+        nextVC.photoView = photoView
+        //nextVC.originImage = timage
         nextVC.selectedLayout = selectLayout
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
@@ -230,13 +214,9 @@ extension ImageRenderVC {
         panGesture.setTranslation(CGPoint.zero, in: sticker)
         if sticker != nil {
             sticker!.center = CGPoint(x: sticker!.center.x + transition.x, y: sticker!.center.y + transition.y)
-            print("pan gesture active")
+            savePosition = sticker!.frame.origin
+            print("savePosition = \(savePosition)")
         }
-    }
-    
-    @objc func handlePinGesture(pinGesture : UIPinchGestureRecognizer){
-        sticker!.transform = sticker!.transform.scaledBy(x: pinGesture.scale, y: pinGesture.scale)
-        pinGesture.scale = 1.0
     }
 }
 
