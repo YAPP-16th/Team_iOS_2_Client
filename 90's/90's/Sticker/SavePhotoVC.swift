@@ -10,19 +10,18 @@ import UIKit
 
 class SavePhotoVC: UIViewController {
     @IBOutlet weak var switchBtn: UISwitch!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var saveBtn: UIButton!
     @IBOutlet weak var photoView: UIView!
-    @IBOutlet weak var photoImageView: UIImageView!
     @IBAction func backBtn(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
     
     var location = CGPoint(x: 0.0, y: 0.0)
     var size = CGSize(width: 0,height: 0)
-    var originView : UIView!
     var originImage : UIImage!
     var dateLabel : UILabel!
-    var selectedLayout : AlbumLayout! = .Polaroid
+    var selectedLayout : AlbumLayout!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -31,8 +30,10 @@ class SavePhotoVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("savePhoto view = \(photoView)")
+        print("savePhoto imageView = \(imageView)")
+        print("image = \(originImage)")
         buttonSetting()
-        dateLabelSetting()
     }
 }
 
@@ -46,9 +47,11 @@ extension SavePhotoVC {
     
     func defaultSetting(){
         setSaveViewLayout(view: photoView, selectLayout: selectedLayout)
-        photoView.addSubview(originView)
-//        setSaveViewLayout(view: photoImageView, selectLayout: selectedLayout)
-//        photoImageView.image = originImage
+        imageView.image = originImage
+//        let imageView = UIImageView(image: originImage)
+//        imageView.frame = photoView.frame
+//        imageView.backgroundColor = .lightGray
+//        photoView.addSubview(imageView)
     }
     
     func dateLabelSetting(){
@@ -65,7 +68,6 @@ extension SavePhotoVC {
         dateLabel.bottomAnchor.constraint(equalTo: photoView.bottomAnchor, constant: -20).isActive = true
         dateLabel.heightAnchor.constraint(equalToConstant: 21).isActive = true
         dateLabel.widthAnchor.constraint(equalToConstant: 111).isActive = true
-        print("++ dateLabel = \(dateLabel)")
     }
 }
 
@@ -91,10 +93,10 @@ extension SavePhotoVC {
     }
     
     @objc func touchSwitchBtn(){
-        if dateLabel.isHidden == true {
-            dateLabel.isHidden = false
-        } else {
-            dateLabel.isHidden = true
-        }
+//        if dateLabel.isHidden == true {
+//            dateLabel.isHidden = false
+//        } else {
+//            dateLabel.isHidden = true
+//        }
     }
 }

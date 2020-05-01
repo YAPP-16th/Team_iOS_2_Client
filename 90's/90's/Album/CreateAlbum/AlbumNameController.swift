@@ -58,6 +58,7 @@ extension AlbumNameController {
     
     func defaultSetting(){
         nextBtn.layer.cornerRadius = 10
+        nextBtn.isEnabled = false
         NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: tfAlbumName, queue: .main, using : {
             _ in
             let str = self.tfAlbumName.text!.trimmingCharacters(in: .whitespaces)
