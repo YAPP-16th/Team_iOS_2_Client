@@ -18,13 +18,14 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var buttonConst: NSLayoutConstraint!
     
-    var email:String?
-    var pass:String?
+    var email:String!
+    var pass:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tfPass.delegate = self
         tfEmail.delegate = self
+        autoLogin()
         setUI()
         setTextFieldObserver()
     }
@@ -36,14 +37,16 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
     @IBAction func goLogin(_ sender: Any) {
         //이메일 형식 검사 후 로그인 형식 맞지 않을 시 메시지 표시
         
-        let email = tfEmail.text!
+        email = tfEmail.text!
+        pass = tfPass.text!
+        
         if(!email.validateEmail()){
             emailValidationLabel.isHidden = false
             selectorImageView1.image = UIImage(named: "path378Red")
         }else{
             //로그인 통신
             //로그인 통신 후 로그인 실패시 메시지 표시
-            goLogin()
+            goLogin(email, pass, false)
         }
         
     }
@@ -62,44 +65,47 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.pushViewController(authenVC, animated: true)
     }
     
-    //로그인 서버통신 메소드
-    func goLogin(){
-        //이 화면으로 들어오는 경우는 social = false인 경우 밖에 없기때문에 고정적으로 social = false로
-        guard let email = tfEmail.text else { return }
-        guard let password = tfPass.text else { return }
-        LoginService.shared.login(email: email, password: password, sosial: false, completion: { response in
-            if let status = response.response?.statusCode {
-                switch status {
-                case 200:
-                    guard let data = response.data else { return }
-                    let decoder = JSONDecoder()
-                    let loginResult = try? decoder.decode(SignUpResult.self, from: data)
-                    guard let jwt = loginResult?.jwt else { return }
-                    print("\(loginResult!)")
-                    
-                    //로그인 성공 시 이메일과 패스워드, 소셜로그인 여부를 저장
-                    UserDefaults.standard.set(email, forKey: "email")
-                    UserDefaults.standard.set(password, forKey: "password")
-                    UserDefaults.standard.set(false, forKey: "social")
-                    
-                    let mainSB = UIStoryboard(name: "Main", bundle: nil)
-                    let tabVC = mainSB.instantiateViewController(identifier: "TabBarController") as! UITabBarController
-                    self.navigationController?.pushViewController(tabVC, animated: true)
-                    break
-                case 400...404:
-                    self.passValidationLabel.isHidden = false
-                    print("SignIn : client Err \(status)")
-                    break
-                case 500:
-                    self.passValidationLabel.isHidden = false
-                    print("SignIn : server Err \(status)")
-                    break
-                default:
-                    return
-                }
+    func autoLogin(){
+        //기존에 로그인한 데이터가 있을 경우
+        if let email = UserDefaults.standard.string(forKey: "email"){
+            //소셜 로그인의 경우
+            if(UserDefaults.standard.bool(forKey: "social")){
+                goLogin(email, nil, true)
+            }else {
+                guard let password = UserDefaults.standard.string(forKey: "password") else {return}
+                goLogin(email, password, false)
             }
-        })
+        }
     }
+    
+  //로그인 서버통신 메소드
+       func goLogin(_ email: String, _ password: String?, _ social: Bool){
+            LoginService.shared.login(email: email, password: password, sosial: social, completion: { response in
+                if let status = response.response?.statusCode {
+                    switch status {
+                    case 200:
+                        guard let data = response.data else { return }
+                        let decoder = JSONDecoder()
+                        let loginResult = try? decoder.decode(SignUpResult.self, from: data)
+                        guard let jwt = loginResult?.jwt else { return }
+                        UserDefaults.standard.set(jwt, forKey: "jwt")
+                        UserDefaults.standard.set(false, forKey: "initial")
+                        let mainSB = UIStoryboard(name: "Main", bundle: nil)
+                        let tabVC = mainSB.instantiateViewController(identifier: "TabBarController") as! UITabBarController
+                        self.navigationController?.pushViewController(tabVC, animated: true)
+                        break
+                    case 400...404:
+                        print("SignIn : client Err \(status)")
+                        break
+                    case 500:
+                        print("SignIn : server Err \(status)")
+                        break
+                    default:
+                        return
+                    }
+                }
+            })
+        }
     
     func showErrAlert(){
            let alert = UIAlertController(title: "오류", message: "로그인 불가", preferredStyle: .alert)
