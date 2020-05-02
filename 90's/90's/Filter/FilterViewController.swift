@@ -8,7 +8,7 @@
 
 import UIKit
 import AVFoundation
-import LUTFilter
+//import LUTFilter
 
 struct Filter {
     let filterName : String
@@ -39,7 +39,8 @@ struct PhotoEditorTypes{
     //    static let filterNameArray: [String] = ["CIPhotoEffectTransfer", "CIPhotoEffectInstant", "Normal", "CIPhotoEffectMono", "CIPhotoEffectNoir", "CIPhotoEffectTonal", "CIPhotoEffectFade", "CIPhotoEffectChrome", "CIPhotoEffectTransfer"].sorted(by: >)
     
     static let filterNameArray: [String] = ["LUT5", "arapaho", "LUT3", "LUT2", "LUT", "LUT4", "lut_1", "LUT64"]
-    static let filterImage : [String] = ["filterThumbnailNone" , "filterThumbnailNoise", "filterThumbnailGrunge","filterThumbnailWrap", "filterThumbnailLight" , "filterThumbnailNoise", "filterThumbnailGrunge","filterThumbnailWrap", ]
+    
+    static let filterImage : [String] = ["filterThumbnailNone" , "filterThumbnailNoise", "filterThumbnailGrunge","filterThumbnailPinky", "filterThumbnailWrap2" , "filterThumbnailFaded", "filterThumbnailGrunge","filterThumbnailLensflare", ]
     //        .sorted(by: >)
     
     static func numberOfFilterType() -> Int {
@@ -107,11 +108,11 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         super.viewDidLoad()
         
         setupDevice()
-        setupInputOutput()
+//        setupInputOutput()
         delegateSetting()
         
         filterName = PhotoEditorTypes.filterNameArray[filterIndex]
-        filterCollectionView.selectItem(at: [0,0], animated: true, scrollPosition: .centeredHorizontally)
+//        filterCollectionView.selectItem(at: [0,0], animated: true, scrollPosition: .centeredHorizontally)
         
         
         let leftSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
@@ -158,7 +159,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                         {
                             if authorized
                             {
-                                self.setupInputOutput()
+//                                self.setupInputOutput()
                             }
                     }
             })
@@ -380,17 +381,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
      }()
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-//        let touchPoint: CGPoint = gesture.location(in: cameraView)
-//            let convertedPoint: CGPoint = previewLayer.captureDevicePointOfInterest(for: touchPoint)
-//            if device.isFocusPointOfInterestSupported && device.isFocusModeSupported(AVCaptureFocusMode.autoFocus) {
-//                do {
-//                    try device.lockForConfiguration()
-//                    device.focusPointOfInterest = convertedPoint
-//                    device.focusMode = AVCaptureFocusMode.autoFocus
-//                    device.unlockForConfiguration()
-            
-                    
+    
         let screenSize = self.view.bounds.size
         
         print(screenSize)
@@ -500,7 +491,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
         DispatchQueue.main.async {
             let filteredImage = UIImage(cgImage: cgImage)
-            self.filteredImage.image = filteredImage.mergeWith(topImage: self.topImage! , bottomImage: filteredImage).applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
+//            self.filteredImage.image = filteredImage.mergeWith(topImage: self.topImage! , bottomImage: filteredImage).applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
 
             
             
@@ -649,18 +640,27 @@ extension FilterViewController : UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FilterCell", for: indexPath) as! FilterCell
-        
-        
+        cell.selectImageView.isHidden = true
         cell.FilterImageView.image = UIImage(named: PhotoEditorTypes.filterImage[indexPath.row])
         
         return cell
     }
+ 
+       
+       func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+           let cell = filterCollectionView.cellForItem(at: indexPath) as! FilterCell
+           cell.selectImageView.isHidden = true
+       }
+    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         //        albumCover = PhotoEditorTypes.filterNameArray[indexPath.row]
         filterName = PhotoEditorTypes.filterNameArray[indexPath.row]
         filterNameLabel.text = filterName.replacingOccurrences(of: PhotoEditorTypes.replacingOccurrencesWord, with: "")
         fadeViewInThenOut(view: filterNameLabel, delay: PhotoEditorTypes.filterNameLabelAnimationDelay)
+        let cell = filterCollectionView.cellForItem(at: indexPath) as! FilterCell
+        cell.selectImageView.isHidden = false
         
     }
     
