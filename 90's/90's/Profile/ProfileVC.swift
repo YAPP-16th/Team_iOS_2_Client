@@ -8,9 +8,6 @@
 
 import UIKit
 
-protocol DetailDelegate {
-    func goDetailVC(_ index : Int)
-}
 
 class ProfileVC: UIViewController {
     @IBOutlet weak var guestView: UIView!
@@ -47,6 +44,11 @@ class ProfileVC: UIViewController {
         guestLoginBtn.layer.cornerRadius = 8.0
     }
     
+    func pushView(_ vc: String){
+        guard let detailVC = self.storyboard?.instantiateViewController(identifier: vc) else { return }
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
 }
 
 
@@ -58,15 +60,11 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell", for: indexPath) as! ProfileTableViewCell
         cell.settingLabel.text = menuArr[indexPath.row]
-        cell.detailDelegate = self
-        cell.indexPath = indexPath
         return cell
     }
-}
-
-extension ProfileVC : DetailDelegate {
-    func goDetailVC(_ index: Int) {
-        switch index {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
         case 0:
             pushView("OrderListViewController")
             break
@@ -83,10 +81,7 @@ extension ProfileVC : DetailDelegate {
             return
         }
     }
-    
-    func pushView(_ vc: String){
-        guard let detailVC = self.storyboard?.instantiateViewController(identifier: vc) else { return }
-        self.navigationController?.pushViewController(detailVC, animated: true)
-    }
-    
 }
+
+
+

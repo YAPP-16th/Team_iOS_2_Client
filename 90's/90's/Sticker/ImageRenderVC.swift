@@ -25,25 +25,28 @@ class ImageRenderVC: UIViewController {
     // get image from other view
     var image : UIImage?
     var photoView : UIView!
-    var photoImageView : UIImage?
+    var photoImage : UIImage?
     var tempsticker : UIImageView?
     var selectLayout : AlbumLayout! = .Polaroid
-    // sticker
-    var sticker : StickerLayout?
-    var initialAngle = CGFloat(), angle = CGFloat()
+    // server data
+    var albumUid : Int?
+    var imageName : String?
+    
     // value for checkimageview showing while collection cells changes
     fileprivate var isFilterSelected : Bool = true
     fileprivate var testFilterCell : photoFilterCollectionCell?
     fileprivate var testStickerCell : photoStickerCollectionCell?
     fileprivate var testFilterCount = 0, testStickerCount = 0
     // for sticker
-    fileprivate var location : CGPoint = CGPoint(x: 0, y: 0)
+    fileprivate var sticker : StickerLayout?
+    fileprivate var initialAngle = CGFloat(), angle = CGFloat(), saveSize = CGFloat()
+    fileprivate var location : CGPoint = CGPoint(x: 0, y: 0), savePosition : CGPoint = CGPoint(x: 0, y: 0)
     fileprivate let stickerArray : [String] = ["heartimage", "starimage", "smileimage"]
     // for filter
     fileprivate let context = CIContext(options: nil)
     fileprivate var filterIndex = 0
     fileprivate var selectIndex : IndexPath?
-    fileprivate let filterNameArray : [String] = ["Noise", "Grunge", "Wrap","Light", "Aura", "Old"]
+    fileprivate let filterNameArray : [String] = ["Noise", "Grunge", "Wrap", "Light", "Aura", "Old"]
     fileprivate let filterLutArray : [String] = ["LUT", "LUT2", "LUT3", "LUT4", "LUT5", "LUT6"]
     // Array for apply LUT filters & Sticker before viewAppear. And place on collectioncell
     fileprivate var filterImages : [UIImage] = [], stickerImages : [UIImage] = []
@@ -52,8 +55,6 @@ class ImageRenderVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collectionView.reloadData()
-        renderImage.image = image
-        photoView = saveView
     }
     
     override func viewDidLoad() {
@@ -75,24 +76,25 @@ class ImageRenderVC: UIViewController {
         let touch = touches.first
         
         if sticker != nil {
-            if touch!.view == sticker?.rotateImageView {
+            switch touch!.view {
+            case sticker?.rotateImageView :
                 let ang = pToA(touch!) - self.initialAngle
                 let absoluteAngle = self.angle + ang
                 sticker?.transform = (sticker?.transform.rotated(by: ang))!
                 self.angle = absoluteAngle
-            }
-            else if touch!.view == sticker?.resizeImageView {
+            case sticker?.resizeImageView :
                 let position = touch!.location(in: self.view)
                 let target = sticker?.center
-                
                 let size = max((position.x / target!.x), (position.y / target!.y))
                 let scale = CGAffineTransform(scaleX: size, y: size)
                 let rotate = CGAffineTransform(rotationAngle: angle)
+                saveSize = size
                 sticker?.transform = scale.concatenating(rotate)
-            }
-            else if touch!.view == sticker?.cancleImageView {
-                self.sticker?.removeFromSuperview()
-                self.sticker = nil
+            case sticker?.cancleImageView :
+                sticker?.removeFromSuperview()
+                sticker = nil
+            default :
+                break
             }
         }
     }
@@ -110,6 +112,8 @@ extension ImageRenderVC {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.allowsMultipleSelection = false
+        renderImage.image = image
+        photoView = saveView
     }
     
     private func initializeArrays(){
@@ -136,13 +140,11 @@ extension ImageRenderVC {
     }
     
     private func createStickerView(image : UIImage, indexPathRow : Int){
-        let imageView = StickerLayout.loadFromZib(image: image)
-        imageView.frame = CGRect(x: self.view.frame.width / 2 - 60, y: self.view.frame.height / 2 - 60, width: 120, height: 120)
-        sticker = imageView
+        sticker = StickerLayout.loadFromZib(image: image)
+        sticker?.frame = CGRect(x: view.frame.size.width / 2 - 60, y: view.frame.size.height / 2 - 60, width: 120, height: 120)
         createPan(view: sticker!.backImageView) // 이미지 옮기기
-        
-        self.view.addSubview(imageView)
-        print("sticker frame = \(imageView)")
+        sticker?.isUserInteractionEnabled = true
+        self.view.addSubview(sticker!)
     }
     
     private func resetCheckImage(){
@@ -178,36 +180,47 @@ extension ImageRenderVC {
     
     @objc func touchCompleteBtn(){
         if sticker != nil {
-            let stickerImageView = sticker?.stickerImageView
+            let takeStickerImageView = sticker?.stickerImageView
+            takeStickerImageView?.center = sticker!.center
+            takeStickerImageView?.translatesAutoresizingMaskIntoConstraints = false
+            saveView.addSubview(takeStickerImageView!)
+            let position = CGPoint(x: savePosition.x - saveView.frame.origin.x, y: savePosition.y - saveView.frame.origin.y)
             
-            //stickerImageView?.center = sticker!.center
-//            stickerImageView?.translatesAutoresizingMaskIntoConstraints = false
-            saveView.addSubview(stickerImageView!)
+            takeStickerImageView?.transform = CGAffineTransform(scaleX: saveSize, y: saveSize).concatenating(CGAffineTransform(rotationAngle: angle)).concatenating(CGAffineTransform(translationX: position.x, y: position.y))
             sticker?.removeFromSuperview()
+            sticker = nil
         }
-        photoView = saveView
-        let renderer = UIGraphicsImageRenderer(size: photoView.bounds.size)
-        let timage = renderer.image { ctx in
-            photoView.drawHierarchy(in: photoView.bounds, afterScreenUpdates: true)
-        }
-        photoImageView = timage
+        
+        photoImage = saveView.createImage()
+        print("timage = \(photoImage!)")
+        angle = CGFloat()
+        saveSize = CGFloat()
         
         let nextVC = storyboard?.instantiateViewController(withIdentifier: "savePhotoVC") as! SavePhotoVC
-        nextVC.originView = photoView
-        nextVC.originImage = photoImageView
+        nextVC.photoView = photoView
+        nextVC.originImage = photoImage
         nextVC.selectedLayout = selectLayout
+        nextVC.albumUid = albumUid
+        nextVC.imageName = imageName
         self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer){
+        if let error = error {
+            print(error.localizedDescription)
+        } else {
+            print("Image saved")
+        }
     }
 
     @objc func handlePanGesture(panGesture: UIPanGestureRecognizer){
         let transition = panGesture.translation(in: sticker)
+        /// todo : 팬에 기울기도 적용하기
         panGesture.setTranslation(CGPoint.zero, in: sticker)
-        sticker!.center = CGPoint(x: sticker!.center.x + transition.x, y: sticker!.center.y + transition.y)
-    }
-    
-    @objc func handlePinGesture(pinGesture : UIPinchGestureRecognizer){
-        sticker!.transform = sticker!.transform.scaledBy(x: pinGesture.scale, y: pinGesture.scale)
-        pinGesture.scale = 1.0
+        if sticker != nil {
+            sticker!.center = CGPoint(x: sticker!.center.x + transition.x, y: sticker!.center.y + transition.y)
+            savePosition = sticker!.frame.origin
+        }
     }
 }
 
@@ -280,9 +293,13 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
             testStickerCount += 1
             if testStickerCount <= 1 {
                 testStickerCell = cell
+                stickerBtn.isEnabled = false
+                filterBtn.isEnabled = true
             } else {
                 testStickerCell?.hideimage()
                 testStickerCell = nil
+                stickerBtn.isEnabled = true
+                filterBtn.isEnabled = false
             }
         }
     }

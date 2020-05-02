@@ -20,6 +20,17 @@ extension String {
     }
 }
 
+extension Int {
+    public func numberToPrice(_ price : Int) -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        
+        let result = numberFormatter.string(from: NSNumber(value:price))!
+        return result
+    }
+}
+
+
 
 extension UIView {
     public func addShadowEffect(){
@@ -187,36 +198,36 @@ extension UIViewController{
     
     func applyBackImageViewLayout(selectedLayout : AlbumLayout, smallBig: CGSize, imageView : UIImageView ) -> UIImageView {
         switch selectedLayout {
-
-            case .Polaroid:
-                imageView.frame = CGRect(x: 0, y: 0, width: smallBig.width, height: smallBig.height)
-                imageView.image = AlbumLayout.Polaroid.image
-                return imageView
-            case .Mini:
-                imageView.frame = CGRect(x: 0, y: 0, width: smallBig.width, height: smallBig.height)
-                imageView.image = AlbumLayout.Mini.image
-                return imageView
-            case .Memory:
-                imageView.frame = CGRect(x: 0, y: 0, width: smallBig.width, height: smallBig.height)
-                imageView.image = AlbumLayout.Memory.image
-                return imageView
-            case .Portrab:
-                imageView.frame = CGRect(x: 0, y: 0, width: smallBig.width, height: smallBig.height)
-                imageView.image = AlbumLayout.Portrab.image
-                return imageView
-            case .Tape:
-                imageView.frame = CGRect(x: 0, y: 0, width: smallBig.width, height: smallBig.height)
-                imageView.image = AlbumLayout.Tape.image
-                return imageView
-            case .Portraw:
-                imageView.frame = CGRect(x: 0, y: 0, width: smallBig.width, height: smallBig.height)
-                imageView.image = AlbumLayout.Portraw.image
-                return imageView
-            case .Filmroll:
-                imageView.frame = CGRect(x: 0, y: 0, width: smallBig.width, height: smallBig.height)
-                imageView.image = AlbumLayout.Filmroll.image
-                return imageView
-            }
+            
+        case .Polaroid:
+            imageView.frame = CGRect(x: 0, y: 0, width: smallBig.width, height: smallBig.height)
+            imageView.image = AlbumLayout.Polaroid.image
+            return imageView
+        case .Mini:
+            imageView.frame = CGRect(x: 0, y: 0, width: smallBig.width, height: smallBig.height)
+            imageView.image = AlbumLayout.Mini.image
+            return imageView
+        case .Memory:
+            imageView.frame = CGRect(x: 0, y: 0, width: smallBig.width, height: smallBig.height)
+            imageView.image = AlbumLayout.Memory.image
+            return imageView
+        case .Portrab:
+            imageView.frame = CGRect(x: 0, y: 0, width: smallBig.width, height: smallBig.height)
+            imageView.image = AlbumLayout.Portrab.image
+            return imageView
+        case .Tape:
+            imageView.frame = CGRect(x: 0, y: 0, width: smallBig.width, height: smallBig.height)
+            imageView.image = AlbumLayout.Tape.image
+            return imageView
+        case .Portraw:
+            imageView.frame = CGRect(x: 0, y: 0, width: smallBig.width, height: smallBig.height)
+            imageView.image = AlbumLayout.Portraw.image
+            return imageView
+        case .Filmroll:
+            imageView.frame = CGRect(x: 0, y: 0, width: smallBig.width, height: smallBig.height)
+            imageView.image = AlbumLayout.Filmroll.image
+            return imageView
+        }
     }
     
     func applyImageViewLayout(selectedLayout : AlbumLayout, smallBig: CGSize, imageView : UIImageView, image : UIImage) -> UIImageView {
@@ -286,8 +297,20 @@ extension UIViewController{
         }
         else if bottom != nil { view.bottomAnchor.constraint(equalTo: superView.bottomAnchor, constant: -bottom!).isActive = true
         }
-    
+        
         view.contentMode = .scaleToFill
+    }
+    
+    func layoutSetting(albumLayout : AlbumLayout) -> String {
+        switch albumLayout {
+        case .Polaroid : return "Polaroid"
+        case .Mini : return "Mini"
+        case .Memory : return "Memory"
+        case .Portrab : return "Portrab"
+        case .Portraw : return "Portraw"
+        case .Filmroll : return "Filmroll"
+        case .Tape : return "Tape"
+        }
     }
 }
 
@@ -341,20 +364,20 @@ extension UIColor {
 
 extension UIImage {
     func mergeWith(topImage: UIImage,bottomImage: UIImage) -> UIImage {
-
-//    let bottomImage = self
-
-    UIGraphicsBeginImageContext(size)
-
-    let areaSize = CGRect(x: 0, y: 0, width: bottomImage.size.width, height: bottomImage.size.height)
-    bottomImage.draw(in: areaSize)
-
-    topImage.draw(in: areaSize, blendMode: .normal, alpha: 1.0)
-
-    let mergedImage = UIGraphicsGetImageFromCurrentImageContext()!
-    UIGraphicsEndImageContext()
-    return mergedImage
-  }
+        
+        //    let bottomImage = self
+        
+        UIGraphicsBeginImageContext(size)
+        
+        let areaSize = CGRect(x: 0, y: 0, width: bottomImage.size.width, height: bottomImage.size.height)
+        bottomImage.draw(in: areaSize)
+        
+        topImage.draw(in: areaSize, blendMode: .normal, alpha: 1.0)
+        
+        let mergedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return mergedImage
+    }
 }
 
 extension UIView {

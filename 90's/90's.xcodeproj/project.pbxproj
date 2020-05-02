@@ -34,8 +34,11 @@
 		9B6A134C2440CE9400E78E66 /* AlbumInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A134B2440CE9400E78E66 /* AlbumInfoVC.swift */; };
 		9B6A134E2440D0C500E78E66 /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A134D2440D0C500E78E66 /* MemberTableViewCell.swift */; };
 		9BA5A9452454021F003A55DC /* KakaoLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD31D3D243A110600D0D719 /* KakaoLink.framework */; };
+		9BAAA96F24596215002567AF /* AlbumService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAAA96E24596215002567AF /* AlbumService.swift */; };
+		9BAAA9712459624B002567AF /* AlbumServiceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAAA9702459624B002567AF /* AlbumServiceData.swift */; };
 		9BB1C5742441EEBA0035DEBF /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB1C5732441EEBA0035DEBF /* FilterCell.swift */; };
 		9BB1C5762441EEC30035DEBF /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB1C5752441EEC30035DEBF /* FilterViewController.swift */; };
+		9BB4D536245D70D30033321F /* imageTestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB4D535245D70D30033321F /* imageTestVC.swift */; };
 		9BB9B555243D694C00B5150F /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB9B554243D694C00B5150F /* OptionViewController.swift */; };
 		9BBBA3DF243F6848002904AC /* AlbumCoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBBA3DE243F6848002904AC /* AlbumCoverVC.swift */; };
 		9BBBA3E1243F690B002904AC /* AlbumCoverCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBBA3E0243F690B002904AC /* AlbumCoverCollectionCell.swift */; };
@@ -67,6 +70,8 @@
 		A318AC7C243E2A7600245434 /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A318AC7B243E2A7600245434 /* CompleteViewController.swift */; };
 		A318AC7E243E2F9E00245434 /* TermCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A318AC7D243E2F9E00245434 /* TermCell.swift */; };
 		A31BA4D3243876F0007CA89D /* AlbumNameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31BA4D2243876F0007CA89D /* AlbumNameController.swift */; };
+		A3315E0C245C5BA6005536C2 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3315E0B245C5BA6005536C2 /* OrderCell.swift */; };
+		A3315E23245C6C54005536C2 /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3315E22245C6C54005536C2 /* OrderDetailViewController.swift */; };
 		A33376162420CFB3000DC7C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33376152420CFB3000DC7C4 /* AppDelegate.swift */; };
 		A33376182420CFB3000DC7C4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33376172420CFB3000DC7C4 /* SceneDelegate.swift */; };
 		A333761A2420CFB3000DC7C4 /* AlbumMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33376192420CFB3000DC7C4 /* AlbumMainController.swift */; };
@@ -82,6 +87,14 @@
 		A38A2D0E24587170000BF82D /* TelephoneAuthResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38A2D0D24587170000BF82D /* TelephoneAuthResult.swift */; };
 		A38A2D102458719E000BF82D /* TelephoneAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38A2D0F2458719E000BF82D /* TelephoneAuthService.swift */; };
 		A38A2D3824588E99000BF82D /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38A2D3724588E99000BF82D /* LoginService.swift */; };
+		A3B0D1BE245D547800DB90ED /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D1BD245D547800DB90ED /* QuestionCell.swift */; };
+		A3B0D1CB245D548300DB90ED /* AnswerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D1CA245D548300DB90ED /* AnswerCell.swift */; };
+		A3B0D1D9245D6C8400DB90ED /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D1D8245D6C8400DB90ED /* SettingCell.swift */; };
+		A3B0D1FD245D756D00DB90ED /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D1FC245D756D00DB90ED /* InfoCell.swift */; };
+		A3B0D1FF245D977800DB90ED /* EmailPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D1FE245D977800DB90ED /* EmailPhoneViewController.swift */; };
+		A3B0D201245D9DF800DB90ED /* NewEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D200245D9DF800DB90ED /* NewEmailViewController.swift */; };
+		A3B0D20B245DB22A00DB90ED /* CompleteEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D20A245DB22A00DB90ED /* CompleteEmailViewController.swift */; };
+		A3B0D218245DB47800DB90ED /* ChangeEmailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D217245DB47800DB90ED /* ChangeEmailService.swift */; };
 		A3CCD8432454B30300C73E31 /* EmailCheckService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCD8422454B30300C73E31 /* EmailCheckService.swift */; };
 		A3CCD8452454BE7B00C73E31 /* SignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCD8442454BE7B00C73E31 /* SignUpService.swift */; };
 		A3CCD8472454C31B00C73E31 /* SignUpResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCD8462454C31B00C73E31 /* SignUpResult.swift */; };
@@ -523,8 +536,11 @@
 		9B986C6224557E3E00BE9E3C /* 28C17161-E888-3D79-9FEA-53431ADCB336.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "28C17161-E888-3D79-9FEA-53431ADCB336.bcsymbolmap"; sourceTree = "<group>"; };
 		9B986C6324557E3E00BE9E3C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 		9B986C6424557E3E00BE9E3C /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Alamofire.framework.dSYM; sourceTree = "<group>"; };
+		9BAAA96E24596215002567AF /* AlbumService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumService.swift; sourceTree = "<group>"; };
+		9BAAA9702459624B002567AF /* AlbumServiceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumServiceData.swift; sourceTree = "<group>"; };
 		9BB1C5732441EEBA0035DEBF /* FilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 		9BB1C5752441EEC30035DEBF /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		9BB4D535245D70D30033321F /* imageTestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imageTestVC.swift; sourceTree = "<group>"; };
 		9BB9B554243D694C00B5150F /* OptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
 		9BBBA3DE243F6848002904AC /* AlbumCoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCoverVC.swift; sourceTree = "<group>"; };
 		9BBBA3E0243F690B002904AC /* AlbumCoverCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCoverCollectionCell.swift; sourceTree = "<group>"; };
@@ -558,6 +574,8 @@
 		A318AC7B243E2A7600245434 /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
 		A318AC7D243E2F9E00245434 /* TermCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermCell.swift; sourceTree = "<group>"; };
 		A31BA4D2243876F0007CA89D /* AlbumNameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumNameController.swift; sourceTree = "<group>"; };
+		A3315E0B245C5BA6005536C2 /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
+		A3315E22245C6C54005536C2 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
 		A33376122420CFB3000DC7C4 /* 90's.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "90's.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A33376152420CFB3000DC7C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A33376172420CFB3000DC7C4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -575,6 +593,14 @@
 		A38A2D0D24587170000BF82D /* TelephoneAuthResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelephoneAuthResult.swift; sourceTree = "<group>"; };
 		A38A2D0F2458719E000BF82D /* TelephoneAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelephoneAuthService.swift; sourceTree = "<group>"; };
 		A38A2D3724588E99000BF82D /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		A3B0D1BD245D547800DB90ED /* QuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
+		A3B0D1CA245D548300DB90ED /* AnswerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCell.swift; sourceTree = "<group>"; };
+		A3B0D1D8245D6C8400DB90ED /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		A3B0D1FC245D756D00DB90ED /* InfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
+		A3B0D1FE245D977800DB90ED /* EmailPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailPhoneViewController.swift; sourceTree = "<group>"; };
+		A3B0D200245D9DF800DB90ED /* NewEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEmailViewController.swift; sourceTree = "<group>"; };
+		A3B0D20A245DB22A00DB90ED /* CompleteEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteEmailViewController.swift; sourceTree = "<group>"; };
+		A3B0D217245DB47800DB90ED /* ChangeEmailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailService.swift; sourceTree = "<group>"; };
 		A3CCD8422454B30300C73E31 /* EmailCheckService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCheckService.swift; sourceTree = "<group>"; };
 		A3CCD8442454BE7B00C73E31 /* SignUpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpService.swift; sourceTree = "<group>"; };
 		A3CCD8462454C31B00C73E31 /* SignUpResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResult.swift; sourceTree = "<group>"; };
@@ -723,6 +749,8 @@
 			isa = PBXGroup;
 			children = (
 				A33376292420DA36000DC7C4 /* Album.swift */,
+				9BB4D535245D70D30033321F /* imageTestVC.swift */,
+				9BAAA962245961F3002567AF /* AlbumNetwork */,
 				9B180802243DFCDA00AF1CE6 /* MainAlbum */,
 				9B45BD03243873FC00497EA5 /* DetailAlbum */,
 				9B45BD02243873F000497EA5 /* CreateAlbum */,
@@ -758,6 +786,16 @@
 				A3E133D724558997007950D8 /* ManageInfoViewController.swift */,
 				A3E133D9245589A1007950D8 /* FAQViewController.swift */,
 				A3E133DB245589A7007950D8 /* SettingViewController.swift */,
+				A3315E0B245C5BA6005536C2 /* OrderCell.swift */,
+				A3315E22245C6C54005536C2 /* OrderDetailViewController.swift */,
+				A3B0D1BD245D547800DB90ED /* QuestionCell.swift */,
+				A3B0D1CA245D548300DB90ED /* AnswerCell.swift */,
+				A3B0D1D8245D6C8400DB90ED /* SettingCell.swift */,
+				A3B0D1FC245D756D00DB90ED /* InfoCell.swift */,
+				A3B0D1FE245D977800DB90ED /* EmailPhoneViewController.swift */,
+				A3B0D200245D9DF800DB90ED /* NewEmailViewController.swift */,
+				A3B0D20A245DB22A00DB90ED /* CompleteEmailViewController.swift */,
+				A3B0D217245DB47800DB90ED /* ChangeEmailService.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -791,6 +829,7 @@
 		9B6A13442440933E00E78E66 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				A3E2DB7D24546E7200AB2156 /* APIMagager.swift */,
 				9B3DC4302444437F0035E025 /* Font */,
 				9B44EDE42429FCDF00B0D774 /* Extension.swift */,
 				9BFC14892441C14500F38AFF /* Protocol.swift */,
@@ -1571,6 +1610,15 @@
 			path = tvOS;
 			sourceTree = "<group>";
 		};
+		9BAAA962245961F3002567AF /* AlbumNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				9BAAA96E24596215002567AF /* AlbumService.swift */,
+				9BAAA9702459624B002567AF /* AlbumServiceData.swift */,
+			);
+			path = AlbumNetwork;
+			sourceTree = "<group>";
+		};
 		A33376092420CFB3000DC7C4 = {
 			isa = PBXGroup;
 			children = (
@@ -1609,7 +1657,6 @@
 				A333761E2420CFB6000DC7C4 /* Assets.xcassets */,
 				A33376202420CFB6000DC7C4 /* LaunchScreen.storyboard */,
 				A33376232420CFB6000DC7C4 /* Info.plist */,
-				A3E2DB7D24546E7200AB2156 /* APIMagager.swift */,
 			);
 			path = "90's";
 			sourceTree = "<group>";
@@ -1837,14 +1884,18 @@
 				9B180808243E10F300AF1CE6 /* StickerPopupVC.swift in Sources */,
 				A3025CA62441AED700041723 /* MakeNewPassViewController.swift in Sources */,
 				A3025CA22441AE3700041723 /* FindEmailViewController.swift in Sources */,
+				A3B0D201245D9DF800DB90ED /* NewEmailViewController.swift in Sources */,
 				A3E2DB8224547A0800AB2156 /* CheckEmailResult.swift in Sources */,
+				A3B0D1FD245D756D00DB90ED /* InfoCell.swift in Sources */,
 				A3E2DB7C2454694000AB2156 /* NicknameViewController.swift in Sources */,
 				9BC98F0424488113002629AF /* panVC.swift in Sources */,
+				9BAAA96F24596215002567AF /* AlbumService.swift in Sources */,
 				9B1B7A6E244C2A9B008ED381 /* AlbumLayoutHeaderCell.swift in Sources */,
 				A333762A2420DA36000DC7C4 /* Album.swift in Sources */,
 				A333761A2420CFB3000DC7C4 /* AlbumMainController.swift in Sources */,
 				A333762E2420E9D0000DC7C4 /* AlbumQuantityController.swift in Sources */,
 				A318AC7A243E2A5B00245434 /* TelephoneAuthenViewController.swift in Sources */,
+				9BB4D536245D70D30033321F /* imageTestVC.swift in Sources */,
 				A33376162420CFB3000DC7C4 /* AppDelegate.swift in Sources */,
 				A311E5922438A880005EEC29 /* AlbumPeriodController.swift in Sources */,
 				A33376182420CFB3000DC7C4 /* SceneDelegate.swift in Sources */,
@@ -1857,7 +1908,9 @@
 				9B180800243DF53200AF1CE6 /* albumLayoutCollectionCell.swift in Sources */,
 				9BFC148A2441C14500F38AFF /* Protocol.swift in Sources */,
 				9B6A134C2440CE9400E78E66 /* AlbumInfoVC.swift in Sources */,
+				9BAAA9712459624B002567AF /* AlbumServiceData.swift in Sources */,
 				9BC0DBB62444802A00CA90F7 /* User.swift in Sources */,
+				A3315E23245C6C54005536C2 /* OrderDetailViewController.swift in Sources */,
 				9BD31D3A243A0A9100D0D719 /* InviteVC.swift in Sources */,
 				39DE24C9245472F4007E8D40 /* PrintListTableViewCell.swift in Sources */,
 				9BBBA3E1243F690B002904AC /* AlbumCoverCollectionCell.swift in Sources */,
@@ -1865,6 +1918,8 @@
 				9BC0DBB22444788F00CA90F7 /* ProfileVC.swift in Sources */,
 				9BB1C5742441EEBA0035DEBF /* FilterCell.swift in Sources */,
 				A38A2D3824588E99000BF82D /* LoginService.swift in Sources */,
+				A3B0D1FF245D977800DB90ED /* EmailPhoneViewController.swift in Sources */,
+				A3B0D1BE245D547800DB90ED /* QuestionCell.swift in Sources */,
 				9BBBA3E3243F6FD5002904AC /* AlbumCompleteVC.swift in Sources */,
 				A36DC86F24236386001B3767 /* AlbumDetailController.swift in Sources */,
 				9B1B7A68244C1590008ED381 /* AlbumLayoutPreviewCell.swift in Sources */,
@@ -1873,10 +1928,13 @@
 				A3025CA42441AE9800041723 /* FindEmailErrViewController.swift in Sources */,
 				A3E2DB7A2454576B00AB2156 /* CompleteNewPassViewController.swift in Sources */,
 				A38A2D102458719E000BF82D /* TelephoneAuthService.swift in Sources */,
+				A3B0D218245DB47800DB90ED /* ChangeEmailService.swift in Sources */,
+				A3B0D20B245DB22A00DB90ED /* CompleteEmailViewController.swift in Sources */,
 				A3025CA02441ADCA00041723 /* EnterViewController.swift in Sources */,
 				A3025C9E2441AD9000041723 /* LoginMainViewController.swift in Sources */,
 				A38A2D0E24587170000BF82D /* TelephoneAuthResult.swift in Sources */,
 				A3E2DB7E24546E7200AB2156 /* APIMagager.swift in Sources */,
+				A3B0D1CB245D548300DB90ED /* AnswerCell.swift in Sources */,
 				9BC98F082448B74E002629AF /* StickerLayout.swift in Sources */,
 				A3D8758F24448BCE0085F17B /* AuthenViewController.swift in Sources */,
 				390A33EE243F6A52002E9F57 /* OrderFinishViewController.swift in Sources */,
@@ -1888,10 +1946,12 @@
 				A318AC7C243E2A7600245434 /* CompleteViewController.swift in Sources */,
 				A318AC7E243E2F9E00245434 /* TermCell.swift in Sources */,
 				A3CCD8432454B30300C73E31 /* EmailCheckService.swift in Sources */,
+				A3315E0C245C5BA6005536C2 /* OrderCell.swift in Sources */,
 				9BC16B1A2435B68F007F106C /* photoStickerCollectionCell.swift in Sources */,
 				39DE24C724547143007E8D40 /* PrintListViewController.swift in Sources */,
 				9BC0DBB4244478A600CA90F7 /* ProfileTableViewCell.swift in Sources */,
 				9BB1C5762441EEC30035DEBF /* FilterViewController.swift in Sources */,
+				A3B0D1D9245D6C8400DB90ED /* SettingCell.swift in Sources */,
 				9B6A134E2440D0C500E78E66 /* MemberTableViewCell.swift in Sources */,
 				39CB8C97245DCD2100F28A49 /* PopUp2ViewController.swift in Sources */,
 				9B31E1942434BBB400A139C6 /* photoFilterCollectionCell.swift in Sources */,

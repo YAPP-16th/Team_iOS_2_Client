@@ -9,26 +9,21 @@
 import UIKit
 
 class EnterViewController: UIViewController {
-    var loginData =  LoginModel()
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var signUpBtn: UIButton!
     @IBOutlet weak var kakaoLoginBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.isNavigationBarHidden = true
-        tabBarController?.tabBar.isHidden = true
-        loginBtn.layer.cornerRadius = 8.0
-        signUpBtn.layer.cornerRadius = 8.0
-        kakaoLoginBtn.layer.cornerRadius = 8.0
+        setUI()
     }
     
     //둘러보기 버튼 클릭 시
     @IBAction func takeALook(_ sender: Any) {
         //default 유저 값 받아옴,메인화면으로 이동
-        let tabBarVC = storyboard?.instantiateViewController(withIdentifier: "TabBarController")
-            as! UIViewController
-        navigationController?.pushViewController(tabBarVC, animated: true)    }
+        guard let tabBarVC = storyboard?.instantiateViewController(withIdentifier: "TabBarController") else { return }
+        navigationController?.pushViewController(tabBarVC, animated: true)
+    }
     
     //로그인 버튼 클릭 시
     @IBAction func goSignIn(_ sender: Any) {
@@ -44,7 +39,7 @@ class EnterViewController: UIViewController {
         navigationController?.pushViewController(termVC, animated: true)
     }
     
-    //카카오톡 로그인
+    //카카오톡 회원가입
     @IBAction func goKaKaoLogin(_ sender: Any) {
         
         //싱글톤 객체 생성
@@ -62,6 +57,7 @@ class EnterViewController: UIViewController {
                 KOSessionTask.accessTokenInfoTask(completionHandler: {
                     (accesstokenInfo, tokenErr) in
                     if let error = tokenErr as NSError? {
+                        self.showErrAlert()
                         switch error.code{
                         case 5:
                             print("세션이 만료된(access_token, refresh_token이 모두 만료된 경우) 상태")
@@ -72,15 +68,24 @@ class EnterViewController: UIViewController {
                         }
                     }else {
                         print("success request - access token info: \(accesstokenInfo!)")
-                        self.loginData.token = accesstokenInfo!.id!.stringValue
                     }
                 })
                 
                 KOSessionTask.userMeTask(completion: { (userInfoErr, user) in
                     guard let user = user,
-                        let email = user.account?.email else { return }
-                    self.loginData.email = email
-                    print("\(self.loginData)")
+                        let email = user.account?.email,
+                        let nickName = user.account?.profile?.nickname
+                        else { return }
+                    
+                    //전화번호 인증화면 이동
+                    let signInSB = UIStoryboard(name: "SignIn", bundle: nil)
+                    let authenVC = signInSB.instantiateViewController(identifier: "AuthenViewController") as! AuthenViewController
+                    
+                    authenVC.email = email
+                    authenVC.nickName = nickName
+                    authenVC.social = true
+                    authenVC.authenType = "socialSignUp"
+                    self.navigationController?.pushViewController(authenVC, animated: true)
                 })
                 
             }else {
@@ -90,4 +95,23 @@ class EnterViewController: UIViewController {
         
     }
     
+    func setUI(){
+        navigationController?.isNavigationBarHidden = true
+        tabBarController?.tabBar.isHidden = true
+        loginBtn.layer.cornerRadius = 8.0
+        signUpBtn.layer.cornerRadius = 8.0
+        kakaoLoginBtn.layer.cornerRadius = 8.0
+    }
+    
+    
+    
+    func showErrAlert(){
+        let alert = UIAlertController(title: "오류", message: "카카오 로그인 불가", preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(action)
+        self.present(alert, animated: true)
+    }
+    
+    
+   
 }
