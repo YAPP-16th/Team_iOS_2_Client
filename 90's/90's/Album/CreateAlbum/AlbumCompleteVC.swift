@@ -24,10 +24,12 @@ class AlbumCompleteVC: UIViewController {
     }
     @IBAction func completeBtn(_ sender: UIButton) {
         let number = AlbumDatabase.arrayList.count
-        let user = "temp user"
+        let user = "temp user" // token으로
+        
         let newAlbum = Album(user : [user], albumIndex: number, albumName: self.albumName, albumStartDate: self.albumStartDate, albumEndDate: self.albumEndDate, albumLayout: self.albumLayout, albumMaxCount: self.albumMaxCount + 1, photo: [])
         newAlbum.photos.append(photo)
         AlbumDatabase.arrayList.append(newAlbum)
+        
 //        NetworkSetting()
         mainProtocol?.reloadView()
         self.navigationController?.popToRootViewController(animated: true)

@@ -35,6 +35,9 @@ class SavePhotoVC: UIViewController {
     var originImage : UIImage!
     var dateLabel : UILabel!
     var selectedLayout : AlbumLayout!
+    // server data
+    var albumUid : Int?
+    var imageName : String?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -114,7 +117,23 @@ extension SavePhotoVC {
         let image = renderer.image { ctx in
             photoView.drawHierarchy(in: photoView.bounds, afterScreenUpdates: true)
         }
-        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        
+        AlbumService.shared.photoUpload(albumUid: "\(String(describing: albumUid))", image: image, imageName: imageName!, completion: {
+            response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200:
+                    guard let data = response.data else {return}
+                    print("received data = \(data)")
+                case 401...404 :
+                    print("forbidden access in \(status)")
+                default:
+                    return
+                }
+            }
+        })
+        
+//        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
         
         self.navigationController?.popToRootViewController(animated: true)
     }
