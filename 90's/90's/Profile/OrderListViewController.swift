@@ -60,11 +60,14 @@ extension OrderListViewController : UITableViewDelegate, UITableViewDataSource {
         return orderList.count
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let orderDetailVC = storyboard?.instantiateViewController(identifier: "OrderDetailViewController") as! OrderDetailViewController
+        navigationController?.pushViewController(orderDetailVC, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OrderCell") as! OrderCell
         let orderData = orderList[indexPath.row]
-        cell.orderDetailDelegate = self
-        cell.indexPath = indexPath
         cell.albumImageView.image = UIImage(named: orderData.albumImage)
         
         switch orderData.albumStatus {
@@ -86,11 +89,4 @@ extension OrderListViewController : UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension OrderListViewController : OrderDetailDelegate {
-    func clickDetailBtn(_ index: Int) {
-        print("\(index)")
-        let orderDetailVC = self.storyboard?.instantiateViewController(identifier: "OrderDetailViewController") as! OrderDetailViewController
-        self.navigationController?.pushViewController(orderDetailVC, animated: true)
-    }
-}
 

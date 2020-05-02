@@ -26,6 +26,10 @@ class FAQViewController: UIViewController {
         setUI()
     }
     
+    @IBAction func goBack(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
     func setUI(){
         faqTableView.delegate = self
         faqTableView.dataSource = self

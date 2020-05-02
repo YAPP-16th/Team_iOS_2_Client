@@ -86,6 +86,7 @@
 		A38A2D3824588E99000BF82D /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38A2D3724588E99000BF82D /* LoginService.swift */; };
 		A3B0D1BE245D547800DB90ED /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D1BD245D547800DB90ED /* QuestionCell.swift */; };
 		A3B0D1CB245D548300DB90ED /* AnswerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D1CA245D548300DB90ED /* AnswerCell.swift */; };
+		A3B0D1D9245D6C8400DB90ED /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D1D8245D6C8400DB90ED /* SettingCell.swift */; };
 		A3CCD8432454B30300C73E31 /* EmailCheckService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCD8422454B30300C73E31 /* EmailCheckService.swift */; };
 		A3CCD8452454BE7B00C73E31 /* SignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCD8442454BE7B00C73E31 /* SignUpService.swift */; };
 		A3CCD8472454C31B00C73E31 /* SignUpResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCD8462454C31B00C73E31 /* SignUpResult.swift */; };
@@ -583,6 +584,7 @@
 		A38A2D3724588E99000BF82D /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		A3B0D1BD245D547800DB90ED /* QuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
 		A3B0D1CA245D548300DB90ED /* AnswerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCell.swift; sourceTree = "<group>"; };
+		A3B0D1D8245D6C8400DB90ED /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		A3CCD8422454B30300C73E31 /* EmailCheckService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCheckService.swift; sourceTree = "<group>"; };
 		A3CCD8442454BE7B00C73E31 /* SignUpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpService.swift; sourceTree = "<group>"; };
 		A3CCD8462454C31B00C73E31 /* SignUpResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResult.swift; sourceTree = "<group>"; };
@@ -769,6 +771,7 @@
 				A3315E22245C6C54005536C2 /* OrderDetailViewController.swift */,
 				A3B0D1BD245D547800DB90ED /* QuestionCell.swift */,
 				A3B0D1CA245D548300DB90ED /* AnswerCell.swift */,
+				A3B0D1D8245D6C8400DB90ED /* SettingCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1917,6 +1920,7 @@
 				39DE24C724547143007E8D40 /* PrintListViewController.swift in Sources */,
 				9BC0DBB4244478A600CA90F7 /* ProfileTableViewCell.swift in Sources */,
 				9BB1C5762441EEC30035DEBF /* FilterViewController.swift in Sources */,
+				A3B0D1D9245D6C8400DB90ED /* SettingCell.swift in Sources */,
 				9B6A134E2440D0C500E78E66 /* MemberTableViewCell.swift in Sources */,
 				9B31E1942434BBB400A139C6 /* photoFilterCollectionCell.swift in Sources */,
 				A31BA4D3243876F0007CA89D /* AlbumNameController.swift in Sources */,

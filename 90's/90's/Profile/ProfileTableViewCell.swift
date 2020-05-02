@@ -10,11 +10,5 @@ import UIKit
 
 class ProfileTableViewCell: UITableViewCell {
     @IBOutlet weak var settingLabel: UILabel!
-    
-    var detailDelegate:DetailDelegate!
-    var indexPath:IndexPath!
-    
-    @IBAction func clickDetailBtn(_ sender: Any) {
-        self.detailDelegate.goDetailVC(indexPath.row)
-    }
+
 }
