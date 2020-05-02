@@ -25,6 +25,7 @@ class PrintListTableViewCell: UITableViewCell {
     
     var delegate : ClickActionDelegate?
     var currentIndex: Int?
+    var state: Int? = 0
 
     override func awakeFromNib() {
         super.awakeFromNib()

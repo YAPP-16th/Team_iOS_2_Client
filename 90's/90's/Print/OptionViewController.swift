@@ -23,6 +23,7 @@ class OptionViewController : UIViewController {
     @IBOutlet weak var previewImageHeight: NSLayoutConstraint!
     @IBOutlet weak var titleTopreviewConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var completeBtnTopConstraint: NSLayoutConstraint!
     
     //MARK: View IBOutlet
     @IBOutlet weak var OptionView: UIView!
@@ -54,6 +55,8 @@ class OptionViewController : UIViewController {
     @IBOutlet weak var orderBtn: UIButton!
     @IBOutlet weak var previewImage: UIImageView!
     
+    @IBOutlet weak var backView: UIView!
+    
     var isTotalOptionViewAppear = false
     var coverImage : UIImage? = nil
     var cal1 = false
@@ -69,6 +72,7 @@ class OptionViewController : UIViewController {
     override func viewDidLoad() {
         self.view.backgroundColor = .white
         super.viewDidLoad()
+        self.backView.isHidden = true
         
         self.totalCount.text = "1"
         self.printLabel.text = ""
@@ -84,16 +88,16 @@ class OptionViewController : UIViewController {
         // iPhone X..
         if UIScreen.main.nativeBounds.height == 1792.0 {
             
-            self.topConstraint.constant = 115
+//            self.topConstraint.constant = 115
             self.previewImageHeight.constant = 196
-            self.titleTopreviewConstraint.constant = 43.5
+//            self.titleTopreviewConstraint.constant = 43.5
         }
             // iPhone 8..
         else if UIScreen.main.nativeBounds.height == 1334.0
         {
-            self.topConstraint.constant = 80
+//            self.topConstraint.constant = 80
             self.previewImageHeight.constant = 187
-            self.titleTopreviewConstraint.constant = 34
+//            self.titleTopreviewConstraint.constant = 34
             
         }
         
@@ -132,7 +136,8 @@ class OptionViewController : UIViewController {
     //MARK: View IBAction
     @IBAction func OptionClick(_ sender: Any) {
         
-        print(self.OptionView.frame)
+        
+        
         isTotalOptionViewAppear = !isTotalOptionViewAppear
         
         
@@ -140,8 +145,7 @@ class OptionViewController : UIViewController {
             
             self.BottomViewConstraint.constant = self.view.frame.height
         } else {
-            self.view.backgroundColor = .darkGray
-            
+            self.backView.isHidden = false
             // iPhone X..
             if UIScreen.main.nativeBounds.height == 1792.0 {
                 
@@ -160,7 +164,7 @@ class OptionViewController : UIViewController {
     }
     
     @IBAction func CancelAction(_ sender: Any) {
-        self.view.backgroundColor = .white
+        self.backView.isHidden = true
         self.BottomViewConstraint.constant = self.view.frame.height
         
         UIView.animate(withDuration: 1, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations: {self.view.layoutIfNeeded()})
@@ -168,8 +172,8 @@ class OptionViewController : UIViewController {
     
     
     @IBAction func CompleteBtn(_ sender: Any) {
-        self.view.backgroundColor = .darkGray
         
+        self.backView.isHidden = false
         self.BottomViewConstraint.constant = self.view.frame.height
         self.totalSum1.text = String(calc)
         self.totalSum2.text = String(calc)
@@ -183,6 +187,17 @@ class OptionViewController : UIViewController {
         
         firstFlapBtn.isSelected = !firstFlapBtn.isSelected
         
+        if UIScreen.main.nativeBounds.height == 1792.0 {
+            
+            self.BottomViewConstraint.constant = self.view.frame.height  - 516
+            
+        }
+            // iPhone 8..
+        else if UIScreen.main.nativeBounds.height == 1334.0
+        {
+            self.BottomViewConstraint.constant = self.view.frame.height  - 516 + 10
+            
+        }
         
         if firstFlapBtn.isSelected {
             
@@ -201,6 +216,12 @@ class OptionViewController : UIViewController {
             self.FirstOptionView.isHidden = true
             self.SecondOptionView.isHidden = true
             
+            if CompleteBtn.backgroundColor == .black {
+                self.BottomViewConstraint.constant = self.view.frame.height - 320
+                self.completeBtnTopConstraint.constant = 22
+                
+            }
+            
         }
         UIView.animate(withDuration: 1, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations: {self.view.layoutIfNeeded()})
         
@@ -210,6 +231,17 @@ class OptionViewController : UIViewController {
         
         secondFlapBtn.isSelected = !secondFlapBtn.isSelected
         
+        if UIScreen.main.nativeBounds.height == 1792.0 {
+            
+            self.BottomViewConstraint.constant = self.view.frame.height  - 516
+            
+        }
+            // iPhone 8..
+        else if UIScreen.main.nativeBounds.height == 1334.0
+        {
+            self.BottomViewConstraint.constant = self.view.frame.height  - 516 + 10
+            
+        }
         
         if firstFlapBtn.isSelected {
             self.FirstOptionConstraint.constant = 0
@@ -235,6 +267,12 @@ class OptionViewController : UIViewController {
             self.SecondOptionView.isHidden = true
             firstFlapBtn.isSelected = false
             
+            if CompleteBtn.backgroundColor == .black {
+                self.BottomViewConstraint.constant = self.view.frame.height - 320
+                self.completeBtnTopConstraint.constant = 22
+                
+            }
+            
             
         }
         
@@ -243,16 +281,17 @@ class OptionViewController : UIViewController {
         
     }
     @IBAction func countOptionCancelClick(_ sender: Any) {
+        self.backView.isHidden = true
         
-        self.view.backgroundColor = .white
         self.countOptionViewConstraint.constant = self.view.frame.height
         
         UIView.animate(withDuration: 1, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations: {self.view.layoutIfNeeded()})
+        self.countOptionView.isHidden = true
     }
     
     @IBAction func orderAction(_ sender: Any) {
         
-        self.view.backgroundColor = .white
+        self.backView.isHidden = true
         self.countOptionViewConstraint.constant = self.view.frame.height
         
         self.countOptionView.isHidden = true
@@ -267,6 +306,8 @@ class OptionViewController : UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
+    
+    
     
     @IBAction func minusBtnAction(_ sender: Any) {
         var old = Int(self.totalCount.text ?? "1")
@@ -293,7 +334,7 @@ class OptionViewController : UIViewController {
         advanceBtn.isSelected = false
         superAdBtn.isSelected = false
         normalBtn.setImage(UIImage(named: "ovalSelectOption"), for: .selected)
-        self.printLabel.text = "일반"
+        self.printLabel.text = "유광"
         
         if (noramlShipBtn.isSelected  == true || advanceBtn.isSelected == true || superAdBtn.isSelected == true) && ( normalBtn.isSelected == true || advanceShipBtn.isSelected == true || superAdShipBtn.isSelected == true)
         {
@@ -305,17 +346,17 @@ class OptionViewController : UIViewController {
     @IBAction func adClick(_ sender: Any) {
         cal2 = !cal2
         if cal2 {
-            calc = calc + 1500
+            calc = calc + 0
         }
         else {
-            calc = calc - 1500
+            calc = calc - 0
         }
         print(calc)
         normalBtn.isSelected = false
         advanceBtn.isSelected = true
         superAdBtn.isSelected = false
         advanceBtn.setImage(UIImage(named: "ovalSelectOption"), for: .selected)
-        self.printLabel.text = "고급"
+        self.printLabel.text = "무광"
         
         if (noramlShipBtn.isSelected  == true || advanceBtn.isSelected == true || superAdBtn.isSelected == true) && ( normalBtn.isSelected == true || advanceShipBtn.isSelected == true || superAdShipBtn.isSelected == true)
         {
@@ -327,17 +368,17 @@ class OptionViewController : UIViewController {
     @IBAction func ad2Click(_ sender: Any) {
         cal3 = !cal3
         if cal3 {
-            calc = calc + 3000
+            calc = calc + 0
         }
         else {
-            calc = calc - 3000
+            calc = calc - 0
         }
         print(calc)
         normalBtn.isSelected = false
         advanceBtn.isSelected = false
         superAdBtn.isSelected = true
         superAdBtn.setImage(UIImage(named: "ovalSelectOption"), for: .selected)
-        self.printLabel.text = "최고급"
+        self.printLabel.text = "랜덤"
         
         if (noramlShipBtn.isSelected  == true || advanceBtn.isSelected == true || superAdBtn.isSelected == true) && ( normalBtn.isSelected == true || advanceShipBtn.isSelected == true || superAdShipBtn.isSelected == true)
         {
@@ -362,19 +403,21 @@ class OptionViewController : UIViewController {
         }
     }
     
+    
+    
     @IBAction func adShipClick(_ sender: Any) {
         cal5 = !cal5
         if cal5 {
-            calc = calc + 1500
+            calc = calc + 5000
         }
         else {
-            calc = calc - 1500
+            calc = calc - 5000
         }
         noramlShipBtn.isSelected = false
         advanceShipBtn.isSelected = true
         superAdShipBtn.isSelected = false
         advanceShipBtn.setImage(UIImage(named: "ovalSelectOption"), for: .selected)
-        self.shipLabel.text = "고급"
+        self.shipLabel.text = "특급"
         
         if (noramlShipBtn.isSelected  == true || advanceBtn.isSelected == true || superAdBtn.isSelected == true) && ( normalBtn.isSelected == true || advanceShipBtn.isSelected == true || superAdShipBtn.isSelected == true)
         {
@@ -382,19 +425,46 @@ class OptionViewController : UIViewController {
         }
     }
     
+    
+
+    
+    @IBAction func adShipInfo(_ sender: Any) {
+        
+        let storyboard = UIStoryboard(name: "Print", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "PopUpViewController") as! PopUpViewController
+                
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func superShipinfo(_ sender: Any) {
+        
+        let storyboard = UIStoryboard(name: "Print", bundle: nil)
+              let vc = storyboard.instantiateViewController(withIdentifier: "PopUp2ViewController") as! PopUp2ViewController
+                      
+              vc.modalTransitionStyle = .crossDissolve
+              vc.modalPresentationStyle = .overCurrentContext
+              self.present(vc, animated: true, completion: nil)
+              
+        
+    }
+    
+    
     @IBAction func ad2ShipClick(_ sender: Any) {
         cal6 = !cal6
         if cal6 {
-            calc = calc + 3000
+            calc = calc + 10000
         }
         else {
-            calc = calc - 3000
+            calc = calc - 10000
         }
         noramlShipBtn.isSelected = false
         advanceShipBtn.isSelected = false
         superAdShipBtn.isSelected = true
         superAdShipBtn.setImage(UIImage(named: "ovalSelectOption"), for: .selected)
-        self.shipLabel.text = "최고급"
+        self.shipLabel.text = "등기"
         
         if (noramlShipBtn.isSelected  == true || advanceBtn.isSelected == true || superAdBtn.isSelected == true) && ( normalBtn.isSelected == true || advanceShipBtn.isSelected == true || superAdShipBtn.isSelected == true)
         {
