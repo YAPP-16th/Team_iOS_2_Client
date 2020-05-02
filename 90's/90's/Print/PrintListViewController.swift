@@ -12,18 +12,16 @@ import UIKit
 
 class PrintListViewController: UIViewController {
     
+    //IBOutlets..
     @IBOutlet weak var printListTableView: UITableView!
     @IBOutlet weak var gotoAlbum: UIButton!
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var demoAlbumImage: UIImageView!
-    
     @IBOutlet weak var cautionTitle: UILabel!
     
     //아무도 없는 뷰 일때 array와 더미 array 구분해놓음
-    var array : [String] = ["sweetholiday","sweetholiday","sweetholiday","sweetholiday","sweetholiday","sweetholiday","sweetholiday","sweetholiday","sweetholiday","sweetholiday",]
+    var shipArray : [String] = ["sweetholiday","sweetholiday","sweetholiday","sweetholiday","sweetholiday","sweetholiday","sweetholiday","sweetholiday","sweetholiday","sweetholiday",]
     
-//    var array : [String] = []
     let imgIcon = UIImage(named: "90SLogo")?.withRenderingMode(.alwaysOriginal)
     
     override func viewDidLoad() {
@@ -44,7 +42,7 @@ class PrintListViewController: UIViewController {
             
         }
         
-    self.navigationController?.navigationBar.topItem?.title = "앨범 인화"
+        self.navigationController?.navigationBar.topItem?.title = "앨범 인화"
         let barButtonItem = UIBarButtonItem(image: imgIcon, style: .plain, target: self, action: nil)
         self.navigationItem.leftBarButtonItem = barButtonItem
         
@@ -53,9 +51,9 @@ class PrintListViewController: UIViewController {
         
         self.tabBarController?.tabBar.isHidden = false
         //        self.navigationController?.navigationBar.isHidden = false
-
         
-        if array.count != 0 {
+        
+        if shipArray.count != 0 {
             demoAlbumImage.isHidden = true
             cautionTitle.isHidden = true
             gotoAlbum.isHidden = true
@@ -75,7 +73,7 @@ extension PrintListViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return array.count
+        return shipArray.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -87,11 +85,34 @@ extension PrintListViewController : UITableViewDelegate, UITableViewDataSource {
         
         let cell = printListTableView.dequeueReusableCell(withIdentifier: "PrintListTableViewCell", for :indexPath) as! PrintListTableViewCell
         
-        cell.albumImageView.image = UIImage(named: array[indexPath.row] )
+        if indexPath == [0,3] {
+            cell.state = 2
+        }
+        else if indexPath == [0,2] {
+            cell.state = 1
+        }
+        
+        cell.albumImageView.image = UIImage(named: shipArray[indexPath.row] )
         cell.albumDate.text = "20.03.25 - 20.06.25"
         cell.albumTitle.text = "경진이의 여행 앨범"
         cell.pictureCount.text = "60/60"
-        cell.orderBtn.backgroundColor = .black
+        
+        if cell.state == 0 {
+            cell.orderBtn.backgroundColor = .black
+            cell.orderBtn.setTitle("결제 하기", for: .normal)
+        }
+        else if cell.state == 1 {
+            //            rgb 227 62 40
+            cell.orderBtn.backgroundColor = UIColor(displayP3Red: 225 / 255, green: 62 / 255, blue: 40 / 255, alpha: 1.0)
+            cell.orderBtn.setTitle("결제 완료하기", for: .normal)
+        }
+        else if cell.state == 2 {
+            cell.albumDate.textColor = .lightGray
+            cell.albumTitle.textColor = .lightGray
+            cell.pictureCount.textColor = .lightGray
+            cell.orderBtn.backgroundColor = .lightGray
+            cell.orderBtn.setTitle("신청 완료", for: .normal)
+        }
         cell.delegate = self
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.currentIndex = indexPath.row
@@ -116,8 +137,8 @@ extension PrintListViewController : ClickActionDelegate {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "OptionViewController") as! OptionViewController
         
         vc.modalPresentationStyle = .fullScreen
-        print(array[index] )
-        vc.tempImage = UIImage(named: array[index] )
+        print(shipArray[index] )
+        vc.tempImage = UIImage(named: shipArray[index] )
         self.navigationItem.title = " "
         self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "iconBack")
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "iconBack")

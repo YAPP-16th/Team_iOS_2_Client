@@ -8,5 +8,11 @@
 
 class FilterCell : UICollectionViewCell {
     @IBOutlet weak var FilterImageView: UIImageView!
+    @IBOutlet weak var selectImageView : UIImageView!
     
+    override var isSelected: Bool {
+        didSet {
+            selectImageView.isHidden = isSelected ? false : true
+        }
+    }
 }

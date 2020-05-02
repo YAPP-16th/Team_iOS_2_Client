@@ -36,11 +36,14 @@ struct PhotoEditorTypes{
     static let replacingOccurrencesWord : String = "CIPhotoEffect"
     static let filterNameLabelAnimationDelay: TimeInterval = TimeInterval(1)
     
-    //    static let filterNameArray: [String] = ["CIPhotoEffectTransfer", "CIPhotoEffectInstant", "Normal", "CIPhotoEffectMono", "CIPhotoEffectNoir", "CIPhotoEffectTonal", "CIPhotoEffectFade", "CIPhotoEffectChrome", "CIPhotoEffectTransfer"].sorted(by: >)
     
-    static let filterNameArray: [String] = ["LUT5", "arapaho", "LUT3", "LUT2", "LUT", "LUT4", "lut_1", "LUT64"]
-    static let filterImage : [String] = ["filterThumbnailNone" , "filterThumbnailNoise", "filterThumbnailGrunge","filterThumbnailWrap", "filterThumbnailLight" , "filterThumbnailNoise", "filterThumbnailGrunge","filterThumbnailWrap", ]
+    
+    static let filterNameArray: [String] = ["lut_1","lut_grain", "lut_grunge", "lut_pinky", "lut_wrap", "lut_faded", "lut_scrape", "lut_lensflare",]
+    static let filterImage : [String] = ["None" , "Grain", "Grunge","Pinky", "Wrap" , "Faded", "Scrape","Lensflare"]
     //        .sorted(by: >)
+    static let filterFrame : [String] = ["b_None" ,"b_grain","b_grunge", "b_pinky", "b_wrap" , "b_faded", "b_scrape","b_lensflare"]
+    //        .sorted(by: >)
+    
     
     static func numberOfFilterType() -> Int {
         return filterNameArray.count
@@ -91,27 +94,25 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     let galleryPicker = UIImagePickerController()
     let context = CIContext()
     var filterIndex: Int = 0 // 스와이프로 필터를 선택 시에 현재 필터 인덱스를 저장할 프로퍼티
-    var filterName: String = "CILinearToSRGBToneCurve" // CIFilter를 적용할 때 필요한 필터 이름
+    var filterName: String = "lut_1" // CIFilter를 적용할 때 필요한 필터 이름
     var photoMode: AddPhotoMode? // 카메라, 사진앨범 모드인지 구분하는 저장 프로퍼티
-    var topImage = UIImage(named: "frame_landscape")
+    var topImage = UIImage(named: "b_None")
     let minimumZoom: CGFloat = 1.0
     let maximumZoom: CGFloat = 3.0
     var lastZoomFactor: CGFloat = 1.0
     
     var FilterArray: [String] = []
     
-    var new_image : UIImage!
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         setupDevice()
-//        setupInputOutput()
+        setupInputOutput()
         delegateSetting()
         
         filterName = PhotoEditorTypes.filterNameArray[filterIndex]
-        filterCollectionView.selectItem(at: [0,0], animated: true, scrollPosition: .centeredHorizontally)
+        //        filterCollectionView.selectItem(at: [0,0], animated: true, scrollPosition: .centeredHorizontally)
         
         
         let leftSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
@@ -158,7 +159,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                         {
                             if authorized
                             {
-//                                self.setupInputOutput()
+                                self.setupInputOutput()
                             }
                     }
             })
@@ -172,21 +173,17 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         UIGraphicsBeginImageContextWithOptions(size, false, 1.0)
         
-        self.topImage!.draw(in: rect)
-        new_image = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.navigationBar.isHidden = false
         UIApplication.shared.isStatusBarHidden = true
-        UIApplication.shared.setStatusBarHidden(true, with: .slide) // .none, .slide, .fade
-        //        UIApplication.shared.setStatusBarHidden(true, with: UIStatusBarAnimation.none)
+        UIApplication.shared.setStatusBarHidden(true, with: .slide)
+        // .none, .slide, .fade
     }
     
     @IBAction func photoCancel(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-//        self.navigationController?.popViewController(animated: true)
-
+        
+        self.dismiss(animated: true, completion: nil)
+        
     }
     
     @IBAction func albumClick(_ sender: Any) {
@@ -214,36 +211,28 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         var tempImage = self.filteredImage.image
         self.albumBtn.layer.masksToBounds = true
         self.albumBtn.layer.cornerRadius = self.albumBtn.bounds.width / 2
-
-        self.albumBtn.setBackgroundImage(tempImage, for: UIControl.State.normal)
-
         
-//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CheckPhotoViewController") as! CheckPhotoViewController
-//        vc.tempImage = self.filteredImage.image
-//        print(vc.tempImage.size)
-//        vc.modalTransitionStyle = .crossDissolve
-//        vc.modalPresentationStyle = .overCurrentContext
-//        self.present(vc, animated: true, completion: nil)
-        //            self.navigationController?.pushViewController(vc, animated: true)
+        self.albumBtn.setBackgroundImage(tempImage, for: UIControl.State.normal)
+        
         
     }
     @IBAction func showFilter(_ sender: Any) {
         
         
-//        if UIScreen.main.nativeBounds.height == 1792.0 {
-//            self.outputimageViewConstraint.constant = 115
-//            self.collectionViewHeight.constant = -80
-//            self.galleryConstraint.constant = 102
-//            self.filterConstraint.constant = 102
-//
-//        }
-//        else if UIScreen.main.nativeBounds.height == 1334.0
-//        {
-//            self.outputimageViewConstraint.constant = 115
-//            self.collectionViewHeight.constant = -80
-//            self.galleryConstraint.constant = 102
-//            self.filterConstraint.constant = 102
-//        }
+        //        if UIScreen.main.nativeBounds.height == 1792.0 {
+        //            self.outputimageViewConstraint.constant = 115
+        //            self.collectionViewHeight.constant = -80
+        //            self.galleryConstraint.constant = 102
+        //            self.filterConstraint.constant = 102
+        //
+        //        }
+        //        else if UIScreen.main.nativeBounds.height == 1334.0
+        //        {
+        //            self.outputimageViewConstraint.constant = 115
+        //            self.collectionViewHeight.constant = -80
+        //            self.galleryConstraint.constant = 102
+        //            self.filterConstraint.constant = 102
+        //        }
         
         
         if isCollectionViewAppear {
@@ -272,14 +261,14 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         }
             
         else {
-                        
+            
             filterBtn.setImage(UIImage(named: "iconFilterBlack"), for: .normal)
             takeButton.frame.size = CGSize(width: 76, height: 77)
             albumBtn.isHidden = false
             galleryLabel.isHidden = false
             filterLabel.isHidden = false
             print(self.captureBtnConstraint.constant)
-
+            
             if UIScreen.main.nativeBounds.height == 1792.0 {
                 self.outputimageViewConstraint.constant = 115
                 self.collectionViewHeight.constant = -80
@@ -295,7 +284,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                 self.captureBtnConstraint.constant = 79
                 self.filterConstraint.constant = 102
                 self.galleryConstraint.constant = 102
-
+                
             }
             
         }
@@ -313,12 +302,13 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         if (sender.direction == .left) {
             NSLog("Swipe Left")
             filterIndex = (filterIndex + 1) % PhotoEditorTypes.numberOfFilterType()
-            
+                        filterCollectionView.scrollToItem(at: [0,filterIndex], at: .left, animated: true)
         }
         
         if (sender.direction == .right) {
             NSLog("Swipe Right")
             print(PhotoEditorTypes.numberOfFilterType())
+                        filterCollectionView.scrollToItem(at: [0,filterIndex], at: .right, animated: true)
             filterIndex = (filterIndex - 1) % PhotoEditorTypes.numberOfFilterType()
             
             if filterIndex < 0 {
@@ -329,10 +319,11 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         if filterIndex == filterIndex {
             print(filterIndex, filterName)
             filterName = PhotoEditorTypes.filterNameArray[filterIndex]
-            filterNameLabel.text = filterName.replacingOccurrences(of: PhotoEditorTypes.replacingOccurrencesWord, with: "")
+            filterNameLabel.text = PhotoEditorTypes.filterImage[filterIndex]
             fadeViewInThenOut(view: filterNameLabel, delay: PhotoEditorTypes.filterNameLabelAnimationDelay)
             
             filterCollectionView.selectItem(at: [0,filterIndex], animated: true, scrollPosition: .centeredHorizontally)
+            self.topImage = UIImage(named: PhotoEditorTypes.filterFrame[filterIndex])
             
             
         }
@@ -370,12 +361,21 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         default: break
         }
     }
+    lazy var focusGesture: UITapGestureRecognizer = {
+        let instance = UITapGestureRecognizer(target: self, action: #selector(touchesBegan(_:with:)))
+        instance.cancelsTouchesInView = false
+        instance.numberOfTapsRequired = 1
+        instance.numberOfTouchesRequired = 1
+        return instance
+    }()
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         let screenSize = self.view.bounds.size
+        
         print(screenSize)
         if let touchPoint = touches.first {
+            
             let x = touchPoint.location(in: self.filteredImage).y / screenSize.height
             let y = 1.0 - touchPoint.location(in: self.filteredImage).x / screenSize.width
             let focusPoint = CGPoint(x: x, y: y)
@@ -475,14 +475,9 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         comicEffect!.setValue(cameraImage, forKey: kCIInputImageKey)
         let cgImage = self.context.createCGImage((comicEffect?.outputImage!)!, from: cameraImage.extent)!
         
-        //        let test = self.topImage?.resizeImage(targetSize: CGSize(width: 375, height: 436.5))
-        
-        
         DispatchQueue.main.async {
             let filteredImage = UIImage(cgImage: cgImage)
 //            self.filteredImage.image = filteredImage.mergeWith(topImage: self.topImage! , bottomImage: filteredImage).applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
-
-            
             
         }
     }
@@ -490,7 +485,6 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
 }
 
 extension FilterViewController : AVCapturePhotoCaptureDelegate {
-    
     
     func photoOutput(_ captureOutput: AVCapturePhotoOutput,
                      didFinishProcessingPhoto photoSampleBuffer: CMSampleBuffer?,
@@ -512,8 +506,10 @@ extension FilterViewController : AVCapturePhotoCaptureDelegate {
         // Initialise an UIImage with our image data
         let capturedImage = self.filteredImage.image
         print(capturedImage)
-            
+        
     }
+    
+    
 }
 
 
@@ -574,7 +570,7 @@ extension FilterViewController {
         
         return filter
     }
-   
+    
     
     func applyFilterTo(image: UIImage, filterEffect: Filter) -> UIImage? {
         let ciImage = CIImage(image: UIView().createImage())
@@ -618,24 +614,36 @@ extension FilterViewController : UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(PhotoEditorTypes.filterNameArray.count)
+        //        print(PhotoEditorTypes.filterNameArray.count)
         return PhotoEditorTypes.filterNameArray.count
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FilterCell", for: indexPath) as! FilterCell
-        
-        
+        cell.selectImageView.isHidden = true
         cell.FilterImageView.image = UIImage(named: PhotoEditorTypes.filterImage[indexPath.row])
         
         return cell
     }
     
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = filterCollectionView.cellForItem(at: indexPath) as! FilterCell
+        cell.selectImageView.isHidden = true
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         //        albumCover = PhotoEditorTypes.filterNameArray[indexPath.row]
         filterName = PhotoEditorTypes.filterNameArray[indexPath.row]
-        filterNameLabel.text = filterName.replacingOccurrences(of: PhotoEditorTypes.replacingOccurrencesWord, with: "")
+        self.topImage = UIImage(named: PhotoEditorTypes.filterFrame[indexPath.row])
+        filterNameLabel.text = PhotoEditorTypes.filterImage[indexPath.row]
         fadeViewInThenOut(view: filterNameLabel, delay: PhotoEditorTypes.filterNameLabelAnimationDelay)
+        let cell = filterCollectionView.cellForItem(at: indexPath) as! FilterCell
+        
+        cell.selectImageView.isHidden = false
         
     }
     
@@ -661,7 +669,7 @@ extension FilterViewController : UIImagePickerControllerDelegate, UINavigationCo
             let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             UserDefaults.standard.set(url, forKey: "assetURL")
             tempImage = image
-
+            
         }
         
         dismiss(animated: true,completion: {

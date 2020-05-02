@@ -118,9 +118,9 @@ extension AlbumDetailController {
     @objc func touchCameraBtn(){
         let storyBoard = UIStoryboard(name: "Filter", bundle: nil)
         let goNextVC = storyBoard.instantiateViewController(withIdentifier: "FilterViewController") as! FilterViewController
-        present(goNextVC, animated: true){
-            self.switchHideView(value: true)
-        }
+        goNextVC.modalPresentationStyle = .fullScreen
+        self.present(goNextVC, animated: true)
+
     }
     
     @objc func touchAlbumBtn(){
