@@ -28,6 +28,9 @@ class ImageRenderVC: UIViewController {
     var photoImage : UIImage?
     var tempsticker : UIImageView?
     var selectLayout : AlbumLayout! = .Polaroid
+    // server data
+    var albumUid : Int?
+    var imageName : String?
     
     // value for checkimageview showing while collection cells changes
     fileprivate var isFilterSelected : Bool = true
@@ -197,6 +200,8 @@ extension ImageRenderVC {
         nextVC.photoView = photoView
         nextVC.originImage = photoImage
         nextVC.selectedLayout = selectLayout
+        nextVC.albumUid = albumUid
+        nextVC.imageName = imageName
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     

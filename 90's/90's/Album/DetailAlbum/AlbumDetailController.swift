@@ -28,11 +28,9 @@ class AlbumDetailController : UIViewController {
         switchHideView(value: true)
     }
     
-    
     private var longPressGesture : UILongPressGestureRecognizer!
-    var albumIndex:Int?
     var openAlbumCount : Int! // 앨범 낡기 적용
-    var isEnded: Bool = true
+    var isEnded : Bool = true
     var currentCell : UICollectionViewCell? = nil
     var selectedLayout : AlbumLayout?
     var galleryPicker : UIImagePickerController = {
@@ -40,6 +38,9 @@ class AlbumDetailController : UIViewController {
         picker.sourceType = .photoLibrary
         return picker
     }()
+    // server data
+    var albumIndex : Int?
+    var ImageName : String?
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if hideView.isHidden == false {
@@ -132,7 +133,7 @@ extension AlbumDetailController {
         if (AlbumDatabase.arrayList[albumIndex!].photos.count >= AlbumDatabase.arrayList[albumIndex!].albumMaxCount) {
             addPhotoBtn.isEnabled = false
             
-            let alert = UIAlertController(title: "사진  추가 불가", message: "제한개수를 모두 채웠습니다.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "사진 추가 불가", message: "제한개수를 모두 채웠습니다.", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "확인", style: .default)
             alert.addAction(okAction)
             present(alert,animated: true)
@@ -262,6 +263,8 @@ extension AlbumDetailController : UIImagePickerControllerDelegate, UINavigationC
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         var tempImage : UIImage? = nil
+        guard let fileUrl = info[UIImagePickerController.InfoKey.imageURL] as? URL else {return}
+        ImageName = fileUrl.lastPathComponent
         
         if let url = info[UIImagePickerController.InfoKey.referenceURL] as? URL,
             let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
@@ -275,6 +278,8 @@ extension AlbumDetailController : UIImagePickerControllerDelegate, UINavigationC
             vc.modalPresentationStyle = .fullScreen
             vc.image = tempImage
             vc.selectLayout = self.selectedLayout
+            vc.albumUid = self.albumIndex
+            vc.imageName = self.ImageName
             self.navigationController?.pushViewController(vc, animated: true)
             //self.present(vc, animated: true, completion: nil)
         }
