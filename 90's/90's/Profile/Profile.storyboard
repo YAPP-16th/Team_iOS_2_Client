@@ -259,7 +259,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wUf-ob-xB2">
-                                <rect key="frame" x="0.0" y="323" width="414" height="539"/>
+                                <rect key="frame" x="0.0" y="323" width="414" height="490"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -340,7 +340,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="j2p-lI-Pav"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="iconProfileInact" selectedImage="iconProfileAct" id="w7E-oz-TFi"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="guestLabel" destination="PvJ-Jx-pnL" id="nIB-VD-mPT"/>
                         <outlet property="guestLoginBtn" destination="aVN-z9-RZy" id="pic-Gr-uHK"/>
@@ -1791,6 +1793,8 @@
         <image name="copyButton" width="68" height="26"/>
         <image name="headBox" width="414" height="116"/>
         <image name="iconBack" width="14" height="23"/>
+        <image name="iconProfileAct" width="26" height="27"/>
+        <image name="iconProfileInact" width="26" height="27"/>
         <image name="moreProfile" width="64" height="14"/>
         <image name="nocompleteAlbum" width="210" height="216"/>
         <image name="path12GreyProfile" width="1" height="12"/>

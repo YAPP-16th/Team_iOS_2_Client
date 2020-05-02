@@ -30,6 +30,7 @@ class ProfileVC: UIViewController {
         super.viewDidLoad()
         setUI()
         profileView.isHidden = true
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     @IBAction func goLogin(_ sender: Any) {
