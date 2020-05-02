@@ -283,29 +283,24 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfB-ZC-olw">
-                                                    <rect key="frame" x="374" y="0.0" width="40" height="61"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pathMoreBlack" translatesAutoresizingMaskIntoConstraints="NO" id="z1r-DT-wwe">
+                                                    <rect key="frame" x="390" y="24" width="8" height="13"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="40" id="bWf-Q6-Zsp"/>
-                                                        <constraint firstAttribute="height" constant="61" id="sqf-V1-1Tx"/>
+                                                        <constraint firstAttribute="height" constant="13" id="OeX-Ho-sFd"/>
+                                                        <constraint firstAttribute="width" constant="8" id="g3M-Bd-3J1"/>
                                                     </constraints>
-                                                    <state key="normal" image="pathMoreBlack"/>
-                                                    <connections>
-                                                        <action selector="clickDetailBtn:" destination="uyF-JX-2EF" eventType="touchUpInside" id="Cbe-Sr-74M"/>
-                                                    </connections>
-                                                </button>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="cMQ-95-mtQ" firstAttribute="top" secondItem="XXv-a4-hP7" secondAttribute="top" id="0Al-4Q-tVS"/>
                                                 <constraint firstItem="Pmn-uO-zw8" firstAttribute="leading" secondItem="XXv-a4-hP7" secondAttribute="leading" constant="20" id="6fx-d1-MJM"/>
                                                 <constraint firstItem="cMQ-95-mtQ" firstAttribute="leading" secondItem="XXv-a4-hP7" secondAttribute="leading" id="JY9-jU-xTB"/>
+                                                <constraint firstAttribute="trailing" secondItem="z1r-DT-wwe" secondAttribute="trailing" constant="16" id="N1A-sE-MJa"/>
                                                 <constraint firstAttribute="bottom" secondItem="cMQ-95-mtQ" secondAttribute="bottom" id="QxO-gJ-rVW"/>
                                                 <constraint firstAttribute="bottom" secondItem="Pmn-uO-zw8" secondAttribute="bottom" constant="20" id="Rjy-UR-XZG"/>
                                                 <constraint firstAttribute="trailing" secondItem="cMQ-95-mtQ" secondAttribute="trailing" id="dSN-wb-DtA"/>
-                                                <constraint firstItem="pfB-ZC-olw" firstAttribute="top" secondItem="XXv-a4-hP7" secondAttribute="top" id="lf3-Xj-Rxr"/>
                                                 <constraint firstItem="Pmn-uO-zw8" firstAttribute="top" secondItem="XXv-a4-hP7" secondAttribute="top" constant="17" id="mdC-My-xZl"/>
-                                                <constraint firstAttribute="bottom" secondItem="pfB-ZC-olw" secondAttribute="bottom" id="w3i-jR-mP6"/>
-                                                <constraint firstAttribute="trailing" secondItem="pfB-ZC-olw" secondAttribute="trailing" id="wqc-zM-rXQ"/>
+                                                <constraint firstItem="z1r-DT-wwe" firstAttribute="centerY" secondItem="XXv-a4-hP7" secondAttribute="centerY" id="rLN-01-qEA"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -1157,7 +1152,7 @@
                                     <constraint firstItem="5Ff-Am-gtH" firstAttribute="centerX" secondItem="d7I-eQ-9UM" secondAttribute="centerX" id="w7T-I3-f21"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zCN-7j-mMf">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zCN-7j-mMf">
                                 <rect key="frame" x="0.0" y="118" width="414" height="744"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1232,7 +1227,7 @@
                                                         <constraint firstAttribute="height" constant="1" id="COa-NM-2dF"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJN-ob-VFD">
+                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJN-ob-VFD">
                                                     <rect key="frame" x="332" y="88" width="64" height="14"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="14" id="MmG-7X-tAF"/>
@@ -1240,9 +1235,6 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="17"/>
                                                     <state key="normal" backgroundImage="moreProfile"/>
-                                                    <connections>
-                                                        <action selector="clickDetailBtn:" destination="XEZ-xT-SWG" eventType="touchUpInside" id="0dK-2E-meA"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>

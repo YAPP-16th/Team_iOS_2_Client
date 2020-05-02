@@ -16,11 +16,4 @@ class OrderCell: UITableViewCell {
     @IBOutlet weak var albumPriceLabel: UILabel!
     @IBOutlet weak var orderNumberLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
-    
-    var indexPath:IndexPath!
-    var orderDetailDelegate : OrderDetailDelegate!
-    
-    @IBAction func clickDetailBtn(_ sender: Any) {
-        self.orderDetailDelegate.clickDetailBtn(indexPath.row)
     }
-}
