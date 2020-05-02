@@ -1435,12 +1435,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="전화번호 입력" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0SE-RQ-quL">
-                                <rect key="frame" x="20" y="266" width="238" height="27"/>
+                                <rect key="frame" x="20" y="266" width="238" height="21"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="email"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="path378Grey1" translatesAutoresizingMaskIntoConstraints="NO" id="yvE-tI-qAf">
-                                <rect key="frame" x="20" y="304" width="238.00000000000006" height="3"/>
+                                <rect key="frame" x="20" y="298" width="238" height="3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="3" id="pj2-3f-Yd8"/>
                                 </constraints>
@@ -1483,19 +1483,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="인증번호 입력" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6G1-EB-Um3">
-                                <rect key="frame" x="20" y="339" width="374" height="27"/>
+                                <rect key="frame" x="20" y="333" width="748" height="21"/>
                                 <color key="tintColor" red="0.89019607840000003" green="0.24313725489999999" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="path378Grey1" translatesAutoresizingMaskIntoConstraints="NO" id="BGh-1Y-j3T">
-                                <rect key="frame" x="20" y="377" width="374.00000000000006" height="3"/>
+                                <rect key="frame" x="20" y="365" width="748" height="3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="3" id="d4E-Bc-U9g"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="인증번호 확인 후 재시도 해주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJH-qa-eXA">
-                                <rect key="frame" x="20" y="387" width="193" height="20"/>
+                                <rect key="frame" x="20" y="375" width="193" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="lto-zL-dV4"/>
                                     <constraint firstAttribute="width" constant="193" id="mIp-ww-bzT"/>
@@ -1505,7 +1505,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g05-zK-meE">
-                                <rect key="frame" x="273" y="263" width="121" height="44"/>
+                                <rect key="frame" x="273" y="257" width="121" height="44"/>
                                 <color key="backgroundColor" red="0.78039215689999997" green="0.78823529410000004" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="WfS-6Q-BQW"/>
@@ -1564,10 +1564,10 @@
             </objects>
             <point key="canvasLocation" x="976.81159420289862" y="1467.8571428571429"/>
         </scene>
-        <!--New Email View Controller-->
+        <!--Profile-->
         <scene sceneID="Gq6-El-e9M">
             <objects>
-                <viewController storyboardIdentifier="NewEmailViewController" id="VyH-BY-6uJ" customClass="NewEmailViewController" customModule="_0_s" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewEmailViewController" title="Profile" id="VyH-BY-6uJ" customClass="NewEmailViewController" customModule="_0_s" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GCj-pL-pcx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1585,13 +1585,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="path378Grey1" translatesAutoresizingMaskIntoConstraints="NO" id="89G-4O-A2m">
-                                <rect key="frame" x="20" y="304" width="374.00000000000006" height="3"/>
+                                <rect key="frame" x="20" y="298" width="374" height="3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="3" id="0Eq-Ls-2Fr"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일 형식이 올바르지 않습니다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcq-ee-iIj">
-                                <rect key="frame" x="20" y="310" width="192.5" height="20"/>
+                                <rect key="frame" x="20" y="304" width="181.5" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" priority="250" constant="180" id="L2H-aY-Isa"/>
                                     <constraint firstAttribute="height" constant="20" id="MPi-Y4-CNr"/>
@@ -1612,6 +1612,7 @@
                                 </state>
                                 <connections>
                                     <action selector="clickNextBtn:" destination="QI4-I1-Xzy" eventType="touchUpInside" id="GzN-DT-Gin"/>
+                                    <action selector="clickNextBtn:" destination="VyH-BY-6uJ" eventType="touchUpInside" id="NKM-gK-N5t"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1RE-Al-JRH">
@@ -1623,6 +1624,7 @@
                                 <state key="normal" image="iconBack"/>
                                 <connections>
                                     <action selector="goBack:" destination="Hzg-Yy-8MK" eventType="touchUpInside" id="5uW-pr-BhU"/>
+                                    <action selector="goBack:" destination="VyH-BY-6uJ" eventType="touchUpInside" id="KkF-fA-H9I"/>
                                     <action selector="goBack:" destination="2rQ-P8-yJl" eventType="touchUpInside" id="Prp-82-8sg"/>
                                 </connections>
                             </button>
@@ -1636,8 +1638,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="전화번호 입력" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Mzu-5S-WpQ">
-                                <rect key="frame" x="20" y="266" width="374" height="27"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="이메일 입력" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Mzu-5S-WpQ">
+                                <rect key="frame" x="20" y="266" width="374" height="21"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="email"/>
                             </textField>
@@ -1664,15 +1666,22 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Wxv-Vy-ClE"/>
                     </view>
+                    <connections>
+                        <outlet property="buttonConst" destination="4YI-w0-XKt" id="eUC-7y-uG5"/>
+                        <outlet property="emailValidationLabel" destination="lcq-ee-iIj" id="6XF-gQ-FEW"/>
+                        <outlet property="nextBtn" destination="IQ3-S2-LLU" id="7mV-aX-lQY"/>
+                        <outlet property="selectorImageView" destination="89G-4O-A2m" id="plU-7D-b4C"/>
+                        <outlet property="tfEmail" destination="Mzu-5S-WpQ" id="daM-qN-aGQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xl5-sp-9zO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1658" y="1468"/>
         </scene>
-        <!--View Controller-->
+        <!--Complete Email View Controller-->
         <scene sceneID="yXu-fh-C3S">
             <objects>
-                <viewController id="6wy-ab-118" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CompleteEmailViewController" id="6wy-ab-118" customClass="CompleteEmailViewController" customModule="_0_s" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L1v-5Z-Ig3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1701,6 +1710,7 @@
                                 </state>
                                 <connections>
                                     <action selector="clickNextBtn:" destination="QI4-I1-Xzy" eventType="touchUpInside" id="X3d-PF-qz6"/>
+                                    <action selector="goLogin:" destination="6wy-ab-118" eventType="touchUpInside" id="mHe-Ok-wWu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rlx-X4-zBC">
@@ -1713,6 +1723,7 @@
                                 <connections>
                                     <action selector="goBack:" destination="Hzg-Yy-8MK" eventType="touchUpInside" id="AEa-lX-MKh"/>
                                     <action selector="goBack:" destination="2rQ-P8-yJl" eventType="touchUpInside" id="K5K-S0-JeN"/>
+                                    <action selector="goBack:" destination="6wy-ab-118" eventType="touchUpInside" id="zVo-uf-FxO"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일 변경" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bU-bK-h4D">
@@ -1764,6 +1775,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="r3g-Xb-72z"/>
                     </view>
+                    <connections>
+                        <outlet property="emailLabel" destination="a3S-45-zfB" id="BQg-Ti-mYS"/>
+                        <outlet property="nickNameLabel" destination="7De-W4-cFA" id="HrI-Qn-TTt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LAy-WJ-8SO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

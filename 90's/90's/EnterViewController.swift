@@ -16,7 +16,6 @@ class EnterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        autoLogin()
     }
     
     //둘러보기 버튼 클릭 시
@@ -104,18 +103,7 @@ class EnterViewController: UIViewController {
         kakaoLoginBtn.layer.cornerRadius = 8.0
     }
     
-    func autoLogin(){
-        //기존에 로그인한 데이터가 있을 경우
-        if let email = UserDefaults.standard.string(forKey: "email"){
-            //소셜 로그인의 경우
-            if(UserDefaults.standard.bool(forKey: "social")){
-                goLogin(email, nil, true)
-            }else {
-                guard let password = UserDefaults.standard.string(forKey: "password") else {return}
-                goLogin(email, password, false)
-            }
-        }
-    }
+    
     
     func showErrAlert(){
         let alert = UIAlertController(title: "오류", message: "카카오 로그인 불가", preferredStyle: .alert)
@@ -125,31 +113,5 @@ class EnterViewController: UIViewController {
     }
     
     
-    //로그인 서버통신 메소드
-    func goLogin(_ email: String, _ password: String?, _ social: Bool){
-         LoginService.shared.login(email: email, password: password, sosial: social, completion: { response in
-             if let status = response.response?.statusCode {
-                 switch status {
-                 case 200:
-                     guard let data = response.data else { return }
-                     let decoder = JSONDecoder()
-                     let loginResult = try? decoder.decode(SignUpResult.self, from: data)
-                     guard let jwt = loginResult?.jwt else { return }
-                     UserDefaults.standard.set(jwt, forKey: "jwt")
-                     let mainSB = UIStoryboard(name: "Main", bundle: nil)
-                     let tabVC = mainSB.instantiateViewController(identifier: "TabBarController") as! UITabBarController
-                     self.navigationController?.pushViewController(tabVC, animated: true)
-                     break
-                 case 400...404:
-                     print("SignIn : client Err \(status)")
-                     break
-                 case 500:
-                     print("SignIn : server Err \(status)")
-                     break
-                 default:
-                     return
-                 }
-             }
-         })
-     }
+   
 }
