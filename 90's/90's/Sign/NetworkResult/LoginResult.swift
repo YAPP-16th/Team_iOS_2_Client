@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct LoginModel {
+struct LoginResult {
     var email: String?
     var password: String?
     var social: Bool?

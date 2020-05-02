@@ -47,7 +47,6 @@
 		9BC0DBB4244478A600CA90F7 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0DBB3244478A600CA90F7 /* ProfileTableViewCell.swift */; };
 		9BC0DBB62444802A00CA90F7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0DBB52444802A00CA90F7 /* User.swift */; };
 		9BC16B1A2435B68F007F106C /* photoStickerCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC16B192435B68F007F106C /* photoStickerCollectionCell.swift */; };
-		9BC98F0424488113002629AF /* panVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC98F0324488113002629AF /* panVC.swift */; };
 		9BC98F062448B3CD002629AF /* StickerLayout.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BC98F052448B3CD002629AF /* StickerLayout.xib */; };
 		9BC98F082448B74E002629AF /* StickerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC98F072448B74E002629AF /* StickerLayout.swift */; };
 		9BD31D37243A05F700D0D719 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD31D36243A05F700D0D719 /* KakaoOpenSDK.framework */; };
@@ -62,7 +61,7 @@
 		A3025CA42441AE9800041723 /* FindEmailErrViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3025CA32441AE9800041723 /* FindEmailErrViewController.swift */; };
 		A3025CA62441AED700041723 /* MakeNewPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3025CA52441AED700041723 /* MakeNewPassViewController.swift */; };
 		A311E5922438A880005EEC29 /* AlbumPeriodController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A311E5912438A880005EEC29 /* AlbumPeriodController.swift */; };
-		A314260E2450A9E1005487F3 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A314260D2450A9E1005487F3 /* LoginModel.swift */; };
+		A314260E2450A9E1005487F3 /* LoginResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A314260D2450A9E1005487F3 /* LoginResult.swift */; };
 		A318AC72243E290C00245434 /* TermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A318AC71243E290C00245434 /* TermViewController.swift */; };
 		A318AC74243E291D00245434 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A318AC73243E291D00245434 /* EmailViewController.swift */; };
 		A318AC76243E292600245434 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A318AC75243E292600245434 /* PasswordViewController.swift */; };
@@ -218,8 +217,6 @@
 		9B1B7A67244C1590008ED381 /* AlbumLayoutPreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumLayoutPreviewCell.swift; sourceTree = "<group>"; };
 		9B1B7A6D244C2A9B008ED381 /* AlbumLayoutHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumLayoutHeaderCell.swift; sourceTree = "<group>"; };
 		9B31E1932434BBB400A139C6 /* photoFilterCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoFilterCollectionCell.swift; sourceTree = "<group>"; };
-		9B3DC42E244443750035E025 /* neodgm.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = neodgm.ttf; sourceTree = "<group>"; };
-		9B3DC42F244443760035E025 /* neodgm_code.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = neodgm_code.ttf; sourceTree = "<group>"; };
 		9B44EDE02429FC9100B0D774 /* ImageRenderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRenderVC.swift; sourceTree = "<group>"; };
 		9B44EDE42429FCDF00B0D774 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		9B45BD002438734E00497EA5 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
@@ -549,7 +546,6 @@
 		9BC0DBB3244478A600CA90F7 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		9BC0DBB52444802A00CA90F7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9BC16B192435B68F007F106C /* photoStickerCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoStickerCollectionCell.swift; sourceTree = "<group>"; };
-		9BC98F0324488113002629AF /* panVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = panVC.swift; sourceTree = "<group>"; };
 		9BC98F052448B3CD002629AF /* StickerLayout.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StickerLayout.xib; sourceTree = "<group>"; };
 		9BC98F072448B74E002629AF /* StickerLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerLayout.swift; sourceTree = "<group>"; };
 		9BD31D36243A05F700D0D719 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
@@ -566,7 +562,7 @@
 		A3025CA32441AE9800041723 /* FindEmailErrViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailErrViewController.swift; sourceTree = "<group>"; };
 		A3025CA52441AED700041723 /* MakeNewPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeNewPassViewController.swift; sourceTree = "<group>"; };
 		A311E5912438A880005EEC29 /* AlbumPeriodController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumPeriodController.swift; sourceTree = "<group>"; };
-		A314260D2450A9E1005487F3 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		A314260D2450A9E1005487F3 /* LoginResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResult.swift; sourceTree = "<group>"; };
 		A318AC71243E290C00245434 /* TermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermViewController.swift; sourceTree = "<group>"; };
 		A318AC73243E291D00245434 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
 		A318AC75243E292600245434 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
@@ -671,9 +667,7 @@
 				A3025CA32441AE9800041723 /* FindEmailErrViewController.swift */,
 				A3025CA52441AED700041723 /* MakeNewPassViewController.swift */,
 				A3D8758E24448BCE0085F17B /* AuthenViewController.swift */,
-				A314260D2450A9E1005487F3 /* LoginModel.swift */,
 				A3E2DB792454576B00AB2156 /* CompleteNewPassViewController.swift */,
-				A38A2D3724588E99000BF82D /* LoginService.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -690,12 +684,6 @@
 				A318AC7D243E2F9E00245434 /* TermCell.swift */,
 				A33E5B2A244A047D00794169 /* TermDetailViewController.swift */,
 				A3E2DB7B2454694000AB2156 /* NicknameViewController.swift */,
-				A3E2DB8124547A0800AB2156 /* CheckEmailResult.swift */,
-				A3CCD8422454B30300C73E31 /* EmailCheckService.swift */,
-				A3CCD8442454BE7B00C73E31 /* SignUpService.swift */,
-				A3CCD8462454C31B00C73E31 /* SignUpResult.swift */,
-				A38A2D0D24587170000BF82D /* TelephoneAuthResult.swift */,
-				A38A2D0F2458719E000BF82D /* TelephoneAuthService.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -736,15 +724,6 @@
 			path = AlbumLayout;
 			sourceTree = "<group>";
 		};
-		9B3DC4302444437F0035E025 /* Font */ = {
-			isa = PBXGroup;
-			children = (
-				9B3DC42F244443760035E025 /* neodgm_code.ttf */,
-				9B3DC42E244443750035E025 /* neodgm.ttf */,
-			);
-			path = Font;
-			sourceTree = "<group>";
-		};
 		9B44EDDE2429ED9200B0D774 /* Album */ = {
 			isa = PBXGroup;
 			children = (
@@ -768,7 +747,6 @@
 				9BC16B192435B68F007F106C /* photoStickerCollectionCell.swift */,
 				9B0B806F24357929009D7B17 /* SavePhotoVC.swift */,
 				9B180807243E10F300AF1CE6 /* StickerPopupVC.swift */,
-				9BC98F0324488113002629AF /* panVC.swift */,
 				9BC98F052448B3CD002629AF /* StickerLayout.xib */,
 				9BC98F072448B74E002629AF /* StickerLayout.swift */,
 			);
@@ -829,8 +807,8 @@
 		9B6A13442440933E00E78E66 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				A33E5B1D2449EA5500794169 /* Font */,
 				A3E2DB7D24546E7200AB2156 /* APIMagager.swift */,
-				9B3DC4302444437F0035E025 /* Font */,
 				9B44EDE42429FCDF00B0D774 /* Extension.swift */,
 				9BFC14892441C14500F38AFF /* Protocol.swift */,
 			);
@@ -1619,6 +1597,40 @@
 			path = AlbumNetwork;
 			sourceTree = "<group>";
 		};
+		9BB4D53D245DE51C0033321F /* Sign */ = {
+			isa = PBXGroup;
+			children = (
+				A3025C9F2441ADCA00041723 /* EnterViewController.swift */,
+				9BB4D54A245DE5AC0033321F /* NetworkResult */,
+				9BB4D549245DE5A50033321F /* NetworkService */,
+				39585165242F49C400014CB0 /* SignUp */,
+				39585164242F49B500014CB0 /* SignIn */,
+			);
+			path = Sign;
+			sourceTree = "<group>";
+		};
+		9BB4D549245DE5A50033321F /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				A38A2D3724588E99000BF82D /* LoginService.swift */,
+				A3CCD8442454BE7B00C73E31 /* SignUpService.swift */,
+				A3CCD8422454B30300C73E31 /* EmailCheckService.swift */,
+				A38A2D0F2458719E000BF82D /* TelephoneAuthService.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		9BB4D54A245DE5AC0033321F /* NetworkResult */ = {
+			isa = PBXGroup;
+			children = (
+				A314260D2450A9E1005487F3 /* LoginResult.swift */,
+				A3CCD8462454C31B00C73E31 /* SignUpResult.swift */,
+				A3E2DB8124547A0800AB2156 /* CheckEmailResult.swift */,
+				A38A2D0D24587170000BF82D /* TelephoneAuthResult.swift */,
+			);
+			path = NetworkResult;
+			sourceTree = "<group>";
+		};
 		A33376092420CFB3000DC7C4 = {
 			isa = PBXGroup;
 			children = (
@@ -1641,12 +1653,9 @@
 		A33376142420CFB3000DC7C4 /* 90's */ = {
 			isa = PBXGroup;
 			children = (
-				A3025C9F2441ADCA00041723 /* EnterViewController.swift */,
-				A33E5B1D2449EA5500794169 /* Font */,
 				9B6A13442440933E00E78E66 /* Extension */,
+				9BB4D53D245DE51C0033321F /* Sign */,
 				9B45BCFF2438734200497EA5 /* Profile */,
-				39585165242F49C400014CB0 /* SignUp */,
-				39585164242F49B500014CB0 /* SignIn */,
 				39585161242F46C600014CB0 /* Print */,
 				3958515A242F43DF00014CB0 /* Filter */,
 				9B44EDDF2429EF1500B0D774 /* Sticker */,
@@ -1878,7 +1887,7 @@
 			files = (
 				9B44EDE52429FCDF00B0D774 /* Extension.swift in Sources */,
 				A3E133D824558997007950D8 /* ManageInfoViewController.swift in Sources */,
-				A314260E2450A9E1005487F3 /* LoginModel.swift in Sources */,
+				A314260E2450A9E1005487F3 /* LoginResult.swift in Sources */,
 				A318AC72243E290C00245434 /* TermViewController.swift in Sources */,
 				A3CCD8452454BE7B00C73E31 /* SignUpService.swift in Sources */,
 				9B180808243E10F300AF1CE6 /* StickerPopupVC.swift in Sources */,
@@ -1888,7 +1897,6 @@
 				A3E2DB8224547A0800AB2156 /* CheckEmailResult.swift in Sources */,
 				A3B0D1FD245D756D00DB90ED /* InfoCell.swift in Sources */,
 				A3E2DB7C2454694000AB2156 /* NicknameViewController.swift in Sources */,
-				9BC98F0424488113002629AF /* panVC.swift in Sources */,
 				9BAAA96F24596215002567AF /* AlbumService.swift in Sources */,
 				9B1B7A6E244C2A9B008ED381 /* AlbumLayoutHeaderCell.swift in Sources */,
 				A333762A2420DA36000DC7C4 /* Album.swift in Sources */,
