@@ -9,6 +9,18 @@
 import UIKit
 
 class SavePhotoVC: UIViewController {
+    @IBOutlet weak var cancleView: UIView!
+    @IBOutlet weak var cancleViewLabel: UILabel!
+    @IBOutlet weak var cancleViewSubViewBottom: NSLayoutConstraint!
+    @IBOutlet weak var cancleViewSubView: UIView!
+    @IBAction func cancleViewCancleBtn(_ sender: UIButton) {
+        switchHideView(value: true)
+    }
+    @IBAction func cnacleViewCompleteBtn(_ sender: UIButton) {
+        let beforeVC = self.navigationController?.viewControllers[1] as! AlbumDetailController
+        self.navigationController?.popToViewController(beforeVC, animated: true)
+    }
+    
     @IBOutlet weak var switchBtn: UISwitch!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var saveBtn: UIButton!
@@ -16,6 +28,7 @@ class SavePhotoVC: UIViewController {
     @IBAction func backBtn(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
+    @IBOutlet weak var cancleBtn: UIButton!
     
     var location = CGPoint(x: 0.0, y: 0.0)
     var size = CGSize(width: 0,height: 0)
@@ -43,6 +56,8 @@ extension SavePhotoVC {
         saveBtn.layer.cornerRadius = 10
         saveBtn.addTarget(self, action: #selector(touchSaveBtn), for: .touchUpInside)
         switchBtn.addTarget(self, action: #selector(touchSwitchBtn), for: .touchUpInside)
+        cancleBtn.addTarget(self, action: #selector(touchCancleBtn), for: .touchUpInside)
+        cancleViewLabel.text = "편집한 내용을 저장하지 않고\n나가시겠습니까?"
     }
     
     func defaultSetting(){
@@ -69,12 +84,32 @@ extension SavePhotoVC {
         dateLabel.heightAnchor.constraint(equalToConstant: 21).isActive = true
         dateLabel.widthAnchor.constraint(equalToConstant: 111).isActive = true
     }
+    
+    func switchHideView(value : Bool) {
+        switch value {
+        case true:
+            self.cancleViewSubViewBottom.constant = -self.cancleViewSubView.frame.height
+            self.saveBtn.isUserInteractionEnabled = true
+            UIView.animate(withDuration: 0.5, delay: 0.25, animations: {
+                self.view.layoutIfNeeded()
+            }, completion: { finish in
+                self.cancleView.isHidden = true
+            } )
+        case false:
+            self.cancleViewSubViewBottom.constant = 0
+            self.saveBtn.isUserInteractionEnabled = false
+            UIView.animate(withDuration: 0.5, delay: 0.25, animations: {
+                self.view.layoutIfNeeded()
+            })
+            self.cancleView.isHidden = false
+        }
+    }
 }
 
 
 extension SavePhotoVC {
-    @objc func touchSaveBtn(){
-        photoView.addSubview(dateLabel)
+    @objc func touchSaveBtn(){ // 이미지 저장
+//        photoView.addSubview(dateLabel)
         let renderer = UIGraphicsImageRenderer(size: photoView.bounds.size)
         let image = renderer.image { ctx in
             photoView.drawHierarchy(in: photoView.bounds, afterScreenUpdates: true)
@@ -98,5 +133,9 @@ extension SavePhotoVC {
 //        } else {
 //            dateLabel.isHidden = true
 //        }
+    }
+    
+    @objc func touchCancleBtn(){
+        switchHideView(value: false)
     }
 }
