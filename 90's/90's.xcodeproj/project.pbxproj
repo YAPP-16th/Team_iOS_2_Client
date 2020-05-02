@@ -84,6 +84,8 @@
 		A38A2D0E24587170000BF82D /* TelephoneAuthResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38A2D0D24587170000BF82D /* TelephoneAuthResult.swift */; };
 		A38A2D102458719E000BF82D /* TelephoneAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38A2D0F2458719E000BF82D /* TelephoneAuthService.swift */; };
 		A38A2D3824588E99000BF82D /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38A2D3724588E99000BF82D /* LoginService.swift */; };
+		A3B0D1BE245D547800DB90ED /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D1BD245D547800DB90ED /* QuestionCell.swift */; };
+		A3B0D1CB245D548300DB90ED /* AnswerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D1CA245D548300DB90ED /* AnswerCell.swift */; };
 		A3CCD8432454B30300C73E31 /* EmailCheckService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCD8422454B30300C73E31 /* EmailCheckService.swift */; };
 		A3CCD8452454BE7B00C73E31 /* SignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCD8442454BE7B00C73E31 /* SignUpService.swift */; };
 		A3CCD8472454C31B00C73E31 /* SignUpResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCD8462454C31B00C73E31 /* SignUpResult.swift */; };
@@ -579,6 +581,8 @@
 		A38A2D0D24587170000BF82D /* TelephoneAuthResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelephoneAuthResult.swift; sourceTree = "<group>"; };
 		A38A2D0F2458719E000BF82D /* TelephoneAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelephoneAuthService.swift; sourceTree = "<group>"; };
 		A38A2D3724588E99000BF82D /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		A3B0D1BD245D547800DB90ED /* QuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
+		A3B0D1CA245D548300DB90ED /* AnswerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCell.swift; sourceTree = "<group>"; };
 		A3CCD8422454B30300C73E31 /* EmailCheckService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCheckService.swift; sourceTree = "<group>"; };
 		A3CCD8442454BE7B00C73E31 /* SignUpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpService.swift; sourceTree = "<group>"; };
 		A3CCD8462454C31B00C73E31 /* SignUpResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResult.swift; sourceTree = "<group>"; };
@@ -763,6 +767,8 @@
 				A3E133DB245589A7007950D8 /* SettingViewController.swift */,
 				A3315E0B245C5BA6005536C2 /* OrderCell.swift */,
 				A3315E22245C6C54005536C2 /* OrderDetailViewController.swift */,
+				A3B0D1BD245D547800DB90ED /* QuestionCell.swift */,
+				A3B0D1CA245D548300DB90ED /* AnswerCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1881,6 +1887,7 @@
 				9BC0DBB22444788F00CA90F7 /* ProfileVC.swift in Sources */,
 				9BB1C5742441EEBA0035DEBF /* FilterCell.swift in Sources */,
 				A38A2D3824588E99000BF82D /* LoginService.swift in Sources */,
+				A3B0D1BE245D547800DB90ED /* QuestionCell.swift in Sources */,
 				9BBBA3E3243F6FD5002904AC /* AlbumCompleteVC.swift in Sources */,
 				A36DC86F24236386001B3767 /* AlbumDetailController.swift in Sources */,
 				9B1B7A68244C1590008ED381 /* AlbumLayoutPreviewCell.swift in Sources */,
@@ -1893,6 +1900,7 @@
 				A3025C9E2441AD9000041723 /* LoginMainViewController.swift in Sources */,
 				A38A2D0E24587170000BF82D /* TelephoneAuthResult.swift in Sources */,
 				A3E2DB7E24546E7200AB2156 /* APIMagager.swift in Sources */,
+				A3B0D1CB245D548300DB90ED /* AnswerCell.swift in Sources */,
 				9BC98F082448B74E002629AF /* StickerLayout.swift in Sources */,
 				A3D8758F24448BCE0085F17B /* AuthenViewController.swift in Sources */,
 				390A33EE243F6A52002E9F57 /* OrderFinishViewController.swift in Sources */,
