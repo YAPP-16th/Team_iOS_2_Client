@@ -63,7 +63,7 @@ struct AlbumService : APIManager {
             "endDate" : endDate,
             "layoutUid" : layoutUid,
             "name" : name,
-            "photoLimit" : 0
+            "photoLimit" : photoLimit
             ]
         
         AF.request(createAlbumUrl, method: .post, parameters: body, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {

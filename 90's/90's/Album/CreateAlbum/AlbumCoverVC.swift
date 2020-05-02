@@ -29,22 +29,18 @@ class AlbumCoverVC: UIViewController {
         }
     }
     
-    fileprivate var coverStringArray : [String] = ["sweetholiday","happilyeverafter","fellinlove","mysweetyLovesyou","dreamy2121","90Svibe"]
-    fileprivate var coverArray : [UIImage] = []
-    
     var albumName : String!
     var albumStartDate : String!
     var albumEndDate : String!
     var albumMaxCount : Int!
     var photo : UIImage!
+    var imageName : String!
     
     var initialFlag : Bool = true
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        coverArray = coverStringArray.map({ (value : String) -> UIImage in
-            return UIImage(named: value)!
-        })
+        
         if photo == nil {
             coverImageView.image = UIImage(named: "emptyimage")
         }
@@ -68,12 +64,12 @@ extension AlbumCoverVC {
 
 extension AlbumCoverVC : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return coverArray.count
+        return CoverDatabase.arrayList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "albumcovercell", for: indexPath) as! AlbumCoverCollectionCell
-        cell.imageView.image = coverArray[indexPath.row]
+        cell.imageView.image = CoverDatabase.arrayList[indexPath.row].image
         return cell
     }
     
@@ -81,8 +77,9 @@ extension AlbumCoverVC : UICollectionViewDelegate, UICollectionViewDataSource, U
         let cell = collectionView.cellForItem(at: indexPath) as! AlbumCoverCollectionCell
         cell.selectImageView.isHidden = false
         initialFlag = false
-        photo = coverArray[indexPath.row]
-        coverImageView.image = coverArray[indexPath.row]
+        photo = CoverDatabase.arrayList[indexPath.row].image
+        coverImageView.image = CoverDatabase.arrayList[indexPath.row].image
+        imageName = CoverDatabase.arrayList[indexPath.row].imageName
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

@@ -14,12 +14,29 @@ struct Token : Codable {
     var token : String?
 }
 
+
+struct getAlbumResult : Codable {
+    var complete : Bool
+    var count : Int
+    var created_at : String
+    var endDate : String
+    var layoutUid : Int
+    var name : String
+    var photoLimit : Int
+    var uid : Int
+    var updated_at : String
+}
+
 // post
 struct CreateAlbumData : Codable {
     var endDate : String
     var layoutUid : Int
     var name : String
     var photoLimit : Int
+}
+
+struct CreateAlbumResult : Codable {
+    var albumUid : Int
 }
 
 // post

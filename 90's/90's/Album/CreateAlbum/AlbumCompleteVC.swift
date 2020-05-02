@@ -23,18 +23,13 @@ class AlbumCompleteVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func completeBtn(_ sender: UIButton) {
-        let number = AlbumDatabase.arrayList.count
-        let user = "temp user" // token으로
-        
-        let newAlbum = Album(user : [user], albumIndex: number, albumName: self.albumName, albumStartDate: self.albumStartDate, albumEndDate: self.albumEndDate, albumLayout: self.albumLayout, albumMaxCount: self.albumMaxCount + 1, photo: [])
-        newAlbum.photos.append(photo)
-        AlbumDatabase.arrayList.append(newAlbum)
-        
-//        NetworkSetting()
+        //createAlbumService()
+        getAlbumService()
         mainProtocol?.reloadView()
         self.navigationController?.popToRootViewController(animated: true)
     }
-    
+    var albumLayout : AlbumLayout!
+    var mainProtocol : AlbumMainVCProtocol?
     var isAllDataSettle : Bool = false
     
     var albumName : String!
@@ -42,9 +37,8 @@ class AlbumCompleteVC: UIViewController {
     var albumEndDate : String!
     var albumMaxCount : Int!
     var photo : UIImage!
-    var albumLayout : AlbumLayout!
-    var mainProtocol : AlbumMainVCProtocol?
-    
+    var imageName : String!
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -67,21 +61,56 @@ extension AlbumCompleteVC {
         askLabel.text = "이 앨범으로 결정하시겠습니까?\n한 번 앨범을 만들면 수정이 불가능 합니다"
     }
     
-    func NetworkSetting(){
-        AlbumService.shared.createAlbum(endDate: albumEndDate, layoutUid: albumLayout.layoutUid, name: albumName, photoLimit: albumMaxCount){ response in
-            guard let data = response.response?.statusCode else {return}
-            switch data {
-            case 200 :
-//                guard let value = response.data else {return}
-//                let body = try? JSONDecoder().decode(CreateAlbumData.self, from: value)
-                print("앨범 생성 완료")
-            case 201 :
-                print("앨범 생성 완료")
-            case 401...404 :
-                print("앨범을 찾을 수 없습니다.")
-            default:
-                return
+    func getAlbumService(){
+        AlbumService.shared.getAlbum(completion: {
+            response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200 :
+                    guard let data = response.data else {return}
+                    guard let value = try? JSONDecoder().decode(getAlbumResult.self, from: data) else {return}
+                    print("Get Album data : \(value)")
+                case 401...444 :
+                    print("forbidden access in \(status)")
+                default:
+                    return
+                }
             }
-        }
+        })
+    }
+    
+    func createAlbumService(){
+        AlbumService.shared.createAlbum(endDate: albumEndDate, layoutUid: albumLayout.layoutUid, name: albumName, photoLimit: albumMaxCount, completion: {
+            response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200 :
+                    guard let data = response.data else {return}
+                    guard let uid = try? JSONDecoder().decode(CreateAlbumResult.self, from: data) else {return}
+                    let value = uid.albumUid
+                    print("Create Album complete : \(value)")
+                case 401...404 :
+                    print("forbidden access in \(status)")
+                default :
+                    return
+                }
+            }
+        })
+    }
+    
+    func sendCoverImageService(uid : Int){
+        AlbumService.shared.photoUpload(albumUid: String(uid), image: photo, imageName: imageName, completion: {
+            response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200 :
+                    print("Send Cover Image Complete")
+                case 401...404 :
+                    print("forbidden access in \(status)")
+                default :
+                    return
+                }
+            }
+        })
     }
 }
