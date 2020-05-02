@@ -117,6 +117,7 @@ extension AlbumDetailController {
     @objc func touchCameraBtn(){
         let storyBoard = UIStoryboard(name: "Filter", bundle: nil)
         let goNextVC = storyBoard.instantiateViewController(withIdentifier: "FilterViewController") as! FilterViewController
+        goNextVC.modalPresentationStyle = .fullScreen
         self.present(goNextVC, animated: true)
     }
     
