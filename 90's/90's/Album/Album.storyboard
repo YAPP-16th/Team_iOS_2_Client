@@ -1095,17 +1095,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7S2-wT-ag5">
-                                <rect key="frame" x="0.0" y="160" width="414" height="702"/>
+                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DFE-ho-eBc">
                                     <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="50" height="173"/>
+                                    <size key="headerReferenceSize" width="50" height="144"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="15" minY="10" maxX="15" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="albumlayoutpreviewcell" id="Hct-U6-7uy" userLabel="PreviewCell" customClass="AlbumLayoutPreviewCell" customModule="_0_s" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="183" width="184" height="213"/>
+                                        <rect key="frame" x="15" y="154" width="184" height="213"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="EDP-Ki-ppJ">
                                             <rect key="frame" x="0.0" y="0.0" width="184" height="213"/>
@@ -1138,7 +1138,7 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="albumlayoutheadercell" id="Ec5-ta-4pV" customClass="AlbumLayoutHeaderCell" customModule="_0_s" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="173"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="144"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나만의 앨범" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FrB-o9-to0">
@@ -1171,10 +1171,10 @@
                                 </collectionReusableView>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oTz-XI-d3H">
-                                <rect key="frame" x="0.0" y="44" width="414" height="116"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Krj-VJ-rMa">
-                                        <rect key="frame" x="364" y="66" width="40" height="40"/>
+                                        <rect key="frame" x="364" y="6" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="V3n-cL-DnL"/>
                                             <constraint firstAttribute="height" constant="40" id="pyG-Dd-L1b"/>
@@ -1188,7 +1188,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Krj-VJ-rMa" secondAttribute="bottom" constant="10" id="FwS-yk-Dvc"/>
-                                    <constraint firstAttribute="height" constant="116" id="jFe-Wx-0jX"/>
+                                    <constraint firstAttribute="height" constant="56" id="jFe-Wx-0jX"/>
                                     <constraint firstAttribute="trailing" secondItem="Krj-VJ-rMa" secondAttribute="trailing" constant="10" id="uin-y8-c7A"/>
                                 </constraints>
                             </view>

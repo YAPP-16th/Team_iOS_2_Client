@@ -117,11 +117,15 @@ extension AlbumDetailController {
     @objc func touchCameraBtn(){
         let storyBoard = UIStoryboard(name: "Filter", bundle: nil)
         let goNextVC = storyBoard.instantiateViewController(withIdentifier: "FilterViewController") as! FilterViewController
-        self.present(goNextVC, animated: true)
+        present(goNextVC, animated: true){
+            self.switchHideView(value: true)
+        }
     }
     
     @objc func touchAlbumBtn(){
-        present(galleryPicker, animated: true)
+        present(galleryPicker, animated: true){
+            self.switchHideView(value: true)
+        }
     }
     
     @objc func touchAddPhotoBtn() {
@@ -262,7 +266,6 @@ extension AlbumDetailController : UIImagePickerControllerDelegate, UINavigationC
         if let url = info[UIImagePickerController.InfoKey.referenceURL] as? URL,
             let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             UserDefaults.standard.set(url, forKey: "assetURL")
-            AlbumDatabase.arrayList[albumIndex!].photos.append(image)
             tempImage = image
         }
         

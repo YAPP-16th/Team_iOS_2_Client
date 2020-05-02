@@ -7,6 +7,14 @@
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSansCJKkr-DemiLight.otf">
+            <string>NotoSansCJKkr-DemiLight</string>
+        </array>
+        <array key="NotoSansCJKkr-Regular.otf">
+            <string>NotoSansCJKkr-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="uQg-vc-ANl">
@@ -293,6 +301,7 @@
         <!--Save PhotoVC-->
         <scene sceneID="zlh-Y1-mW2">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Fy-rS-eYg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="savePhotoVC" id="hLI-fv-Cgk" customClass="SavePhotoVC" customModule="_0_s" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ca2-M2-Buu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -304,7 +313,7 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jLA-IC-z1U">
-                                <rect key="frame" x="20" y="255" width="374" height="347"/>
+                                <rect key="frame" x="20" y="133" width="374" height="469"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날짜 표시하기" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kNb-70-RMY">
@@ -376,31 +385,123 @@
                                     <constraint firstAttribute="bottom" secondItem="Hpn-RK-0YN" secondAttribute="bottom" id="unD-EW-Ngn"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8eW-oO-5wF" userLabel="cancleView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AfX-LR-sKg">
+                                        <rect key="frame" x="0.0" y="895" width="414" height="264"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="편집한 내용을 저장하지 않고 나가시겠습니까?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMs-Ux-CHM">
+                                                <rect key="frame" x="75" y="50" width="264" height="62"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="264" id="bLO-bi-Sju"/>
+                                                    <constraint firstAttribute="height" constant="62" id="xZW-Uw-QUl"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NotoSansCJKkr-DemiLight" family="Noto Sans CJK KR" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EmK-Jp-8m1">
+                                                <rect key="frame" x="18" y="154" width="150" height="72"/>
+                                                <color key="backgroundColor" red="0.60033398869999999" green="0.611120522" blue="0.64706450699999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="72" id="0fn-jg-iby"/>
+                                                    <constraint firstAttribute="width" constant="150" id="gXh-hr-mAh"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="16"/>
+                                                <state key="normal" title="취소">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="cancleViewCancleBtn:" destination="hLI-fv-Cgk" eventType="touchUpInside" id="6cI-rG-YJM"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M6u-IT-0Z1">
+                                                <rect key="frame" x="175" y="154" width="221" height="72"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="72" id="S0w-u6-7D5"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="16"/>
+                                                <state key="normal" title="확인">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="cnacleViewCompleteBtn:" destination="hLI-fv-Cgk" eventType="touchUpInside" id="OEe-HT-gRd"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="EmK-Jp-8m1" firstAttribute="leading" secondItem="AfX-LR-sKg" secondAttribute="leading" constant="18" id="Dbd-V6-Ems"/>
+                                            <constraint firstAttribute="bottom" secondItem="M6u-IT-0Z1" secondAttribute="bottom" constant="38" id="HDd-Ac-nNv"/>
+                                            <constraint firstAttribute="bottom" secondItem="EmK-Jp-8m1" secondAttribute="bottom" constant="38" id="LXX-5G-GqD"/>
+                                            <constraint firstItem="zMs-Ux-CHM" firstAttribute="top" secondItem="AfX-LR-sKg" secondAttribute="top" constant="50" id="aKM-TS-tEz"/>
+                                            <constraint firstItem="zMs-Ux-CHM" firstAttribute="centerX" secondItem="AfX-LR-sKg" secondAttribute="centerX" id="d9l-dM-l7C"/>
+                                            <constraint firstAttribute="height" constant="264" id="eIL-Va-WQL"/>
+                                            <constraint firstAttribute="trailing" secondItem="M6u-IT-0Z1" secondAttribute="trailing" constant="18" id="i2F-ix-r1v"/>
+                                            <constraint firstItem="M6u-IT-0Z1" firstAttribute="leading" secondItem="EmK-Jp-8m1" secondAttribute="trailing" constant="7" id="lAs-bC-BSd"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="AfX-LR-sKg" secondAttribute="bottom" constant="-263" id="2fg-PU-tJV"/>
+                                    <constraint firstAttribute="trailing" secondItem="AfX-LR-sKg" secondAttribute="trailing" id="Cwl-xS-KuZ"/>
+                                    <constraint firstItem="AfX-LR-sKg" firstAttribute="leading" secondItem="8eW-oO-5wF" secondAttribute="leading" id="vUN-WQ-WVg"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="8eW-oO-5wF" firstAttribute="top" secondItem="Ca2-M2-Buu" secondAttribute="top" id="007-OC-24e"/>
+                            <constraint firstAttribute="bottom" secondItem="8eW-oO-5wF" secondAttribute="bottom" id="0hV-rA-I6w"/>
                             <constraint firstItem="1k7-gU-Exw" firstAttribute="bottom" secondItem="Dmo-i2-8bX" secondAttribute="bottom" constant="14" id="BOM-dE-EIs"/>
                             <constraint firstItem="kNb-70-RMY" firstAttribute="leading" secondItem="1k7-gU-Exw" secondAttribute="leading" constant="29" id="Dsf-Sz-X1U"/>
                             <constraint firstItem="Dmo-i2-8bX" firstAttribute="leading" secondItem="1k7-gU-Exw" secondAttribute="leading" constant="18" id="H0n-bO-Sn4"/>
                             <constraint firstItem="Dmo-i2-8bX" firstAttribute="top" secondItem="gNf-oE-ziU" secondAttribute="bottom" constant="26" id="Hel-Yj-5he"/>
                             <constraint firstItem="1k7-gU-Exw" firstAttribute="trailing" secondItem="gNf-oE-ziU" secondAttribute="trailing" constant="18" id="dnU-HB-7e4"/>
                             <constraint firstItem="1k7-gU-Exw" firstAttribute="trailing" secondItem="Dmo-i2-8bX" secondAttribute="trailing" constant="18" id="g2P-jG-UN1"/>
+                            <constraint firstItem="8eW-oO-5wF" firstAttribute="leading" secondItem="1k7-gU-Exw" secondAttribute="leading" id="kge-eM-jGG"/>
                             <constraint firstItem="7Fl-4G-hw6" firstAttribute="leading" secondItem="1k7-gU-Exw" secondAttribute="leading" id="n4d-sK-T6n"/>
                             <constraint firstItem="7Fl-4G-hw6" firstAttribute="top" secondItem="1k7-gU-Exw" secondAttribute="top" id="sU1-op-n7d"/>
                             <constraint firstItem="Dmo-i2-8bX" firstAttribute="top" secondItem="kNb-70-RMY" secondAttribute="bottom" constant="30" id="slc-ce-em4"/>
+                            <constraint firstItem="8eW-oO-5wF" firstAttribute="trailing" secondItem="1k7-gU-Exw" secondAttribute="trailing" id="wns-4Q-Wsa"/>
                             <constraint firstItem="7Fl-4G-hw6" firstAttribute="trailing" secondItem="1k7-gU-Exw" secondAttribute="trailing" id="yRX-sW-acf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1k7-gU-Exw"/>
                     </view>
                     <navigationItem key="navigationItem" id="K8v-qw-r3n"/>
                     <connections>
+                        <outlet property="cancleBtn" destination="7ow-gQ-jvf" id="odN-nD-1yn"/>
+                        <outlet property="cancleView" destination="8eW-oO-5wF" id="mTu-0X-WYx"/>
+                        <outlet property="cancleViewLabel" destination="zMs-Ux-CHM" id="c8g-nx-R6q"/>
+                        <outlet property="cancleViewSubView" destination="AfX-LR-sKg" id="T5s-G3-9Gq"/>
+                        <outlet property="cancleViewSubViewBottom" destination="2fg-PU-tJV" id="F1K-Uw-SJC"/>
                         <outlet property="imageView" destination="jLA-IC-z1U" id="GhI-uW-aLb"/>
                         <outlet property="photoView" destination="Y4A-NP-afi" id="EuL-Ot-naN"/>
                         <outlet property="saveBtn" destination="Dmo-i2-8bX" id="oY4-pe-Tbh"/>
                         <outlet property="switchBtn" destination="gNf-oE-ziU" id="NuY-dT-jnO"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1Fy-rS-eYg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5298.5507246376819" y="813.61607142857144"/>
         </scene>
