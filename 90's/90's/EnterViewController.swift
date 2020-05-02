@@ -135,8 +135,7 @@ class EnterViewController: UIViewController {
                      let decoder = JSONDecoder()
                      let loginResult = try? decoder.decode(SignUpResult.self, from: data)
                      guard let jwt = loginResult?.jwt else { return }
-                     print("\(jwt)")
-                     print("\(loginResult!)")
+                     UserDefaults.standard.set(jwt, forKey: "jwt")
                      let mainSB = UIStoryboard(name: "Main", bundle: nil)
                      let tabVC = mainSB.instantiateViewController(identifier: "TabBarController") as! UITabBarController
                      self.navigationController?.pushViewController(tabVC, animated: true)

@@ -81,7 +81,8 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
                     UserDefaults.standard.set(email, forKey: "email")
                     UserDefaults.standard.set(password, forKey: "password")
                     UserDefaults.standard.set(false, forKey: "social")
-                    
+                    UserDefaults.standard.set(jwt, forKey: "jwt")
+
                     let mainSB = UIStoryboard(name: "Main", bundle: nil)
                     let tabVC = mainSB.instantiateViewController(identifier: "TabBarController") as! UITabBarController
                     self.navigationController?.pushViewController(tabVC, animated: true)

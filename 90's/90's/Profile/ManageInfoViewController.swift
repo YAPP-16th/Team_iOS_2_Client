@@ -21,6 +21,11 @@ class ManageInfoViewController: UIViewController {
         infoTableView.delegate = self
         infoTableView.dataSource = self
     }
+    
+    func pushView(_ vc: String){
+        guard let detailVC = self.storyboard?.instantiateViewController(identifier: vc) else { return }
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
 
 }
 
@@ -31,9 +36,18 @@ extension ManageInfoViewController : UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InfoCell") as! InfoCell
+        cell.selectionStyle = .none //셀 선택 시 선택 이펙트 삭제하기
         cell.infoNameLabel.text = infoList[indexPath.row]
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            pushView("EmailPhoneViewController")
+        default:
+            return
+        }
+    }
     
 }
