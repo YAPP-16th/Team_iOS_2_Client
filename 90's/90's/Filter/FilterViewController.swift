@@ -40,7 +40,7 @@ struct PhotoEditorTypes{
     
     static let filterNameArray: [String] = ["LUT5", "arapaho", "LUT3", "LUT2", "LUT", "LUT4", "lut_1", "LUT64"]
     
-    static let filterImage : [String] = ["filterThumbnailNone" , "filterThumbnailNoise", "filterThumbnailGrunge","filterThumbnailPinky", "filterThumbnailWrap2" , "filterThumbnailFaded", "filterThumbnailGrunge","filterThumbnailLensflare", ]
+    static let filterImage : [String] = ["filterThumbnailNone" , "filterThumbnailNoise", "filterThumbnailGrunge","filterThumbnailPinky", "filterThumbnailWrap2" , "filterThumbnailFaded", "filterThumbnailGrunge","filterThumbnailLensflare"]
     //        .sorted(by: >)
     
     static func numberOfFilterType() -> Int {
@@ -315,12 +315,13 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         if (sender.direction == .left) {
             NSLog("Swipe Left")
             filterIndex = (filterIndex + 1) % PhotoEditorTypes.numberOfFilterType()
-            
+//            filterCollectionView.scrollToItem(at: [0,filterIndex], at: .left, animated: true)
         }
         
         if (sender.direction == .right) {
             NSLog("Swipe Right")
             print(PhotoEditorTypes.numberOfFilterType())
+//            filterCollectionView.scrollToItem(at: [0,filterIndex], at: .right, animated: true)
             filterIndex = (filterIndex - 1) % PhotoEditorTypes.numberOfFilterType()
             
             if filterIndex < 0 {
@@ -331,12 +332,25 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         if filterIndex == filterIndex {
             print(filterIndex, filterName)
             filterName = PhotoEditorTypes.filterNameArray[filterIndex]
-            filterNameLabel.text = filterName.replacingOccurrences(of: PhotoEditorTypes.replacingOccurrencesWord, with: "")
+            filterNameLabel.text = PhotoEditorTypes.filterImage[filterIndex]
             fadeViewInThenOut(view: filterNameLabel, delay: PhotoEditorTypes.filterNameLabelAnimationDelay)
-            
+                        
             filterCollectionView.selectItem(at: [0,filterIndex], animated: true, scrollPosition: .centeredHorizontally)
+
+            print("!!!!!!!!!!!")
+            print(filterIndex)
+            print(filterCollectionView.numberOfItems(inSection: 0))
+            print("!!!!!!!!!!!!!")
             
-            
+//            let cell = filterCollectionView.dequeueReusableCell(withReuseIdentifier: "FilterCell", for: [0,filterIndex]) as! FilterCell
+//            
+//            if cell.isSelected {
+//                cell.selectImageView.isHidden = false
+//            }
+//            else if cell.isSelected == false {
+//                cell.selectImageView.isHidden = true
+//            }
+                        
         }
     }
     
@@ -634,9 +648,10 @@ extension FilterViewController : UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(PhotoEditorTypes.filterNameArray.count)
+//        print(PhotoEditorTypes.filterNameArray.count)
         return PhotoEditorTypes.filterNameArray.count
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FilterCell", for: indexPath) as! FilterCell
@@ -657,9 +672,11 @@ extension FilterViewController : UICollectionViewDelegate, UICollectionViewDataS
         
         //        albumCover = PhotoEditorTypes.filterNameArray[indexPath.row]
         filterName = PhotoEditorTypes.filterNameArray[indexPath.row]
-        filterNameLabel.text = filterName.replacingOccurrences(of: PhotoEditorTypes.replacingOccurrencesWord, with: "")
+        filterNameLabel.text = PhotoEditorTypes.filterImage[indexPath.row]
         fadeViewInThenOut(view: filterNameLabel, delay: PhotoEditorTypes.filterNameLabelAnimationDelay)
         let cell = filterCollectionView.cellForItem(at: indexPath) as! FilterCell
+//        filterCollectionView.scrollToItem(at: indexPath, at: .left, animated: true)
+        
         cell.selectImageView.isHidden = false
         
     }
