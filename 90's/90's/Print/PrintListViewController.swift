@@ -30,13 +30,13 @@ class PrintListViewController: UIViewController {
         self.gotoAlbum.layer.cornerRadius = 8
         
         // iPhone X..
-        if UIScreen.main.nativeBounds.height == 1792.0 {
+        if UIScreen.main.nativeBounds.height >= 1792.0 {
             
             self.topConstraint.constant = 244
             
         }
             // iPhone 8..
-        else if UIScreen.main.nativeBounds.height == 1334.0
+        else if UIScreen.main.nativeBounds.height <= 1334.0
         {
             self.topConstraint.constant = 112
             

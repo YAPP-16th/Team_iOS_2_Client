@@ -35,12 +35,12 @@ class PopUpViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         // iPhone X..
-                if UIScreen.main.nativeBounds.height == 1792.0 {
+                if UIScreen.main.nativeBounds.height >= 1792.0 {
                     
                     self.topConstraint.constant = 305
                 }
                     // iPhone 8..
-                else if UIScreen.main.nativeBounds.height == 1334.0
+                else if UIScreen.main.nativeBounds.height <= 1334.0
                 {
                     self.topConstraint.constant = 230
                     

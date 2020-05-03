@@ -86,14 +86,14 @@ class OptionViewController : UIViewController {
         orderBtn.layer.cornerRadius = 10
         
         // iPhone X..
-        if UIScreen.main.nativeBounds.height == 1792.0 {
+        if UIScreen.main.nativeBounds.height >= 1792.0 {
             
 //            self.topConstraint.constant = 115
             self.previewImageHeight.constant = 196
 //            self.titleTopreviewConstraint.constant = 43.5
         }
             // iPhone 8..
-        else if UIScreen.main.nativeBounds.height == 1334.0
+        else if UIScreen.main.nativeBounds.height <= 1334.0
         {
 //            self.topConstraint.constant = 80
             self.previewImageHeight.constant = 187
@@ -147,13 +147,13 @@ class OptionViewController : UIViewController {
         } else {
             self.backView.isHidden = false
             // iPhone X..
-            if UIScreen.main.nativeBounds.height == 1792.0 {
+            if UIScreen.main.nativeBounds.height >= 1792.0 {
                 
                 self.BottomViewConstraint.constant = self.view.frame.height  - 516
                 
             }
                 // iPhone 8..
-            else if UIScreen.main.nativeBounds.height == 1334.0
+            else if UIScreen.main.nativeBounds.height <= 1334.0
             {
                 self.BottomViewConstraint.constant = self.view.frame.height  - 516 + 10
                 
@@ -187,13 +187,13 @@ class OptionViewController : UIViewController {
         
         firstFlapBtn.isSelected = !firstFlapBtn.isSelected
         
-        if UIScreen.main.nativeBounds.height == 1792.0 {
+        if UIScreen.main.nativeBounds.height >= 1792.0 {
             
             self.BottomViewConstraint.constant = self.view.frame.height  - 516
             
         }
             // iPhone 8..
-        else if UIScreen.main.nativeBounds.height == 1334.0
+        else if UIScreen.main.nativeBounds.height <= 1334.0
         {
             self.BottomViewConstraint.constant = self.view.frame.height  - 516 + 10
             
@@ -231,13 +231,13 @@ class OptionViewController : UIViewController {
         
         secondFlapBtn.isSelected = !secondFlapBtn.isSelected
         
-        if UIScreen.main.nativeBounds.height == 1792.0 {
+        if UIScreen.main.nativeBounds.height >= 1792.0 {
             
             self.BottomViewConstraint.constant = self.view.frame.height  - 516
             
         }
             // iPhone 8..
-        else if UIScreen.main.nativeBounds.height == 1334.0
+        else if UIScreen.main.nativeBounds.height <= 1334.0
         {
             self.BottomViewConstraint.constant = self.view.frame.height  - 516 + 10
             

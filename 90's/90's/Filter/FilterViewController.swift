@@ -8,7 +8,7 @@
 
 import UIKit
 import AVFoundation
-//import LUTFilter
+import LUTFilter
 
 struct Filter {
     let filterName : String
@@ -110,7 +110,6 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         setupDevice()
         setupInputOutput()
         delegateSetting()
-        
         filterName = PhotoEditorTypes.filterNameArray[filterIndex]
         //        filterCollectionView.selectItem(at: [0,0], animated: true, scrollPosition: .centeredHorizontally)
         
@@ -120,21 +119,21 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
         leftSwipeGestureRecognizer.direction = .left
         rightSwipeGestureRecognizer.direction = .right
-        
+//        view.addGestureRecognizer(focusGesture)
         view.addGestureRecognizer(leftSwipeGestureRecognizer)
         view.addGestureRecognizer(rightSwipeGestureRecognizer)
         
         let pinchRecognizer = UIPinchGestureRecognizer(target: self, action:#selector(pinch(_:)))
         view.addGestureRecognizer(pinchRecognizer)
         
-        if UIScreen.main.nativeBounds.height == 1792.0 {
+        if UIScreen.main.nativeBounds.height >= 1792.0 {
             self.outputimageViewConstraint.constant = 115
             self.collectionViewHeight.constant = -80
             self.galleryConstraint.constant = 102
             self.filterConstraint.constant = 102
             
         }
-        else if UIScreen.main.nativeBounds.height == 1334.0
+        else if UIScreen.main.nativeBounds.height <= 1334.0
         {
             self.outputimageViewConstraint.constant = 115
             self.collectionViewHeight.constant = -80
@@ -169,8 +168,10 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     override func viewWillAppear(_ animated: Bool) {
         
         
+        self.filteredImage.image = UIImage(named: "b_None")
         let size = CGSize(width:   self.filteredImage.frame.width  , height: self.filteredImage.frame.height )
         let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        
         UIGraphicsBeginImageContextWithOptions(size, false, 1.0)
         
         self.tabBarController?.tabBar.isHidden = true
@@ -206,6 +207,10 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         print(self.filteredImage.image)
         print("!!!!!!!!!!!!")
         
+//        let size = CGSize(width:   self.filteredImage.frame.width  , height: self.filteredImage.frame.height )
+//        let resizeImage = self.filteredImage.image!.imageResize(sizeChange: size)
+//        let resizeImage = cropImageToSquare(self.filteredImage.image!)
+        
         UIImageWriteToSavedPhotosAlbum(self.filteredImage.image! , nil, nil, nil)
         
         var tempImage = self.filteredImage.image
@@ -216,6 +221,27 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
         
     }
+    
+    func cropImageToSquare(_ image: UIImage) -> UIImage {
+        let orientation: UIDeviceOrientation = UIDevice.current.orientation
+        var imageWidth = image.size.width
+        var imageHeight = image.size.height
+        switch orientation {
+        case .landscapeLeft, .landscapeRight:
+            // Swap width and height if orientation is landscape
+            imageWidth = image.size.height
+            imageHeight = image.size.width
+        default:
+            break
+        }
+
+        // The center coordinate along Y axis
+        let rcy = imageHeight * 0.5
+        let rect = CGRect(x: rcy - imageWidth * 0.5, y: 0, width: imageWidth, height: imageWidth)
+        let imageRef = image.cgImage?.cropping(to: rect)
+        return UIImage(cgImage: imageRef!, scale: 1.0, orientation: image.imageOrientation)
+    }
+    
     @IBAction func showFilter(_ sender: Any) {
         
         
@@ -244,12 +270,12 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             filterLabel.isHidden = true
             
             
-            if UIScreen.main.nativeBounds.height == 1792.0 {
+            if UIScreen.main.nativeBounds.height >= 1792.0 {
                 self.collectionViewHeight.constant = -5
                 self.captureBtnConstraint.constant = 15
                 self.filterConstraint.constant = -20
             }
-            else if UIScreen.main.nativeBounds.height == 1334.0
+            else if UIScreen.main.nativeBounds.height <= 1334.0
             {
                 self.collectionViewHeight.constant = -5
                 self.captureBtnConstraint.constant = 40
@@ -269,7 +295,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             filterLabel.isHidden = false
             print(self.captureBtnConstraint.constant)
             
-            if UIScreen.main.nativeBounds.height == 1792.0 {
+            if UIScreen.main.nativeBounds.height >= 1792.0 {
                 self.outputimageViewConstraint.constant = 115
                 self.collectionViewHeight.constant = -80
                 self.captureBtnConstraint.constant = 79
@@ -277,7 +303,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                 self.galleryConstraint.constant = 102
                 
             }
-            else if UIScreen.main.nativeBounds.height == 1334.0
+            else if UIScreen.main.nativeBounds.height <= 1334.0
             {
                 self.outputimageViewConstraint.constant = 115
                 self.collectionViewHeight.constant = -80
@@ -302,13 +328,13 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         if (sender.direction == .left) {
             NSLog("Swipe Left")
             filterIndex = (filterIndex + 1) % PhotoEditorTypes.numberOfFilterType()
-                        filterCollectionView.scrollToItem(at: [0,filterIndex], at: .left, animated: true)
+            filterCollectionView.scrollToItem(at: [0,filterIndex], at: .left, animated: true)
         }
         
         if (sender.direction == .right) {
             NSLog("Swipe Right")
             print(PhotoEditorTypes.numberOfFilterType())
-                        filterCollectionView.scrollToItem(at: [0,filterIndex], at: .right, animated: true)
+            filterCollectionView.scrollToItem(at: [0,filterIndex], at: .right, animated: true)
             filterIndex = (filterIndex - 1) % PhotoEditorTypes.numberOfFilterType()
             
             if filterIndex < 0 {
@@ -469,7 +495,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         let videoOutput = AVCaptureVideoDataOutput()
         videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue.main)
         
-        let comicEffect = CIFilter(name: "CIColorCube")
+        let comicEffect = CIFilter(name: "CIMedianFilter")
         let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
         let cameraImage = CIImage(cvImageBuffer: pixelBuffer!)
         comicEffect!.setValue(cameraImage, forKey: kCIInputImageKey)
@@ -477,7 +503,9 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
         DispatchQueue.main.async {
             let filteredImage = UIImage(cgImage: cgImage)
-//            self.filteredImage.image = filteredImage.mergeWith(topImage: self.topImage! , bottomImage: filteredImage).applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
+            self.filteredImage.image = filteredImage.mergeWith(topImage: self.topImage! , bottomImage: filteredImage).applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
+//            self.filteredImage.image = filteredImage.applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
+
             
         }
     }
