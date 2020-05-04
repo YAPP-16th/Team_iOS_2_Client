@@ -14,7 +14,7 @@ struct Token : Codable {
     var token : String?
 }
 
-
+// post
 struct getAlbumResult : Codable {
     var complete : Bool
     var count : Int
@@ -35,6 +35,7 @@ struct CreateAlbumData : Codable {
     var photoLimit : Int
 }
 
+// post
 struct CreateAlbumResult : Codable {
     var albumUid : Int
 }
