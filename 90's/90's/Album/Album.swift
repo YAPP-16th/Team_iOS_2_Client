@@ -117,6 +117,18 @@ enum AlbumLayout {
         case .Filmroll : return 6
         }
     }
+    
+    var layoutName : String {
+        switch self {
+        case .Polaroid: return "Polaroid"
+        case .Mini : return "Mini"
+        case .Memory : return "Memory"
+        case .Portrab : return "Portrab"
+        case .Tape : return "Tape"
+        case .Portraw : return "Portraw"
+        case .Filmroll : return "Filrmroll"
+        }
+    }
 }
 
 

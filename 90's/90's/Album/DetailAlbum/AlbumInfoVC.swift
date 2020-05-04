@@ -9,10 +9,10 @@
 import UIKit
 
 class AlbumInfoVC: UIViewController {
-
     @IBOutlet weak var albumNameLabel: UILabel!
     @IBOutlet weak var albumDateLabel: UILabel!
     @IBOutlet weak var albumCountLabel: UILabel!
+    @IBOutlet weak var albumLayoutLabel: UILabel!
     @IBOutlet weak var albumCoverImageView: UIImageView!
     @IBOutlet weak var memberTableView: UITableView!
     @IBAction func backBtn(_ sender: UIButton) {
@@ -31,10 +31,9 @@ class AlbumInfoVC: UIViewController {
     @IBAction func quitMemberBtn(_ sender: UIButton) {
     }
     
-    
-    private var memberArray : [String] = ["dayeun"]
+    private var ownerArray : [String] = ["dayeun"]
+    private var memberArray : [String] = ["KyungJin","Jeongmin"]
     var albumIndex : Int = 0
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +49,7 @@ extension AlbumInfoVC {
         albumNameLabel.text = album.albumName
         albumDateLabel.text = "\(album.albumStartDate!)  ~  \(album.albumEndDate!)"
         albumCountLabel.text = String(album.albumMaxCount)
+        albumLayoutLabel.text = album.albumLayout.layoutName
         
         memberTableView.delegate = self
         memberTableView.dataSource = self
@@ -60,17 +60,16 @@ extension AlbumInfoVC {
 // 오너의 경우 헤더뷰로 하나 넣기
 extension AlbumInfoVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return memberArray.count
+        return memberArray.count //+ ownerArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "membertablecell", for: indexPath) as! MemberTableViewCell
-        cell.memberImageView.image = UIImage(named: "inviteimage")
         cell.memberNameLabel.text = memberArray[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 60
     }
 }
