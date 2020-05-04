@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		390A33EE243F6A52002E9F57 /* OrderFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390A33ED243F6A52002E9F57 /* OrderFinishViewController.swift */; };
+		3929B105245DEFD100B7C7EA /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929B104245DEFD100B7C7EA /* UserNotifications.framework */; };
+		3929B107245DEFD800B7C7EA /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929B106245DEFD800B7C7EA /* PushKit.framework */; };
 		392F7790242F4BC70000BC3C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 392F778F242F4BC70000BC3C /* Default-568h@2x.png */; };
 		39411378243061A500087E1B /* CheckPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39411377243061A500087E1B /* CheckPhotoViewController.swift */; };
 		3958515C242F45E600014CB0 /* Sticker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3958515B242F45E600014CB0 /* Sticker.storyboard */; };
@@ -196,6 +198,8 @@
 
 /* Begin PBXFileReference section */
 		390A33ED243F6A52002E9F57 /* OrderFinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFinishViewController.swift; sourceTree = "<group>"; };
+		3929B104245DEFD100B7C7EA /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		3929B106245DEFD800B7C7EA /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
 		392F778F242F4BC70000BC3C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		39411377243061A500087E1B /* CheckPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckPhotoViewController.swift; sourceTree = "<group>"; };
 		3958515B242F45E600014CB0 /* Sticker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sticker.storyboard; sourceTree = "<group>"; };
@@ -622,6 +626,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3929B107245DEFD800B7C7EA /* PushKit.framework in Frameworks */,
+				3929B105245DEFD100B7C7EA /* UserNotifications.framework in Frameworks */,
 				A3024430244CAE5E006C838F /* Alamofire.framework in Frameworks */,
 				9BD31D37243A05F700D0D719 /* KakaoOpenSDK.framework in Frameworks */,
 				9BA5A9452454021F003A55DC /* KakaoLink.framework in Frameworks */,
@@ -691,6 +697,8 @@
 		9B142B04242F2226005ABE17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3929B106245DEFD800B7C7EA /* PushKit.framework */,
+				3929B104245DEFD100B7C7EA /* UserNotifications.framework */,
 				9B986AEF24557E3D00BE9E3C /* Carthage */,
 				9B986AEE24557E3600BE9E3C /* Cartfile */,
 				A302442F244CAE5E006C838F /* Alamofire.framework */,
@@ -2048,6 +2056,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development: ios2.yapp@gmail.com (PK482474YP)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -2108,6 +2117,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development: ios2.yapp@gmail.com (PK482474YP)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -2135,6 +2145,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CODE_SIGN_ENTITLEMENTS = "90's/90's.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C7X33ZVY6P;
@@ -2153,7 +2164,7 @@
 					"$(PROJECT_DIR)",
 				);
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_BUNDLE_IDENTIFIER = "yappiOS2.90-s";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yappiOS2.90-s";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "KakaoOpenSDK-Bridging-Header.h";
@@ -2167,6 +2178,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CODE_SIGN_ENTITLEMENTS = "90's/90's.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C7X33ZVY6P;
@@ -2185,7 +2197,7 @@
 					"$(PROJECT_DIR)",
 				);
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_BUNDLE_IDENTIFIER = "yappiOS2.90-s";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yappiOS2.90-s";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "KakaoOpenSDK-Bridging-Header.h";
