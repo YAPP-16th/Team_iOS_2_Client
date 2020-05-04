@@ -23,115 +23,215 @@ struct AlbumService : APIManager {
         "Content-type": "multipart/form-data",
         "X-AUTH-TOKEN" : tempAlbumToken
     ]
-    let createAlbumUrl = url("/album/create")
-    let addAlbumUserUrl = url("/album/addUser")
-    let getAlbumUrl = url("/album")
-    let getAlbumListUrl = url("/album/get")
-    let photoDownloadUrl = url("/photo/download")
-    let photoUploadUrl = url("/photo/upload")
     
     // Album, get
-    func getAlbum(completion : @escaping(completeAlbumSerivce)){
-        AF.request(getAlbumUrl, method: .get, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
-            response in
-            switch response.result {
-            case .success:
-                completion(response)
-            case .failure(let err):
-                print("==> Error in GetAlbumService : \(err)")
-            }
-        })
-    }
-    
-    // getAlbum, get
-    func getAlbumList(accountNonExpired : Bool, accountNonLocked : Bool, authority : String, credentialsNonExpired : Bool, enabled : Bool, password: String, username : String, completion : @escaping(completeAlbumSerivce)){
+    func album(completion : @escaping(completeAlbumSerivce)){
+        let url = Self.url("/album")
         
-        AF.request(getAlbumListUrl, method: .get, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
             response in
             switch response.result {
             case .success:
                 completion(response)
             case .failure(let err):
-                print("==> Error in GetAlbumListService : \(err)")
+                print("==> Error in Album Service : \(err)")
             }
         })
     }
     
-    // CreateAlbum, Post
-    func createAlbum(endDate : String, layoutUid : Int, name : String, photoLimit : Int, completion : @escaping(completeAlbumSerivce)){
-        let body : [String : Any] = [
-            "endDate" : endDate,
-            "layoutUid" : layoutUid,
-            "name" : name,
-            "photoLimit" : 0
-            ]
-        
-        AF.request(createAlbumUrl, method: .post, parameters: body, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
-            response in
-            switch response.result {
-            case .success:
-                completion(response)
-            case .failure(let err):
-                print("==> Error in CreateAlbumService : \(err)")
-            }
-        })
-    }
-    
-    // post
-    func addAlbumUser(albumUid : Int, role : String, userUid : Int, completion: @escaping(completeAlbumSerivce)){
+    // Add User, post
+    func albumAddUser(albumUid : Int, role : String, userUid : Int, completion: @escaping(completeAlbumSerivce)){
+        let url = Self.url("/album/addUser")
         let body : [String: Any] = [
             "albumUid" : albumUid,
             "role" : role,
             "userUid" : userUid
         ]
         
-        AF.request(addAlbumUserUrl, method: .post, parameters: body, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
+        AF.request(url, method: .post, parameters: body, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
             response in
             switch response.result {
             case .success:
                 completion(response)
             case .failure(let err):
-                print("==> Error in AddAlbumService : \(err)")
+                print("==> Error in AlbumAddUser Service : \(err)")
             }
         })
     }
     
-    // post
+    // change Album Order status, post
+    func albumChangeOrderStatus(completion : @escaping(completeAlbumSerivce)){
+        let url = Self.url("/album/changeAlbumOrderStatus")
+        
+        AF.request(url, method: .post, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
+            response in
+            switch response.result {
+            case .success:
+                completion(response)
+            case .failure(let err):
+                print("==> Error in AlbumChangeOrderStatue Service : \(err)")
+            }
+        })
+    }
+    
+    // CreateAlbum, Post
+    func albumCreate(endDate : String, layoutUid : Int, name : String, photoLimit : Int, completion : @escaping(completeAlbumSerivce)){
+        let url = Self.url("/album/create")
+        let body : [String : Any] = [
+            "endDate" : endDate,
+            "layoutUid" : layoutUid,
+            "name" : name,
+            "photoLimit" : photoLimit
+            ]
+        
+        AF.request(url, method: .post, parameters: body, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
+            response in
+            switch response.result {
+            case .success:
+                completion(response)
+            case .failure(let err):
+                print("==> Error in AlbumCreate Service : \(err)")
+            }
+        })
+    }
+    
+    // createAlbumOrder, post
+    func albumCreateOrder(completion : @escaping(completeAlbumSerivce)){
+        let url = Self.url("/album/createAlbumOrder")
+        
+        AF.request(url, method: .post, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
+            response in
+            switch response.result {
+            case .success :
+                completion(response)
+            case .failure(let err):
+                print("==> Error in AlbumCreateOrder Service : \(err)")
+            }
+        })
+    }
+    
+    // getAlbum, get
+    func albumGetAlbum(completion : @escaping(completeAlbumSerivce)){
+        let url = Self.url("/album/get")
+        
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
+            response in
+            switch response.result {
+            case .success:
+                completion(response)
+                print("success")
+            case .failure(let err):
+                print("==> Error in AlbumGetAlbum Service : \(err)")
+            }
+        })
+    }
+    
+    // getAlbumOwners, post
+    func albumGetOwners(completion : @escaping(completeAlbumSerivce)){
+        let url = Self.url("/album/getAlbumOwners")
+        
+        AF.request(url, method: .post, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
+            response in
+            switch response.result {
+            case .success:
+                completion(response)
+                print("success")
+            case .failure(let err):
+                print("==> Error in AlbumGetOwners Service : \(err)")
+            }
+        })
+    }
+    
+    // getAlbums, get
+    func albumGetAlbums(completion : @escaping(completeAlbumSerivce)){
+        let url = Self.url("/album/getAlbums")
+        
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
+            response in
+            switch response.result {
+            case .success:
+                completion(response)
+                print("success")
+            case .failure(let err):
+                print("==> Error in GetAlbums Service : \(err)")
+            }
+        })
+    }
+    
+    // plusCount, get
+    func albumPlusCount(completion : @escaping(completeAlbumSerivce)){
+        let url = Self.url("/album/plusCount")
+        
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
+            response in
+            switch response.result {
+            case .success:
+                completion(response)
+                print("success")
+            case .failure(let err):
+                print("==> Error in AlbumplusCount Service : \(err)")
+            }
+        })
+    }
+}
+
+
+/** Photo  */
+extension AlbumService {
+    // photo, get
+    func photo(completion : @escaping(completeAlbumSerivce)) {
+        let url = Self.url("/photo")
+        
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
+            response in
+            switch response.result {
+            case .success:
+                completion(response)
+            case .failure(let err):
+                print("==> Error in Photo Service : \(err)")
+            }
+        })
+    }
+    
+    // photoDownload, post
     func photoDownload(albumUid : Int, photoUid : Int, completion : @escaping(completeAlbumSerivce)){
+        let url = Self.url("/photo/download")
         let body : [String : Any] = [
             "albumUid" : albumUid,
             "photoUid" : photoUid
         ]
         
-        AF.request(photoDownloadUrl, method: .post, parameters: body, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
+        AF.request(url, method: .post, parameters: body, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
             response in
             switch response.result {
             case .success:
                 completion(response)
             case .failure(let err):
-                print("==> Error in PhotoDownloadService : \(err)")
+                print("==> Error in PhotoDownload Service : \(err)")
             }
         })
     }
     
-    // post
+    // photoUpload, post
     func photoUpload(albumUid : String, image: UIImage, imageName: String, completion: @escaping(completeAlbumSerivce)){
+        let url = Self.url("/photo/upload")
         let body : [String : Any] = [
             "albumUid" : albumUid
         ]
+        
         AF.upload(
             multipartFormData: { multipartFormData in
                 for (key, value) in body {
                     multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key)
                 }
                 multipartFormData.append(image.jpegData(compressionQuality: 0.7)!, withName: "image" , fileName: "\(imageName).jpeg", mimeType: "image/jpeg")
-        }, to: photoUploadUrl, method: .post , headers: photoHeader)
+        }, to: url, method: .post , headers: photoHeader)
             .response { response in
                 switch response.result {
                 case .success:
                     print(response)
                 case .failure(let err):
-                    print("==> Error in PhotoUploadService : \(err)")
+                    print("==> Error in PhotoUpload Service : \(err)")
             }
         }
     }

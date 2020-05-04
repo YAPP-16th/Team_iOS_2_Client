@@ -7,8 +7,19 @@
 //
 
 
+var AlbumCount : Int = 0
 let AlbumDatabase : AlbumModel = AlbumModel()
 let LayoutDatabase : LayoutModel = LayoutModel()
+let CoverDatabase : CoverModel = CoverModel()
+
+class LayoutModel {
+    var arrayList : [AlbumLayout] = [.Polaroid, .Mini, .Memory, .Portrab, .Tape, .Portraw, .Filmroll]
+}
+
+class CoverModel {
+    var arrayList : [AlbumCover] = [.dreamy2121, .fellinlove, .happilyeverafter, .mysweetyLovesyou, .svibe, .sweetholiday]
+}
+
 
 class Album {
     var user : [String]
@@ -49,8 +60,6 @@ class AlbumModel {
         arrayList[1].photos.append(UIImage(named: "husky")!)
     }
 }
-
-
 
 enum AlbumLayout {
     case Polaroid
@@ -110,6 +119,35 @@ enum AlbumLayout {
     }
 }
 
-class LayoutModel {
-    var arrayList : [AlbumLayout] = [.Polaroid, .Mini, .Memory, .Portrab, .Tape, .Portraw, .Filmroll]
+
+enum AlbumCover {
+    case dreamy2121
+    case fellinlove
+    case sweetholiday
+    case happilyeverafter
+    case mysweetyLovesyou
+    case svibe
+    
+    var image : UIImage {
+        switch self {
+        case .dreamy2121 : return UIImage(named: "dreamy2121")!
+        case .fellinlove : return UIImage(named: "fellinlove")!
+        case .sweetholiday : return UIImage(named: "sweetholiday")!
+        case .happilyeverafter : return UIImage(named: "happilyeverafter")!
+        case .mysweetyLovesyou : return UIImage(named: "mysweetyLovesyou")!
+        case .svibe : return UIImage(named: "90Svibe")!
+        }
+    }
+    
+    var imageName : String {
+        switch self {
+        case .dreamy2121 : return "dreamy2121"
+        case .fellinlove : return "fellinlove"
+        case .sweetholiday : return "sweetholiday"
+        case .happilyeverafter : return "happileverafter"
+        case .mysweetyLovesyou : return "mysweetyLovesyou"
+        case .svibe : return "90Svibe"
+        }
+    }
 }
+
