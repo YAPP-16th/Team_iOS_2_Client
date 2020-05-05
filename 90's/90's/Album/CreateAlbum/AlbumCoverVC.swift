@@ -34,7 +34,6 @@ class AlbumCoverVC: UIViewController {
     var albumEndDate : String!
     var albumMaxCount : Int!
     var photo : UIImage!
-    var imageName : String!
     
     var initialFlag : Bool = true
     

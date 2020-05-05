@@ -118,7 +118,7 @@ extension SavePhotoVC {
             photoView.drawHierarchy(in: photoView.bounds, afterScreenUpdates: true)
         }
         
-        AlbumService.shared.photoUpload(albumUid: "\(String(describing: albumUid))", image: image, imageName: imageName!, completion: {
+        AlbumService.shared.photoUpload(albumUid: albumUid!, image: [image], imageName: imageName!, completion: {
             response in
             if let status = response.response?.statusCode {
                 switch status {

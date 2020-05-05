@@ -31,36 +31,6 @@ extension Int {
 }
 
 
-
-extension UIView {
-    public func addShadowEffect(){
-        self.layer.shadowRadius = 2
-        self.layer.shadowOpacity = 0.2
-        self.layer.shadowOffset = CGSize(width: 5, height: 7)
-        self.clipsToBounds = false
-    }
-    
-    func setAnchorPoint(_ point: CGPoint) {
-        var newPoint = CGPoint(x: bounds.size.width * point.x, y: bounds.size.height * point.y)
-        var oldPoint = CGPoint(x: bounds.size.width * layer.anchorPoint.x, y: bounds.size.height * layer.anchorPoint.y);
-        
-        newPoint = newPoint.applying(transform)
-        oldPoint = oldPoint.applying(transform)
-        
-        var position = layer.position
-        
-        position.x -= oldPoint.x
-        position.x += newPoint.x
-        
-        position.y -= oldPoint.y
-        position.y += newPoint.y
-        
-        layer.position = position
-        layer.anchorPoint = point
-    }
-}
-
-
 extension UICollectionViewCell {
     func subImageViewSetting(imageView : UIImageView!, top : CGFloat!, left : CGFloat!, right: CGFloat!, bottom: CGFloat!){
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -381,6 +351,12 @@ extension UIImage {
 }
 
 extension UIView {
+    func addShadowEffect(){
+        self.layer.shadowRadius = 2
+        self.layer.shadowOpacity = 0.2
+        self.layer.shadowOffset = CGSize(width: 5, height: 7)
+        self.clipsToBounds = false
+    }
     
     func roundCorners(corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
