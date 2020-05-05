@@ -12,41 +12,25 @@ class imageTestVC: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBAction func button(_ sender: UIButton) {
         print("button clicked!")
-        
-        AlbumService.shared.photoUpload(albumUid: 56, image: [UIImage(named: "husky")!], imageName: "100", completion: {
+
+        AlbumService.shared.photoDownload(albumUid: 66, photoUid: 68, completion: {
             response in
             if let status = response.response?.statusCode {
                 switch status {
-                case 200:
-                    print("success! data = \(response.data)")
+                case 200 :
                     guard let data = response.data else {return}
-                    print("received data = \(data)")
-                case 401...404 :
+                    let testImage = UIImage(data: data)
+                    print("testImage = \(testImage)")
+                    let decoder = try? JSONDecoder().decode(PhotoDownloadData.self, from: data)
+                    self.image = UIImage(data: data)
+                    self.imageView.image = self.image
+                case 401...404:
                     print("forbidden access in \(status)")
                 default:
                     return
                 }
             }
         })
-        
-//        AlbumService.shared.photoDownload(albumUid: 3, photoUid: 100, completion: {
-//            response in
-//            if let status = response.response?.statusCode {
-//                switch status {
-//                case 200 :
-//                    guard let data = response.data else {return}
-//                    let testImage = UIImage(data: data)
-//                    //let decoder = try? JSONDecoder().decode(PhotoDownloadData.self, from: data)
-//                    print("testImage = \(testImage?.size)")
-//                    self.image = UIImage(data: data)
-//                    self.imageView.image = self.image
-//                case 401...404:
-//                    print("forbidden access in \(status)")
-//                default:
-//                    return
-//                }
-//            }
-//        })
     }
     
     var image : UIImage?

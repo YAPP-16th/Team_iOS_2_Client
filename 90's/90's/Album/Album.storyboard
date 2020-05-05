@@ -869,9 +869,6 @@
                                             <constraint firstAttribute="width" constant="44" id="2zA-Z8-4Vg"/>
                                         </constraints>
                                         <state key="normal" title="초대" image="iconInvitation"/>
-                                        <connections>
-                                            <segue destination="nqt-h9-TBU" kind="presentation" identifier="GoToInviteVC" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="9OG-ps-LOX"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0YD-Gg-ahy">
                                         <rect key="frame" x="360" y="12" width="44" height="54"/>
@@ -1029,6 +1026,10 @@
                                             <constraint firstItem="wGs-mZ-Ww9" firstAttribute="leading" secondItem="Wo5-uJ-SMg" secondAttribute="leading" constant="44" id="yeF-dA-bZN"/>
                                         </constraints>
                                     </view>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rAU-as-lh2">
+                                        <rect key="frame" x="51" y="233" width="312" height="431"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -1076,6 +1077,7 @@
                         <outlet property="albumNameLabel" destination="xyJ-Ee-9EG" id="Uut-Al-pzr"/>
                         <outlet property="hideAddAlbumBtn" destination="ooR-Gm-DZS" id="xXA-Hq-sAg"/>
                         <outlet property="hideAddPhotoBtn" destination="wGs-mZ-Ww9" id="j81-mh-saS"/>
+                        <outlet property="hideImageZoom" destination="rAU-as-lh2" id="LcW-MU-5Q3"/>
                         <outlet property="hideView" destination="Ztk-xx-6Al" id="Ump-B0-H66"/>
                         <outlet property="hideWhiteView" destination="Wo5-uJ-SMg" id="BWa-ce-3TR"/>
                         <outlet property="hidewhiteviewBottom" destination="1Jy-sH-L27" id="4wv-wj-oHB"/>
@@ -1407,7 +1409,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CHN-qL-8H0">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="900"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C9U-jv-BTd" userLabel="TopView">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
@@ -1596,7 +1598,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pj7-Nw-P4u">
-                                                <rect key="frame" x="0.0" y="539" width="414" height="361"/>
+                                                <rect key="frame" x="0.0" y="539" width="414" height="209"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="G5n-v1-ZYm">
@@ -1710,7 +1712,7 @@
                                                 </prototypes>
                                             </tableView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fO-Pc-rcl" userLabel="quitButton">
-                                                <rect key="frame" x="0.0" y="830" width="414" height="70"/>
+                                                <rect key="frame" x="0.0" y="748" width="414" height="70"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="70" id="rul-re-a9e"/>
                                                 </constraints>
@@ -1733,7 +1735,6 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="pj7-Nw-P4u" secondAttribute="bottom" id="2XS-Hq-G5Z"/>
                                             <constraint firstAttribute="bottom" secondItem="9fO-Pc-rcl" secondAttribute="bottom" id="2d5-mf-zBc"/>
                                             <constraint firstAttribute="trailing" secondItem="pj7-Nw-P4u" secondAttribute="trailing" id="2iY-ip-kBC"/>
                                             <constraint firstItem="jC4-MJ-SUu" firstAttribute="top" secondItem="C9U-jv-BTd" secondAttribute="bottom" id="F77-bW-27e"/>
@@ -1743,12 +1744,13 @@
                                             <constraint firstItem="Fz7-Ep-JFz" firstAttribute="top" secondItem="0Xy-ew-9ut" secondAttribute="bottom" constant="21" id="NUj-Cz-3d9"/>
                                             <constraint firstItem="C9U-jv-BTd" firstAttribute="leading" secondItem="CHN-qL-8H0" secondAttribute="leading" id="Orc-fY-7eb"/>
                                             <constraint firstAttribute="trailing" secondItem="jC4-MJ-SUu" secondAttribute="trailing" id="Upv-7K-2RC"/>
+                                            <constraint firstItem="9fO-Pc-rcl" firstAttribute="top" secondItem="pj7-Nw-P4u" secondAttribute="bottom" id="WYa-0v-COj"/>
                                             <constraint firstItem="fSF-Oq-AqN" firstAttribute="top" secondItem="0Xy-ew-9ut" secondAttribute="bottom" constant="28" id="XQa-vv-ZQQ"/>
                                             <constraint firstItem="9fO-Pc-rcl" firstAttribute="leading" secondItem="CHN-qL-8H0" secondAttribute="leading" id="YOc-Sf-MoK"/>
                                             <constraint firstAttribute="trailing" secondItem="9fO-Pc-rcl" secondAttribute="trailing" id="iOc-76-vgN"/>
                                             <constraint firstItem="0Xy-ew-9ut" firstAttribute="top" secondItem="jC4-MJ-SUu" secondAttribute="bottom" id="mU4-3w-2pf"/>
                                             <constraint firstItem="jC4-MJ-SUu" firstAttribute="top" secondItem="C9U-jv-BTd" secondAttribute="bottom" id="o23-0q-pYZ"/>
-                                            <constraint firstAttribute="height" constant="900" id="pzD-Hn-LNs"/>
+                                            <constraint firstAttribute="height" constant="818" id="pzD-Hn-LNs"/>
                                             <constraint firstItem="pj7-Nw-P4u" firstAttribute="leading" secondItem="CHN-qL-8H0" secondAttribute="leading" id="qnn-78-Fav"/>
                                             <constraint firstItem="jC4-MJ-SUu" firstAttribute="leading" secondItem="CHN-qL-8H0" secondAttribute="leading" id="yNv-hZ-E7D"/>
                                             <constraint firstAttribute="trailing" secondItem="C9U-jv-BTd" secondAttribute="trailing" id="yOw-nP-0yg"/>
@@ -1758,7 +1760,7 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="CHN-qL-8H0" secondAttribute="bottom" id="KVk-NN-6nQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="CHN-qL-8H0" secondAttribute="bottom" constant="-10" id="KVk-NN-6nQ"/>
                                     <constraint firstItem="CHN-qL-8H0" firstAttribute="top" secondItem="e9X-x6-QQa" secondAttribute="top" id="a3k-68-4y7"/>
                                     <constraint firstItem="CHN-qL-8H0" firstAttribute="leading" secondItem="e9X-x6-QQa" secondAttribute="leading" id="jOf-6x-GwO"/>
                                     <constraint firstAttribute="trailing" secondItem="CHN-qL-8H0" secondAttribute="trailing" id="jqh-gM-Tqx"/>
@@ -1787,7 +1789,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MZh-U0-fhW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1889.8550724637682" y="1561.6071428571429"/>
+            <point key="canvasLocation" x="1891" y="836"/>
         </scene>
         <!--Album CompleteVC-->
         <scene sceneID="3RW-i0-MwE">
@@ -2036,81 +2038,6 @@
             </objects>
             <point key="canvasLocation" x="5598.5507246376819" y="126.5625"/>
         </scene>
-        <!--InviteVC-->
-        <scene sceneID="NxS-JN-q3H">
-            <objects>
-                <viewController storyboardIdentifier="InviteVC" id="nqt-h9-TBU" customClass="InviteVC" customModule="_0_s" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Y4m-y1-fkN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aWs-jY-J6B">
-                                <rect key="frame" x="0.0" y="612" width="414" height="264"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kF6-52-KXT">
-                                        <rect key="frame" x="35.5" y="144" width="343" height="81"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="81" id="e2S-VN-GN7"/>
-                                            <constraint firstAttribute="width" constant="343" id="ftX-tT-J4c"/>
-                                        </constraints>
-                                        <state key="normal" image="kakaoinviteimage"/>
-                                        <connections>
-                                            <action selector="kakaoInviteBtn:" destination="0dd-5Q-a3e" eventType="touchUpInside" id="juG-ze-PVh"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="deZ-ea-jcA">
-                                        <rect key="frame" x="337" y="0.0" width="77" height="74"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="77" id="XkV-df-iBZ"/>
-                                            <constraint firstAttribute="height" constant="74" id="bS2-qm-6KZ"/>
-                                        </constraints>
-                                        <state key="normal" image="cancleicon"/>
-                                        <connections>
-                                            <action selector="cancleBtn:" destination="nqt-h9-TBU" eventType="touchUpInside" id="deS-NT-WJU"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ps3-26-0WR">
-                                        <rect key="frame" x="83" y="44" width="248" height="62"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="62" id="j2l-cW-qTh"/>
-                                            <constraint firstAttribute="width" constant="248" id="ywz-ys-USh"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstItem="ps3-26-0WR" firstAttribute="centerX" secondItem="aWs-jY-J6B" secondAttribute="centerX" id="4LI-af-usN"/>
-                                    <constraint firstItem="ps3-26-0WR" firstAttribute="top" secondItem="aWs-jY-J6B" secondAttribute="top" constant="44" id="BPS-xg-39Z"/>
-                                    <constraint firstAttribute="trailing" secondItem="deZ-ea-jcA" secondAttribute="trailing" id="DOQ-5V-MJE"/>
-                                    <constraint firstItem="deZ-ea-jcA" firstAttribute="top" secondItem="aWs-jY-J6B" secondAttribute="top" id="cBs-n6-5mb"/>
-                                    <constraint firstAttribute="height" constant="264" id="eIb-8d-Egg"/>
-                                    <constraint firstItem="kF6-52-KXT" firstAttribute="top" secondItem="aWs-jY-J6B" secondAttribute="top" constant="144" id="hDS-dp-zoE"/>
-                                    <constraint firstItem="kF6-52-KXT" firstAttribute="centerX" secondItem="aWs-jY-J6B" secondAttribute="centerX" id="mF8-So-zDk"/>
-                                    <constraint firstAttribute="width" constant="414" id="x1Y-WU-ArG"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="displayP3"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="aWs-jY-J6B" secondAttribute="bottom" constant="20" id="IrW-Jc-4D0"/>
-                            <constraint firstItem="aWs-jY-J6B" firstAttribute="trailing" secondItem="xzr-Em-jBy" secondAttribute="trailing" id="IzO-cd-7Lx"/>
-                            <constraint firstItem="aWs-jY-J6B" firstAttribute="leading" secondItem="xzr-Em-jBy" secondAttribute="leading" id="WBh-wc-JEd"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="xzr-Em-jBy"/>
-                    </view>
-                    <connections>
-                        <outlet property="inviteLabel" destination="ps3-26-0WR" id="Df3-Zr-qnR"/>
-                        <outlet property="kakaoInviteBtn" destination="kF6-52-KXT" id="384-J6-ZDJ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9qH-aU-LRk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="0dd-5Q-a3e" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="1891" y="836"/>
-        </scene>
         <!--Image TestVC-->
         <scene sceneID="0qM-Tn-sCn">
             <objects>
@@ -2175,7 +2102,6 @@
         <image name="iconInvitation" width="27" height="24"/>
         <image name="iconMembers" width="19" height="19"/>
         <image name="iconOwner" width="19" height="21"/>
-        <image name="kakaoinviteimage" width="682" height="158"/>
         <image name="layoutThumbnailCheckbox" width="74" height="102"/>
         <image name="previewButton" width="102" height="26"/>
         <image name="takealbumimage" width="272" height="244"/>

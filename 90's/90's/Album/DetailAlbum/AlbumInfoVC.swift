@@ -19,7 +19,7 @@ class AlbumInfoVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func inviteBtn(_ sender: UIButton) {
-        let templeteId = "23118";
+        let templeteId = "24532";
         
         KLKTalkLinkCenter.shared().sendCustom(withTemplateId: templeteId, templateArgs: nil, success: {(warningMsg, argumentMsg) in
             print("warning message : \(String(describing: warningMsg))")

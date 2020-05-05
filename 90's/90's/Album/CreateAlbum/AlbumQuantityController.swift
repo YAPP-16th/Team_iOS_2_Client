@@ -21,7 +21,7 @@ class AlbumQuantityController : UIViewController {
     var albumEndDate:String!
     var albumMaxCount:Int!
     
-    private var maxCountArray = Array(1...30)
+    private var maxCountArray = Array(4...30)
     var initialFlag = true
     
     override func viewDidLoad() {
@@ -37,7 +37,7 @@ class AlbumQuantityController : UIViewController {
             nextVC.albumName = albumName
             nextVC.albumStartDate = albumStartDate
             nextVC.albumEndDate = albumEndDate
-            nextVC.albumMaxCount = albumMaxCount
+            nextVC.albumMaxCount = albumMaxCount + 1
             
             self.navigationController?.pushViewController(nextVC, animated: true)
         }

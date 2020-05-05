@@ -28,6 +28,9 @@ class AlbumDetailController : UIViewController {
         switchHideView(value: true)
     }
     
+    // 사진 확대 시
+    @IBOutlet weak var hideImageZoom: UIImageView!
+    
     private var longPressGesture : UILongPressGestureRecognizer!
     var openAlbumCount : Int! // 앨범 낡기 적용
     var isEnded : Bool = true
@@ -47,6 +50,12 @@ class AlbumDetailController : UIViewController {
             let touch = touches.first
             if touch?.view != self.hideWhiteView {
                 switchHideView(value: true)
+            }
+            if hideImageZoom.isHidden == false {
+                if touch?.view != self.hideImageZoom {
+                    hideView.isHidden = true
+                    hideImageZoom.isHidden = true
+                }
             }
         }
     }
@@ -70,7 +79,6 @@ extension AlbumDetailController {
     func delegateSetting(){
         photoCollectionView.delegate = self
         photoCollectionView.dataSource = self
-//        photoCollectionView.dragDelegate = self
         photoCollectionView.dragInteractionEnabled = true
         galleryPicker.delegate = self
     }
@@ -82,6 +90,10 @@ extension AlbumDetailController {
         
         hideView.isHidden = true
         hideWhiteView.layer.cornerRadius = 15
+
+        hideImageZoom.frame.size = setZoomImageView(layout: selectedLayout!)
+        hideImageZoom.center = view.center
+
         // 순서 바꾸기
         longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gesture:)))
         photoCollectionView.addGestureRecognizer(longPressGesture)
@@ -109,6 +121,29 @@ extension AlbumDetailController {
                 self.view.layoutIfNeeded()
             })
             self.hideView.isHidden = false
+        }
+    }
+    
+    func switchZoomView(value : Bool){
+        switch value {
+        case true :
+            self.hideView.isHidden = true
+            self.hideImageZoom.isHidden = true
+        case false :
+            self.hideView.isHidden = false
+            self.hideImageZoom.isHidden = false
+        }
+    }
+    
+    func setZoomImageView(layout : AlbumLayout) -> CGSize {
+        switch layout {
+        case .Polaroid : return AlbumLayout.Polaroid.bigsize
+        case .Mini : return AlbumLayout.Mini.bigsize
+        case .Memory : return AlbumLayout.Memory.bigsize
+        case .Portrab : return AlbumLayout.Portrab.bigsize
+        case .Portraw : return AlbumLayout.Portraw.bigsize
+        case .Tape : return AlbumLayout.Tape.bigsize
+        case .Filmroll : return AlbumLayout.Filmroll.bigsize
         }
     }
 }
@@ -199,35 +234,19 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
         AlbumDatabase.arrayList[albumIndex!].photos.remove(at: sourceIndexPath.row)
         AlbumDatabase.arrayList[albumIndex!].photos.insert(movedItem, at: destinationIndexPath.item)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! PhotoCell
+        hideImageZoom.image = cell.photoImageView.image
+        switchZoomView(value: false)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        switchZoomView(value: true)
+    }
 }
 
-
-//extension AlbumDetailController :  UICollectionViewDragDelegate {
-//    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-//        let item = AlbumDatabase.arrayList[albumIndex!].photos[indexPath.row]
-//        let itemProvider = NSItemProvider(object: item)
-//        let dragItem = UIDragItem(itemProvider: itemProvider)
-//        dragItem.localObject = item
-//        return [dragItem]
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, itemsForAddingTo session: UIDragSession, at indexPath: IndexPath, point: CGPoint) -> [UIDragItem] {
-//        let item = AlbumDatabase.arrayList[albumIndex!].photos[indexPath.row]
-//        let itemProvider = NSItemProvider(object: item)
-//        let dragItem = UIDragItem(itemProvider: itemProvider)
-//        dragItem.localObject = item
-//        return [dragItem]
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, dragPreviewParametersForItemAt indexPath: IndexPath) -> UIDragPreviewParameters? {
-//        let previewParameters = UIDragPreviewParameters()
-//        previewParameters.visiblePath = UIBezierPath(rect: CGRect(x: 25, y: 25, width: 120, height: 120))
-//        return previewParameters
-//
-//    }
-//}
-
-
+// 순서 바꾸기
 extension AlbumDetailController : UICollectionViewDropDelegate {
     func collectionView(_ collectionView: UICollectionView, canHandle session: UIDropSession) -> Bool {
         return session.canLoadObjects(ofClass: NSString.self)
@@ -281,7 +300,6 @@ extension AlbumDetailController : UIImagePickerControllerDelegate, UINavigationC
             vc.albumUid = self.albumIndex
             vc.imageName = self.ImageName
             self.navigationController?.pushViewController(vc, animated: true)
-            //self.present(vc, animated: true, completion: nil)
         }
     }
 }

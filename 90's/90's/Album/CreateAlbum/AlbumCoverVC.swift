@@ -78,7 +78,6 @@ extension AlbumCoverVC : UICollectionViewDelegate, UICollectionViewDataSource, U
         initialFlag = false
         photo = CoverDatabase.arrayList[indexPath.row].image
         coverImageView.image = CoverDatabase.arrayList[indexPath.row].image
-        imageName = CoverDatabase.arrayList[indexPath.row].imageName
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
