@@ -16,51 +16,6 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="uQg-vc-ANl">
-            <objects>
-                <viewController id="mgG-yA-LK7" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="NKt-ff-Os4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album View" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRw-Yj-WP0">
-                                <rect key="frame" x="146" y="435.5" width="122" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="122" id="Z98-Gp-n2o"/>
-                                    <constraint firstAttribute="height" constant="35" id="rkY-U9-lxD"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsL-bz-XM6">
-                                <rect key="frame" x="50" y="737" width="314" height="77"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="77" id="81c-cX-xq1"/>
-                                    <constraint firstAttribute="width" constant="314" id="ezI-dE-Iea"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="YLb-ki-jRt" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="3kh-Wu-eAj"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="rRw-Yj-WP0" firstAttribute="centerY" secondItem="HtX-Fq-Ir9" secondAttribute="centerY" id="139-3k-9dr"/>
-                            <constraint firstItem="rRw-Yj-WP0" firstAttribute="centerX" secondItem="HtX-Fq-Ir9" secondAttribute="centerX" id="AyM-Ai-4vP"/>
-                            <constraint firstItem="HtX-Fq-Ir9" firstAttribute="bottom" secondItem="dsL-bz-XM6" secondAttribute="bottom" constant="48" id="CQW-FJ-R75"/>
-                            <constraint firstItem="dsL-bz-XM6" firstAttribute="centerX" secondItem="HtX-Fq-Ir9" secondAttribute="centerX" id="qoi-ZZ-QLJ"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="HtX-Fq-Ir9"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yhW-dm-t15" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2800" y="812"/>
-        </scene>
         <!--Image RenderVC-->
         <scene sceneID="bgg-6H-DtL">
             <objects>
@@ -311,10 +266,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jLA-IC-z1U">
-                                <rect key="frame" x="20" y="133" width="374" height="469"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날짜 표시하기" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kNb-70-RMY">
                                 <rect key="frame" x="29" y="725" width="148" height="21"/>
                                 <constraints>
@@ -495,7 +446,6 @@
                         <outlet property="cancleViewLabel" destination="zMs-Ux-CHM" id="c8g-nx-R6q"/>
                         <outlet property="cancleViewSubView" destination="AfX-LR-sKg" id="T5s-G3-9Gq"/>
                         <outlet property="cancleViewSubViewBottom" destination="2fg-PU-tJV" id="F1K-Uw-SJC"/>
-                        <outlet property="imageView" destination="jLA-IC-z1U" id="GhI-uW-aLb"/>
                         <outlet property="photoView" destination="Y4A-NP-afi" id="EuL-Ot-naN"/>
                         <outlet property="saveBtn" destination="Dmo-i2-8bX" id="oY4-pe-Tbh"/>
                         <outlet property="switchBtn" destination="gNf-oE-ziU" id="NuY-dT-jnO"/>
@@ -504,60 +454,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Fy-rS-eYg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5298.5507246376819" y="813.61607142857144"/>
-        </scene>
-        <!--Sticker PopupVC-->
-        <scene sceneID="5zh-JG-w65">
-            <objects>
-                <viewController id="YLb-ki-jRt" customClass="StickerPopupVC" customModule="_0_s" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="35O-uB-Pbr">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Os-Rc-2Vn">
-                                <rect key="frame" x="0.0" y="612" width="414" height="250"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7OZ-MR-Ae2">
-                                        <rect key="frame" x="229" y="57" width="149" height="136"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="136" id="BY3-gv-tVm"/>
-                                            <constraint firstAttribute="width" constant="149" id="NaV-ad-oxA"/>
-                                        </constraints>
-                                        <state key="normal" title="임시버튼"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1cg-1i-W0e">
-                                        <rect key="frame" x="36" y="57" width="149" height="136"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="149" id="ErC-77-kZG"/>
-                                            <constraint firstAttribute="height" constant="136" id="thG-3v-vco"/>
-                                        </constraints>
-                                        <state key="normal" title="작동안함"/>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstItem="1cg-1i-W0e" firstAttribute="centerY" secondItem="2Os-Rc-2Vn" secondAttribute="centerY" id="6If-QP-3eW"/>
-                                    <constraint firstAttribute="trailing" secondItem="7OZ-MR-Ae2" secondAttribute="trailing" constant="36" id="KBt-OO-1tq"/>
-                                    <constraint firstItem="1cg-1i-W0e" firstAttribute="leading" secondItem="2Os-Rc-2Vn" secondAttribute="leading" constant="36" id="L4C-FZ-P7t"/>
-                                    <constraint firstAttribute="height" constant="250" id="Unt-hD-ND6"/>
-                                    <constraint firstItem="7OZ-MR-Ae2" firstAttribute="centerY" secondItem="2Os-Rc-2Vn" secondAttribute="centerY" id="zXZ-zq-0ji"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.67000000000000004" colorSpace="custom" customColorSpace="displayP3"/>
-                        <constraints>
-                            <constraint firstItem="2Os-Rc-2Vn" firstAttribute="leading" secondItem="GlD-L1-rD5" secondAttribute="leading" id="CjO-ZU-ERX"/>
-                            <constraint firstItem="2Os-Rc-2Vn" firstAttribute="trailing" secondItem="GlD-L1-rD5" secondAttribute="trailing" id="hlK-qT-6ho"/>
-                            <constraint firstItem="2Os-Rc-2Vn" firstAttribute="bottom" secondItem="GlD-L1-rD5" secondAttribute="bottom" id="nFg-DZ-ceB"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="GlD-L1-rD5"/>
-                    </view>
-                    <connections>
-                        <outlet property="touchView" destination="2Os-Rc-2Vn" id="JWA-3C-d0s"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4IS-vr-EwZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3536" y="812"/>
         </scene>
     </scenes>
     <resources>

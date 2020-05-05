@@ -53,8 +53,7 @@ class AlbumDetailController : UIViewController {
             }
             if hideImageZoom.isHidden == false {
                 if touch?.view != self.hideImageZoom {
-                    hideView.isHidden = true
-                    hideImageZoom.isHidden = true
+                    switchZoomView(value: true)
                 }
             }
         }
@@ -240,10 +239,10 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
         hideImageZoom.image = cell.photoImageView.image
         switchZoomView(value: false)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        switchZoomView(value: true)
-    }
+//
+//    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+//        switchZoomView(value: true)
+//    }
 }
 
 // 순서 바꾸기

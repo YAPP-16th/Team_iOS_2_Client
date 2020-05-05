@@ -141,9 +141,9 @@ extension ImageRenderVC {
     
     private func createStickerView(image : UIImage, indexPathRow : Int){
         sticker = StickerLayout.loadFromZib(image: image)
-        sticker?.frame = CGRect(x: view.frame.size.width / 2 - 60, y: view.frame.size.height / 2 - 60, width: 120, height: 120)
+        sticker?.frame.size = CGSize(width: 120, height: 120)
+        sticker?.center = view.center
         createPan(view: sticker!.backImageView) // 이미지 옮기기
-        sticker?.isUserInteractionEnabled = true
         self.view.addSubview(sticker!)
     }
     
@@ -163,6 +163,19 @@ extension ImageRenderVC {
         let size = returnLayoutBigSize(selectedLayout: selectLayout)
         layoutImage = applyBackImageViewLayout(selectedLayout: selectLayout, smallBig: size, imageView: layoutImage)
         renderImage = applyImageViewLayout(selectedLayout: selectLayout, smallBig: size, imageView: renderImage, image: image!)
+        view.layoutIfNeeded()
+    }
+    
+    func createnewimage() -> UIImage{
+        let render = UIGraphicsImageRenderer(size: (sticker?.frame.size)!)
+        let position = CGPoint(x: savePosition.x - saveView.frame.origin.x, y: savePosition.y - saveView.frame.origin.y)
+        let returnimage = render.image(actions: { _ in
+            let context = UIGraphicsGetCurrentContext()
+            context?.translateBy(x: position.x, y: position.y)
+            context?.rotate(by: angle)
+            context?.draw((image?.cgImage!)!, in: CGRect(origin: CGPoint(x: position.x, y: position.y), size: (sticker?.frame.size)!))
+        })
+        return returnimage
     }
 }
 
@@ -182,17 +195,19 @@ extension ImageRenderVC {
         if sticker != nil {
             let takeStickerImageView = sticker?.stickerImageView
             takeStickerImageView?.center = sticker!.center
+            takeStickerImageView?.image = createnewimage()
             takeStickerImageView?.translatesAutoresizingMaskIntoConstraints = false
             saveView.addSubview(takeStickerImageView!)
-            let position = CGPoint(x: savePosition.x - saveView.frame.origin.x, y: savePosition.y - saveView.frame.origin.y)
-            
-            takeStickerImageView?.transform = CGAffineTransform(scaleX: saveSize, y: saveSize).concatenating(CGAffineTransform(rotationAngle: angle)).concatenating(CGAffineTransform(translationX: position.x, y: position.y))
+//            let position = CGPoint(x: savePosition.x - saveView.frame.origin.x, y: savePosition.y - saveView.frame.origin.y)
+//
+//            takeStickerImageView?.transform = CGAffineTransform(scaleX: saveSize, y: saveSize).concatenating(CGAffineTransform(rotationAngle: angle)).concatenating(CGAffineTransform(translationX: position.x, y: position.y))
             sticker?.removeFromSuperview()
             sticker = nil
         }
         
+        
+        print("ImageRenderVC saveview frame = \(saveView.frame)")
         photoImage = saveView.createImage()
-        print("timage = \(photoImage!)")
         angle = CGFloat()
         saveSize = CGFloat()
         

@@ -247,11 +247,10 @@ extension UIViewController{
         view.translatesAutoresizingMaskIntoConstraints = false
         view.frame.size = size
         
-        let distance = (self.view.frame.width - view.frame.width) / 2
         view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 120).isActive = true
+        let distance = (self.view.frame.width - view.frame.width) / 2
         view.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: distance).isActive = true
         view.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -distance).isActive = true
-        view.frame.size.height = size.height
         view.addShadowEffect()
     }
     
@@ -300,6 +299,7 @@ extension UIImage {
 
 extension UIView {
     public func createImage() -> UIImage {
+        print("create Image : frame is \(self.frame)")
         UIGraphicsBeginImageContextWithOptions(
             CGSize(width: self.frame.width, height: self.frame.height), true, 1)
         self.layer.render(in: UIGraphicsGetCurrentContext()!)
