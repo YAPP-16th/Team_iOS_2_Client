@@ -50,7 +50,7 @@ class PrintListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         self.tabBarController?.tabBar.isHidden = false
-        //        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.isHidden = true
         
         
         if shipArray.count != 0 {
@@ -142,8 +142,9 @@ extension PrintListViewController : ClickActionDelegate {
         self.navigationItem.title = " "
         self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "iconBack")
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "iconBack")
-        vc.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
+        vc.navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
         self.navigationController?.pushViewController(vc, animated: true)
+//        self.navigationController?.show(vc, sender: true)
         
         
         

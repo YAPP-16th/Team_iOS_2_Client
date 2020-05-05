@@ -25,6 +25,8 @@ class OptionViewController : UIViewController {
     
     @IBOutlet weak var completeBtnTopConstraint: NSLayoutConstraint!
     
+    
+    
     //MARK: View IBOutlet
     @IBOutlet weak var OptionView: UIView!
     @IBOutlet weak var CompleteBtn: UIButton!
@@ -32,6 +34,7 @@ class OptionViewController : UIViewController {
     @IBOutlet weak var SecondOptionView: UIView!
     @IBOutlet weak var countOptionView: UIView!
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var totalSum1: UILabel!
     @IBOutlet weak var totalSum2: UILabel!
@@ -70,7 +73,7 @@ class OptionViewController : UIViewController {
     
     
     override func viewDidLoad() {
-        self.view.backgroundColor = .white
+//        self.view.backgroundColor = .white
         super.viewDidLoad()
         self.backView.isHidden = true
         
@@ -88,17 +91,14 @@ class OptionViewController : UIViewController {
         // iPhone X..
         if UIScreen.main.nativeBounds.height >= 1792.0 {
             
-//            self.topConstraint.constant = 115
             self.previewImageHeight.constant = 196
-//            self.titleTopreviewConstraint.constant = 43.5
+            self.topConstraint.constant = 88
         }
             // iPhone 8..
         else if UIScreen.main.nativeBounds.height <= 1334.0
         {
-//            self.topConstraint.constant = 80
             self.previewImageHeight.constant = 187
-//            self.titleTopreviewConstraint.constant = 34
-            
+            self.topConstraint.constant = 80
         }
         
         if !isTotalOptionViewAppear {
@@ -130,7 +130,9 @@ class OptionViewController : UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
-        //        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.isHidden = false
+
+
     }
     
     //MARK: View IBAction
@@ -142,10 +144,13 @@ class OptionViewController : UIViewController {
         
         
         if isTotalOptionViewAppear {
-            
             self.BottomViewConstraint.constant = self.view.frame.height
-        } else {
+            self.scrollView.isScrollEnabled = true
+        }
+        else
+        {
             self.backView.isHidden = false
+            self.scrollView.isScrollEnabled = false
             // iPhone X..
             if UIScreen.main.nativeBounds.height >= 1792.0 {
                 
@@ -155,7 +160,7 @@ class OptionViewController : UIViewController {
                 // iPhone 8..
             else if UIScreen.main.nativeBounds.height <= 1334.0
             {
-                self.BottomViewConstraint.constant = self.view.frame.height  - 516 + 10
+                self.BottomViewConstraint.constant = self.view.frame.height  - 516 + 30
                 
             }
         }
@@ -164,6 +169,7 @@ class OptionViewController : UIViewController {
     }
     
     @IBAction func CancelAction(_ sender: Any) {
+        self.scrollView.isScrollEnabled = true
         self.backView.isHidden = true
         self.BottomViewConstraint.constant = self.view.frame.height
         
@@ -195,7 +201,7 @@ class OptionViewController : UIViewController {
             // iPhone 8..
         else if UIScreen.main.nativeBounds.height <= 1334.0
         {
-            self.BottomViewConstraint.constant = self.view.frame.height  - 516 + 10
+            self.BottomViewConstraint.constant = self.view.frame.height  - 516 + 30
             
         }
         
@@ -218,7 +224,7 @@ class OptionViewController : UIViewController {
             
             if CompleteBtn.backgroundColor == .black {
                 self.BottomViewConstraint.constant = self.view.frame.height - 320
-                self.completeBtnTopConstraint.constant = 22
+                self.completeBtnTopConstraint.constant = 0
                 
             }
             
@@ -239,7 +245,7 @@ class OptionViewController : UIViewController {
             // iPhone 8..
         else if UIScreen.main.nativeBounds.height <= 1334.0
         {
-            self.BottomViewConstraint.constant = self.view.frame.height  - 516 + 10
+            self.BottomViewConstraint.constant = self.view.frame.height  - 516 + 30
             
         }
         
@@ -269,7 +275,7 @@ class OptionViewController : UIViewController {
             
             if CompleteBtn.backgroundColor == .black {
                 self.BottomViewConstraint.constant = self.view.frame.height - 320
-                self.completeBtnTopConstraint.constant = 22
+                self.completeBtnTopConstraint.constant = 0
                 
             }
             
@@ -282,7 +288,7 @@ class OptionViewController : UIViewController {
     }
     @IBAction func countOptionCancelClick(_ sender: Any) {
         self.backView.isHidden = true
-        
+        self.scrollView.isScrollEnabled = true
         self.countOptionViewConstraint.constant = self.view.frame.height
         
         UIView.animate(withDuration: 1, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations: {self.view.layoutIfNeeded()})

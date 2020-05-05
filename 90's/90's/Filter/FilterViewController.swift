@@ -100,7 +100,9 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     let minimumZoom: CGFloat = 1.0
     let maximumZoom: CGFloat = 3.0
     var lastZoomFactor: CGFloat = 1.0
-    
+    static let maxInflightBuffers = 20
+    var resizedPixelBuffers: [CVPixelBuffer?] = []
+
     var FilterArray: [String] = []
     
     override func viewDidLoad() {
@@ -110,6 +112,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         setupDevice()
         setupInputOutput()
         delegateSetting()
+        setUpCoreImage()
         filterName = PhotoEditorTypes.filterNameArray[filterIndex]
         //        filterCollectionView.selectItem(at: [0,0], animated: true, scrollPosition: .centeredHorizontally)
         
@@ -119,7 +122,6 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
         leftSwipeGestureRecognizer.direction = .left
         rightSwipeGestureRecognizer.direction = .right
-//        view.addGestureRecognizer(focusGesture)
         view.addGestureRecognizer(leftSwipeGestureRecognizer)
         view.addGestureRecognizer(rightSwipeGestureRecognizer)
         
@@ -144,7 +146,6 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }
     
     override func viewDidLayoutSubviews() {
-        
         orientation = AVCaptureVideoOrientation(rawValue: UIApplication.shared.statusBarOrientation.rawValue)!
     }
     
@@ -184,7 +185,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     @IBAction func photoCancel(_ sender: Any) {
         
         self.dismiss(animated: true, completion: nil)
-        
+        self.captureSession.stopRunning()
     }
     
     @IBAction func albumClick(_ sender: Any) {
@@ -195,6 +196,8 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         present(galleryPicker, animated: true)
     }
     
+    // MARK:- Take a Picture Camera
+
     @IBAction func ontapTakePhoto(_ sender: Any) {
         
         if #available(iOS 9.0, *) {
@@ -203,22 +206,31 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             AudioServicesPlaySystemSound(1108)
         }
         
-        print("!!!!!!!!!!!!")
-        print(self.filteredImage.image)
-        print("!!!!!!!!!!!!")
+        captureSession.stopRunning()
         
-//        let size = CGSize(width:   self.filteredImage.frame.width  , height: self.filteredImage.frame.height )
-//        let resizeImage = self.filteredImage.image!.imageResize(sizeChange: size)
-//        let resizeImage = cropImageToSquare(self.filteredImage.image!)
+        print(self.filteredImage.frame.size)
+        print(self.filteredImage.image?.size)
         
+        
+//        let Image = self.filteredImage.image!.imageResize(sizeChange: CGSize(width: self.filteredImage.frame.width, height: self.filteredImage.frame.height))
+        
+//        self.filteredImage.image = self.filteredImage.image!.imageResize(sizeChange: CGSize(width: self.filteredImage.frame.width, height: self.filteredImage.frame.height))
+                
+        print(self.filteredImage.image?.size)
+        
+        
+
         UIImageWriteToSavedPhotosAlbum(self.filteredImage.image! , nil, nil, nil)
         
-        var tempImage = self.filteredImage.image
+        let tempImage = self.filteredImage.image
         self.albumBtn.layer.masksToBounds = true
         self.albumBtn.layer.cornerRadius = self.albumBtn.bounds.width / 2
         
         self.albumBtn.setBackgroundImage(tempImage, for: UIControl.State.normal)
         
+        captureSession.beginConfiguration()
+        captureSession.commitConfiguration()
+        captureSession.startRunning()
         
     }
     
@@ -234,7 +246,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         default:
             break
         }
-
+        
         // The center coordinate along Y axis
         let rcy = imageHeight * 0.5
         let rect = CGRect(x: rcy - imageWidth * 0.5, y: 0, width: imageWidth, height: imageWidth)
@@ -387,13 +399,6 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         default: break
         }
     }
-    lazy var focusGesture: UITapGestureRecognizer = {
-        let instance = UITapGestureRecognizer(target: self, action: #selector(touchesBegan(_:with:)))
-        instance.cancelsTouchesInView = false
-        instance.numberOfTapsRequired = 1
-        instance.numberOfTouchesRequired = 1
-        return instance
-    }()
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -428,9 +433,12 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     func setupDevice() {
         
         filteredImage.contentMode = .scaleAspectFill
+        filteredImage.clipsToBounds = true
         
-        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInWideAngleCamera], mediaType: AVMediaType.video, position: AVCaptureDevice.Position.unspecified)
+        
+        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInWideAngleCamera],mediaType: AVMediaType.video, position: AVCaptureDevice.Position.unspecified)
         let devices = deviceDiscoverySession.devices
+        
         
         for device in devices {
             if device.position == AVCaptureDevice.Position.back {
@@ -449,18 +457,40 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             setupCorrectFramerate(currentCamera: currentCamera!)
             let captureDeviceInput = try AVCaptureDeviceInput(device: currentCamera!)
             captureSession.sessionPreset = AVCaptureSession.Preset.hd1280x720
+            captureSession.beginConfiguration()
+            
             if captureSession.canAddInput(captureDeviceInput) {
                 captureSession.addInput(captureDeviceInput)
             }
             let videoOutput = AVCaptureVideoDataOutput()
-            
             videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "sample buffer delegate", attributes: []))
             if captureSession.canAddOutput(videoOutput) {
                 captureSession.addOutput(videoOutput)
             }
+            captureSession.commitConfiguration()
             captureSession.startRunning()
         } catch {
             print(error)
+        }
+    }
+    
+    func setUpCoreImage() {
+        // Since we might be running several requests in parallel, we also need
+        // to do the resizing in different pixel buffers or we might overwrite a
+        // pixel buffer that's already in use.
+        let inputWidth = self.filteredImage.frame.width
+        let inputHeight = self.filteredImage.frame.height
+        
+        for _ in 0..<FilterViewController.maxInflightBuffers {
+            var resizedPixelBuffer: CVPixelBuffer?
+            let status = CVPixelBufferCreate(nil, Int(inputWidth), Int(inputHeight),
+                                             kCVPixelFormatType_32BGRA, nil,
+                                             &resizedPixelBuffer)
+            
+            if status != kCVReturnSuccess {
+                print("Error: could not create resized pixel buffer", status)
+            }
+            resizedPixelBuffers.append(resizedPixelBuffer)
         }
     }
     
@@ -469,7 +499,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             //see available types
             //print("\(vFormat) \n")
             
-            var ranges = vFormat.videoSupportedFrameRateRanges as [AVFrameRateRange]
+            let ranges = vFormat.videoSupportedFrameRateRanges as [AVFrameRateRange]
             let frameRates = ranges[0]
             
             do {
@@ -504,11 +534,15 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         DispatchQueue.main.async {
             let filteredImage = UIImage(cgImage: cgImage)
             self.filteredImage.image = filteredImage.mergeWith(topImage: self.topImage! , bottomImage: filteredImage).applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
-//            self.filteredImage.image = filteredImage.applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
-
+            
+            //            self.filteredImage.image = filteredImage.applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
+            
             
         }
     }
+    
+    
+    
     
 }
 
@@ -528,12 +562,12 @@ extension FilterViewController : AVCapturePhotoCaptureDelegate {
         }
         
         // Convert photo same buffer to a jpeg image data by using AVCapturePhotoOutput
-        guard let imageData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: photoSampleBuffer, previewPhotoSampleBuffer: previewPhotoSampleBuffer) else {
+        guard AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: photoSampleBuffer, previewPhotoSampleBuffer: previewPhotoSampleBuffer) != nil else {
             return
         }
         // Initialise an UIImage with our image data
         let capturedImage = self.filteredImage.image
-        print(capturedImage)
+//        print(capturedImage!)
         
     }
     
@@ -708,4 +742,25 @@ extension FilterViewController : UIImagePickerControllerDelegate, UINavigationCo
             self.present(vc, animated: true, completion: nil)
         })
     }
+}
+
+extension UIImageView {
+    
+    override open var intrinsicContentSize: CGSize {
+        
+        if let myImage = self.image {
+            let myImageWidth = myImage.size.width
+            let myImageHeight = myImage.size.height
+            let myViewWidth = self.frame.size.width
+            
+            let ratio = myViewWidth/myImageWidth
+            let scaledHeight = myImageHeight * ratio
+            
+            return CGSize(width: myViewWidth, height: scaledHeight)
+        }
+        
+        return CGSize(width: -1.0, height: -1.0)
+    }
+    
+    
 }
