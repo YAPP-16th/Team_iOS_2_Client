@@ -11,6 +11,9 @@ import UIKit
 class MemberTableViewCell: UITableViewCell {
     @IBOutlet weak var memberImageView: UIImageView!
     @IBOutlet weak var memberNameLabel: UILabel!
+    @IBOutlet weak var memberSubLabel: UILabel!
+    @IBAction func memberDeleteBtn(_ sender: UIButton) {
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -22,7 +22,6 @@ class SavePhotoVC: UIViewController {
     }
     
     @IBOutlet weak var switchBtn: UISwitch!
-    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var saveBtn: UIButton!
     @IBOutlet weak var photoView: UIView!
     @IBAction func backBtn(_ sender: UIButton) {
@@ -46,9 +45,7 @@ class SavePhotoVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("savePhoto view = \(photoView)")
-        print("savePhoto imageView = \(imageView)")
-        print("image = \(originImage)")
+        print("save view = \(photoView)")
         buttonSetting()
     }
 }
@@ -65,11 +62,11 @@ extension SavePhotoVC {
     
     func defaultSetting(){
         setSaveViewLayout(view: photoView, selectLayout: selectedLayout)
-        imageView.image = originImage
-//        let imageView = UIImageView(image: originImage)
-//        imageView.frame = photoView.frame
-//        imageView.backgroundColor = .lightGray
-//        photoView.addSubview(imageView)
+        let imageView = UIImageView(image: originImage)
+        photoView.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.frame.size = photoView.frame.size
+        imageView.center = photoView.center
     }
     
     func dateLabelSetting(){
@@ -118,7 +115,7 @@ extension SavePhotoVC {
             photoView.drawHierarchy(in: photoView.bounds, afterScreenUpdates: true)
         }
         
-        AlbumService.shared.photoUpload(albumUid: "\(String(describing: albumUid))", image: image, imageName: imageName!, completion: {
+        AlbumService.shared.photoUpload(albumUid: albumUid!, image: [image], imageName: imageName!, completion: {
             response in
             if let status = response.response?.statusCode {
                 switch status {

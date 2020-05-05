@@ -213,7 +213,7 @@ extension AlbumService {
     }
     
     // photoUpload, post
-    func photoUpload(albumUid : String, image: UIImage, imageName: String, completion: @escaping(completeAlbumSerivce)){
+    func photoUpload(albumUid : Int, image: [UIImage], imageName: String, completion: @escaping(completeAlbumSerivce)){
         let url = Self.url("/photo/upload")
         let body : [String : Any] = [
             "albumUid" : albumUid
@@ -224,12 +224,14 @@ extension AlbumService {
                 for (key, value) in body {
                     multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key)
                 }
-                multipartFormData.append(image.jpegData(compressionQuality: 0.7)!, withName: "image" , fileName: "\(imageName).jpeg", mimeType: "image/jpeg")
+                multipartFormData.append(image[0].jpegData(compressionQuality: 0.7)!, withName: "image" , fileName: "\(imageName).jpeg", mimeType: "image/jpeg")
+                
         }, to: url, method: .post , headers: photoHeader)
             .response { response in
                 switch response.result {
                 case .success:
                     print(response)
+                    
                 case .failure(let err):
                     print("==> Error in PhotoUpload Service : \(err)")
             }

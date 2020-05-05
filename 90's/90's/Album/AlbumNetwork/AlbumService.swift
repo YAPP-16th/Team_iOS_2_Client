@@ -14,8 +14,21 @@ struct Token : Codable {
     var token : String?
 }
 
+struct album : Codable {
+    var complete : Bool
+    var count : Int
+    var created_at : String
+    var endDate : String
+    var layoutUid : Int
+    var name : String
+    var photoLimit : Int
+    var uid : Int
+    var updated_at : String
+}
+
+
 // post
-struct getAlbumResult : Codable {
+struct AlbumGetResult : Codable {
     var complete : Bool
     var count : Int
     var created_at : String
@@ -28,7 +41,7 @@ struct getAlbumResult : Codable {
 }
 
 // post
-struct CreateAlbumData : Codable {
+struct AlbumCreateData : Codable {
     var endDate : String
     var layoutUid : Int
     var name : String
@@ -36,15 +49,33 @@ struct CreateAlbumData : Codable {
 }
 
 // post
-struct CreateAlbumResult : Codable {
-    var albumUid : Int
+struct AlbumCreateResult : Codable {
+    var complete : Bool
+    var count : Int
+    var created_at : String
+    var endDate : String
+    var layoutUid : Int
+    var name : String
+    var photoLimit : Int
+    var uid : Int
+    var updated_at : String
 }
 
 // post
-struct AddAlbumUserData : Codable {
+struct AlbumAddUserData : Codable {
     var albumUid : Int
     var role : String
     var userUid : Int
+}
+
+// post
+struct AlbumAddUserResult : Codable {
+    var result : Bool
+}
+
+// get
+struct AlbumGetAlbumsResult : Codable {
+    var result : Array<album>
 }
 
 // post
