@@ -38,49 +38,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application.registerForRemoteNotifications(matching: [.badge, .sound, .alert])
         }
         /***************************** Push service end ******************************/
-
+        
         //카카오톡 사용자 토큰 주기적 갱신
         KOSession.shared()?.isAutomaticPeriodicRefresh = true
         
         return true
     }
-    
-    func switchEnterView() {
-         self.window = UIWindow(frame: UIScreen.main.bounds)
-         let mainSB: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-         let enterVC = mainSB.instantiateViewController(identifier: "EnterViewController") as! EnterViewController
-         let enterNav = UINavigationController(rootViewController: enterVC)
-         enterNav.isNavigationBarHidden = true
-         
-         self.window?.rootViewController = enterNav
-         self.window?.makeKeyAndVisible()
-     }
-    
-    func switchSignIn() {
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        let signInSB: UIStoryboard = UIStoryboard(name: "SignIn", bundle: nil)
-        let loginMainVC = signInSB.instantiateViewController(identifier: "LoginMainViewController") as! LoginMainViewController
-        let loginNav = UINavigationController(rootViewController: loginMainVC)
-        loginNav.isNavigationBarHidden = true
-        
-        self.window?.rootViewController = loginNav
-        self.window?.makeKeyAndVisible()
-    }
-    
-    func switchTab() {
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        let mainSB: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let tabVC = mainSB.instantiateViewController(identifier: "TabBarController") as! UITabBarController
-        let tabNav = UINavigationController(rootViewController: tabVC)
-        tabNav.isNavigationBarHidden = true
-        
-        self.window?.rootViewController = tabNav
-        self.window?.makeKeyAndVisible()
-    }
-    
-    
-    
-    
     
     // Called when APNs has assigned the device a unique token
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -163,16 +126,63 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
-
+    
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         if KOSession.isKakaoAccountLoginCallback(url.absoluteURL) {
             return KOSession.handleOpen(url)
         }
         return true
     }
-
-
-
+    
+    //rootView 변경 메소드
+    func switchEnterView() {
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let mainSB: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let enterVC = mainSB.instantiateViewController(identifier: "EnterViewController") as! EnterViewController
+        enterVC.initialEnter = false
+        let enterNav = UINavigationController(rootViewController: enterVC)
+        enterNav.isNavigationBarHidden = true
+        
+        self.window?.rootViewController = enterNav
+        self.window?.makeKeyAndVisible()
+    }
+    
+    func switchSignUp() {
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let signUpSB: UIStoryboard = UIStoryboard(name: "SignUp", bundle: nil)
+        let termVC = signUpSB.instantiateViewController(identifier: "TermViewController") as! TermViewController
+        let termNav = UINavigationController(rootViewController: termVC)
+        termNav.isNavigationBarHidden = true
+        
+        self.window?.rootViewController = termNav
+        self.window?.makeKeyAndVisible()
+    }
+    
+    func switchSignIn() {
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let signInSB: UIStoryboard = UIStoryboard(name: "SignIn", bundle: nil)
+        let loginMainVC = signInSB.instantiateViewController(identifier: "LoginMainViewController") as! LoginMainViewController
+        let loginNav = UINavigationController(rootViewController: loginMainVC)
+        loginNav.isNavigationBarHidden = true
+        
+        self.window?.rootViewController = loginNav
+        self.window?.makeKeyAndVisible()
+    }
+    
+    func switchTab() {
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let mainSB: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let tabVC = mainSB.instantiateViewController(identifier: "TabBarController") as! UITabBarController
+        let tabNav = UINavigationController(rootViewController: tabVC)
+        tabNav.isNavigationBarHidden = true
+        
+        self.window?.rootViewController = tabNav
+        self.window?.makeKeyAndVisible()
+    }
+    
+    
+    
+    
     
 }
 

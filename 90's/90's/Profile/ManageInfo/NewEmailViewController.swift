@@ -16,6 +16,7 @@ class NewEmailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var buttonConst: NSLayoutConstraint!
     
     var email:String!
+    var authenType:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,18 +99,7 @@ class NewEmailViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func goCompleteVC() {
-        let completeEmailVC = storyboard?.instantiateViewController(identifier: "CompleteEmailViewController") as! CompleteEmailViewController
-        completeEmailVC.email = self.email
-        navigationController?.pushViewController(completeEmailVC, animated: true)
-    }
     
-    func showErrAlert(){
-        let alert = UIAlertController(title: "오류", message: "이메일 변경 불가", preferredStyle: .alert)
-        let action = UIAlertAction(title: "확인", style: .default)
-        alert.addAction(action)
-        self.present(alert, animated: true)
-    }
     
 }
 
@@ -171,6 +161,20 @@ extension NewEmailViewController {
                 
             })
         }
+    }
+    
+    func goCompleteVC() {
+        let completeManageVC = storyboard?.instantiateViewController(identifier: "CompleteManageViewController") as! CompleteManageViewController
+        completeManageVC.email = self.email
+        completeManageVC.authenType = "이메일 변경"
+        navigationController?.pushViewController(completeManageVC, animated: true)
+    }
+    
+    func showErrAlert(){
+        let alert = UIAlertController(title: "오류", message: "이메일 변경 불가", preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(action)
+        self.present(alert, animated: true)
     }
     
     

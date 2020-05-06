@@ -13,8 +13,12 @@ class EnterViewController: UIViewController {
     @IBOutlet weak var signUpBtn: UIButton!
     @IBOutlet weak var kakaoLoginBtn: UIButton!
     
+    var initialEnter:Bool = true
+    
     override func viewWillAppear(_ animated: Bool) {
-        autoLogin()
+        if(initialEnter){
+            autoLogin()
+        }
     }
     
     override func viewDidLoad() {

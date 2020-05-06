@@ -30,7 +30,13 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func goBack(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+        guard let count = navigationController?.viewControllers.count else { return }
+        if (count >= 2){
+            navigationController?.popViewController(animated: true)
+        }else {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.switchEnterView()
+        }
     }
     
     @IBAction func goLogin(_ sender: Any) {
@@ -45,6 +51,7 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
         }else{
             //로그인 통신
             //로그인 통신 후 로그인 실패시 메시지 표시
+            emailValidationLabel.isHidden = true
             goLogin(email, pass, false)
         }
         
@@ -91,7 +98,8 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
                     print("SignIn : client Err \(status)")
                     break
                 case 500:
-                    self.showErrAlert()
+                    self.passValidationLabel.isHidden = false
+                    self.selectorImageView2.image = UIImage(named: "path378Red")
                     print("SignIn : server Err \(status)")
                     break
                 default:

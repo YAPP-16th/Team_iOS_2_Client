@@ -9,12 +9,17 @@
 import UIKit
 
 class ManageInfoViewController: UIViewController {
-
+    
     @IBOutlet weak var infoTableView: UITableView!
     var infoList = ["이메일 변경", "비밀번호 변경", "전화번호 변경"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+    }
+    
+    @IBAction func goBack(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
     
     func setUI(){
@@ -22,11 +27,6 @@ class ManageInfoViewController: UIViewController {
         infoTableView.dataSource = self
     }
     
-    func pushView(_ vc: String){
-        guard let detailVC = self.storyboard?.instantiateViewController(identifier: vc) else { return }
-        self.navigationController?.pushViewController(detailVC, animated: true)
-    }
-
 }
 
 extension ManageInfoViewController : UITableViewDelegate, UITableViewDataSource {
@@ -42,12 +42,10 @@ extension ManageInfoViewController : UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            pushView("EmailPhoneViewController")
-        default:
-            return
-        }
+        
+        let profileAuthenVC = self.storyboard?.instantiateViewController(identifier: "ProfileAuthenViewController") as! ProfileAuthenViewController
+        profileAuthenVC.authenType = infoList[indexPath.row]
+        self.navigationController?.pushViewController(profileAuthenVC, animated:true)
     }
     
 }
