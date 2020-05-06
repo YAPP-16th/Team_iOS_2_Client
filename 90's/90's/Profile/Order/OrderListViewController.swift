@@ -31,6 +31,7 @@ protocol OrderDetailDelegate {
 class OrderListViewController: UIViewController {
     @IBOutlet weak var noAlbumView: UIView!
     @IBOutlet weak var orderListTableView: UITableView!
+    var isExistAlbum = false
     
     //더미데이터
     var orderList = [Order(albumImage: "mysweetyLovesyou", albumStatus: .wait, albumName: "현창이의 행복한 앨범1", albumPrice: 20000, albumNum: 1), Order(albumImage: "mysweetyLovesyou", albumStatus: .confirm, albumName: "현창이의 행복한 앨범2", albumPrice: 20000, albumNum: 1), Order(albumImage: "mysweetyLovesyou", albumStatus: .ready, albumName: "현창이의 행복한 앨범3", albumPrice: 20000, albumNum: 1), Order(albumImage: "mysweetyLovesyou", albumStatus: .deliver, albumName: "현창이의 행복한 앨범4", albumPrice: 20000, albumNum: 1), Order(albumImage: "mysweetyLovesyou", albumStatus: .complete, albumName: "현창이의 행복한 앨범5", albumPrice: 20000, albumNum: 1)]
@@ -46,11 +47,17 @@ class OrderListViewController: UIViewController {
     
     //인화하러가기 버튼 클릭 시 액션
     @IBAction func clickPrintBtn(_ sender: Any) {
+        self.tabBarController?.selectedIndex = 0
     }
     
     func setUI(){
         orderListTableView.delegate = self
         orderListTableView.dataSource = self
+        
+        //앨범이 존재하지 않을 시 주문내역 테이블뷰 히든 처리
+        if(!isExistAlbum){
+            orderListTableView.isHidden = true
+        }
     }
     
 }

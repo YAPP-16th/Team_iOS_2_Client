@@ -47,7 +47,6 @@
 		9BBBA3E3243F6FD5002904AC /* AlbumCompleteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBBA3E2243F6FD5002904AC /* AlbumCompleteVC.swift */; };
 		9BC0DBB22444788F00CA90F7 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0DBB12444788F00CA90F7 /* ProfileVC.swift */; };
 		9BC0DBB4244478A600CA90F7 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0DBB3244478A600CA90F7 /* ProfileTableViewCell.swift */; };
-		9BC0DBB62444802A00CA90F7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0DBB52444802A00CA90F7 /* User.swift */; };
 		9BC16B1A2435B68F007F106C /* photoStickerCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC16B192435B68F007F106C /* photoStickerCollectionCell.swift */; };
 		9BC98F062448B3CD002629AF /* StickerLayout.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BC98F052448B3CD002629AF /* StickerLayout.xib */; };
 		9BC98F082448B74E002629AF /* StickerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC98F072448B74E002629AF /* StickerLayout.swift */; };
@@ -61,6 +60,8 @@
 		A3025CA22441AE3700041723 /* FindEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3025CA12441AE3700041723 /* FindEmailViewController.swift */; };
 		A3025CA42441AE9800041723 /* FindEmailErrViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3025CA32441AE9800041723 /* FindEmailErrViewController.swift */; };
 		A3025CA62441AED700041723 /* MakeNewPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3025CA52441AED700041723 /* MakeNewPassViewController.swift */; };
+		A30B21E12462BCAC00BDC75B /* NewPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30B21E02462BCAC00BDC75B /* NewPassViewController.swift */; };
+		A30B21E32462BCB800BDC75B /* CompletePassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30B21E22462BCB800BDC75B /* CompletePassViewController.swift */; };
 		A311E5922438A880005EEC29 /* AlbumPeriodController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A311E5912438A880005EEC29 /* AlbumPeriodController.swift */; };
 		A314260E2450A9E1005487F3 /* LoginResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A314260D2450A9E1005487F3 /* LoginResult.swift */; };
 		A318AC72243E290C00245434 /* TermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A318AC71243E290C00245434 /* TermViewController.swift */; };
@@ -90,7 +91,7 @@
 		A3B0D1CB245D548300DB90ED /* AnswerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D1CA245D548300DB90ED /* AnswerCell.swift */; };
 		A3B0D1D9245D6C8400DB90ED /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D1D8245D6C8400DB90ED /* SettingCell.swift */; };
 		A3B0D1FD245D756D00DB90ED /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D1FC245D756D00DB90ED /* InfoCell.swift */; };
-		A3B0D1FF245D977800DB90ED /* EmailPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D1FE245D977800DB90ED /* EmailPhoneViewController.swift */; };
+		A3B0D1FF245D977800DB90ED /* ProfileAuthenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D1FE245D977800DB90ED /* ProfileAuthenViewController.swift */; };
 		A3B0D201245D9DF800DB90ED /* NewEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D200245D9DF800DB90ED /* NewEmailViewController.swift */; };
 		A3B0D20B245DB22A00DB90ED /* CompleteEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D20A245DB22A00DB90ED /* CompleteEmailViewController.swift */; };
 		A3B0D218245DB47800DB90ED /* ChangeEmailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D217245DB47800DB90ED /* ChangeEmailService.swift */; };
@@ -546,7 +547,6 @@
 		9BBBA3E2243F6FD5002904AC /* AlbumCompleteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCompleteVC.swift; sourceTree = "<group>"; };
 		9BC0DBB12444788F00CA90F7 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		9BC0DBB3244478A600CA90F7 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
-		9BC0DBB52444802A00CA90F7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9BC16B192435B68F007F106C /* photoStickerCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoStickerCollectionCell.swift; sourceTree = "<group>"; };
 		9BC98F052448B3CD002629AF /* StickerLayout.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StickerLayout.xib; sourceTree = "<group>"; };
 		9BC98F072448B74E002629AF /* StickerLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerLayout.swift; sourceTree = "<group>"; };
@@ -562,6 +562,8 @@
 		A3025CA12441AE3700041723 /* FindEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailViewController.swift; sourceTree = "<group>"; };
 		A3025CA32441AE9800041723 /* FindEmailErrViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailErrViewController.swift; sourceTree = "<group>"; };
 		A3025CA52441AED700041723 /* MakeNewPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeNewPassViewController.swift; sourceTree = "<group>"; };
+		A30B21E02462BCAC00BDC75B /* NewPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPassViewController.swift; sourceTree = "<group>"; };
+		A30B21E22462BCB800BDC75B /* CompletePassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletePassViewController.swift; sourceTree = "<group>"; };
 		A311E5912438A880005EEC29 /* AlbumPeriodController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumPeriodController.swift; sourceTree = "<group>"; };
 		A314260D2450A9E1005487F3 /* LoginResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResult.swift; sourceTree = "<group>"; };
 		A318AC71243E290C00245434 /* TermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermViewController.swift; sourceTree = "<group>"; };
@@ -593,7 +595,7 @@
 		A3B0D1CA245D548300DB90ED /* AnswerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCell.swift; sourceTree = "<group>"; };
 		A3B0D1D8245D6C8400DB90ED /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		A3B0D1FC245D756D00DB90ED /* InfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
-		A3B0D1FE245D977800DB90ED /* EmailPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailPhoneViewController.swift; sourceTree = "<group>"; };
+		A3B0D1FE245D977800DB90ED /* ProfileAuthenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAuthenViewController.swift; sourceTree = "<group>"; };
 		A3B0D200245D9DF800DB90ED /* NewEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEmailViewController.swift; sourceTree = "<group>"; };
 		A3B0D20A245DB22A00DB90ED /* CompleteEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteEmailViewController.swift; sourceTree = "<group>"; };
 		A3B0D217245DB47800DB90ED /* ChangeEmailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailService.swift; sourceTree = "<group>"; };
@@ -760,24 +762,13 @@
 		9B45BCFF2438734200497EA5 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				A30B21DF2462B8E500BDC75B /* NetworkService */,
+				A30B21DC2462B84900BDC75B /* Main */,
+				A30B21DB2462B81800BDC75B /* FAQ */,
+				A30B21DA2462B81200BDC75B /* ManageInfo */,
+				A30B21D92462B80A00BDC75B /* Setting */,
+				A30B21D82462B7F000BDC75B /* Order */,
 				9B45BD002438734E00497EA5 /* Profile.storyboard */,
-				9BC0DBB12444788F00CA90F7 /* ProfileVC.swift */,
-				9BC0DBB3244478A600CA90F7 /* ProfileTableViewCell.swift */,
-				9BC0DBB52444802A00CA90F7 /* User.swift */,
-				A3E133D524558988007950D8 /* OrderListViewController.swift */,
-				A3E133D724558997007950D8 /* ManageInfoViewController.swift */,
-				A3E133D9245589A1007950D8 /* FAQViewController.swift */,
-				A3E133DB245589A7007950D8 /* SettingViewController.swift */,
-				A3315E0B245C5BA6005536C2 /* OrderCell.swift */,
-				A3315E22245C6C54005536C2 /* OrderDetailViewController.swift */,
-				A3B0D1BD245D547800DB90ED /* QuestionCell.swift */,
-				A3B0D1CA245D548300DB90ED /* AnswerCell.swift */,
-				A3B0D1D8245D6C8400DB90ED /* SettingCell.swift */,
-				A3B0D1FC245D756D00DB90ED /* InfoCell.swift */,
-				A3B0D1FE245D977800DB90ED /* EmailPhoneViewController.swift */,
-				A3B0D200245D9DF800DB90ED /* NewEmailViewController.swift */,
-				A3B0D20A245DB22A00DB90ED /* CompleteEmailViewController.swift */,
-				A3B0D217245DB47800DB90ED /* ChangeEmailService.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1634,6 +1625,82 @@
 			path = NetworkResult;
 			sourceTree = "<group>";
 		};
+		A30B21D82462B7F000BDC75B /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				A3315E22245C6C54005536C2 /* OrderDetailViewController.swift */,
+				A3315E0B245C5BA6005536C2 /* OrderCell.swift */,
+				A3E133D524558988007950D8 /* OrderListViewController.swift */,
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
+		A30B21D92462B80A00BDC75B /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				A3E133DB245589A7007950D8 /* SettingViewController.swift */,
+				A3B0D1D8245D6C8400DB90ED /* SettingCell.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		A30B21DA2462B81200BDC75B /* ManageInfo */ = {
+			isa = PBXGroup;
+			children = (
+				A30B21DE2462B89A00BDC75B /* NewPass */,
+				A30B21DD2462B88C00BDC75B /* NewEmail */,
+				A3B0D1FE245D977800DB90ED /* ProfileAuthenViewController.swift */,
+				A3B0D1FC245D756D00DB90ED /* InfoCell.swift */,
+				A3E133D724558997007950D8 /* ManageInfoViewController.swift */,
+			);
+			path = ManageInfo;
+			sourceTree = "<group>";
+		};
+		A30B21DB2462B81800BDC75B /* FAQ */ = {
+			isa = PBXGroup;
+			children = (
+				A3B0D1BD245D547800DB90ED /* QuestionCell.swift */,
+				A3B0D1CA245D548300DB90ED /* AnswerCell.swift */,
+				A3E133D9245589A1007950D8 /* FAQViewController.swift */,
+			);
+			path = FAQ;
+			sourceTree = "<group>";
+		};
+		A30B21DC2462B84900BDC75B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				9BC0DBB12444788F00CA90F7 /* ProfileVC.swift */,
+				9BC0DBB3244478A600CA90F7 /* ProfileTableViewCell.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		A30B21DD2462B88C00BDC75B /* NewEmail */ = {
+			isa = PBXGroup;
+			children = (
+				A3B0D20A245DB22A00DB90ED /* CompleteEmailViewController.swift */,
+				A3B0D200245D9DF800DB90ED /* NewEmailViewController.swift */,
+			);
+			path = NewEmail;
+			sourceTree = "<group>";
+		};
+		A30B21DE2462B89A00BDC75B /* NewPass */ = {
+			isa = PBXGroup;
+			children = (
+				A30B21E02462BCAC00BDC75B /* NewPassViewController.swift */,
+				A30B21E22462BCB800BDC75B /* CompletePassViewController.swift */,
+			);
+			path = NewPass;
+			sourceTree = "<group>";
+		};
+		A30B21DF2462B8E500BDC75B /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				A3B0D217245DB47800DB90ED /* ChangeEmailService.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
 		A33376092420CFB3000DC7C4 = {
 			isa = PBXGroup;
 			children = (
@@ -1915,10 +1982,10 @@
 				9B44EDE12429FC9100B0D774 /* ImageRenderVC.swift in Sources */,
 				A33376302420EA9D000DC7C4 /* AlbumCell.swift in Sources */,
 				9B180800243DF53200AF1CE6 /* albumLayoutCollectionCell.swift in Sources */,
+				A30B21E32462BCB800BDC75B /* CompletePassViewController.swift in Sources */,
 				9BFC148A2441C14500F38AFF /* Protocol.swift in Sources */,
 				9B6A134C2440CE9400E78E66 /* AlbumInfoVC.swift in Sources */,
 				9BAAA9712459624B002567AF /* AlbumServiceData.swift in Sources */,
-				9BC0DBB62444802A00CA90F7 /* User.swift in Sources */,
 				A3315E23245C6C54005536C2 /* OrderDetailViewController.swift in Sources */,
 				39DE24C9245472F4007E8D40 /* PrintListTableViewCell.swift in Sources */,
 				9BBBA3E1243F690B002904AC /* AlbumCoverCollectionCell.swift in Sources */,
@@ -1926,7 +1993,7 @@
 				9BC0DBB22444788F00CA90F7 /* ProfileVC.swift in Sources */,
 				9BB1C5742441EEBA0035DEBF /* FilterCell.swift in Sources */,
 				A38A2D3824588E99000BF82D /* LoginService.swift in Sources */,
-				A3B0D1FF245D977800DB90ED /* EmailPhoneViewController.swift in Sources */,
+				A3B0D1FF245D977800DB90ED /* ProfileAuthenViewController.swift in Sources */,
 				A3B0D1BE245D547800DB90ED /* QuestionCell.swift in Sources */,
 				9BBBA3E3243F6FD5002904AC /* AlbumCompleteVC.swift in Sources */,
 				A36DC86F24236386001B3767 /* AlbumDetailController.swift in Sources */,
@@ -1958,6 +2025,7 @@
 				9BC16B1A2435B68F007F106C /* photoStickerCollectionCell.swift in Sources */,
 				39DE24C724547143007E8D40 /* PrintListViewController.swift in Sources */,
 				9BC0DBB4244478A600CA90F7 /* ProfileTableViewCell.swift in Sources */,
+				A30B21E12462BCAC00BDC75B /* NewPassViewController.swift in Sources */,
 				9BB1C5762441EEC30035DEBF /* FilterViewController.swift in Sources */,
 				A3B0D1D9245D6C8400DB90ED /* SettingCell.swift in Sources */,
 				9B6A134E2440D0C500E78E66 /* MemberTableViewCell.swift in Sources */,

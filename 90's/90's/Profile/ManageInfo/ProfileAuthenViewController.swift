@@ -8,8 +8,9 @@
 
 import UIKit
 
-class EmailPhoneViewController: UIViewController {
+class ProfileAuthenViewController: UIViewController {
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tfTelephone: UITextField!
     @IBOutlet weak var tfAuthenNumber: UITextField!
     @IBOutlet weak var selectorImageView1: UIImageView!
@@ -18,6 +19,9 @@ class EmailPhoneViewController: UIViewController {
     @IBOutlet weak var askNumberBtn: UIButton!
     @IBOutlet weak var okBtn: UIButton!
     @IBOutlet weak var buttonConst: NSLayoutConstraint!
+    
+    //이메일 변경인지 패스워드 변경인지 구분할 인덱스
+    var authenType:String!
     
     var telephone:String!
     var isClicked = false
@@ -51,6 +55,7 @@ class EmailPhoneViewController: UIViewController {
     }
     
     func setUI(){
+        titleLabel.text = authenType
         validationLabel.isHidden = true
         okBtn.isEnabled = false
         okBtn.layer.cornerRadius = 8.0
@@ -137,8 +142,13 @@ class EmailPhoneViewController: UIViewController {
         guard let inputAuthenNumber = tfAuthenNumber.text else { return }
         guard let number = authenNumber else { return }
         if(inputAuthenNumber == number){
-            let newEmailVC = storyboard?.instantiateViewController(identifier: "NewEmailViewController") as! NewEmailViewController
-            navigationController?.pushViewController(newEmailVC, animated: true)
+            if(authenType == "이메일 변경"){
+                let newEmailVC = storyboard?.instantiateViewController(identifier: "NewEmailViewController") as! NewEmailViewController
+                navigationController?.pushViewController(newEmailVC, animated: true)
+            }else {
+                let newPassVC = storyboard?.instantiateViewController(identifier: "NewPassViewController") as! NewPassViewController
+                navigationController?.pushViewController(newPassVC, animated: true)
+            }
         }else{
             validationLabel.isHidden = false
         }

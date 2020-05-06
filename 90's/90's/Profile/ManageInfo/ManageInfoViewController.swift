@@ -9,12 +9,17 @@
 import UIKit
 
 class ManageInfoViewController: UIViewController {
-
+    
     @IBOutlet weak var infoTableView: UITableView!
     var infoList = ["이메일 변경", "비밀번호 변경", "전화번호 변경"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+    }
+    
+    @IBAction func goBack(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
     
     func setUI(){
@@ -22,11 +27,6 @@ class ManageInfoViewController: UIViewController {
         infoTableView.dataSource = self
     }
     
-    func pushView(_ vc: String){
-        guard let detailVC = self.storyboard?.instantiateViewController(identifier: vc) else { return }
-        self.navigationController?.pushViewController(detailVC, animated: true)
-    }
-
 }
 
 extension ManageInfoViewController : UITableViewDelegate, UITableViewDataSource {
@@ -43,8 +43,18 @@ extension ManageInfoViewController : UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
+        //이메일 변경, 패스워드 변경은 전화번호 변경 화면
+        //전화번호 변경은 패스워드 확인 화면
         case 0:
-            pushView("EmailPhoneViewController")
+            let profileAuthenVC = self.storyboard?.instantiateViewController(identifier: "ProfileAuthenViewController") as! ProfileAuthenViewController
+            profileAuthenVC.authenType = infoList[indexPath.row]
+            self.navigationController?.pushViewController(profileAuthenVC, animated:true)
+        case 1:
+            let profileAuthenVC = self.storyboard?.instantiateViewController(identifier: "ProfileAuthenViewController") as! ProfileAuthenViewController
+            profileAuthenVC.authenType = infoList[indexPath.row]
+            self.navigationController?.pushViewController(profileAuthenVC, animated:true)
+        case 2:
+            return
         default:
             return
         }
