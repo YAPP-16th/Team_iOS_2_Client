@@ -62,6 +62,7 @@
 		A3025CA62441AED700041723 /* MakeNewPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3025CA52441AED700041723 /* MakeNewPassViewController.swift */; };
 		A30B21E12462BCAC00BDC75B /* NewPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30B21E02462BCAC00BDC75B /* NewPassViewController.swift */; };
 		A30B21E32462BCB800BDC75B /* CompletePassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30B21E22462BCB800BDC75B /* CompletePassViewController.swift */; };
+		A30B21F82462D1FE00BDC75B /* ChangePassService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30B21F72462D1FE00BDC75B /* ChangePassService.swift */; };
 		A311E5922438A880005EEC29 /* AlbumPeriodController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A311E5912438A880005EEC29 /* AlbumPeriodController.swift */; };
 		A314260E2450A9E1005487F3 /* LoginResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A314260D2450A9E1005487F3 /* LoginResult.swift */; };
 		A318AC72243E290C00245434 /* TermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A318AC71243E290C00245434 /* TermViewController.swift */; };
@@ -564,6 +565,7 @@
 		A3025CA52441AED700041723 /* MakeNewPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeNewPassViewController.swift; sourceTree = "<group>"; };
 		A30B21E02462BCAC00BDC75B /* NewPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPassViewController.swift; sourceTree = "<group>"; };
 		A30B21E22462BCB800BDC75B /* CompletePassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletePassViewController.swift; sourceTree = "<group>"; };
+		A30B21F72462D1FE00BDC75B /* ChangePassService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassService.swift; sourceTree = "<group>"; };
 		A311E5912438A880005EEC29 /* AlbumPeriodController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumPeriodController.swift; sourceTree = "<group>"; };
 		A314260D2450A9E1005487F3 /* LoginResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResult.swift; sourceTree = "<group>"; };
 		A318AC71243E290C00245434 /* TermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermViewController.swift; sourceTree = "<group>"; };
@@ -1697,6 +1699,7 @@
 			isa = PBXGroup;
 			children = (
 				A3B0D217245DB47800DB90ED /* ChangeEmailService.swift */,
+				A30B21F72462D1FE00BDC75B /* ChangePassService.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -1984,6 +1987,7 @@
 				9B180800243DF53200AF1CE6 /* albumLayoutCollectionCell.swift in Sources */,
 				A30B21E32462BCB800BDC75B /* CompletePassViewController.swift in Sources */,
 				9BFC148A2441C14500F38AFF /* Protocol.swift in Sources */,
+				A30B21F82462D1FE00BDC75B /* ChangePassService.swift in Sources */,
 				9B6A134C2440CE9400E78E66 /* AlbumInfoVC.swift in Sources */,
 				9BAAA9712459624B002567AF /* AlbumServiceData.swift in Sources */,
 				A3315E23245C6C54005536C2 /* OrderDetailViewController.swift in Sources */,

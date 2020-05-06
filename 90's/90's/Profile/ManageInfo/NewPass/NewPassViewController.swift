@@ -17,7 +17,7 @@ class NewPassViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var validationLabel: UILabel!
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var buttonConst: NSLayoutConstraint!
-        
+    var pass:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +33,10 @@ class NewPassViewController: UIViewController, UITextFieldDelegate {
     @IBAction func clickNextBtn(_ sender: Any) {
         let newPass = tfNewPass.text!
         let confirmPass = tfConfirmPass.text!
+        
         if(newPass == confirmPass){
-            let completePassVC = storyboard?.instantiateViewController(identifier: "CompletePassViewController") as! CompletePassViewController
-            completePassVC.pass = newPass
-            navigationController?.pushViewController(completePassVC, animated: true)
+            pass = newPass
+            changePassword()
         }else {
             validationLabel.isHidden = false
             selectorImageView2.image = UIImage(named: "path378Red")
@@ -121,6 +121,49 @@ class NewPassViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-
-    
 }
+
+
+extension NewPassViewController {
+    //비밀번호 변경 서버통신 메소드
+    func changePassword(){
+        ChangePassService.shared.changePass(password: self.pass, completion: { response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200:
+                    //기존의 정보 다 삭제(자체로그인 시 저장하는 정보 : email, password, social, jwt)
+                    UserDefaults.standard.removeObject(forKey: "email")
+                    UserDefaults.standard.removeObject(forKey: "password")
+                    UserDefaults.standard.removeObject(forKey: "social")
+                    UserDefaults.standard.removeObject(forKey: "jwt")
+                    
+                    self.goCompleteVC()
+                    break
+                case 401...404:
+                    self.showErrAlert()
+                    break
+                case 500:
+                    self.showErrAlert()
+                    break
+                default:
+                    return
+                }
+            }
+            
+        })
+    }
+    
+    func showErrAlert(){
+        let alert = UIAlertController(title: "오류", message: "비밀번호 변경 불가", preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(action)
+        self.present(alert, animated: true)
+    }
+    
+    func goCompleteVC() {
+        let completePassVC = storyboard?.instantiateViewController(identifier: "CompletePassViewController") as! CompletePassViewController
+        completePassVC.pass = self.pass
+        navigationController?.pushViewController(completePassVC, animated: true)
+    }
+}
+

@@ -98,18 +98,7 @@ class NewEmailViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func goCompleteVC() {
-        let completeEmailVC = storyboard?.instantiateViewController(identifier: "CompleteEmailViewController") as! CompleteEmailViewController
-        completeEmailVC.email = self.email
-        navigationController?.pushViewController(completeEmailVC, animated: true)
-    }
     
-    func showErrAlert(){
-        let alert = UIAlertController(title: "오류", message: "이메일 변경 불가", preferredStyle: .alert)
-        let action = UIAlertAction(title: "확인", style: .default)
-        alert.addAction(action)
-        self.present(alert, animated: true)
-    }
     
 }
 
@@ -171,6 +160,19 @@ extension NewEmailViewController {
                 
             })
         }
+    }
+    
+    func goCompleteVC() {
+        let completeEmailVC = storyboard?.instantiateViewController(identifier: "CompleteEmailViewController") as! CompleteEmailViewController
+        completeEmailVC.email = self.email
+        navigationController?.pushViewController(completeEmailVC, animated: true)
+    }
+    
+    func showErrAlert(){
+        let alert = UIAlertController(title: "오류", message: "이메일 변경 불가", preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(action)
+        self.present(alert, animated: true)
     }
     
     

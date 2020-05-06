@@ -27,7 +27,7 @@ struct ChangeEmailService : APIManager {
             case .success:
                 completion(response)
             case .failure(let err):
-                print("signUp err : \(err)")
+                print("Update Email err : \(err)")
                 break
             }
         })

@@ -28,14 +28,16 @@ class CompletePassViewController: UIViewController {
     
     @IBAction func goLogin(_ sender: Any) {
         //로그인화면으로 rootView변경
-           let appDelegate = UIApplication.shared.delegate as! AppDelegate
-           appDelegate.switchSignIn()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.switchSignIn()
     }
     
     func setUI(){
-        passLabel.text = pass
         loginBtn.layer.cornerRadius = 8.0
+        let startIndex = pass.index(pass.startIndex, offsetBy: 2)
+        let endIndex = pass.endIndex
+        let maskingPass = pass.replacingOccurrences(of: pass, with: "*", range: startIndex..<endIndex)
+        passLabel.text = maskingPass
     }
-
     
 }
