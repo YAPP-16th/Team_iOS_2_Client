@@ -28,6 +28,7 @@ class OrderDetailViewController: UIViewController {
     @IBOutlet weak var depositLabel: UILabel!
     @IBOutlet weak var depositPeriodLabel: UILabel!
     
+    var copyStr:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,8 @@ class OrderDetailViewController: UIViewController {
     
     //복사하기 버튼 클릭 시 액션
     @IBAction func clickCopyBtn(_ sender: Any) {
+        let pasteBoard = UIPasteboard.general
+        pasteBoard.string = copyStr
     }
     
     func setUI(){
@@ -54,6 +57,13 @@ class OrderDetailViewController: UIViewController {
         ])
         attributedString.addAttribute(.font, value: UIFont(name: "NotoSansCJKkr-DemiLight", size: 14.0)!, range: NSRange(location: 0, length: 4))
         accountLabel.attributedText = attributedString
+
+        //복사할 string
+        let str = accountLabel.text!
+        let startIndex = str.index(str.startIndex, offsetBy: 5)
+        let endIndex = str.endIndex
+        let range = startIndex..<endIndex
+        copyStr = String(str[range])
     }
     
 }
