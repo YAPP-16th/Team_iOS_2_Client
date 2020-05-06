@@ -150,6 +150,9 @@ class TelephoneAuthenViewController: UIViewController {
     }
     
     
+    //자체 회원가입 서버 통신 메소드
+    //회원가입 후 '로그인하기' 버튼 클릭 시 로그인 화면으로 이동
+    
     func goSign(){
         SignUpService.shared.signUp(email: email, name: nickName, password: pwd, phone: telephone, sosial: false, completion: {
             response in
@@ -160,8 +163,8 @@ class TelephoneAuthenViewController: UIViewController {
                     let decoder = JSONDecoder()
                     let signUpResult = try? decoder.decode(SignUpResult.self, from: data)
                     guard let jwt = signUpResult?.jwt else { return }
-                    print("\(jwt)")
                     let completeVC = self.storyboard?.instantiateViewController(identifier: "CompleteViewController") as! CompleteViewController
+                    completeVC.isSocial = false
                     self.navigationController?.pushViewController(completeVC, animated: true)
                     break
                 case 400...404:

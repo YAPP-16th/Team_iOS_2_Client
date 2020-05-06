@@ -187,7 +187,6 @@ class AuthenViewController: UIViewController {
                     //카카오 로그인 시 필요한 정보 : email, social 값
                     UserDefaults.standard.set(self.email, forKey: "email")
                     UserDefaults.standard.set(self.social, forKey: "social")
-                    UserDefaults.standard.set(false, forKey: "initial")
                     UserDefaults.standard.set(jwt, forKey: "jwt")
                     
 

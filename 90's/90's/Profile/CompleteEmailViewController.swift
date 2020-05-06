@@ -25,7 +25,9 @@ class CompleteEmailViewController: UIViewController {
     }
     
     @IBAction func goLogin(_ sender: Any) {
-        navigationController?.popToRootViewController(animated: true)
+        //로그인화면으로 rootView변경
+           let appDelegate = UIApplication.shared.delegate as! AppDelegate
+           appDelegate.switchSignIn()
     }
     
     /*
