@@ -151,9 +151,10 @@ extension NewEmailViewController {
                 if let status = response.response?.statusCode {
                     switch status {
                     case 200:
-                        //기존의 정보 다 삭제
+                        //기존의 정보 다 삭제(자체로그인 시 저장하는 정보 : email, password, social, jwt)
                         UserDefaults.standard.removeObject(forKey: "email")
                         UserDefaults.standard.removeObject(forKey: "password")
+                        UserDefaults.standard.removeObject(forKey: "social")
                         UserDefaults.standard.removeObject(forKey: "jwt")
                         self.goCompleteVC()
                         break

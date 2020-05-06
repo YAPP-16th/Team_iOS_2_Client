@@ -38,28 +38,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application.registerForRemoteNotifications(matching: [.badge, .sound, .alert])
         }
         /***************************** Push service end ******************************/
-        return true
+
         //카카오톡 사용자 토큰 주기적 갱신
         KOSession.shared()?.isAutomaticPeriodicRefresh = true
         
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        let initial:Bool = UserDefaults.standard.bool(forKey: "initial")
-        
-        if(initial){
-            let mainSB: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let enterVC = mainSB.instantiateViewController(withIdentifier: "InitialNavi") as! UINavigationController
-            self.window?.rootViewController = enterVC
-            self.window?.makeKeyAndVisible()
-        }else {
-            let signInSB: UIStoryboard = UIStoryboard(name: "SignIn", bundle: nil)
-            let loginMainVC = signInSB.instantiateViewController(identifier: "LoginMainViewController") as! LoginMainViewController
-            self.window?.rootViewController = loginMainVC
-            self.window?.makeKeyAndVisible()
-        }
-        
-        
         return true
     }
+    
+    func switchEnterView() {
+         self.window = UIWindow(frame: UIScreen.main.bounds)
+         let mainSB: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+         let enterVC = mainSB.instantiateViewController(identifier: "EnterViewController") as! EnterViewController
+         let enterNav = UINavigationController(rootViewController: enterVC)
+         enterNav.isNavigationBarHidden = true
+         
+         self.window?.rootViewController = enterNav
+         self.window?.makeKeyAndVisible()
+     }
+    
+    func switchSignIn() {
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let signInSB: UIStoryboard = UIStoryboard(name: "SignIn", bundle: nil)
+        let loginMainVC = signInSB.instantiateViewController(identifier: "LoginMainViewController") as! LoginMainViewController
+        let loginNav = UINavigationController(rootViewController: loginMainVC)
+        loginNav.isNavigationBarHidden = true
+        
+        self.window?.rootViewController = loginNav
+        self.window?.makeKeyAndVisible()
+    }
+    
+    func switchTab() {
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let mainSB: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let tabVC = mainSB.instantiateViewController(identifier: "TabBarController") as! UITabBarController
+        let tabNav = UINavigationController(rootViewController: tabVC)
+        tabNav.isNavigationBarHidden = true
+        
+        self.window?.rootViewController = tabNav
+        self.window?.makeKeyAndVisible()
+    }
+    
+    
+    
+    
     
     // Called when APNs has assigned the device a unique token
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -94,12 +115,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             let info = userInfo["aps"]
             print(info)            
-//            guard let info = userInfo["aps"] as? Dictionary
-//                else {
-//                    return
-//            }
-//            print("info: \(info)")
-//
+            //            guard let info = userInfo["aps"] as? Dictionary
+            //                else {
+            //                    return
+            //            }
+            //            print("info: \(info)")
+            //
             guard let custom = userInfo["custom"] as? String else{
                 return
             }
@@ -114,8 +135,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        KOSession.handleDidEnterBackground()
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -123,7 +143,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        KOSession.handleDidBecomeActive()
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
@@ -136,39 +156,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Push notification received: \(data)")
     }
     
-    
-}
-// MARK: UISceneSession Lifecycle
-
-func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-    // Called when a new scene session is being created.
-    // Use this method to select a configuration to create the new scene with.
-    return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-}
-
-func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-    // Called when the user discards a scene session.
-    // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-    // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-}
-
-func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-    if KOSession.isKakaoAccountLoginCallback(url.absoluteURL) {
-        return KOSession.handleOpen(url)
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        if KOSession.isKakaoAccountLoginCallback(url.absoluteURL) {
+            return KOSession.handleOpen(url)
+        }
+        
+        return true
     }
-    
-    return true
-}
 
-func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-    if KOSession.isKakaoAccountLoginCallback(url.absoluteURL) {
-        return KOSession.handleOpen(url)
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        if KOSession.isKakaoAccountLoginCallback(url.absoluteURL) {
+            return KOSession.handleOpen(url)
+        }
+        return true
     }
-    return true
-}
 
-func applicationDidEnterBackground(_ application: UIApplication) {
-    KOSession.handleDidEnterBackground()
+
+
+    
 }
 
 

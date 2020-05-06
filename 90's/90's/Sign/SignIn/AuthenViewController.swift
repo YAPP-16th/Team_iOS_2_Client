@@ -141,10 +141,6 @@ class AuthenViewController: UIViewController {
     }
     
     func goAuthen(authenType : String){
-        //이메일 찾기 -> 인증번호 맞을 시, 이메일이 존재할 시 이메일 확인 화면으로
-        //비밀번호 찾기 -> 인증번호 맞을 시 비밀번호 변경 화면으로
-        //소셜 로그인 가입 시 -> 인증번호 맞을 시
-        
         guard let inputAuthenNumber = tfAuthenNumber.text else { return }
         guard let number = authenNumber else { return }
         if(inputAuthenNumber == number){
@@ -160,8 +156,6 @@ class AuthenViewController: UIViewController {
             case "findPass":
                 let makePassVC = storyboard?.instantiateViewController(identifier: "MakeNewPassViewController") as! MakeNewPassViewController
                 navigationController?.pushViewController(makePassVC, animated: true)
-            case "socialSignUp":
-                goSign()
             default:
                 return
             }
@@ -169,55 +163,6 @@ class AuthenViewController: UIViewController {
         }else{
             validationLabel.isHidden = false
         }
-    }
-    
-    func goSign(){
-        SignUpService.shared.signUp(email: email, name: nickName, password: pwd, phone: telephone, sosial: social, completion: {
-            response in
-            if let status = response.response?.statusCode {
-                switch status {
-                case 200:
-                    guard let data = response.data else { return }
-                    let decoder = JSONDecoder()
-                    let signUpResult = try? decoder.decode(SignUpResult.self, from: data)
-                    guard let jwt = signUpResult?.jwt else { return }
-                    print("\(jwt)")
-                    
-                    //UserDefault로 카카오 로그인에 대한 정보를 저장함
-                    //카카오 로그인 시 필요한 정보 : email, social 값
-                    UserDefaults.standard.set(self.email, forKey: "email")
-                    UserDefaults.standard.set(self.social, forKey: "social")
-                    UserDefaults.standard.set(false, forKey: "initial")
-                    UserDefaults.standard.set(jwt, forKey: "jwt")
-                    
-
-                    //회원가입 완료 화면으로 이동
-                    let signUpSB = UIStoryboard(name: "SignUp", bundle: nil)
-                    let completeVC = signUpSB.instantiateViewController(identifier: "CompleteViewController") as! CompleteViewController
-                    completeVC.isSocial = true
-                    self.navigationController?.pushViewController(completeVC, animated: true)
-                    break
-                case 400...404:
-                    self.showErrAlert()
-                    print("SignUp : client Err \(response.error)")
-                    break
-                case 500:
-                    self.showErrAlert()
-                    print("SignUp : server Err \(response.error)")
-                    break
-                default:
-                    return
-                }
-            }
-            
-        })
-    }
-    
-    func showErrAlert(){
-        let alert = UIAlertController(title: "오류", message: "소셜 회원가입 불가", preferredStyle: .alert)
-        let action = UIAlertAction(title: "확인", style: .default)
-        alert.addAction(action)
-        self.present(alert, animated: true)
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
