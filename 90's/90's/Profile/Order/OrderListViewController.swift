@@ -69,6 +69,7 @@ extension OrderListViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let orderDetailVC = storyboard?.instantiateViewController(identifier: "OrderDetailViewController") as! OrderDetailViewController
+        orderDetailVC.orderStatus = orderList[indexPath.row].albumStatus
         navigationController?.pushViewController(orderDetailVC, animated: true)
     }
     
