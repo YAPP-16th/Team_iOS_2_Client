@@ -9,7 +9,7 @@
 import Foundation
 
 
-class NewPassViewController: UIViewController {
+class NewPassViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var tfNewPass: UITextField!
     @IBOutlet weak var tfConfirmPass: UITextField!
     @IBOutlet weak var selectorImageView1: UIImageView!
@@ -35,7 +35,7 @@ class NewPassViewController: UIViewController {
         let confirmPass = tfConfirmPass.text!
         if(newPass == confirmPass){
             let completePassVC = storyboard?.instantiateViewController(identifier: "CompletePassViewController") as! CompletePassViewController
-            completePassVC.pwd = newPass
+            completePassVC.pass = newPass
             navigationController?.pushViewController(completePassVC, animated: true)
         }else {
             validationLabel.isHidden = false

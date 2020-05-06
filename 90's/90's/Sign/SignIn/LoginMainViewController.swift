@@ -30,7 +30,13 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func goBack(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+        guard let count = navigationController?.viewControllers.count else { return }
+        if (count >= 2){
+            navigationController?.popViewController(animated: true)
+        }else {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.switchEnterView()
+        }
     }
     
     @IBAction func goLogin(_ sender: Any) {
