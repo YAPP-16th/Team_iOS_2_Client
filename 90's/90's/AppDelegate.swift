@@ -38,12 +38,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application.registerForRemoteNotifications(matching: [.badge, .sound, .alert])
         }
         /***************************** Push service end ******************************/
-        return true
+
         //카카오톡 사용자 토큰 주기적 갱신
         KOSession.shared()?.isAutomaticPeriodicRefresh = true
         
         return true
     }
+    
+    func switchEnterView() {
+         self.window = UIWindow(frame: UIScreen.main.bounds)
+         let mainSB: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+         let enterVC = mainSB.instantiateViewController(identifier: "EnterViewController") as! EnterViewController
+         let enterNav = UINavigationController(rootViewController: enterVC)
+         enterNav.isNavigationBarHidden = true
+         
+         self.window?.rootViewController = enterNav
+         self.window?.makeKeyAndVisible()
+     }
     
     func switchSignIn() {
         self.window = UIWindow(frame: UIScreen.main.bounds)
@@ -124,8 +135,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        KOSession.handleDidEnterBackground()
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -133,7 +143,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        KOSession.handleDidBecomeActive()
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
@@ -146,26 +156,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Push notification received: \(data)")
     }
     
-    
-}
-
-func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-    if KOSession.isKakaoAccountLoginCallback(url.absoluteURL) {
-        return KOSession.handleOpen(url)
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        if KOSession.isKakaoAccountLoginCallback(url.absoluteURL) {
+            return KOSession.handleOpen(url)
+        }
+        
+        return true
     }
-    
-    return true
-}
 
-func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-    if KOSession.isKakaoAccountLoginCallback(url.absoluteURL) {
-        return KOSession.handleOpen(url)
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        if KOSession.isKakaoAccountLoginCallback(url.absoluteURL) {
+            return KOSession.handleOpen(url)
+        }
+        return true
     }
-    return true
-}
 
-func applicationDidEnterBackground(_ application: UIApplication) {
-    KOSession.handleDidEnterBackground()
+
+
+    
 }
 
 

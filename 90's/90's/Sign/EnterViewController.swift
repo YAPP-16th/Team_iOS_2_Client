@@ -94,15 +94,15 @@ class EnterViewController: UIViewController {
                         let email = user.account?.email,
                         let nickName = user.account?.profile?.nickname
                         else { return }
+                    print("\(email) & \(nickName)")
                     
                     //전화번호 인증화면 이동
-                    let signInSB = UIStoryboard(name: "SignIn", bundle: nil)
-                    let authenVC = signInSB.instantiateViewController(identifier: "AuthenViewController") as! AuthenViewController
+                    let signUpSB = UIStoryboard(name: "SignUp", bundle: nil)
+                    let authenVC = signUpSB.instantiateViewController(identifier: "TelephoneAuthenViewController") as! TelephoneAuthenViewController
                     
+                    authenVC.isSocial = true
                     authenVC.email = email
                     authenVC.nickName = nickName
-                    authenVC.social = true
-                    authenVC.authenType = "socialSignUp"
                     self.navigationController?.pushViewController(authenVC, animated: true)
                 })
                 

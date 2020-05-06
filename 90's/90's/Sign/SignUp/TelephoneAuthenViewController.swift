@@ -15,14 +15,21 @@ class TelephoneAuthenViewController: UIViewController {
     @IBOutlet weak var selectorImageView2: UIImageView!
     @IBOutlet weak var tfAuthenNumber: UITextField!
     @IBOutlet weak var validationLabel: UILabel!
+    @IBOutlet weak var pathImageVIew: UIImageView!
+
+    @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var okBtn: UIButton!
     @IBOutlet weak var askNumberBtn: UIButton!
     @IBOutlet weak var buttonConst: NSLayoutConstraint!
     
+    //isSocial = true이면 카카오톡 회원가입 (EnterView -> AuthenView)
+    //isSocial = false이면 자체 회원가입 (EnterView -> EmailView -> PassView -> AuthenView)
+    var isSocial:Bool!
     var email:String!
-    var pwd:String!
+    var pwd:String?
     var nickName:String!
     var telephone:String!
+    
     var isClicked = false
     var isInitial1 = false
     var isInitial2 = false
@@ -36,7 +43,15 @@ class TelephoneAuthenViewController: UIViewController {
     }
     
     @IBAction func goBack(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+        //소셜로그인일 시 뒤로가기 클릭 시 메인화면
+        if(isSocial){
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.switchEnterView()
+        }else {
+           //아닐 시 닉네임 입력화면
+            navigationController?.popViewController(animated: true)
+        }
+       
     }
     
     //전송 버튼 클릭 시
@@ -60,6 +75,11 @@ class TelephoneAuthenViewController: UIViewController {
         okBtn.isEnabled = false
         okBtn.layer.cornerRadius = 8.0
         askNumberBtn.layer.cornerRadius = 8.0
+       
+        if(isSocial){
+            pathImageVIew.isHidden = true
+            numberLabel.isHidden = true
+        }
     }
     
     //Observer
@@ -150,11 +170,8 @@ class TelephoneAuthenViewController: UIViewController {
     }
     
     
-    //자체 회원가입 서버 통신 메소드
-    //회원가입 후 '로그인하기' 버튼 클릭 시 로그인 화면으로 이동
-    
     func goSign(){
-        SignUpService.shared.signUp(email: email, name: nickName, password: pwd, phone: telephone, sosial: false, completion: {
+        SignUpService.shared.signUp(email: email, name: nickName, password: pwd, phone: telephone, sosial: isSocial, completion: {
             response in
             if let status = response.response?.statusCode {
                 switch status {
@@ -163,8 +180,15 @@ class TelephoneAuthenViewController: UIViewController {
                     let decoder = JSONDecoder()
                     let signUpResult = try? decoder.decode(SignUpResult.self, from: data)
                     guard let jwt = signUpResult?.jwt else { return }
+                    
+                    //소셜로그인일때만 정보저장(회원가입이 곧 로그인이 되기 때문)
+                    if(self.isSocial){
+                        UserDefaults.standard.set(self.email, forKey: "email")
+                        UserDefaults.standard.set(self.isSocial, forKey: "social")
+                        UserDefaults.standard.set(jwt, forKey: "jwt")
+                    }
                     let completeVC = self.storyboard?.instantiateViewController(identifier: "CompleteViewController") as! CompleteViewController
-                    completeVC.isSocial = false
+                    completeVC.isSocial = self.isSocial
                     self.navigationController?.pushViewController(completeVC, animated: true)
                     break
                 case 400...404:
