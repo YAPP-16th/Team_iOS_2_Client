@@ -44,6 +44,7 @@ class AlbumDetailController : UIViewController {
     // server data
     var albumIndex : Int?
     var ImageName : String?
+    var newImage : UIImage?
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if hideView.isHidden == false {
@@ -103,7 +104,10 @@ extension AlbumDetailController {
         hideAddAlbumBtn.addTarget(self, action: #selector(touchAlbumBtn), for: .touchUpInside)
         hideAddPhotoBtn.addTarget(self, action: #selector(touchCameraBtn), for: .touchUpInside)
     }
-    
+}
+
+
+extension AlbumDetailController {
     func switchHideView(value : Bool){
         switch value {
         case true:
@@ -144,6 +148,92 @@ extension AlbumDetailController {
         case .Tape : return AlbumLayout.Tape.bigsize
         case .Filmroll : return AlbumLayout.Filmroll.bigsize
         }
+    }
+    
+    func setOldFilter(image : UIImage) -> UIImage{
+        let inputImage : CIImage = CIImage.init(image: image)!
+        let context = CIContext()
+        
+        // apply sepia tone filter to original image
+        guard let sepiaFilter = CIFilter(name:"CISepiaTone", parameters:
+            [
+                  kCIInputImageKey: inputImage,
+                  kCIInputIntensityKey: 0.3
+            ]) else { return image }
+        guard let sepiaCIImage = sepiaFilter.outputImage else { return image }
+        
+        // simulate grain by creating randomly varing speckle
+        guard
+            let coloredNoise = CIFilter(name:"CIRandomGenerator"),
+            let noiseImage = coloredNoise.outputImage
+            else { return image }
+        
+        // apply whitening effect noise output to CICOlorMatrix filter
+        let whitenVector = CIVector(x: 0, y: 1, z: 0, w: 0)
+        let fineGrain = CIVector(x:0, y:0.005, z:0, w:0)
+        let zeroVector = CIVector(x: 0, y: 0, z: 0, w: 0)
+        
+        guard let whiteningFilter = CIFilter(name:"CIColorMatrix", parameters:
+            [
+                kCIInputImageKey: noiseImage,
+                "inputRVector": whitenVector,
+                "inputGVector": whitenVector,
+                "inputBVector": whitenVector,
+                "inputAVector": fineGrain,
+                "inputBiasVector": zeroVector
+            ]),
+            let whiteSpecks = whiteningFilter.outputImage
+            else { return image }
+        
+        // create white specks
+        guard let speckCompositor = CIFilter(name:"CISourceOverCompositing", parameters:
+        [
+            kCIInputImageKey: whiteSpecks,
+            kCIInputBackgroundImageKey: sepiaCIImage
+        ]),
+        let speckledImage = speckCompositor.outputImage
+        else { return image }
+        
+        // simulate scratch by scaling randomly varying noise
+        let verticalScale = CGAffineTransform(scaleX: 1.5, y: 25)
+        let transformedNoise = noiseImage.transformed(by: verticalScale)
+        
+        let darkenVector = CIVector(x: 4, y: 0, z: 0, w: 0)
+        let darkenBias = CIVector(x: 0, y: 1, z: 1, w: 1)
+                
+        guard let darkeningFilter = CIFilter(name:"CIColorMatrix", parameters:
+            [
+                kCIInputImageKey: transformedNoise,
+                "inputRVector": darkenVector,
+                "inputGVector": zeroVector,
+                "inputBVector": zeroVector,
+                "inputAVector": zeroVector,
+                "inputBiasVector": darkenBias
+            ]),
+            let randomScratches = darkeningFilter.outputImage
+            else { return image }
+        
+        
+        guard let grayscaleFilter = CIFilter(name:"CIMinimumComponent", parameters:
+            [
+                kCIInputImageKey: randomScratches
+            ]),
+            let darkScratches = grayscaleFilter.outputImage
+            else { return image }
+        
+        // composite specks and scratches to the sepia image
+        guard let oldFilmCompositor = CIFilter(name:"CIMultiplyCompositing", parameters:
+            [
+                kCIInputImageKey: darkScratches,
+                kCIInputBackgroundImageKey: speckledImage
+            ]),
+            let oldFilmImage = oldFilmCompositor.outputImage
+            else { return image }
+        
+        let finalImage = oldFilmImage.cropped(to: inputImage.extent)
+        
+        // imageView - image filter
+        return UIImage(cgImage: context.createCGImage(finalImage, from: finalImage.extent)!)
     }
 }
 
@@ -236,13 +326,10 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! PhotoCell
+//        hideImageZoom.image = setOldFilter(image: cell.photoImageView.image!)
         hideImageZoom.image = cell.photoImageView.image
         switchZoomView(value: false)
     }
-//
-//    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-//        switchZoomView(value: true)
-//    }
 }
 
 // 순서 바꾸기
