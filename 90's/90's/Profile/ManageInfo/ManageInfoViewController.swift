@@ -42,22 +42,10 @@ extension ManageInfoViewController : UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        //이메일 변경, 패스워드 변경은 전화번호 변경 화면
-        //전화번호 변경은 패스워드 확인 화면
-        case 0:
-            let profileAuthenVC = self.storyboard?.instantiateViewController(identifier: "ProfileAuthenViewController") as! ProfileAuthenViewController
-            profileAuthenVC.authenType = infoList[indexPath.row]
-            self.navigationController?.pushViewController(profileAuthenVC, animated:true)
-        case 1:
-            let profileAuthenVC = self.storyboard?.instantiateViewController(identifier: "ProfileAuthenViewController") as! ProfileAuthenViewController
-            profileAuthenVC.authenType = infoList[indexPath.row]
-            self.navigationController?.pushViewController(profileAuthenVC, animated:true)
-        case 2:
-            return
-        default:
-            return
-        }
+        
+        let profileAuthenVC = self.storyboard?.instantiateViewController(identifier: "ProfileAuthenViewController") as! ProfileAuthenViewController
+        profileAuthenVC.authenType = infoList[indexPath.row]
+        self.navigationController?.pushViewController(profileAuthenVC, animated:true)
     }
     
 }

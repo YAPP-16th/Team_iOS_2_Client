@@ -13,6 +13,7 @@ class ProfileAuthenViewController: UIViewController {
     @IBOutlet weak var isSnsView: UIView!
     @IBOutlet weak var signUpBtn: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var tfTelephone: UITextField!
     @IBOutlet weak var tfAuthenNumber: UITextField!
     @IBOutlet weak var selectorImageView1: UIImageView!
@@ -21,7 +22,6 @@ class ProfileAuthenViewController: UIViewController {
     @IBOutlet weak var askNumberBtn: UIButton!
     @IBOutlet weak var okBtn: UIButton!
     @IBOutlet weak var buttonConst: NSLayoutConstraint!
-    
     //이메일 변경인지 패스워드 변경인지 구분할 인덱스
     var authenType:String!
     
@@ -64,19 +64,32 @@ class ProfileAuthenViewController: UIViewController {
     
     func setUI(){
         titleLabel.text = authenType
-
-        if UserDefaults.standard.bool(forKey: "social"){
-            isSnsView.isHidden = false
-            signUpBtn.layer.cornerRadius = 8.0
-        }else {
+        
+        switch authenType {
+        case "이메일 변경", "비밀번호 변경":
+            if UserDefaults.standard.bool(forKey: "social"){
+                isSnsView.isHidden = false
+                signUpBtn.layer.cornerRadius = 8.0
+            }else {
+                isSnsView.isHidden = true
+                validationLabel.isHidden = true
+                okBtn.isEnabled = false
+                okBtn.layer.cornerRadius = 8.0
+                askNumberBtn.layer.cornerRadius = 8.0
+            }
+            break
+        case "전화번호 변경":
+            subTitleLabel.text = "새로운 전화번호를\n인증해주세요"
             isSnsView.isHidden = true
             validationLabel.isHidden = true
             okBtn.isEnabled = false
             okBtn.layer.cornerRadius = 8.0
             askNumberBtn.layer.cornerRadius = 8.0
+            break
+        default:
+            break
         }
-
-}
+    }
     
     func setObserver(){
         NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: tfTelephone, queue: .main, using : {
@@ -125,33 +138,7 @@ class ProfileAuthenViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    func getAuthenNumber(){
-        telephone = tfTelephone.text!.replacingOccurrences(of: "-", with: "")
-        print("\(telephone)")
-        //서버에서 문자를 보내고, 보낸 인증번호 받는 메소드
-        TelephoneAuthService.shared.telephoneAuth(phone: telephone, completion: { response in
-            if let status = response.response?.statusCode {
-                switch status {
-                case 200:
-                    guard let data = response.data else { return }
-                    let decoder = JSONDecoder()
-                    let telephoneAuthResult = try? decoder.decode(TelephoneAuthResult.self, from: data)
-                    guard let num = telephoneAuthResult?.num else { return }
-                    self.authenNumber = num
-                    break
-                case 401...404:
-                    let alert = UIAlertController(title: "오류", message: "인증번호 전송 불가", preferredStyle: .alert)
-                    let action = UIAlertAction(title: "확인", style: .default)
-                    alert.addAction(action)
-                    self.present(alert, animated: true)
-                    break
-                default:
-                    return
-                }
-            }
-        })
-        
-    }
+    
     
     func goAuthen(){
         //서버에서 보내준 인증번호와 입력한 인증번호가 일치하는지 확인
@@ -161,9 +148,11 @@ class ProfileAuthenViewController: UIViewController {
             if(authenType == "이메일 변경"){
                 let newEmailVC = storyboard?.instantiateViewController(identifier: "NewEmailViewController") as! NewEmailViewController
                 navigationController?.pushViewController(newEmailVC, animated: true)
-            }else {
+            }else if(authenType == "비밀번호 변경"){
                 let newPassVC = storyboard?.instantiateViewController(identifier: "NewPassViewController") as! NewPassViewController
                 navigationController?.pushViewController(newPassVC, animated: true)
+            }else {
+                changePhone()
             }
         }else{
             validationLabel.isHidden = false
@@ -198,7 +187,74 @@ class ProfileAuthenViewController: UIViewController {
         return true
     }
     
+}
+
+extension ProfileAuthenViewController {
+    //서버에서 문자를 보내고, 보낸 인증번호 받는 메소드
+    func getAuthenNumber(){
+        telephone = tfTelephone.text!.replacingOccurrences(of: "-", with: "")
+        TelephoneAuthService.shared.telephoneAuth(phone: telephone, completion: { response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200:
+                    guard let data = response.data else { return }
+                    let decoder = JSONDecoder()
+                    let telephoneAuthResult = try? decoder.decode(TelephoneAuthResult.self, from: data)
+                    guard let num = telephoneAuthResult?.num else { return }
+                    self.authenNumber = num
+                    break
+                case 401...404:
+                    let alert = UIAlertController(title: "오류", message: "인증번호 전송 불가", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "확인", style: .default)
+                    alert.addAction(action)
+                    self.present(alert, animated: true)
+                    break
+                default:
+                    return
+                }
+            }
+        })
+        
+    }
     
+    //전화번호 변경 서버통신 메소드
+    func changePhone(){
+        ChangePhoneService.shared.changePhone(phoneNum: self.telephone, completion: { response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200:
+                    //기존의 정보 다 삭제(자체로그인 시 저장하는 정보 : email, password, social, jwt)
+                    UserDefaults.standard.removeObject(forKey: "email")
+                    UserDefaults.standard.removeObject(forKey: "password")
+                    UserDefaults.standard.removeObject(forKey: "social")
+                    UserDefaults.standard.removeObject(forKey: "jwt")
+                    self.goCompleteVC()
+                    break
+                case 401...404:
+                    self.showErrAlert()
+                    break
+                case 500:
+                    self.showErrAlert()
+                    break
+                default:
+                    return
+                }
+            }
+            
+        })
+    }
     
+    func goCompleteVC() {
+        let completeVC = storyboard?.instantiateViewController(identifier: "CompleteManageViewController") as! CompleteManageViewController
+        completeVC.authenType = self.authenType
+        completeVC.telePhone = self.tfTelephone.text!
+        navigationController?.pushViewController(completeVC, animated: true)
+    }
     
+    func showErrAlert(){
+        let alert = UIAlertController(title: "오류", message: "전화번호 변경 불가", preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(action)
+        self.present(alert, animated: true)
+    }
 }

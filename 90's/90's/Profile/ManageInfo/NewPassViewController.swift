@@ -161,9 +161,11 @@ extension NewPassViewController {
     }
     
     func goCompleteVC() {
-        let completePassVC = storyboard?.instantiateViewController(identifier: "CompletePassViewController") as! CompletePassViewController
-        completePassVC.pass = self.pass
-        navigationController?.pushViewController(completePassVC, animated: true)
+        let completeManageVC = storyboard?.instantiateViewController(identifier: "CompleteManageViewController") as! CompleteManageViewController
+        completeManageVC.pass = self.pass
+        completeManageVC.authenType = "비밀번호 변경"
+        navigationController?.pushViewController(completeManageVC, animated: true)
+        
     }
 }
 
