@@ -12,8 +12,13 @@ class MemberTableViewCell: UITableViewCell {
     @IBOutlet weak var memberImageView: UIImageView!
     @IBOutlet weak var memberNameLabel: UILabel!
     @IBOutlet weak var memberSubLabel: UILabel!
+    @IBOutlet weak var memberDeleteBtn: UIButton!
     @IBAction func memberDeleteBtn(_ sender: UIButton) {
+        infoProtocol?.switchHideView(value: false)
+        // 서버 내용 필요
     }
+    
+    var infoProtocol : albumInfoDeleteProtocol?
     
     override func awakeFromNib() {
         super.awakeFromNib()
