@@ -196,7 +196,7 @@ extension ImageRenderVC {
             let takeStickerImageView = sticker?.stickerImageView
             takeStickerImageView?.center = sticker!.center
             takeStickerImageView?.image = createnewimage()
-            takeStickerImageView?.translatesAutoresizingMaskIntoConstraints = false
+//            takeStickerImageView?.translatesAutoresizingMaskIntoConstraints = false
             saveView.addSubview(takeStickerImageView!)
 //            let position = CGPoint(x: savePosition.x - saveView.frame.origin.x, y: savePosition.y - saveView.frame.origin.y)
 //
@@ -205,9 +205,9 @@ extension ImageRenderVC {
             sticker = nil
         }
         
-        
         print("ImageRenderVC saveview frame = \(saveView.frame)")
         photoImage = saveView.createImage()
+        print("ImageRenderVC saveview after create image = \(saveView.frame)")
         angle = CGFloat()
         saveSize = CGFloat()
         
