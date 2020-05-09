@@ -53,6 +53,7 @@
 		9BD31D37243A05F700D0D719 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD31D36243A05F700D0D719 /* KakaoOpenSDK.framework */; };
 		9BD31D40243A111A00D0D719 /* KakaoMessageTemplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD31D3F243A111A00D0D719 /* KakaoMessageTemplate.framework */; };
 		9BD31D42243A11BF00D0D719 /* KakaoCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD31D41243A11BF00D0D719 /* KakaoCommon.framework */; };
+		9BF98C9624668D8000E8A5BC /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF98C8A24668D7F00E8A5BC /* Kingfisher.framework */; };
 		A3024430244CAE5E006C838F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A302442F244CAE5E006C838F /* Alamofire.framework */; };
 		A3025C9E2441AD9000041723 /* LoginMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3025C9D2441AD9000041723 /* LoginMainViewController.swift */; };
 		A3025CA02441ADCA00041723 /* EnterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3025C9F2441ADCA00041723 /* EnterViewController.swift */; };
@@ -555,6 +556,7 @@
 		9BD31D3D243A110600D0D719 /* KakaoLink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoLink.framework; sourceTree = "<group>"; };
 		9BD31D3F243A111A00D0D719 /* KakaoMessageTemplate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoMessageTemplate.framework; sourceTree = "<group>"; };
 		9BD31D41243A11BF00D0D719 /* KakaoCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoCommon.framework; sourceTree = "<group>"; };
+		9BF98C8A24668D7F00E8A5BC /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		A302442F244CAE5E006C838F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		A3025C9D2441AD9000041723 /* LoginMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMainViewController.swift; sourceTree = "<group>"; };
 		A3025C9F2441ADCA00041723 /* EnterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterViewController.swift; sourceTree = "<group>"; };
@@ -626,6 +628,7 @@
 			files = (
 				3929B107245DEFD800B7C7EA /* PushKit.framework in Frameworks */,
 				3929B105245DEFD100B7C7EA /* UserNotifications.framework in Frameworks */,
+				9BF98C9624668D8000E8A5BC /* Kingfisher.framework in Frameworks */,
 				A3024430244CAE5E006C838F /* Alamofire.framework in Frameworks */,
 				9BD31D37243A05F700D0D719 /* KakaoOpenSDK.framework in Frameworks */,
 				9BA5A9452454021F003A55DC /* KakaoLink.framework in Frameworks */,
@@ -695,6 +698,7 @@
 		9B142B04242F2226005ABE17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9BF98C8A24668D7F00E8A5BC /* Kingfisher.framework */,
 				3929B106245DEFD800B7C7EA /* PushKit.framework */,
 				3929B104245DEFD100B7C7EA /* UserNotifications.framework */,
 				9B986AEF24557E3D00BE9E3C /* Carthage */,
@@ -1922,6 +1926,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 			);
 			outputFileListPaths = (
 			);
