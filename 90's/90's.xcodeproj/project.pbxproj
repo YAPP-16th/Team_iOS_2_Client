@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		390A33EE243F6A52002E9F57 /* OrderFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390A33ED243F6A52002E9F57 /* OrderFinishViewController.swift */; };
-		3929B105245DEFD100B7C7EA /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929B104245DEFD100B7C7EA /* UserNotifications.framework */; };
-		3929B107245DEFD800B7C7EA /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929B106245DEFD800B7C7EA /* PushKit.framework */; };
 		392F7790242F4BC70000BC3C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 392F778F242F4BC70000BC3C /* Default-568h@2x.png */; };
 		39411378243061A500087E1B /* CheckPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39411377243061A500087E1B /* CheckPhotoViewController.swift */; };
 		3958515C242F45E600014CB0 /* Sticker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3958515B242F45E600014CB0 /* Sticker.storyboard */; };
@@ -18,6 +16,8 @@
 		39585163242F46D500014CB0 /* Print.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39585162242F46D500014CB0 /* Print.storyboard */; };
 		39585167242F49EA00014CB0 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39585166242F49EA00014CB0 /* SignIn.storyboard */; };
 		39585169242F49F300014CB0 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39585168242F49F300014CB0 /* SignUp.storyboard */; };
+		3960F96D246681AC007B50A3 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929B104245DEFD100B7C7EA /* UserNotifications.framework */; };
+		3960F97B246681AE007B50A3 /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929B106245DEFD800B7C7EA /* PushKit.framework */; };
 		39CB8C8A245DC92600F28A49 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CB8C89245DC92600F28A49 /* PopUpViewController.swift */; };
 		39CB8C97245DCD2100F28A49 /* PopUp2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CB8C96245DCD2100F28A49 /* PopUp2ViewController.swift */; };
 		39DE24C724547143007E8D40 /* PrintListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DE24C624547143007E8D40 /* PrintListViewController.swift */; };
@@ -626,13 +626,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3929B107245DEFD800B7C7EA /* PushKit.framework in Frameworks */,
-				3929B105245DEFD100B7C7EA /* UserNotifications.framework in Frameworks */,
 				A3024430244CAE5E006C838F /* Alamofire.framework in Frameworks */,
 				9BD31D37243A05F700D0D719 /* KakaoOpenSDK.framework in Frameworks */,
 				9BA5A9452454021F003A55DC /* KakaoLink.framework in Frameworks */,
 				9BD31D42243A11BF00D0D719 /* KakaoCommon.framework in Frameworks */,
 				9BD31D40243A111A00D0D719 /* KakaoMessageTemplate.framework in Frameworks */,
+				3960F96D246681AC007B50A3 /* UserNotifications.framework in Frameworks */,
+				3960F97B246681AE007B50A3 /* PushKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
