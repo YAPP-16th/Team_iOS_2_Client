@@ -245,7 +245,7 @@ extension UIViewController{
     
     func setSaveViewLayout(view : UIView, selectLayout : AlbumLayout){
         let size = returnLayoutBigSize(selectedLayout: selectLayout)
-        view.translatesAutoresizingMaskIntoConstraints = false
+        //view.translatesAutoresizingMaskIntoConstraints = false
         view.frame.size = size
         
         view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 120).isActive = true

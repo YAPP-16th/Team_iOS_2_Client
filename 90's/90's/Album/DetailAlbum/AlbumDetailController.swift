@@ -62,6 +62,7 @@ class AlbumDetailController : UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        NetworkSetting()
         photoCollectionView.reloadData()
         self.tabBarController?.tabBar.isHidden = true
     }
@@ -108,6 +109,12 @@ extension AlbumDetailController {
 
 
 extension AlbumDetailController {
+    func NetworkSetting(){
+        // 1. 앨범에서 사진 uid 가져오기
+        // 2. 서버에 앨범 uid와 사진uid 요청
+//        AlbumService.shared.get
+    }
+    
     func switchHideView(value : Bool){
         switch value {
         case true:
