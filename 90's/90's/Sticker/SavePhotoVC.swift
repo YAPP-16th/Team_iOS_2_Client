@@ -40,6 +40,7 @@ class SavePhotoVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         defaultSetting()
     }
     
@@ -61,7 +62,9 @@ extension SavePhotoVC {
     }
     
     func defaultSetting(){
-        setSaveViewLayout(view: photoView, selectLayout: selectedLayout)
+        let size = isDeviseVersionLow ? returnLayoutSize(selectedLayout: selectedLayout) : returnLayoutBigSize(selectedLayout: selectedLayout)
+        setSaveViewLayout(view: photoView, selectLayout: selectedLayout, size: size)
+        
         let imageView = UIImageView(image: originImage)
         photoView.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false

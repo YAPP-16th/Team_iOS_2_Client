@@ -46,9 +46,7 @@ class ImageRenderVC: UIViewController {
     fileprivate let context = CIContext(options: nil)
     fileprivate var filterIndex = 0
     fileprivate var selectIndex : IndexPath?
-    fileprivate let filterNameArray : [String] = ["Noise", "Grunge", "Wrap", "Light", "Aura", "Old"]
-    fileprivate let filterLutArray : [String] = ["LUT", "LUT2", "LUT3", "LUT4", "LUT5", "LUT6"]
-    // Array for apply LUT filters & Sticker before viewAppear. And place on collectioncell
+    fileprivate let filterNameArray : [String] = ["filterThumbnailFaded", "filterThumbnailPinky", "filterThumbnailScrape", "filterThumbnailLensflare", "filterThumbnailGrain", "filterThumbnailWrap","filterThumbnailGrunge"]
     fileprivate var filterImages : [UIImage] = [], stickerImages : [UIImage] = []
     
     
@@ -61,7 +59,8 @@ class ImageRenderVC: UIViewController {
         super.viewDidLoad()
         buttonSetting()
         defaultSetting()
-        setSaveViewLayout(view: saveView, selectLayout: selectLayout)
+        let size = isDeviseVersionLow ? returnLayoutSize(selectedLayout: selectLayout) : returnLayoutBigSize(selectedLayout: selectLayout)
+        setSaveViewLayout(view: saveView, selectLayout: selectLayout, size: size)
         setRenderImageViewLayout()
         initializeArrays()
     }
@@ -117,11 +116,8 @@ extension ImageRenderVC {
     }
     
     private func initializeArrays(){
-        filterImages = filterLutArray.map({ (v : String) -> UIImage in
-            let colorcube = colorCubeFilterFromLUT(imageName: v, originalImage: image!)
-            let result = colorcube?.outputImage
-            let image = UIImage.init(cgImage: context.createCGImage(result!, from: result!.extent)!)
-            return image
+        filterImages = filterNameArray.map({ (v : String) -> UIImage in
+            return UIImage(named: v)!
         })
         stickerImages = stickerArray.map({ ( v : String ) -> UIImage in
             return UIImage(named: v)!
@@ -257,7 +253,6 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
             // filter collection
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filtercell", for: indexPath) as! photoFilterCollectionCell
             cell.imageView.image = filterImages[indexPath.row]
-            cell.filterLabel.text = filterNameArray[indexPath.row]
             return cell
         } else {
             // sticker collection
