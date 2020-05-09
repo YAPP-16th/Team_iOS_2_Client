@@ -520,6 +520,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         }
     }
     
+    //MARK: 카메라 아웃풋
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         connection.videoOrientation = orientation
         let videoOutput = AVCaptureVideoDataOutput()
