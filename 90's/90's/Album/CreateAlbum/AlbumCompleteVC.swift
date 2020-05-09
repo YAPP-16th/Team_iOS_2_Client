@@ -23,8 +23,7 @@ class AlbumCompleteVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func completeBtn(_ sender: UIButton) {
-        getAlbumService()
-        //createAlbumService()
+        createAlbumService()
         mainProtocol?.reloadView()
         self.navigationController?.popToRootViewController(animated: true)
     }
@@ -38,6 +37,7 @@ class AlbumCompleteVC: UIViewController {
     var albumMaxCount : Int!
     var photo : UIImage!
     var imageName : String!
+    var albumUid : Int!
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -59,27 +59,9 @@ extension AlbumCompleteVC {
         albumDateLabel.text = "\(albumStartDate!)  ~  \(albumEndDate!)"
         albumCountLabel.text = String(albumMaxCount)
         askLabel.text = "이 앨범으로 결정하시겠습니까?\n한 번 앨범을 만들면 수정이 불가능 합니다"
+        
+        imageName = albumLayout.layoutName
     }
-    
-    func getAlbumService(){
-        AlbumService.shared.album(completion: {
-            response in
-            if let status = response.response?.statusCode {
-                switch status {
-                case 200 :
-                    guard let data = response.data else {return}
-                    let decoder = JSONDecoder()
-                    print("received data = \(data)")
-                    guard let value = try? decoder.decode(getAlbumResult.self, from: data) else {return}
-                    print("Get Album data : \(value)")
-                case 401...444 :
-                    print("forbidden access in \(status)")
-                default:
-                    return
-                }
-            }
-        })
-    } 
     
     func createAlbumService(){
         AlbumService.shared.albumCreate(endDate: albumEndDate, layoutUid: albumLayout.layoutUid, name: albumName, photoLimit: albumMaxCount, completion: {
@@ -88,9 +70,9 @@ extension AlbumCompleteVC {
                 switch status {
                 case 200 :
                     guard let data = response.data else {return}
-                    guard let uid = try? JSONDecoder().decode(CreateAlbumResult.self, from: data) else {return}
-                    let value = uid.albumUid
-                    print("Create Album complete : \(value)")
+                    guard let uid = try? JSONDecoder().decode(AlbumCreateResult.self, from: data) else {return}
+                    self.albumUid = uid.uid
+                    self.sendCoverImageService(uid: uid.uid)
                 case 401...404 :
                     print("forbidden access in \(status)")
                 default :
@@ -101,7 +83,7 @@ extension AlbumCompleteVC {
     }
     
     func sendCoverImageService(uid : Int){
-        AlbumService.shared.photoUpload(albumUid: String(uid), image: photo, imageName: imageName, completion: {
+        AlbumService.shared.photoUpload(albumUid: uid, image: [photo!], imageName: albumLayout.layoutName, completion: {
             response in
             if let status = response.response?.statusCode {
                 switch status {

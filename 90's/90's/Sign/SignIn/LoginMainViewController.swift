@@ -25,13 +25,18 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         tfPass.delegate = self
         tfEmail.delegate = self
-        autoLogin()
         setUI()
         setTextFieldObserver()
     }
     
     @IBAction func goBack(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+        guard let count = navigationController?.viewControllers.count else { return }
+        if (count >= 2){
+            navigationController?.popViewController(animated: true)
+        }else {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.switchEnterView()
+        }
     }
     
     @IBAction func goLogin(_ sender: Any) {
@@ -46,6 +51,7 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
         }else{
             //로그인 통신
             //로그인 통신 후 로그인 실패시 메시지 표시
+            emailValidationLabel.isHidden = true
             goLogin(email, pass, false)
         }
         
@@ -65,54 +71,50 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.pushViewController(authenVC, animated: true)
     }
     
-    func autoLogin(){
-        //기존에 로그인한 데이터가 있을 경우
-        if let email = UserDefaults.standard.string(forKey: "email"){
-            //소셜 로그인의 경우
-            if(UserDefaults.standard.bool(forKey: "social")){
-                goLogin(email, nil, true)
-            }else {
-                guard let password = UserDefaults.standard.string(forKey: "password") else {return}
-                goLogin(email, password, false)
+    
+    
+    //로그인 서버통신 메소드(자체회원가입 -> 자체로그인)
+    func goLogin(_ email: String, _ password: String?, _ social: Bool){
+        LoginService.shared.login(email: email, password: password, sosial: social, completion: { response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200:
+                    guard let data = response.data else { return }
+                    let decoder = JSONDecoder()
+                    let loginResult = try? decoder.decode(SignUpResult.self, from: data)
+                    guard let jwt = loginResult?.jwt else { return }
+                    
+                    UserDefaults.standard.set(self.email, forKey: "email")
+                    UserDefaults.standard.set(self.pass, forKey: "password")
+                    UserDefaults.standard.set(false, forKey: "social")
+                    UserDefaults.standard.set(jwt, forKey: "jwt")
+                    
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    
+                    appDelegate.switchTab()
+                    break
+                case 400...404:
+                    self.showErrAlert()
+                    print("SignIn : client Err \(status)")
+                    break
+                case 500:
+                    self.passValidationLabel.isHidden = false
+                    self.selectorImageView2.image = UIImage(named: "path378Red")
+                    print("SignIn : server Err \(status)")
+                    break
+                default:
+                    return
+                }
             }
-        }
+        })
     }
     
-  //로그인 서버통신 메소드
-       func goLogin(_ email: String, _ password: String?, _ social: Bool){
-            LoginService.shared.login(email: email, password: password, sosial: social, completion: { response in
-                if let status = response.response?.statusCode {
-                    switch status {
-                    case 200:
-                        guard let data = response.data else { return }
-                        let decoder = JSONDecoder()
-                        let loginResult = try? decoder.decode(SignUpResult.self, from: data)
-                        guard let jwt = loginResult?.jwt else { return }
-                        UserDefaults.standard.set(jwt, forKey: "jwt")
-                        UserDefaults.standard.set(false, forKey: "initial")
-                        let mainSB = UIStoryboard(name: "Main", bundle: nil)
-                        let tabVC = mainSB.instantiateViewController(identifier: "TabBarController") as! UITabBarController
-                        self.navigationController?.pushViewController(tabVC, animated: true)
-                        break
-                    case 400...404:
-                        print("SignIn : client Err \(status)")
-                        break
-                    case 500:
-                        print("SignIn : server Err \(status)")
-                        break
-                    default:
-                        return
-                    }
-                }
-            })
-        }
-    
     func showErrAlert(){
-           let alert = UIAlertController(title: "오류", message: "로그인 불가", preferredStyle: .alert)
-           let action = UIAlertAction(title: "확인", style: .default)
-           alert.addAction(action)
-           self.present(alert, animated: true)
-       }
+        let alert = UIAlertController(title: "오류", message: "로그인 불가", preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(action)
+        self.present(alert, animated: true)
+    }
     
     //화면 터치시 키보드 내림
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

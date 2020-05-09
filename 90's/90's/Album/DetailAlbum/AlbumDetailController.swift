@@ -28,6 +28,9 @@ class AlbumDetailController : UIViewController {
         switchHideView(value: true)
     }
     
+    // 사진 확대 시
+    @IBOutlet weak var hideImageZoom: UIImageView!
+    
     private var longPressGesture : UILongPressGestureRecognizer!
     var openAlbumCount : Int! // 앨범 낡기 적용
     var isEnded : Bool = true
@@ -41,6 +44,7 @@ class AlbumDetailController : UIViewController {
     // server data
     var albumIndex : Int?
     var ImageName : String?
+    var newImage : UIImage?
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if hideView.isHidden == false {
@@ -48,11 +52,17 @@ class AlbumDetailController : UIViewController {
             if touch?.view != self.hideWhiteView {
                 switchHideView(value: true)
             }
+            if hideImageZoom.isHidden == false {
+                if touch?.view != self.hideImageZoom {
+                    switchZoomView(value: true)
+                }
+            }
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        NetworkSetting()
         photoCollectionView.reloadData()
         self.tabBarController?.tabBar.isHidden = true
     }
@@ -70,7 +80,6 @@ extension AlbumDetailController {
     func delegateSetting(){
         photoCollectionView.delegate = self
         photoCollectionView.dataSource = self
-//        photoCollectionView.dragDelegate = self
         photoCollectionView.dragInteractionEnabled = true
         galleryPicker.delegate = self
     }
@@ -82,6 +91,10 @@ extension AlbumDetailController {
         
         hideView.isHidden = true
         hideWhiteView.layer.cornerRadius = 15
+
+        hideImageZoom.frame.size = setZoomImageView(layout: selectedLayout!)
+        hideImageZoom.center = view.center
+
         // 순서 바꾸기
         longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gesture:)))
         photoCollectionView.addGestureRecognizer(longPressGesture)
@@ -91,6 +104,15 @@ extension AlbumDetailController {
         addPhotoBtn.addTarget(self, action: #selector(touchAddPhotoBtn), for: .touchUpInside)
         hideAddAlbumBtn.addTarget(self, action: #selector(touchAlbumBtn), for: .touchUpInside)
         hideAddPhotoBtn.addTarget(self, action: #selector(touchCameraBtn), for: .touchUpInside)
+    }
+}
+
+
+extension AlbumDetailController {
+    func NetworkSetting(){
+        // 1. 앨범에서 사진 uid 가져오기
+        // 2. 서버에 앨범 uid와 사진uid 요청
+//        AlbumService.shared.get
     }
     
     func switchHideView(value : Bool){
@@ -110,6 +132,115 @@ extension AlbumDetailController {
             })
             self.hideView.isHidden = false
         }
+    }
+    
+    func switchZoomView(value : Bool){
+        switch value {
+        case true :
+            self.hideView.isHidden = true
+            self.hideImageZoom.isHidden = true
+        case false :
+            self.hideView.isHidden = false
+            self.hideImageZoom.isHidden = false
+        }
+    }
+    
+    func setZoomImageView(layout : AlbumLayout) -> CGSize {
+        switch layout {
+        case .Polaroid : return AlbumLayout.Polaroid.bigsize
+        case .Mini : return AlbumLayout.Mini.bigsize
+        case .Memory : return AlbumLayout.Memory.bigsize
+        case .Portrab : return AlbumLayout.Portrab.bigsize
+        case .Portraw : return AlbumLayout.Portraw.bigsize
+        case .Tape : return AlbumLayout.Tape.bigsize
+        case .Filmroll : return AlbumLayout.Filmroll.bigsize
+        }
+    }
+    
+    func setOldFilter(image : UIImage) -> UIImage{
+        let inputImage : CIImage = CIImage.init(image: image)!
+        let context = CIContext()
+        
+        // apply sepia tone filter to original image
+        guard let sepiaFilter = CIFilter(name:"CISepiaTone", parameters:
+            [
+                  kCIInputImageKey: inputImage,
+                  kCIInputIntensityKey: 0.3
+            ]) else { return image }
+        guard let sepiaCIImage = sepiaFilter.outputImage else { return image }
+        
+        // simulate grain by creating randomly varing speckle
+        guard
+            let coloredNoise = CIFilter(name:"CIRandomGenerator"),
+            let noiseImage = coloredNoise.outputImage
+            else { return image }
+        
+        // apply whitening effect noise output to CICOlorMatrix filter
+        let whitenVector = CIVector(x: 0, y: 1, z: 0, w: 0)
+        let fineGrain = CIVector(x:0, y:0.005, z:0, w:0)
+        let zeroVector = CIVector(x: 0, y: 0, z: 0, w: 0)
+        
+        guard let whiteningFilter = CIFilter(name:"CIColorMatrix", parameters:
+            [
+                kCIInputImageKey: noiseImage,
+                "inputRVector": whitenVector,
+                "inputGVector": whitenVector,
+                "inputBVector": whitenVector,
+                "inputAVector": fineGrain,
+                "inputBiasVector": zeroVector
+            ]),
+            let whiteSpecks = whiteningFilter.outputImage
+            else { return image }
+        
+        // create white specks
+        guard let speckCompositor = CIFilter(name:"CISourceOverCompositing", parameters:
+        [
+            kCIInputImageKey: whiteSpecks,
+            kCIInputBackgroundImageKey: sepiaCIImage
+        ]),
+        let speckledImage = speckCompositor.outputImage
+        else { return image }
+        
+        // simulate scratch by scaling randomly varying noise
+        let verticalScale = CGAffineTransform(scaleX: 1.5, y: 25)
+        let transformedNoise = noiseImage.transformed(by: verticalScale)
+        
+        let darkenVector = CIVector(x: 4, y: 0, z: 0, w: 0)
+        let darkenBias = CIVector(x: 0, y: 1, z: 1, w: 1)
+                
+        guard let darkeningFilter = CIFilter(name:"CIColorMatrix", parameters:
+            [
+                kCIInputImageKey: transformedNoise,
+                "inputRVector": darkenVector,
+                "inputGVector": zeroVector,
+                "inputBVector": zeroVector,
+                "inputAVector": zeroVector,
+                "inputBiasVector": darkenBias
+            ]),
+            let randomScratches = darkeningFilter.outputImage
+            else { return image }
+        
+        
+        guard let grayscaleFilter = CIFilter(name:"CIMinimumComponent", parameters:
+            [
+                kCIInputImageKey: randomScratches
+            ]),
+            let darkScratches = grayscaleFilter.outputImage
+            else { return image }
+        
+        // composite specks and scratches to the sepia image
+        guard let oldFilmCompositor = CIFilter(name:"CIMultiplyCompositing", parameters:
+            [
+                kCIInputImageKey: darkScratches,
+                kCIInputBackgroundImageKey: speckledImage
+            ]),
+            let oldFilmImage = oldFilmCompositor.outputImage
+            else { return image }
+        
+        let finalImage = oldFilmImage.cropped(to: inputImage.extent)
+        
+        // imageView - image filter
+        return UIImage(cgImage: context.createCGImage(finalImage, from: finalImage.extent)!)
     }
 }
 
@@ -199,35 +330,16 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
         AlbumDatabase.arrayList[albumIndex!].photos.remove(at: sourceIndexPath.row)
         AlbumDatabase.arrayList[albumIndex!].photos.insert(movedItem, at: destinationIndexPath.item)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! PhotoCell
+//        hideImageZoom.image = setOldFilter(image: cell.photoImageView.image!)
+        hideImageZoom.image = cell.photoImageView.image
+        switchZoomView(value: false)
+    }
 }
 
-
-//extension AlbumDetailController :  UICollectionViewDragDelegate {
-//    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-//        let item = AlbumDatabase.arrayList[albumIndex!].photos[indexPath.row]
-//        let itemProvider = NSItemProvider(object: item)
-//        let dragItem = UIDragItem(itemProvider: itemProvider)
-//        dragItem.localObject = item
-//        return [dragItem]
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, itemsForAddingTo session: UIDragSession, at indexPath: IndexPath, point: CGPoint) -> [UIDragItem] {
-//        let item = AlbumDatabase.arrayList[albumIndex!].photos[indexPath.row]
-//        let itemProvider = NSItemProvider(object: item)
-//        let dragItem = UIDragItem(itemProvider: itemProvider)
-//        dragItem.localObject = item
-//        return [dragItem]
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, dragPreviewParametersForItemAt indexPath: IndexPath) -> UIDragPreviewParameters? {
-//        let previewParameters = UIDragPreviewParameters()
-//        previewParameters.visiblePath = UIBezierPath(rect: CGRect(x: 25, y: 25, width: 120, height: 120))
-//        return previewParameters
-//
-//    }
-//}
-
-
+// 순서 바꾸기
 extension AlbumDetailController : UICollectionViewDropDelegate {
     func collectionView(_ collectionView: UICollectionView, canHandle session: UIDropSession) -> Bool {
         return session.canLoadObjects(ofClass: NSString.self)
@@ -281,7 +393,6 @@ extension AlbumDetailController : UIImagePickerControllerDelegate, UINavigationC
             vc.albumUid = self.albumIndex
             vc.imageName = self.ImageName
             self.navigationController?.pushViewController(vc, animated: true)
-            //self.present(vc, animated: true, completion: nil)
         }
     }
 }

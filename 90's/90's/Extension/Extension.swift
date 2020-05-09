@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import Kingfisher
 
 
 extension String {
@@ -27,36 +28,6 @@ extension Int {
         
         let result = numberFormatter.string(from: NSNumber(value:price))!
         return result
-    }
-}
-
-
-
-extension UIView {
-    public func addShadowEffect(){
-        self.layer.shadowRadius = 2
-        self.layer.shadowOpacity = 0.2
-        self.layer.shadowOffset = CGSize(width: 5, height: 7)
-        self.clipsToBounds = false
-    }
-    
-    func setAnchorPoint(_ point: CGPoint) {
-        var newPoint = CGPoint(x: bounds.size.width * point.x, y: bounds.size.height * point.y)
-        var oldPoint = CGPoint(x: bounds.size.width * layer.anchorPoint.x, y: bounds.size.height * layer.anchorPoint.y);
-        
-        newPoint = newPoint.applying(transform)
-        oldPoint = oldPoint.applying(transform)
-        
-        var position = layer.position
-        
-        position.x -= oldPoint.x
-        position.x += newPoint.x
-        
-        position.y -= oldPoint.y
-        position.y += newPoint.y
-        
-        layer.position = position
-        layer.anchorPoint = point
     }
 }
 
@@ -274,14 +245,13 @@ extension UIViewController{
     
     func setSaveViewLayout(view : UIView, selectLayout : AlbumLayout){
         let size = returnLayoutBigSize(selectedLayout: selectLayout)
-        view.translatesAutoresizingMaskIntoConstraints = false
+        //view.translatesAutoresizingMaskIntoConstraints = false
         view.frame.size = size
         
-        let distance = (self.view.frame.width - view.frame.width) / 2
         view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 120).isActive = true
+        let distance = (self.view.frame.width - view.frame.width) / 2
         view.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: distance).isActive = true
         view.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -distance).isActive = true
-        view.frame.size.height = size.height
         view.addShadowEffect()
     }
     
@@ -330,6 +300,7 @@ extension UIImage {
 
 extension UIView {
     public func createImage() -> UIImage {
+        print("create Image : frame is \(self.frame)")
         UIGraphicsBeginImageContextWithOptions(
             CGSize(width: self.frame.width, height: self.frame.height), true, 1)
         self.layer.render(in: UIGraphicsGetCurrentContext()!)
@@ -381,6 +352,12 @@ extension UIImage {
 }
 
 extension UIView {
+    func addShadowEffect(){
+        self.layer.shadowRadius = 2
+        self.layer.shadowOpacity = 0.2
+        self.layer.shadowOffset = CGSize(width: 5, height: 7)
+        self.clipsToBounds = false
+    }
     
     func roundCorners(corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
@@ -429,6 +406,22 @@ extension UIView {
         } else {
             // borderWidth 변수가 nil 일 경우의 default
             self.layer.borderWidth = 1.0
+        }
+    }
+}
+
+
+extension UIImageView {
+    public func imageFromUrl(_ urlString: String?, defaultImgPath : String) {
+        let defaultImg = UIImage(named: defaultImgPath)
+        if let url = urlString {
+            if url.isEmpty {
+                self.image = defaultImg
+            } else {
+                self.kf.setImage(with: URL(string: url), placeholder: defaultImg, options: [.transition(ImageTransition.fade(0.5))])
+            }
+        } else {
+            self.image = defaultImg
         }
     }
 }

@@ -13,10 +13,32 @@ class EnterViewController: UIViewController {
     @IBOutlet weak var signUpBtn: UIButton!
     @IBOutlet weak var kakaoLoginBtn: UIButton!
     
+    var initialEnter:Bool = true
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if(initialEnter){
+            autoLogin()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
     }
+    
+    func autoLogin(){
+          //기존에 로그인한 데이터가 있을 경우
+          if let email = UserDefaults.standard.string(forKey: "email"){
+              //소셜 로그인의 경우
+              if(UserDefaults.standard.bool(forKey: "social")){
+                  goLogin(email, nil, true)
+              }else {
+                  guard let password = UserDefaults.standard.string(forKey: "password") else {return}
+                  goLogin(email, password, false)
+              }
+          }
+      }
+    
     
     //둘러보기 버튼 클릭 시
     @IBAction func takeALook(_ sender: Any) {
@@ -76,15 +98,15 @@ class EnterViewController: UIViewController {
                         let email = user.account?.email,
                         let nickName = user.account?.profile?.nickname
                         else { return }
+                    print("\(email) & \(nickName)")
                     
                     //전화번호 인증화면 이동
-                    let signInSB = UIStoryboard(name: "SignIn", bundle: nil)
-                    let authenVC = signInSB.instantiateViewController(identifier: "AuthenViewController") as! AuthenViewController
+                    let signUpSB = UIStoryboard(name: "SignUp", bundle: nil)
+                    let authenVC = signUpSB.instantiateViewController(identifier: "TelephoneAuthenViewController") as! TelephoneAuthenViewController
                     
+                    authenVC.isSocial = true
                     authenVC.email = email
                     authenVC.nickName = nickName
-                    authenVC.social = true
-                    authenVC.authenType = "socialSignUp"
                     self.navigationController?.pushViewController(authenVC, animated: true)
                 })
                 
@@ -104,9 +126,40 @@ class EnterViewController: UIViewController {
     }
     
     
+ //자동로그인 -> 로그인 서버통신
+    func goLogin(_ email: String, _ password: String?, _ social: Bool){
+        LoginService.shared.login(email: email, password: password, sosial: social, completion: { response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200:
+                    guard let data = response.data else { return }
+                    let decoder = JSONDecoder()
+                    let loginResult = try? decoder.decode(SignUpResult.self, from: data)
+                    guard let jwt = loginResult?.jwt else { return }
+                    
+                    //자동로그인 될때마다 jwt 갱신해서 저장
+                    UserDefaults.standard.set(jwt, forKey: "jwt")
+                    
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.switchTab()
+                    break
+                case 400...404:
+                    self.showErrAlert()
+                    print("SignIn : client Err \(status)")
+                    break
+                case 500:
+                    self.showErrAlert()
+                    print("SignIn : server Err \(status)")
+                    break
+                default:
+                    return
+                }
+            }
+        })
+    }
     
     func showErrAlert(){
-        let alert = UIAlertController(title: "오류", message: "카카오 로그인 불가", preferredStyle: .alert)
+        let alert = UIAlertController(title: "오류", message: "로그인 불가", preferredStyle: .alert)
         let action = UIAlertAction(title: "확인", style: .default)
         alert.addAction(action)
         self.present(alert, animated: true)

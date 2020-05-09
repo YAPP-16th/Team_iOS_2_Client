@@ -30,7 +30,14 @@ class TermViewController: UIViewController {
     }
     
     @IBAction func goBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        guard let count = navigationController?.viewControllers.count else { return }
+        
+        if (count >= 2){
+            navigationController?.popViewController(animated: true)
+        }else {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.switchEnterView()
+        }
     }
     
     @IBAction func agreeAllTerms(_ sender: Any) {
