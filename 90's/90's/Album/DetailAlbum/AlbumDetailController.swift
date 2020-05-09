@@ -45,6 +45,7 @@ class AlbumDetailController : UIViewController {
     var albumIndex : Int?
     var ImageName : String?
     var newImage : UIImage?
+    var photoUidArray : [Int] = []
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if hideView.isHidden == false {
@@ -111,8 +112,43 @@ extension AlbumDetailController {
 extension AlbumDetailController {
     func NetworkSetting(){
         // 1. 앨범에서 사진 uid 가져오기
+        AlbumService.shared.photoGetPhoto(albumUid: 70, completion: { response in
+            if let status = response.response?.statusCode {
+            switch status {
+            case 200:
+                print("photo getPhoto success")
+                guard let data = response.data else {return}
+                let decoder = JSONDecoder()
+                let value = try? decoder.decode(PhotoDownloadData.self, from: data)
+                guard let photoUid = value?.photoUid else {return}
+                photoUidArray = [photoUid]
+                print("data = \(photoUidArray)")
+//                self.NetworkGetPhoto(photoUid: photoUid!)
+            case 401...404:
+                print("forbidden access in \(status)")
+            default:
+                return
+                }
+            }
+    })
+        
         // 2. 서버에 앨범 uid와 사진uid 요청
 //        AlbumService.shared.get
+    }
+    
+    func NetworkGetPhoto(photoUid : Int){
+        AlbumService.shared.photoDownload(albumUid: 70, photoUid: photoUid, completion: { response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200 :
+                    print("get photo success!")
+                case 401...404 :
+                    print("forbidden access in \(status)")
+                default :
+                    return
+                }
+            }
+        })
     }
     
     func switchHideView(value : Bool){
