@@ -85,6 +85,12 @@ struct PhotoDownloadData : Codable {
 }
 
 // post
+struct PhotoGetPhotoData : Codable {
+    var albumUid : Int
+    var photoUid : Int
+}
+
+// post
 struct PhotoUploadData : Codable {
     var albumUid : Int
     var image : String // file

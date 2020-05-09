@@ -212,6 +212,25 @@ extension AlbumService {
         })
     }
     
+    // photoGetPhoto, post
+    func photoGetPhoto(albumUid : Int, completion: @escaping(completeAlbumSerivce)){
+        let url = Self.url("/photo/getPhotos")
+        let body : [String : Any] = [
+            "uid" : albumUid
+        ]
+        
+        AF.request(url, method: .post, parameters: body, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
+            response in
+            switch response.result {
+            case .success:
+                completion(response)
+            case .failure(let err):
+                print("==> Error in PhotoGetPhotos Service : \(err)")
+            }
+        })
+    }
+    
+    
     // photoUpload, post
     func photoUpload(albumUid : Int, image: [UIImage], imageName: String, completion: @escaping(completeAlbumSerivce)){
         let url = Self.url("/photo/upload")

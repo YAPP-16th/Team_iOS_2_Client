@@ -45,6 +45,7 @@ class AlbumDetailController : UIViewController {
     var albumIndex : Int?
     var ImageName : String?
     var newImage : UIImage?
+    var photoUidArray = [PhotoGetPhotoData]()
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if hideView.isHidden == false {
@@ -63,6 +64,7 @@ class AlbumDetailController : UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NetworkSetting()
+        
         photoCollectionView.reloadData()
         self.tabBarController?.tabBar.isHidden = true
     }
@@ -111,8 +113,41 @@ extension AlbumDetailController {
 extension AlbumDetailController {
     func NetworkSetting(){
         // 1. 앨범에서 사진 uid 가져오기
-        // 2. 서버에 앨범 uid와 사진uid 요청
-//        AlbumService.shared.get
+        AlbumService.shared.photoGetPhoto(albumUid: 70, completion: { response in
+            if let status = response.response?.statusCode {
+            switch status {
+            case 200:
+                guard let data = response.data else {return}
+                let value = try? JSONDecoder().decode([PhotoGetPhotoData].self, from: data)
+                self.photoUidArray = value!
+                print("array = \(self.photoUidArray.map{ $0.photoUid })")
+                let tempArray = self.photoUidArray.map{ $0.photoUid }
+                self.NetworkGetPhoto(photoUid: tempArray[0])
+            case 401...404:
+                print("forbidden access in \(status)")
+            default:
+                return
+                }
+            }
+        })
+    }
+    
+    // 2. 서버에 앨범 uid와 사진uid 요청
+    func NetworkGetPhoto(photoUid : Int){
+        print("get photo loading...")
+        AlbumService.shared.photoDownload(albumUid: 70, photoUid: photoUid, completion: { response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200 :
+                    
+                    print("get photo success!")
+                case 401...404 :
+                    print("forbidden access in \(status)")
+                default :
+                    return
+                }
+            }
+        })
     }
     
     func switchHideView(value : Bool){
