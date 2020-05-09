@@ -44,9 +44,11 @@ class ImageRenderVC: UIViewController {
     fileprivate let stickerArray : [String] = ["heartimage", "starimage", "smileimage"]
     // for filter
     fileprivate let context = CIContext(options: nil)
+    
+    fileprivate let filterStruct = PhotoEditorTypes()
     fileprivate var filterIndex = 0
     fileprivate var selectIndex : IndexPath?
-    fileprivate let filterNameArray : [String] = ["filterThumbnailFaded", "filterThumbnailPinky", "filterThumbnailScrape", "filterThumbnailLensflare", "filterThumbnailGrain", "filterThumbnailWrap","filterThumbnailGrunge"]
+    
     fileprivate var filterImages : [UIImage] = [], stickerImages : [UIImage] = []
     
     
@@ -116,7 +118,7 @@ extension ImageRenderVC {
     }
     
     private func initializeArrays(){
-        filterImages = filterNameArray.map({ (v : String) -> UIImage in
+        filterImages = PhotoEditorTypes.filterImage.map({ (v : String) -> UIImage in
             return UIImage(named: v)!
         })
         stickerImages = stickerArray.map({ ( v : String ) -> UIImage in
@@ -287,7 +289,11 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
        
         if let cell = collectionView.cellForItem(at: indexPath) as? photoFilterCollectionCell {
             cell.showimage()
-            renderImage.image = filterImages[indexPath.row]
+            let colorcube = colorCubeFilterFromLUT(imageName: PhotoEditorTypes.filterNameArray[indexPath.row], originalImage: image!)
+            let result = colorcube?.outputImage
+            let image = UIImage.init(cgImage: context.createCGImage(result!, from: result!.extent)!)
+            
+            renderImage.image = image
             
             testFilterCount += 1
             if testFilterCount <= 1 {
@@ -305,11 +311,15 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
                 testStickerCell = cell
                 stickerBtn.isEnabled = false
                 filterBtn.isEnabled = true
+                stickerBtn.titleLabel?.textColor = .lightGray
+                filterBtn.titleLabel?.textColor = .black
             } else {
                 testStickerCell?.hideimage()
                 testStickerCell = nil
                 stickerBtn.isEnabled = true
                 filterBtn.isEnabled = false
+                stickerBtn.titleLabel?.textColor = .black
+                filterBtn.titleLabel?.textColor = .lightGray
             }
         }
     }

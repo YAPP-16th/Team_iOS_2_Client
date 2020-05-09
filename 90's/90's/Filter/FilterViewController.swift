@@ -15,8 +15,6 @@ struct Filter {
     var filterEffectValue : Any?
     var filterEffectValueName: String?
     
-    
-    
     init(filterName: String, filterEffectValue : Any?, filterEffectValueName : String?){
         self.filterName = filterName
         self.filterEffectValue = filterEffectValue
