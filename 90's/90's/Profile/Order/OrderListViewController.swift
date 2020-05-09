@@ -31,7 +31,7 @@ protocol OrderDetailDelegate {
 class OrderListViewController: UIViewController {
     @IBOutlet weak var noAlbumView: UIView!
     @IBOutlet weak var orderListTableView: UITableView!
-    var isExistAlbum = false
+    var isExistAlbum = true
     
     //더미데이터
     var orderList = [Order(albumImage: "mysweetyLovesyou", albumStatus: .wait, albumName: "현창이의 행복한 앨범1", albumPrice: 20000, albumNum: 1), Order(albumImage: "mysweetyLovesyou", albumStatus: .confirm, albumName: "현창이의 행복한 앨범2", albumPrice: 20000, albumNum: 1), Order(albumImage: "mysweetyLovesyou", albumStatus: .ready, albumName: "현창이의 행복한 앨범3", albumPrice: 20000, albumNum: 1), Order(albumImage: "mysweetyLovesyou", albumStatus: .deliver, albumName: "현창이의 행복한 앨범4", albumPrice: 20000, albumNum: 1), Order(albumImage: "mysweetyLovesyou", albumStatus: .complete, albumName: "현창이의 행복한 앨범5", albumPrice: 20000, albumNum: 1)]
@@ -69,6 +69,7 @@ extension OrderListViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let orderDetailVC = storyboard?.instantiateViewController(identifier: "OrderDetailViewController") as! OrderDetailViewController
+        orderDetailVC.orderStatus = orderList[indexPath.row].albumStatus
         navigationController?.pushViewController(orderDetailVC, animated: true)
     }
     
