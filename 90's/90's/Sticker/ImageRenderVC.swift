@@ -161,6 +161,7 @@ extension ImageRenderVC {
         let size = returnLayoutBigSize(selectedLayout: selectLayout)
         layoutImage = applyBackImageViewLayout(selectedLayout: selectLayout, smallBig: size, imageView: layoutImage)
         renderImage = applyImageViewLayout(selectedLayout: selectLayout, smallBig: size, imageView: renderImage, image: image!)
+        
         view.layoutIfNeeded()
     }
     
