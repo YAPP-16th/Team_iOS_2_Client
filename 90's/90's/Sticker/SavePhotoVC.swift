@@ -34,6 +34,7 @@ class SavePhotoVC: UIViewController {
     var originImage : UIImage!
     var dateLabel : UILabel!
     var selectedLayout : AlbumLayout!
+    var selectLayout : AlbumLayout! = .Polaroid
     // server data
     var albumUid : Int?
     var imageName : String?
@@ -61,15 +62,26 @@ extension SavePhotoVC {
         cancleViewLabel.text = "편집한 내용을 저장하지 않고\n나가시겠습니까?"
     }
     
+    
     func defaultSetting(){
         let size = isDeviseVersionLow ? returnLayoutSize(selectedLayout: selectedLayout) : returnLayoutBigSize(selectedLayout: selectedLayout)
-        setSaveViewLayout(view: photoView, selectLayout: selectedLayout, size: size)
         
         let imageView = UIImageView(image: originImage)
+        
+
         photoView.addSubview(imageView)
+        
+        imageView.topAnchor.constraint(equalTo: photoView.topAnchor, constant: 0).isActive = true
+        
+        imageView.leadingAnchor.constraint(equalTo: photoView.leadingAnchor, constant: 0).isActive = true
+        
+        imageView.trailingAnchor.constraint(equalTo: photoView.trailingAnchor, constant: 0).isActive = true
+        
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.frame.size = photoView.frame.size
-        imageView.center = photoView.center
+        
+        setSaveViewLayout(view: photoView, selectLayout: selectedLayout, size: size)
+
+//        imageView.center = photoView.center
     }
     
     func dateLabelSetting(){

@@ -62,7 +62,17 @@ class ImageRenderVC: UIViewController {
         buttonSetting()
         defaultSetting()
         let size = isDeviseVersionLow ? returnLayoutSize(selectedLayout: selectLayout) : returnLayoutBigSize(selectedLayout: selectLayout)
+        print(size)
+        print(saveView.frame)
         setSaveViewLayout(view: saveView, selectLayout: selectLayout, size: size)
+        
+        //        let size = isDeviseVersionLow ? returnLayoutSize(selectedLayout: selectedLayout) : returnLayoutBigSize(selectedLayout: selectedLayout)
+        //
+        //        print(size)
+        //
+        //        setSaveViewLayout(view: photoView, selectLayout: selectedLayout, size: size)
+        
+        
         setRenderImageViewLayout()
         initializeArrays()
     }
@@ -83,6 +93,7 @@ class ImageRenderVC: UIViewController {
                 let absoluteAngle = self.angle + ang
                 sticker?.transform = (sticker?.transform.rotated(by: ang))!
                 self.angle = absoluteAngle
+                
             case sticker?.resizeImageView :
                 let position = touch!.location(in: self.view)
                 let target = sticker?.center
@@ -91,6 +102,7 @@ class ImageRenderVC: UIViewController {
                 let rotate = CGAffineTransform(rotationAngle: angle)
                 saveSize = size
                 sticker?.transform = scale.concatenating(rotate)
+                
             case sticker?.cancleImageView :
                 sticker?.removeFromSuperview()
                 sticker = nil
@@ -161,6 +173,10 @@ extension ImageRenderVC {
         let size = returnLayoutBigSize(selectedLayout: selectLayout)
         layoutImage = applyBackImageViewLayout(selectedLayout: selectLayout, smallBig: size, imageView: layoutImage)
         renderImage = applyImageViewLayout(selectedLayout: selectLayout, smallBig: size, imageView: renderImage, image: image!)
+        layoutImage.topAnchor.constraint(equalTo: self.saveView.topAnchor, constant: 0).isActive = true
+        layoutImage.leftAnchor.constraint(equalTo: self.saveView.leftAnchor, constant: 0).isActive = true
+        layoutImage.rightAnchor.constraint(equalTo: self.saveView.rightAnchor, constant: 0).isActive = true
+        layoutImage.bottomAnchor.constraint(equalTo: self.saveView.bottomAnchor, constant: 0).isActive = true
         view.layoutIfNeeded()
     }
     
@@ -193,12 +209,16 @@ extension ImageRenderVC {
         if sticker != nil {
             let takeStickerImageView = sticker?.stickerImageView
             takeStickerImageView?.center = sticker!.center
+            
             takeStickerImageView?.image = createnewimage()
-//            takeStickerImageView?.translatesAutoresizingMaskIntoConstraints = false
+            
+            takeStickerImageView?.translatesAutoresizingMaskIntoConstraints = true
+            
             saveView.addSubview(takeStickerImageView!)
-//            let position = CGPoint(x: savePosition.x - saveView.frame.origin.x, y: savePosition.y - saveView.frame.origin.y)
-//
-//            takeStickerImageView?.transform = CGAffineTransform(scaleX: saveSize, y: saveSize).concatenating(CGAffineTransform(rotationAngle: angle)).concatenating(CGAffineTransform(translationX: position.x, y: position.y))
+            
+            //            let position = CGPoint(x: savePosition.x - saveView.frame.origin.x, y: savePosition.y - saveView.frame.origin.y)
+            //
+            //            takeStickerImageView?.transform = CGAffineTransform(scaleX: saveSize, y: saveSize).concatenating(CGAffineTransform(rotationAngle: angle)).concatenating(CGAffineTransform(translationX: position.x, y: position.y))
             sticker?.removeFromSuperview()
             sticker = nil
         }
@@ -210,11 +230,14 @@ extension ImageRenderVC {
         saveSize = CGFloat()
         
         let nextVC = storyboard?.instantiateViewController(withIdentifier: "savePhotoVC") as! SavePhotoVC
-        nextVC.photoView = photoView
+        
+//        nextVC.photoView = photoView
+//        nextVC.defaultSetting()
         nextVC.originImage = photoImage
         nextVC.selectedLayout = selectLayout
         nextVC.albumUid = albumUid
         nextVC.imageName = imageName
+        
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
@@ -225,7 +248,7 @@ extension ImageRenderVC {
             print("Image saved")
         }
     }
-
+    
     @objc func handlePanGesture(panGesture: UIPanGestureRecognizer){
         let transition = panGesture.translation(in: sticker)
         /// todo : 팬에 기울기도 적용하기
@@ -263,7 +286,7 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
             return cell
         }
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if isFilterSelected == true {
             return CGSize(width: 74, height: 88)
@@ -277,7 +300,7 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
                         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 1.0
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout
         collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -286,7 +309,7 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectIndex = indexPath
-       
+        
         if let cell = collectionView.cellForItem(at: indexPath) as? photoFilterCollectionCell {
             cell.showimage()
             let colorcube = colorCubeFilterFromLUT(imageName: PhotoEditorTypes.filterNameArray[indexPath.row], originalImage: image!)
