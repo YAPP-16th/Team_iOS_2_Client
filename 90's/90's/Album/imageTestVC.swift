@@ -18,9 +18,10 @@ class imageTestVC: UIViewController {
             if let status = response.response?.statusCode {
                 switch status {
                 case 200 :
+                    print("photoDownload loading!")
                     guard let data = response.data else {return}
                     let testImage = UIImage(data: data)
-                    print("testImage = \(testImage)")
+                    print("photoDownload : \(testImage)")
                     let decoder = try? JSONDecoder().decode(PhotoDownloadData.self, from: data)
                     self.image = UIImage(data: data)
                     self.imageView.image = self.image
