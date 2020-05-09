@@ -81,16 +81,6 @@
                                                         <constraint firstAttribute="height" constant="88" id="zeX-14-0w5"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FilterName" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSF-vF-Xzl">
-                                                    <rect key="frame" x="0.0" y="66" width="74" height="22"/>
-                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.30249357876712329" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="22" id="NBZ-nJ-SrQ"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thumbnailCheckbox" translatesAutoresizingMaskIntoConstraints="NO" id="xUV-oR-10X">
                                                     <rect key="frame" x="0.0" y="0.0" width="74" height="88"/>
                                                 </imageView>
@@ -99,20 +89,16 @@
                                                 <constraint firstItem="79W-at-0MH" firstAttribute="top" secondItem="a1B-a7-W2x" secondAttribute="top" id="0Yh-EN-O9n"/>
                                                 <constraint firstAttribute="bottom" secondItem="79W-at-0MH" secondAttribute="bottom" id="Eor-6u-ATb"/>
                                                 <constraint firstItem="xUV-oR-10X" firstAttribute="height" secondItem="79W-at-0MH" secondAttribute="height" id="JRO-ny-JVe"/>
-                                                <constraint firstItem="DSF-vF-Xzl" firstAttribute="leading" secondItem="a1B-a7-W2x" secondAttribute="leading" id="NLY-HV-H5y"/>
                                                 <constraint firstItem="xUV-oR-10X" firstAttribute="width" secondItem="79W-at-0MH" secondAttribute="width" id="QGI-lf-Uyw"/>
                                                 <constraint firstItem="xUV-oR-10X" firstAttribute="centerY" secondItem="a1B-a7-W2x" secondAttribute="centerY" id="W8L-Qr-C2K"/>
-                                                <constraint firstAttribute="bottom" secondItem="DSF-vF-Xzl" secondAttribute="bottom" id="Z5h-Yu-rBb"/>
                                                 <constraint firstAttribute="trailing" secondItem="79W-at-0MH" secondAttribute="trailing" id="aOp-Zj-KFN"/>
                                                 <constraint firstItem="xUV-oR-10X" firstAttribute="centerX" secondItem="a1B-a7-W2x" secondAttribute="centerX" id="fCH-ax-nuR"/>
                                                 <constraint firstItem="79W-at-0MH" firstAttribute="leading" secondItem="a1B-a7-W2x" secondAttribute="leading" id="gOK-78-gOs"/>
-                                                <constraint firstAttribute="trailing" secondItem="DSF-vF-Xzl" secondAttribute="trailing" id="utf-6k-OIM"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="74" height="88"/>
                                         <connections>
                                             <outlet property="checkImageView" destination="xUV-oR-10X" id="AOH-Vp-xgj"/>
-                                            <outlet property="filterLabel" destination="DSF-vF-Xzl" id="hCj-Oz-Mv0"/>
                                             <outlet property="imageView" destination="79W-at-0MH" id="o8W-rP-nqa"/>
                                         </connections>
                                     </collectionViewCell>
