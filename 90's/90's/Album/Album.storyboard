@@ -988,12 +988,12 @@
                                         <rect key="frame" x="0.0" y="896" width="414" height="250"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ooR-Gm-DZS">
-                                                <rect key="frame" x="203" y="60" width="136" height="136"/>
+                                                <rect key="frame" x="239" y="93" width="110" height="70"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="136" id="4Z0-Zr-FmM"/>
-                                                    <constraint firstAttribute="width" constant="136" id="aP8-un-B4A"/>
+                                                    <constraint firstAttribute="height" constant="70" id="4Z0-Zr-FmM"/>
+                                                    <constraint firstAttribute="width" constant="110" id="aP8-un-B4A"/>
                                                 </constraints>
-                                                <state key="normal" title="Button" image="takealbumimage"/>
+                                                <state key="normal" title="Button" image="galleryIcon"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5gW-XF-dnC">
                                                 <rect key="frame" x="346" y="8" width="60" height="60"/>
@@ -1007,12 +1007,12 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wGs-mZ-Ww9">
-                                                <rect key="frame" x="44" y="50" width="150" height="150"/>
+                                                <rect key="frame" x="65" y="90" width="110" height="70"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="150" id="f9O-Uw-oFr"/>
-                                                    <constraint firstAttribute="height" constant="150" id="qjx-q8-ajw"/>
+                                                    <constraint firstAttribute="width" constant="110" id="f9O-Uw-oFr"/>
+                                                    <constraint firstAttribute="height" constant="70" id="qjx-q8-ajw"/>
                                                 </constraints>
-                                                <state key="normal" title="Button" image="takephotoimage"/>
+                                                <state key="normal" title="Button" image="cameraIcon"/>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -1020,10 +1020,10 @@
                                             <constraint firstItem="ooR-Gm-DZS" firstAttribute="centerY" secondItem="Wo5-uJ-SMg" secondAttribute="centerY" constant="3" id="5Pi-JW-t2P"/>
                                             <constraint firstAttribute="height" constant="250" id="9XK-ED-TW5"/>
                                             <constraint firstItem="5gW-XF-dnC" firstAttribute="top" secondItem="Wo5-uJ-SMg" secondAttribute="top" constant="8" id="Eid-Pn-QEs"/>
-                                            <constraint firstItem="ooR-Gm-DZS" firstAttribute="leading" secondItem="wGs-mZ-Ww9" secondAttribute="trailing" constant="9" id="dJo-bK-ycs"/>
+                                            <constraint firstAttribute="trailing" secondItem="ooR-Gm-DZS" secondAttribute="trailing" constant="65" id="IHK-lj-goR"/>
                                             <constraint firstAttribute="trailing" secondItem="5gW-XF-dnC" secondAttribute="trailing" constant="8" id="eZf-WH-RVy"/>
                                             <constraint firstItem="wGs-mZ-Ww9" firstAttribute="centerY" secondItem="Wo5-uJ-SMg" secondAttribute="centerY" id="kng-A0-CNF"/>
-                                            <constraint firstItem="wGs-mZ-Ww9" firstAttribute="leading" secondItem="Wo5-uJ-SMg" secondAttribute="leading" constant="44" id="yeF-dA-bZN"/>
+                                            <constraint firstItem="wGs-mZ-Ww9" firstAttribute="leading" secondItem="Wo5-uJ-SMg" secondAttribute="leading" constant="65" id="yeF-dA-bZN"/>
                                         </constraints>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rAU-as-lh2">
@@ -2127,11 +2127,13 @@
         <image name="addPhotoButton" width="63" height="63"/>
         <image name="albumThumbnailCheckbox" width="104" height="108"/>
         <image name="backicon" width="267" height="267"/>
+        <image name="cameraIcon" width="109" height="69"/>
         <image name="cancleicon" width="267" height="267"/>
         <image name="deleteButton" width="50" height="33"/>
         <image name="emptyAlbum" width="209" height="216"/>
         <image name="exitAlbum" width="88" height="20"/>
         <image name="framePolaroid" width="184" height="213"/>
+        <image name="galleryIcon" width="108" height="67"/>
         <image name="iconAdd" width="22" height="22"/>
         <image name="iconAlbumAct" width="30" height="26"/>
         <image name="iconAlbumInact" width="31" height="26"/>
@@ -2141,7 +2143,5 @@
         <image name="iconMembers" width="19" height="19"/>
         <image name="layoutThumbnailCheckbox" width="74" height="102"/>
         <image name="previewButton" width="102" height="26"/>
-        <image name="takealbumimage" width="272" height="244"/>
-        <image name="takephotoimage" width="278" height="278"/>
     </resources>
 </document>
