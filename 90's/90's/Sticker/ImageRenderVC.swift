@@ -177,6 +177,7 @@ extension ImageRenderVC {
         layoutImage.leftAnchor.constraint(equalTo: self.saveView.leftAnchor, constant: 0).isActive = true
         layoutImage.rightAnchor.constraint(equalTo: self.saveView.rightAnchor, constant: 0).isActive = true
         layoutImage.bottomAnchor.constraint(equalTo: self.saveView.bottomAnchor, constant: 0).isActive = true
+
         view.layoutIfNeeded()
     }
     
