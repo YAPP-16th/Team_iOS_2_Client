@@ -125,29 +125,29 @@ extension SavePhotoVC {
 extension SavePhotoVC {
     @objc func touchSaveBtn(){ // 이미지 저장
 //        photoView.addSubview(dateLabel)
-        let renderer = UIGraphicsImageRenderer(size: photoView.bounds.size)
-        let image = renderer.image { ctx in
-            photoView.drawHierarchy(in: photoView.bounds, afterScreenUpdates: true)
-        }
+//        let renderer = UIGraphicsImageRenderer(size: photoView.bounds.size)
+//        let image = renderer.image { ctx in
+//            photoView.drawHierarchy(in: photoView.bounds, afterScreenUpdates: true)
+//        }
         
-        AlbumService.shared.photoUpload(albumUid: albumUid!, image: [image], imageName: imageName!, completion: {
-            response in
-            if let status = response.response?.statusCode {
-                switch status {
-                case 200:
-                    guard let data = response.data else {return}
-                    print("received data = \(data)")
-                case 401...404 :
-                    print("forbidden access in \(status)")
-                default:
-                    return
-                }
-            }
-        })
+//        AlbumService.shared.photoUpload(albumUid: albumUid!, image: [image], imageName: imageName!, completion: {
+//            response in
+//            if let status = response.response?.statusCode {
+//                switch status {
+//                case 200:
+//                    guard let data = response.data else {return}
+//                    print("received data = \(data)")
+//                case 401...404 :
+//                    print("forbidden access in \(status)")
+//                default:
+//                    return
+//                }
+//            }
+//        })
         
-//        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+
+        UIImageWriteToSavedPhotosAlbum(originImage,self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
         
-        self.navigationController?.popToRootViewController(animated: true)
     }
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer){
