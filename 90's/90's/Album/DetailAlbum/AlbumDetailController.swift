@@ -94,7 +94,7 @@ extension AlbumDetailController {
         hideView.isHidden = true
         hideWhiteView.layer.cornerRadius = 15
 
-        hideImageZoom.frame.size = setZoomImageView(layout: selectedLayout!)
+        hideImageZoom.frame.size = CGSize(width: setZoomImageView(layout: selectedLayout!).width - 60, height: setZoomImageView(layout: selectedLayout!).height - 60)
         hideImageZoom.center = view.center
 
         // 순서 바꾸기
@@ -174,9 +174,13 @@ extension AlbumDetailController {
         case true :
             self.hideView.isHidden = true
             self.hideImageZoom.isHidden = true
+            self.hideImageZoom.transform = CGAffineTransform(scaleX: 100/115, y: 100/115)
         case false :
             self.hideView.isHidden = false
             self.hideImageZoom.isHidden = false
+            UIView.animate(withDuration: 1.0){
+                self.hideImageZoom.transform = CGAffineTransform(scaleX: 1.15, y: 1.15)
+            }
         }
     }
     
