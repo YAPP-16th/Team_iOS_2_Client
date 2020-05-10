@@ -1,0 +1,75 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "CachedResponseHandler"
+- "ResponseCacher"
+provides-nominal:
+- "9Alamofire21CachedResponseHandlerP"
+- "9Alamofire14ResponseCacherV"
+- "9Alamofire14ResponseCacherV8BehaviorO"
+provides-member:
+- ["9Alamofire21CachedResponseHandlerP", ""]
+- ["9Alamofire14ResponseCacherV", ""]
+- ["9Alamofire14ResponseCacherV8BehaviorO", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "AssignmentPrecedence"
+- "CachedResponseHandler"
+- "CachedURLResponse"
+- "ResponseCacher"
+- "URLSessionDataTask"
+- "Void"
+depends-member:
+- ["9Alamofire14ResponseCacherV8BehaviorO", "CachedURLResponse"]
+- ["9Alamofire14ResponseCacherV8BehaviorO", "URLSessionDataTask"]
+- ["9Alamofire14ResponseCacherV8BehaviorO", "cache"]
+- ["9Alamofire14ResponseCacherV8BehaviorO", "doNotCache"]
+- ["9Alamofire14ResponseCacherV8BehaviorO", "modify"]
+- ["9Alamofire21CachedResponseHandlerP", "CachedURLResponse"]
+- ["9Alamofire21CachedResponseHandlerP", "ResponseCacher"]
+- ["9Alamofire21CachedResponseHandlerP", "URLSessionDataTask"]
+- ["9Alamofire21CachedResponseHandlerP", "Void"]
+- ["9Alamofire21CachedResponseHandlerP", ""]
+- !private ["9Alamofire21CachedResponseHandlerP", "behavior"]
+- ["9Alamofire21CachedResponseHandlerP", "dataTask"]
+- ["9Alamofire21CachedResponseHandlerP", "init"]
+- ["9Alamofire14ResponseCacherV", "Behavior"]
+- ["9Alamofire14ResponseCacherV", "CachedURLResponse"]
+- ["9Alamofire14ResponseCacherV", "ResponseCacher"]
+- ["9Alamofire14ResponseCacherV", "URLSessionDataTask"]
+- ["9Alamofire14ResponseCacherV", "Void"]
+- ["9Alamofire14ResponseCacherV", "behavior"]
+- ["9Alamofire14ResponseCacherV", "cache"]
+- ["9Alamofire14ResponseCacherV", "dataTask"]
+- ["9Alamofire14ResponseCacherV", "deinit"]
+- ["9Alamofire14ResponseCacherV", "doNotCache"]
+- ["9Alamofire14ResponseCacherV", "init"]
+depends-nominal:
+- "9Alamofire14ResponseCacherV8BehaviorO"
+- "9Alamofire21CachedResponseHandlerP"
+- "9Alamofire14ResponseCacherV"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/ObjectiveC.swiftmodule/armv7.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Dispatch.swiftmodule/armv7.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Darwin.swiftmodule/armv7.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Foundation.swiftmodule/armv7.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreFoundation.swiftmodule/armv7.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreGraphics.swiftmodule/armv7.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Swift.swiftmodule/armv7.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/SwiftOnoneSupport.swiftmodule/armv7.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/ObjectiveC.swiftmodule/armv7.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Dispatch.swiftmodule/armv7.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Darwin.swiftmodule/armv7.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Foundation.swiftmodule/armv7.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreFoundation.swiftmodule/armv7.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreGraphics.swiftmodule/armv7.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/SwiftOnoneSupport.swiftmodule/armv7.swiftmodule"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/Carthage/Checkouts/Alamofire/Source/Alamofire.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/DerivedData/90's/Build/Intermediates.noindex/Alamofire.build/Debug-iphoneos/Alamofire iOS.build/unextended-module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/apinotes/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "aa6e44b58693565bb0afbeb98bcec7fa"

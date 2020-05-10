@@ -1,0 +1,449 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "RetryPolicy"
+- "ConnectionLostRetryPolicy"
+provides-nominal:
+- "9Alamofire11RetryPolicyC"
+- "9Alamofire25ConnectionLostRetryPolicyC"
+provides-member:
+- ["9Alamofire11RetryPolicyC", ""]
+- ["9Alamofire25ConnectionLostRetryPolicyC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "*"
+- !private "<"
+- !private ">="
+- !private "??"
+- "AssignmentPrecedence"
+- "Bool"
+- !private "BooleanLiteralType"
+- "CastingPrecedence"
+- "ConnectionLostRetryPolicy"
+- "Double"
+- "Error"
+- "FloatLiteralType"
+- "HTTPMethod"
+- "HTTPURLResponse"
+- "Int"
+- "IntegerLiteralType"
+- "Request"
+- "RequestInterceptor"
+- "RetryPolicy"
+- "RetryResult"
+- "Session"
+- "Set"
+- !private "StringLiteralType"
+- "UInt"
+- "URLError"
+- "Void"
+- !private "pow"
+- !private "precondition"
+depends-member:
+- !private ["9Alamofire7AFErrorO", "underlyingError"]
+- !private ["s18AdditiveArithmeticP", "init"]
+- !private ["SB", "init"]
+- !private ["s7CVarArgP", "contains"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "statusCode"]
+- ["10Foundation8URLErrorV4CodeV", "backgroundSessionInUseByAnotherProcess"]
+- ["10Foundation8URLErrorV4CodeV", "backgroundSessionWasDisconnected"]
+- ["10Foundation8URLErrorV4CodeV", "badServerResponse"]
+- ["10Foundation8URLErrorV4CodeV", "callIsActive"]
+- ["10Foundation8URLErrorV4CodeV", "cannotConnectToHost"]
+- ["10Foundation8URLErrorV4CodeV", "cannotFindHost"]
+- ["10Foundation8URLErrorV4CodeV", "cannotLoadFromNetwork"]
+- ["10Foundation8URLErrorV4CodeV", "dataNotAllowed"]
+- ["10Foundation8URLErrorV4CodeV", "dnsLookupFailed"]
+- ["10Foundation8URLErrorV4CodeV", "downloadDecodingFailedMidStream"]
+- ["10Foundation8URLErrorV4CodeV", "downloadDecodingFailedToComplete"]
+- ["10Foundation8URLErrorV4CodeV", "internationalRoamingOff"]
+- ["10Foundation8URLErrorV4CodeV", "networkConnectionLost"]
+- ["10Foundation8URLErrorV4CodeV", "notConnectedToInternet"]
+- ["10Foundation8URLErrorV4CodeV", "secureConnectionFailed"]
+- ["10Foundation8URLErrorV4CodeV", "serverCertificateHasBadDate"]
+- ["10Foundation8URLErrorV4CodeV", "serverCertificateNotYetValid"]
+- ["10Foundation8URLErrorV4CodeV", "timedOut"]
+- !private ["Sl", "contains"]
+- !private ["SL", "init"]
+- ["9Alamofire25ConnectionLostRetryPolicyC", "Double"]
+- ["9Alamofire25ConnectionLostRetryPolicyC", "HTTPMethod"]
+- !private ["9Alamofire25ConnectionLostRetryPolicyC", "RetryPolicy"]
+- ["9Alamofire25ConnectionLostRetryPolicyC", "Set"]
+- ["9Alamofire25ConnectionLostRetryPolicyC", "UInt"]
+- ["9Alamofire25ConnectionLostRetryPolicyC", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "contains"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "method"]
+- !private ["s28CustomDebugStringConvertibleP", "statusCode"]
+- ["10Foundation13CustomNSErrorP", "Code"]
+- !private ["10Foundation13CustomNSErrorP", "code"]
+- !private ["s17CustomReflectableP", "contains"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "method"]
+- !private ["s23CustomStringConvertibleP", "contains"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "method"]
+- !private ["s23CustomStringConvertibleP", "request"]
+- !private ["s23CustomStringConvertibleP", "response"]
+- !private ["s23CustomStringConvertibleP", "retryCount"]
+- !private ["s23CustomStringConvertibleP", "statusCode"]
+- !private ["Se", "contains"]
+- !private ["Se", "init"]
+- !private ["Sd", "init"]
+- !private ["SE", "contains"]
+- !private ["SE", "init"]
+- ["SQ", "Code"]
+- ["SQ", "backgroundSessionInUseByAnotherProcess"]
+- ["SQ", "backgroundSessionWasDisconnected"]
+- ["SQ", "badServerResponse"]
+- ["SQ", "callIsActive"]
+- ["SQ", "cannotConnectToHost"]
+- ["SQ", "cannotFindHost"]
+- ["SQ", "cannotLoadFromNetwork"]
+- !private ["SQ", "code"]
+- !private ["SQ", "contains"]
+- ["SQ", "dataNotAllowed"]
+- ["SQ", "delete"]
+- ["SQ", "dnsLookupFailed"]
+- ["SQ", "downloadDecodingFailedMidStream"]
+- ["SQ", "downloadDecodingFailedToComplete"]
+- ["SQ", "get"]
+- ["SQ", "head"]
+- !private ["SQ", "init"]
+- ["SQ", "internationalRoamingOff"]
+- !private ["SQ", "method"]
+- ["SQ", "networkConnectionLost"]
+- ["SQ", "notConnectedToInternet"]
+- ["SQ", "options"]
+- ["SQ", "put"]
+- !private ["SQ", "request"]
+- !private ["SQ", "response"]
+- !private ["SQ", "retryCount"]
+- ["SQ", "secureConnectionFailed"]
+- ["SQ", "serverCertificateHasBadDate"]
+- ["SQ", "serverCertificateNotYetValid"]
+- !private ["SQ", "statusCode"]
+- ["SQ", "timedOut"]
+- ["SQ", "trace"]
+- ["s5ErrorP", "Code"]
+- !private ["s5ErrorP", "asAFError"]
+- !private ["s5ErrorP", "code"]
+- !private ["s5ErrorP", "underlyingError"]
+- !private ["s25ExpressibleByArrayLiteralP", "contains"]
+- !private ["s25ExpressibleByFloatLiteralP", "init"]
+- !private ["s27ExpressibleByIntegerLiteralP", "init"]
+- !private ["SF", "init"]
+- ["9Alamofire10HTTPMethodV", "deinit"]
+- ["9Alamofire10HTTPMethodV", "delete"]
+- ["9Alamofire10HTTPMethodV", "get"]
+- ["9Alamofire10HTTPMethodV", "head"]
+- ["9Alamofire10HTTPMethodV", "options"]
+- ["9Alamofire10HTTPMethodV", "put"]
+- ["9Alamofire10HTTPMethodV", "trace"]
+- !private ["So17NSHTTPURLResponseC", "statusCode"]
+- ["SH", "Code"]
+- ["SH", "backgroundSessionInUseByAnotherProcess"]
+- ["SH", "backgroundSessionWasDisconnected"]
+- ["SH", "badServerResponse"]
+- ["SH", "callIsActive"]
+- ["SH", "cannotConnectToHost"]
+- ["SH", "cannotFindHost"]
+- ["SH", "cannotLoadFromNetwork"]
+- !private ["SH", "code"]
+- !private ["SH", "contains"]
+- ["SH", "dataNotAllowed"]
+- ["SH", "delete"]
+- ["SH", "dnsLookupFailed"]
+- ["SH", "downloadDecodingFailedMidStream"]
+- ["SH", "downloadDecodingFailedToComplete"]
+- ["SH", "get"]
+- ["SH", "head"]
+- !private ["SH", "init"]
+- ["SH", "internationalRoamingOff"]
+- !private ["SH", "method"]
+- ["SH", "networkConnectionLost"]
+- ["SH", "notConnectedToInternet"]
+- ["SH", "options"]
+- ["SH", "put"]
+- !private ["SH", "request"]
+- !private ["SH", "response"]
+- !private ["SH", "retryCount"]
+- ["SH", "secureConnectionFailed"]
+- ["SH", "serverCertificateHasBadDate"]
+- ["SH", "serverCertificateNotYetValid"]
+- !private ["SH", "statusCode"]
+- ["SH", "timedOut"]
+- ["SH", "trace"]
+- !private ["10Foundation14LocalizedErrorP", "underlyingError"]
+- !private ["s25LosslessStringConvertibleP", "init"]
+- !private ["So8NSCodingP", "statusCode"]
+- !private ["So9NSCopyingP", "statusCode"]
+- !private ["So8NSObjectC", "statusCode"]
+- !private ["So8NSObjectP", "statusCode"]
+- !private ["So14NSSecureCodingP", "statusCode"]
+- !private ["Sj", "init"]
+- ["SY", "backgroundSessionInUseByAnotherProcess"]
+- ["SY", "backgroundSessionWasDisconnected"]
+- ["SY", "badServerResponse"]
+- ["SY", "callIsActive"]
+- ["SY", "cannotConnectToHost"]
+- ["SY", "cannotFindHost"]
+- ["SY", "cannotLoadFromNetwork"]
+- ["SY", "dataNotAllowed"]
+- ["SY", "delete"]
+- ["SY", "dnsLookupFailed"]
+- ["SY", "downloadDecodingFailedMidStream"]
+- ["SY", "downloadDecodingFailedToComplete"]
+- ["SY", "get"]
+- ["SY", "head"]
+- ["SY", "internationalRoamingOff"]
+- ["SY", "networkConnectionLost"]
+- ["SY", "notConnectedToInternet"]
+- ["SY", "options"]
+- ["SY", "put"]
+- ["SY", "secureConnectionFailed"]
+- ["SY", "serverCertificateHasBadDate"]
+- ["SY", "serverCertificateNotYetValid"]
+- ["SY", "timedOut"]
+- ["SY", "trace"]
+- !private ["10Foundation20ReferenceConvertibleP", "method"]
+- !private ["9Alamofire7RequestC", "request"]
+- !private ["9Alamofire7RequestC", "response"]
+- !private ["9Alamofire7RequestC", "retryCount"]
+- !private ["9Alamofire14RequestAdapterP", "Double"]
+- !private ["9Alamofire14RequestAdapterP", "RetryPolicy"]
+- ["9Alamofire14RequestAdapterP", ""]
+- ["9Alamofire14RequestAdapterP", "adapt"]
+- !private ["9Alamofire14RequestAdapterP", "defaultExponentialBackoffBase"]
+- !private ["9Alamofire14RequestAdapterP", "defaultExponentialBackoffScale"]
+- !private ["9Alamofire14RequestAdapterP", "defaultRetryLimit"]
+- !private ["9Alamofire14RequestAdapterP", "defaultRetryableHTTPMethods"]
+- !private ["9Alamofire14RequestAdapterP", "defaultRetryableHTTPStatusCodes"]
+- !private ["9Alamofire14RequestAdapterP", "defaultRetryableURLErrorCodes"]
+- !private ["9Alamofire14RequestAdapterP", "exponentialBackoffBase"]
+- !private ["9Alamofire14RequestAdapterP", "exponentialBackoffScale"]
+- !private ["9Alamofire14RequestAdapterP", "init"]
+- !private ["9Alamofire14RequestAdapterP", "pow"]
+- !private ["9Alamofire14RequestAdapterP", "precondition"]
+- ["9Alamofire14RequestAdapterP", "retry"]
+- !private ["9Alamofire14RequestAdapterP", "retryLimit"]
+- !private ["9Alamofire14RequestAdapterP", "retryableHTTPMethods"]
+- !private ["9Alamofire14RequestAdapterP", "retryableHTTPStatusCodes"]
+- !private ["9Alamofire14RequestAdapterP", "retryableURLErrorCodes"]
+- !private ["9Alamofire14RequestAdapterP", "shouldRetry"]
+- !private ["9Alamofire18RequestInterceptorP", "Double"]
+- !private ["9Alamofire18RequestInterceptorP", "RetryPolicy"]
+- ["9Alamofire18RequestInterceptorP", ""]
+- ["9Alamofire18RequestInterceptorP", "adapt"]
+- !private ["9Alamofire18RequestInterceptorP", "defaultExponentialBackoffBase"]
+- !private ["9Alamofire18RequestInterceptorP", "defaultExponentialBackoffScale"]
+- !private ["9Alamofire18RequestInterceptorP", "defaultRetryLimit"]
+- !private ["9Alamofire18RequestInterceptorP", "defaultRetryableHTTPMethods"]
+- !private ["9Alamofire18RequestInterceptorP", "defaultRetryableHTTPStatusCodes"]
+- !private ["9Alamofire18RequestInterceptorP", "defaultRetryableURLErrorCodes"]
+- !private ["9Alamofire18RequestInterceptorP", "exponentialBackoffBase"]
+- !private ["9Alamofire18RequestInterceptorP", "exponentialBackoffScale"]
+- !private ["9Alamofire18RequestInterceptorP", "init"]
+- !private ["9Alamofire18RequestInterceptorP", "pow"]
+- !private ["9Alamofire18RequestInterceptorP", "precondition"]
+- ["9Alamofire18RequestInterceptorP", "retry"]
+- !private ["9Alamofire18RequestInterceptorP", "retryLimit"]
+- !private ["9Alamofire18RequestInterceptorP", "retryableHTTPMethods"]
+- !private ["9Alamofire18RequestInterceptorP", "retryableHTTPStatusCodes"]
+- !private ["9Alamofire18RequestInterceptorP", "retryableURLErrorCodes"]
+- !private ["9Alamofire18RequestInterceptorP", "shouldRetry"]
+- !private ["9Alamofire14RequestRetrierP", "Double"]
+- !private ["9Alamofire14RequestRetrierP", "RetryPolicy"]
+- ["9Alamofire14RequestRetrierP", ""]
+- ["9Alamofire14RequestRetrierP", "adapt"]
+- !private ["9Alamofire14RequestRetrierP", "defaultExponentialBackoffBase"]
+- !private ["9Alamofire14RequestRetrierP", "defaultExponentialBackoffScale"]
+- !private ["9Alamofire14RequestRetrierP", "defaultRetryLimit"]
+- !private ["9Alamofire14RequestRetrierP", "defaultRetryableHTTPMethods"]
+- !private ["9Alamofire14RequestRetrierP", "defaultRetryableHTTPStatusCodes"]
+- !private ["9Alamofire14RequestRetrierP", "defaultRetryableURLErrorCodes"]
+- !private ["9Alamofire14RequestRetrierP", "exponentialBackoffBase"]
+- !private ["9Alamofire14RequestRetrierP", "exponentialBackoffScale"]
+- !private ["9Alamofire14RequestRetrierP", "init"]
+- !private ["9Alamofire14RequestRetrierP", "pow"]
+- !private ["9Alamofire14RequestRetrierP", "precondition"]
+- ["9Alamofire14RequestRetrierP", "retry"]
+- !private ["9Alamofire14RequestRetrierP", "retryLimit"]
+- !private ["9Alamofire14RequestRetrierP", "retryableHTTPMethods"]
+- !private ["9Alamofire14RequestRetrierP", "retryableHTTPStatusCodes"]
+- !private ["9Alamofire14RequestRetrierP", "retryableURLErrorCodes"]
+- !private ["9Alamofire14RequestRetrierP", "shouldRetry"]
+- ["9Alamofire11RetryPolicyC", "Bool"]
+- ["9Alamofire11RetryPolicyC", "Double"]
+- ["9Alamofire11RetryPolicyC", "Error"]
+- ["9Alamofire11RetryPolicyC", "HTTPMethod"]
+- ["9Alamofire11RetryPolicyC", "HTTPURLResponse"]
+- ["9Alamofire11RetryPolicyC", "Int"]
+- ["9Alamofire11RetryPolicyC", "Request"]
+- !private ["9Alamofire11RetryPolicyC", "RetryPolicy"]
+- ["9Alamofire11RetryPolicyC", "RetryResult"]
+- ["9Alamofire11RetryPolicyC", "Session"]
+- ["9Alamofire11RetryPolicyC", "Set"]
+- ["9Alamofire11RetryPolicyC", "UInt"]
+- ["9Alamofire11RetryPolicyC", "URLError"]
+- ["9Alamofire11RetryPolicyC", "Void"]
+- ["9Alamofire11RetryPolicyC", ""]
+- ["9Alamofire11RetryPolicyC", "adapt"]
+- ["9Alamofire11RetryPolicyC", "defaultExponentialBackoffBase"]
+- ["9Alamofire11RetryPolicyC", "defaultExponentialBackoffScale"]
+- ["9Alamofire11RetryPolicyC", "defaultRetryLimit"]
+- ["9Alamofire11RetryPolicyC", "defaultRetryableHTTPMethods"]
+- ["9Alamofire11RetryPolicyC", "defaultRetryableHTTPStatusCodes"]
+- ["9Alamofire11RetryPolicyC", "defaultRetryableURLErrorCodes"]
+- ["9Alamofire11RetryPolicyC", "deinit"]
+- ["9Alamofire11RetryPolicyC", "exponentialBackoffBase"]
+- ["9Alamofire11RetryPolicyC", "exponentialBackoffScale"]
+- ["9Alamofire11RetryPolicyC", "init"]
+- !private ["9Alamofire11RetryPolicyC", "pow"]
+- !private ["9Alamofire11RetryPolicyC", "precondition"]
+- ["9Alamofire11RetryPolicyC", "retry"]
+- ["9Alamofire11RetryPolicyC", "retryLimit"]
+- ["9Alamofire11RetryPolicyC", "retryableHTTPMethods"]
+- ["9Alamofire11RetryPolicyC", "retryableHTTPStatusCodes"]
+- ["9Alamofire11RetryPolicyC", "retryableURLErrorCodes"]
+- !private ["9Alamofire11RetryPolicyC", "shouldRetry"]
+- !private ["9Alamofire11RetryResultO", "doNotRetry"]
+- !private ["9Alamofire11RetryResultO", "retryWithDelay"]
+- !private ["s10SIMDScalarP", "init"]
+- !private ["ST", "contains"]
+- !private ["Sh", "contains"]
+- !private ["s10SetAlgebraP", "contains"]
+- !private ["s13SignedNumericP", "init"]
+- !private ["Sx", "init"]
+- !private ["s20TextOutputStreamableP", "init"]
+- ["10Foundation8URLErrorV", "Code"]
+- !private ["10Foundation8URLErrorV", "code"]
+- !private ["10Foundation10URLRequestV", "method"]
+- !private ["9Alamofire21URLRequestConvertibleP", "method"]
+- !private ["So13NSURLResponseC", "statusCode"]
+- ["10Foundation21_BridgedStoredNSErrorP", "Code"]
+- !private ["10Foundation21_BridgedStoredNSErrorP", "code"]
+- !private ["s15_CVarArgAlignedP", "init"]
+- !private ["s22_CVarArgPassedAsDoubleP", "init"]
+- !private ["s30_CustomPlaygroundQuickLookableP", "init"]
+- ["10Foundation18_ErrorCodeProtocolP", "backgroundSessionInUseByAnotherProcess"]
+- ["10Foundation18_ErrorCodeProtocolP", "backgroundSessionWasDisconnected"]
+- ["10Foundation18_ErrorCodeProtocolP", "badServerResponse"]
+- ["10Foundation18_ErrorCodeProtocolP", "callIsActive"]
+- ["10Foundation18_ErrorCodeProtocolP", "cannotConnectToHost"]
+- ["10Foundation18_ErrorCodeProtocolP", "cannotFindHost"]
+- ["10Foundation18_ErrorCodeProtocolP", "cannotLoadFromNetwork"]
+- ["10Foundation18_ErrorCodeProtocolP", "dataNotAllowed"]
+- ["10Foundation18_ErrorCodeProtocolP", "dnsLookupFailed"]
+- ["10Foundation18_ErrorCodeProtocolP", "downloadDecodingFailedMidStream"]
+- ["10Foundation18_ErrorCodeProtocolP", "downloadDecodingFailedToComplete"]
+- ["10Foundation18_ErrorCodeProtocolP", "internationalRoamingOff"]
+- ["10Foundation18_ErrorCodeProtocolP", "networkConnectionLost"]
+- ["10Foundation18_ErrorCodeProtocolP", "notConnectedToInternet"]
+- ["10Foundation18_ErrorCodeProtocolP", "secureConnectionFailed"]
+- ["10Foundation18_ErrorCodeProtocolP", "serverCertificateHasBadDate"]
+- ["10Foundation18_ErrorCodeProtocolP", "serverCertificateNotYetValid"]
+- ["10Foundation18_ErrorCodeProtocolP", "timedOut"]
+- !private ["s33_ExpressibleByBuiltinFloatLiteralP", "init"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "contains"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "statusCode"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "statusCode"]
+- !private ["s21_ObjectiveCBridgeableP", "contains"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "method"]
+- ["10Foundation26_ObjectiveCBridgeableErrorP", "Code"]
+- !private ["10Foundation26_ObjectiveCBridgeableErrorP", "code"]
+depends-nominal:
+- !private "9Alamofire7AFErrorO"
+- !private "s18AdditiveArithmeticP"
+- !private "SB"
+- !private "s7CVarArgP"
+- "10Foundation8URLErrorV4CodeV"
+- !private "Sl"
+- !private "SL"
+- "9Alamofire25ConnectionLostRetryPolicyC"
+- !private "s28CustomDebugStringConvertibleP"
+- "10Foundation13CustomNSErrorP"
+- !private "s17CustomReflectableP"
+- !private "s23CustomStringConvertibleP"
+- !private "Se"
+- !private "Sd"
+- !private "SE"
+- "SQ"
+- "s5ErrorP"
+- !private "s25ExpressibleByArrayLiteralP"
+- !private "s25ExpressibleByFloatLiteralP"
+- !private "s27ExpressibleByIntegerLiteralP"
+- !private "SF"
+- "9Alamofire10HTTPMethodV"
+- !private "So17NSHTTPURLResponseC"
+- "SH"
+- !private "10Foundation14LocalizedErrorP"
+- !private "s25LosslessStringConvertibleP"
+- !private "So8NSCodingP"
+- !private "So9NSCopyingP"
+- !private "So8NSObjectC"
+- !private "So8NSObjectP"
+- !private "So14NSSecureCodingP"
+- !private "Sj"
+- "SY"
+- !private "10Foundation20ReferenceConvertibleP"
+- !private "9Alamofire7RequestC"
+- "9Alamofire14RequestAdapterP"
+- "9Alamofire18RequestInterceptorP"
+- "9Alamofire14RequestRetrierP"
+- "9Alamofire11RetryPolicyC"
+- !private "9Alamofire11RetryResultO"
+- !private "s10SIMDScalarP"
+- !private "ST"
+- !private "Sh"
+- !private "s10SetAlgebraP"
+- !private "s13SignedNumericP"
+- !private "Sx"
+- !private "s20TextOutputStreamableP"
+- "10Foundation8URLErrorV"
+- !private "10Foundation10URLRequestV"
+- !private "9Alamofire21URLRequestConvertibleP"
+- !private "So13NSURLResponseC"
+- "10Foundation21_BridgedStoredNSErrorP"
+- !private "s15_CVarArgAlignedP"
+- !private "s22_CVarArgPassedAsDoubleP"
+- !private "s30_CustomPlaygroundQuickLookableP"
+- "10Foundation18_ErrorCodeProtocolP"
+- !private "s33_ExpressibleByBuiltinFloatLiteralP"
+- !private "s35_ExpressibleByBuiltinIntegerLiteralP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- !private "10Foundation27_KeyValueCodingAndObservingP"
+- !private "10Foundation37_KeyValueCodingAndObservingPublishingP"
+- !private "s21_ObjectiveCBridgeableP"
+- "10Foundation26_ObjectiveCBridgeableErrorP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/ObjectiveC.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Dispatch.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Darwin.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Foundation.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreFoundation.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreGraphics.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Swift.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/SwiftOnoneSupport.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Combine.framework/Modules/Combine.swiftmodule/arm64-apple-ios.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/ObjectiveC.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Dispatch.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Darwin.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Foundation.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreFoundation.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreGraphics.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/SwiftOnoneSupport.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Combine.swiftmodule/arm64-apple-ios.swiftmodule"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/Carthage/Checkouts/Alamofire/Source/Alamofire.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/DerivedData/90's/Build/Intermediates.noindex/Alamofire.build/Debug-iphoneos/Alamofire iOS.build/unextended-module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/apinotes/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "519db0404799dda51f0e38f3580cbe85"

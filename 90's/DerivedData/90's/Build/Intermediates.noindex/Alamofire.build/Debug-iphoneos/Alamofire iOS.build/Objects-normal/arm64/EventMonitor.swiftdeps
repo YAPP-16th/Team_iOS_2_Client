@@ -1,0 +1,362 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "EventMonitor"
+- "CompositeEventMonitor"
+- "ClosureEventMonitor"
+provides-nominal:
+- "9Alamofire12EventMonitorP"
+- "9Alamofire21CompositeEventMonitorC"
+- "9Alamofire19ClosureEventMonitorC"
+provides-member:
+- ["9Alamofire12EventMonitorP", ""]
+- ["9Alamofire21CompositeEventMonitorC", ""]
+- ["9Alamofire19ClosureEventMonitorC", ""]
+- ["9Alamofire12EventMonitorP", "queue"]
+- ["9Alamofire12EventMonitorP", "urlSession"]
+- ["9Alamofire12EventMonitorP", "urlSession"]
+- ["9Alamofire12EventMonitorP", "urlSession"]
+- ["9Alamofire12EventMonitorP", "urlSession"]
+- ["9Alamofire12EventMonitorP", "urlSession"]
+- ["9Alamofire12EventMonitorP", "urlSession"]
+- ["9Alamofire12EventMonitorP", "urlSession"]
+- ["9Alamofire12EventMonitorP", "urlSession"]
+- ["9Alamofire12EventMonitorP", "urlSession"]
+- ["9Alamofire12EventMonitorP", "urlSession"]
+- ["9Alamofire12EventMonitorP", "urlSession"]
+- ["9Alamofire12EventMonitorP", "urlSession"]
+- ["9Alamofire12EventMonitorP", "urlSession"]
+- ["9Alamofire12EventMonitorP", "request"]
+- ["9Alamofire12EventMonitorP", "request"]
+- ["9Alamofire12EventMonitorP", "request"]
+- ["9Alamofire12EventMonitorP", "request"]
+- ["9Alamofire12EventMonitorP", "request"]
+- ["9Alamofire12EventMonitorP", "request"]
+- ["9Alamofire12EventMonitorP", "request"]
+- ["9Alamofire12EventMonitorP", "request"]
+- ["9Alamofire12EventMonitorP", "request"]
+- ["9Alamofire12EventMonitorP", "requestIsRetrying"]
+- ["9Alamofire12EventMonitorP", "requestDidFinish"]
+- ["9Alamofire12EventMonitorP", "requestDidResume"]
+- ["9Alamofire12EventMonitorP", "request"]
+- ["9Alamofire12EventMonitorP", "requestDidSuspend"]
+- ["9Alamofire12EventMonitorP", "request"]
+- ["9Alamofire12EventMonitorP", "requestDidCancel"]
+- ["9Alamofire12EventMonitorP", "request"]
+- ["9Alamofire12EventMonitorP", "request"]
+- ["9Alamofire12EventMonitorP", "request"]
+- ["9Alamofire12EventMonitorP", "request"]
+- ["9Alamofire12EventMonitorP", "request"]
+- ["9Alamofire12EventMonitorP", "request"]
+- ["9Alamofire12EventMonitorP", "request"]
+- ["9Alamofire12EventMonitorP", "request"]
+- ["9Alamofire12EventMonitorP", "request"]
+- ["9Alamofire12EventMonitorP", "request"]
+- ["9Alamofire12EventMonitorP", "request"]
+- ["9Alamofire12EventMonitorP", "request"]
+- ["9Alamofire12EventMonitorP", "request"]
+- ["9Alamofire12EventMonitorP", "request"]
+provides-dynamic-lookup:
+depends-top-level:
+- "AFError"
+- "AssignmentPrecedence"
+- "CachedURLResponse"
+- "ClosureEventMonitor"
+- "CompositeEventMonitor"
+- "Data"
+- "DataRequest"
+- "DataResponse"
+- "DataStreamRequest"
+- "DispatchQueue"
+- "DownloadRequest"
+- "DownloadResponse"
+- "Error"
+- "EventMonitor"
+- "HTTPURLResponse"
+- "InputStream"
+- "Int64"
+- "Request"
+- "Result"
+- "StringLiteralType"
+- "URL"
+- "URLAuthenticationChallenge"
+- "URLRequest"
+- "URLSession"
+- "URLSessionDataTask"
+- "URLSessionDownloadTask"
+- "URLSessionTask"
+- "URLSessionTaskMetrics"
+- "UploadRequest"
+- "Void"
+depends-member:
+- ["9Alamofire7AFErrorO", "deinit"]
+- !private ["s7CVarArgP", "async"]
+- ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "main"]
+- ["9Alamofire19ClosureEventMonitorC", "AFError"]
+- ["9Alamofire19ClosureEventMonitorC", "CachedURLResponse"]
+- ["9Alamofire19ClosureEventMonitorC", "Data"]
+- ["9Alamofire19ClosureEventMonitorC", "DataRequest"]
+- ["9Alamofire19ClosureEventMonitorC", "DataResponse"]
+- ["9Alamofire19ClosureEventMonitorC", "DataStreamRequest"]
+- ["9Alamofire19ClosureEventMonitorC", "DispatchQueue"]
+- ["9Alamofire19ClosureEventMonitorC", "DownloadRequest"]
+- ["9Alamofire19ClosureEventMonitorC", "DownloadResponse"]
+- ["9Alamofire19ClosureEventMonitorC", "Error"]
+- ["9Alamofire19ClosureEventMonitorC", "HTTPURLResponse"]
+- ["9Alamofire19ClosureEventMonitorC", "InputStream"]
+- ["9Alamofire19ClosureEventMonitorC", "Int64"]
+- ["9Alamofire19ClosureEventMonitorC", "Request"]
+- ["9Alamofire19ClosureEventMonitorC", "Result"]
+- ["9Alamofire19ClosureEventMonitorC", "URL"]
+- ["9Alamofire19ClosureEventMonitorC", "URLAuthenticationChallenge"]
+- ["9Alamofire19ClosureEventMonitorC", "URLRequest"]
+- ["9Alamofire19ClosureEventMonitorC", "URLSession"]
+- ["9Alamofire19ClosureEventMonitorC", "URLSessionDataTask"]
+- ["9Alamofire19ClosureEventMonitorC", "URLSessionDownloadTask"]
+- ["9Alamofire19ClosureEventMonitorC", "URLSessionTask"]
+- ["9Alamofire19ClosureEventMonitorC", "URLSessionTaskMetrics"]
+- ["9Alamofire19ClosureEventMonitorC", "UploadRequest"]
+- ["9Alamofire19ClosureEventMonitorC", "Void"]
+- ["9Alamofire19ClosureEventMonitorC", "dataTaskDidReceiveData"]
+- ["9Alamofire19ClosureEventMonitorC", "dataTaskWillCacheResponse"]
+- ["9Alamofire19ClosureEventMonitorC", "deinit"]
+- ["9Alamofire19ClosureEventMonitorC", "downloadTaskDidFinishDownloadingToURL"]
+- ["9Alamofire19ClosureEventMonitorC", "downloadTaskDidResumeAtOffset"]
+- ["9Alamofire19ClosureEventMonitorC", "downloadTaskDidWriteData"]
+- ["9Alamofire19ClosureEventMonitorC", "init"]
+- ["9Alamofire19ClosureEventMonitorC", "queue"]
+- ["9Alamofire19ClosureEventMonitorC", "request"]
+- ["9Alamofire19ClosureEventMonitorC", "requestDidAdaptInitialRequestToAdaptedRequest"]
+- ["9Alamofire19ClosureEventMonitorC", "requestDidCancel"]
+- ["9Alamofire19ClosureEventMonitorC", "requestDidCancelTask"]
+- ["9Alamofire19ClosureEventMonitorC", "requestDidCompleteTaskWithError"]
+- ["9Alamofire19ClosureEventMonitorC", "requestDidCreateDestinationURL"]
+- ["9Alamofire19ClosureEventMonitorC", "requestDidCreateInitialURLRequest"]
+- ["9Alamofire19ClosureEventMonitorC", "requestDidCreateTask"]
+- ["9Alamofire19ClosureEventMonitorC", "requestDidCreateURLRequest"]
+- ["9Alamofire19ClosureEventMonitorC", "requestDidCreateUploadable"]
+- ["9Alamofire19ClosureEventMonitorC", "requestDidFailTaskEarlyWithError"]
+- ["9Alamofire19ClosureEventMonitorC", "requestDidFailToAdaptURLRequestWithError"]
+- ["9Alamofire19ClosureEventMonitorC", "requestDidFailToCreateURLRequestWithError"]
+- ["9Alamofire19ClosureEventMonitorC", "requestDidFailToCreateUploadableWithError"]
+- ["9Alamofire19ClosureEventMonitorC", "requestDidFinish"]
+- ["9Alamofire19ClosureEventMonitorC", "requestDidFinishDownloadingUsingTaskWithResult"]
+- ["9Alamofire19ClosureEventMonitorC", "requestDidGatherMetrics"]
+- ["9Alamofire19ClosureEventMonitorC", "requestDidParseDownloadResponse"]
+- ["9Alamofire19ClosureEventMonitorC", "requestDidParseResponse"]
+- ["9Alamofire19ClosureEventMonitorC", "requestDidProvideInputStream"]
+- ["9Alamofire19ClosureEventMonitorC", "requestDidResume"]
+- ["9Alamofire19ClosureEventMonitorC", "requestDidResumeTask"]
+- ["9Alamofire19ClosureEventMonitorC", "requestDidSuspend"]
+- ["9Alamofire19ClosureEventMonitorC", "requestDidSuspendTask"]
+- ["9Alamofire19ClosureEventMonitorC", "requestDidValidateRequestResponseDataWithResult"]
+- ["9Alamofire19ClosureEventMonitorC", "requestDidValidateRequestResponseFileURLWithResult"]
+- ["9Alamofire19ClosureEventMonitorC", "requestDidValidateRequestResponseWithResult"]
+- ["9Alamofire19ClosureEventMonitorC", "requestIsRetrying"]
+- ["9Alamofire19ClosureEventMonitorC", "sessionDidBecomeInvalidWithError"]
+- ["9Alamofire19ClosureEventMonitorC", "taskDidComplete"]
+- ["9Alamofire19ClosureEventMonitorC", "taskDidFinishCollectingMetrics"]
+- ["9Alamofire19ClosureEventMonitorC", "taskDidReceiveChallenge"]
+- ["9Alamofire19ClosureEventMonitorC", "taskDidSendBodyData"]
+- ["9Alamofire19ClosureEventMonitorC", "taskIsWaitingForConnectivity"]
+- ["9Alamofire19ClosureEventMonitorC", "taskNeedNewBodyStream"]
+- ["9Alamofire19ClosureEventMonitorC", "taskWillPerformHTTPRedirection"]
+- ["9Alamofire19ClosureEventMonitorC", "urlSession"]
+- ["9Alamofire21CompositeEventMonitorC", "AFError"]
+- ["9Alamofire21CompositeEventMonitorC", "CachedURLResponse"]
+- ["9Alamofire21CompositeEventMonitorC", "Data"]
+- ["9Alamofire21CompositeEventMonitorC", "DataRequest"]
+- ["9Alamofire21CompositeEventMonitorC", "DataResponse"]
+- ["9Alamofire21CompositeEventMonitorC", "DataStreamRequest"]
+- ["9Alamofire21CompositeEventMonitorC", "DispatchQueue"]
+- ["9Alamofire21CompositeEventMonitorC", "DownloadRequest"]
+- ["9Alamofire21CompositeEventMonitorC", "DownloadResponse"]
+- ["9Alamofire21CompositeEventMonitorC", "Error"]
+- ["9Alamofire21CompositeEventMonitorC", "EventMonitor"]
+- ["9Alamofire21CompositeEventMonitorC", "HTTPURLResponse"]
+- ["9Alamofire21CompositeEventMonitorC", "InputStream"]
+- ["9Alamofire21CompositeEventMonitorC", "Int64"]
+- ["9Alamofire21CompositeEventMonitorC", "Request"]
+- ["9Alamofire21CompositeEventMonitorC", "Result"]
+- ["9Alamofire21CompositeEventMonitorC", "URL"]
+- ["9Alamofire21CompositeEventMonitorC", "URLAuthenticationChallenge"]
+- ["9Alamofire21CompositeEventMonitorC", "URLRequest"]
+- ["9Alamofire21CompositeEventMonitorC", "URLSession"]
+- ["9Alamofire21CompositeEventMonitorC", "URLSessionDataTask"]
+- ["9Alamofire21CompositeEventMonitorC", "URLSessionDownloadTask"]
+- ["9Alamofire21CompositeEventMonitorC", "URLSessionTask"]
+- ["9Alamofire21CompositeEventMonitorC", "URLSessionTaskMetrics"]
+- ["9Alamofire21CompositeEventMonitorC", "UploadRequest"]
+- ["9Alamofire21CompositeEventMonitorC", "Void"]
+- ["9Alamofire21CompositeEventMonitorC", "deinit"]
+- ["9Alamofire21CompositeEventMonitorC", "init"]
+- ["9Alamofire21CompositeEventMonitorC", "monitors"]
+- ["9Alamofire21CompositeEventMonitorC", "performEvent"]
+- ["9Alamofire21CompositeEventMonitorC", "queue"]
+- ["9Alamofire21CompositeEventMonitorC", "request"]
+- ["9Alamofire21CompositeEventMonitorC", "requestDidCancel"]
+- ["9Alamofire21CompositeEventMonitorC", "requestDidFinish"]
+- ["9Alamofire21CompositeEventMonitorC", "requestDidResume"]
+- ["9Alamofire21CompositeEventMonitorC", "requestDidSuspend"]
+- ["9Alamofire21CompositeEventMonitorC", "requestIsRetrying"]
+- ["9Alamofire21CompositeEventMonitorC", "urlSession"]
+- !private ["s28CustomDebugStringConvertibleP", "async"]
+- ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "main"]
+- ["s23CustomStringConvertibleP", "Uploadable"]
+- ["s23CustomStringConvertibleP", "ValidationResult"]
+- !private ["s23CustomStringConvertibleP", "async"]
+- ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "main"]
+- ["9Alamofire11DataRequestC", "Uploadable"]
+- !private ["So18OS_dispatch_objectC", "async"]
+- ["So18OS_dispatch_objectC", "init"]
+- !private ["So18OS_dispatch_objectC", "main"]
+- ["8Dispatch0A3QoSV", "background"]
+- !private ["So17OS_dispatch_queueC", "async"]
+- ["So17OS_dispatch_queueC", "init"]
+- !private ["So17OS_dispatch_queueC", "main"]
+- ["SQ", "Uploadable"]
+- ["SQ", "ValidationResult"]
+- !private ["SQ", "async"]
+- ["SQ", "background"]
+- ["SQ", "init"]
+- !private ["SQ", "main"]
+- ["9Alamofire12EventMonitorP", "AFError"]
+- ["9Alamofire12EventMonitorP", "CachedURLResponse"]
+- ["9Alamofire12EventMonitorP", "Data"]
+- ["9Alamofire12EventMonitorP", "DataRequest"]
+- ["9Alamofire12EventMonitorP", "DataResponse"]
+- ["9Alamofire12EventMonitorP", "DataStreamRequest"]
+- ["9Alamofire12EventMonitorP", "DispatchQueue"]
+- ["9Alamofire12EventMonitorP", "DownloadRequest"]
+- ["9Alamofire12EventMonitorP", "DownloadResponse"]
+- ["9Alamofire12EventMonitorP", "Error"]
+- ["9Alamofire12EventMonitorP", "HTTPURLResponse"]
+- ["9Alamofire12EventMonitorP", "InputStream"]
+- ["9Alamofire12EventMonitorP", "Int64"]
+- ["9Alamofire12EventMonitorP", "Request"]
+- ["9Alamofire12EventMonitorP", "Result"]
+- ["9Alamofire12EventMonitorP", "URL"]
+- ["9Alamofire12EventMonitorP", "URLAuthenticationChallenge"]
+- ["9Alamofire12EventMonitorP", "URLRequest"]
+- ["9Alamofire12EventMonitorP", "URLSession"]
+- ["9Alamofire12EventMonitorP", "URLSessionDataTask"]
+- ["9Alamofire12EventMonitorP", "URLSessionDownloadTask"]
+- ["9Alamofire12EventMonitorP", "URLSessionTask"]
+- ["9Alamofire12EventMonitorP", "URLSessionTaskMetrics"]
+- ["9Alamofire12EventMonitorP", "UploadRequest"]
+- ["9Alamofire12EventMonitorP", ""]
+- !private ["9Alamofire12EventMonitorP", "dataTaskDidReceiveData"]
+- !private ["9Alamofire12EventMonitorP", "dataTaskWillCacheResponse"]
+- !private ["9Alamofire12EventMonitorP", "downloadTaskDidFinishDownloadingToURL"]
+- !private ["9Alamofire12EventMonitorP", "downloadTaskDidResumeAtOffset"]
+- !private ["9Alamofire12EventMonitorP", "downloadTaskDidWriteData"]
+- !private ["9Alamofire12EventMonitorP", "monitors"]
+- !private ["9Alamofire12EventMonitorP", "performEvent"]
+- ["9Alamofire12EventMonitorP", "queue"]
+- ["9Alamofire12EventMonitorP", "request"]
+- !private ["9Alamofire12EventMonitorP", "requestDidAdaptInitialRequestToAdaptedRequest"]
+- ["9Alamofire12EventMonitorP", "requestDidCancel"]
+- !private ["9Alamofire12EventMonitorP", "requestDidCancelTask"]
+- !private ["9Alamofire12EventMonitorP", "requestDidCompleteTaskWithError"]
+- !private ["9Alamofire12EventMonitorP", "requestDidCreateDestinationURL"]
+- !private ["9Alamofire12EventMonitorP", "requestDidCreateInitialURLRequest"]
+- !private ["9Alamofire12EventMonitorP", "requestDidCreateTask"]
+- !private ["9Alamofire12EventMonitorP", "requestDidCreateURLRequest"]
+- !private ["9Alamofire12EventMonitorP", "requestDidCreateUploadable"]
+- !private ["9Alamofire12EventMonitorP", "requestDidFailTaskEarlyWithError"]
+- !private ["9Alamofire12EventMonitorP", "requestDidFailToAdaptURLRequestWithError"]
+- !private ["9Alamofire12EventMonitorP", "requestDidFailToCreateURLRequestWithError"]
+- !private ["9Alamofire12EventMonitorP", "requestDidFailToCreateUploadableWithError"]
+- ["9Alamofire12EventMonitorP", "requestDidFinish"]
+- !private ["9Alamofire12EventMonitorP", "requestDidFinishDownloadingUsingTaskWithResult"]
+- !private ["9Alamofire12EventMonitorP", "requestDidGatherMetrics"]
+- !private ["9Alamofire12EventMonitorP", "requestDidParseDownloadResponse"]
+- !private ["9Alamofire12EventMonitorP", "requestDidParseResponse"]
+- !private ["9Alamofire12EventMonitorP", "requestDidProvideInputStream"]
+- ["9Alamofire12EventMonitorP", "requestDidResume"]
+- !private ["9Alamofire12EventMonitorP", "requestDidResumeTask"]
+- ["9Alamofire12EventMonitorP", "requestDidSuspend"]
+- !private ["9Alamofire12EventMonitorP", "requestDidSuspendTask"]
+- !private ["9Alamofire12EventMonitorP", "requestDidValidateRequestResponseDataWithResult"]
+- !private ["9Alamofire12EventMonitorP", "requestDidValidateRequestResponseFileURLWithResult"]
+- !private ["9Alamofire12EventMonitorP", "requestDidValidateRequestResponseWithResult"]
+- ["9Alamofire12EventMonitorP", "requestIsRetrying"]
+- !private ["9Alamofire12EventMonitorP", "sessionDidBecomeInvalidWithError"]
+- !private ["9Alamofire12EventMonitorP", "taskDidComplete"]
+- !private ["9Alamofire12EventMonitorP", "taskDidFinishCollectingMetrics"]
+- !private ["9Alamofire12EventMonitorP", "taskDidReceiveChallenge"]
+- !private ["9Alamofire12EventMonitorP", "taskDidSendBodyData"]
+- !private ["9Alamofire12EventMonitorP", "taskIsWaitingForConnectivity"]
+- !private ["9Alamofire12EventMonitorP", "taskNeedNewBodyStream"]
+- !private ["9Alamofire12EventMonitorP", "taskWillPerformHTTPRedirection"]
+- ["9Alamofire12EventMonitorP", "urlSession"]
+- ["SH", "Uploadable"]
+- ["SH", "ValidationResult"]
+- !private ["SH", "async"]
+- ["SH", "init"]
+- !private ["SH", "main"]
+- !private ["So8NSObjectC", "async"]
+- ["So8NSObjectC", "init"]
+- !private ["So8NSObjectC", "main"]
+- !private ["So8NSObjectP", "async"]
+- ["So8NSObjectP", "init"]
+- !private ["So8NSObjectP", "main"]
+- !private ["So9OS_objectC", "async"]
+- ["So9OS_objectC", "init"]
+- !private ["So9OS_objectC", "main"]
+- ["9Alamofire7RequestC", "Uploadable"]
+- ["9Alamofire7RequestC", "ValidationResult"]
+- !private ["7Combine9SchedulerP", "async"]
+- ["7Combine9SchedulerP", "init"]
+- !private ["7Combine9SchedulerP", "main"]
+- ["9Alamofire13UploadRequestC", "Uploadable"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "async"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "main"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "async"]
+- ["10Foundation37_KeyValueCodingAndObservingPublishingP", "init"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "main"]
+depends-nominal:
+- "9Alamofire7AFErrorO"
+- "s7CVarArgP"
+- "9Alamofire19ClosureEventMonitorC"
+- "9Alamofire21CompositeEventMonitorC"
+- "s28CustomDebugStringConvertibleP"
+- "s23CustomStringConvertibleP"
+- "9Alamofire11DataRequestC"
+- "So18OS_dispatch_objectC"
+- "8Dispatch0A3QoSV"
+- "So17OS_dispatch_queueC"
+- "SQ"
+- "9Alamofire12EventMonitorP"
+- "SH"
+- "So8NSObjectC"
+- "So8NSObjectP"
+- "So9OS_objectC"
+- "9Alamofire7RequestC"
+- "7Combine9SchedulerP"
+- "9Alamofire13UploadRequestC"
+- "10Foundation27_KeyValueCodingAndObservingP"
+- "10Foundation37_KeyValueCodingAndObservingPublishingP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/ObjectiveC.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Dispatch.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Darwin.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Foundation.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreFoundation.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreGraphics.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Swift.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/SwiftOnoneSupport.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Combine.framework/Modules/Combine.swiftmodule/arm64-apple-ios.swiftinterface"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/Carthage/Checkouts/Alamofire/Source/Alamofire.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/DerivedData/90's/Build/Intermediates.noindex/Alamofire.build/Debug-iphoneos/Alamofire iOS.build/unextended-module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/apinotes/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "9d2e80cbcf6e2b8c1fa2fa1307b3cba4"

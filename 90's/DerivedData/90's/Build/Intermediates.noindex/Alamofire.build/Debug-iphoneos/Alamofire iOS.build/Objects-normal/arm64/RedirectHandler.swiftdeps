@@ -1,0 +1,81 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "RedirectHandler"
+- "Redirector"
+provides-nominal:
+- "9Alamofire15RedirectHandlerP"
+- "9Alamofire10RedirectorV"
+- "9Alamofire10RedirectorV8BehaviorO"
+provides-member:
+- ["9Alamofire15RedirectHandlerP", ""]
+- ["9Alamofire10RedirectorV", ""]
+- ["9Alamofire10RedirectorV8BehaviorO", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "AssignmentPrecedence"
+- "HTTPURLResponse"
+- "RedirectHandler"
+- "Redirector"
+- "URLRequest"
+- "URLSessionTask"
+- "Void"
+depends-member:
+- ["9Alamofire10RedirectorV8BehaviorO", "HTTPURLResponse"]
+- ["9Alamofire10RedirectorV8BehaviorO", "URLRequest"]
+- ["9Alamofire10RedirectorV8BehaviorO", "URLSessionTask"]
+- ["9Alamofire10RedirectorV8BehaviorO", "doNotFollow"]
+- ["9Alamofire10RedirectorV8BehaviorO", "follow"]
+- ["9Alamofire10RedirectorV8BehaviorO", "modify"]
+- ["9Alamofire15RedirectHandlerP", "HTTPURLResponse"]
+- ["9Alamofire15RedirectHandlerP", "Redirector"]
+- ["9Alamofire15RedirectHandlerP", "URLRequest"]
+- ["9Alamofire15RedirectHandlerP", "URLSessionTask"]
+- ["9Alamofire15RedirectHandlerP", "Void"]
+- ["9Alamofire15RedirectHandlerP", ""]
+- !private ["9Alamofire15RedirectHandlerP", "behavior"]
+- ["9Alamofire15RedirectHandlerP", "init"]
+- ["9Alamofire15RedirectHandlerP", "task"]
+- ["9Alamofire10RedirectorV", "Behavior"]
+- ["9Alamofire10RedirectorV", "HTTPURLResponse"]
+- ["9Alamofire10RedirectorV", "Redirector"]
+- ["9Alamofire10RedirectorV", "URLRequest"]
+- ["9Alamofire10RedirectorV", "URLSessionTask"]
+- ["9Alamofire10RedirectorV", "Void"]
+- ["9Alamofire10RedirectorV", "behavior"]
+- ["9Alamofire10RedirectorV", "deinit"]
+- ["9Alamofire10RedirectorV", "doNotFollow"]
+- ["9Alamofire10RedirectorV", "follow"]
+- ["9Alamofire10RedirectorV", "init"]
+- ["9Alamofire10RedirectorV", "task"]
+depends-nominal:
+- "9Alamofire10RedirectorV8BehaviorO"
+- "9Alamofire15RedirectHandlerP"
+- "9Alamofire10RedirectorV"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/ObjectiveC.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Dispatch.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Darwin.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Foundation.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreFoundation.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreGraphics.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Swift.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/SwiftOnoneSupport.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Combine.framework/Modules/Combine.swiftmodule/arm64-apple-ios.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/ObjectiveC.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Dispatch.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Darwin.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Foundation.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreFoundation.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreGraphics.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/SwiftOnoneSupport.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Combine.swiftmodule/arm64-apple-ios.swiftmodule"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/Carthage/Checkouts/Alamofire/Source/Alamofire.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/DerivedData/90's/Build/Intermediates.noindex/Alamofire.build/Debug-iphoneos/Alamofire iOS.build/unextended-module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/apinotes/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "9e4bb48d8de96297f7b477f9fc835c45"

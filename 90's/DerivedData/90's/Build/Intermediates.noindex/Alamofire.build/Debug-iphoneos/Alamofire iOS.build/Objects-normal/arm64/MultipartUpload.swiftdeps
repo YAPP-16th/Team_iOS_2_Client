@@ -1,0 +1,235 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "MultipartUpload"
+provides-nominal:
+- "9Alamofire15MultipartUploadC"
+provides-member:
+- ["9Alamofire15MultipartUploadC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "!"
+- !private "&&"
+- !private "<"
+- "AssignmentPrecedence"
+- "Bool"
+- !private "BooleanLiteralType"
+- "FileManager"
+- "MultipartFormData"
+- "MultipartUpload"
+- "Result"
+- !private "StringLiteralType"
+- "UInt64"
+- "URLRequest"
+- "URLRequestConvertible"
+- !private "UUID"
+- "UploadConvertible"
+- "UploadRequest"
+depends-member:
+- !private ["s7CVarArgP", "createDirectory"]
+- !private ["s7CVarArgP", "removeItem"]
+- !private ["s7CVarArgP", "temporaryDirectory"]
+- !private ["s28CustomDebugStringConvertibleP", "appendingPathComponent"]
+- !private ["s28CustomDebugStringConvertibleP", "createDirectory"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "removeItem"]
+- !private ["s28CustomDebugStringConvertibleP", "setValue"]
+- !private ["s28CustomDebugStringConvertibleP", "temporaryDirectory"]
+- !private ["s28CustomDebugStringConvertibleP", "uuidString"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "setValue"]
+- !private ["s17CustomReflectableP", "uuidString"]
+- ["s23CustomStringConvertibleP", "Uploadable"]
+- !private ["s23CustomStringConvertibleP", "appendingPathComponent"]
+- !private ["s23CustomStringConvertibleP", "createDirectory"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "removeItem"]
+- !private ["s23CustomStringConvertibleP", "setValue"]
+- !private ["s23CustomStringConvertibleP", "temporaryDirectory"]
+- !private ["s23CustomStringConvertibleP", "uuidString"]
+- ["9Alamofire11DataRequestC", "Uploadable"]
+- !private ["Se", "appendingPathComponent"]
+- !private ["Se", "init"]
+- !private ["Se", "uuidString"]
+- !private ["SE", "appendingPathComponent"]
+- !private ["SE", "init"]
+- !private ["SE", "uuidString"]
+- ["SQ", "Uploadable"]
+- !private ["SQ", "appendingPathComponent"]
+- !private ["SQ", "createDirectory"]
+- !private ["SQ", "get"]
+- ["SQ", "init"]
+- !private ["SQ", "removeItem"]
+- !private ["SQ", "setValue"]
+- !private ["SQ", "temporaryDirectory"]
+- !private ["SQ", "uuidString"]
+- !private ["So13NSFileManagerC", "createDirectory"]
+- !private ["So13NSFileManagerC", "removeItem"]
+- !private ["So13NSFileManagerC", "temporaryDirectory"]
+- ["SH", "Uploadable"]
+- !private ["SH", "appendingPathComponent"]
+- !private ["SH", "createDirectory"]
+- !private ["SH", "get"]
+- ["SH", "init"]
+- !private ["SH", "removeItem"]
+- !private ["SH", "setValue"]
+- !private ["SH", "temporaryDirectory"]
+- !private ["SH", "uuidString"]
+- !private ["9Alamofire17MultipartFormDataC", "contentLength"]
+- !private ["9Alamofire17MultipartFormDataC", "contentType"]
+- !private ["9Alamofire17MultipartFormDataC", "encode"]
+- !private ["9Alamofire17MultipartFormDataC", "fileManager"]
+- !private ["9Alamofire17MultipartFormDataC", "writeEncodedData"]
+- !private ["9Alamofire15MultipartUploadC", "$__lazy_storage_$_result"]
+- ["9Alamofire15MultipartUploadC", "Bool"]
+- ["9Alamofire15MultipartUploadC", "FileManager"]
+- ["9Alamofire15MultipartUploadC", "MultipartFormData"]
+- ["9Alamofire15MultipartUploadC", "Result"]
+- ["9Alamofire15MultipartUploadC", "UInt64"]
+- ["9Alamofire15MultipartUploadC", "URLRequest"]
+- ["9Alamofire15MultipartUploadC", "URLRequestConvertible"]
+- !private ["9Alamofire15MultipartUploadC", "UUID"]
+- ["9Alamofire15MultipartUploadC", "UploadRequest"]
+- ["9Alamofire15MultipartUploadC", "asURLRequest"]
+- ["9Alamofire15MultipartUploadC", "build"]
+- ["9Alamofire15MultipartUploadC", "createUploadable"]
+- ["9Alamofire15MultipartUploadC", "deinit"]
+- ["9Alamofire15MultipartUploadC", "encodingMemoryThreshold"]
+- ["9Alamofire15MultipartUploadC", "fileManager"]
+- ["9Alamofire15MultipartUploadC", "init"]
+- ["9Alamofire15MultipartUploadC", "isInBackgroundSession"]
+- ["9Alamofire15MultipartUploadC", "multipartFormData"]
+- ["9Alamofire15MultipartUploadC", "request"]
+- ["9Alamofire15MultipartUploadC", "result"]
+- !private ["So8NSObjectC", "createDirectory"]
+- !private ["So8NSObjectC", "removeItem"]
+- !private ["So8NSObjectC", "temporaryDirectory"]
+- !private ["So8NSObjectP", "createDirectory"]
+- !private ["So8NSObjectP", "removeItem"]
+- !private ["So8NSObjectP", "temporaryDirectory"]
+- !private ["10Foundation20ReferenceConvertibleP", "appendingPathComponent"]
+- !private ["10Foundation20ReferenceConvertibleP", "init"]
+- !private ["10Foundation20ReferenceConvertibleP", "setValue"]
+- !private ["10Foundation20ReferenceConvertibleP", "uuidString"]
+- ["9Alamofire7RequestC", "Uploadable"]
+- !private ["s6ResultO", "get"]
+- ["s6ResultO", "init"]
+- !private ["10Foundation3URLV", "appendingPathComponent"]
+- !private ["9Alamofire14URLConvertibleP", "appendingPathComponent"]
+- !private ["10Foundation10URLRequestV", "setValue"]
+- ["9Alamofire21URLRequestConvertibleP", "Result"]
+- !private ["9Alamofire21URLRequestConvertibleP", "UUID"]
+- ["9Alamofire21URLRequestConvertibleP", ""]
+- ["9Alamofire21URLRequestConvertibleP", "asURLRequest"]
+- ["9Alamofire21URLRequestConvertibleP", "build"]
+- ["9Alamofire21URLRequestConvertibleP", "createUploadable"]
+- !private ["9Alamofire21URLRequestConvertibleP", "encodingMemoryThreshold"]
+- !private ["9Alamofire21URLRequestConvertibleP", "fileManager"]
+- !private ["9Alamofire21URLRequestConvertibleP", "isInBackgroundSession"]
+- !private ["9Alamofire21URLRequestConvertibleP", "multipartFormData"]
+- !private ["9Alamofire21URLRequestConvertibleP", "request"]
+- !private ["9Alamofire21URLRequestConvertibleP", "result"]
+- !private ["9Alamofire21URLRequestConvertibleP", "setValue"]
+- !private ["10Foundation4UUIDV", "init"]
+- !private ["10Foundation4UUIDV", "uuidString"]
+- ["9Alamofire17UploadConvertibleP", "Result"]
+- !private ["9Alamofire17UploadConvertibleP", "UUID"]
+- ["9Alamofire17UploadConvertibleP", ""]
+- ["9Alamofire17UploadConvertibleP", "asURLRequest"]
+- ["9Alamofire17UploadConvertibleP", "build"]
+- ["9Alamofire17UploadConvertibleP", "createUploadable"]
+- !private ["9Alamofire17UploadConvertibleP", "encodingMemoryThreshold"]
+- !private ["9Alamofire17UploadConvertibleP", "fileManager"]
+- !private ["9Alamofire17UploadConvertibleP", "isInBackgroundSession"]
+- !private ["9Alamofire17UploadConvertibleP", "multipartFormData"]
+- !private ["9Alamofire17UploadConvertibleP", "request"]
+- !private ["9Alamofire17UploadConvertibleP", "result"]
+- ["9Alamofire13UploadRequestC", "Uploadable"]
+- !private ["9Alamofire13UploadRequestC10UploadableO", "data"]
+- !private ["9Alamofire13UploadRequestC10UploadableO", "file"]
+- ["9Alamofire21UploadableConvertibleP", "Result"]
+- !private ["9Alamofire21UploadableConvertibleP", "UUID"]
+- ["9Alamofire21UploadableConvertibleP", ""]
+- ["9Alamofire21UploadableConvertibleP", "asURLRequest"]
+- ["9Alamofire21UploadableConvertibleP", "build"]
+- ["9Alamofire21UploadableConvertibleP", "createUploadable"]
+- !private ["9Alamofire21UploadableConvertibleP", "data"]
+- !private ["9Alamofire21UploadableConvertibleP", "encodingMemoryThreshold"]
+- !private ["9Alamofire21UploadableConvertibleP", "file"]
+- !private ["9Alamofire21UploadableConvertibleP", "fileManager"]
+- !private ["9Alamofire21UploadableConvertibleP", "isInBackgroundSession"]
+- !private ["9Alamofire21UploadableConvertibleP", "multipartFormData"]
+- !private ["9Alamofire21UploadableConvertibleP", "request"]
+- !private ["9Alamofire21UploadableConvertibleP", "result"]
+- !private ["s30_CustomPlaygroundQuickLookableP", "appendingPathComponent"]
+- !private ["s34_ExpressibleByFileReferenceLiteralP", "appendingPathComponent"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "createDirectory"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "removeItem"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "temporaryDirectory"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "createDirectory"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "removeItem"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "temporaryDirectory"]
+- !private ["s21_ObjectiveCBridgeableP", "appendingPathComponent"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "setValue"]
+- !private ["s21_ObjectiveCBridgeableP", "uuidString"]
+depends-nominal:
+- !private "s7CVarArgP"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- "9Alamofire11DataRequestC"
+- !private "Se"
+- !private "SE"
+- "SQ"
+- !private "So13NSFileManagerC"
+- "SH"
+- !private "9Alamofire17MultipartFormDataC"
+- "9Alamofire15MultipartUploadC"
+- !private "So8NSObjectC"
+- !private "So8NSObjectP"
+- !private "10Foundation20ReferenceConvertibleP"
+- "9Alamofire7RequestC"
+- "s6ResultO"
+- !private "10Foundation3URLV"
+- !private "9Alamofire14URLConvertibleP"
+- !private "10Foundation10URLRequestV"
+- "9Alamofire21URLRequestConvertibleP"
+- !private "10Foundation4UUIDV"
+- "9Alamofire17UploadConvertibleP"
+- "9Alamofire13UploadRequestC"
+- !private "9Alamofire13UploadRequestC10UploadableO"
+- "9Alamofire21UploadableConvertibleP"
+- !private "s30_CustomPlaygroundQuickLookableP"
+- !private "s34_ExpressibleByFileReferenceLiteralP"
+- !private "10Foundation27_KeyValueCodingAndObservingP"
+- !private "10Foundation37_KeyValueCodingAndObservingPublishingP"
+- !private "s21_ObjectiveCBridgeableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/ObjectiveC.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Dispatch.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Darwin.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Foundation.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreFoundation.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreGraphics.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Swift.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/SwiftOnoneSupport.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Combine.framework/Modules/Combine.swiftmodule/arm64-apple-ios.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/ObjectiveC.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Dispatch.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Darwin.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Foundation.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreFoundation.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreGraphics.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Swift.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/SwiftOnoneSupport.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Combine.swiftmodule/arm64-apple-ios.swiftmodule"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/Carthage/Checkouts/Alamofire/Source/Alamofire.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/DerivedData/90's/Build/Intermediates.noindex/Alamofire.build/Debug-iphoneos/Alamofire iOS.build/unextended-module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/apinotes/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "0a7b0e7fa4cf867703eeb21336716992"

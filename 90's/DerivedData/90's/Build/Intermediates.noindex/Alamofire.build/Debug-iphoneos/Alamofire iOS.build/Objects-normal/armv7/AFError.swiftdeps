@@ -1,0 +1,522 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "AFError"
+provides-nominal:
+- "9Alamofire7AFErrorO"
+- "9Alamofire7AFErrorO30MultipartEncodingFailureReasonO"
+- "9Alamofire7AFErrorO30ParameterEncodingFailureReasonO"
+- "9Alamofire7AFErrorO29ParameterEncoderFailureReasonO"
+- "9Alamofire7AFErrorO29ParameterEncoderFailureReasonO17RequiredComponentO"
+- "9Alamofire7AFErrorO31ResponseValidationFailureReasonO"
+- "9Alamofire7AFErrorO34ResponseSerializationFailureReasonO"
+- "9Alamofire7AFErrorO24ServerTrustFailureReasonO"
+- "9Alamofire7AFErrorO24ServerTrustFailureReasonO6OutputV"
+- "9Alamofire7AFErrorO33URLRequestValidationFailureReasonO"
+provides-member:
+- ["9Alamofire7AFErrorO", ""]
+- ["9Alamofire7AFErrorO30MultipartEncodingFailureReasonO", ""]
+- ["9Alamofire7AFErrorO30ParameterEncodingFailureReasonO", ""]
+- ["9Alamofire7AFErrorO29ParameterEncoderFailureReasonO", ""]
+- ["9Alamofire7AFErrorO29ParameterEncoderFailureReasonO17RequiredComponentO", ""]
+- ["9Alamofire7AFErrorO31ResponseValidationFailureReasonO", ""]
+- ["9Alamofire7AFErrorO34ResponseSerializationFailureReasonO", ""]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", ""]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO6OutputV", ""]
+- ["9Alamofire7AFErrorO33URLRequestValidationFailureReasonO", ""]
+- ["s5ErrorP", ""]
+- ["s5ErrorP", "asAFError"]
+- ["s5ErrorP", "asAFError"]
+- ["s5ErrorP", "asAFError"]
+- ["9Alamofire7AFErrorO", "isSessionDeinitializedError"]
+- ["9Alamofire7AFErrorO", "isSessionInvalidatedError"]
+- ["9Alamofire7AFErrorO", "isExplicitlyCancelledError"]
+- ["9Alamofire7AFErrorO", "isInvalidURLError"]
+- ["9Alamofire7AFErrorO", "isParameterEncodingError"]
+- ["9Alamofire7AFErrorO", "isParameterEncoderError"]
+- ["9Alamofire7AFErrorO", "isMultipartEncodingError"]
+- ["9Alamofire7AFErrorO", "isRequestAdaptationError"]
+- ["9Alamofire7AFErrorO", "isResponseValidationError"]
+- ["9Alamofire7AFErrorO", "isResponseSerializationError"]
+- ["9Alamofire7AFErrorO", "isServerTrustEvaluationError"]
+- ["9Alamofire7AFErrorO", "isRequestRetryError"]
+- ["9Alamofire7AFErrorO", "isCreateUploadableError"]
+- ["9Alamofire7AFErrorO", "isCreateURLRequestError"]
+- ["9Alamofire7AFErrorO", "isDownloadedFileMoveError"]
+- ["9Alamofire7AFErrorO", "isSessionTaskError"]
+- ["9Alamofire7AFErrorO", "urlConvertible"]
+- ["9Alamofire7AFErrorO", "url"]
+- ["9Alamofire7AFErrorO", "underlyingError"]
+- ["9Alamofire7AFErrorO", "acceptableContentTypes"]
+- ["9Alamofire7AFErrorO", "responseContentType"]
+- ["9Alamofire7AFErrorO", "responseCode"]
+- ["9Alamofire7AFErrorO", "failedStringEncoding"]
+- ["9Alamofire7AFErrorO", "sourceURL"]
+- ["9Alamofire7AFErrorO", "destinationURL"]
+- ["9Alamofire7AFErrorO30ParameterEncodingFailureReasonO", "underlyingError"]
+- ["9Alamofire7AFErrorO29ParameterEncoderFailureReasonO", "underlyingError"]
+- ["9Alamofire7AFErrorO30MultipartEncodingFailureReasonO", "url"]
+- ["9Alamofire7AFErrorO30MultipartEncodingFailureReasonO", "underlyingError"]
+- ["9Alamofire7AFErrorO31ResponseValidationFailureReasonO", "acceptableContentTypes"]
+- ["9Alamofire7AFErrorO31ResponseValidationFailureReasonO", "responseContentType"]
+- ["9Alamofire7AFErrorO31ResponseValidationFailureReasonO", "responseCode"]
+- ["9Alamofire7AFErrorO31ResponseValidationFailureReasonO", "underlyingError"]
+- ["9Alamofire7AFErrorO34ResponseSerializationFailureReasonO", "failedStringEncoding"]
+- ["9Alamofire7AFErrorO34ResponseSerializationFailureReasonO", "underlyingError"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "output"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "underlyingError"]
+- ["9Alamofire7AFErrorO30ParameterEncodingFailureReasonO", "localizedDescription"]
+- ["9Alamofire7AFErrorO29ParameterEncoderFailureReasonO", "localizedDescription"]
+- ["9Alamofire7AFErrorO30MultipartEncodingFailureReasonO", "localizedDescription"]
+- ["9Alamofire7AFErrorO34ResponseSerializationFailureReasonO", "localizedDescription"]
+- ["9Alamofire7AFErrorO31ResponseValidationFailureReasonO", "localizedDescription"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "localizedDescription"]
+- ["9Alamofire7AFErrorO33URLRequestValidationFailureReasonO", "localizedDescription"]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "??"
+- "AFError"
+- "AssignmentPrecedence"
+- "Bool"
+- !private "BooleanLiteralType"
+- "CastingPrecedence"
+- "Data"
+- "Error"
+- "FloatLiteralType"
+- "Int"
+- "IntegerLiteralType"
+- "LocalizedError"
+- "OSStatus"
+- "RevocationTrustEvaluator"
+- "SecCertificate"
+- "SecKey"
+- "SecPolicy"
+- "SecTrust"
+- "SecTrustResultType"
+- "StaticString"
+- "String"
+- "StringLiteralType"
+- "UInt"
+- "URL"
+- "URLConvertible"
+- !private "UTF8"
+- !private "UnicodeScalarType"
+- !private "fatalError"
+depends-member:
+- ["9Alamofire7AFErrorO", "Bool"]
+- ["9Alamofire7AFErrorO", "Data"]
+- ["9Alamofire7AFErrorO", "Error"]
+- ["9Alamofire7AFErrorO", "Int"]
+- ["9Alamofire7AFErrorO", "MultipartEncodingFailureReason"]
+- ["9Alamofire7AFErrorO", "OSStatus"]
+- ["9Alamofire7AFErrorO", "ParameterEncoderFailureReason"]
+- ["9Alamofire7AFErrorO", "ParameterEncodingFailureReason"]
+- ["9Alamofire7AFErrorO", "ResponseSerializationFailureReason"]
+- ["9Alamofire7AFErrorO", "ResponseValidationFailureReason"]
+- ["9Alamofire7AFErrorO", "RevocationTrustEvaluator"]
+- ["9Alamofire7AFErrorO", "SecCertificate"]
+- ["9Alamofire7AFErrorO", "SecKey"]
+- ["9Alamofire7AFErrorO", "SecPolicy"]
+- ["9Alamofire7AFErrorO", "SecTrust"]
+- ["9Alamofire7AFErrorO", "SecTrustResultType"]
+- ["9Alamofire7AFErrorO", "ServerTrustFailureReason"]
+- ["9Alamofire7AFErrorO", "String"]
+- ["9Alamofire7AFErrorO", "URL"]
+- ["9Alamofire7AFErrorO", "URLConvertible"]
+- ["9Alamofire7AFErrorO", "URLRequestValidationFailureReason"]
+- ["9Alamofire7AFErrorO", "_code"]
+- ["9Alamofire7AFErrorO", "_domain"]
+- ["9Alamofire7AFErrorO", "_getEmbeddedNSError"]
+- ["9Alamofire7AFErrorO", "_userInfo"]
+- ["9Alamofire7AFErrorO", "acceptableContentTypes"]
+- ["9Alamofire7AFErrorO", "createURLRequestFailed"]
+- ["9Alamofire7AFErrorO", "createUploadableFailed"]
+- ["9Alamofire7AFErrorO", "deinit"]
+- ["9Alamofire7AFErrorO", "destinationURL"]
+- ["9Alamofire7AFErrorO", "downloadedFileMoveFailed"]
+- ["9Alamofire7AFErrorO", "errorDescription"]
+- ["9Alamofire7AFErrorO", "explicitlyCancelled"]
+- ["9Alamofire7AFErrorO", "failedStringEncoding"]
+- ["9Alamofire7AFErrorO", "failureReason"]
+- ["9Alamofire7AFErrorO", "helpAnchor"]
+- ["9Alamofire7AFErrorO", "invalidURL"]
+- ["9Alamofire7AFErrorO", "isCreateURLRequestError"]
+- ["9Alamofire7AFErrorO", "isCreateUploadableError"]
+- ["9Alamofire7AFErrorO", "isDownloadedFileMoveError"]
+- ["9Alamofire7AFErrorO", "isExplicitlyCancelledError"]
+- ["9Alamofire7AFErrorO", "isInvalidURLError"]
+- ["9Alamofire7AFErrorO", "isMultipartEncodingError"]
+- ["9Alamofire7AFErrorO", "isParameterEncoderError"]
+- ["9Alamofire7AFErrorO", "isParameterEncodingError"]
+- ["9Alamofire7AFErrorO", "isRequestAdaptationError"]
+- ["9Alamofire7AFErrorO", "isRequestRetryError"]
+- ["9Alamofire7AFErrorO", "isResponseSerializationError"]
+- ["9Alamofire7AFErrorO", "isResponseValidationError"]
+- ["9Alamofire7AFErrorO", "isServerTrustEvaluationError"]
+- ["9Alamofire7AFErrorO", "isSessionDeinitializedError"]
+- ["9Alamofire7AFErrorO", "isSessionInvalidatedError"]
+- ["9Alamofire7AFErrorO", "isSessionTaskError"]
+- ["9Alamofire7AFErrorO", "multipartEncodingFailed"]
+- ["9Alamofire7AFErrorO", "parameterEncoderFailed"]
+- ["9Alamofire7AFErrorO", "parameterEncodingFailed"]
+- ["9Alamofire7AFErrorO", "recoverySuggestion"]
+- ["9Alamofire7AFErrorO", "requestAdaptationFailed"]
+- ["9Alamofire7AFErrorO", "requestRetryFailed"]
+- ["9Alamofire7AFErrorO", "responseCode"]
+- ["9Alamofire7AFErrorO", "responseContentType"]
+- ["9Alamofire7AFErrorO", "responseSerializationFailed"]
+- ["9Alamofire7AFErrorO", "responseValidationFailed"]
+- ["9Alamofire7AFErrorO", "serverTrustEvaluationFailed"]
+- ["9Alamofire7AFErrorO", "sessionDeinitialized"]
+- ["9Alamofire7AFErrorO", "sessionInvalidated"]
+- ["9Alamofire7AFErrorO", "sessionTaskFailed"]
+- ["9Alamofire7AFErrorO", "sourceURL"]
+- ["9Alamofire7AFErrorO", "underlyingError"]
+- ["9Alamofire7AFErrorO", "url"]
+- ["9Alamofire7AFErrorO", "urlConvertible"]
+- ["9Alamofire7AFErrorO", "urlRequestValidationFailed"]
+- !private ["9Alamofire0A8ExtendedP", "joined"]
+- !private ["Sa", "joined"]
+- ["SK", "Encoding"]
+- !private ["SK", "init"]
+- !private ["SK", "joined"]
+- ["s7CVarArgP", "Encoding"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "joined"]
+- ["Sl", "Encoding"]
+- !private ["Sl", "init"]
+- !private ["Sl", "joined"]
+- ["SL", "Encoding"]
+- !private ["SL", "init"]
+- !private ["10Foundation15ContiguousBytesP", "joined"]
+- ["s28CustomDebugStringConvertibleP", "Encoding"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "joined"]
+- ["s17CustomReflectableP", "Encoding"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "joined"]
+- ["s23CustomStringConvertibleP", "Encoding"]
+- !private ["s23CustomStringConvertibleP", "appendInterpolation"]
+- !private ["s23CustomStringConvertibleP", "appendLiteral"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "joined"]
+- !private ["10Foundation12DataProtocolP", "joined"]
+- ["Se", "Encoding"]
+- !private ["Se", "init"]
+- !private ["Se", "joined"]
+- !private ["s26DefaultStringInterpolationV", "appendInterpolation"]
+- !private ["s26DefaultStringInterpolationV", "appendLiteral"]
+- ["SE", "Encoding"]
+- !private ["SE", "init"]
+- !private ["SE", "joined"]
+- ["SQ", "Encoding"]
+- !private ["SQ", "init"]
+- !private ["SQ", "joined"]
+- ["s5ErrorP", "AFError"]
+- ["s5ErrorP", "ServerTrustFailureReason"]
+- ["s5ErrorP", "StaticString"]
+- ["s5ErrorP", "String"]
+- ["s5ErrorP", "UInt"]
+- ["s5ErrorP", ""]
+- ["s5ErrorP", "_code"]
+- ["s5ErrorP", "_domain"]
+- ["s5ErrorP", "_getEmbeddedNSError"]
+- ["s5ErrorP", "_userInfo"]
+- ["s5ErrorP", "asAFError"]
+- ["s5ErrorP", "createURLRequestFailed"]
+- ["s5ErrorP", "createUploadableFailed"]
+- ["s5ErrorP", "downloadedFileMoveFailed"]
+- ["s5ErrorP", "errorDescription"]
+- ["s5ErrorP", "explicitlyCancelled"]
+- ["s5ErrorP", "failureReason"]
+- !private ["s5ErrorP", "fatalError"]
+- ["s5ErrorP", "helpAnchor"]
+- ["s5ErrorP", "invalidURL"]
+- !private ["s5ErrorP", "localizedDescription"]
+- ["s5ErrorP", "multipartEncodingFailed"]
+- ["s5ErrorP", "parameterEncoderFailed"]
+- ["s5ErrorP", "parameterEncodingFailed"]
+- ["s5ErrorP", "recoverySuggestion"]
+- ["s5ErrorP", "requestAdaptationFailed"]
+- ["s5ErrorP", "requestRetryFailed"]
+- ["s5ErrorP", "responseSerializationFailed"]
+- ["s5ErrorP", "responseValidationFailed"]
+- ["s5ErrorP", "serverTrustEvaluationFailed"]
+- ["s5ErrorP", "sessionDeinitialized"]
+- ["s5ErrorP", "sessionInvalidated"]
+- ["s5ErrorP", "sessionTaskFailed"]
+- ["s5ErrorP", "urlRequestValidationFailed"]
+- !private ["s25ExpressibleByArrayLiteralP", "joined"]
+- ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "Encoding"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- ["s32ExpressibleByStringInterpolationP", "Encoding"]
+- !private ["s32ExpressibleByStringInterpolationP", "init"]
+- ["s26ExpressibleByStringLiteralP", "Encoding"]
+- !private ["s26ExpressibleByStringLiteralP", "init"]
+- ["s33ExpressibleByUnicodeScalarLiteralP", "Encoding"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- ["SH", "Encoding"]
+- !private ["SH", "init"]
+- !private ["SH", "joined"]
+- ["10Foundation14LocalizedErrorP", "ServerTrustFailureReason"]
+- ["10Foundation14LocalizedErrorP", ""]
+- ["10Foundation14LocalizedErrorP", "_code"]
+- ["10Foundation14LocalizedErrorP", "_domain"]
+- ["10Foundation14LocalizedErrorP", "_getEmbeddedNSError"]
+- ["10Foundation14LocalizedErrorP", "_userInfo"]
+- ["10Foundation14LocalizedErrorP", "createURLRequestFailed"]
+- ["10Foundation14LocalizedErrorP", "createUploadableFailed"]
+- ["10Foundation14LocalizedErrorP", "downloadedFileMoveFailed"]
+- ["10Foundation14LocalizedErrorP", "errorDescription"]
+- ["10Foundation14LocalizedErrorP", "explicitlyCancelled"]
+- ["10Foundation14LocalizedErrorP", "failureReason"]
+- ["10Foundation14LocalizedErrorP", "helpAnchor"]
+- ["10Foundation14LocalizedErrorP", "invalidURL"]
+- ["10Foundation14LocalizedErrorP", "multipartEncodingFailed"]
+- ["10Foundation14LocalizedErrorP", "parameterEncoderFailed"]
+- ["10Foundation14LocalizedErrorP", "parameterEncodingFailed"]
+- ["10Foundation14LocalizedErrorP", "recoverySuggestion"]
+- ["10Foundation14LocalizedErrorP", "requestAdaptationFailed"]
+- ["10Foundation14LocalizedErrorP", "requestRetryFailed"]
+- ["10Foundation14LocalizedErrorP", "responseSerializationFailed"]
+- ["10Foundation14LocalizedErrorP", "responseValidationFailed"]
+- ["10Foundation14LocalizedErrorP", "serverTrustEvaluationFailed"]
+- ["10Foundation14LocalizedErrorP", "sessionDeinitialized"]
+- ["10Foundation14LocalizedErrorP", "sessionInvalidated"]
+- ["10Foundation14LocalizedErrorP", "sessionTaskFailed"]
+- ["10Foundation14LocalizedErrorP", "urlRequestValidationFailed"]
+- ["s25LosslessStringConvertibleP", "Encoding"]
+- !private ["s25LosslessStringConvertibleP", "init"]
+- ["s10MirrorPathP", "Encoding"]
+- !private ["s10MirrorPathP", "init"]
+- ["9Alamofire7AFErrorO30MultipartEncodingFailureReasonO", "Error"]
+- ["9Alamofire7AFErrorO30MultipartEncodingFailureReasonO", "String"]
+- ["9Alamofire7AFErrorO30MultipartEncodingFailureReasonO", "URL"]
+- ["9Alamofire7AFErrorO30MultipartEncodingFailureReasonO", "bodyPartFileIsDirectory"]
+- ["9Alamofire7AFErrorO30MultipartEncodingFailureReasonO", "bodyPartFileNotReachable"]
+- ["9Alamofire7AFErrorO30MultipartEncodingFailureReasonO", "bodyPartFileNotReachableWithError"]
+- ["9Alamofire7AFErrorO30MultipartEncodingFailureReasonO", "bodyPartFileSizeNotAvailable"]
+- ["9Alamofire7AFErrorO30MultipartEncodingFailureReasonO", "bodyPartFileSizeQueryFailedWithError"]
+- ["9Alamofire7AFErrorO30MultipartEncodingFailureReasonO", "bodyPartFilenameInvalid"]
+- ["9Alamofire7AFErrorO30MultipartEncodingFailureReasonO", "bodyPartInputStreamCreationFailed"]
+- ["9Alamofire7AFErrorO30MultipartEncodingFailureReasonO", "bodyPartURLInvalid"]
+- ["9Alamofire7AFErrorO30MultipartEncodingFailureReasonO", "inputStreamReadFailed"]
+- ["9Alamofire7AFErrorO30MultipartEncodingFailureReasonO", "localizedDescription"]
+- ["9Alamofire7AFErrorO30MultipartEncodingFailureReasonO", "outputStreamCreationFailed"]
+- ["9Alamofire7AFErrorO30MultipartEncodingFailureReasonO", "outputStreamFileAlreadyExists"]
+- ["9Alamofire7AFErrorO30MultipartEncodingFailureReasonO", "outputStreamURLInvalid"]
+- ["9Alamofire7AFErrorO30MultipartEncodingFailureReasonO", "outputStreamWriteFailed"]
+- ["9Alamofire7AFErrorO30MultipartEncodingFailureReasonO", "underlyingError"]
+- ["9Alamofire7AFErrorO30MultipartEncodingFailureReasonO", "url"]
+- !private ["SM", "joined"]
+- !private ["10Foundation19MutableDataProtocolP", "joined"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO6OutputV", "OSStatus"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO6OutputV", "SecTrust"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO6OutputV", "SecTrustResultType"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO6OutputV", "String"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO6OutputV", "host"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO6OutputV", "init"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO6OutputV", "result"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO6OutputV", "status"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO6OutputV", "trust"]
+- ["9Alamofire7AFErrorO29ParameterEncoderFailureReasonO", "Error"]
+- ["9Alamofire7AFErrorO29ParameterEncoderFailureReasonO", "RequiredComponent"]
+- ["9Alamofire7AFErrorO29ParameterEncoderFailureReasonO", "String"]
+- ["9Alamofire7AFErrorO29ParameterEncoderFailureReasonO", "encoderFailed"]
+- ["9Alamofire7AFErrorO29ParameterEncoderFailureReasonO", "localizedDescription"]
+- ["9Alamofire7AFErrorO29ParameterEncoderFailureReasonO", "missingRequiredComponent"]
+- ["9Alamofire7AFErrorO29ParameterEncoderFailureReasonO", "underlyingError"]
+- ["9Alamofire7AFErrorO30ParameterEncodingFailureReasonO", "Error"]
+- ["9Alamofire7AFErrorO30ParameterEncodingFailureReasonO", "String"]
+- ["9Alamofire7AFErrorO30ParameterEncodingFailureReasonO", "customEncodingFailed"]
+- ["9Alamofire7AFErrorO30ParameterEncodingFailureReasonO", "jsonEncodingFailed"]
+- ["9Alamofire7AFErrorO30ParameterEncodingFailureReasonO", "localizedDescription"]
+- ["9Alamofire7AFErrorO30ParameterEncodingFailureReasonO", "missingURL"]
+- ["9Alamofire7AFErrorO30ParameterEncodingFailureReasonO", "underlyingError"]
+- !private ["Sk", "joined"]
+- ["Sm", "Encoding"]
+- !private ["Sm", "init"]
+- !private ["Sm", "joined"]
+- ["9Alamofire7AFErrorO29ParameterEncoderFailureReasonO17RequiredComponentO", "String"]
+- ["9Alamofire7AFErrorO29ParameterEncoderFailureReasonO17RequiredComponentO", "httpMethod"]
+- ["9Alamofire7AFErrorO29ParameterEncoderFailureReasonO17RequiredComponentO", "url"]
+- ["9Alamofire7AFErrorO34ResponseSerializationFailureReasonO", "Error"]
+- ["9Alamofire7AFErrorO34ResponseSerializationFailureReasonO", "String"]
+- ["9Alamofire7AFErrorO34ResponseSerializationFailureReasonO", "URL"]
+- ["9Alamofire7AFErrorO34ResponseSerializationFailureReasonO", "customSerializationFailed"]
+- ["9Alamofire7AFErrorO34ResponseSerializationFailureReasonO", "decodingFailed"]
+- ["9Alamofire7AFErrorO34ResponseSerializationFailureReasonO", "failedStringEncoding"]
+- ["9Alamofire7AFErrorO34ResponseSerializationFailureReasonO", "inputDataNilOrZeroLength"]
+- ["9Alamofire7AFErrorO34ResponseSerializationFailureReasonO", "inputFileNil"]
+- ["9Alamofire7AFErrorO34ResponseSerializationFailureReasonO", "inputFileReadFailed"]
+- ["9Alamofire7AFErrorO34ResponseSerializationFailureReasonO", "invalidEmptyResponse"]
+- ["9Alamofire7AFErrorO34ResponseSerializationFailureReasonO", "jsonSerializationFailed"]
+- ["9Alamofire7AFErrorO34ResponseSerializationFailureReasonO", "localizedDescription"]
+- ["9Alamofire7AFErrorO34ResponseSerializationFailureReasonO", "stringSerializationFailed"]
+- ["9Alamofire7AFErrorO34ResponseSerializationFailureReasonO", "underlyingError"]
+- ["9Alamofire7AFErrorO31ResponseValidationFailureReasonO", "Error"]
+- ["9Alamofire7AFErrorO31ResponseValidationFailureReasonO", "Int"]
+- ["9Alamofire7AFErrorO31ResponseValidationFailureReasonO", "String"]
+- ["9Alamofire7AFErrorO31ResponseValidationFailureReasonO", "URL"]
+- ["9Alamofire7AFErrorO31ResponseValidationFailureReasonO", "acceptableContentTypes"]
+- ["9Alamofire7AFErrorO31ResponseValidationFailureReasonO", "customValidationFailed"]
+- ["9Alamofire7AFErrorO31ResponseValidationFailureReasonO", "dataFileNil"]
+- ["9Alamofire7AFErrorO31ResponseValidationFailureReasonO", "dataFileReadFailed"]
+- ["9Alamofire7AFErrorO31ResponseValidationFailureReasonO", "localizedDescription"]
+- ["9Alamofire7AFErrorO31ResponseValidationFailureReasonO", "missingContentType"]
+- ["9Alamofire7AFErrorO31ResponseValidationFailureReasonO", "responseCode"]
+- ["9Alamofire7AFErrorO31ResponseValidationFailureReasonO", "responseContentType"]
+- ["9Alamofire7AFErrorO31ResponseValidationFailureReasonO", "unacceptableContentType"]
+- ["9Alamofire7AFErrorO31ResponseValidationFailureReasonO", "unacceptableStatusCode"]
+- ["9Alamofire7AFErrorO31ResponseValidationFailureReasonO", "underlyingError"]
+- ["9Alamofire24RevocationTrustEvaluatorC", "Options"]
+- ["ST", "Encoding"]
+- !private ["ST", "init"]
+- !private ["ST", "joined"]
+- ["9Alamofire21ServerTrustEvaluatingP", "Options"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "AFError"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "Error"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "OSStatus"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "Output"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "RevocationTrustEvaluator"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "SecCertificate"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "SecKey"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "SecPolicy"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "SecTrust"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "SecTrustResultType"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "String"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "certificatePinningFailed"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "customEvaluationFailed"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "defaultEvaluationFailed"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "hostValidationFailed"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "localizedDescription"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "noCertificatesFound"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "noPublicKeysFound"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "noRequiredEvaluator"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "output"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "policyApplicationFailed"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "publicKeyPinningFailed"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "revocationCheckFailed"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "revocationPolicyCreationFailed"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "settingAnchorCertificatesFailed"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "trustEvaluationFailed"]
+- ["9Alamofire7AFErrorO24ServerTrustFailureReasonO", "underlyingError"]
+- ["SS", "Encoding"]
+- !private ["SS", "init"]
+- !private ["s27StringInterpolationProtocolP", "appendInterpolation"]
+- !private ["s27StringInterpolationProtocolP", "appendLiteral"]
+- ["Sy", "Encoding"]
+- !private ["Sy", "init"]
+- ["s16TextOutputStreamP", "Encoding"]
+- !private ["s16TextOutputStreamP", "appendInterpolation"]
+- !private ["s16TextOutputStreamP", "appendLiteral"]
+- !private ["s16TextOutputStreamP", "init"]
+- ["s20TextOutputStreamableP", "Encoding"]
+- !private ["s20TextOutputStreamableP", "init"]
+- ["9Alamofire14URLConvertibleP", "Encoding"]
+- !private ["9Alamofire14URLConvertibleP", "init"]
+- ["9Alamofire7AFErrorO33URLRequestValidationFailureReasonO", "Data"]
+- ["9Alamofire7AFErrorO33URLRequestValidationFailureReasonO", "String"]
+- !private ["9Alamofire7AFErrorO33URLRequestValidationFailureReasonO", "UTF8"]
+- ["9Alamofire7AFErrorO33URLRequestValidationFailureReasonO", "bodyDataInGETRequest"]
+- ["9Alamofire7AFErrorO33URLRequestValidationFailureReasonO", "localizedDescription"]
+- !private ["s14_ArrayProtocolP", "joined"]
+- ["s30_CustomPlaygroundQuickLookableP", "Encoding"]
+- !private ["s30_CustomPlaygroundQuickLookableP", "init"]
+- !private ["s24_DestructorSafeContainerP", "joined"]
+- ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "Encoding"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- ["s34_ExpressibleByBuiltinStringLiteralP", "Encoding"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "Encoding"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- ["s19_HasContiguousBytesP", "Encoding"]
+- !private ["s19_HasContiguousBytesP", "init"]
+- !private ["s19_HasContiguousBytesP", "joined"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "joined"]
+- ["s21_ObjectiveCBridgeableP", "Encoding"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "joined"]
+depends-nominal:
+- "9Alamofire7AFErrorO"
+- !private "9Alamofire0A8ExtendedP"
+- !private "Sa"
+- "SK"
+- "s7CVarArgP"
+- "Sl"
+- "SL"
+- !private "10Foundation15ContiguousBytesP"
+- "s28CustomDebugStringConvertibleP"
+- "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- !private "10Foundation12DataProtocolP"
+- "Se"
+- !private "s26DefaultStringInterpolationV"
+- "SE"
+- "SQ"
+- "s5ErrorP"
+- !private "s25ExpressibleByArrayLiteralP"
+- "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- "s32ExpressibleByStringInterpolationP"
+- "s26ExpressibleByStringLiteralP"
+- "s33ExpressibleByUnicodeScalarLiteralP"
+- "SH"
+- "10Foundation14LocalizedErrorP"
+- "s25LosslessStringConvertibleP"
+- "s10MirrorPathP"
+- "9Alamofire7AFErrorO30MultipartEncodingFailureReasonO"
+- !private "SM"
+- !private "10Foundation19MutableDataProtocolP"
+- "9Alamofire7AFErrorO24ServerTrustFailureReasonO6OutputV"
+- "9Alamofire7AFErrorO29ParameterEncoderFailureReasonO"
+- "9Alamofire7AFErrorO30ParameterEncodingFailureReasonO"
+- !private "Sk"
+- "Sm"
+- "9Alamofire7AFErrorO29ParameterEncoderFailureReasonO17RequiredComponentO"
+- "9Alamofire7AFErrorO34ResponseSerializationFailureReasonO"
+- "9Alamofire7AFErrorO31ResponseValidationFailureReasonO"
+- "9Alamofire24RevocationTrustEvaluatorC"
+- "ST"
+- "9Alamofire21ServerTrustEvaluatingP"
+- "9Alamofire7AFErrorO24ServerTrustFailureReasonO"
+- "SS"
+- !private "s27StringInterpolationProtocolP"
+- "Sy"
+- "s16TextOutputStreamP"
+- "s20TextOutputStreamableP"
+- "9Alamofire14URLConvertibleP"
+- "9Alamofire7AFErrorO33URLRequestValidationFailureReasonO"
+- !private "s14_ArrayProtocolP"
+- "s30_CustomPlaygroundQuickLookableP"
+- !private "s24_DestructorSafeContainerP"
+- "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- "s34_ExpressibleByBuiltinStringLiteralP"
+- "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- "s19_HasContiguousBytesP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- "s21_ObjectiveCBridgeableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/ObjectiveC.swiftmodule/armv7.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Dispatch.swiftmodule/armv7.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Darwin.swiftmodule/armv7.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Foundation.swiftmodule/armv7.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreFoundation.swiftmodule/armv7.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreGraphics.swiftmodule/armv7.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Swift.swiftmodule/armv7.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/SwiftOnoneSupport.swiftmodule/armv7.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/ObjectiveC.swiftmodule/armv7.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Dispatch.swiftmodule/armv7.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Darwin.swiftmodule/armv7.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Foundation.swiftmodule/armv7.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreFoundation.swiftmodule/armv7.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreGraphics.swiftmodule/armv7.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/SwiftOnoneSupport.swiftmodule/armv7.swiftmodule"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/Carthage/Checkouts/Alamofire/Source/Alamofire.h"
+- "/Users/Chokyungjin/Documents/GitHub/Team_iOS_2_Client/90's/DerivedData/90's/Build/Intermediates.noindex/Alamofire.build/Debug-iphoneos/Alamofire iOS.build/unextended-module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/apinotes/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "e061503712aafd08d30a5fbf0cf1f3b9"
