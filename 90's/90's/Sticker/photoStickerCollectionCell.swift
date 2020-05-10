@@ -18,12 +18,8 @@ class photoStickerCollectionCell: UICollectionViewCell {
     }
 }
 
-
 extension photoStickerCollectionCell {
-    func hideimage(){
-        checkImageView.isHidden = true
-    }
-    func showimage(){
-        checkImageView.isHidden = false
+    func hideimage(value : Bool){
+        checkImageView.isHidden = value
     }
 }

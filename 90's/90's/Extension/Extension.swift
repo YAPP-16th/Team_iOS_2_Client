@@ -55,6 +55,14 @@ extension UICollectionView {
 
 
 extension UIViewController{
+    func setImageViewLayout(view : UIView, imageView : UIImageView){
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        imageView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        imageView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
+    
     func checkDeviseVersion(backView: UIView!){
         if isDeviseVersionLow == false {
             backView.isHidden = false
@@ -251,7 +259,7 @@ extension UIViewController{
         let distance = (self.view.frame.width - view.frame.width) / 2
         view.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: distance).isActive = true
         view.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -distance).isActive = true
-        view.addShadowEffect()
+//        view.addShadowEffect()
     }
     
     // 제네릭 적용
@@ -299,7 +307,6 @@ extension UIImage {
 
 extension UIView {
     public func createImage() -> UIImage {
-        print("create Image : frame is \(self.frame)")
         UIGraphicsBeginImageContextWithOptions(
             CGSize(width: self.frame.width, height: self.frame.height), true, 1)
         self.layer.render(in: UIGraphicsGetCurrentContext()!)

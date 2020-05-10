@@ -129,6 +129,18 @@ enum AlbumLayout {
         case .Filmroll : return "Filrmroll"
         }
     }
+    
+    var dateLabelFrame : CGSize {
+        switch self {
+        case .Polaroid: return CGSize(width: 40, height: 103)
+        case .Mini : return CGSize(width: 34, height: 85)
+        case .Memory: return CGSize(width: 44, height: 44)
+        case .Portrab: return CGSize(width: 32, height: 25)
+        case .Tape: return CGSize(width: 33, height: 81)
+        case .Portraw: return CGSize(width: 16, height: 22)
+        case .Filmroll: return CGSize(width: 50, height: 16)
+        }
+    }
 }
 
 

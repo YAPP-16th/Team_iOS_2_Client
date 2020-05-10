@@ -26,7 +26,6 @@ class ImageRenderVC: UIViewController {
     var image : UIImage?
     var photoView : UIView!
     var photoImage : UIImage?
-    var tempsticker : UIImageView?
     var selectLayout : AlbumLayout! = .Polaroid
     // server data
     var albumUid : Int?
@@ -34,13 +33,11 @@ class ImageRenderVC: UIViewController {
     
     // value for checkimageview showing while collection cells changes
     fileprivate var isFilterSelected : Bool = true
-    fileprivate var testFilterCell : photoFilterCollectionCell?
-    fileprivate var testStickerCell : photoStickerCollectionCell?
-    fileprivate var testFilterCount = 0, testStickerCount = 0
+
     // for sticker
     fileprivate var sticker : StickerLayout?
     fileprivate var initialAngle = CGFloat(), angle = CGFloat(), saveSize = CGFloat()
-    fileprivate var location : CGPoint = CGPoint(x: 0, y: 0), savePosition : CGPoint = CGPoint(x: 0, y: 0)
+    fileprivate var savePosition : CGPoint = CGPoint(x: 0, y: 0)
     fileprivate let stickerArray : [String] = ["heartimage", "starimage", "smileimage"]
     // for filter
     fileprivate let context = CIContext(options: nil)
@@ -61,19 +58,6 @@ class ImageRenderVC: UIViewController {
         super.viewDidLoad()
         buttonSetting()
         defaultSetting()
-        let size = isDeviseVersionLow ? returnLayoutSize(selectedLayout: selectLayout) : returnLayoutBigSize(selectedLayout: selectLayout)
-        print(size)
-        print(saveView.frame)
-        setSaveViewLayout(view: saveView, selectLayout: selectLayout, size: size)
-        
-        //        let size = isDeviseVersionLow ? returnLayoutSize(selectedLayout: selectedLayout) : returnLayoutBigSize(selectedLayout: selectedLayout)
-        //
-        //        print(size)
-        //
-        //        setSaveViewLayout(view: photoView, selectLayout: selectedLayout, size: size)
-        
-        
-        setRenderImageViewLayout()
         initializeArrays()
     }
     
@@ -130,12 +114,22 @@ extension ImageRenderVC {
     }
     
     private func initializeArrays(){
+        let size = isDeviseVersionLow ? returnLayoutSize(selectedLayout: selectLayout) : returnLayoutBigSize(selectedLayout: selectLayout)
+        setSaveViewLayout(view: saveView, selectLayout: selectLayout, size: size)
+        setRenderImageViewLayout()
+        
         filterImages = PhotoEditorTypes.filterImage.map({ (v : String) -> UIImage in
             return UIImage(named: v)!
         })
         stickerImages = stickerArray.map({ ( v : String ) -> UIImage in
             return UIImage(named: v)!
         })
+    }
+    
+    private func resetValues(){
+        angle = CGFloat()
+        saveSize = CGFloat()
+        collectionView.reloadData()
     }
     
     private func pToA (_ t:UITouch) -> CGFloat {
@@ -157,40 +151,13 @@ extension ImageRenderVC {
         self.saveView.addSubview(sticker!)
     }
     
-    private func resetCheckImage(){
-        if isFilterSelected == true {
-            // filter collection
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filtercell", for: selectIndex!) as! photoFilterCollectionCell
-            cell.hideimage()
-        } else {
-            // sticker collection
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "stickercell", for: selectIndex!) as! photoStickerCollectionCell
-            cell.hideimage()
-        }
-    }
-    
     private func setRenderImageViewLayout(){
         let size = returnLayoutBigSize(selectedLayout: selectLayout)
         layoutImage = applyBackImageViewLayout(selectedLayout: selectLayout, smallBig: size, imageView: layoutImage)
         renderImage = applyImageViewLayout(selectedLayout: selectLayout, smallBig: size, imageView: renderImage, image: image!)
-        layoutImage.topAnchor.constraint(equalTo: self.saveView.topAnchor, constant: 0).isActive = true
-        layoutImage.leftAnchor.constraint(equalTo: self.saveView.leftAnchor, constant: 0).isActive = true
-        layoutImage.rightAnchor.constraint(equalTo: self.saveView.rightAnchor, constant: 0).isActive = true
-        layoutImage.bottomAnchor.constraint(equalTo: self.saveView.bottomAnchor, constant: 0).isActive = true
+        setImageViewLayout(view: saveView, imageView: layoutImage)
         
         view.layoutIfNeeded()
-    }
-    
-    func createnewimage() -> UIImage{
-        let render = UIGraphicsImageRenderer(size: (sticker?.frame.size)!)
-        let position = CGPoint(x: savePosition.x - saveView.frame.origin.x, y: savePosition.y - saveView.frame.origin.y)
-        let returnimage = render.image(actions: { _ in
-            let context = UIGraphicsGetCurrentContext()
-            context?.translateBy(x: position.x, y: position.y)
-            context?.rotate(by: angle)
-            context?.draw((image?.cgImage!)!, in: CGRect(origin: CGPoint(x: position.x, y: position.y), size: (sticker?.frame.size)!))
-        })
-        return returnimage
     }
 }
 
@@ -207,24 +174,6 @@ extension ImageRenderVC {
     }
     
     @objc func touchCompleteBtn(){
-        //        if sticker != nil {
-        //            let takeStickerImageView = sticker?.stickerImageView
-        //            takeStickerImageView?.center = sticker!.center
-        //
-        ////            takeStickerImageView?.image = createnewimage()
-        //
-        //            takeStickerImageView?.translatesAutoresizingMaskIntoConstraints = false
-        //            saveView.addSubview(takeStickerImageView!)
-        //
-        //            //            let position = CGPoint(x: savePosition.x - saveView.frame.origin.x, y: savePosition.y - saveView.frame.origin.y)
-        //            //
-        //            //            takeStickerImageView?.transform = CGAffineTransform(scaleX: saveSize, y: saveSize).concatenating(CGAffineTransform(rotationAngle: angle)).concatenating(CGAffineTransform(translationX: position.x, y: position.y))
-        //            sticker?.removeFromSuperview()
-        //            sticker = nil
-        //        }
-        
-        //
-        print("\(saveView.subviews.count)")
         for views in saveView.subviews {
             if(views is StickerLayout){
                 (views as! StickerLayout).cancleImageView.isHidden = true
@@ -235,13 +184,13 @@ extension ImageRenderVC {
         }
         
         photoImage = saveView.createImage()
-        angle = CGFloat()
-        saveSize = CGFloat()
+        resetValues()
+        if selectIndex != nil {
+            collectionView.deselectItem(at: selectIndex!, animated: false)
+        }
         
         let nextVC = storyboard?.instantiateViewController(withIdentifier: "savePhotoVC") as! SavePhotoVC
         
-        //        nextVC.photoView = photoView
-        //        nextVC.defaultSetting()
         nextVC.originImage = photoImage
         nextVC.selectedLayout = selectLayout
         nextVC.albumUid = albumUid
@@ -320,51 +269,32 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
         selectIndex = indexPath
         
         if let cell = collectionView.cellForItem(at: indexPath) as? photoFilterCollectionCell {
-            cell.showimage()
+            cell.hideimage(value: false)
             let colorcube = colorCubeFilterFromLUT(imageName: PhotoEditorTypes.filterNameArray[indexPath.row], originalImage: image!)
-            let result = colorcube?.outputImage
-            let image = UIImage.init(cgImage: context.createCGImage(result!, from: result!.extent)!)
+            let image = UIImage.init(cgImage: context.createCGImage((colorcube?.outputImage)!, from: (colorcube?.outputImage)!.extent)!)
             
             renderImage.image = image
+            stickerBtn.titleLabel?.textColor = .lightGray
+            filterBtn.titleLabel?.textColor = .black
+            isFilterSelected = true
             
-            testFilterCount += 1
-            if testFilterCount <= 1 {
-                testFilterCell = cell
-            } else {
-                testFilterCell?.hideimage()
-                testFilterCell = nil
-            }
         } else if let cell = collectionView.cellForItem(at: indexPath) as? photoStickerCollectionCell {
-            cell.showimage()
+            cell.hideimage(value: false)
             createStickerView(image: stickerImages[indexPath.row], indexPathRow: indexPath.row)
             
-            testStickerCount += 1
-            if testStickerCount <= 1 {
-                testStickerCell = cell
-                stickerBtn.isEnabled = false
-                filterBtn.isEnabled = true
-                stickerBtn.titleLabel?.textColor = .lightGray
-                filterBtn.titleLabel?.textColor = .black
-            } else {
-                testStickerCell?.hideimage()
-                testStickerCell = nil
-                stickerBtn.isEnabled = true
-                filterBtn.isEnabled = false
-                stickerBtn.titleLabel?.textColor = .black
-                filterBtn.titleLabel?.textColor = .lightGray
-            }
+            stickerBtn.titleLabel?.textColor = .black
+            filterBtn.titleLabel?.textColor = .lightGray
+            isFilterSelected = false
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        selectIndex = indexPath
-        
-        if let cell = collectionView.cellForItem(at: indexPath) as? photoFilterCollectionCell {
-            cell.hideimage()
-            testFilterCount = 0
-        } else if let cell = collectionView.cellForItem(at: indexPath) as? photoStickerCollectionCell {
-            testStickerCount = 0
-            cell.hideimage()
-        }
-    }
+//    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+//        selectIndex = indexPath
+//
+//        if let cell = collectionView.cellForItem(at: indexPath) as? photoFilterCollectionCell {
+//            cell.hideimage(value: true)
+//        } else if let cell = collectionView.cellForItem(at: indexPath) as? photoStickerCollectionCell {
+//            cell.hideimage(value: true)
+//        }
+//    }
 }

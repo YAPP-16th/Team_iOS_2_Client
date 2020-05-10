@@ -17,8 +17,9 @@ class SavePhotoVC: UIViewController {
         switchHideView(value: true)
     }
     @IBAction func cnacleViewCompleteBtn(_ sender: UIButton) {
-        let beforeVC = self.navigationController?.viewControllers[1] as! AlbumDetailController
-        self.navigationController?.popToViewController(beforeVC, animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
+//        let beforeVC = self.navigationController?.viewControllers[1] as! AlbumDetailController
+//        self.navigationController?.popToViewController(beforeVC, animated: true)
     }
     
     @IBOutlet weak var switchBtn: UISwitch!
@@ -32,22 +33,19 @@ class SavePhotoVC: UIViewController {
     var location = CGPoint(x: 0.0, y: 0.0)
     var size = CGSize(width: 0,height: 0)
     var originImage : UIImage!
-    var dateLabel : UILabel!
     var selectedLayout : AlbumLayout!
-    var selectLayout : AlbumLayout! = .Polaroid
     // server data
     var albumUid : Int?
     var imageName : String?
-    
+    var dateLabel : UILabel!
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         defaultSetting()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("save view = \(photoView)")
         buttonSetting()
     }
 }
@@ -65,39 +63,48 @@ extension SavePhotoVC {
     
     func defaultSetting(){
         let size = isDeviseVersionLow ? returnLayoutSize(selectedLayout: selectedLayout) : returnLayoutBigSize(selectedLayout: selectedLayout)
+        setSaveViewLayout(view: photoView, selectLayout: selectedLayout, size: size)
         
         let imageView = UIImageView(image: originImage)
-        
-
         photoView.addSubview(imageView)
         
         imageView.topAnchor.constraint(equalTo: photoView.topAnchor, constant: 0).isActive = true
-        
         imageView.leadingAnchor.constraint(equalTo: photoView.leadingAnchor, constant: 0).isActive = true
-        
         imageView.trailingAnchor.constraint(equalTo: photoView.trailingAnchor, constant: 0).isActive = true
-        
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
-        setSaveViewLayout(view: photoView, selectLayout: selectedLayout, size: size)
-
-//        imageView.center = photoView.center
+        dateLabelSetting(imageView: imageView)
     }
     
-    func dateLabelSetting(){
+    
+    func dateLabelSetting(imageView : UIImageView){
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy.MM.dd"
+        dateFormatter.dateFormat = "yy MM dd"
         
-        dateLabel = UILabel()
-        dateLabel.text = dateFormatter.string(from: Date()) /// 변경사항
-        dateLabel.font = UIFont.boldSystemFont(ofSize: 16) //UIFont(name: "", size: 16)
-        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        let datePosition = selectedLayout.dateLabelFrame
+        let rect = CGRect(x: imageView.frame.width - datePosition.width - 110, y: imageView.frame.height - datePosition.height - 30, width: 110, height: 30)
+        
+        let stroke = [
+            NSAttributedString.Key.strokeColor : UIColor.colorRGBHex(hex: 0xf93201),
+            NSAttributedString.Key.foregroundColor : UIColor.colorRGBHex(hex: 0xfea006),
+            NSAttributedString.Key.strokeWidth : -2.0
+            ] as [NSAttributedString.Key : Any]
+        
+        dateLabel = UILabel(frame: rect)
+        dateLabel.frame = rect
+        dateLabel.attributedText = NSAttributedString(string: dateFormatter.string(from: Date()), attributes: stroke)// dateFormatter.string(from: Date())
+        dateLabel.font = UIFont(name: "Digital-7 Italic", size: 17)!
+//        dateLabel.textColor = UIColor.colorRGBHex(hex: 0xfea006)
+        dateLabel.textAlignment = .right
+        
         photoView.addSubview(dateLabel)
-               
-        dateLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50).isActive = true
-        dateLabel.bottomAnchor.constraint(equalTo: photoView.bottomAnchor, constant: -20).isActive = true
-        dateLabel.heightAnchor.constraint(equalToConstant: 21).isActive = true
-        dateLabel.widthAnchor.constraint(equalToConstant: 111).isActive = true
+        
+        dateLabel.layer.shadowColor = UIColor.colorRGBHex(hex: 0xf93201).cgColor
+        dateLabel.layer.shouldRasterize = true
+        dateLabel.layer.shadowRadius = 3.0
+        dateLabel.layer.shadowOffset = CGSize(width: 3, height: 3)
+        dateLabel.layer.shadowOpacity = 0.5
+        dateLabel.layer.masksToBounds = false
     }
     
     func switchHideView(value : Bool) {
@@ -125,27 +132,26 @@ extension SavePhotoVC {
 extension SavePhotoVC {
     @objc func touchSaveBtn(){ // 이미지 저장
 //        photoView.addSubview(dateLabel)
-//        let renderer = UIGraphicsImageRenderer(size: photoView.bounds.size)
-//        let image = renderer.image { ctx in
-//            photoView.drawHierarchy(in: photoView.bounds, afterScreenUpdates: true)
-//        }
+        let renderer = UIGraphicsImageRenderer(size: photoView.bounds.size)
+        let image = renderer.image { ctx in
+            photoView.drawHierarchy(in: photoView.bounds, afterScreenUpdates: true)
+        }
         
-//        AlbumService.shared.photoUpload(albumUid: albumUid!, image: [image], imageName: imageName!, completion: {
-//            response in
-//            if let status = response.response?.statusCode {
-//                switch status {
-//                case 200:
-//                    guard let data = response.data else {return}
-//                    print("received data = \(data)")
-//                case 401...404 :
-//                    print("forbidden access in \(status)")
-//                default:
-//                    return
-//                }
-//            }
-//        })
+        AlbumService.shared.photoUpload(albumUid: 70, image: [image], imageName: imageName!, completion: {
+            response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200:
+                    guard let data = response.data else {return}
+                    print("received data = \(data)")
+                case 401...404 :
+                    print("forbidden access in \(status)")
+                default:
+                    return
+                }
+            }
+        })
         
-
         UIImageWriteToSavedPhotosAlbum(originImage,self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
         
     }
@@ -159,11 +165,11 @@ extension SavePhotoVC {
     }
     
     @objc func touchSwitchBtn(){
-//        if dateLabel.isHidden == true {
-//            dateLabel.isHidden = false
-//        } else {
-//            dateLabel.isHidden = true
-//        }
+        if dateLabel.isHidden == true {
+            dateLabel.isHidden = false
+        } else {
+            dateLabel.isHidden = true
+        }
     }
     
     @objc func touchCancleBtn(){

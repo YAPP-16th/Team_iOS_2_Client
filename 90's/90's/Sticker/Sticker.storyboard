@@ -34,7 +34,6 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="renderview" translatesAutoresizingMaskIntoConstraints="NO" id="CZd-3N-heV">
                                         <rect key="frame" x="20" y="27" width="338" height="358"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.90997409819999997" green="0.92133849860000006" blue="0.93333631750000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xiV-KI-yob">
                                         <rect key="frame" x="0.0" y="0.0" width="378" height="469"/>
@@ -257,7 +256,6 @@
                             <view autoresizesSubviews="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y4A-NP-afi">
                                 <rect key="frame" x="18" y="142" width="378" height="469"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날짜 표시하기" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kNb-70-RMY">
                                 <rect key="frame" x="29" y="725" width="148" height="21"/>
@@ -265,7 +263,7 @@
                                     <constraint firstAttribute="height" constant="21" id="1If-hq-jKI"/>
                                     <constraint firstAttribute="width" constant="148" id="4HL-bw-ZOM"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -446,7 +444,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Fy-rS-eYg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5298.3999999999996" y="812.74362818590714"/>
+            <point key="canvasLocation" x="5297.1014492753629" y="812.27678571428567"/>
         </scene>
     </scenes>
     <resources>
