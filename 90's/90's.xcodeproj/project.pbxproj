@@ -36,6 +36,8 @@
 		9B6A134C2440CE9400E78E66 /* AlbumInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A134B2440CE9400E78E66 /* AlbumInfoVC.swift */; };
 		9B6A134E2440D0C500E78E66 /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A134D2440D0C500E78E66 /* MemberTableViewCell.swift */; };
 		9BA5A9452454021F003A55DC /* KakaoLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD31D3D243A110600D0D719 /* KakaoLink.framework */; };
+		9BA7A7EE2467D05E00C39B56 /* Digital-7 Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9BA7A7ED2467D05E00C39B56 /* Digital-7 Italic.ttf */; };
+		9BA7A7F02467D06400C39B56 /* Digital-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9BA7A7EF2467D06400C39B56 /* Digital-7.ttf */; };
 		9BAAA96F24596215002567AF /* AlbumService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAAA96E24596215002567AF /* AlbumService.swift */; };
 		9BAAA9712459624B002567AF /* AlbumServiceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAAA9702459624B002567AF /* AlbumServiceData.swift */; };
 		9BB1C5742441EEBA0035DEBF /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB1C5732441EEBA0035DEBF /* FilterCell.swift */; };
@@ -537,6 +539,8 @@
 		9B986C6224557E3E00BE9E3C /* 28C17161-E888-3D79-9FEA-53431ADCB336.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "28C17161-E888-3D79-9FEA-53431ADCB336.bcsymbolmap"; sourceTree = "<group>"; };
 		9B986C6324557E3E00BE9E3C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 		9B986C6424557E3E00BE9E3C /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Alamofire.framework.dSYM; sourceTree = "<group>"; };
+		9BA7A7ED2467D05E00C39B56 /* Digital-7 Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Digital-7 Italic.ttf"; sourceTree = "<group>"; };
+		9BA7A7EF2467D06400C39B56 /* Digital-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Digital-7.ttf"; sourceTree = "<group>"; };
 		9BAAA96E24596215002567AF /* AlbumService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumService.swift; sourceTree = "<group>"; };
 		9BAAA9702459624B002567AF /* AlbumServiceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumServiceData.swift; sourceTree = "<group>"; };
 		9BB1C5732441EEBA0035DEBF /* FilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
@@ -626,8 +630,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
-				
 				9BF98C9624668D8000E8A5BC /* Kingfisher.framework in Frameworks */,
 				A3024430244CAE5E006C838F /* Alamofire.framework in Frameworks */,
 				9BD31D37243A05F700D0D719 /* KakaoOpenSDK.framework in Frameworks */,
@@ -1732,6 +1734,8 @@
 		A33E5B1D2449EA5500794169 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				9BA7A7EF2467D06400C39B56 /* Digital-7.ttf */,
+				9BA7A7ED2467D05E00C39B56 /* Digital-7 Italic.ttf */,
 				A3F8CC19244AEE24008D0046 /* neodgm.ttf */,
 				A3F8CC14244AEC75008D0046 /* NotoSansCJKkr-Bold.otf */,
 				A3F8CC15244AEC75008D0046 /* NotoSansCJKkr-DemiLight.otf */,
@@ -1901,6 +1905,8 @@
 				A33376222420CFB6000DC7C4 /* LaunchScreen.storyboard in Resources */,
 				392F7790242F4BC70000BC3C /* Default-568h@2x.png in Resources */,
 				A333761F2420CFB6000DC7C4 /* Assets.xcassets in Resources */,
+				9BA7A7EE2467D05E00C39B56 /* Digital-7 Italic.ttf in Resources */,
+				9BA7A7F02467D06400C39B56 /* Digital-7.ttf in Resources */,
 				A3F8CC1A244AEE24008D0046 /* neodgm.ttf in Resources */,
 				39585160242F461800014CB0 /* Album.storyboard in Resources */,
 				3958515E242F460000014CB0 /* Filter.storyboard in Resources */,
