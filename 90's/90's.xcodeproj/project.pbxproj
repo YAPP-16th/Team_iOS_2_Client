@@ -88,6 +88,7 @@
 		A36DC86F24236386001B3767 /* AlbumDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36DC86E24236386001B3767 /* AlbumDetailController.swift */; };
 		A36DC87124236E45001B3767 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36DC87024236E45001B3767 /* PhotoCell.swift */; };
 		A3768D50246307EE009E64EE /* ChangePhoneService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3768D4F246307EE009E64EE /* ChangePhoneService.swift */; };
+		A37EFE7D246AC5960051227F /* OrderFinalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37EFE7C246AC5960051227F /* OrderFinalViewController.swift */; };
 		A38A2D0E24587170000BF82D /* TelephoneAuthResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38A2D0D24587170000BF82D /* TelephoneAuthResult.swift */; };
 		A38A2D102458719E000BF82D /* TelephoneAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38A2D0F2458719E000BF82D /* TelephoneAuthService.swift */; };
 		A38A2D3824588E99000BF82D /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38A2D3724588E99000BF82D /* LoginService.swift */; };
@@ -595,6 +596,7 @@
 		A36DC86E24236386001B3767 /* AlbumDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailController.swift; sourceTree = "<group>"; };
 		A36DC87024236E45001B3767 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		A3768D4F246307EE009E64EE /* ChangePhoneService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhoneService.swift; sourceTree = "<group>"; };
+		A37EFE7C246AC5960051227F /* OrderFinalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFinalViewController.swift; sourceTree = "<group>"; };
 		A38A2D0D24587170000BF82D /* TelephoneAuthResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelephoneAuthResult.swift; sourceTree = "<group>"; };
 		A38A2D0F2458719E000BF82D /* TelephoneAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelephoneAuthService.swift; sourceTree = "<group>"; };
 		A38A2D3724588E99000BF82D /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
@@ -664,6 +666,7 @@
 				39DE24C624547143007E8D40 /* PrintListViewController.swift */,
 				39DE24C8245472F4007E8D40 /* PrintListTableViewCell.swift */,
 				39CB8C89245DC92600F28A49 /* PopUpViewController.swift */,
+				A37EFE7C246AC5960051227F /* OrderFinalViewController.swift */,
 				39CB8C96245DCD2100F28A49 /* PopUp2ViewController.swift */,
 			);
 			path = Print;
@@ -1965,6 +1968,7 @@
 				A3E2DB7C2454694000AB2156 /* NicknameViewController.swift in Sources */,
 				9BAAA96F24596215002567AF /* AlbumService.swift in Sources */,
 				9B1B7A6E244C2A9B008ED381 /* AlbumLayoutHeaderCell.swift in Sources */,
+				A37EFE7D246AC5960051227F /* OrderFinalViewController.swift in Sources */,
 				A333762A2420DA36000DC7C4 /* Album.swift in Sources */,
 				A333761A2420CFB3000DC7C4 /* AlbumMainController.swift in Sources */,
 				A333762E2420E9D0000DC7C4 /* AlbumQuantityController.swift in Sources */,
