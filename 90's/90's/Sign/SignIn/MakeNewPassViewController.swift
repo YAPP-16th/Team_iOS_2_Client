@@ -34,8 +34,9 @@ class MakeNewPassViewController: UIViewController, UITextFieldDelegate {
         if(newPass == confirmPass){
             //바뀐 패스워드를 서버로 보내는 코드 작성
             //성공 시 화면 전환
-            let completeVC = storyboard?.instantiateViewController(identifier: "CompleteNewPassViewController") as! CompleteNewPassViewController
+            let completeVC = storyboard?.instantiateViewController(withIdentifier: "CompleteNewPassViewController") as! CompleteNewPassViewController
             completeVC.newPass = tfNewPass.text!
+            
             navigationController?.pushViewController(completeVC, animated: true)
         }else {
             validationLabel.isHidden = false

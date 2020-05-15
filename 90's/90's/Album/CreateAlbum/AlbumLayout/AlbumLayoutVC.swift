@@ -14,7 +14,7 @@ class AlbumLayoutVC: UIViewController {
     @IBOutlet weak var layoutCollectionView: UICollectionView!
     @IBAction func completeBtn(_ sender: UIButton) {
         if initialFlag == false {
-            let nextVC = storyboard?.instantiateViewController(identifier: "AlbumCompleteVC") as! AlbumCompleteVC
+            let nextVC = storyboard?.instantiateViewController(withIdentifier: "AlbumCompleteVC") as! AlbumCompleteVC
                    
             nextVC.albumName = albumName
             nextVC.albumStartDate = albumStartDate
@@ -28,7 +28,7 @@ class AlbumLayoutVC: UIViewController {
     }
     @IBAction func layoutPreviewBtn(_ sender: UIButton) {
         if initialFlag == false {
-            let nextVC = storyboard?.instantiateViewController(identifier: "albumlayoutpreviewvc") as! AlbumLayoutPreviewVC
+            let nextVC = storyboard?.instantiateViewController(withIdentifier: "albumlayoutpreviewvc") as! AlbumLayoutPreviewVC
             nextVC.selectedLayout = albumLayout
             self.navigationController?.pushViewController(nextVC, animated: true)
         }

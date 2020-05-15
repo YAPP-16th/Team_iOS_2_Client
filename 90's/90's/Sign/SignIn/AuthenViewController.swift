@@ -147,14 +147,14 @@ class AuthenViewController: UIViewController {
             switch authenType {
             case "findEmail":
                 if(tfTelephone.text == "111-1111-1111"){
-                    let findEmailVC = storyboard?.instantiateViewController(identifier: "FindEmailViewController") as! FindEmailViewController
+                    let findEmailVC = storyboard?.instantiateViewController(withIdentifier: "FindEmailViewController") as! FindEmailViewController
                     navigationController?.pushViewController(findEmailVC, animated: true)
                 }else{
-                    let findEmailErrVC = storyboard?.instantiateViewController(identifier: "FindEmailErrViewController") as! FindEmailErrViewController
+                    let findEmailErrVC = storyboard?.instantiateViewController(withIdentifier: "FindEmailErrViewController") as! FindEmailErrViewController
                     navigationController?.pushViewController(findEmailErrVC, animated: true)
                 }
             case "findPass":
-                let makePassVC = storyboard?.instantiateViewController(identifier: "MakeNewPassViewController") as! MakeNewPassViewController
+                let makePassVC = storyboard?.instantiateViewController(withIdentifier: "MakeNewPassViewController") as! MakeNewPassViewController
                 navigationController?.pushViewController(makePassVC, animated: true)
             default:
                 return

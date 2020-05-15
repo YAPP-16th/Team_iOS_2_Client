@@ -139,7 +139,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func switchEnterView() {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let mainSB: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let enterVC = mainSB.instantiateViewController(identifier: "EnterViewController") as! EnterViewController
+        let enterVC = mainSB.instantiateViewController(withIdentifier: "EnterViewController") as! EnterViewController
         enterVC.initialEnter = false
         let enterNav = UINavigationController(rootViewController: enterVC)
         enterNav.isNavigationBarHidden = true
@@ -151,7 +151,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func switchSignUp() {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let signUpSB: UIStoryboard = UIStoryboard(name: "SignUp", bundle: nil)
-        let termVC = signUpSB.instantiateViewController(identifier: "TermViewController") as! TermViewController
+        let termVC = signUpSB.instantiateViewController(withIdentifier: "TermViewController") as! TermViewController
         let termNav = UINavigationController(rootViewController: termVC)
         termNav.isNavigationBarHidden = true
         
@@ -162,7 +162,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func switchSignIn() {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let signInSB: UIStoryboard = UIStoryboard(name: "SignIn", bundle: nil)
-        let loginMainVC = signInSB.instantiateViewController(identifier: "LoginMainViewController") as! LoginMainViewController
+        let loginMainVC = signInSB.instantiateViewController(withIdentifier: "LoginMainViewController") as! LoginMainViewController
         let loginNav = UINavigationController(rootViewController: loginMainVC)
         loginNav.isNavigationBarHidden = true
         
@@ -173,7 +173,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func switchTab() {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let mainSB: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let tabVC = mainSB.instantiateViewController(identifier: "TabBarController") as! UITabBarController
+        let tabVC = mainSB.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
         let tabNav = UINavigationController(rootViewController: tabVC)
         tabNav.isNavigationBarHidden = true
         

@@ -45,7 +45,7 @@ extension AlbumMainController : UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let albumDetailVC = storyboard?.instantiateViewController(identifier: "albumDetailVC") as! AlbumDetailController
+        let albumDetailVC = storyboard?.instantiateViewController(withIdentifier: "albumDetailVC") as! AlbumDetailController
         albumDetailVC.albumIndex = indexPath.row
         navigationController?.pushViewController(albumDetailVC, animated: true)
     }

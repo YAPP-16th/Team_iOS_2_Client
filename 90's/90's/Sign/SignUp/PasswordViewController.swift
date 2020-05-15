@@ -35,7 +35,7 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
         let newPass = tfNewPass.text!
         let confirmPass = tfConfirmPass.text!
         if(newPass == confirmPass){
-            let nickNameVC = storyboard?.instantiateViewController(identifier: "NicknameViewController") as! NicknameViewController
+            let nickNameVC = storyboard?.instantiateViewController(withIdentifier: "NicknameViewController") as! NicknameViewController
             nickNameVC.email = email
             nickNameVC.pwd = newPass
             navigationController?.pushViewController(nickNameVC, animated: true)
