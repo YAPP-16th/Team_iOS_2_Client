@@ -136,7 +136,7 @@ extension AddressSearchViewController: UITableViewDelegate, UITableViewDataSourc
         cell.postNumLabel.text = zipCode
         cell.layer.cornerRadius = 4.0
         cell.layer.borderWidth = 1.0
-        cell.layer.borderColor = CGColor(srgbRed: 199/255, green: 201/255, blue: 208/255, alpha: 0.7)
+        cell.layer.borderColor =  UIColor(red: 199/255, green: 201/255, blue: 208/255, alpha: 0.7).cgColor
         return cell
     }
     

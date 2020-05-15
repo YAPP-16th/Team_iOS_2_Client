@@ -60,7 +60,7 @@ class OrderFinalViewController: UIViewController {
     
     //우편번호 검색 버튼 클릭
     @IBAction func clickSearchAddress(_ sender: Any) {
-        let addressSearchVC = storyboard?.instantiateViewController(identifier: "AddressSearchViewController") as! AddressSearchViewController
+        let addressSearchVC = storyboard?.instantiateViewController(withIdentifier: "AddressSearchViewController") as! AddressSearchViewController
         addressSearchVC.searchDelegate = self
         present(addressSearchVC, animated: true)
     }
@@ -98,7 +98,7 @@ class OrderFinalViewController: UIViewController {
             if subView is UITextField{
                 subView.layer.borderWidth = 1.0
                 subView.layer.cornerRadius = 8.0
-                subView.layer.borderColor = CGColor(srgbRed: 199/255, green: 201/255, blue: 208/255, alpha: 0.7)
+                subView.layer.borderColor = UIColor(red: 219/255, green: 201/255, blue: 208/255, alpha: 0.7).cgColor
                 (subView as! UITextField).addLeftPadding()
             }
             if subView is UIButton {
