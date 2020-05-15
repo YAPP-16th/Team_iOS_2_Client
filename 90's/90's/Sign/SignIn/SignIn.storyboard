@@ -31,7 +31,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcs-xC-pc1">
-                                <rect key="frame" x="18" y="694.5" width="378" height="72"/>
+                                <rect key="frame" x="18" y="693.5" width="378" height="72"/>
                                 <color key="backgroundColor" red="0.59999999999999998" green="0.61176470588235299" blue="0.65098039215686276" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="회원가입">
@@ -57,7 +57,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jyp-vV-Xgl">
-                                <rect key="frame" x="18" y="776.5" width="378" height="71.5"/>
+                                <rect key="frame" x="18" y="776" width="378" height="72"/>
                                 <color key="backgroundColor" red="1" green="0.92549019610000005" blue="0.023529411760000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="18"/>
                                 <state key="normal" title="카카오톡 로그인">
@@ -68,7 +68,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ejN-qd-Xgk">
-                                <rect key="frame" x="18" y="613" width="378" height="71.5"/>
+                                <rect key="frame" x="18" y="611.5" width="378" height="72"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="18"/>
                                 <state key="normal" title="로그인">
@@ -79,7 +79,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kakaoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="JaN-68-Sqd">
-                                <rect key="frame" x="48" y="803.5" width="23" height="20"/>
+                                <rect key="frame" x="48" y="802" width="23" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="C0x-Bh-JJj"/>
                                     <constraint firstAttribute="width" constant="23" id="U0D-mq-QHC"/>
@@ -98,10 +98,10 @@
                             <constraint firstItem="bcs-xC-pc1" firstAttribute="top" secondItem="ejN-qd-Xgk" secondAttribute="bottom" constant="10" id="4qD-Qb-Jpi"/>
                             <constraint firstItem="Csr-vN-vDB" firstAttribute="centerX" secondItem="Vbx-xt-N1B" secondAttribute="centerX" id="5RY-V6-uik"/>
                             <constraint firstItem="Jyp-vV-Xgl" firstAttribute="leading" secondItem="Vbx-xt-N1B" secondAttribute="leading" constant="18" id="EAj-0j-yfw"/>
-                            <constraint firstItem="JaN-68-Sqd" firstAttribute="top" secondItem="Jyp-vV-Xgl" secondAttribute="top" constant="27" id="Hy7-j2-bGT"/>
                             <constraint firstItem="Vbx-xt-N1B" firstAttribute="bottom" secondItem="Jyp-vV-Xgl" secondAttribute="bottom" constant="14" id="NvM-uN-Rqm"/>
-                            <constraint firstItem="ejN-qd-Xgk" firstAttribute="height" secondItem="bcs-xC-pc1" secondAttribute="height" id="SIt-jh-01L"/>
-                            <constraint firstItem="Jyp-vV-Xgl" firstAttribute="height" secondItem="kPU-50-lea" secondAttribute="height" multiplier="0.08" id="WhE-Kf-EAb"/>
+                            <constraint firstItem="Jyp-vV-Xgl" firstAttribute="height" secondItem="ejN-qd-Xgk" secondAttribute="height" id="QNE-i6-WY8"/>
+                            <constraint firstItem="JaN-68-Sqd" firstAttribute="centerY" secondItem="Jyp-vV-Xgl" secondAttribute="centerY" id="QqI-Vd-Z5g"/>
+                            <constraint firstItem="Jyp-vV-Xgl" firstAttribute="height" secondItem="kPU-50-lea" secondAttribute="height" multiplier="0.0805" id="WhE-Kf-EAb"/>
                             <constraint firstItem="Vbx-xt-N1B" firstAttribute="trailing" secondItem="Jyp-vV-Xgl" secondAttribute="trailing" constant="18" id="Xl3-g2-y3N"/>
                             <constraint firstItem="Vbx-xt-N1B" firstAttribute="trailing" secondItem="S2P-nx-y2c" secondAttribute="trailing" constant="18" id="YMJ-DD-Ioo"/>
                             <constraint firstItem="Jyp-vV-Xgl" firstAttribute="top" secondItem="bcs-xC-pc1" secondAttribute="bottom" constant="10" id="auP-i1-JKf"/>
@@ -110,9 +110,9 @@
                             <constraint firstItem="ejN-qd-Xgk" firstAttribute="trailing" secondItem="bcs-xC-pc1" secondAttribute="trailing" id="lhk-zb-b91"/>
                             <constraint firstItem="ejN-qd-Xgk" firstAttribute="leading" secondItem="bcs-xC-pc1" secondAttribute="leading" id="o59-ZF-b1n"/>
                             <constraint firstItem="bcs-xC-pc1" firstAttribute="trailing" secondItem="Jyp-vV-Xgl" secondAttribute="trailing" id="sUL-9U-2AD"/>
-                            <constraint firstItem="bcs-xC-pc1" firstAttribute="height" secondItem="Jyp-vV-Xgl" secondAttribute="height" id="uLF-IF-yUJ"/>
                             <constraint firstItem="bcs-xC-pc1" firstAttribute="leading" secondItem="Jyp-vV-Xgl" secondAttribute="leading" id="wdM-3N-UCo"/>
                             <constraint firstItem="JaN-68-Sqd" firstAttribute="leading" secondItem="Jyp-vV-Xgl" secondAttribute="leading" constant="30" id="yry-UK-edX"/>
+                            <constraint firstItem="bcs-xC-pc1" firstAttribute="height" secondItem="Jyp-vV-Xgl" secondAttribute="height" id="znz-tX-cqJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Vbx-xt-N1B"/>
                     </view>
@@ -613,7 +613,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFj-Ff-zVm">
-                                <rect key="frame" x="18" y="742" width="378" height="72"/>
+                                <rect key="frame" x="18" y="776" width="378" height="72"/>
                                 <color key="backgroundColor" red="0.89019607840000003" green="0.24313725489999999" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="72" id="ftV-Nn-5gf"/>
@@ -643,7 +643,7 @@
                             <constraint firstItem="6yz-1a-zz7" firstAttribute="top" secondItem="Ppf-gP-b7U" secondAttribute="top" constant="26" id="Lyu-M0-eso"/>
                             <constraint firstItem="bFj-Ff-zVm" firstAttribute="leading" secondItem="Ppf-gP-b7U" secondAttribute="leading" constant="18" id="M1F-Rj-rZo"/>
                             <constraint firstItem="oTA-dO-Jf6" firstAttribute="leading" secondItem="0wo-UW-FnG" secondAttribute="leading" id="XzV-z2-5fW"/>
-                            <constraint firstItem="Ppf-gP-b7U" firstAttribute="bottom" secondItem="bFj-Ff-zVm" secondAttribute="bottom" constant="48" id="gCc-Ec-Xh4"/>
+                            <constraint firstItem="Ppf-gP-b7U" firstAttribute="bottom" secondItem="bFj-Ff-zVm" secondAttribute="bottom" constant="14" id="gCc-Ec-Xh4"/>
                             <constraint firstItem="Ppf-gP-b7U" firstAttribute="trailing" secondItem="0wo-UW-FnG" secondAttribute="trailing" constant="20" id="iZ9-sy-ROA"/>
                             <constraint firstItem="0wo-UW-FnG" firstAttribute="top" secondItem="oTA-dO-Jf6" secondAttribute="bottom" constant="89" id="pRq-qq-ZuG"/>
                             <constraint firstItem="oTA-dO-Jf6" firstAttribute="top" secondItem="6yz-1a-zz7" secondAttribute="bottom" constant="41" id="rjI-7T-5Sh"/>

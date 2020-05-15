@@ -60,6 +60,19 @@ class AuthenViewController: UIViewController {
     //UI
     func setUI(){
         validationLabel.isHidden = true
+        
+        //인증 타입에 맞게 버튼 타이틀 변경
+        switch authenType {
+        case "findEmail":
+            okBtn.setTitle("이메일 찾기", for: .normal)
+            break
+        case "findPass":
+            okBtn.setTitle("비밀번호 찾기", for: .normal)
+            break
+        default:
+            break
+        }
+        
         okBtn.isEnabled = false
         okBtn.layer.cornerRadius = 8.0
         askNumberBtn.layer.cornerRadius = 8.0
@@ -127,10 +140,10 @@ class AuthenViewController: UIViewController {
                     self.authenNumber = num
                     break
                 case 401...404:
-                    let alert = UIAlertController(title: "오류", message: "인증번호 전송 불가", preferredStyle: .alert)
-                    let action = UIAlertAction(title: "확인", style: .default)
-                    alert.addAction(action)
-                    self.present(alert, animated: true)
+                    self.showErrAlert()
+                    break
+                case 500:
+                    self.showErrAlert()
                     break
                 default:
                     return
@@ -154,8 +167,9 @@ class AuthenViewController: UIViewController {
                     navigationController?.pushViewController(findEmailErrVC, animated: true)
                 }
             case "findPass":
-                let makePassVC = storyboard?.instantiateViewController(withIdentifier: "MakeNewPassViewController") as! MakeNewPassViewController
-                navigationController?.pushViewController(makePassVC, animated: true)
+                let profileSB = UIStoryboard(name: "Profile", bundle: nil)
+                let newPassVC = profileSB.instantiateViewController(withIdentifier: "NewPassViewController") as! NewPassViewController
+                navigationController?.pushViewController(newPassVC, animated: true)
             default:
                 return
             }
@@ -164,6 +178,13 @@ class AuthenViewController: UIViewController {
             validationLabel.isHidden = false
         }
     }
+    
+    func showErrAlert(){
+           let alert = UIAlertController(title: "오류", message: "인증번호 전송 불가", preferredStyle: .alert)
+           let action = UIAlertAction(title: "확인", style: .default)
+           alert.addAction(action)
+           self.present(alert, animated: true)
+       }
     
     @objc func keyboardWillShow(_ notification: Notification) {
         let userInfo = notification.userInfo
