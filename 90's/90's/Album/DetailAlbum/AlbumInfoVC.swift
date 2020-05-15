@@ -30,7 +30,7 @@ class AlbumInfoVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func inviteBtn(_ sender: UIButton) {
-        inviteSetting()
+        inviteprotocol?.inviteSetting()
     }
     @IBAction func quitMemberBtn(_ sender: UIButton) {
         switchHideView(value: false)
@@ -40,6 +40,7 @@ class AlbumInfoVC: UIViewController {
     private var personArray : [String] = ["dayeun","KyungJin","Jeongmin"]
     var albumIndex : Int = 0
     var initialize : Bool = false
+    var inviteprotocol : inviteProtocol?
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -51,7 +52,6 @@ class AlbumInfoVC: UIViewController {
             }
         }
     }
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,17 +77,6 @@ extension AlbumInfoVC : albumInfoDeleteProtocol {
         hideLabel.text = "앨범에서 해당 멤버를\n삭제하시겠습니까?"
         hideCancleBtn.addTarget(self, action: #selector(touchHideCancleBtn), for: .touchUpInside)
         hideCompleteBtn.addTarget(self, action: #selector(touchHideCompleteBtn), for: .touchUpInside)
-    }
-    
-    func inviteSetting(){
-        let templeteId = "24532";
-        
-        KLKTalkLinkCenter.shared().sendCustom(withTemplateId: templeteId, templateArgs: nil, success: {(warningMsg, argumentMsg) in
-            print("warning message : \(String(describing: warningMsg))")
-            print("argument message : \(String(describing: argumentMsg))")
-        }, failure: {(error) in
-            print("error \(error)")
-        })
     }
     
     func switchHideView(value : Bool){

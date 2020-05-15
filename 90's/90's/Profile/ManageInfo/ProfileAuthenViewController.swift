@@ -146,10 +146,10 @@ class ProfileAuthenViewController: UIViewController {
         guard let number = authenNumber else { return }
         if(inputAuthenNumber == number){
             if(authenType == "이메일 변경"){
-                let newEmailVC = storyboard?.instantiateViewController(identifier: "NewEmailViewController") as! NewEmailViewController
+                let newEmailVC = storyboard?.instantiateViewController(withIdentifier: "NewEmailViewController") as! NewEmailViewController
                 navigationController?.pushViewController(newEmailVC, animated: true)
             }else if(authenType == "비밀번호 변경"){
-                let newPassVC = storyboard?.instantiateViewController(identifier: "NewPassViewController") as! NewPassViewController
+                let newPassVC = storyboard?.instantiateViewController(withIdentifier: "NewPassViewController") as! NewPassViewController
                 navigationController?.pushViewController(newPassVC, animated: true)
             }else {
                 changePhone()
@@ -245,7 +245,7 @@ extension ProfileAuthenViewController {
     }
     
     func goCompleteVC() {
-        let completeVC = storyboard?.instantiateViewController(identifier: "CompleteManageViewController") as! CompleteManageViewController
+        let completeVC = storyboard?.instantiateViewController(withIdentifier: "CompleteManageViewController") as! CompleteManageViewController
         completeVC.authenType = self.authenType
         completeVC.telePhone = self.tfTelephone.text!
         navigationController?.pushViewController(completeVC, animated: true)

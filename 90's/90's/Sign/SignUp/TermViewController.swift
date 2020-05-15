@@ -67,7 +67,7 @@ class TermViewController: UIViewController {
     }
     
     @IBAction func clickOkBtn(_ sender: Any) {
-        let emailVC = storyboard?.instantiateViewController(identifier: "EmailViewController") as! EmailViewController
+        let emailVC = storyboard?.instantiateViewController(withIdentifier: "EmailViewController") as! EmailViewController
         self.navigationController?.pushViewController(emailVC, animated: true)
     }
     
@@ -105,7 +105,7 @@ extension TermViewController : UITableViewDataSource {
 
 extension TermViewController : ClickDelegate {
     func indicatorClick(index: Int) {
-        let termDetailVC = storyboard?.instantiateViewController(identifier: "TermDetailViewController") as! TermDetailViewController
+        let termDetailVC = storyboard?.instantiateViewController(withIdentifier: "TermDetailViewController") as! TermDetailViewController
         termDetailVC.index = index
         self.navigationController?.pushViewController(termDetailVC, animated: true)
     }

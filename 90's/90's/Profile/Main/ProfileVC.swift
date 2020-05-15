@@ -35,7 +35,7 @@ class ProfileVC: UIViewController {
     
     @IBAction func goLogin(_ sender: Any) {
         let signSB = UIStoryboard.init(name: "SignIn", bundle: nil)
-        let enterVC = signSB.instantiateViewController(identifier: "EnterViewController") as! EnterViewController
+        let enterVC = signSB.instantiateViewController(withIdentifier: "EnterViewController") as! EnterViewController
         navigationController?.pushViewController(enterVC, animated: true)
     }
     
@@ -46,7 +46,7 @@ class ProfileVC: UIViewController {
     }
     
     func pushView(_ vc: String){
-        guard let detailVC = self.storyboard?.instantiateViewController(identifier: vc) else { return }
+        guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: vc) else { return }
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     

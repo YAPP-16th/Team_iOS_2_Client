@@ -187,7 +187,7 @@ class TelephoneAuthenViewController: UIViewController {
                         UserDefaults.standard.set(self.isSocial, forKey: "social")
                         UserDefaults.standard.set(jwt, forKey: "jwt")
                     }
-                    let completeVC = self.storyboard?.instantiateViewController(identifier: "CompleteViewController") as! CompleteViewController
+                    let completeVC = self.storyboard?.instantiateViewController(withIdentifier: "CompleteViewController") as! CompleteViewController
                     completeVC.isSocial = self.isSocial
                     self.navigationController?.pushViewController(completeVC, animated: true)
                     break
