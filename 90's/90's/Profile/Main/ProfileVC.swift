@@ -37,9 +37,8 @@ class ProfileVC: UIViewController {
     }
     
     @IBAction func goLogin(_ sender: Any) {
-        let signSB = UIStoryboard.init(name: "SignIn", bundle: nil)
-        let enterVC = signSB.instantiateViewController(withIdentifier: "EnterViewController") as! EnterViewController
-        navigationController?.pushViewController(enterVC, animated: true)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.switchEnterView()
     }
     
     func setUI(){
@@ -77,11 +76,16 @@ class ProfileVC: UIViewController {
     
     
     func setProfileUI(_ profileResult: ProfileResult){
-        profileView.isHidden = false
-        profileEmail.text = profileResult.userInfo.email
-        profilePrintCount.text = "\(profileResult.albumPrintingCount)"
-        profileAlbumCount.text = "\(profileResult.albumTotalCount)"
-        profileName.text = profileResult.userInfo.name
+        //디폴트 유저는 전화번호가 nil
+        
+        if profileResult.userInfo.phoneNum != nil {
+            profileEmail.text = profileResult.userInfo.email
+            profilePrintCount.text = "\(profileResult.albumPrintingCount)"
+            profileAlbumCount.text = "\(profileResult.albumTotalCount)"
+            profileName.text = profileResult.userInfo.name
+        }else {
+            profileView.isHidden = true
+        }
     }
     
     

@@ -117,6 +117,7 @@
 		A3F3094E246EE7C90051FF6B /* AddressResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F3094D246EE7C90051FF6B /* AddressResult.swift */; };
 		A3F30964246F1A7D0051FF6B /* GetProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30963246F1A7D0051FF6B /* GetProfileService.swift */; };
 		A3F30972246F1C0B0051FF6B /* ProfileResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30971246F1C0B0051FF6B /* ProfileResult.swift */; };
+		A3F30974246F22080051FF6B /* DefaultUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30973246F22080051FF6B /* DefaultUserService.swift */; };
 		A3F8CC1A244AEE24008D0046 /* neodgm.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A3F8CC19244AEE24008D0046 /* neodgm.ttf */; };
 		A3F8CC1B244AEE2E008D0046 /* NotoSansCJKkr-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A3F8CC14244AEC75008D0046 /* NotoSansCJKkr-Bold.otf */; };
 		A3F8CC1C244AEE30008D0046 /* NotoSansCJKkr-DemiLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = A3F8CC15244AEC75008D0046 /* NotoSansCJKkr-DemiLight.otf */; };
@@ -631,6 +632,7 @@
 		A3F3094D246EE7C90051FF6B /* AddressResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressResult.swift; sourceTree = "<group>"; };
 		A3F30963246F1A7D0051FF6B /* GetProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProfileService.swift; sourceTree = "<group>"; };
 		A3F30971246F1C0B0051FF6B /* ProfileResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResult.swift; sourceTree = "<group>"; };
+		A3F30973246F22080051FF6B /* DefaultUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUserService.swift; sourceTree = "<group>"; };
 		A3F8CC13244AEC75008D0046 /* NotoSansCJKkr-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Regular.otf"; sourceTree = "<group>"; };
 		A3F8CC14244AEC75008D0046 /* NotoSansCJKkr-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Bold.otf"; sourceTree = "<group>"; };
 		A3F8CC15244AEC75008D0046 /* NotoSansCJKkr-DemiLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-DemiLight.otf"; sourceTree = "<group>"; };
@@ -1637,6 +1639,7 @@
 				A3CCD8442454BE7B00C73E31 /* SignUpService.swift */,
 				A3CCD8422454B30300C73E31 /* EmailCheckService.swift */,
 				A38A2D0F2458719E000BF82D /* TelephoneAuthService.swift */,
+				A3F30973246F22080051FF6B /* DefaultUserService.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -2040,6 +2043,7 @@
 				39411378243061A500087E1B /* CheckPhotoViewController.swift in Sources */,
 				9BC0DBB22444788F00CA90F7 /* ProfileVC.swift in Sources */,
 				9BB1C5742441EEBA0035DEBF /* FilterCell.swift in Sources */,
+				A3F30974246F22080051FF6B /* DefaultUserService.swift in Sources */,
 				A38A2D3824588E99000BF82D /* LoginService.swift in Sources */,
 				A3B0D1FF245D977800DB90ED /* ProfileAuthenViewController.swift in Sources */,
 				A3B0D1BE245D547800DB90ED /* QuestionCell.swift in Sources */,
