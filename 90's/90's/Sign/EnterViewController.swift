@@ -102,7 +102,7 @@ class EnterViewController: UIViewController {
                     
                     //전화번호 인증화면 이동
                     let signUpSB = UIStoryboard(name: "SignUp", bundle: nil)
-                    let authenVC = signUpSB.instantiateViewController(identifier: "TelephoneAuthenViewController") as! TelephoneAuthenViewController
+                    let authenVC = signUpSB.instantiateViewController(withIdentifier: "TelephoneAuthenViewController") as! TelephoneAuthenViewController
                     
                     authenVC.isSocial = true
                     authenVC.email = email

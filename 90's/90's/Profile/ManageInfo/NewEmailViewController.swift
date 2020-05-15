@@ -164,7 +164,7 @@ extension NewEmailViewController {
     }
     
     func goCompleteVC() {
-        let completeManageVC = storyboard?.instantiateViewController(identifier: "CompleteManageViewController") as! CompleteManageViewController
+        let completeManageVC = storyboard?.instantiateViewController(withIdentifier: "CompleteManageViewController") as! CompleteManageViewController
         completeManageVC.email = self.email
         completeManageVC.authenType = "이메일 변경"
         navigationController?.pushViewController(completeManageVC, animated: true)

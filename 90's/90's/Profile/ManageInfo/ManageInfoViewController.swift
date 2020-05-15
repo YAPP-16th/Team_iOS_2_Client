@@ -43,7 +43,7 @@ extension ManageInfoViewController : UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let profileAuthenVC = self.storyboard?.instantiateViewController(identifier: "ProfileAuthenViewController") as! ProfileAuthenViewController
+        let profileAuthenVC = self.storyboard?.instantiateViewController(withIdentifier: "ProfileAuthenViewController") as! ProfileAuthenViewController
         profileAuthenVC.authenType = infoList[indexPath.row]
         self.navigationController?.pushViewController(profileAuthenVC, animated:true)
     }

@@ -17,7 +17,7 @@ class AlbumCoverVC: UIViewController {
     }
     @IBAction func completeBtn(_ sender: UIButton) {
         if initialFlag == false {
-            let nextVC = storyboard?.instantiateViewController(identifier: "AlbumLayoutVC") as! AlbumLayoutVC
+            let nextVC = storyboard?.instantiateViewController(withIdentifier: "AlbumLayoutVC") as! AlbumLayoutVC
             
             nextVC.albumName = albumName
             nextVC.albumStartDate = albumStartDate
