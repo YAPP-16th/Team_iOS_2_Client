@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class LoginMainViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var emailValidationLabel: UILabel!
@@ -90,7 +91,6 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
                     UserDefaults.standard.set(jwt, forKey: "jwt")
                     
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    
                     appDelegate.switchTab()
                     break
                 case 400...404:
