@@ -18,18 +18,21 @@ class ProfileVC: UIViewController {
     // profileView
     @IBOutlet weak var profileName: UILabel!
     @IBOutlet weak var profileEmail: UILabel!
-    @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var profileAlbumCount: UILabel!
     @IBOutlet weak var profilePrintCount: UILabel!
-    
     @IBOutlet weak var settingTableView: UITableView!
     
     let menuArr : [String] = ["주문 내역", "내 정보 관리", "FAQ", "설정"]
     
+    override func viewWillAppear(_ animated: Bool) {
+        //디폴트 유저일 때 guestView를 표시하는 로직이 필요함
+        getProfile()
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        profileView.isHidden = true
         self.navigationController?.navigationBar.isHidden = true
     }
     
@@ -50,7 +53,48 @@ class ProfileVC: UIViewController {
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
+    func getProfile(){
+        GetProfileService.shared.getProfile(completion: {
+            response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200:
+                    guard let data = response.data else { return }
+                    let decoder = JSONDecoder()
+                    guard let profileResult = try? decoder.decode(ProfileResult.self, from: data) else { return }
+                    self.setProfileUI(profileResult)
+                    break
+                case 401...500:
+                    self.showErrAlert()
+                    break
+                default:
+                    return
+                }
+            }
+            
+        })
+    }
+    
+    
+    func setProfileUI(_ profileResult: ProfileResult){
+        profileView.isHidden = false
+        profileEmail.text = profileResult.userInfo.email
+        profilePrintCount.text = "\(profileResult.albumPrintingCount)"
+        profileAlbumCount.text = "\(profileResult.albumTotalCount)"
+        profileName.text = profileResult.userInfo.name
+    }
+    
+    
+    
+    func showErrAlert(){
+        let alert = UIAlertController(title: "오류", message: "프로필 조회 불가", preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(action)
+        self.present(alert, animated: true)
+    }
+    
 }
+
 
 
 extension ProfileVC : UITableViewDelegate, UITableViewDataSource {

@@ -96,13 +96,6 @@
                                         <color key="textColor" red="0.78061485289999999" green="0.78780382869999999" blue="0.81176906820000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g76-36-r3b">
-                                        <rect key="frame" x="306" y="22" width="51" height="51"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="51" id="utH-KQ-7NB"/>
-                                            <constraint firstAttribute="height" constant="51" id="zhU-xq-6YO"/>
-                                        </constraints>
-                                    </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilealbumimage" translatesAutoresizingMaskIntoConstraints="NO" id="iXQ-mO-mz9">
                                         <rect key="frame" x="20" y="125" width="30" height="26"/>
                                         <constraints>
@@ -211,11 +204,9 @@
                                     <constraint firstItem="2Oh-RZ-JAC" firstAttribute="leading" secondItem="B3f-xc-Fys" secondAttribute="leading" id="cUa-pA-vlP"/>
                                     <constraint firstItem="XRo-bN-fkl" firstAttribute="top" secondItem="4HF-79-3Dv" secondAttribute="bottom" constant="2" id="fr2-Ju-YoD"/>
                                     <constraint firstAttribute="bottom" secondItem="9p2-9p-Po4" secondAttribute="bottom" constant="43" id="kfY-zG-XI1"/>
-                                    <constraint firstAttribute="trailing" secondItem="g76-36-r3b" secondAttribute="trailing" constant="18" id="oUM-DF-VoJ"/>
                                     <constraint firstItem="Vd2-Zh-0Hh" firstAttribute="leading" secondItem="JDx-eP-5Pw" secondAttribute="trailing" constant="15" id="ph3-Al-PpS"/>
                                     <constraint firstItem="FoV-Iu-o9a" firstAttribute="leading" secondItem="Vd2-Zh-0Hh" secondAttribute="leading" id="xf3-Xf-i9Y"/>
                                     <constraint firstAttribute="bottom" secondItem="iXQ-mO-mz9" secondAttribute="bottom" constant="52" id="y6g-2b-p60"/>
-                                    <constraint firstItem="g76-36-r3b" firstAttribute="top" secondItem="4HF-79-3Dv" secondAttribute="top" id="zz4-in-980"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qtp-zw-0mb" userLabel="TopView">
@@ -348,9 +339,8 @@
                         <outlet property="guestLabel" destination="PvJ-Jx-pnL" id="nIB-VD-mPT"/>
                         <outlet property="guestLoginBtn" destination="aVN-z9-RZy" id="pic-Gr-uHK"/>
                         <outlet property="guestView" destination="Fx5-Ee-u7p" id="9Yo-U1-dYb"/>
-                        <outlet property="profileAlbumCount" destination="2Oh-RZ-JAC" id="KGw-13-C4K"/>
+                        <outlet property="profileAlbumCount" destination="B3f-xc-Fys" id="3cu-FW-3zy"/>
                         <outlet property="profileEmail" destination="XRo-bN-fkl" id="L4r-Nl-NYQ"/>
-                        <outlet property="profileImage" destination="g76-36-r3b" id="x0S-80-5BD"/>
                         <outlet property="profileName" destination="4HF-79-3Dv" id="kcB-Z0-8xn"/>
                         <outlet property="profilePrintCount" destination="Vd2-Zh-0Hh" id="jn5-aS-5TU"/>
                         <outlet property="profileView" destination="6Ni-Mp-TYX" id="Hzp-wP-qFF"/>
@@ -1574,7 +1564,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ehj-ZY-P1M">
-                                        <rect key="frame" x="123" y="367" width="129.5" height="48"/>
+                                        <rect key="frame" x="119.5" y="367" width="136.5" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="5vk-zS-3af"/>
                                             <constraint firstAttribute="width" priority="250" constant="250" id="yxu-Wj-fcl"/>
@@ -1600,7 +1590,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CG6-Lo-rnr">
-                                <rect key="frame" x="20" y="90" width="131.5" height="58"/>
+                                <rect key="frame" x="20" y="90" width="156" height="58"/>
                                 <constraints>
                                     <constraint firstAttribute="width" priority="250" constant="156" id="4BT-B5-6ky"/>
                                     <constraint firstAttribute="height" constant="58" id="n8w-69-JcN"/>
@@ -1612,13 +1602,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="전화번호 입력" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0SE-RQ-quL">
-                                <rect key="frame" x="20" y="222" width="199" height="21"/>
+                                <rect key="frame" x="20" y="222" width="199" height="27"/>
                                 <color key="tintColor" red="0.89019607840000003" green="0.24313725489999999" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" textContentType="tel"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="path378Grey1" translatesAutoresizingMaskIntoConstraints="NO" id="yvE-tI-qAf">
-                                <rect key="frame" x="20" y="254" width="199" height="3"/>
+                                <rect key="frame" x="20" y="260" width="199.00000000000006" height="3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="3" id="pj2-3f-Yd8"/>
                                 </constraints>
@@ -1661,19 +1651,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="인증번호 입력" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6G1-EB-Um3">
-                                <rect key="frame" x="20" y="289" width="748" height="21"/>
+                                <rect key="frame" x="20" y="295" width="374" height="27"/>
                                 <color key="tintColor" red="0.89019607840000003" green="0.24313725489999999" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="path378Grey1" translatesAutoresizingMaskIntoConstraints="NO" id="BGh-1Y-j3T">
-                                <rect key="frame" x="20" y="321" width="748" height="3"/>
+                                <rect key="frame" x="20" y="333" width="374.00000000000006" height="3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="3" id="d4E-Bc-U9g"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="인증번호 확인 후 재시도 해주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJH-qa-eXA">
-                                <rect key="frame" x="20" y="331" width="193" height="20"/>
+                                <rect key="frame" x="20" y="343" width="193" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="lto-zL-dV4"/>
                                     <constraint firstAttribute="width" constant="193" id="mIp-ww-bzT"/>
@@ -1683,7 +1673,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g05-zK-meE">
-                                <rect key="frame" x="234" y="213" width="121" height="44"/>
+                                <rect key="frame" x="234" y="219" width="121" height="44"/>
                                 <color key="backgroundColor" red="0.78039215689999997" green="0.78823529410000004" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="WfS-6Q-BQW"/>
@@ -1771,13 +1761,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="path378Grey1" translatesAutoresizingMaskIntoConstraints="NO" id="89G-4O-A2m">
-                                <rect key="frame" x="20" y="254" width="335" height="3"/>
+                                <rect key="frame" x="20" y="260" width="335.00000000000006" height="3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="3" id="0Eq-Ls-2Fr"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일 형식이 올바르지 않습니다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcq-ee-iIj">
-                                <rect key="frame" x="20" y="260" width="181.5" height="20"/>
+                                <rect key="frame" x="20" y="266" width="192.5" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" priority="250" constant="180" id="L2H-aY-Isa"/>
                                     <constraint firstAttribute="height" constant="20" id="MPi-Y4-CNr"/>
@@ -1824,7 +1814,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="이메일 입력" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Mzu-5S-WpQ">
-                                <rect key="frame" x="20" y="222" width="335" height="21"/>
+                                <rect key="frame" x="20" y="222" width="335" height="27"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="email"/>
                             </textField>
@@ -1988,31 +1978,31 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="새로운 비밀번호 입력" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fgB-3f-0S6">
-                                <rect key="frame" x="20" y="231.5" width="335" height="21"/>
+                                <rect key="frame" x="20" y="231.5" width="335" height="27"/>
                                 <color key="tintColor" red="0.89019607840000003" green="0.24313725489999999" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="path378Grey1" translatesAutoresizingMaskIntoConstraints="NO" id="rjh-nS-FeC">
-                                <rect key="frame" x="20" y="263.5" width="335" height="3"/>
+                                <rect key="frame" x="20" y="269.5" width="335.00000000000006" height="3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="3" id="hFZ-fJ-sUg"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="새로운 비밀번호 확인" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="y4v-d4-AWI">
-                                <rect key="frame" x="20" y="297.5" width="335" height="20"/>
+                                <rect key="frame" x="20" y="303.5" width="335" height="26"/>
                                 <color key="tintColor" red="0.89019607840000003" green="0.24313725489999999" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="path378Grey1" translatesAutoresizingMaskIntoConstraints="NO" id="txh-6u-Wjs">
-                                <rect key="frame" x="20" y="328.5" width="335" height="3"/>
+                                <rect key="frame" x="20" y="340.5" width="335.00000000000006" height="3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="3" id="Ggi-df-MFO"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호 확인 후 재시도 해주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cy2-F4-zwe">
-                                <rect key="frame" x="20" y="338.5" width="193" height="20"/>
+                                <rect key="frame" x="20" y="350.5" width="193" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="193" id="8zZ-IN-oEx"/>
                                     <constraint firstAttribute="height" constant="20" id="GkE-xj-kpM"/>

@@ -115,6 +115,8 @@
 		A3E2DB8224547A0800AB2156 /* CheckEmailResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E2DB8124547A0800AB2156 /* CheckEmailResult.swift */; };
 		A3F3094B246EE5200051FF6B /* AddressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F3094A246EE5200051FF6B /* AddressService.swift */; };
 		A3F3094E246EE7C90051FF6B /* AddressResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F3094D246EE7C90051FF6B /* AddressResult.swift */; };
+		A3F30964246F1A7D0051FF6B /* GetProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30963246F1A7D0051FF6B /* GetProfileService.swift */; };
+		A3F30972246F1C0B0051FF6B /* ProfileResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30971246F1C0B0051FF6B /* ProfileResult.swift */; };
 		A3F8CC1A244AEE24008D0046 /* neodgm.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A3F8CC19244AEE24008D0046 /* neodgm.ttf */; };
 		A3F8CC1B244AEE2E008D0046 /* NotoSansCJKkr-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A3F8CC14244AEC75008D0046 /* NotoSansCJKkr-Bold.otf */; };
 		A3F8CC1C244AEE30008D0046 /* NotoSansCJKkr-DemiLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = A3F8CC15244AEC75008D0046 /* NotoSansCJKkr-DemiLight.otf */; };
@@ -627,6 +629,8 @@
 		A3E2DB8124547A0800AB2156 /* CheckEmailResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEmailResult.swift; sourceTree = "<group>"; };
 		A3F3094A246EE5200051FF6B /* AddressService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressService.swift; sourceTree = "<group>"; };
 		A3F3094D246EE7C90051FF6B /* AddressResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressResult.swift; sourceTree = "<group>"; };
+		A3F30963246F1A7D0051FF6B /* GetProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProfileService.swift; sourceTree = "<group>"; };
+		A3F30971246F1C0B0051FF6B /* ProfileResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResult.swift; sourceTree = "<group>"; };
 		A3F8CC13244AEC75008D0046 /* NotoSansCJKkr-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Regular.otf"; sourceTree = "<group>"; };
 		A3F8CC14244AEC75008D0046 /* NotoSansCJKkr-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Bold.otf"; sourceTree = "<group>"; };
 		A3F8CC15244AEC75008D0046 /* NotoSansCJKkr-DemiLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-DemiLight.otf"; sourceTree = "<group>"; };
@@ -785,6 +789,7 @@
 		9B45BCFF2438734200497EA5 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				A3F30970246F1BFF0051FF6B /* NetworkResult */,
 				A30B21DF2462B8E500BDC75B /* NetworkService */,
 				A30B21DC2462B84900BDC75B /* Main */,
 				A30B21DB2462B81800BDC75B /* FAQ */,
@@ -1704,6 +1709,7 @@
 				A3B0D217245DB47800DB90ED /* ChangeEmailService.swift */,
 				A30B21F72462D1FE00BDC75B /* ChangePassService.swift */,
 				A3768D4F246307EE009E64EE /* ChangePhoneService.swift */,
+				A3F30963246F1A7D0051FF6B /* GetProfileService.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -1773,6 +1779,14 @@
 			isa = PBXGroup;
 			children = (
 				A3F3094D246EE7C90051FF6B /* AddressResult.swift */,
+			);
+			path = NetworkResult;
+			sourceTree = "<group>";
+		};
+		A3F30970246F1BFF0051FF6B /* NetworkResult */ = {
+			isa = PBXGroup;
+			children = (
+				A3F30971246F1C0B0051FF6B /* ProfileResult.swift */,
 			);
 			path = NetworkResult;
 			sourceTree = "<group>";
@@ -2004,6 +2018,7 @@
 				9BB4D536245D70D30033321F /* imageTestVC.swift in Sources */,
 				A33376162420CFB3000DC7C4 /* AppDelegate.swift in Sources */,
 				A311E5922438A880005EEC29 /* AlbumPeriodController.swift in Sources */,
+				A3F30972246F1C0B0051FF6B /* ProfileResult.swift in Sources */,
 				A3F3094B246EE5200051FF6B /* AddressService.swift in Sources */,
 				A387C202246EBA4300F59C78 /* AddressCell.swift in Sources */,
 				39CB8C8A245DC92600F28A49 /* PopUpViewController.swift in Sources */,
@@ -2059,6 +2074,7 @@
 				39DE24C724547143007E8D40 /* PrintListViewController.swift in Sources */,
 				9BC0DBB4244478A600CA90F7 /* ProfileTableViewCell.swift in Sources */,
 				A30B21E12462BCAC00BDC75B /* NewPassViewController.swift in Sources */,
+				A3F30964246F1A7D0051FF6B /* GetProfileService.swift in Sources */,
 				9BB1C5762441EEC30035DEBF /* FilterViewController.swift in Sources */,
 				A3B0D1D9245D6C8400DB90ED /* SettingCell.swift in Sources */,
 				9B6A134E2440D0C500E78E66 /* MemberTableViewCell.swift in Sources */,
