@@ -15,65 +15,116 @@ class AddressSearchViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var searchBtn: UIButton!
     @IBOutlet weak var selectorImageView: UIImageView!
     @IBOutlet weak var addressTableView: UITableView!
-    private var addressList = [Address]()
-//    weak var searchDelegate : SearchAddressDelegate?
+    @IBOutlet weak var exampleView: UIView!
+    var roadAddress:String!
+    var numAddress:String!
+    var zipCode: String!
+    //    weak var searchDelegate : SearchAddressDelegate?
     
     override func viewDidLoad() {
+        setUI()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        tfQuery.resignFirstResponder()
+        if(!(textField.text == "")){
+            let searchWord = textField.text!
+            doSearchAddress(searchWord)
+        }
+        return true
+    }
+    
     @IBAction func clickCloseBtn(_ sender: Any){
         dismiss(animated: true)
     }
     
-    
     @IBAction func searchAdress(_ sender: Any) {
         guard let searchWord = tfQuery.text else { return }
-        addressList.removeAll()
-        doSearchAdress(searchWord)
+        doSearchAddress(searchWord)
     }
     
-    //    GET /v2/local/search/address.{format} HTTP/1.1
-    //    Host: dapi.kakao.com
-    //    Authorization: KakaoAK {app_key}
-    
-    
-    func doSearchAdress(_ searchWord : String){
-        let parameters: [String: Any] = [
-            "query": searchWord
-        ]
-//
-//        let headers: HTTPHeaders = ["Authorization":"KakaoAK 1b64850b9e7c0145c5f45b791517a774"]
-//
-//        AF.request("https://dapi.kakao.com/v2/local/search/address.json", method: .get, parameters: parameters, headers: headers)
-//            .responseJSON(completionHandler: {
-//                response in
-//                switch response.result {
-//                case .success(let value):
-//                    print("success")
-//                    if let document = JSON(value)["documents"].array {
-//                        for item in document {
-//                            let address = item["address_name"].string ?? ""
-//                            let roadAddress = item["road_address"]["address_name"].string ?? ""
-//                            let buildingName = item["road_address"]["building_name"].string ?? ""
-//                            var zipcode = item["address"]["zip_code"].string ?? ""
-//                            if(zipcode == ""){
-//                                zipcode = item["road_address"]["zone_no"].string ?? ""
-//                            }
-//                            self.addressList += [Address(address: address, roadAddress: roadAddress, buildingName: buildingName, zipCode: zipcode)]
-//                        }
-//                        self.addressTableView.reloadData()
-//                    }
-//                case .failure(let err):
-//                    print("err")
-//
-//                }
-//            })
+    func setUI(){
+        addressTableView.delegate = self
+        addressTableView.dataSource = self
+        tfQuery.delegate = self
+        addressTableView.isHidden = true
     }
+    
+    func doSearchAddress(_ searchWord : String){
+        AddressService.shared.addressSearch(query: searchWord, completion: { response in
+            if let status = response.response?.statusCode {
+                print("\(status)")
+                switch status {
+                case 200:
+                    guard let data = response.data else { return }
+                    let decoder = JSONDecoder()
+                    guard let addressResult = try? decoder.decode(AddressResult.self, from: data) else {
+                        return
+                    }
+                    
+                    if let documents = addressResult.documents?.first {
+                        if let roadAddress = documents.road_address {
+                            self.roadAddress = roadAddress.address_name
+                            self.zipCode = roadAddress.zone_no
+                            self.numAddress = documents.address_name
+                            self.addressTableView.reloadData()
+                            self.addressTableView.isHidden = false
+                        }else{
+                            self.showNotFoundErrAlert()
+                        }
+                    }else {
+                        self.showNotFoundErrAlert()
+                    }
+                    break
+                case 400...500:
+                    self.showErrAlert()
+                    break
+                default:
+                    break
+                }
+            }
+            
+        })
+    }
+    
+    func showErrAlert(){
+        let alert = UIAlertController(title: "오류", message: "검색 불가", preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(action)
+        self.present(alert, animated: true)
+    }
+    
+    func showNotFoundErrAlert(){
+        let alert = UIAlertController(title: "우편번호 검색 불가", message: "정확한 주소를 입력해주세요", preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(action)
+        self.present(alert, animated: true)
+    }
+    
 }
 
+
+extension AddressSearchViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AddressCell") as! AddressCell
+        cell.roadAddressLabel.text = roadAddress
+        cell.numberAddressLabel.text = numAddress
+        cell.postNumLabel.text = zipCode
+        cell.layer.cornerRadius = 4.0
+        cell.layer.borderWidth = 1.0
+        cell.layer.borderColor = CGColor(srgbRed: 199/255, green: 201/255, blue: 208/255, alpha: 0.7)
+        return cell
+    }
+    
+    
+}
 
 

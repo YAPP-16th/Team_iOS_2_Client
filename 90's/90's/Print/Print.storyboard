@@ -2099,6 +2099,7 @@
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="예) 판교역로 117, 분당 구공스타워" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="IcI-9p-a0t">
                                 <rect key="frame" x="20" y="154" width="336" height="27"/>
+                                <color key="tintColor" red="0.89019607840000003" green="0.24313725489999999" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -2236,45 +2237,46 @@
                                     <constraint firstItem="dkj-vp-4MB" firstAttribute="leading" secondItem="031-YW-7MP" secondAttribute="leading" constant="65" id="tfm-Q1-3Qj"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="trg-78-it0">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="trg-78-it0">
                                 <rect key="frame" x="18" y="220" width="378" height="642"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddressCell" id="72u-Fr-v67" customClass="AddressCell" customModule="_0_s" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="378" height="122.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AddressCell" id="72u-Fr-v67" customClass="AddressCell" customModule="_0_s" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="378" height="122"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="72u-Fr-v67" id="aN7-uY-K20">
-                                            <rect key="frame" x="0.0" y="0.0" width="378" height="122.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="378" height="122"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="groundname" translatesAutoresizingMaskIntoConstraints="NO" id="BtS-el-uB1">
-                                                    <rect key="frame" x="16" y="85.5" width="45" height="19"/>
+                                                    <rect key="frame" x="16" y="85" width="45" height="19"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="45" id="2hR-AB-heB"/>
                                                         <constraint firstAttribute="height" constant="19" id="afq-hT-hDz"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="roadname" translatesAutoresizingMaskIntoConstraints="NO" id="0S5-7w-iKi">
-                                                    <rect key="frame" x="16" y="53.5" width="45" height="19"/>
+                                                    <rect key="frame" x="16" y="53" width="45" height="19"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="19" id="Qak-dd-NAB"/>
                                                         <constraint firstAttribute="width" constant="45" id="a1H-WR-ZiM"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LVx-co-0ye">
-                                                    <rect key="frame" x="71" y="51" width="272" height="24"/>
+                                                    <rect key="frame" x="71" y="50.5" width="272" height="24"/>
                                                     <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V2h-rf-NPk">
-                                                    <rect key="frame" x="71" y="83" width="272" height="24"/>
+                                                    <rect key="frame" x="71" y="82.5" width="272" height="24"/>
                                                     <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mCH-oZ-g5s">
-                                                    <rect key="frame" x="16" y="17" width="41.5" height="24.5"/>
+                                                    <rect key="frame" x="16" y="17" width="41.5" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" priority="250" constant="45" id="Mmc-fv-jM3"/>
                                                     </constraints>
@@ -2345,6 +2347,7 @@
                     </view>
                     <connections>
                         <outlet property="addressTableView" destination="trg-78-it0" id="b88-24-WBC"/>
+                        <outlet property="exampleView" destination="031-YW-7MP" id="RGn-ev-PdT"/>
                         <outlet property="searchBtn" destination="OSG-Jc-gnB" id="fta-1n-mHd"/>
                         <outlet property="selectorImageView" destination="PU4-qg-n41" id="c5M-b0-aPu"/>
                         <outlet property="tfQuery" destination="IcI-9p-a0t" id="Pgi-cX-kk3"/>

@@ -8,13 +8,6 @@
 
 import UIKit
 
-public struct Address  {
-    var address : String
-    var roadAddress : String
-    var buildingName : String
-    var zipCode : String
-}
-
 class AddressCell: UITableViewCell {
     @IBOutlet weak var postNumLabel: UILabel!
     @IBOutlet weak var roadAddressLabel: UILabel!
