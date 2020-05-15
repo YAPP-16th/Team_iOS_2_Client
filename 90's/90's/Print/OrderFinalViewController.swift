@@ -58,6 +58,11 @@ class OrderFinalViewController: UIViewController {
         dismissActionView()
     }
     
+    //우편번호 검색 버튼 클릭
+    @IBAction func clickSearchAddress(_ sender: Any) {
+        let addressSearchVC = storyboard?.instantiateViewController(identifier: "AddressSearchViewController") as! AddressSearchViewController
+        show(addressSearchVC, sender: self)
+    }
     
     //내용확인 체크박스 클릭 시
     @IBAction func clickAgreeBtn(_ sender: Any) {
