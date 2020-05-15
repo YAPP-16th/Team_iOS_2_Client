@@ -45,6 +45,14 @@ extension UICollectionViewCell {
     }
 }
 
+extension UITextField {
+    //TextField 왼쪽에 패딩 뷰 추가
+    func addLeftPadding() {
+       let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: self.frame.height))
+       self.leftView = paddingView
+       self.leftViewMode = ViewMode.always
+     }
+}
 
 extension UICollectionView {
     func deselectAllItems(animated: Bool) {

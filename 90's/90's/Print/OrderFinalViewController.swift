@@ -61,6 +61,7 @@ class OrderFinalViewController: UIViewController {
     //우편번호 검색 버튼 클릭
     @IBAction func clickSearchAddress(_ sender: Any) {
         let addressSearchVC = storyboard?.instantiateViewController(identifier: "AddressSearchViewController") as! AddressSearchViewController
+        addressSearchVC.searchDelegate = self
         present(addressSearchVC, animated: true)
     }
     
@@ -98,6 +99,7 @@ class OrderFinalViewController: UIViewController {
                 subView.layer.borderWidth = 1.0
                 subView.layer.cornerRadius = 8.0
                 subView.layer.borderColor = CGColor(srgbRed: 199/255, green: 201/255, blue: 208/255, alpha: 0.7)
+                (subView as! UITextField).addLeftPadding()
             }
             if subView is UIButton {
                 subView.layer.cornerRadius = 8.0
@@ -127,4 +129,13 @@ class OrderFinalViewController: UIViewController {
                self.view.layoutIfNeeded()
            })
        }
+}
+
+extension OrderFinalViewController : SearchAddressDelegate {
+    func passSelectedAddress(_ roadAddress: String, _ numAddress: String, _ zipCode: String) {
+        tfPostNumber.text = zipCode
+        tfMainAddress.text = roadAddress
+    }
+    
+    
 }

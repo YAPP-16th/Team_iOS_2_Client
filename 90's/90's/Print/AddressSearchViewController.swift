@@ -8,9 +8,11 @@
 
 import UIKit
 
+protocol SearchAddressDelegate : NSObjectProtocol {
+    func passSelectedAddress(_ roadAddress: String, _ numAddress: String, _ zipCode: String)
+}
+
 class AddressSearchViewController: UIViewController, UITextFieldDelegate {
-    
-    
     @IBOutlet weak var tfQuery: UITextField!
     @IBOutlet weak var searchBtn: UIButton!
     @IBOutlet weak var selectorImageView: UIImageView!
@@ -19,10 +21,11 @@ class AddressSearchViewController: UIViewController, UITextFieldDelegate {
     var roadAddress:String!
     var numAddress:String!
     var zipCode: String!
-    //    weak var searchDelegate : SearchAddressDelegate?
+    weak var searchDelegate : SearchAddressDelegate?
     
     override func viewDidLoad() {
         setUI()
+        setObserver()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
@@ -52,6 +55,19 @@ class AddressSearchViewController: UIViewController, UITextFieldDelegate {
         addressTableView.dataSource = self
         tfQuery.delegate = self
         addressTableView.isHidden = true
+    }
+    
+    func setObserver(){
+        NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: tfQuery, queue: .main, using : {
+            _ in
+            let str = self.tfQuery.text!.trimmingCharacters(in: .whitespaces)
+            
+            if(str != ""){
+                self.selectorImageView.backgroundColor = UIColor(displayP3Red: 0/255,green: 0/255, blue: 0/255, alpha: 1.0)
+            }else {
+                self.selectorImageView.backgroundColor = UIColor(displayP3Red: 218/255,green: 220/255, blue: 227/255, alpha: 1.0)
+            }
+        })
     }
     
     func doSearchAddress(_ searchWord : String){
@@ -124,6 +140,11 @@ extension AddressSearchViewController: UITableViewDelegate, UITableViewDataSourc
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        self.dismiss(animated: true, completion: {
+            self.searchDelegate!.passSelectedAddress(self.roadAddress, self.numAddress, self.zipCode)
+        })
+    }
     
 }
 
