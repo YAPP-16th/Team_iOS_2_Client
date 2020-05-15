@@ -90,7 +90,6 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
                     UserDefaults.standard.set(jwt, forKey: "jwt")
                     
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    
                     appDelegate.switchTab()
                     break
                 case 400...404:

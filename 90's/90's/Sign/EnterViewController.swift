@@ -43,6 +43,8 @@ class EnterViewController: UIViewController {
     //둘러보기 버튼 클릭 시
     @IBAction func takeALook(_ sender: Any) {
         //default 유저 값 받아옴,메인화면으로 이동
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.switchTab()
         guard let tabBarVC = storyboard?.instantiateViewController(withIdentifier: "TabBarController") else { return }
         navigationController?.pushViewController(tabBarVC, animated: true)
     }
