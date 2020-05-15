@@ -302,7 +302,7 @@ class OptionViewController : UIViewController {
         
         self.countOptionView.isHidden = true
         
-        let finalOrderVC = storyboard?.instantiateViewController(identifier: "OrderFinalViewController") as! OrderFinalViewController
+        let finalOrderVC = storyboard?.instantiateViewController(withIdentifier: "OrderFinalViewController") as! OrderFinalViewController
         self.navigationController?.pushViewController(finalOrderVC, animated: true)
         
 //        let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrderFinishViewController") as! OrderFinishViewController
