@@ -869,6 +869,9 @@
                                             <constraint firstAttribute="width" constant="44" id="2zA-Z8-4Vg"/>
                                         </constraints>
                                         <state key="normal" title="초대" image="iconInvitation"/>
+                                        <connections>
+                                            <action selector="inviteBtn:" destination="xQZ-oo-bAJ" eventType="touchUpInside" id="yVh-sA-Vku"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0YD-Gg-ahy">
                                         <rect key="frame" x="360" y="12" width="44" height="54"/>
@@ -1082,7 +1085,6 @@
                         <outlet property="hideWhiteView" destination="Wo5-uJ-SMg" id="BWa-ce-3TR"/>
                         <outlet property="hidewhiteviewBottom" destination="1Jy-sH-L27" id="4wv-wj-oHB"/>
                         <outlet property="infoBtn" destination="0YD-Gg-ahy" id="JBX-Ry-zVR"/>
-                        <outlet property="inviteBtn" destination="9yo-aO-9Ei" id="t9n-b2-RBT"/>
                         <outlet property="photoCollectionView" destination="J2e-XA-xYZ" id="z0v-x7-vs4"/>
                     </connections>
                 </viewController>
@@ -2004,25 +2006,6 @@
                                                     <constraint firstItem="YtE-CB-cts" firstAttribute="top" secondItem="fYV-c1-EwF" secondAttribute="bottom" constant="12" id="wj9-I8-gJe"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AQq-UQ-8hk">
-                                                <rect key="frame" x="18" y="728" width="378" height="76"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="76" id="ysM-vW-BFU"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                <state key="normal" title="결정하기">
-                                                    <color key="titleColor" red="0.90605252979999995" green="0.91741710899999995" blue="0.92941474909999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="10"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="completeBtn:" destination="bn8-OK-AmZ" eventType="touchUpInside" id="9zc-8L-TRf"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
@@ -2030,13 +2013,10 @@
                                             <constraint firstItem="4dO-Am-UQG" firstAttribute="centerX" secondItem="vLj-4F-Ar4" secondAttribute="centerX" id="2mv-Bq-JBZ"/>
                                             <constraint firstItem="4dO-Am-UQG" firstAttribute="width" secondItem="vLj-4F-Ar4" secondAttribute="width" multiplier="0.917874" id="7fN-Vb-IVK"/>
                                             <constraint firstItem="zpU-0s-2nO" firstAttribute="leading" secondItem="vLj-4F-Ar4" secondAttribute="leading" id="8YI-Zh-0Tn"/>
-                                            <constraint firstItem="AQq-UQ-8hk" firstAttribute="leading" secondItem="vLj-4F-Ar4" secondAttribute="leading" constant="18" id="9Ay-Db-2zN"/>
                                             <constraint firstAttribute="height" constant="818" id="EeO-PL-vUF"/>
                                             <constraint firstItem="rAg-Si-sza" firstAttribute="top" secondItem="zpU-0s-2nO" secondAttribute="bottom" constant="16" id="Ixb-KJ-2fN"/>
                                             <constraint firstItem="l0j-a1-5Yj" firstAttribute="top" secondItem="rAg-Si-sza" secondAttribute="bottom" constant="16" id="Sum-Ju-r5a"/>
-                                            <constraint firstAttribute="bottom" secondItem="AQq-UQ-8hk" secondAttribute="bottom" constant="14" id="VJa-U2-SMp"/>
                                             <constraint firstItem="4dO-Am-UQG" firstAttribute="top" secondItem="l0j-a1-5Yj" secondAttribute="bottom" constant="12" id="a5i-s3-Xsa"/>
-                                            <constraint firstAttribute="trailing" secondItem="AQq-UQ-8hk" secondAttribute="trailing" constant="18" id="nq7-4z-Z0a"/>
                                             <constraint firstItem="rAg-Si-sza" firstAttribute="leading" secondItem="vLj-4F-Ar4" secondAttribute="leading" constant="20" id="pDM-Pr-mfl"/>
                                             <constraint firstAttribute="trailing" secondItem="zpU-0s-2nO" secondAttribute="trailing" id="rSl-vS-Srp"/>
                                             <constraint firstItem="zpU-0s-2nO" firstAttribute="top" secondItem="vLj-4F-Ar4" secondAttribute="top" id="vXL-BU-JZg"/>
@@ -2051,13 +2031,36 @@
                                     <constraint firstAttribute="trailing" secondItem="vLj-4F-Ar4" secondAttribute="trailing" id="sqB-dG-nt8"/>
                                 </constraints>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AQq-UQ-8hk">
+                                <rect key="frame" x="18" y="772" width="378" height="76"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="76" id="ysM-vW-BFU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="결정하기">
+                                    <color key="titleColor" red="0.90605252979999995" green="0.91741710899999995" blue="0.92941474909999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="completeBtn:" destination="bn8-OK-AmZ" eventType="touchUpInside" id="9zc-8L-TRf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Hyh-am-mew" firstAttribute="leading" secondItem="S3S-B9-edo" secondAttribute="leading" id="53i-Mv-wZ8"/>
                             <constraint firstItem="Hyh-am-mew" firstAttribute="top" secondItem="S3S-B9-edo" secondAttribute="top" id="JhZ-p3-Ju6"/>
                             <constraint firstItem="Hyh-am-mew" firstAttribute="bottom" secondItem="S3S-B9-edo" secondAttribute="bottom" id="QIV-ad-Htd"/>
+                            <constraint firstItem="S3S-B9-edo" firstAttribute="bottom" secondItem="AQq-UQ-8hk" secondAttribute="bottom" constant="14" id="VAH-fV-Ysp"/>
+                            <constraint firstItem="AQq-UQ-8hk" firstAttribute="leading" secondItem="S3S-B9-edo" secondAttribute="leading" constant="18" id="a8X-1o-NE8"/>
                             <constraint firstItem="Hyh-am-mew" firstAttribute="trailing" secondItem="S3S-B9-edo" secondAttribute="trailing" id="dkr-so-6CV"/>
+                            <constraint firstItem="S3S-B9-edo" firstAttribute="trailing" secondItem="AQq-UQ-8hk" secondAttribute="trailing" constant="18" id="mAU-9t-1Di"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="S3S-B9-edo"/>
                     </view>

@@ -8,7 +8,6 @@
 
 import Alamofire
 
-
 struct AlbumService : APIManager {
     static let shared = AlbumService()
     typealias completeAlbumSerivce = (AFDataResponse<Any>) -> ()

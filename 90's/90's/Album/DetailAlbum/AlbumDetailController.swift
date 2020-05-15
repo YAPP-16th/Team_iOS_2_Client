@@ -8,12 +8,20 @@
 
 import UIKit
 
+protocol inviteProtocol {
+    func inviteSetting()
+}
+
 class AlbumDetailController : UIViewController {
     @IBOutlet weak var photoCollectionView: UICollectionView!
     @IBOutlet weak var albumNameLabel: UILabel!
     @IBOutlet weak var albumCountLabel: UILabel!
     @IBOutlet weak var addPhotoBtn: UIButton!
-    @IBOutlet weak var inviteBtn: UIButton!
+   
+    @IBAction func inviteBtn(_ sender: UIButton) {
+        inviteSetting()
+    }
+    
     @IBOutlet weak var infoBtn: UIButton!
     @IBAction func backBtn(_ sender: UIButton) {
         self.navigationController?.popToRootViewController(animated: true)
@@ -46,6 +54,9 @@ class AlbumDetailController : UIViewController {
     var ImageName : String?
     var newImage : UIImage?
     var photoUidArray = [PhotoGetPhotoData]()
+    var networkPhotoUidArray : [Int] = []
+    var networkPhotoStringArray : [String] = []
+
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if hideView.isHidden == false {
@@ -94,7 +105,7 @@ extension AlbumDetailController {
         hideView.isHidden = true
         hideWhiteView.layer.cornerRadius = 15
 
-        hideImageZoom.frame.size = setZoomImageView(layout: selectedLayout!)
+        hideImageZoom.frame.size = CGSize(width: setZoomImageView(layout: selectedLayout!).width - 60, height: setZoomImageView(layout: selectedLayout!).height - 60)
         hideImageZoom.center = view.center
 
         // 순서 바꾸기
@@ -110,19 +121,19 @@ extension AlbumDetailController {
 }
 
 
-extension AlbumDetailController {
+extension AlbumDetailController : inviteProtocol {
     func NetworkSetting(){
+        
         // 1. 앨범에서 사진 uid 가져오기
         AlbumService.shared.photoGetPhoto(albumUid: 70, completion: { response in
             if let status = response.response?.statusCode {
             switch status {
             case 200:
                 guard let data = response.data else {return}
-                let value = try? JSONDecoder().decode([PhotoGetPhotoData].self, from: data)
-                self.photoUidArray = value!
-                print("array = \(self.photoUidArray.map{ $0.photoUid })")
-                let tempArray = self.photoUidArray.map{ $0.photoUid }
-                self.NetworkGetPhoto(photoUid: tempArray[0])
+                guard let value = try? JSONDecoder().decode([PhotoGetPhotoData].self, from: data) else {return}
+                self.photoUidArray = value
+                self.networkPhotoUidArray = self.photoUidArray.map{ $0.photoUid }
+                self.NetworkGetPhoto(photoUid: self.networkPhotoUidArray)
             case 401...404:
                 print("forbidden access in \(status)")
             default:
@@ -133,21 +144,25 @@ extension AlbumDetailController {
     }
     
     // 2. 서버에 앨범 uid와 사진uid 요청
-    func NetworkGetPhoto(photoUid : Int){
+    func NetworkGetPhoto(photoUid : [Int]){
         print("get photo loading...")
-        AlbumService.shared.photoDownload(albumUid: 70, photoUid: photoUid, completion: { response in
-            if let status = response.response?.statusCode {
-                switch status {
-                case 200 :
-                    
-                    print("get photo success!")
-                case 401...404 :
-                    print("forbidden access in \(status)")
-                default :
-                    return
+        //for i in 0...photoUid.count-1 {
+        AlbumService.shared.photoDownload(albumUid: 70, photoUid: 72, completion: { response in
+                if let status = response.response?.statusCode {
+                    switch status {
+                    case 200 :
+                        guard let data = response.data else {return}
+                        guard let value = try? JSONDecoder().decode(PhotoDownloadResult.self, from: data) else {return}
+                        self.networkPhotoStringArray.append(value.photoUrlString)
+                        print("get photo success!")
+                    case 401...404 :
+                        print("forbidden access in \(status)")
+                    default :
+                        return
+                    }
                 }
-            }
-        })
+            })
+        //}
     }
     
     func switchHideView(value : Bool){
@@ -174,9 +189,13 @@ extension AlbumDetailController {
         case true :
             self.hideView.isHidden = true
             self.hideImageZoom.isHidden = true
+            self.hideImageZoom.transform = CGAffineTransform(scaleX: 100/115, y: 100/115)
         case false :
             self.hideView.isHidden = false
             self.hideImageZoom.isHidden = false
+            UIView.animate(withDuration: 1.0){
+                self.hideImageZoom.transform = CGAffineTransform(scaleX: 1.15, y: 1.15)
+            }
         }
     }
     
@@ -191,6 +210,17 @@ extension AlbumDetailController {
         case .Filmroll : return AlbumLayout.Filmroll.bigsize
         }
     }
+    
+    func inviteSetting(){
+           let templeteId = "24532";
+           
+           KLKTalkLinkCenter.shared().sendCustom(withTemplateId: templeteId, templateArgs: nil, success: {(warningMsg, argumentMsg) in
+               print("warning message : \(String(describing: warningMsg))")
+               print("argument message : \(String(describing: argumentMsg))")
+           }, failure: {(error) in
+               print("error \(error)")
+           })
+       }
     
     func setOldFilter(image : UIImage) -> UIImage{
         let inputImage : CIImage = CIImage.init(image: image)!
