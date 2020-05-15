@@ -302,15 +302,18 @@ class OptionViewController : UIViewController {
         
         self.countOptionView.isHidden = true
         
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrderFinishViewController") as! OrderFinishViewController
+        let finalOrderVC = storyboard?.instantiateViewController(identifier: "OrderFinalViewController") as! OrderFinalViewController
+        self.navigationController?.pushViewController(finalOrderVC, animated: true)
         
-        vc.modalPresentationStyle = .fullScreen
-        self.navigationItem.title = " "
-        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "iconBack")
-        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "iconBack")
-        vc.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
-        self.navigationController?.pushViewController(vc, animated: true)
-        
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrderFinishViewController") as! OrderFinishViewController
+//
+//        vc.modalPresentationStyle = .fullScreen
+//        self.navigationItem.title = " "
+//        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "iconBack")
+//        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "iconBack")
+//        vc.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
+//        self.navigationController?.pushViewController(vc, animated: true)
+//
     }
     
     
