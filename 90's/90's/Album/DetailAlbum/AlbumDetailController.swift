@@ -17,46 +17,61 @@ class AlbumDetailController : UIViewController {
     @IBOutlet weak var albumNameLabel: UILabel!
     @IBOutlet weak var albumCountLabel: UILabel!
     @IBOutlet weak var addPhotoBtn: UIButton!
-   
-    @IBAction func inviteBtn(_ sender: UIButton) {
-        inviteSetting()
-    }
     
-    @IBOutlet weak var infoBtn: UIButton!
-    @IBAction func backBtn(_ sender: UIButton) {
-        self.navigationController?.popToRootViewController(animated: true)
+    // Top View 설정
+    @IBAction func inviteBtn(_ sender: UIButton) {
+        if isSharingAlbum == false {
+            switchShareView(value: false)
+        } else {
+            // + 확인 버튼 - 공유앨범 서버 통신
+            inviteSetting()
+        }
     }
+    @IBOutlet weak var infoBtn: UIButton!
+    @IBAction func backBtn(_ sender: UIButton) { self.navigationController?.popToRootViewController(animated: true) }
     // 사진 추가 버튼을 눌렀을 때
     @IBOutlet weak var hideView: UIView!
     @IBOutlet weak var hideWhiteView: UIView!
     @IBOutlet weak var hidewhiteviewBottom: NSLayoutConstraint!
     @IBOutlet weak var hideAddAlbumBtn: UIButton!
     @IBOutlet weak var hideAddPhotoBtn: UIButton!
-    @IBAction func cancleHideView(_ sender: UIButton) {
-        switchHideView(value: true)
-    }
+    @IBAction func cancleHideView(_ sender: UIButton) { switchHideView(value: true) }
     
     // 사진 확대 시
     @IBOutlet weak var hideImageZoom: UIImageView!
     
+    // 공유앨범 비밀번호
+    @IBOutlet weak var hideSharePasswordView: UIView!
+    @IBOutlet weak var hideShareTextField: UITextField!
+    @IBOutlet weak var hideShareCompleteBtn : UIButton!
+    @IBOutlet weak var hideShareLine: UILabel!
+    @IBAction func hideShareCancleBtn(_ sender: UIButton) { switchShareView(value: true) }
+    @IBAction func touchhideShareCompleteBtn(_ sender: UIButton) { inviteSetting() }
+    
+    
+    // 사진 순서 이동
     private var longPressGesture : UILongPressGestureRecognizer!
-    var openAlbumCount : Int! // 앨범 낡기 적용
     var isEnded : Bool = true
-    var currentCell : UICollectionViewCell? = nil
-    var selectedLayout : AlbumLayout?
+    var openAlbumCount : Int! // 앨범 낡기 적용
+    var currentCell : UICollectionViewCell? = nil // 스티커, 필터 전환
+    var isSharingAlbum : Bool = false // 공유앨범
     var galleryPicker : UIImagePickerController = {
         let picker : UIImagePickerController = UIImagePickerController()
         picker.sourceType = .photoLibrary
         return picker
     }()
+    
     // server data
     var albumIndex : Int?
     var ImageName : String?
     var newImage : UIImage?
+    var selectedLayout : AlbumLayout?
+    var sharingword : String?
+    
     var photoUidArray = [PhotoGetPhotoData]()
     var networkPhotoUidArray : [Int] = []
     var networkPhotoStringArray : [String] = []
-
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if hideView.isHidden == false {
@@ -68,6 +83,9 @@ class AlbumDetailController : UIViewController {
                 if touch?.view != self.hideImageZoom {
                     switchZoomView(value: true)
                 }
+            }
+            if hideSharePasswordView.isHidden == true {
+                hideShareTextField.endEditing(true)
             }
         }
     }
@@ -95,6 +113,7 @@ extension AlbumDetailController {
         photoCollectionView.dataSource = self
         photoCollectionView.dragInteractionEnabled = true
         galleryPicker.delegate = self
+        hideShareTextField.delegate = self
     }
     
     func defaultSetting(){
@@ -121,50 +140,7 @@ extension AlbumDetailController {
 }
 
 
-extension AlbumDetailController : inviteProtocol {
-    func NetworkSetting(){
-        
-        // 1. 앨범에서 사진 uid 가져오기
-        AlbumService.shared.photoGetPhoto(albumUid: 70, completion: { response in
-            if let status = response.response?.statusCode {
-            switch status {
-            case 200:
-                guard let data = response.data else {return}
-                guard let value = try? JSONDecoder().decode([PhotoGetPhotoData].self, from: data) else {return}
-                self.photoUidArray = value
-                self.networkPhotoUidArray = self.photoUidArray.map{ $0.photoUid }
-                self.NetworkGetPhoto(photoUid: self.networkPhotoUidArray)
-            case 401...404:
-                print("forbidden access in \(status)")
-            default:
-                return
-                }
-            }
-        })
-    }
-    
-    // 2. 서버에 앨범 uid와 사진uid 요청
-    func NetworkGetPhoto(photoUid : [Int]){
-        print("get photo loading...")
-        //for i in 0...photoUid.count-1 {
-        AlbumService.shared.photoDownload(albumUid: 70, photoUid: 72, completion: { response in
-                if let status = response.response?.statusCode {
-                    switch status {
-                    case 200 :
-                        guard let data = response.data else {return}
-                        guard let value = try? JSONDecoder().decode(PhotoDownloadResult.self, from: data) else {return}
-                        self.networkPhotoStringArray.append(value.photoUrlString)
-                        print("get photo success!")
-                    case 401...404 :
-                        print("forbidden access in \(status)")
-                    default :
-                        return
-                    }
-                }
-            })
-        //}
-    }
-    
+extension AlbumDetailController {
     func switchHideView(value : Bool){
         switch value {
         case true:
@@ -199,6 +175,43 @@ extension AlbumDetailController : inviteProtocol {
         }
     }
     
+    func switchShareView(value : Bool){
+        switch value {
+        case true :
+            self.hideView.isHidden = true
+            self.hideSharePasswordView.isHidden = true
+            self.hideShareTextField.resignFirstResponder()
+        case false:
+            self.hideView.isHidden = false
+            self.hideSharePasswordView.isHidden = false
+            setShareView()
+        }
+    }
+    
+    func setShareView(){
+        hideShareTextField.clearButtonMode = .whileEditing
+        hideShareTextField.becomeFirstResponder()
+        
+        NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: hideShareTextField, queue: .main, using: { _ in
+            let value = self.hideShareTextField.text!.trimmingCharacters(in: .whitespaces)
+            
+            if !value.isEmpty {
+                if value.count >= 4 {
+                    self.sharingword = self.hideShareTextField.text!
+                    self.hideShareCompleteBtn.backgroundColor = UIColor.black
+                    self.hideShareCompleteBtn.isEnabled = true
+                    self.hideShareLine.backgroundColor = UIColor.black
+                }
+            } else {
+                self.hideShareCompleteBtn.backgroundColor = UIColor.lightGray
+                self.hideShareCompleteBtn.isEnabled = false
+                self.hideShareLine.backgroundColor = UIColor.lightGray
+            }
+        })
+    }
+    
+    
+    
     func setZoomImageView(layout : AlbumLayout) -> CGSize {
         switch layout {
         case .Polaroid : return AlbumLayout.Polaroid.bigsize
@@ -210,17 +223,6 @@ extension AlbumDetailController : inviteProtocol {
         case .Filmroll : return AlbumLayout.Filmroll.bigsize
         }
     }
-    
-    func inviteSetting(){
-           let templeteId = "24532";
-           
-           KLKTalkLinkCenter.shared().sendCustom(withTemplateId: templeteId, templateArgs: nil, success: {(warningMsg, argumentMsg) in
-               print("warning message : \(String(describing: warningMsg))")
-               print("argument message : \(String(describing: argumentMsg))")
-           }, failure: {(error) in
-               print("error \(error)")
-           })
-       }
     
     func setOldFilter(image : UIImage) -> UIImage{
         let inputImage : CIImage = CIImage.init(image: image)!
@@ -306,6 +308,69 @@ extension AlbumDetailController : inviteProtocol {
         
         // imageView - image filter
         return UIImage(cgImage: context.createCGImage(finalImage, from: finalImage.extent)!)
+    }
+}
+
+/* 네트워크 함수 */
+extension AlbumDetailController {
+    func NetworkSetting(){
+        // 1. 앨범에서 사진 uid 가져오기
+        AlbumService.shared.photoGetPhoto(albumUid: 70, completion: { response in
+            if let status = response.response?.statusCode {
+            switch status {
+            case 200:
+                guard let data = response.data else {return}
+                guard let value = try? JSONDecoder().decode([PhotoGetPhotoData].self, from: data) else {return}
+                self.photoUidArray = value
+                self.networkPhotoUidArray = self.photoUidArray.map{ $0.photoUid }
+                self.NetworkGetPhoto(photoUid: self.networkPhotoUidArray)
+            case 401...404:
+                print("forbidden access in \(status)")
+            default:
+                return
+                }
+            }
+        })
+    }
+    
+    // 2. 서버에 앨범 uid와 사진uid 요청
+    func NetworkGetPhoto(photoUid : [Int]){
+        print("get photo loading...")
+        //for i in 0...photoUid.count-1 {
+        AlbumService.shared.photoDownload(albumUid: 70, photoUid: 72, completion: { response in
+                if let status = response.response?.statusCode {
+                    switch status {
+                    case 200 :
+                        guard let data = response.data else {return}
+                        guard let value = try? JSONDecoder().decode(PhotoDownloadResult.self, from: data) else {return}
+                        self.networkPhotoStringArray.append(value.photoUrlString)
+                        print("get photo success!")
+                    case 401...404 :
+                        print("forbidden access in \(status)")
+                    default :
+                        return
+                    }
+                }
+            })
+        //}
+    }
+}
+
+
+extension AlbumDetailController : inviteProtocol, UITextFieldDelegate{
+    func inviteSetting(){
+        let templeteId = "24532";
+        KLKTalkLinkCenter.shared().sendCustom(withTemplateId: templeteId, templateArgs: nil, success: {(warningMsg, argumentMsg) in
+                  print("warning message : \(String(describing: warningMsg))")
+                  print("argument message : \(String(describing: argumentMsg))")
+              }, failure: {(error) in
+                  print("error \(error)")
+        })
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+        hideShareTextField.resignFirstResponder()
+        return true
     }
 }
 
@@ -471,5 +536,3 @@ extension AlbumDetailController {
         }
     }
 }
-
-
