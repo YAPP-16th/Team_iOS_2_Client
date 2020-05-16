@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XpK-CZ-a6E">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -1033,12 +1034,97 @@
                                         <rect key="frame" x="51" y="233" width="312" height="431"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oLj-kw-7Aa">
+                                        <rect key="frame" x="36" y="213" width="342" height="274"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7cx-6b-skg">
+                                                <rect key="frame" x="272" y="0.0" width="70" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="70" id="HVH-UD-k68"/>
+                                                    <constraint firstAttribute="width" constant="70" id="V0X-CC-1a3"/>
+                                                </constraints>
+                                                <state key="normal" image="cancelButtonWhite"/>
+                                                <connections>
+                                                    <action selector="hideShareCancleBtn:" destination="xQZ-oo-bAJ" eventType="touchUpInside" id="z5h-cY-qPR"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앨범 비밀번호를 설정해주세요" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xTb-m7-OST">
+                                                <rect key="frame" x="58.5" y="55" width="225.5" height="27"/>
+                                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O98-UQ-kGg">
+                                                <rect key="frame" x="46" y="123.5" width="250" height="27"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="250" id="lpb-h2-juj"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXe-SR-7jq" userLabel="line">
+                                                <rect key="frame" x="46" y="157.5" width="250" height="1"/>
+                                                <color key="backgroundColor" red="0.69433993100000002" green="0.70153045650000001" blue="0.72549444439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="250" id="HYJ-eg-cFX"/>
+                                                    <constraint firstAttribute="height" constant="1" id="Kfu-L4-57N"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Heq-ec-aUU">
+                                                <rect key="frame" x="16" y="186" width="310" height="72"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="72" id="v5a-10-aAC"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="18"/>
+                                                <state key="normal" title="확인">
+                                                    <color key="titleColor" red="0.93353021140000003" green="0.94081169369999995" blue="0.96078830959999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="touchhideShareCompleteBtn:" destination="xQZ-oo-bAJ" eventType="touchUpInside" id="2M3-HA-S0W"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="xTb-m7-OST" firstAttribute="top" secondItem="oLj-kw-7Aa" secondAttribute="top" constant="55" id="98f-2z-KMx"/>
+                                            <constraint firstItem="xTb-m7-OST" firstAttribute="centerX" secondItem="oLj-kw-7Aa" secondAttribute="centerX" id="9Xs-49-1Tm"/>
+                                            <constraint firstItem="Heq-ec-aUU" firstAttribute="leading" secondItem="oLj-kw-7Aa" secondAttribute="leading" constant="16" id="EGq-x3-R7a"/>
+                                            <constraint firstItem="O98-UQ-kGg" firstAttribute="centerY" secondItem="oLj-kw-7Aa" secondAttribute="centerY" id="F5N-fq-jTD"/>
+                                            <constraint firstAttribute="height" constant="274" id="Ijp-d0-X7B"/>
+                                            <constraint firstItem="7cx-6b-skg" firstAttribute="top" secondItem="oLj-kw-7Aa" secondAttribute="top" id="JTt-Ep-Vn7"/>
+                                            <constraint firstItem="tXe-SR-7jq" firstAttribute="top" secondItem="O98-UQ-kGg" secondAttribute="bottom" constant="7" id="TeS-IU-Smb"/>
+                                            <constraint firstAttribute="trailing" secondItem="7cx-6b-skg" secondAttribute="trailing" id="mEh-SZ-pN0"/>
+                                            <constraint firstItem="O98-UQ-kGg" firstAttribute="centerX" secondItem="oLj-kw-7Aa" secondAttribute="centerX" id="olY-VI-Vgi"/>
+                                            <constraint firstItem="tXe-SR-7jq" firstAttribute="centerX" secondItem="oLj-kw-7Aa" secondAttribute="centerX" id="qjI-gZ-YBC"/>
+                                            <constraint firstAttribute="trailing" secondItem="Heq-ec-aUU" secondAttribute="trailing" constant="16" id="qrM-Ac-1gI"/>
+                                            <constraint firstAttribute="bottom" secondItem="Heq-ec-aUU" secondAttribute="bottom" constant="16" id="zEZ-Uz-PgP"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Wo5-uJ-SMg" secondAttribute="bottom" constant="-250" id="1Jy-sH-L27"/>
+                                    <constraint firstAttribute="trailing" secondItem="oLj-kw-7Aa" secondAttribute="trailing" constant="36" id="WcQ-We-3sY"/>
                                     <constraint firstItem="Wo5-uJ-SMg" firstAttribute="leading" secondItem="Ztk-xx-6Al" secondAttribute="leading" id="atp-ht-efH"/>
+                                    <constraint firstItem="oLj-kw-7Aa" firstAttribute="centerY" secondItem="Ztk-xx-6Al" secondAttribute="centerY" constant="-98" id="gCA-iL-oeZ"/>
                                     <constraint firstAttribute="trailing" secondItem="Wo5-uJ-SMg" secondAttribute="trailing" id="mfD-Wi-kBd"/>
+                                    <constraint firstItem="oLj-kw-7Aa" firstAttribute="leading" secondItem="Ztk-xx-6Al" secondAttribute="leading" constant="36" id="nJ3-7F-8yc"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1081,6 +1167,10 @@
                         <outlet property="hideAddAlbumBtn" destination="ooR-Gm-DZS" id="xXA-Hq-sAg"/>
                         <outlet property="hideAddPhotoBtn" destination="wGs-mZ-Ww9" id="j81-mh-saS"/>
                         <outlet property="hideImageZoom" destination="rAU-as-lh2" id="LcW-MU-5Q3"/>
+                        <outlet property="hideShareCompleteBtn" destination="Heq-ec-aUU" id="Fly-Zj-vHl"/>
+                        <outlet property="hideShareLine" destination="tXe-SR-7jq" id="OUx-JN-Atd"/>
+                        <outlet property="hideSharePasswordView" destination="oLj-kw-7Aa" id="xgz-vM-IGe"/>
+                        <outlet property="hideShareTextField" destination="O98-UQ-kGg" id="DJN-Xg-TXR"/>
                         <outlet property="hideView" destination="Ztk-xx-6Al" id="Ump-B0-H66"/>
                         <outlet property="hideWhiteView" destination="Wo5-uJ-SMg" id="BWa-ce-3TR"/>
                         <outlet property="hidewhiteviewBottom" destination="1Jy-sH-L27" id="4wv-wj-oHB"/>
@@ -2131,6 +2221,7 @@
         <image name="albumThumbnailCheckbox" width="104" height="108"/>
         <image name="backicon" width="267" height="267"/>
         <image name="cameraIcon" width="109" height="69"/>
+        <image name="cancelButtonWhite" width="37" height="37"/>
         <image name="cancleicon" width="267" height="267"/>
         <image name="deleteButton" width="50" height="33"/>
         <image name="emptyAlbum" width="209" height="216"/>
