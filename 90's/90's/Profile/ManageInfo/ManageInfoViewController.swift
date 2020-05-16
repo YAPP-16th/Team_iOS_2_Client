@@ -11,6 +11,7 @@ import UIKit
 class ManageInfoViewController: UIViewController {
     
     @IBOutlet weak var infoTableView: UITableView!
+    var isDefault:Bool!
     var infoList = ["이메일 변경", "비밀번호 변경", "전화번호 변경"]
     
     override func viewDidLoad() {
@@ -45,6 +46,7 @@ extension ManageInfoViewController : UITableViewDelegate, UITableViewDataSource 
         
         let profileAuthenVC = self.storyboard?.instantiateViewController(withIdentifier: "ProfileAuthenViewController") as! ProfileAuthenViewController
         profileAuthenVC.authenType = infoList[indexPath.row]
+        profileAuthenVC.isDefault = self.isDefault
         self.navigationController?.pushViewController(profileAuthenVC, animated:true)
     }
     

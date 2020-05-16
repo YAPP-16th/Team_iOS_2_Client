@@ -10,8 +10,10 @@ import UIKit
 
 class ProfileAuthenViewController: UIViewController {
     
+    @IBOutlet weak var isDefaultView: UIView!
     @IBOutlet weak var isSnsView: UIView!
     @IBOutlet weak var signUpBtn: UIButton!
+    @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var tfTelephone: UITextField!
@@ -31,6 +33,7 @@ class ProfileAuthenViewController: UIViewController {
     var isInitial2:Bool = false
     var authenFlag = false
     var authenNumber:String?
+    var isDefault:Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,22 +59,36 @@ class ProfileAuthenViewController: UIViewController {
         goAuthen()
     }
     
-    //새 이메일로 가입하기 버튼 클릭 시
+    //카카오 이메일 - 새 이메일로 가입하기 버튼 클릭 시
     @IBAction func clickSignBtn(_ sender: Any) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.switchSignUp()
     }
+    
+    //디폴트 유저 - 로그인 클릭 시
+    @IBAction func clickLoginBtn(_ sender: Any) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.switchSignIn()
+    }
+    
     
     func setUI(){
         titleLabel.text = authenType
         
         switch authenType {
         case "이메일 변경", "비밀번호 변경":
-            if UserDefaults.standard.bool(forKey: "social"){
+            if(isDefault) {
+                isDefaultView.isHidden = false
+                isSnsView.isHidden = true
+                loginBtn.layer.cornerRadius = 8.0
+            }
+            else if UserDefaults.standard.bool(forKey: "social"){
                 isSnsView.isHidden = false
+                isDefaultView.isHidden = true
                 signUpBtn.layer.cornerRadius = 8.0
             }else {
                 isSnsView.isHidden = true
+                isDefaultView.isHidden = true
                 validationLabel.isHidden = true
                 okBtn.isEnabled = false
                 okBtn.layer.cornerRadius = 8.0
@@ -79,12 +96,23 @@ class ProfileAuthenViewController: UIViewController {
             }
             break
         case "전화번호 변경":
-            subTitleLabel.text = "새로운 전화번호를\n인증해주세요"
-            isSnsView.isHidden = true
-            validationLabel.isHidden = true
-            okBtn.isEnabled = false
-            okBtn.layer.cornerRadius = 8.0
-            askNumberBtn.layer.cornerRadius = 8.0
+            if(isDefault) {
+                isDefaultView.isHidden = false
+                isSnsView.isHidden = true
+                loginBtn.layer.cornerRadius = 8.0
+            }
+            else if UserDefaults.standard.bool(forKey: "social"){
+                isSnsView.isHidden = false
+                isDefaultView.isHidden = true
+                signUpBtn.layer.cornerRadius = 8.0}
+            else {
+                subTitleLabel.text = "새로운 전화번호를\n인증해주세요"
+                isSnsView.isHidden = true
+                validationLabel.isHidden = true
+                okBtn.isEnabled = false
+                okBtn.layer.cornerRadius = 8.0
+                askNumberBtn.layer.cornerRadius = 8.0
+            }
             break
         default:
             break

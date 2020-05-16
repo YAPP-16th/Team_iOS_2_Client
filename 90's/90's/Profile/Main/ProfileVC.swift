@@ -23,6 +23,7 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var settingTableView: UITableView!
     
     let menuArr : [String] = ["주문 내역", "내 정보 관리", "FAQ", "설정"]
+    var isDefault = true
     
     override func viewWillAppear(_ animated: Bool) {
         //디폴트 유저일 때 guestView를 표시하는 로직이 필요함
@@ -47,10 +48,7 @@ class ProfileVC: UIViewController {
         guestLoginBtn.layer.cornerRadius = 8.0
     }
     
-    func pushView(_ vc: String){
-        guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: vc) else { return }
-        self.navigationController?.pushViewController(detailVC, animated: true)
-    }
+
     
     func getProfile(){
         GetProfileService.shared.getProfile(completion: {
@@ -83,6 +81,7 @@ class ProfileVC: UIViewController {
             profilePrintCount.text = "\(profileResult.albumPrintingCount)"
             profileAlbumCount.text = "\(profileResult.albumTotalCount)"
             profileName.text = profileResult.userInfo.name
+            isDefault = false
         }else {
             profileView.isHidden = true
         }
@@ -115,16 +114,23 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            pushView("OrderListViewController")
+            let orderVC = self.storyboard?.instantiateViewController(withIdentifier: "OrderListViewController") as! OrderListViewController
+            orderVC.isDefault = self.isDefault
+            self.navigationController?.pushViewController(orderVC, animated: true)
             break
         case 1:
-            pushView("ManageInfoViewController")
+            let manageInfoVC = self.storyboard?.instantiateViewController(withIdentifier: "ManageInfoViewController") as! ManageInfoViewController
+            manageInfoVC.isDefault = self.isDefault
+            self.navigationController?.pushViewController(manageInfoVC, animated: true)
             break
         case 2:
-            pushView("FAQViewController")
+            let faqVC = self.storyboard?.instantiateViewController(withIdentifier: "FAQViewController") as! FAQViewController
+            self.navigationController?.pushViewController(faqVC, animated: true)
             break
         case 3:
-            pushView("SettingViewController")
+            let settingVC = self.storyboard?.instantiateViewController(withIdentifier: "SettingViewController") as! SettingViewController
+            settingVC.isDefault = self.isDefault
+            self.navigationController?.pushViewController(settingVC, animated: true)
             break
         default:
             return
