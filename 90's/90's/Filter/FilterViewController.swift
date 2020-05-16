@@ -8,7 +8,7 @@
 
 import UIKit
 import AVFoundation
-//import LUTFilter
+import LUTFilter
 
 struct Filter {
     let filterName : String
@@ -524,15 +524,15 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         let videoOutput = AVCaptureVideoDataOutput()
         videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue.main)
         
-        let comicEffect = CIFilter(name: "CIMedianFilter")
+        let filterEffect = CIFilter(name: "CIMedianFilter")
         let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
         let cameraImage = CIImage(cvImageBuffer: pixelBuffer!)
-        comicEffect!.setValue(cameraImage, forKey: kCIInputImageKey)
-        let cgImage = self.context.createCGImage((comicEffect?.outputImage!)!, from: cameraImage.extent)!
+        filterEffect!.setValue(cameraImage, forKey: kCIInputImageKey)
+        let cgImage = self.context.createCGImage((filterEffect?.outputImage!)!, from: cameraImage.extent)!
         
         DispatchQueue.main.async {
             let filteredImage = UIImage(cgImage: cgImage)
-//            self.filteredImage.image = filteredImage.mergeWith(topImage: self.topImage! , bottomImage: filteredImage).applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
+            self.filteredImage.image = filteredImage.mergeWith(topImage: self.topImage! , bottomImage: filteredImage).applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
             
             //            self.filteredImage.image = filteredImage.applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
             
