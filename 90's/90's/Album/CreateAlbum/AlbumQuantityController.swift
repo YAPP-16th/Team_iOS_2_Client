@@ -32,7 +32,7 @@ class AlbumQuantityController : UIViewController {
     
     @IBAction func clickNextBtn(_ sender: Any) {
         if initialFlag == false {
-            let nextVC = storyboard?.instantiateViewController(identifier: "AlbumCoverVC") as! AlbumCoverVC
+            let nextVC = storyboard?.instantiateViewController(withIdentifier: "AlbumCoverVC") as! AlbumCoverVC
             
             nextVC.albumName = albumName
             nextVC.albumStartDate = albumStartDate

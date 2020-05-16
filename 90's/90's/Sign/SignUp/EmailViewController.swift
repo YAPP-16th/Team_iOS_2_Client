@@ -99,7 +99,7 @@ class EmailViewController: UIViewController, UITextFieldDelegate{
     }
     
     func goPassVC() {
-        let passwordVC = storyboard?.instantiateViewController(identifier: "PasswordViewController") as! PasswordViewController
+        let passwordVC = storyboard?.instantiateViewController(withIdentifier: "PasswordViewController") as! PasswordViewController
         passwordVC.email = self.email
         navigationController?.pushViewController(passwordVC, animated: true)
     }

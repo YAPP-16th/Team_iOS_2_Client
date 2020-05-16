@@ -31,7 +31,7 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func clickNextBtn(_ sender: Any) {
-        let telephoneAuthenVC = storyboard?.instantiateViewController(identifier: "TelephoneAuthenViewController") as! TelephoneAuthenViewController
+        let telephoneAuthenVC = storyboard?.instantiateViewController(withIdentifier: "TelephoneAuthenViewController") as! TelephoneAuthenViewController
         telephoneAuthenVC.email = email
         telephoneAuthenVC.pwd = pwd
         telephoneAuthenVC.nickName = tfNickname.text!
