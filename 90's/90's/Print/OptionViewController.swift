@@ -224,7 +224,7 @@ class OptionViewController : UIViewController {
             
             if CompleteBtn.backgroundColor == .black {
                 self.BottomViewConstraint.constant = self.view.frame.height - 320
-                self.completeBtnTopConstraint.constant = 0
+                self.completeBtnTopConstraint.constant = 10
                 
             }
             
@@ -275,7 +275,7 @@ class OptionViewController : UIViewController {
             
             if CompleteBtn.backgroundColor == .black {
                 self.BottomViewConstraint.constant = self.view.frame.height - 320
-                self.completeBtnTopConstraint.constant = 0
+                self.completeBtnTopConstraint.constant = 10
                 
             }
             
