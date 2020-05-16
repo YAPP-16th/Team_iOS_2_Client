@@ -12,6 +12,7 @@ class ManageInfoViewController: UIViewController {
     
     @IBOutlet weak var infoTableView: UITableView!
     var isDefault:Bool!
+    var authenType:String!
     var infoList = ["이메일 변경", "비밀번호 변경", "전화번호 변경"]
     
     override func viewDidLoad() {
@@ -43,11 +44,22 @@ extension ManageInfoViewController : UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        authenType = self.infoList[indexPath.row]
         
-        let profileAuthenVC = self.storyboard?.instantiateViewController(withIdentifier: "ProfileAuthenViewController") as! ProfileAuthenViewController
-        profileAuthenVC.authenType = infoList[indexPath.row]
-        profileAuthenVC.isDefault = self.isDefault
-        self.navigationController?.pushViewController(profileAuthenVC, animated:true)
+        if(isDefault) {
+            let defaultVC = storyboard?.instantiateViewController(withIdentifier: "DefaultUserViewController") as! DefaultUserViewController
+            defaultVC.titleStr = self.authenType
+            self.navigationController?.pushViewController(defaultVC, animated: true)
+        }else if UserDefaults.standard.bool(forKey: "social"){
+            let snsVC = storyboard?.instantiateViewController(withIdentifier: "SNSViewController") as! SNSViewController
+            snsVC.titleStr = self.authenType
+            self.navigationController?.pushViewController(snsVC, animated: true)
+        }else {
+            let profileAuthenVC = self.storyboard?.instantiateViewController(withIdentifier: "ProfileAuthenViewController") as! ProfileAuthenViewController
+               profileAuthenVC.authenType = infoList[indexPath.row]
+               self.navigationController?.pushViewController(profileAuthenVC, animated:true)
+        }
+   
     }
     
 }

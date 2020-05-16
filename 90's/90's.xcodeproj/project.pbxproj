@@ -101,6 +101,8 @@
 		A3B0D1FF245D977800DB90ED /* ProfileAuthenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D1FE245D977800DB90ED /* ProfileAuthenViewController.swift */; };
 		A3B0D201245D9DF800DB90ED /* NewEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D200245D9DF800DB90ED /* NewEmailViewController.swift */; };
 		A3B0D218245DB47800DB90ED /* ChangeEmailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D217245DB47800DB90ED /* ChangeEmailService.swift */; };
+		A3B1D7B4246FCACE00D95DE3 /* SNSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B1D7B3246FCACE00D95DE3 /* SNSViewController.swift */; };
+		A3B1D7C1246FCAD900D95DE3 /* DefaultUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B1D7C0246FCAD900D95DE3 /* DefaultUserViewController.swift */; };
 		A3CCD8432454B30300C73E31 /* EmailCheckService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCD8422454B30300C73E31 /* EmailCheckService.swift */; };
 		A3CCD8452454BE7B00C73E31 /* SignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCD8442454BE7B00C73E31 /* SignUpService.swift */; };
 		A3CCD8472454C31B00C73E31 /* SignUpResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCD8462454C31B00C73E31 /* SignUpResult.swift */; };
@@ -616,6 +618,8 @@
 		A3B0D1FE245D977800DB90ED /* ProfileAuthenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAuthenViewController.swift; sourceTree = "<group>"; };
 		A3B0D200245D9DF800DB90ED /* NewEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEmailViewController.swift; sourceTree = "<group>"; };
 		A3B0D217245DB47800DB90ED /* ChangeEmailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailService.swift; sourceTree = "<group>"; };
+		A3B1D7B3246FCACE00D95DE3 /* SNSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSViewController.swift; sourceTree = "<group>"; };
+		A3B1D7C0246FCAD900D95DE3 /* DefaultUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUserViewController.swift; sourceTree = "<group>"; };
 		A3CCD8422454B30300C73E31 /* EmailCheckService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCheckService.swift; sourceTree = "<group>"; };
 		A3CCD8442454BE7B00C73E31 /* SignUpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpService.swift; sourceTree = "<group>"; };
 		A3CCD8462454C31B00C73E31 /* SignUpResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResult.swift; sourceTree = "<group>"; };
@@ -1702,6 +1706,8 @@
 			children = (
 				9BC0DBB12444788F00CA90F7 /* ProfileVC.swift */,
 				9BC0DBB3244478A600CA90F7 /* ProfileTableViewCell.swift */,
+				A3B1D7B3246FCACE00D95DE3 /* SNSViewController.swift */,
+				A3B1D7C0246FCAD900D95DE3 /* DefaultUserViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -2006,6 +2012,7 @@
 				A3CCD8452454BE7B00C73E31 /* SignUpService.swift in Sources */,
 				9B180808243E10F300AF1CE6 /* StickerPopupVC.swift in Sources */,
 				A3025CA62441AED700041723 /* MakeNewPassViewController.swift in Sources */,
+				A3B1D7B4246FCACE00D95DE3 /* SNSViewController.swift in Sources */,
 				A3025CA22441AE3700041723 /* FindEmailViewController.swift in Sources */,
 				A3B0D201245D9DF800DB90ED /* NewEmailViewController.swift in Sources */,
 				A3E2DB8224547A0800AB2156 /* CheckEmailResult.swift in Sources */,
@@ -2057,6 +2064,7 @@
 				A38A2D102458719E000BF82D /* TelephoneAuthService.swift in Sources */,
 				A3B0D218245DB47800DB90ED /* ChangeEmailService.swift in Sources */,
 				A3025CA02441ADCA00041723 /* EnterViewController.swift in Sources */,
+				A3B1D7C1246FCAD900D95DE3 /* DefaultUserViewController.swift in Sources */,
 				A3025C9E2441AD9000041723 /* LoginMainViewController.swift in Sources */,
 				A38A2D0E24587170000BF82D /* TelephoneAuthResult.swift in Sources */,
 				A3E2DB7E24546E7200AB2156 /* APIMagager.swift in Sources */,
