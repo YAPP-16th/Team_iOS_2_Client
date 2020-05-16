@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		390A33EE243F6A52002E9F57 /* OrderFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390A33ED243F6A52002E9F57 /* OrderFinishViewController.swift */; };
+		390D3DC3246FD069003916C4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390D3DC2246FD069003916C4 /* SplashViewController.swift */; };
 		392F7790242F4BC70000BC3C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 392F778F242F4BC70000BC3C /* Default-568h@2x.png */; };
 		39411378243061A500087E1B /* CheckPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39411377243061A500087E1B /* CheckPhotoViewController.swift */; };
 		3958515C242F45E600014CB0 /* Sticker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3958515B242F45E600014CB0 /* Sticker.storyboard */; };
@@ -205,6 +206,7 @@
 
 /* Begin PBXFileReference section */
 		390A33ED243F6A52002E9F57 /* OrderFinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFinishViewController.swift; sourceTree = "<group>"; };
+		390D3DC2246FD069003916C4 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		3929B104245DEFD100B7C7EA /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		3929B106245DEFD800B7C7EA /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
 		392F778F242F4BC70000BC3C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -1741,6 +1743,7 @@
 				9B44EDDE2429ED9200B0D774 /* Album */,
 				A33376152420CFB3000DC7C4 /* AppDelegate.swift */,
 				A333761B2420CFB3000DC7C4 /* Main.storyboard */,
+				390D3DC2246FD069003916C4 /* SplashViewController.swift */,
 				A333761E2420CFB6000DC7C4 /* Assets.xcassets */,
 				A33376202420CFB6000DC7C4 /* LaunchScreen.storyboard */,
 				A33376232420CFB6000DC7C4 /* Info.plist */,
@@ -1984,6 +1987,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				390D3DC3246FD069003916C4 /* SplashViewController.swift in Sources */,
 				9B44EDE52429FCDF00B0D774 /* Extension.swift in Sources */,
 				A3E133D824558997007950D8 /* ManageInfoViewController.swift in Sources */,
 				A314260E2450A9E1005487F3 /* LoginResult.swift in Sources */,
@@ -2243,7 +2247,6 @@
 				CODE_SIGN_ENTITLEMENTS = "90's/90's.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-
 				DEVELOPMENT_TEAM = C7X33ZVY6P;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2280,7 +2283,6 @@
 				CODE_SIGN_ENTITLEMENTS = "90's/90's.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-
 				DEVELOPMENT_TEAM = C7X33ZVY6P;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
