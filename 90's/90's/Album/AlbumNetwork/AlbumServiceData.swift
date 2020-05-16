@@ -263,18 +263,20 @@ extension AlbumService {
     
     
     // photoUpload, post
-    func photoUpload(albumUid : Int, image: [UIImage], imageName: String, completion: @escaping(completeAlbumSerivce)){
+    func photoUpload(albumUid : Int, image: [UIImage], imageName: String!, completion: @escaping(completeAlbumSerivce)){
         let url = Self.url("/photo/upload")
         let body : [String : Any] = [
             "albumUid" : albumUid
         ]
+        
+        guard let imageData = image[0].jpegData(compressionQuality: 1.0) else {return}
         
         AF.upload(
             multipartFormData: { multipartFormData in
                 for (key, value) in body {
                     multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key)
                 }
-                multipartFormData.append(image[0].jpegData(compressionQuality: 0.7)!, withName: "image" , fileName: "\(imageName).jpeg", mimeType: "image/jpeg")
+                multipartFormData.append(imageData, withName: "image" , fileName: imageName, mimeType: "image/jpeg") //fileName : imagename.jpeg
                 
         }, to: url, method: .post , headers: photoHeader)
             .response { response in

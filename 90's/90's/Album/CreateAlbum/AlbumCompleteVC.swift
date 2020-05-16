@@ -23,7 +23,7 @@ class AlbumCompleteVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func completeBtn(_ sender: UIButton) {
-        createAlbumService()
+        self.createAlbumService()
         mainProtocol?.reloadView()
         self.navigationController?.popToRootViewController(animated: true)
     }
@@ -64,15 +64,18 @@ extension AlbumCompleteVC {
     }
     
     func createAlbumService(){
+        
         AlbumService.shared.albumCreate(endDate: albumEndDate, layoutUid: albumLayout.layoutUid, name: albumName, photoLimit: albumMaxCount, completion: {
             response in
             if let status = response.response?.statusCode {
                 switch status {
                 case 200 :
+                    print("create album 200")
                     guard let data = response.data else {return}
                     guard let uid = try? JSONDecoder().decode(AlbumCreateResult.self, from: data) else {return}
                     self.albumUid = uid.uid
                     self.sendCoverImageService(uid: uid.uid)
+                    print("create Album!")
                 case 401...404 :
                     print("forbidden access in \(status)")
                 default :
@@ -83,6 +86,7 @@ extension AlbumCompleteVC {
     }
     
     func sendCoverImageService(uid : Int){
+        print("send coverimage loading..")
         AlbumService.shared.photoUpload(albumUid: uid, image: [photo!], imageName: albumLayout.layoutName, completion: {
             response in
             if let status = response.response?.statusCode {

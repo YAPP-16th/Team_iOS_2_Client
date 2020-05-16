@@ -89,6 +89,7 @@ class AlbumDetailController : UIViewController {
             }
             if hideSharePasswordView.isHidden == true {
                 hideShareTextField.endEditing(true)
+                hideShareTextField.resignFirstResponder()
             }
         }
     }
@@ -459,8 +460,8 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
             let size = returnLayoutSize(selectedLayout: selectedLayout!)
             cell.backImageView = applyBackImageViewLayout(selectedLayout: selectedLayout!, smallBig: size, imageView: cell.backImageView)
             cell.backImageView.image = networkPhotoUrlImageArray[indexPath.row+1]
-            //cell.photoImageView = applyImageViewLayout(selectedLayout: selectedLayout!, smallBig: size, imageView: cell.photoImageView, image: networkPhotoUrlImageArray[indexPath.row+1]) //AlbumDatabase.arrayList[albumIndex!].photos[indexPath.row+1])
-            
+            //cell.photoImageView = applyImageViewLayout(selectedLayout: selectedLayout!, smallBig: size, imageView: cell.photoImageView, image: networkPhotoUrlImageArray[indexPath.row+1])
+            //AlbumDatabase.arrayList[albumIndex!].photos[indexPath.row+1])
             return cell
         }
     }
