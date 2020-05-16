@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
 protocol inviteProtocol {
     func inviteSetting()
@@ -71,6 +73,7 @@ class AlbumDetailController : UIViewController {
     var photoUidArray = [PhotoGetPhotoData]()
     var networkPhotoUidArray : [Int] = []
     var networkPhotoStringArray : [String] = []
+    var networkPhotoUrlImageArray : [UIImage] = []
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -93,7 +96,6 @@ class AlbumDetailController : UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NetworkSetting()
-        
         photoCollectionView.reloadData()
         self.tabBarController?.tabBar.isHidden = true
     }
@@ -335,23 +337,35 @@ extension AlbumDetailController {
     
     // 2. 서버에 앨범 uid와 사진uid 요청
     func NetworkGetPhoto(photoUid : [Int]){
-        print("get photo loading...")
-        //for i in 0...photoUid.count-1 {
-        AlbumService.shared.photoDownload(albumUid: 70, photoUid: 72, completion: { response in
-                if let status = response.response?.statusCode {
-                    switch status {
-                    case 200 :
-                        guard let data = response.data else {return}
-                        guard let value = try? JSONDecoder().decode(PhotoDownloadResult.self, from: data) else {return}
-                        self.networkPhotoStringArray.append(value.photoUrlString)
-                        print("get photo success!")
-                    case 401...404 :
-                        print("forbidden access in \(status)")
-                    default :
-                        return
+          
+        for i in 0...photoUid.count-1 {
+            let url = "https://90s-inhwa-brothers.s3.ap-northeast-2.amazonaws.com/\(70)/\(photoUid[i]).jpeg"
+            AF.request(url).responseImage(completionHandler: { response in
+                if case .success(let image) = response.result {
+                    print("image downloaded : \(image)")
+                    self.networkPhotoUrlImageArray.append(image)
                     }
-                }
-            })
+                })
+        }
+        self.photoCollectionView.reloadData()
+        
+        //for i in 0...photoUid.count-1 {
+//        AlbumService.shared.photoDownload(albumUid: 70, photoUid: 72, completion: { response in
+//                if let status = response.response?.statusCode {
+//                    switch status {
+//                    case 200 :
+//                        guard let data = response.data else {return}
+//                        guard let value = try? JSONDecoder().decode(PhotoDownloadResult.self, from: data) else {return}
+//                        self.networkPhotoStringArray.append(value.photoUrlString)
+//                        print("value = \(self.networkPhotoUidArray.first!)")
+//                        print("get photo success!")
+//                    case 401...404 :
+//                        print("forbidden access in \(status)")
+//                    default :
+//                        return
+//                    }
+//                }
+//            })
         //}
     }
 }
@@ -430,7 +444,7 @@ extension AlbumDetailController {
 
 extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return AlbumDatabase.arrayList[albumIndex!].photos.count - 1
+        return networkPhotoUrlImageArray.count - 1 //AlbumDatabase.arrayList[albumIndex!].photos.count - 1
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -444,7 +458,7 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCell
             let size = returnLayoutSize(selectedLayout: selectedLayout!)
             cell.backImageView = applyBackImageViewLayout(selectedLayout: selectedLayout!, smallBig: size, imageView: cell.backImageView)
-            cell.photoImageView = applyImageViewLayout(selectedLayout: selectedLayout!, smallBig: size, imageView: cell.photoImageView, image: AlbumDatabase.arrayList[albumIndex!].photos[indexPath.row+1])
+            cell.photoImageView = applyImageViewLayout(selectedLayout: selectedLayout!, smallBig: size, imageView: cell.photoImageView, image: networkPhotoUrlImageArray[indexPath.row+1]) //AlbumDatabase.arrayList[albumIndex!].photos[indexPath.row+1])
             
             return cell
         }
