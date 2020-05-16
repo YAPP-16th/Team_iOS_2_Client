@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>CFBundleIconName</key>
@@ -10,6 +12,8 @@
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -52,11 +56,11 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>test</string>
+	<string>회원님의 카메라에 접근합니다!</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>사진 추가합니다!</string>
+	<string>회원님의 사진첩에 사진을 추가합니다!</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>test</string>
+	<string>회원님의 사진첩에 접근합니다!</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Digital-7.ttf</string>
