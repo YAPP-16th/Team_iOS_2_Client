@@ -121,7 +121,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        print("url \(url)")
+        print("url host :\(url.host!)")
+        print("url path :\(url.path)")
+        
+        let urlPath : String = url.path 
+        let urlHost : String = url.host ?? "X"
+        
+        
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let printStoryboard: UIStoryboard = UIStoryboard(name: "Print", bundle: nil)
+        
+        if(urlPath == "/inner"){
+            
+            let innerPage: EnterViewController = mainStoryboard.instantiateViewController(withIdentifier: "EnterViewController") as! EnterViewController
+            self.window?.rootViewController = innerPage
+            
+        } else if (urlPath == "/Print"){
+            
+            let innerPage: PrintListViewController = printStoryboard.instantiateViewController(withIdentifier: "PrintListViewController") as! PrintListViewController
+            
+            self.window?.rootViewController = innerPage
+            
+        }
+        
+        
+        let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        let items = urlComponents?.queryItems
+        
+        print(items?.first?.name, items?.first?.value)
+        
+        
+        if KLKTalkLinkCenter.shared().isTalkLinkCallback(url) {
+            let params = url.query
+            
+            print(url)
+            //callback from kakaotalk link
+            print("kakaoopen2")
+            print(params)
+            return true
+        }
+        
         if KOSession.isKakaoAccountLoginCallback(url.absoluteURL) {
+            
             return KOSession.handleOpen(url)
         }
         
@@ -129,11 +172,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        
         if KOSession.isKakaoAccountLoginCallback(url.absoluteURL) {
             return KOSession.handleOpen(url)
         }
         return true
     }
+    
     
     //rootView 변경 메소드
     func switchEnterView() {
@@ -180,7 +225,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = tabNav
         self.window?.makeKeyAndVisible()
     }
-    
     
     
     

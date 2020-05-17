@@ -212,6 +212,8 @@ extension AlbumDetailController : inviteProtocol {
     }
     
     func inviteSetting(){
+        
+        print("Setting")
            let templeteId = "24532";
            
            KLKTalkLinkCenter.shared().sendCustom(withTemplateId: templeteId, templateArgs: nil, success: {(warningMsg, argumentMsg) in

@@ -23,11 +23,26 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLIconFile</key>
+			<string></string>
+			<key>CFBundleURLName</key>
+			<string>com.yappiOS2.90s</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>kakaod114f41f41597a7d7c592f05903c41fe</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>inner</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.yappiOS2.90s</string>
+			</array>
+		</dict>
+		<dict/>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>

@@ -30,7 +30,8 @@ class AlbumInfoVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func inviteBtn(_ sender: UIButton) {
-        inviteprotocol?.inviteSetting()
+        print("Touch")
+        inviteSetting()
     }
     @IBAction func quitMemberBtn(_ sender: UIButton) {
         switchHideView(value: false)
@@ -40,7 +41,6 @@ class AlbumInfoVC: UIViewController {
     private var personArray : [String] = ["dayeun","KyungJin","Jeongmin"]
     var albumIndex : Int = 0
     var initialize : Bool = false
-    var inviteprotocol : inviteProtocol?
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -52,10 +52,14 @@ class AlbumInfoVC: UIViewController {
             }
         }
     }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         defaultSetting()
+        
+        
     }
 }
 
@@ -98,6 +102,22 @@ extension AlbumInfoVC : albumInfoDeleteProtocol {
     }
 }
 
+extension AlbumInfoVC : inviteProtocol {
+    
+    
+
+    
+    func inviteSetting() {
+         
+            let templeteId = "24532";
+            KLKTalkLinkCenter.shared().sendCustom(withTemplateId: templeteId, templateArgs: nil, success: {(warningMsg, argumentMsg) in
+                print("warning message : \(String(describing: warningMsg))")
+                print("argument message : \(String(describing: argumentMsg))")
+            }, failure: {(error) in
+                print("error \(error)")
+            })
+        }
+}
 
 extension AlbumInfoVC {
     @objc func touchHideCancleBtn(){
