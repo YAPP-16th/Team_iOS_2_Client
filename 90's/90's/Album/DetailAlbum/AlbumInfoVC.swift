@@ -105,8 +105,6 @@ extension AlbumInfoVC : albumInfoDeleteProtocol {
 extension AlbumInfoVC : inviteProtocol {
     
     
-
-    
     func inviteSetting() {
          
             let templeteId = "24532";

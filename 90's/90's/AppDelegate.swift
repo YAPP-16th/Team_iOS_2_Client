@@ -126,33 +126,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("url host :\(url.host!)")
         print("url path :\(url.path)")
         
-        let urlPath : String = url.path 
-        let urlHost : String = url.host ?? "X"
-        
-        
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let printStoryboard: UIStoryboard = UIStoryboard(name: "Print", bundle: nil)
-        
-        if(urlPath == "/inner"){
-            
-            let innerPage: EnterViewController = mainStoryboard.instantiateViewController(withIdentifier: "EnterViewController") as! EnterViewController
-            self.window?.rootViewController = innerPage
-            
-        } else if (urlPath == "/Print"){
-            
-            let innerPage: PrintListViewController = printStoryboard.instantiateViewController(withIdentifier: "PrintListViewController") as! PrintListViewController
-            
-            self.window?.rootViewController = innerPage
-            
-        }
-        
-        
+//        let urlPath : String = url.path
+//        let urlHost : String = url.host ?? "X"
+
         let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
         let items = urlComponents?.queryItems
         
         print(items?.first?.name, items?.first?.value)
         
+        if(items?.first?.name == "invite")
+        {
+            
+            if (items?.first?.value) == "1" {
+                // 초대된 사람!
+                UIAlertController.showMessage("초대 성공")
+                switchAlbumInfoView()
+                
+            }
+                
+            else {
+                //초대 안된사람!
+                UIAlertController.showMessage("초대 실패")
+                switchEnterView()
+
+            }
+        }
         
+            
         if KLKTalkLinkCenter.shared().isTalkLinkCallback(url) {
             let params = url.query
             
@@ -223,6 +223,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabNav.isNavigationBarHidden = true
         
         self.window?.rootViewController = tabNav
+        self.window?.makeKeyAndVisible()
+    }
+    
+    func switchAlbumInfoView() {
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let mainSB: UIStoryboard = UIStoryboard(name: "Album", bundle: nil)
+        let enterVC = mainSB.instantiateViewController(withIdentifier: "AlbumInfoVC") as! AlbumInfoVC
+        let enterNav = UINavigationController(rootViewController: enterVC)
+        enterNav.isNavigationBarHidden = true
+        
+        self.window?.rootViewController = enterNav
         self.window?.makeKeyAndVisible()
     }
     
