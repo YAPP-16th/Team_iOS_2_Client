@@ -114,10 +114,13 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let menuName = menuArr[indexPath.row]
+
         switch indexPath.row {
         case 0:
             if isDefault {
                 let defaultUserVC = storyboard?.instantiateViewController(withIdentifier: "DefaultUserViewController") as! DefaultUserViewController
+                defaultUserVC.titleStr = menuName
                 self.navigationController?.pushViewController(defaultUserVC, animated: true)
             }else {
                 let orderVC = self.storyboard?.instantiateViewController(withIdentifier: "OrderListViewController") as! OrderListViewController
@@ -136,6 +139,7 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource {
         case 3:
             if isDefault {
                 let defaultUserVC = storyboard?.instantiateViewController(withIdentifier: "DefaultUserViewController") as! DefaultUserViewController
+                defaultUserVC.titleStr = menuName
                 self.navigationController?.pushViewController(defaultUserVC, animated: true)
             }else {
                 let settingVC = self.storyboard?.instantiateViewController(withIdentifier: "SettingViewController") as! SettingViewController
