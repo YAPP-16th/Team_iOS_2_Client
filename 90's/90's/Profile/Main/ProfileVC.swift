@@ -25,15 +25,13 @@ class ProfileVC: UIViewController {
     let menuArr : [String] = ["주문 내역", "내 정보 관리", "FAQ", "설정"]
     var isDefault = true
     
-    override func viewWillAppear(_ animated: Bool) {
-        //디폴트 유저일 때 guestView를 표시하는 로직이 필요함
-        getProfile()
-    }
     
+    override func viewWillAppear(_ animated: Bool) {
+        setUI()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
         self.navigationController?.navigationBar.isHidden = true
     }
     
@@ -46,12 +44,15 @@ class ProfileVC: UIViewController {
         settingTableView.delegate = self
         settingTableView.dataSource = self
         guestLoginBtn.layer.cornerRadius = 8.0
+        getProfile()
     }
     
-
+    
     
     func getProfile(){
-        GetProfileService.shared.getProfile(completion: {
+        guard let jwt = UserDefaults.standard.string(forKey: "jwt") else { return }
+        
+        GetProfileService.shared.getProfile(token: jwt, completion: {
             response in
             if let status = response.response?.statusCode {
                 switch status {
@@ -75,13 +76,14 @@ class ProfileVC: UIViewController {
     
     func setProfileUI(_ profileResult: ProfileResult){
         //디폴트 유저는 전화번호가 nil
-        
+        print("setProfileUI. \(profileResult)")
         if profileResult.userInfo.phoneNum != nil {
             profileEmail.text = profileResult.userInfo.email
             profilePrintCount.text = "\(profileResult.albumPrintingCount)"
             profileAlbumCount.text = "\(profileResult.albumTotalCount)"
             profileName.text = profileResult.userInfo.name
             isDefault = false
+            guestView.isHidden = true
         }else {
             profileView.isHidden = true
         }
@@ -114,9 +116,13 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            let orderVC = self.storyboard?.instantiateViewController(withIdentifier: "OrderListViewController") as! OrderListViewController
-            orderVC.isDefault = self.isDefault
-            self.navigationController?.pushViewController(orderVC, animated: true)
+            if isDefault {
+                let defaultUserVC = storyboard?.instantiateViewController(withIdentifier: "DefaultUserViewController") as! DefaultUserViewController
+                self.navigationController?.pushViewController(defaultUserVC, animated: true)
+            }else {
+                let orderVC = self.storyboard?.instantiateViewController(withIdentifier: "OrderListViewController") as! OrderListViewController
+                self.navigationController?.pushViewController(orderVC, animated: true)
+            }
             break
         case 1:
             let manageInfoVC = self.storyboard?.instantiateViewController(withIdentifier: "ManageInfoViewController") as! ManageInfoViewController
@@ -128,9 +134,13 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource {
             self.navigationController?.pushViewController(faqVC, animated: true)
             break
         case 3:
-            let settingVC = self.storyboard?.instantiateViewController(withIdentifier: "SettingViewController") as! SettingViewController
-            settingVC.isDefault = self.isDefault
-            self.navigationController?.pushViewController(settingVC, animated: true)
+            if isDefault {
+                let defaultUserVC = storyboard?.instantiateViewController(withIdentifier: "DefaultUserViewController") as! DefaultUserViewController
+                self.navigationController?.pushViewController(defaultUserVC, animated: true)
+            }else {
+                let settingVC = self.storyboard?.instantiateViewController(withIdentifier: "SettingViewController") as! SettingViewController
+                self.navigationController?.pushViewController(settingVC, animated: true)
+            }
             break
         default:
             return

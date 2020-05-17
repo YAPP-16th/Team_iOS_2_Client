@@ -31,7 +31,6 @@ protocol OrderDetailDelegate {
 class OrderListViewController: UIViewController {
     @IBOutlet weak var noAlbumView: UIView!
     @IBOutlet weak var orderListTableView: UITableView!
-    var isDefault:Bool!
     var isExistAlbum = true
     
     //더미데이터

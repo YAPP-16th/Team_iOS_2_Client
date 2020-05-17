@@ -10,12 +10,13 @@ import Alamofire
 
 struct GetProfileService : APIManager {
     static let shared = GetProfileService()
-    let header: HTTPHeaders =  ["Content-Type" : "application/json",
-                                "X-AUTH-TOKEN" :  UserDefaults.standard.string(forKey: "jwt") ?? ""]
     let getProfileURL = url("/user/getUserProfile")
     typealias completeGetProfile = (AFDataResponse<Any>) -> ()
     
-    func getProfile(completion: @escaping(completeGetProfile)){
+    func getProfile(token:String, completion: @escaping(completeGetProfile)){
+        let header: HTTPHeaders =  ["Content-Type" : "application/json",
+                                    "X-AUTH-TOKEN" :  token]
+        
         AF.request(getProfileURL, method: .get, headers: header).responseJSON(completionHandler: {
             response in
             switch response.result {
