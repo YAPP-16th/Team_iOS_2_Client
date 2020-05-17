@@ -18,6 +18,7 @@ struct Document: Codable {
     var address_name: String
     var road_address: RoadAddress?
 }
+
 struct RoadAddress: Codable {
     var address_name: String
     var building_name: String

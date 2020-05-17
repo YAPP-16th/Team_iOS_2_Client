@@ -12,11 +12,12 @@ struct ChangeEmailService : APIManager {
     static let shared = ChangeEmailService()
     let header: HTTPHeaders =  ["Content-Type" : "application/json",
                                 "X-AUTH-TOKEN" :  UserDefaults.standard.string(forKey: "jwt") ?? ""]
+    
     let changeEmailURL = url("/user/updateEmail")
     typealias completeChangeEmail = (AFDataResponse<Any>) -> ()
     
     func changeEmail(email: String, completion: @escaping(completeChangeEmail)){
-        
+
         let body: [String:Any] = [
             "email": email
         ]

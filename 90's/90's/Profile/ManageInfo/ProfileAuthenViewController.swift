@@ -10,8 +10,6 @@ import UIKit
 
 class ProfileAuthenViewController: UIViewController {
     
-    @IBOutlet weak var isSnsView: UIView!
-    @IBOutlet weak var signUpBtn: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var tfTelephone: UITextField!
@@ -56,39 +54,27 @@ class ProfileAuthenViewController: UIViewController {
         goAuthen()
     }
     
-    //새 이메일로 가입하기 버튼 클릭 시
-    @IBAction func clickSignBtn(_ sender: Any) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.switchSignUp()
-    }
-    
     func setUI(){
         titleLabel.text = authenType
-        
-        switch authenType {
-        case "이메일 변경", "비밀번호 변경":
-            if UserDefaults.standard.bool(forKey: "social"){
-                isSnsView.isHidden = false
-                signUpBtn.layer.cornerRadius = 8.0
-            }else {
-                isSnsView.isHidden = true
+            switch authenType {
+            case "이메일 변경", "비밀번호 변경":
                 validationLabel.isHidden = true
                 okBtn.isEnabled = false
                 okBtn.layer.cornerRadius = 8.0
                 askNumberBtn.layer.cornerRadius = 8.0
+                break
+            case "전화번호 변경":
+                subTitleLabel.text = "새로운 전화번호를\n인증해주세요"
+                validationLabel.isHidden = true
+                okBtn.isEnabled = false
+                okBtn.layer.cornerRadius = 8.0
+                askNumberBtn.layer.cornerRadius = 8.0
+                break
+            default:
+                break
             }
-            break
-        case "전화번호 변경":
-            subTitleLabel.text = "새로운 전화번호를\n인증해주세요"
-            isSnsView.isHidden = true
-            validationLabel.isHidden = true
-            okBtn.isEnabled = false
-            okBtn.layer.cornerRadius = 8.0
-            askNumberBtn.layer.cornerRadius = 8.0
-            break
-        default:
-            break
-        }
+        
+        
     }
     
     func setObserver(){

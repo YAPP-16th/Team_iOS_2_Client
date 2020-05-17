@@ -34,6 +34,7 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
         let telephoneAuthenVC = storyboard?.instantiateViewController(withIdentifier: "TelephoneAuthenViewController") as! TelephoneAuthenViewController
         telephoneAuthenVC.email = email
         telephoneAuthenVC.pwd = pwd
+        telephoneAuthenVC.isSocial = false
         telephoneAuthenVC.nickName = tfNickname.text!
         navigationController?.pushViewController(telephoneAuthenVC, animated: true)
     }
