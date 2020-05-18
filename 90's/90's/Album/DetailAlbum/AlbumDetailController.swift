@@ -73,7 +73,7 @@ class AlbumDetailController : UIViewController {
     var photoUidArray = [PhotoGetPhotoData]()
     var networkPhotoUidArray : [Int] = []
     var networkPhotoStringArray : [String] = []
-    var networkPhotoUrlImageArray : [UIImage] = []
+    var networkPhotoUrlImageArray = [UIImage]()
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -353,19 +353,28 @@ extension AlbumDetailController {
     // 2. 서버에 앨범 uid와 사진uid 요청
     func NetworkGetPhoto(photoUid : [Int]){
           
-        for i in 0...photoUid.count-1 {
-            let url = "https://90s-inhwa-brothers.s3.ap-northeast-2.amazonaws.com/\(70)/\(photoUid[i]).jpeg"
-            AF.request(url).responseImage(completionHandler: { response in
-                if case .success(let image) = response.result {
-                    print("image downloaded : \(image)")
-                    self.networkPhotoUrlImageArray.append(image)
-                    }
-                })
-        }
-        self.photoCollectionView.reloadData()
+//        for i in 0...photoUid.count-1 {
+//            let url = "https://90s-inhwa-brothers.s3.ap-northeast-2.amazonaws.com/\(70)/\(photoUid[i]).jpeg"
+//            AF.request(url).responseImage(completionHandler: { response in
+//                if case .success(let image) = response.result {
+//                    print("image downloaded : \(image)")
+//                    self.networkPhotoUrlImageArray.append(image)
+//                    }
+//                })
+//        }
+//        self.photoCollectionView.reloadData()
+        print("photo get called")
         
-        //for i in 0...photoUid.count-1 {
-//        AlbumService.shared.photoDownload(albumUid: 70, photoUid: 72, completion: { response in
+        for i in 1...photoUid.count-1 {
+            AlbumService.shared.photoDownload(albumUid: 70, photoUid: photoUid[i], completion: { response in
+                if case .success(let image) = response.result {
+                    print("image downloaded: \(image)")
+                    self.networkPhotoUrlImageArray.append(image)
+                }
+            
+            })
+            
+//        AlbumService.shared.photoDownload(albumUid: 70, photoUid: photoUid[i], completion: { response in
 //                if let status = response.response?.statusCode {
 //                    switch status {
 //                    case 200 :
@@ -381,7 +390,7 @@ extension AlbumDetailController {
 //                    }
 //                }
 //            })
-        //}
+        }
     }
 }
 
