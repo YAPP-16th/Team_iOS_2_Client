@@ -24,7 +24,7 @@ class AlbumCompleteVC: UIViewController {
     }
     @IBAction func completeBtn(_ sender: UIButton) {
         self.createAlbumService()
-        mainProtocol?.reloadView()
+        mainProtocol?.AlbumMainreloadView()
         self.navigationController?.popToRootViewController(animated: true)
     }
     var albumLayout : AlbumLayout!
@@ -76,10 +76,12 @@ extension AlbumCompleteVC {
                     self.albumUid = uid.uid
                     self.sendCoverImageService(uid: uid.uid)
                     print("create Album!")
-                case 401...404 :
-                    print("forbidden access in \(status)")
-                case 500:
-                    print("server Error")
+                case 401:
+                    print("\(status) : bad request, no warning in Server")
+                case 404:
+                    print("\(status) : Not found, no address")
+                case 500 :
+                    print("\(status) : Server error in completealbum - createalbum")
                 default :
                     return
                 }
@@ -93,12 +95,12 @@ extension AlbumCompleteVC {
             response in
             if let status = response.response?.statusCode {
                 switch status {
-                case 200 :
-                    print("Send Cover Image Complete")
-                case 401...404 :
-                    print("forbidden access in \(status)")
-                case 500:
-                    print("server Error")
+                case 401:
+                    print("\(status) : bad request, no warning in Server")
+                case 404:
+                    print("\(status) : Not found, no address")
+                case 500 :
+                    print("\(status) : Server error in createalbum - photoupload")
                 default :
                     return
                 }

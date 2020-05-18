@@ -66,7 +66,7 @@ class AlbumInfoVC: UIViewController {
 
 extension AlbumInfoVC : albumInfoDeleteProtocol {
     func defaultSetting(){
-        let album = AlbumDatabase.arrayList[albumIndex]
+        let album =  AlbumDatabase.arrayList[albumIndex]
         albumCoverImageView.image = album.photos[0]
         albumNameLabel.text = album.albumName
         albumDateLabel.text = "\(album.albumStartDate!)  ~  \(album.albumEndDate!)"
@@ -103,10 +103,7 @@ extension AlbumInfoVC : albumInfoDeleteProtocol {
 }
 
 extension AlbumInfoVC : inviteProtocol {
-    
-    
     func inviteSetting() {
-         
             let templeteId = "24532";
             KLKTalkLinkCenter.shared().sendCustom(withTemplateId: templeteId, templateArgs: nil, success: {(warningMsg, argumentMsg) in
                 print("warning message : \(String(describing: warningMsg))")

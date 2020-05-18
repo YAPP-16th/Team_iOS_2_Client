@@ -97,10 +97,13 @@ struct AlbumService : APIManager {
 //    }
 
     // getAlbum, post, 앨범 정보 가져오기
-    func albumGetAlbum(completion : @escaping(completeAlbumSerivce)){
+    func albumGetAlbum(uid:Int, completion : @escaping(completeAlbumSerivce)){
         let url = Self.url("/album/getAlbum")
+        let body : [String : Any] = [
+            "uid" : uid
+        ]
 
-        AF.request(url, method: .post, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
+        AF.request(url, method: .post, parameters: body, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
             response in
             switch response.result {
             case .success:

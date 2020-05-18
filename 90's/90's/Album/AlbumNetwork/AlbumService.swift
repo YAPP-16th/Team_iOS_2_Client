@@ -21,6 +21,7 @@ struct album : Codable {
     var endDate : String
     var layoutUid : Int
     var name : String
+    var orderStatus : String
     var photoLimit : Int
     var uid : Int
     var updated_at : String

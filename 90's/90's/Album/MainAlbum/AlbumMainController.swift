@@ -11,7 +11,7 @@ import UIKit
 var isDeviseVersionLow : Bool = false // 이건 임시방편....
 
 protocol AlbumMainVCProtocol {
-    func reloadView()
+    func AlbumMainreloadView()
 }
 
 class AlbumMainController: UIViewController {
@@ -32,8 +32,7 @@ class AlbumMainController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         defaultSetting()
-        networkSetting()
-        reloadView()
+        AlbumMainreloadView()
     }
     
     override func viewDidLoad() {
@@ -78,10 +77,12 @@ extension AlbumMainController {
                     self.albumUidArray = value.map({$0.uid})
                     self.albumNameArray = value.map({$0.name})
                     self.networkCoverUidSetting()
-                case 401...404:
-                    print("forbidden access in \(status)")
+                case 401:
+                    print("\(status) : bad request, no warning in Server")
+                case 404:
+                    print("\(status) : Not found, no address")
                 case 500 :
-                    print("server error")
+                    print("\(status) : Server error in mainalbum - getalbums")
                 default:
                     return
                 }
@@ -99,10 +100,12 @@ extension AlbumMainController {
                     guard let value = try? JSONDecoder().decode([PhotoDownloadData].self, from: data) else {return}
                     self.albumCoverUidArray.append(value[0].photoUid)
                     self.networkCoverImageSetting()
-                case 401...404:
-                    print("forbidden access in \(status)")
+                case 401:
+                    print("\(status) : bad request, no warning in Server")
+                case 404:
+                    print("\(status) : Not found, no address")
                 case 500 :
-                    print("server error")
+                    print("\(status) : Server error in mainalbum - getphoto")
                 default:
                     return
                 }
@@ -132,7 +135,7 @@ extension AlbumMainController : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let albumDetailVC = storyboard?.instantiateViewController(withIdentifier: "albumDetailVC") as! AlbumDetailController
-        albumDetailVC.albumIndex = indexPath.row
+        albumDetailVC.albumUid = albumUidArray[indexPath.row]
         navigationController?.pushViewController(albumDetailVC, animated: true)
     }
 }
@@ -150,8 +153,8 @@ extension AlbumMainController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlbumCell", for: indexPath) as! AlbumCell
         
-        cell.imageView.image =  albumCoverArray[indexPath.row+1] //AlbumDatabase.arrayList[indexPath.row].photos[0]
-        cell.nameLabel.text = albumNameArray[indexPath.row]//AlbumDatabase.arrayList[indexPath.row].albumName
+        cell.imageView.image =  albumCoverArray[indexPath.row+1]
+        cell.nameLabel.text = albumNameArray[indexPath.row]
     
         return cell
     }
@@ -159,7 +162,8 @@ extension AlbumMainController : UICollectionViewDataSource {
 
 
 extension AlbumMainController : AlbumMainVCProtocol {
-    func reloadView() {
+    func AlbumMainreloadView() {
+        self.networkSetting()
         self.albumCollectionView.reloadData()
     }
 }
