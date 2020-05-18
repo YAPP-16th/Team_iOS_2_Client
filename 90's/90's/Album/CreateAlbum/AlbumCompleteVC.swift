@@ -78,6 +78,8 @@ extension AlbumCompleteVC {
                     print("create Album!")
                 case 401...404 :
                     print("forbidden access in \(status)")
+                case 500:
+                    print("server Error")
                 default :
                     return
                 }
@@ -95,6 +97,8 @@ extension AlbumCompleteVC {
                     print("Send Cover Image Complete")
                 case 401...404 :
                     print("forbidden access in \(status)")
+                case 500:
+                    print("server Error")
                 default :
                     return
                 }

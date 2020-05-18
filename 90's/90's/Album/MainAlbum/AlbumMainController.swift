@@ -24,17 +24,103 @@ class AlbumMainController: UIViewController {
         let nextVC = storyboard?.instantiateViewController(withIdentifier : "AlbumNameController") as! AlbumNameController
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
+    var albumUidArray : [Int] = []
+    var albumNameArray : [String] = []
+    var albumCoverUidArray : [Int] = []
+    var albumCoverArray : [UIImage] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         defaultSetting()
+        networkSetting()
         reloadView()
     }
     
     override func viewDidLoad() {
          super.viewDidLoad()
          settingCollectionView()
-     }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        albumCoverUidArray = []
+        albumCoverArray = []
+    }
+}
+
+
+extension AlbumMainController {
+    func settingCollectionView(){
+        albumCollectionView.delegate = self
+        albumCollectionView.dataSource = self
+        albumMakeBtn.layer.cornerRadius = 10
+        albumIntroLabel.text = "앨범을 만들어\n소중한 추억을 쌓아보세요"
+    }
+    
+    func defaultSetting(){
+        if(AlbumDatabase.arrayList.count != 0){
+            introView.isHidden = true
+            albumView.isHidden = false
+        }else {
+            introView.isHidden = false
+            albumView.isHidden = true
+        }
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    func networkSetting(){
+        AlbumService.shared.albumGetAlbums(completion: { response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200 :
+                    guard let data = response.data else {return}
+                    guard let value = try? JSONDecoder().decode([album].self, from: data) else {return}
+                    self.albumUidArray = value.map({$0.uid})
+                    self.albumNameArray = value.map({$0.name})
+                    self.networkCoverUidSetting()
+                case 401...404:
+                    print("forbidden access in \(status)")
+                case 500 :
+                    print("server error")
+                default:
+                    return
+                }
+            }
+        })
+    }
+    
+    func networkCoverUidSetting(){
+        for i in 0...albumUidArray.count-1 {
+        AlbumService.shared.photoGetPhoto(albumUid: albumUidArray[i], completion: { response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200 :
+                    guard let data = response.data else {return}
+                    guard let value = try? JSONDecoder().decode([PhotoDownloadData].self, from: data) else {return}
+                    self.albumCoverUidArray.append(value[0].photoUid)
+                    self.networkCoverImageSetting()
+                case 401...404:
+                    print("forbidden access in \(status)")
+                case 500 :
+                    print("server error")
+                default:
+                    return
+                }
+            }
+        })
+        }
+    }
+    
+    func networkCoverImageSetting(){
+        for i in 0...albumCoverUidArray.count-1 {
+            AlbumService.shared.photoDownload(albumUid: albumUidArray[i], photoUid: albumCoverUidArray[i], completion: { response in
+                if case .success(let image) = response.result {
+                    self.albumCoverArray.append(image)
+                    self.albumCollectionView.reloadData()
+                }
+            })
+        }
+    }
 }
 
 
@@ -58,37 +144,16 @@ extension AlbumMainController : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return AlbumDatabase.arrayList.count
+        return albumCoverArray.count-1//AlbumDatabase.arrayList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlbumCell", for: indexPath) as! AlbumCell
         
-        cell.imageView.image =  AlbumDatabase.arrayList[indexPath.row].photos[0]
-        cell.nameLabel.text = AlbumDatabase.arrayList[indexPath.row].albumName
+        cell.imageView.image =  albumCoverArray[indexPath.row+1] //AlbumDatabase.arrayList[indexPath.row].photos[0]
+        cell.nameLabel.text = albumNameArray[indexPath.row]//AlbumDatabase.arrayList[indexPath.row].albumName
     
         return cell
-    }
-}
-
-
-extension AlbumMainController {
-    func settingCollectionView(){
-        albumCollectionView.delegate = self
-        albumCollectionView.dataSource = self
-        albumMakeBtn.layer.cornerRadius = 10
-        albumIntroLabel.text = "앨범을 만들어\n소중한 추억을 쌓아보세요"
-    }
-    
-    func defaultSetting(){
-        if(AlbumDatabase.arrayList.count != 0){
-            introView.isHidden = true
-            albumView.isHidden = false
-        }else {
-            introView.isHidden = false
-            albumView.isHidden = true
-        }
-        self.tabBarController?.tabBar.isHidden = false
     }
 }
 
