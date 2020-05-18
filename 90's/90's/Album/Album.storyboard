@@ -828,6 +828,116 @@
             </objects>
             <point key="canvasLocation" x="3369.5652173913045" y="126.5625"/>
         </scene>
+        <!--Album InvitedVC-->
+        <scene sceneID="gG6-rT-Cwh">
+            <objects>
+                <viewController id="Pqn-gr-mha" customClass="AlbumInvitedVC" customModule="_0_s" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Is9-JF-vrV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cS8-mh-oCF">
+                                <rect key="frame" x="36" y="219" width="342" height="274"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WdI-oW-FTU">
+                                        <rect key="frame" x="272" y="0.0" width="70" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="Cgt-th-KEv"/>
+                                            <constraint firstAttribute="width" constant="70" id="TMq-LM-2M4"/>
+                                        </constraints>
+                                        <state key="normal" image="cancelButtonWhite"/>
+                                        <connections>
+                                            <action selector="cancleBtn:" destination="Pqn-gr-mha" eventType="touchUpInside" id="XxO-wO-3Xr"/>
+                                            <action selector="hideShareCancleBtn:" destination="xQZ-oo-bAJ" eventType="touchUpInside" id="bDI-uB-w2d"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앨범 비밀번호를 입력해주세요" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iad-wp-3DT">
+                                        <rect key="frame" x="58.5" y="55" width="225.5" height="27"/>
+                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2d1-VB-2oG">
+                                        <rect key="frame" x="46" y="123.5" width="250" height="27"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="250" id="N9I-4Y-XTD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CjO-dO-iso" userLabel="line">
+                                        <rect key="frame" x="46" y="157.5" width="250" height="1"/>
+                                        <color key="backgroundColor" red="0.69433993100000002" green="0.70153045650000001" blue="0.72549444439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="250" id="ePl-ml-lfZ"/>
+                                            <constraint firstAttribute="height" constant="1" id="iuc-FW-rHP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9DU-cn-MQk">
+                                        <rect key="frame" x="16" y="186" width="310" height="72"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="72" id="ej2-o5-qwq"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="18"/>
+                                        <state key="normal" title="확인">
+                                            <color key="titleColor" red="0.93353021140000003" green="0.94081169369999995" blue="0.96078830959999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="touchhideShareCompleteBtn:" destination="xQZ-oo-bAJ" eventType="touchUpInside" id="8V8-4s-Jjq"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="iad-wp-3DT" firstAttribute="centerX" secondItem="cS8-mh-oCF" secondAttribute="centerX" id="0Xk-al-XRS"/>
+                                    <constraint firstAttribute="trailing" secondItem="WdI-oW-FTU" secondAttribute="trailing" id="3Dj-vc-NvV"/>
+                                    <constraint firstAttribute="height" constant="274" id="FfM-FM-FHV"/>
+                                    <constraint firstItem="9DU-cn-MQk" firstAttribute="leading" secondItem="cS8-mh-oCF" secondAttribute="leading" constant="16" id="Fru-nR-XJv"/>
+                                    <constraint firstItem="iad-wp-3DT" firstAttribute="top" secondItem="cS8-mh-oCF" secondAttribute="top" constant="55" id="VHX-6o-fTQ"/>
+                                    <constraint firstItem="WdI-oW-FTU" firstAttribute="top" secondItem="cS8-mh-oCF" secondAttribute="top" id="a3a-MK-pt9"/>
+                                    <constraint firstItem="2d1-VB-2oG" firstAttribute="centerY" secondItem="cS8-mh-oCF" secondAttribute="centerY" id="aEL-Fz-LAj"/>
+                                    <constraint firstAttribute="bottom" secondItem="9DU-cn-MQk" secondAttribute="bottom" constant="16" id="auN-AN-z1Y"/>
+                                    <constraint firstItem="2d1-VB-2oG" firstAttribute="centerX" secondItem="cS8-mh-oCF" secondAttribute="centerX" id="chl-rg-Yxh"/>
+                                    <constraint firstItem="CjO-dO-iso" firstAttribute="centerX" secondItem="cS8-mh-oCF" secondAttribute="centerX" id="g7F-KS-eab"/>
+                                    <constraint firstAttribute="trailing" secondItem="9DU-cn-MQk" secondAttribute="trailing" constant="16" id="ge0-aE-FWr"/>
+                                    <constraint firstItem="CjO-dO-iso" firstAttribute="top" secondItem="2d1-VB-2oG" secondAttribute="bottom" constant="7" id="v04-bt-VIb"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cS8-mh-oCF" firstAttribute="centerY" secondItem="yrW-o0-zKy" secondAttribute="centerY" constant="-97" id="beU-oK-KuW"/>
+                            <constraint firstItem="cS8-mh-oCF" firstAttribute="leading" secondItem="yrW-o0-zKy" secondAttribute="leading" constant="36" id="iyu-0s-sSX"/>
+                            <constraint firstItem="yrW-o0-zKy" firstAttribute="trailing" secondItem="cS8-mh-oCF" secondAttribute="trailing" constant="36" id="qGe-Nv-jqv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yrW-o0-zKy"/>
+                    </view>
+                    <connections>
+                        <outlet property="albumInvitedLabel" destination="CjO-dO-iso" id="MCf-eF-0hH"/>
+                        <outlet property="albumInvitedTF" destination="2d1-VB-2oG" id="FmC-UX-eZJ"/>
+                        <outlet property="completeBtn" destination="9DU-cn-MQk" id="R45-Dy-VQW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ou0-JZ-Qie" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="343" y="836"/>
+        </scene>
         <!--AlbumDetailController-->
         <scene sceneID="Smp-ua-9ce">
             <objects>
