@@ -387,15 +387,15 @@ extension AlbumDetailController {
 
 
 extension AlbumDetailController : inviteProtocol, UITextFieldDelegate{
-    func inviteSetting(){
-        let templeteId = "24532";
-        KLKTalkLinkCenter.shared().sendCustom(withTemplateId: templeteId, templateArgs: nil, success: {(warningMsg, argumentMsg) in
-                  print("warning message : \(String(describing: warningMsg))")
-                  print("argument message : \(String(describing: argumentMsg))")
-              }, failure: {(error) in
-                  print("error \(error)")
-        })
-    }
+//    func inviteSetting(){
+//        let templeteId = "24532";
+//        KLKTalkLinkCenter.shared().sendCustom(withTemplateId: templeteId, templateArgs: nil, success: {(warningMsg, argumentMsg) in
+//                  print("warning message : \(String(describing: warningMsg))")
+//                  print("argument message : \(String(describing: argumentMsg))")
+//               }, failure: {(error) in
+//                  print("error \(error)")
+//        })
+//    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool{
         hideShareTextField.resignFirstResponder()

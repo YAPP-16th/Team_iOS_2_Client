@@ -225,27 +225,10 @@
             </objects>
             <point key="canvasLocation" x="854" y="-672"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ySq-HJ-O0l">
-            <objects>
-                <navigationController storyboardIdentifier="InitialNavi" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="yoD-xH-r9Y" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ETG-y3-Poh">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="UaT-nO-pUP" kind="relationship" relationship="rootViewController" id="YIX-Vf-Rst"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ffG-6q-vdW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-48" y="-672"/>
-        </scene>
     </scenes>
     <resources>
         <image name="kakaoIcon" width="24" height="20"/>
+        <image name="loginMainImage" width="361" height="475"/>
         <image name="splash_1" width="414" height="896"/>
-
     </resources>
 </document>
