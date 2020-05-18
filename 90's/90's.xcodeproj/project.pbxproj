@@ -35,6 +35,7 @@
 		9B45BD012438734E00497EA5 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B45BD002438734E00497EA5 /* Profile.storyboard */; };
 		9B6A134C2440CE9400E78E66 /* AlbumInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A134B2440CE9400E78E66 /* AlbumInfoVC.swift */; };
 		9B6A134E2440D0C500E78E66 /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A134D2440D0C500E78E66 /* MemberTableViewCell.swift */; };
+		9B9ECDEA24721562007CBA58 /* AlbumInvitedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9ECDE924721562007CBA58 /* AlbumInvitedVC.swift */; };
 		9BA5A9452454021F003A55DC /* KakaoLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD31D3D243A110600D0D719 /* KakaoLink.framework */; };
 		9BA7A7EE2467D05E00C39B56 /* Digital-7 Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9BA7A7ED2467D05E00C39B56 /* Digital-7 Italic.ttf */; };
 		9BA7A7F02467D06400C39B56 /* Digital-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9BA7A7EF2467D06400C39B56 /* Digital-7.ttf */; };
@@ -550,6 +551,7 @@
 		9B986C6224557E3E00BE9E3C /* 28C17161-E888-3D79-9FEA-53431ADCB336.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "28C17161-E888-3D79-9FEA-53431ADCB336.bcsymbolmap"; sourceTree = "<group>"; };
 		9B986C6324557E3E00BE9E3C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 		9B986C6424557E3E00BE9E3C /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Alamofire.framework.dSYM; sourceTree = "<group>"; };
+		9B9ECDE924721562007CBA58 /* AlbumInvitedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumInvitedVC.swift; sourceTree = "<group>"; };
 		9BA7A7ED2467D05E00C39B56 /* Digital-7 Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Digital-7 Italic.ttf"; sourceTree = "<group>"; };
 		9BA7A7EF2467D06400C39B56 /* Digital-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Digital-7.ttf"; sourceTree = "<group>"; };
 		9BAAA96E24596215002567AF /* AlbumService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumService.swift; sourceTree = "<group>"; };
@@ -829,6 +831,7 @@
 				A36DC87024236E45001B3767 /* PhotoCell.swift */,
 				A36DC86E24236386001B3767 /* AlbumDetailController.swift */,
 				9B6A134D2440D0C500E78E66 /* MemberTableViewCell.swift */,
+				9B9ECDE924721562007CBA58 /* AlbumInvitedVC.swift */,
 			);
 			path = DetailAlbum;
 			sourceTree = "<group>";
@@ -2008,6 +2011,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B44EDE52429FCDF00B0D774 /* Extension.swift in Sources */,
+				9B9ECDEA24721562007CBA58 /* AlbumInvitedVC.swift in Sources */,
 				A3E133D824558997007950D8 /* ManageInfoViewController.swift in Sources */,
 				A314260E2450A9E1005487F3 /* LoginResult.swift in Sources */,
 				A318AC72243E290C00245434 /* TermViewController.swift in Sources */,
@@ -2271,6 +2275,7 @@
 				CODE_SIGN_ENTITLEMENTS = "90's/90's.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = C7X33ZVY6P;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2307,6 +2312,7 @@
 				CODE_SIGN_ENTITLEMENTS = "90's/90's.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = C7X33ZVY6P;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

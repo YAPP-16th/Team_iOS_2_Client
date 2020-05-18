@@ -89,13 +89,13 @@ class AlbumDetailController : UIViewController {
             }
             if hideSharePasswordView.isHidden == true {
                 hideShareTextField.endEditing(true)
+                hideShareTextField.resignFirstResponder()
             }
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NetworkSetting()
         photoCollectionView.reloadData()
         self.tabBarController?.tabBar.isHidden = true
     }
@@ -103,6 +103,7 @@ class AlbumDetailController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         delegateSetting()
+        NetworkSetting()
         defaultSetting()
         buttonSetting()
     }
@@ -458,8 +459,9 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCell
             let size = returnLayoutSize(selectedLayout: selectedLayout!)
             cell.backImageView = applyBackImageViewLayout(selectedLayout: selectedLayout!, smallBig: size, imageView: cell.backImageView)
-            cell.photoImageView = applyImageViewLayout(selectedLayout: selectedLayout!, smallBig: size, imageView: cell.photoImageView, image: networkPhotoUrlImageArray[indexPath.row+1]) //AlbumDatabase.arrayList[albumIndex!].photos[indexPath.row+1])
-            
+            cell.backImageView.image = networkPhotoUrlImageArray[indexPath.row+1]
+            //cell.photoImageView = applyImageViewLayout(selectedLayout: selectedLayout!, smallBig: size, imageView: cell.photoImageView, image: networkPhotoUrlImageArray[indexPath.row+1])
+            //AlbumDatabase.arrayList[albumIndex!].photos[indexPath.row+1])
             return cell
         }
     }
@@ -478,7 +480,7 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! PhotoCell
 //        hideImageZoom.image = setOldFilter(image: cell.photoImageView.image!)
-        hideImageZoom.image = cell.photoImageView.image
+        hideImageZoom.image = cell.backImageView.image//cell.photoImageView.image
         switchZoomView(value: false)
     }
 }
