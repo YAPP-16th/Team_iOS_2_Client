@@ -196,11 +196,56 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GV0-AA-f0h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1690" y="-672"/>
+            <point key="canvasLocation" x="1736" y="-672"/>
+        </scene>
+        <!--Splash View Controller-->
+        <scene sceneID="SQm-9b-ly5">
+            <objects>
+                <viewController storyboardIdentifier="SplashViewController" id="UaT-nO-pUP" customClass="SplashViewController" customModule="_0_s" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KdY-z6-iMw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_1" translatesAutoresizingMaskIntoConstraints="NO" id="cLc-Up-v5T">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="cLc-Up-v5T" firstAttribute="top" secondItem="KdY-z6-iMw" secondAttribute="top" id="5dr-s3-Yst"/>
+                            <constraint firstAttribute="bottom" secondItem="cLc-Up-v5T" secondAttribute="bottom" id="Dt5-OF-Jtj"/>
+                            <constraint firstItem="cLc-Up-v5T" firstAttribute="leading" secondItem="KdY-z6-iMw" secondAttribute="leading" id="isL-Ed-QYh"/>
+                            <constraint firstAttribute="trailing" secondItem="cLc-Up-v5T" secondAttribute="trailing" id="oY5-yl-0ti"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="swF-ul-XbH"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="9qD-b6-6kz"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ltC-x0-1EP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="854" y="-672"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ySq-HJ-O0l">
+            <objects>
+                <navigationController storyboardIdentifier="InitialNavi" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="yoD-xH-r9Y" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ETG-y3-Poh">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="UaT-nO-pUP" kind="relationship" relationship="rootViewController" id="YIX-Vf-Rst"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ffG-6q-vdW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-48" y="-672"/>
         </scene>
     </scenes>
     <resources>
         <image name="kakaoIcon" width="24" height="20"/>
-        <image name="loginMainImage" width="361" height="475"/>
+        <image name="splash_1" width="414" height="896"/>
+
     </resources>
 </document>

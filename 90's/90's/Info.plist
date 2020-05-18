@@ -23,11 +23,26 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLIconFile</key>
+			<string></string>
+			<key>CFBundleURLName</key>
+			<string>com.yappiOS2.90s</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>kakaod114f41f41597a7d7c592f05903c41fe</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>inner</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.yappiOS2.90s</string>
+			</array>
+		</dict>
+		<dict/>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
@@ -35,6 +50,8 @@
 	<false/>
 	<key>KAKAO_APP_KEY</key>
 	<string>d114f41f41597a7d7c592f05903c41fe</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>kakaod114f41f41597a7d7c592f05903c41fe</string>
@@ -52,11 +69,11 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>test</string>
+	<string>회원님의 카메라에 접근합니다!</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>사진 추가합니다!</string>
+	<string>회원님의 사진첩에 사진을 추가합니다!</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>test</string>
+	<string>회원님의 사진첩에 접근합니다!</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Digital-7.ttf</string>
@@ -95,5 +112,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 </dict>
 </plist>

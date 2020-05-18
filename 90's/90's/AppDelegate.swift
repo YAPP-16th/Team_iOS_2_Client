@@ -121,7 +121,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        print("url \(url)")
+        print("url host :\(url.host!)")
+        print("url path :\(url.path)")
+        
+//        let urlPath : String = url.path
+//        let urlHost : String = url.host ?? "X"
+
+        let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        let items = urlComponents?.queryItems
+        
+        print(items?.first?.name, items?.first?.value)
+        
+        if(items?.first?.name == "invite")
+        {
+            
+            if (items?.first?.value) == "1" {
+                // 초대된 사람!
+                UIAlertController.showMessage("초대 성공")
+                switchAlbumInfoView()
+                
+            }
+                
+            else {
+                //초대 안된사람!
+                UIAlertController.showMessage("초대 실패")
+                switchEnterView()
+
+            }
+        }
+        
+            
+        if KLKTalkLinkCenter.shared().isTalkLinkCallback(url) {
+            let params = url.query
+            
+            print(url)
+            //callback from kakaotalk link
+            print("kakaoopen2")
+            print(params)
+            return true
+        }
+        
         if KOSession.isKakaoAccountLoginCallback(url.absoluteURL) {
+            
             return KOSession.handleOpen(url)
         }
         
@@ -129,11 +172,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        
         if KOSession.isKakaoAccountLoginCallback(url.absoluteURL) {
             return KOSession.handleOpen(url)
         }
         return true
     }
+    
     
     //rootView 변경 메소드
     func switchEnterView() {
@@ -181,6 +226,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
     }
     
+    func switchAlbumInfoView() {
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let mainSB: UIStoryboard = UIStoryboard(name: "Album", bundle: nil)
+        let enterVC = mainSB.instantiateViewController(withIdentifier: "AlbumInfoVC") as! AlbumInfoVC
+        let enterNav = UINavigationController(rootViewController: enterVC)
+        enterNav.isNavigationBarHidden = true
+        
+        self.window?.rootViewController = enterNav
+        self.window?.makeKeyAndVisible()
+    }
     
     
     

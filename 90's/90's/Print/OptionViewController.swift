@@ -87,18 +87,20 @@ class OptionViewController : UIViewController {
         nextBtn.layer.cornerRadius = 10
         CompleteBtn.layer.cornerRadius = 10
         orderBtn.layer.cornerRadius = 10
-        
+        let navigationBarHeight: CGFloat = self.navigationController!.navigationBar.frame.height +
+            UIApplication.shared.statusBarFrame.size.height
+        print(navigationBarHeight)
         // iPhone X..
         if UIScreen.main.nativeBounds.height >= 1792.0 {
-            
+
             self.previewImageHeight.constant = 196
-            self.topConstraint.constant = 88
+            self.topConstraint.constant = navigationBarHeight
         }
             // iPhone 8..
         else if UIScreen.main.nativeBounds.height <= 1334.0
         {
             self.previewImageHeight.constant = 187
-            self.topConstraint.constant = 80
+            self.topConstraint.constant = navigationBarHeight
         }
         
         if !isTotalOptionViewAppear {
@@ -224,7 +226,7 @@ class OptionViewController : UIViewController {
             
             if CompleteBtn.backgroundColor == .black {
                 self.BottomViewConstraint.constant = self.view.frame.height - 320
-                self.completeBtnTopConstraint.constant = 0
+                self.completeBtnTopConstraint.constant = 10
                 
             }
             
@@ -275,7 +277,7 @@ class OptionViewController : UIViewController {
             
             if CompleteBtn.backgroundColor == .black {
                 self.BottomViewConstraint.constant = self.view.frame.height - 320
-                self.completeBtnTopConstraint.constant = 0
+                self.completeBtnTopConstraint.constant = 10
                 
             }
             
@@ -398,7 +400,13 @@ class OptionViewController : UIViewController {
     
     @IBAction func normalShipClick(_ sender: Any) {
         cal4 = !cal4
-        calc =  0
+        if cal4 {
+            calc = calc + 5000
+        }
+        else {
+            calc = calc - 5000
+        }
+        
         print(calc)
         noramlShipBtn.isSelected = true
         advanceShipBtn.isSelected = false

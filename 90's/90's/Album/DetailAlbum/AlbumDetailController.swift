@@ -227,6 +227,20 @@ extension AlbumDetailController {
         }
     }
     
+    func inviteSetting(){
+        
+        print("Setting")
+           let templeteId = "24532";
+           
+           KLKTalkLinkCenter.shared().sendCustom(withTemplateId: templeteId, templateArgs: nil, success: {(warningMsg, argumentMsg) in
+               print("warning message : \(String(describing: warningMsg))")
+               print("argument message : \(String(describing: argumentMsg))")
+           }, failure: {(error) in
+               print("error \(error)")
+           })
+       }
+    
+
     func setOldFilter(image : UIImage) -> UIImage{
         let inputImage : CIImage = CIImage.init(image: image)!
         let context = CIContext()

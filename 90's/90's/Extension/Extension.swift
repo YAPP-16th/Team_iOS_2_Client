@@ -422,3 +422,39 @@ extension UIView {
         }
     }
 }
+
+
+extension UIImageView {
+    public func imageFromUrl(_ urlString: String?, defaultImgPath : String) {
+        let defaultImg = UIImage(named: defaultImgPath)
+        if let url = urlString {
+            if url.isEmpty {
+                self.image = defaultImg
+            } else {
+                self.kf.setImage(with: URL(string: url), placeholder: defaultImg, options: [.transition(ImageTransition.fade(0.5))])
+            }
+        } else {
+            self.image = defaultImg
+        }
+    }
+}
+
+extension UIAlertController {
+    
+    static func showMessage(_ message: String) {
+        showAlert(title: "", message: message, actions: [UIAlertAction(title: "OK", style: .cancel, handler: nil)])
+    }
+    
+    static func showAlert(title: String?, message: String?, actions: [UIAlertAction]) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            for action in actions {
+                alert.addAction(action)
+            }
+            if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController, let presenting = navigationController.topViewController {
+                presenting.present(alert, animated: true, completion: nil)
+            }
+        }
+    }
+}
+
