@@ -8,7 +8,6 @@
 
 import UIKit
 import AVFoundation
-import Kingfisher
 
 
 extension String {
@@ -458,3 +457,4 @@ extension UIAlertController {
         }
     }
 }
+

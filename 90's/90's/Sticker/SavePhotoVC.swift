@@ -18,8 +18,6 @@ class SavePhotoVC: UIViewController {
     }
     @IBAction func cnacleViewCompleteBtn(_ sender: UIButton) {
         self.navigationController?.popToRootViewController(animated: true)
-//        let beforeVC = self.navigationController?.viewControllers[1] as! AlbumDetailController
-//        self.navigationController?.popToViewController(beforeVC, animated: true)
     }
     
     @IBOutlet weak var switchBtn: UISwitch!
@@ -132,16 +130,19 @@ extension SavePhotoVC {
 extension SavePhotoVC {
     @objc func touchSaveBtn(){ // 이미지 저장
 //        photoView.addSubview(dateLabel)
-        let renderer = UIGraphicsImageRenderer(size: photoView.bounds.size)
+        let renderer = UIGraphicsImageRenderer(bounds: photoView.bounds)
         let image = renderer.image { ctx in
             photoView.drawHierarchy(in: photoView.bounds, afterScreenUpdates: true)
         }
+        
+        print("save image is = \(image), name = \(imageName!)")
         
         AlbumService.shared.photoUpload(albumUid: 70, image: [image], imageName: imageName!, completion: {
             response in
             if let status = response.response?.statusCode {
                 switch status {
                 case 200:
+                    print("200")
                     guard let data = response.data else {return}
                     print("received data = \(data)")
                 case 401...404 :
@@ -152,7 +153,10 @@ extension SavePhotoVC {
             }
         })
         
+        
         UIImageWriteToSavedPhotosAlbum(originImage,self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        
+        self.navigationController?.popToRootViewController(animated: true)
         
     }
     

@@ -36,6 +36,7 @@
 		9B45BD012438734E00497EA5 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B45BD002438734E00497EA5 /* Profile.storyboard */; };
 		9B6A134C2440CE9400E78E66 /* AlbumInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A134B2440CE9400E78E66 /* AlbumInfoVC.swift */; };
 		9B6A134E2440D0C500E78E66 /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A134D2440D0C500E78E66 /* MemberTableViewCell.swift */; };
+		9B9ECDEA24721562007CBA58 /* AlbumInvitedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9ECDE924721562007CBA58 /* AlbumInvitedVC.swift */; };
 		9BA5A9452454021F003A55DC /* KakaoLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD31D3D243A110600D0D719 /* KakaoLink.framework */; };
 		9BA7A7EE2467D05E00C39B56 /* Digital-7 Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9BA7A7ED2467D05E00C39B56 /* Digital-7 Italic.ttf */; };
 		9BA7A7F02467D06400C39B56 /* Digital-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9BA7A7EF2467D06400C39B56 /* Digital-7.ttf */; };
@@ -56,7 +57,7 @@
 		9BD31D37243A05F700D0D719 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD31D36243A05F700D0D719 /* KakaoOpenSDK.framework */; };
 		9BD31D40243A111A00D0D719 /* KakaoMessageTemplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD31D3F243A111A00D0D719 /* KakaoMessageTemplate.framework */; };
 		9BD31D42243A11BF00D0D719 /* KakaoCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD31D41243A11BF00D0D719 /* KakaoCommon.framework */; };
-		9BF98C9624668D8000E8A5BC /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF98C8A24668D7F00E8A5BC /* Kingfisher.framework */; };
+		9BDC0979246FC703008233F3 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDC0978246FC703008233F3 /* AlamofireImage.framework */; };
 		A3024430244CAE5E006C838F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A302442F244CAE5E006C838F /* Alamofire.framework */; };
 		A3025C9E2441AD9000041723 /* LoginMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3025C9D2441AD9000041723 /* LoginMainViewController.swift */; };
 		A3025CA02441ADCA00041723 /* EnterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3025C9F2441ADCA00041723 /* EnterViewController.swift */; };
@@ -102,6 +103,8 @@
 		A3B0D1FF245D977800DB90ED /* ProfileAuthenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D1FE245D977800DB90ED /* ProfileAuthenViewController.swift */; };
 		A3B0D201245D9DF800DB90ED /* NewEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D200245D9DF800DB90ED /* NewEmailViewController.swift */; };
 		A3B0D218245DB47800DB90ED /* ChangeEmailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D217245DB47800DB90ED /* ChangeEmailService.swift */; };
+		A3B1D7B4246FCACE00D95DE3 /* SNSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B1D7B3246FCACE00D95DE3 /* SNSViewController.swift */; };
+		A3B1D7C1246FCAD900D95DE3 /* DefaultUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B1D7C0246FCAD900D95DE3 /* DefaultUserViewController.swift */; };
 		A3CCD8432454B30300C73E31 /* EmailCheckService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCD8422454B30300C73E31 /* EmailCheckService.swift */; };
 		A3CCD8452454BE7B00C73E31 /* SignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCD8442454BE7B00C73E31 /* SignUpService.swift */; };
 		A3CCD8472454C31B00C73E31 /* SignUpResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCD8462454C31B00C73E31 /* SignUpResult.swift */; };
@@ -116,6 +119,9 @@
 		A3E2DB8224547A0800AB2156 /* CheckEmailResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E2DB8124547A0800AB2156 /* CheckEmailResult.swift */; };
 		A3F3094B246EE5200051FF6B /* AddressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F3094A246EE5200051FF6B /* AddressService.swift */; };
 		A3F3094E246EE7C90051FF6B /* AddressResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F3094D246EE7C90051FF6B /* AddressResult.swift */; };
+		A3F30964246F1A7D0051FF6B /* GetProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30963246F1A7D0051FF6B /* GetProfileService.swift */; };
+		A3F30972246F1C0B0051FF6B /* ProfileResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30971246F1C0B0051FF6B /* ProfileResult.swift */; };
+		A3F30974246F22080051FF6B /* DefaultUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30973246F22080051FF6B /* DefaultUserService.swift */; };
 		A3F8CC1A244AEE24008D0046 /* neodgm.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A3F8CC19244AEE24008D0046 /* neodgm.ttf */; };
 		A3F8CC1B244AEE2E008D0046 /* NotoSansCJKkr-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A3F8CC14244AEC75008D0046 /* NotoSansCJKkr-Bold.otf */; };
 		A3F8CC1C244AEE30008D0046 /* NotoSansCJKkr-DemiLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = A3F8CC15244AEC75008D0046 /* NotoSansCJKkr-DemiLight.otf */; };
@@ -547,6 +553,7 @@
 		9B986C6224557E3E00BE9E3C /* 28C17161-E888-3D79-9FEA-53431ADCB336.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "28C17161-E888-3D79-9FEA-53431ADCB336.bcsymbolmap"; sourceTree = "<group>"; };
 		9B986C6324557E3E00BE9E3C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 		9B986C6424557E3E00BE9E3C /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Alamofire.framework.dSYM; sourceTree = "<group>"; };
+		9B9ECDE924721562007CBA58 /* AlbumInvitedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumInvitedVC.swift; sourceTree = "<group>"; };
 		9BA7A7ED2467D05E00C39B56 /* Digital-7 Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Digital-7 Italic.ttf"; sourceTree = "<group>"; };
 		9BA7A7EF2467D06400C39B56 /* Digital-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Digital-7.ttf"; sourceTree = "<group>"; };
 		9BAAA96E24596215002567AF /* AlbumService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumService.swift; sourceTree = "<group>"; };
@@ -568,7 +575,7 @@
 		9BD31D3D243A110600D0D719 /* KakaoLink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoLink.framework; sourceTree = "<group>"; };
 		9BD31D3F243A111A00D0D719 /* KakaoMessageTemplate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoMessageTemplate.framework; sourceTree = "<group>"; };
 		9BD31D41243A11BF00D0D719 /* KakaoCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoCommon.framework; sourceTree = "<group>"; };
-		9BF98C8A24668D7F00E8A5BC /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
+		9BDC0978246FC703008233F3 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		A302442F244CAE5E006C838F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		A3025C9D2441AD9000041723 /* LoginMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMainViewController.swift; sourceTree = "<group>"; };
 		A3025C9F2441ADCA00041723 /* EnterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterViewController.swift; sourceTree = "<group>"; };
@@ -616,6 +623,8 @@
 		A3B0D1FE245D977800DB90ED /* ProfileAuthenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAuthenViewController.swift; sourceTree = "<group>"; };
 		A3B0D200245D9DF800DB90ED /* NewEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEmailViewController.swift; sourceTree = "<group>"; };
 		A3B0D217245DB47800DB90ED /* ChangeEmailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailService.swift; sourceTree = "<group>"; };
+		A3B1D7B3246FCACE00D95DE3 /* SNSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSViewController.swift; sourceTree = "<group>"; };
+		A3B1D7C0246FCAD900D95DE3 /* DefaultUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUserViewController.swift; sourceTree = "<group>"; };
 		A3CCD8422454B30300C73E31 /* EmailCheckService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCheckService.swift; sourceTree = "<group>"; };
 		A3CCD8442454BE7B00C73E31 /* SignUpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpService.swift; sourceTree = "<group>"; };
 		A3CCD8462454C31B00C73E31 /* SignUpResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResult.swift; sourceTree = "<group>"; };
@@ -630,6 +639,9 @@
 		A3E2DB8124547A0800AB2156 /* CheckEmailResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEmailResult.swift; sourceTree = "<group>"; };
 		A3F3094A246EE5200051FF6B /* AddressService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressService.swift; sourceTree = "<group>"; };
 		A3F3094D246EE7C90051FF6B /* AddressResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressResult.swift; sourceTree = "<group>"; };
+		A3F30963246F1A7D0051FF6B /* GetProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProfileService.swift; sourceTree = "<group>"; };
+		A3F30971246F1C0B0051FF6B /* ProfileResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResult.swift; sourceTree = "<group>"; };
+		A3F30973246F22080051FF6B /* DefaultUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUserService.swift; sourceTree = "<group>"; };
 		A3F8CC13244AEC75008D0046 /* NotoSansCJKkr-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Regular.otf"; sourceTree = "<group>"; };
 		A3F8CC14244AEC75008D0046 /* NotoSansCJKkr-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Bold.otf"; sourceTree = "<group>"; };
 		A3F8CC15244AEC75008D0046 /* NotoSansCJKkr-DemiLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-DemiLight.otf"; sourceTree = "<group>"; };
@@ -643,7 +655,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BF98C9624668D8000E8A5BC /* Kingfisher.framework in Frameworks */,
 				A3024430244CAE5E006C838F /* Alamofire.framework in Frameworks */,
 				9BD31D37243A05F700D0D719 /* KakaoOpenSDK.framework in Frameworks */,
 				9BA5A9452454021F003A55DC /* KakaoLink.framework in Frameworks */,
@@ -651,6 +662,7 @@
 				9BD31D40243A111A00D0D719 /* KakaoMessageTemplate.framework in Frameworks */,
 				3960F96D246681AC007B50A3 /* UserNotifications.framework in Frameworks */,
 				3960F97B246681AE007B50A3 /* PushKit.framework in Frameworks */,
+				9BDC0979246FC703008233F3 /* AlamofireImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -720,7 +732,7 @@
 		9B142B04242F2226005ABE17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9BF98C8A24668D7F00E8A5BC /* Kingfisher.framework */,
+				9BDC0978246FC703008233F3 /* AlamofireImage.framework */,
 				3929B106245DEFD800B7C7EA /* PushKit.framework */,
 				3929B104245DEFD100B7C7EA /* UserNotifications.framework */,
 				9B986AEF24557E3D00BE9E3C /* Carthage */,
@@ -788,6 +800,7 @@
 		9B45BCFF2438734200497EA5 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				A3F30970246F1BFF0051FF6B /* NetworkResult */,
 				A30B21DF2462B8E500BDC75B /* NetworkService */,
 				A30B21DC2462B84900BDC75B /* Main */,
 				A30B21DB2462B81800BDC75B /* FAQ */,
@@ -820,6 +833,7 @@
 				A36DC87024236E45001B3767 /* PhotoCell.swift */,
 				A36DC86E24236386001B3767 /* AlbumDetailController.swift */,
 				9B6A134D2440D0C500E78E66 /* MemberTableViewCell.swift */,
+				9B9ECDE924721562007CBA58 /* AlbumInvitedVC.swift */,
 			);
 			path = DetailAlbum;
 			sourceTree = "<group>";
@@ -1635,6 +1649,7 @@
 				A3CCD8442454BE7B00C73E31 /* SignUpService.swift */,
 				A3CCD8422454B30300C73E31 /* EmailCheckService.swift */,
 				A38A2D0F2458719E000BF82D /* TelephoneAuthService.swift */,
+				A3F30973246F22080051FF6B /* DefaultUserService.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -1697,6 +1712,8 @@
 			children = (
 				9BC0DBB12444788F00CA90F7 /* ProfileVC.swift */,
 				9BC0DBB3244478A600CA90F7 /* ProfileTableViewCell.swift */,
+				A3B1D7B3246FCACE00D95DE3 /* SNSViewController.swift */,
+				A3B1D7C0246FCAD900D95DE3 /* DefaultUserViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1707,6 +1724,7 @@
 				A3B0D217245DB47800DB90ED /* ChangeEmailService.swift */,
 				A30B21F72462D1FE00BDC75B /* ChangePassService.swift */,
 				A3768D4F246307EE009E64EE /* ChangePhoneService.swift */,
+				A3F30963246F1A7D0051FF6B /* GetProfileService.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -1778,6 +1796,14 @@
 			isa = PBXGroup;
 			children = (
 				A3F3094D246EE7C90051FF6B /* AddressResult.swift */,
+			);
+			path = NetworkResult;
+			sourceTree = "<group>";
+		};
+		A3F30970246F1BFF0051FF6B /* NetworkResult */ = {
+			isa = PBXGroup;
+			children = (
+				A3F30971246F1C0B0051FF6B /* ProfileResult.swift */,
 			);
 			path = NetworkResult;
 			sourceTree = "<group>";
@@ -1970,7 +1996,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -1989,12 +2015,14 @@
 			files = (
 				390D3DC3246FD069003916C4 /* SplashViewController.swift in Sources */,
 				9B44EDE52429FCDF00B0D774 /* Extension.swift in Sources */,
+				9B9ECDEA24721562007CBA58 /* AlbumInvitedVC.swift in Sources */,
 				A3E133D824558997007950D8 /* ManageInfoViewController.swift in Sources */,
 				A314260E2450A9E1005487F3 /* LoginResult.swift in Sources */,
 				A318AC72243E290C00245434 /* TermViewController.swift in Sources */,
 				A3CCD8452454BE7B00C73E31 /* SignUpService.swift in Sources */,
 				9B180808243E10F300AF1CE6 /* StickerPopupVC.swift in Sources */,
 				A3025CA62441AED700041723 /* MakeNewPassViewController.swift in Sources */,
+				A3B1D7B4246FCACE00D95DE3 /* SNSViewController.swift in Sources */,
 				A3025CA22441AE3700041723 /* FindEmailViewController.swift in Sources */,
 				A3B0D201245D9DF800DB90ED /* NewEmailViewController.swift in Sources */,
 				A3E2DB8224547A0800AB2156 /* CheckEmailResult.swift in Sources */,
@@ -2010,6 +2038,7 @@
 				9BB4D536245D70D30033321F /* imageTestVC.swift in Sources */,
 				A33376162420CFB3000DC7C4 /* AppDelegate.swift in Sources */,
 				A311E5922438A880005EEC29 /* AlbumPeriodController.swift in Sources */,
+				A3F30972246F1C0B0051FF6B /* ProfileResult.swift in Sources */,
 				A3F3094B246EE5200051FF6B /* AddressService.swift in Sources */,
 				A387C202246EBA4300F59C78 /* AddressCell.swift in Sources */,
 				39CB8C8A245DC92600F28A49 /* PopUpViewController.swift in Sources */,
@@ -2031,6 +2060,7 @@
 				39411378243061A500087E1B /* CheckPhotoViewController.swift in Sources */,
 				9BC0DBB22444788F00CA90F7 /* ProfileVC.swift in Sources */,
 				9BB1C5742441EEBA0035DEBF /* FilterCell.swift in Sources */,
+				A3F30974246F22080051FF6B /* DefaultUserService.swift in Sources */,
 				A38A2D3824588E99000BF82D /* LoginService.swift in Sources */,
 				A3B0D1FF245D977800DB90ED /* ProfileAuthenViewController.swift in Sources */,
 				A3B0D1BE245D547800DB90ED /* QuestionCell.swift in Sources */,
@@ -2044,6 +2074,7 @@
 				A38A2D102458719E000BF82D /* TelephoneAuthService.swift in Sources */,
 				A3B0D218245DB47800DB90ED /* ChangeEmailService.swift in Sources */,
 				A3025CA02441ADCA00041723 /* EnterViewController.swift in Sources */,
+				A3B1D7C1246FCAD900D95DE3 /* DefaultUserViewController.swift in Sources */,
 				A3025C9E2441AD9000041723 /* LoginMainViewController.swift in Sources */,
 				A38A2D0E24587170000BF82D /* TelephoneAuthResult.swift in Sources */,
 				A3E2DB7E24546E7200AB2156 /* APIMagager.swift in Sources */,
@@ -2065,6 +2096,7 @@
 				39DE24C724547143007E8D40 /* PrintListViewController.swift in Sources */,
 				9BC0DBB4244478A600CA90F7 /* ProfileTableViewCell.swift in Sources */,
 				A30B21E12462BCAC00BDC75B /* NewPassViewController.swift in Sources */,
+				A3F30964246F1A7D0051FF6B /* GetProfileService.swift in Sources */,
 				9BB1C5762441EEC30035DEBF /* FilterViewController.swift in Sources */,
 				A3B0D1D9245D6C8400DB90ED /* SettingCell.swift in Sources */,
 				9B6A134E2440D0C500E78E66 /* MemberTableViewCell.swift in Sources */,

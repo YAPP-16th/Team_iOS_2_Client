@@ -68,7 +68,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ejN-qd-Xgk">
-                                <rect key="frame" x="18" y="611.5" width="378" height="72"/>
+                                <rect key="frame" x="18" y="612" width="378" height="72"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="18"/>
                                 <state key="normal" title="로그인">
@@ -85,10 +85,10 @@
                                     <constraint firstAttribute="width" constant="23" id="U0D-mq-QHC"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginImage" translatesAutoresizingMaskIntoConstraints="NO" id="Csr-vN-vDB">
-                                <rect key="frame" x="20.5" y="100" width="373" height="491"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginMainImage" translatesAutoresizingMaskIntoConstraints="NO" id="Csr-vN-vDB">
+                                <rect key="frame" x="26.5" y="100" width="361" height="475"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Csr-vN-vDB" secondAttribute="height" multiplier="270:355" id="Xzi-vm-C81"/>
+                                    <constraint firstAttribute="width" secondItem="Csr-vN-vDB" secondAttribute="height" multiplier="361:475" id="k2m-EP-XAf"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -101,12 +101,12 @@
                             <constraint firstItem="Vbx-xt-N1B" firstAttribute="bottom" secondItem="Jyp-vV-Xgl" secondAttribute="bottom" constant="14" id="NvM-uN-Rqm"/>
                             <constraint firstItem="Jyp-vV-Xgl" firstAttribute="height" secondItem="ejN-qd-Xgk" secondAttribute="height" id="QNE-i6-WY8"/>
                             <constraint firstItem="JaN-68-Sqd" firstAttribute="centerY" secondItem="Jyp-vV-Xgl" secondAttribute="centerY" id="QqI-Vd-Z5g"/>
-                            <constraint firstItem="Jyp-vV-Xgl" firstAttribute="height" secondItem="kPU-50-lea" secondAttribute="height" multiplier="0.0805" id="WhE-Kf-EAb"/>
+                            <constraint firstItem="Jyp-vV-Xgl" firstAttribute="height" secondItem="Vbx-xt-N1B" secondAttribute="height" multiplier="0.0880196" id="WhE-Kf-EAb"/>
                             <constraint firstItem="Vbx-xt-N1B" firstAttribute="trailing" secondItem="Jyp-vV-Xgl" secondAttribute="trailing" constant="18" id="Xl3-g2-y3N"/>
                             <constraint firstItem="Vbx-xt-N1B" firstAttribute="trailing" secondItem="S2P-nx-y2c" secondAttribute="trailing" constant="18" id="YMJ-DD-Ioo"/>
                             <constraint firstItem="Jyp-vV-Xgl" firstAttribute="top" secondItem="bcs-xC-pc1" secondAttribute="bottom" constant="10" id="auP-i1-JKf"/>
                             <constraint firstItem="S2P-nx-y2c" firstAttribute="top" secondItem="Vbx-xt-N1B" secondAttribute="top" constant="23" id="bQN-cr-yE1"/>
-                            <constraint firstItem="Csr-vN-vDB" firstAttribute="height" secondItem="kPU-50-lea" secondAttribute="height" multiplier="0.548" id="kTn-Jc-ntO"/>
+                            <constraint firstItem="Csr-vN-vDB" firstAttribute="height" secondItem="Vbx-xt-N1B" secondAttribute="height" multiplier="0.580685" id="kTn-Jc-ntO"/>
                             <constraint firstItem="ejN-qd-Xgk" firstAttribute="trailing" secondItem="bcs-xC-pc1" secondAttribute="trailing" id="lhk-zb-b91"/>
                             <constraint firstItem="ejN-qd-Xgk" firstAttribute="leading" secondItem="bcs-xC-pc1" secondAttribute="leading" id="o59-ZF-b1n"/>
                             <constraint firstItem="bcs-xC-pc1" firstAttribute="trailing" secondItem="Jyp-vV-Xgl" secondAttribute="trailing" id="sUL-9U-2AD"/>
@@ -801,7 +801,7 @@
     <resources>
         <image name="iconBack" width="14" height="23"/>
         <image name="kakaoIcon" width="24" height="20"/>
-        <image name="loginImage" width="361" height="475"/>
+        <image name="loginMainImage" width="361" height="475"/>
         <image name="path11Grey" width="2" height="11"/>
         <image name="path378Grey1" width="374" height="3"/>
     </resources>

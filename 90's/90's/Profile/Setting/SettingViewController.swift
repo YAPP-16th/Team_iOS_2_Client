@@ -10,7 +10,6 @@ import UIKit
 
 class SettingViewController: UIViewController {
     @IBOutlet weak var settingTableView: UITableView!
-    
     var noticeList = ["마케팅 이벤트 알림","앨범 기간 알림", "앨범이 종료되기 전 알림", "구매 및 배송 알림"]
     
     override func viewDidLoad() {

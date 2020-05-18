@@ -27,26 +27,23 @@ class EnterViewController: UIViewController {
     }
     
     func autoLogin(){
-          //기존에 로그인한 데이터가 있을 경우
-          if let email = UserDefaults.standard.string(forKey: "email"){
-              //소셜 로그인의 경우
-              if(UserDefaults.standard.bool(forKey: "social")){
-                  goLogin(email, nil, true)
-              }else {
-                  guard let password = UserDefaults.standard.string(forKey: "password") else {return}
-                  goLogin(email, password, false)
-              }
-          }
-      }
+        //기존에 로그인한 데이터가 있을 경우
+        if let email = UserDefaults.standard.string(forKey: "email"){
+            //소셜 로그인의 경우
+            if(UserDefaults.standard.bool(forKey: "social")){
+                goLogin(email, nil, true)
+            }else {
+                guard let password = UserDefaults.standard.string(forKey: "password") else {return}
+                goLogin(email, password, false)
+            }
+        }
+    }
     
     
     //둘러보기 버튼 클릭 시
     @IBAction func takeALook(_ sender: Any) {
         //default 유저 값 받아옴,메인화면으로 이동
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.switchTab()
-        guard let tabBarVC = storyboard?.instantiateViewController(withIdentifier: "TabBarController") else { return }
-        navigationController?.pushViewController(tabBarVC, animated: true)
+        getDefaultUser()
     }
     
     //로그인 버튼 클릭 시
@@ -127,8 +124,36 @@ class EnterViewController: UIViewController {
         kakaoLoginBtn.layer.cornerRadius = 8.0
     }
     
+    //둘러보기 클릭 -> 디폴트 유저 토큰 저장
+    func getDefaultUser(){
+        DefaultUserService.shared.getDefaultUser(completion: {
+            response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200:
+                    guard let data = response.data else { return }
+                    let decoder = JSONDecoder()
+                    guard let defaultResult = try? decoder.decode(SignUpResult.self, from: data) else { return }
+                    guard  let jwt = defaultResult.jwt else { return }
+                    UserDefaults.standard.set(jwt, forKey: "jwt")
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.switchTab()
+                    guard let tabBarVC = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") else { return }
+                    self.navigationController?.pushViewController(tabBarVC, animated: true)
+                    break
+                case 401...500:
+                    self.showErrAlert()
+                    break
+                default:
+                    return
+                }
+            }
+            
+        })
+    }
     
- //자동로그인 -> 로그인 서버통신
+    
+    //자동로그인 -> 로그인 서버통신
     func goLogin(_ email: String, _ password: String?, _ social: Bool){
         LoginService.shared.login(email: email, password: password, sosial: social, completion: { response in
             if let status = response.response?.statusCode {
@@ -168,5 +193,5 @@ class EnterViewController: UIViewController {
     }
     
     
-   
+    
 }

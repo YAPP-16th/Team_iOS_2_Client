@@ -7,6 +7,7 @@
 //
 
 import Alamofire
+import AlamofireImage
 
 struct AlbumService : APIManager {
     static let shared = AlbumService()
@@ -200,13 +201,44 @@ extension AlbumService {
             "photoUid" : photoUid
         ]
         
-        AF.request(url, method: .post, parameters: body, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
+        AF.request(url, method: .post, parameters: body, encoding: JSONEncoding.default, headers: tokenHeader).validate().responseJSON(completionHandler: {
             response in
             switch response.result {
             case .success:
                 completion(response)
             case .failure(let err):
                 print("==> Error in PhotoDownload Service : \(err)")
+            }
+        })
+    }
+    
+    func photoDownload(albumUid : Int, photoUid : Int){
+        let url = "https://90s-inhwa-brothers.s3.ap-northeast-2.amazonaws.com/\(albumUid)/\(photoUid).jpeg"
+        var tempimage : UIImage?
+        
+        AF.request(url).responseImage(completionHandler: { response in
+            if case .success(let image) = response.result {
+                print("image downloaded : \(image)")
+                tempimage = image
+            }
+        })
+        
+    }
+    
+    func photoDownloadUrl(albumUid : Int, photoUid : Int, completion : @escaping(completeAlbumSerivce)){
+        let url = "https://90s-inhwa-brothers.s3.ap-northeast-2.amazonaws.com/\(albumUid)/\(photoUid).jpeg"
+      
+       
+        AF.request(url).responseImage(completionHandler: { response in
+            switch response.result {
+            case .success :
+                print("download image url service : sucess")
+                if let image1 = response.data {
+                    let image = UIImage(data: image1)
+                }
+            //debugPrint(response)
+            case .failure(let err) :
+                print("==> Error in PhotoDownloadUrl Service : \(err)")
             }
         })
     }
@@ -231,18 +263,20 @@ extension AlbumService {
     
     
     // photoUpload, post
-    func photoUpload(albumUid : Int, image: [UIImage], imageName: String, completion: @escaping(completeAlbumSerivce)){
+    func photoUpload(albumUid : Int, image: [UIImage], imageName: String!, completion: @escaping(completeAlbumSerivce)){
         let url = Self.url("/photo/upload")
         let body : [String : Any] = [
             "albumUid" : albumUid
         ]
+        
+        guard let imageData = image[0].jpegData(compressionQuality: 1.0) else {return}
         
         AF.upload(
             multipartFormData: { multipartFormData in
                 for (key, value) in body {
                     multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key)
                 }
-                multipartFormData.append(image[0].jpegData(compressionQuality: 0.7)!, withName: "image" , fileName: "\(imageName).jpeg", mimeType: "image/jpeg")
+                multipartFormData.append(imageData, withName: "image" , fileName: imageName, mimeType: "image/jpeg") //fileName : imagename.jpeg
                 
         }, to: url, method: .post , headers: photoHeader)
             .response { response in
