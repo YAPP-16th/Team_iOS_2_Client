@@ -21,13 +21,14 @@ struct album : Codable {
     var endDate : String
     var layoutUid : Int
     var name : String
+    var orderStatus : String
     var photoLimit : Int
     var uid : Int
     var updated_at : String
 }
 
 
-// post
+// post, albumGetAlbum 결과
 struct AlbumGetResult : Codable {
     var complete : Bool
     var count : Int
@@ -76,6 +77,13 @@ struct AlbumAddUserResult : Codable {
 // get
 struct AlbumGetAlbumsResult : Codable {
     var result : Array<album>
+}
+
+// post
+struct AlbumGetOwnersResult : Codable {
+    var albumUid : Int
+    var userUid : Int
+    var role : String
 }
 
 // post

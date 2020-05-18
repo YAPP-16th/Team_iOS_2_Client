@@ -296,6 +296,33 @@ extension UIViewController{
         case .Tape : return "Tape"
         }
     }
+    
+    
+    /**
+     var layoutUid : Int {
+         switch self {
+         case .Polaroid : return 0
+         case .Mini : return 1
+         case .Memory : return 2
+         case .Portrab : return 3
+         case .Tape : return 4
+         case .Portraw : return 5
+         case .Filmroll : return 6
+         }
+     }
+     */
+    func getLayoutByUid(value : Int) -> AlbumLayout{
+        switch value {
+        case 0 : return AlbumLayout.Polaroid
+        case 1 : return AlbumLayout.Mini
+        case 2 : return AlbumLayout.Memory
+        case 3 : return AlbumLayout.Portrab
+        case 4 : return AlbumLayout.Tape
+        case 5 : return AlbumLayout.Portraw
+        case 6 : return AlbumLayout.Filmroll
+        default: return AlbumLayout.Polaroid
+        }
+    }
 }
 
 
