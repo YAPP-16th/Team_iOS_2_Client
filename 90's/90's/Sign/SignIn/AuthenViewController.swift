@@ -183,7 +183,7 @@ class AuthenViewController: UIViewController {
                     guard let findEmailResult = try? decoder.decode(FindEmailResult.self, from: data) else { return }
                     let findEmailVC = self.storyboard?.instantiateViewController(withIdentifier: "FindEmailViewController") as! FindEmailViewController
                     findEmailVC.email = findEmailResult.email
-                    findEmailVC.nickName = findEmailResult.nickName
+                    findEmailVC.nickName = findEmailResult.name
                     self.navigationController?.pushViewController(findEmailVC, animated: true)
                     break
                 case 400:

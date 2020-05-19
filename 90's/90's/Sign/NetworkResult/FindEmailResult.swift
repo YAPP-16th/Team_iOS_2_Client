@@ -10,7 +10,7 @@ import Foundation
 
 struct FindEmailResult : Codable {
     let email:String
-    let nickName:String
+    let name:String
 }
 
 struct FindEmailErrResult: Codable{
