@@ -8,10 +8,21 @@
 
 import UIKit
 
+protocol SwitchActionDelegate {
+    
+    func didClickedLink(index: Int)
+
+}
 class SettingCell: UITableViewCell {
+    
+    var delegate : SwitchActionDelegate?
+    var currentIndex: Int?
+    var state: Int? = 0
+    
     @IBOutlet weak var settingNameLabel: UILabel!
     
     @IBAction func clickSwitch(_ sender: Any) {
+        self.delegate?.didClickedLink(index: currentIndex ?? 0)
     }
     
 }
