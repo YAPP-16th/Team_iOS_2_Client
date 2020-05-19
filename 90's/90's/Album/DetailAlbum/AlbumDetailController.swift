@@ -54,7 +54,7 @@ class AlbumDetailController : UIViewController {
     // 사진 순서 이동
     private var longPressGesture : UILongPressGestureRecognizer!
     var isEnded : Bool = true
-    var openAlbumCount : Int! // 앨범 낡기 적용
+    
     var currentCell : UICollectionViewCell? = nil // 스티커, 필터 전환
     var isSharingAlbum : Bool = false // 공유앨범
     var galleryPicker : UIImagePickerController = {
@@ -67,6 +67,7 @@ class AlbumDetailController : UIViewController {
     var selectedLayout : AlbumLayout?
     // - received data from before vc
     var albumUid : Int = 0
+    var isAlbumCount : Bool = false
     // - receive server data form
     var albumCount : Int = 0
     var albumLayoutUid : Int = 0
@@ -77,6 +78,7 @@ class AlbumDetailController : UIViewController {
     var sharingword : String?
     // - network array
     var photoUidArray = [PhotoGetPhotoData]()
+    var networkDetailAlbum : album?
     var networkPhotoUidArray : [Int] = []
     var networkPhotoStringArray : [String] = []
     var networkPhotoUrlImageArray = [UIImage]()
@@ -127,7 +129,7 @@ extension AlbumDetailController {
     
     func defaultSetting(){
         albumNameLabel.text = albumName //getAlbum?.name //AlbumDatabase.arrayList[albumIndex!].albumName
-        albumCountLabel.text = "\(albumCount - 1) 개의 추억이 쌓였습니다"
+        albumCountLabel.text = "\(photoUidArray.count - 1) 개의 추억이 쌓였습니다"
         selectedLayout = getLayoutByUid(value: albumLayoutUid)
         
         hideView.isHidden = true
@@ -139,6 +141,12 @@ extension AlbumDetailController {
         // 순서 바꾸기
         longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gesture:)))
         photoCollectionView.addGestureRecognizer(longPressGesture)
+        
+        if isAlbumCount == true {
+            print("album order apply")
+            networkAddCount()
+            isAlbumCount = false
+        }
     }
     
     func buttonSetting(){
@@ -345,6 +353,7 @@ extension AlbumDetailController {
                 case 200 :
                     guard let data = response.data else {return}
                     guard let value = try? JSONDecoder().decode(album.self, from: data) else {return}
+                    self.networkDetailAlbum = value
                     self.albumName = value.name
                     self.albumCount = value.count
                     self.albumPhotoLimit = value.photoLimit
@@ -398,6 +407,25 @@ extension AlbumDetailController {
             })
         }
     }
+    
+    func networkAddCount(){
+        AlbumService.shared.albumPlusCount(uid: albumUid, completion: {response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200:
+                    print("album add order count success")
+                case 401:
+                    print("\(status) : bad request, no warning in Server")
+                case 404:
+                    print("\(status) : Not found, no address")
+                case 500 :
+                    print("\(status) : Server error in detailalbum - addCount")
+                default:
+                    return
+                }
+            }
+        })
+    }
 }
 
 
@@ -425,7 +453,7 @@ extension AlbumDetailController {
     }
     
     @objc func touchAddPhotoBtn() {
-        if (albumCount >= albumPhotoLimit) {
+        if (photoUidArray.count-1 >= albumPhotoLimit) {
             addPhotoBtn.isEnabled = false
             
             let alert = UIAlertController(title: "사진 추가 불가", message: "제한개수를 모두 채웠습니다.", preferredStyle: .alert)
@@ -464,7 +492,7 @@ extension AlbumDetailController {
 
 extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return networkPhotoUrlImageArray.count - 1 //AlbumDatabase.arrayList[albumIndex!].photos.count - 1
+        return networkPhotoUrlImageArray.count - 1
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -478,7 +506,7 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCell
             let size = returnLayoutSize(selectedLayout: selectedLayout!)
             cell.backImageView = applyBackImageViewLayout(selectedLayout: selectedLayout!, smallBig: size, imageView: cell.backImageView)
-            cell.backImageView.image = networkPhotoUrlImageArray[indexPath.row]
+            cell.backImageView.image = networkPhotoUrlImageArray[indexPath.row+1]
             //cell.photoImageView = applyImageViewLayout(selectedLayout: selectedLayout!, smallBig: size, imageView: cell.photoImageView, image: networkPhotoUrlImageArray[indexPath.row+1])
             //AlbumDatabase.arrayList[albumIndex!].photos[indexPath.row+1])
             return cell
@@ -567,7 +595,9 @@ extension AlbumDetailController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GoToInfoVC" {
             let dest = segue.destination as! AlbumInfoVC
-            dest.albumIndex = albumUid
+            dest.albumUid = albumUid
+            dest.infoAlbum = networkDetailAlbum
+            dest.infoCoverImage = networkPhotoUrlImageArray[0]
         }
     }
 }

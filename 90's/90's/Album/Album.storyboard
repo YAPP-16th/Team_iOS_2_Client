@@ -2279,50 +2279,6 @@
             </objects>
             <point key="canvasLocation" x="5598.5507246376819" y="126.5625"/>
         </scene>
-        <!--Image TestVC-->
-        <scene sceneID="0qM-Tn-sCn">
-            <objects>
-                <viewController id="y6a-hc-ebw" customClass="imageTestVC" customModule="_0_s" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vcJ-gX-8Jl">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zyQ-hn-MBa">
-                                <rect key="frame" x="20" y="93" width="374" height="467"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="374" id="U5o-hL-7ac"/>
-                                    <constraint firstAttribute="height" constant="467" id="i7d-B6-9Nf"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hse-nz-6xE">
-                                <rect key="frame" x="92" y="655" width="230" height="78"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="78" id="7f6-KP-jCk"/>
-                                    <constraint firstAttribute="width" constant="230" id="muy-st-2uk"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="button:" destination="y6a-hc-ebw" eventType="touchUpInside" id="jTv-Nv-RZ8"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="zyQ-hn-MBa" firstAttribute="centerX" secondItem="qgj-l1-LBN" secondAttribute="centerX" id="3iz-Lw-yee"/>
-                            <constraint firstItem="Hse-nz-6xE" firstAttribute="centerX" secondItem="qgj-l1-LBN" secondAttribute="centerX" id="Iii-4A-CLH"/>
-                            <constraint firstItem="qgj-l1-LBN" firstAttribute="bottom" secondItem="Hse-nz-6xE" secondAttribute="bottom" constant="129" id="Pgu-Tw-Img"/>
-                            <constraint firstItem="zyQ-hn-MBa" firstAttribute="top" secondItem="qgj-l1-LBN" secondAttribute="top" constant="49" id="zht-46-HVI"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="qgj-l1-LBN"/>
-                    </view>
-                    <connections>
-                        <outlet property="imageView" destination="zyQ-hn-MBa" id="A97-me-500"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="M1L-wr-PYU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3375.36231884058" y="849.77678571428567"/>
-        </scene>
     </scenes>
     <resources>
         <image name="90SLogo" width="41" height="20"/>
