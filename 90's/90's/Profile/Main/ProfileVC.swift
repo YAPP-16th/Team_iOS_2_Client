@@ -21,6 +21,10 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var profileAlbumCount: UILabel!
     @IBOutlet weak var profilePrintCount: UILabel!
     @IBOutlet weak var settingTableView: UITableView!
+    //로그아웃 버튼, 회원탈퇴 버튼
+    @IBOutlet weak var logoutBtn: UIButton!
+    @IBOutlet weak var leaveBtn: UIButton!
+    @IBOutlet weak var lineImageView: UIImageView!
     
     let menuArr : [String] = ["주문 내역", "내 정보 관리", "FAQ", "설정"]
     var isDefault = true
@@ -39,6 +43,18 @@ class ProfileVC: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.switchEnterView()
     }
+    
+    @IBAction func goLogout(_ sender: Any) {
+        //저장되어있는 모든 정보를 삭제함
+        removeSavedUserInfo()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.switchEnterView()
+    }
+    
+    @IBAction func goLeave(_ sender: Any) {
+        
+    }
+    
     
     func setUI(){
         settingTableView.delegate = self
@@ -85,8 +101,18 @@ class ProfileVC: UIViewController {
             isDefault = false
             guestView.isHidden = true
         }else {
+            logoutBtn.isHidden = true
+            leaveBtn.isHidden = true
             profileView.isHidden = true
+            lineImageView.isHidden = true
         }
+    }
+    
+    func removeSavedUserInfo(){
+        UserDefaults.standard.removeObject(forKey: "email")
+        UserDefaults.standard.removeObject(forKey: "password")
+        UserDefaults.standard.removeObject(forKey: "social")
+        UserDefaults.standard.removeObject(forKey: "jwt")
     }
     
     
@@ -115,7 +141,7 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let menuName = menuArr[indexPath.row]
-
+        
         switch indexPath.row {
         case 0:
             if isDefault {
