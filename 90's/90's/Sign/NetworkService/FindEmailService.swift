@@ -17,7 +17,7 @@ struct FindEmailService : APIManager {
     func findEmail(phoneNum:String, completion: @escaping(completeFindEmail)){
         let body = ["phoneNum":phoneNum]
         
-        AF.request(findEmailURL, method: .post, parameters: body, headers: header).responseJSON(completionHandler: {
+        AF.request(findEmailURL, method: .post, parameters: body, encoding:JSONEncoding.default, headers: header).responseJSON(completionHandler: {
             response in
             switch response.result {
             case .success:

@@ -136,7 +136,8 @@ class ProfileAuthenViewController: UIViewController {
                 navigationController?.pushViewController(newEmailVC, animated: true)
             }else if(authenType == "비밀번호 변경"){
                 let newPassVC = storyboard?.instantiateViewController(withIdentifier: "NewPassViewController") as! NewPassViewController
-                newPassVC.phoneNum = self.telephone navigationController?.pushViewController(newPassVC, animated: true)
+                newPassVC.phoneNum = self.telephone
+                navigationController?.pushViewController(newPassVC, animated: true)
             }else {
                 changePhone()
             }
