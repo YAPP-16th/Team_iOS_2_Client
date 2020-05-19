@@ -230,11 +230,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
     }
     
+    
     func switchAlbumInfoView() {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
-        
-    
         let mainRoot : UIStoryboard = UIStoryboard(name: "Main", bundle: .main)
         let rootVC = mainRoot.instantiateViewController(withIdentifier: "EnterViewController") as! EnterViewController
         rootVC.initialEnter = false
