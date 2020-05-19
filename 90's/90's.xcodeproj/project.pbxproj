@@ -63,7 +63,6 @@
 		A3025CA02441ADCA00041723 /* EnterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3025C9F2441ADCA00041723 /* EnterViewController.swift */; };
 		A3025CA22441AE3700041723 /* FindEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3025CA12441AE3700041723 /* FindEmailViewController.swift */; };
 		A3025CA42441AE9800041723 /* FindEmailErrViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3025CA32441AE9800041723 /* FindEmailErrViewController.swift */; };
-		A3025CA62441AED700041723 /* MakeNewPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3025CA52441AED700041723 /* MakeNewPassViewController.swift */; };
 		A30B21E12462BCAC00BDC75B /* NewPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30B21E02462BCAC00BDC75B /* NewPassViewController.swift */; };
 		A30B21E32462BCB800BDC75B /* CompleteManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30B21E22462BCB800BDC75B /* CompleteManageViewController.swift */; };
 		A30B21F82462D1FE00BDC75B /* ChangePassService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30B21F72462D1FE00BDC75B /* ChangePassService.swift */; };
@@ -87,6 +86,8 @@
 		A333762E2420E9D0000DC7C4 /* AlbumQuantityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A333762D2420E9D0000DC7C4 /* AlbumQuantityController.swift */; };
 		A33376302420EA9D000DC7C4 /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A333762F2420EA9D000DC7C4 /* AlbumCell.swift */; };
 		A33E5B2B244A047D00794169 /* TermDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33E5B2A244A047D00794169 /* TermDetailViewController.swift */; };
+		A36AF4F32473D5FC00191A3C /* FindEmailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36AF4F22473D5FC00191A3C /* FindEmailService.swift */; };
+		A36AF5042473E44D00191A3C /* FindEmailResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36AF5032473E44D00191A3C /* FindEmailResult.swift */; };
 		A36DC86F24236386001B3767 /* AlbumDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36DC86E24236386001B3767 /* AlbumDetailController.swift */; };
 		A36DC87124236E45001B3767 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36DC87024236E45001B3767 /* PhotoCell.swift */; };
 		A3768D50246307EE009E64EE /* ChangePhoneService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3768D4F246307EE009E64EE /* ChangePhoneService.swift */; };
@@ -113,7 +114,6 @@
 		A3E133D824558997007950D8 /* ManageInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E133D724558997007950D8 /* ManageInfoViewController.swift */; };
 		A3E133DA245589A1007950D8 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E133D9245589A1007950D8 /* FAQViewController.swift */; };
 		A3E133DC245589A7007950D8 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E133DB245589A7007950D8 /* SettingViewController.swift */; };
-		A3E2DB7A2454576B00AB2156 /* CompleteNewPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E2DB792454576B00AB2156 /* CompleteNewPassViewController.swift */; };
 		A3E2DB7C2454694000AB2156 /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E2DB7B2454694000AB2156 /* NicknameViewController.swift */; };
 		A3E2DB7E24546E7200AB2156 /* APIMagager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E2DB7D24546E7200AB2156 /* APIMagager.swift */; };
 		A3E2DB8224547A0800AB2156 /* CheckEmailResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E2DB8124547A0800AB2156 /* CheckEmailResult.swift */; };
@@ -581,7 +581,6 @@
 		A3025C9F2441ADCA00041723 /* EnterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterViewController.swift; sourceTree = "<group>"; };
 		A3025CA12441AE3700041723 /* FindEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailViewController.swift; sourceTree = "<group>"; };
 		A3025CA32441AE9800041723 /* FindEmailErrViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailErrViewController.swift; sourceTree = "<group>"; };
-		A3025CA52441AED700041723 /* MakeNewPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeNewPassViewController.swift; sourceTree = "<group>"; };
 		A30B21E02462BCAC00BDC75B /* NewPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPassViewController.swift; sourceTree = "<group>"; };
 		A30B21E22462BCB800BDC75B /* CompleteManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteManageViewController.swift; sourceTree = "<group>"; };
 		A30B21F72462D1FE00BDC75B /* ChangePassService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassService.swift; sourceTree = "<group>"; };
@@ -607,6 +606,8 @@
 		A333762D2420E9D0000DC7C4 /* AlbumQuantityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumQuantityController.swift; sourceTree = "<group>"; };
 		A333762F2420EA9D000DC7C4 /* AlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCell.swift; sourceTree = "<group>"; };
 		A33E5B2A244A047D00794169 /* TermDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermDetailViewController.swift; sourceTree = "<group>"; };
+		A36AF4F22473D5FC00191A3C /* FindEmailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailService.swift; sourceTree = "<group>"; };
+		A36AF5032473E44D00191A3C /* FindEmailResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailResult.swift; sourceTree = "<group>"; };
 		A36DC86E24236386001B3767 /* AlbumDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailController.swift; sourceTree = "<group>"; };
 		A36DC87024236E45001B3767 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		A3768D4F246307EE009E64EE /* ChangePhoneService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhoneService.swift; sourceTree = "<group>"; };
@@ -633,7 +634,6 @@
 		A3E133D724558997007950D8 /* ManageInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageInfoViewController.swift; sourceTree = "<group>"; };
 		A3E133D9245589A1007950D8 /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		A3E133DB245589A7007950D8 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		A3E2DB792454576B00AB2156 /* CompleteNewPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteNewPassViewController.swift; sourceTree = "<group>"; };
 		A3E2DB7B2454694000AB2156 /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		A3E2DB7D24546E7200AB2156 /* APIMagager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMagager.swift; sourceTree = "<group>"; };
 		A3E2DB8124547A0800AB2156 /* CheckEmailResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEmailResult.swift; sourceTree = "<group>"; };
@@ -706,9 +706,7 @@
 				A3025C9D2441AD9000041723 /* LoginMainViewController.swift */,
 				A3025CA12441AE3700041723 /* FindEmailViewController.swift */,
 				A3025CA32441AE9800041723 /* FindEmailErrViewController.swift */,
-				A3025CA52441AED700041723 /* MakeNewPassViewController.swift */,
 				A3D8758E24448BCE0085F17B /* AuthenViewController.swift */,
-				A3E2DB792454576B00AB2156 /* CompleteNewPassViewController.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -1650,6 +1648,7 @@
 				A3CCD8422454B30300C73E31 /* EmailCheckService.swift */,
 				A38A2D0F2458719E000BF82D /* TelephoneAuthService.swift */,
 				A3F30973246F22080051FF6B /* DefaultUserService.swift */,
+				A36AF4F22473D5FC00191A3C /* FindEmailService.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -1661,6 +1660,7 @@
 				A3CCD8462454C31B00C73E31 /* SignUpResult.swift */,
 				A3E2DB8124547A0800AB2156 /* CheckEmailResult.swift */,
 				A38A2D0D24587170000BF82D /* TelephoneAuthResult.swift */,
+				A36AF5032473E44D00191A3C /* FindEmailResult.swift */,
 			);
 			path = NetworkResult;
 			sourceTree = "<group>";
@@ -2021,7 +2021,6 @@
 				A318AC72243E290C00245434 /* TermViewController.swift in Sources */,
 				A3CCD8452454BE7B00C73E31 /* SignUpService.swift in Sources */,
 				9B180808243E10F300AF1CE6 /* StickerPopupVC.swift in Sources */,
-				A3025CA62441AED700041723 /* MakeNewPassViewController.swift in Sources */,
 				A3B1D7B4246FCACE00D95DE3 /* SNSViewController.swift in Sources */,
 				A3025CA22441AE3700041723 /* FindEmailViewController.swift in Sources */,
 				A3B0D201245D9DF800DB90ED /* NewEmailViewController.swift in Sources */,
@@ -2070,7 +2069,6 @@
 				A318AC76243E292600245434 /* PasswordViewController.swift in Sources */,
 				A3E133D624558988007950D8 /* OrderListViewController.swift in Sources */,
 				A3025CA42441AE9800041723 /* FindEmailErrViewController.swift in Sources */,
-				A3E2DB7A2454576B00AB2156 /* CompleteNewPassViewController.swift in Sources */,
 				A38A2D102458719E000BF82D /* TelephoneAuthService.swift in Sources */,
 				A3B0D218245DB47800DB90ED /* ChangeEmailService.swift in Sources */,
 				A3025CA02441ADCA00041723 /* EnterViewController.swift in Sources */,
@@ -2090,6 +2088,8 @@
 				9B1B7A65244C1045008ED381 /* AlbumLayoutPreviewVC.swift in Sources */,
 				A318AC7C243E2A7600245434 /* CompleteViewController.swift in Sources */,
 				A318AC7E243E2F9E00245434 /* TermCell.swift in Sources */,
+				A36AF5042473E44D00191A3C /* FindEmailResult.swift in Sources */,
+				A36AF4F32473D5FC00191A3C /* FindEmailService.swift in Sources */,
 				A3CCD8432454B30300C73E31 /* EmailCheckService.swift in Sources */,
 				A3315E0C245C5BA6005536C2 /* OrderCell.swift in Sources */,
 				9BC16B1A2435B68F007F106C /* photoStickerCollectionCell.swift in Sources */,
