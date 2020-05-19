@@ -78,6 +78,7 @@ class AlbumDetailController : UIViewController {
     var sharingword : String?
     // - network array
     var photoUidArray = [PhotoGetPhotoData]()
+    var networkDetailAlbum : album?
     var networkPhotoUidArray : [Int] = []
     var networkPhotoStringArray : [String] = []
     var networkPhotoUrlImageArray = [UIImage]()
@@ -352,6 +353,7 @@ extension AlbumDetailController {
                 case 200 :
                     guard let data = response.data else {return}
                     guard let value = try? JSONDecoder().decode(album.self, from: data) else {return}
+                    self.networkDetailAlbum = value
                     self.albumName = value.name
                     self.albumCount = value.count
                     self.albumPhotoLimit = value.photoLimit
@@ -593,7 +595,9 @@ extension AlbumDetailController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GoToInfoVC" {
             let dest = segue.destination as! AlbumInfoVC
-            dest.albumIndex = albumUid
+            dest.albumUid = albumUid
+            dest.infoAlbum = networkDetailAlbum
+            dest.infoCoverImage = networkPhotoUrlImageArray[0]
         }
     }
 }

@@ -45,20 +45,6 @@ struct AlbumService : APIManager {
         })
     }
     
-//    // change Album Order status, post, 인화 쪽
-//    func albumChangeOrderStatus(completion : @escaping(completeAlbumSerivce)){
-//        let url = Self.url("/album/changeAlbumOrderStatus")
-//
-//        AF.request(url, method: .post, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
-//            response in
-//            switch response.result {
-//            case .success:
-//                completion(response)
-//            case .failure(let err):
-//                print("==> Error in AlbumChangeOrderStatue Service : \(err)")
-//            }
-//        })
-//    }
     
     // CreateAlbum, Post, 앨범 생성
     func albumCreate(endDate : String, layoutUid : Int, name : String, photoLimit : Int, completion : @escaping(completeAlbumSerivce)){
@@ -80,21 +66,6 @@ struct AlbumService : APIManager {
             }
         })
     }
-    
-    // createAlbumOrder, post, 앨범 인화 주문
-//    func albumCreateOrder(completion : @escaping(completeAlbumSerivce)){
-//        let url = Self.url("/album/createAlbumOrder")
-//
-//        AF.request(url, method: .post, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
-//            response in
-//            switch response.result {
-//            case .success :
-//                completion(response)
-//            case .failure(let err):
-//                print("==> Error in AlbumCreateOrder Service : \(err)")
-//            }
-//        })
-//    }
 
     // getAlbum, post, 앨범 정보 가져오기
     func albumGetAlbum(uid:Int, completion : @escaping(completeAlbumSerivce)){
@@ -108,7 +79,6 @@ struct AlbumService : APIManager {
             switch response.result {
             case .success:
                 completion(response)
-                print("success")
             case .failure(let err):
                 print("==> Error in AlbumGetAlbum Service : \(err)")
             }
@@ -116,15 +86,17 @@ struct AlbumService : APIManager {
     }
     
     // getAlbumOwners, post, 앨범 오너 정보
-    func albumGetOwners(completion : @escaping(completeAlbumSerivce)){
+    func albumGetOwners(uid : Int, completion : @escaping(completeAlbumSerivce)){
         let url = Self.url("/album/getAlbumOwners")
+        let body : [String : Any] = [
+            "uid":uid
+        ]
         
-        AF.request(url, method: .post, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
+        AF.request(url, method: .post, parameters: body, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
             response in
             switch response.result {
             case .success:
                 completion(response)
-                print("success")
             case .failure(let err):
                 print("==> Error in AlbumGetOwners Service : \(err)")
             }
@@ -140,14 +112,13 @@ struct AlbumService : APIManager {
             switch response.result {
             case .success:
                 completion(response)
-                print("success")
             case .failure(let err):
                 print("==> Error in GetAlbums Service : \(err)")
             }
         })
     }
     
-    // plusCount, get 앨범 낡기 카운드. 뒤에 ?uid=00 붙여야 함
+    // plusCount, get 앨범 낡기 카운드
     func albumPlusCount(uid: Int, completion : @escaping(completeAlbumSerivce)){
         let url = Self.url("/album/plusCount")
         let body : [String : Any] = [
@@ -159,9 +130,27 @@ struct AlbumService : APIManager {
             switch response.result {
             case .success:
                 completion(response)
-                print("success")
             case .failure(let err):
                 print("==> Error in AlbumplusCount Service : \(err)")
+            }
+        })
+    }
+    
+    // removeUser, post
+    func albumRemoveUser(albumUid : Int, role : String, userUid : Int, completion: @escaping(completeAlbumSerivce)){
+        let url = Self.url("/album/removeUser")
+        let body : [String : Any] = [
+            "albumUid" : albumUid,
+            "role" : role,
+            "userUid" : userUid
+        ]
+        
+        AF.request(url, method: .post, parameters: body, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: { response in
+            switch response.result {
+            case .success :
+                completion(response)
+            case .failure(let err):
+                print("==> Error in AlbumRemoveUser Service : \(err)")
             }
         })
     }
@@ -228,22 +217,9 @@ extension AlbumService {
                 switch response.result {
                 case .success:
                     print(response)
-                    
                 case .failure(let err):
                     print("==> Error in PhotoUpload Service : \(err)")
             }
         }
-    }
-}
-
-/** Order **/
-extension AlbumService {
-    func albumOrderChangeStatus() {
-        let url = Self.url("/album/order/changeAlbumOrderStatus")
-        
-    }
-    
-    func albumOrderCreate() {
-        let url = Self.url("/album/order/createAlbumOrder")
     }
 }
