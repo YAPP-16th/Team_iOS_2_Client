@@ -57,7 +57,7 @@ extension AlbumCompleteVC {
         albumImageView.image = photo
         albumTitleLabel.text = albumName
         albumDateLabel.text = "\(albumStartDate!)  ~  \(albumEndDate!)"
-        albumCountLabel.text = String(albumMaxCount)
+        albumCountLabel.text = "\(albumMaxCount - 1)"
         askLabel.text = "이 앨범으로 결정하시겠습니까?\n한 번 앨범을 만들면 수정이 불가능 합니다"
         
         imageName = albumLayout.layoutName
@@ -70,7 +70,6 @@ extension AlbumCompleteVC {
             if let status = response.response?.statusCode {
                 switch status {
                 case 200 :
-                    print("create album 200")
                     guard let data = response.data else {return}
                     guard let uid = try? JSONDecoder().decode(AlbumCreateResult.self, from: data) else {return}
                     self.albumUid = uid.uid
@@ -90,11 +89,12 @@ extension AlbumCompleteVC {
     }
     
     func sendCoverImageService(uid : Int){
-        print("send coverimage loading..")
         AlbumService.shared.photoUpload(albumUid: uid, image: [photo!], imageName: albumLayout.layoutName, completion: {
             response in
             if let status = response.response?.statusCode {
                 switch status {
+                case 200 :
+                    print("album create : upload cover image complete")
                 case 401:
                     print("\(status) : bad request, no warning in Server")
                 case 404:

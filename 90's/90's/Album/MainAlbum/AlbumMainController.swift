@@ -31,7 +31,7 @@ class AlbumMainController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        defaultSetting()
+        self.tabBarController?.tabBar.isHidden = false
         AlbumMainreloadView()
     }
     
@@ -57,14 +57,14 @@ extension AlbumMainController {
     }
     
     func defaultSetting(){
-        if(AlbumDatabase.arrayList.count != 0){
+        if(albumUidArray.count > 0){
             introView.isHidden = true
             albumView.isHidden = false
         }else {
             introView.isHidden = false
             albumView.isHidden = true
         }
-        self.tabBarController?.tabBar.isHidden = false
+
     }
     
     func networkSetting(){
@@ -76,7 +76,9 @@ extension AlbumMainController {
                     guard let value = try? JSONDecoder().decode([album].self, from: data) else {return}
                     self.albumUidArray = value.map({$0.uid})
                     self.albumNameArray = value.map({$0.name})
+                    print("albumUid Array = \(self.albumUidArray), albumNameArray = \(self.albumNameArray)")
                     self.networkCoverUidSetting()
+                    self.defaultSetting()
                 case 401:
                     print("\(status) : bad request, no warning in Server")
                 case 404:
@@ -91,6 +93,8 @@ extension AlbumMainController {
     }
     
     func networkCoverUidSetting(){
+        if albumUidArray.count > 0 {
+        
         for i in 0...albumUidArray.count-1 {
         AlbumService.shared.photoGetPhoto(albumUid: albumUidArray[i], completion: { response in
             if let status = response.response?.statusCode {
@@ -112,13 +116,17 @@ extension AlbumMainController {
             }
         })
         }
+            
+        }
     }
     
     func networkCoverImageSetting(){
         for i in 0...albumCoverUidArray.count-1 {
+            print("setting photo download")
             AlbumService.shared.photoDownload(albumUid: albumUidArray[i], photoUid: albumCoverUidArray[i], completion: { response in
                 if case .success(let image) = response.result {
                     self.albumCoverArray.append(image)
+                    print("albumCoverArray = \(self.albumCoverArray)")
                     self.albumCollectionView.reloadData()
                 }
             })
@@ -148,13 +156,13 @@ extension AlbumMainController : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return albumCoverArray.count-1//AlbumDatabase.arrayList.count
+        return albumCoverArray.count//AlbumDatabase.arrayList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlbumCell", for: indexPath) as! AlbumCell
         
-        cell.imageView.image =  albumCoverArray[indexPath.row+1]
+        cell.imageView.image =  albumCoverArray[indexPath.row]
         cell.nameLabel.text = albumNameArray[indexPath.row]
     
         return cell
