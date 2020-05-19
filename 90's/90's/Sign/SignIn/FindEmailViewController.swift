@@ -12,11 +12,12 @@ class FindEmailViewController: UIViewController {
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var nickNameLabel: UILabel!
+    var email:String!
+    var nickName:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        //통신을 통해 찾아온 email, nickName 받아옴
     }
     
     @IBAction func goBack(_ sender: Any) {
@@ -29,6 +30,8 @@ class FindEmailViewController: UIViewController {
     
     func setUI(){
         loginBtn.layer.cornerRadius = 8.0
+        emailLabel.text = email
+        nickNameLabel.text = nickName
     }
     
 }

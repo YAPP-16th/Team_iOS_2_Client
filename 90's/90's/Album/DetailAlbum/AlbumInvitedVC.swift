@@ -68,5 +68,6 @@ extension AlbumInvitedVC : UITextFieldDelegate {
         nextVC.albumIndex = albumIndex
         nextVC.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(nextVC, animated: true)
+
     }
 }

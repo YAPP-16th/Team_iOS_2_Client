@@ -30,17 +30,22 @@ class AlbumInfoVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func inviteBtn(_ sender: UIButton) {
-        print("Touch")
         inviteSetting()
     }
     @IBAction func quitMemberBtn(_ sender: UIButton) {
         switchHideView(value: false)
     }
     
-    private var ownerArray : [String] = ["dayeun"]
     private var personArray : [String] = ["dayeun","KyungJin","Jeongmin"]
-    var albumIndex : Int = 0
+    var albumUid: Int = 0
     var initialize : Bool = false
+    
+    var infoAlbum : album?
+    var infoCoverImage : UIImage?
+    var infoArray = [AlbumGetOwnersResult]()
+    var roleArray : [String] = []
+    var userUidArray : [Int] = []
+    var userNameArray : [String] = []
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -53,25 +58,26 @@ class AlbumInfoVC: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        networkSetting()
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         defaultSetting()
-        
-        
     }
 }
 
 
 extension AlbumInfoVC : albumInfoDeleteProtocol {
     func defaultSetting(){
-        let album = AlbumDatabase.arrayList[albumIndex]
-        albumCoverImageView.image = album.photos[0]
-        albumNameLabel.text = album.albumName
-        albumDateLabel.text = "\(album.albumStartDate!)  ~  \(album.albumEndDate!)"
-        albumCountLabel.text = String(album.albumMaxCount)
-        albumLayoutLabel.text = album.albumLayout.layoutName
+        albumCoverImageView.image = infoCoverImage
+        albumNameLabel.text = infoAlbum?.name
+        albumDateLabel.text = "\(infoAlbum?.created_at.split(separator: "T").first)  ~  \(infoAlbum?.endDate.split(separator: "T").first)"
+        albumCountLabel.text = "\(infoAlbum?.count)"
+        albumLayoutLabel.text = getLayoutByUid(value: infoAlbum?.layoutUid ?? 0).layoutName
         
         memberTableView.delegate = self
         memberTableView.dataSource = self
@@ -98,24 +104,88 @@ extension AlbumInfoVC : albumInfoDeleteProtocol {
             })
             hideView.isHidden = false
         }
-        
     }
+    
+    func networkSetting(){
+        // 멤버 목록 가져오기
+        AlbumService.shared.albumGetOwners(uid:albumUid, completion: { response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 202:
+                    guard let data = response.data else {return}
+                    guard let value = try? JSONDecoder().decode([AlbumGetOwnersResult].self, from: data) else {return}
+                    self.infoArray = value
+                    self.roleArray = self.infoArray.map { $0.role }
+                    self.userUidArray = self.infoArray.map{ $0.userUid }
+                    self.memberTableView.reloadData()
+                case 401:
+                    print("\(status) : bad request, no warning in Server")
+                case 404:
+                    print("\(status) : Not found, no address")
+                case 500 :
+                    print("\(status) : Server error in albumInfo - getowners")
+                default:
+                    return
+                }
+            }
+        })
+    }
+    
+    // 멤버 이름 가져오기 필요!
+    
+    
+    func networkRemoveUser(uid : Int, userRole : String){
+        // 멤버 삭제
+        AlbumService.shared.albumRemoveUser(albumUid: albumUid, role: userRole, userUid: uid, completion: { response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200 :
+                    self.removedAlert()
+                    print("removed user success")
+                case 401 :
+                    print("\(status) : bad request, no warning in Server")
+                case 404 :
+                    print("\(status) : Not found, no address")
+                case 500 :
+                    print("\(status) : Server error in albumInfo - getowners")
+                default:
+                    return
+                }
+            }
+        })
+    }
+    
+    
+    func removedAlert(){
+        let alert = UIAlertController(title: "멤버 삭제", message: "멤버 삭제 완료!", preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(action)
+        self.present(alert, animated: true)
+    }
+//    func networkGetUserName(){
+//        guard let jwt = UserDefaults.standard.string(forKey: "jwt") else {return}
+//
+//        GetProfileService.shared.getProfile(token: jwt, completion: { response in
+//            if let status = response.response?.statusCode{
+//                switch status {
+//                case 200 :
+//                    guard let data = response.data else { return }
+//                    guard let value = try? JSONDecoder().decode(ProfileResult.self, from: data) else {return}
+//                    self.userNameArray.append(value.userInfo.name)
+//                case 401:
+//                    print("\(status) : bad request, no warning in Server")
+//                case 404:
+//                    print("\(status) : Not found, no address")
+//                case 500 :
+//                    print("\(status) : Server error in albumInfo - getusername")
+//                default:
+//                    return
+//                }
+//            }
+//        })
+//    }
 }
 
-extension AlbumInfoVC : inviteProtocol {
-    
-    
-    func inviteSetting() {
-         
-            let templeteId = "24532";
-            KLKTalkLinkCenter.shared().sendCustom(withTemplateId: templeteId, templateArgs: nil, success: {(warningMsg, argumentMsg) in
-                print("warning message : \(String(describing: warningMsg))")
-                print("argument message : \(String(describing: argumentMsg))")
-            }, failure: {(error) in
-                print("error \(error)")
-            })
-        }
-}
 
 extension AlbumInfoVC {
     @objc func touchHideCancleBtn(){
@@ -130,6 +200,18 @@ extension AlbumInfoVC {
 }
 
 
+extension AlbumInfoVC : inviteProtocol {
+    func inviteSetting() {
+            let templeteId = "24532";
+            KLKTalkLinkCenter.shared().sendCustom(withTemplateId: templeteId, templateArgs: nil, success: {(warningMsg, argumentMsg) in
+                print("warning message : \(String(describing: warningMsg))")
+                print("argument message : \(String(describing: argumentMsg))")
+            }, failure: {(error) in
+                print("error \(error)")
+            })
+        }
+}
+
 // 오너의 경우 헤더뷰로 하나 넣기
 extension AlbumInfoVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -138,17 +220,19 @@ extension AlbumInfoVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "membertablecell", for: indexPath) as! MemberTableViewCell
+        
         if initialize == false {
             cell.memberImageView.image = UIImage(named: "iconOwner")
-            cell.memberNameLabel.text = personArray[indexPath.row]
+            cell.memberNameLabel.text = "\(userUidArray[indexPath.row])"
             cell.memberDeleteBtn.isEnabled = false
             cell.memberDeleteBtn.isHidden = true
             initialize = true
         } else {
             cell.memberImageView.image = UIImage(named: "iconMembers")
-            cell.memberNameLabel.text = personArray[indexPath.row]
+            cell.memberNameLabel.text = "\(userUidArray[indexPath.row])"
             cell.memberDeleteBtn.isEnabled = true
         }
+        cell.memberDeleteBtn.tag = indexPath.row
     
         return cell
     }

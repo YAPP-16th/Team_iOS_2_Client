@@ -8,26 +8,27 @@
 
 import Foundation
 
-let tempAlbumToken : String = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxOSIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE1ODg0MDg5MjcsImV4cCI6MjIxOTEyODkyN30.mK2RJ0Ywv5c6iakOHA0_Mln46-A0ElJoHTVuzQceeZE"
+let tempAlbumToken : String = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwicm9sZXMiOlsiUk9MRV9URVNURVIiXSwiaWF0IjoxNTg5ODg5Mjg3LCJleHAiOjIyMjA2MDkyODd9.xM_1NEF5IaqgcHuVHQRiuerPwIzbtvFuefV_e1KQIsY"
 
 struct Token : Codable {
     var token : String?
 }
 
 struct album : Codable {
-    var complete : Bool
-    var count : Int
-    var created_at : String
-    var endDate : String
-    var layoutUid : Int
+    var uid : Int
     var name : String
     var photoLimit : Int
-    var uid : Int
+    var layoutUid : Int
+    var count : Int
+//    var orderStatus : n
+    var endDate : String
+    var created_at : String
     var updated_at : String
+    var complete : Bool
 }
 
 
-// post
+// post, albumGetAlbum 결과
 struct AlbumGetResult : Codable {
     var complete : Bool
     var count : Int
@@ -76,6 +77,13 @@ struct AlbumAddUserResult : Codable {
 // get
 struct AlbumGetAlbumsResult : Codable {
     var result : Array<album>
+}
+
+// post
+struct AlbumGetOwnersResult : Codable {
+    var albumUid : Int
+    var userUid : Int
+    var role : String
 }
 
 // post

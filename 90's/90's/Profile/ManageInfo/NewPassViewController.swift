@@ -17,7 +17,11 @@ class NewPassViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var validationLabel: UILabel!
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var buttonConst: NSLayoutConstraint!
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    var authenType:String?
     var pass:String!
+    var phoneNum:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +54,13 @@ class NewPassViewController: UIViewController, UITextFieldDelegate {
         tfConfirmPass.isEnabled = false
         validationLabel.isHidden = true
         nextBtn.layer.cornerRadius = 8.0
+        
+        if let type = authenType {
+            if(type == "MainFindPass"){
+                self.titleLabel.isHidden = true
+            }
+        }
+     
     }
     
     func setObserver(){
@@ -127,7 +138,7 @@ class NewPassViewController: UIViewController, UITextFieldDelegate {
 extension NewPassViewController {
     //비밀번호 변경 서버통신 메소드
     func changePassword(){
-        ChangePassService.shared.changePass(password: self.pass, completion: { response in
+        ChangePassService.shared.changePass(password: self.pass, phoneNum: self.phoneNum, completion: { response in
             if let status = response.response?.statusCode {
                 switch status {
                 case 200:

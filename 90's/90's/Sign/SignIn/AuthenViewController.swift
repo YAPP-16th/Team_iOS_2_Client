@@ -159,32 +159,72 @@ class AuthenViewController: UIViewController {
         if(inputAuthenNumber == number){
             switch authenType {
             case "findEmail":
-                if(tfTelephone.text == "111-1111-1111"){
-                    let findEmailVC = storyboard?.instantiateViewController(withIdentifier: "FindEmailViewController") as! FindEmailViewController
-                    navigationController?.pushViewController(findEmailVC, animated: true)
-                }else{
-                    let findEmailErrVC = storyboard?.instantiateViewController(withIdentifier: "FindEmailErrViewController") as! FindEmailErrViewController
-                    navigationController?.pushViewController(findEmailErrVC, animated: true)
-                }
+                self.findEmail()
             case "findPass":
                 let profileSB = UIStoryboard(name: "Profile", bundle: nil)
                 let newPassVC = profileSB.instantiateViewController(withIdentifier: "NewPassViewController") as! NewPassViewController
+                newPassVC.authenType = "MainFindPass"
+                newPassVC.phoneNum = self.telephone
                 navigationController?.pushViewController(newPassVC, animated: true)
             default:
                 return
             }
-            
         }else{
             validationLabel.isHidden = false
         }
     }
     
+    func findEmail(){
+        FindEmailService.shared.findEmail(phoneNum: self.telephone, completion: {
+            response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200:
+                    guard let data = response.data else { return }
+                    let decoder = JSONDecoder()
+                    guard let findEmailResult = try? decoder.decode(FindEmailResult.self, from: data) else { return }
+                    let findEmailVC = self.storyboard?.instantiateViewController(withIdentifier: "FindEmailViewController") as! FindEmailViewController
+                    findEmailVC.email = findEmailResult.email
+                    findEmailVC.nickName = findEmailResult.name
+                    self.navigationController?.pushViewController(findEmailVC, animated: true)
+                    break
+                case 400:
+                    let decoder = JSONDecoder()
+                    guard let data = response.data else { return }
+                    guard let errResult = try? decoder.decode(FindEmailErrResult.self, from: data) else { return }
+                    if(errResult.message == "User is not exist"){
+                        let findEmailErrVC = self.storyboard?.instantiateViewController(withIdentifier: "FindEmailErrViewController") as! FindEmailErrViewController
+                        self.navigationController?.pushViewController(findEmailErrVC, animated: true)
+                    }
+                    break
+                case 401...500:
+                    self.showFindEmailAlert()
+                    break
+                default:
+                    return
+                }
+            }
+            
+        })
+        
+    }
+    
+    
     func showErrAlert(){
-           let alert = UIAlertController(title: "오류", message: "인증번호 전송 불가", preferredStyle: .alert)
-           let action = UIAlertAction(title: "확인", style: .default)
-           alert.addAction(action)
-           self.present(alert, animated: true)
-       }
+        let alert = UIAlertController(title: "오류", message: "인증번호 전송 불가", preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(action)
+        self.present(alert, animated: true)
+    }
+    
+    func showFindEmailAlert(){
+        let alert = UIAlertController(title: "오류", message: "이메일 찾기 불가", preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(action)
+        self.present(alert, animated: true)
+    }
+    
+    
     
     @objc func keyboardWillShow(_ notification: Notification) {
         let userInfo = notification.userInfo
