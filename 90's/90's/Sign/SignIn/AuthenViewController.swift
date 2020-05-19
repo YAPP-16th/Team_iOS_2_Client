@@ -163,6 +163,8 @@ class AuthenViewController: UIViewController {
             case "findPass":
                 let profileSB = UIStoryboard(name: "Profile", bundle: nil)
                 let newPassVC = profileSB.instantiateViewController(withIdentifier: "NewPassViewController") as! NewPassViewController
+                newPassVC.authenType = "MainFindPass"
+                newPassVC.phoneNum = self.telephone
                 navigationController?.pushViewController(newPassVC, animated: true)
             default:
                 return

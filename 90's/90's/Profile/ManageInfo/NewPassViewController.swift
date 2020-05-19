@@ -17,6 +17,9 @@ class NewPassViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var validationLabel: UILabel!
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var buttonConst: NSLayoutConstraint!
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    var authenType:String?
     var pass:String!
     var phoneNum:String!
     
@@ -51,6 +54,13 @@ class NewPassViewController: UIViewController, UITextFieldDelegate {
         tfConfirmPass.isEnabled = false
         validationLabel.isHidden = true
         nextBtn.layer.cornerRadius = 8.0
+        
+        if let type = authenType {
+            if(type == "MainFindPass"){
+                self.titleLabel.isHidden = true
+            }
+        }
+     
     }
     
     func setObserver(){
