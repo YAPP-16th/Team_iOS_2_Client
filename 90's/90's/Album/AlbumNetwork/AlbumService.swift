@@ -19,7 +19,7 @@ struct album : Codable {
     var name : String
     var photoLimit : Int
     var layoutUid : Int
-    var count : Int
+    var count : Int // 앨범 낡기
 //    var orderStatus : n
     var endDate : String
     var created_at : String
@@ -82,6 +82,7 @@ struct AlbumGetAlbumsResult : Codable {
 // post
 struct AlbumGetOwnersResult : Codable {
     var albumUid : Int
+    var name : String
     var userUid : Int
     var role : String
 }

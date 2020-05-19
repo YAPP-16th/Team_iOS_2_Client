@@ -67,12 +67,6 @@ class AlbumDetailController : UIViewController {
     var selectedLayout : AlbumLayout?
     // - received data from before vc
     var albumUid : Int = 0
-    var isAlbumCount : Bool = false
-    // - receive server data form
-    var albumCount : Int = 0
-    var albumLayoutUid : Int = 0
-    var albumName : String = ""
-    var albumPhotoLimit : Int = 0
     //var getAlbum : album?
     
     var sharingword : String?
@@ -128,25 +122,12 @@ extension AlbumDetailController {
     }
     
     func defaultSetting(){
-        albumNameLabel.text = albumName //getAlbum?.name //AlbumDatabase.arrayList[albumIndex!].albumName
-        albumCountLabel.text = "\(photoUidArray.count - 1) 개의 추억이 쌓였습니다"
-        selectedLayout = getLayoutByUid(value: albumLayoutUid)
-        
         hideView.isHidden = true
         hideWhiteView.layer.cornerRadius = 15
-
-        hideImageZoom.frame.size = CGSize(width: setZoomImageView(layout: selectedLayout!).width - 60, height: setZoomImageView(layout: selectedLayout!).height - 60)
-        hideImageZoom.center = view.center
 
         // 순서 바꾸기
         longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gesture:)))
         photoCollectionView.addGestureRecognizer(longPressGesture)
-        
-        if isAlbumCount == true {
-            print("album order apply")
-            networkAddCount()
-            isAlbumCount = false
-        }
     }
     
     func buttonSetting(){
@@ -354,10 +335,11 @@ extension AlbumDetailController {
                     guard let data = response.data else {return}
                     guard let value = try? JSONDecoder().decode(album.self, from: data) else {return}
                     self.networkDetailAlbum = value
-                    self.albumName = value.name
-                    self.albumCount = value.count
-                    self.albumPhotoLimit = value.photoLimit
-                    self.albumLayoutUid = value.layoutUid
+                    self.albumNameLabel.text = value.name
+                    self.albumCountLabel.text = "사진 개수 미등록"// "\(value.count - 1) 개의 추억이 쌓였습니다"
+                    self.selectedLayout = self.getLayoutByUid(value: value.layoutUid)
+                    self.hideImageZoom.frame.size = CGSize(width: self.setZoomImageView(layout: self.selectedLayout!).width - 60, height: self.setZoomImageView(layout: self.selectedLayout!).height - 60)
+                    self.hideImageZoom.center = self.view.center
                 case 401:
                     print("\(status) : bad request, no warning in Server")
                 case 404:
@@ -453,7 +435,9 @@ extension AlbumDetailController {
     }
     
     @objc func touchAddPhotoBtn() {
-        if (photoUidArray.count-1 >= albumPhotoLimit) {
+        guard let data = networkDetailAlbum else {return}
+        
+        if (photoUidArray.count-1 >= data.count) {
             addPhotoBtn.isEnabled = false
             
             let alert = UIAlertController(title: "사진 추가 불가", message: "제한개수를 모두 채웠습니다.", preferredStyle: .alert)
