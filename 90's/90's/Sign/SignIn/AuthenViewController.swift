@@ -127,8 +127,8 @@ class AuthenViewController: UIViewController {
     }
     
     func getAuthenNumber(){
-        telephone = tfTelephone.text!.replacingOccurrences(of: "-", with: "")
-        //서버에서 문자를 보내고, 보낸 인증번호 받는 메소드
+        telephone = tfTelephone.text!
+//        서버에서 문자를 보내고, 보낸 인증번호 받는 메소드
         TelephoneAuthService.shared.telephoneAuth(phone: telephone, completion: { response in
             if let status = response.response?.statusCode {
                 switch status {
@@ -154,9 +154,9 @@ class AuthenViewController: UIViewController {
     }
     
     func goAuthen(authenType : String){
-        guard let inputAuthenNumber = tfAuthenNumber.text else { return }
-        guard let number = authenNumber else { return }
-        if(inputAuthenNumber == number){
+//        guard let inputAuthenNumber = tfAuthenNumber.text else { return }
+//        guard let number = authenNumber else { return }
+//        if(inputAuthenNumber == number){
             switch authenType {
             case "findEmail":
                 self.findEmail()
@@ -167,9 +167,9 @@ class AuthenViewController: UIViewController {
             default:
                 return
             }
-        }else{
-            validationLabel.isHidden = false
-        }
+//        }else{
+//            validationLabel.isHidden = false
+//        }
     }
     
     func findEmail(){
