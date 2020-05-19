@@ -831,7 +831,7 @@
         <!--Album InvitedVC-->
         <scene sceneID="gG6-rT-Cwh">
             <objects>
-                <viewController id="Pqn-gr-mha" customClass="AlbumInvitedVC" customModule="_0_s" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AlbumInvitedVC" id="Pqn-gr-mha" customClass="AlbumInvitedVC" customModule="_0_s" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Is9-JF-vrV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -975,7 +975,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9yo-aO-9Ei">
-                                        <rect key="frame" x="316" y="27" width="44" height="24"/>
+                                        <rect key="frame" x="316" y="15" width="44" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="44" id="2zA-Z8-4Vg"/>
                                         </constraints>

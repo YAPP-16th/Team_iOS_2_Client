@@ -14,6 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window:UIWindow?
     
+//    var rootViewController : UINavigationController {
+//        return self.window!.rootViewController as! UINavigationController
+//    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // Override point for customization after application launch.
@@ -226,20 +230,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
     }
     
+    
     func switchAlbumInfoView() {
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        let mainSB: UIStoryboard = UIStoryboard(name: "Album", bundle: nil)
-        let enterVC = mainSB.instantiateViewController(withIdentifier: "AlbumInfoVC") as! AlbumInfoVC
-        let enterNav = UINavigationController(rootViewController: enterVC)
-        enterNav.isNavigationBarHidden = true
         
-        self.window?.rootViewController = enterNav
+        let mainRoot : UIStoryboard = UIStoryboard(name: "Main", bundle: .main)
+        let rootVC = mainRoot.instantiateViewController(withIdentifier: "EnterViewController") as! EnterViewController
+        rootVC.initialEnter = false
+
+        let albumSB: UIStoryboard = UIStoryboard(name: "Album", bundle: .main)
+        let enterVC = albumSB.instantiateViewController(withIdentifier: "AlbumInvitedVC") as! AlbumInvitedVC
+        let detailVC = albumSB.instantiateViewController(withIdentifier: "albumDetailVC") as! AlbumDetailController
+
+        
+        let tabVC = mainRoot.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
+        let tabNav = UINavigationController(rootViewController: tabVC)
+        
+        tabNav.isNavigationBarHidden = true
+        tabNav.viewControllers = [rootVC, enterVC]
+        
+        self.window?.rootViewController = tabNav
         self.window?.makeKeyAndVisible()
+        
     }
     
-    
-    
-    
+        
 }
 
 
