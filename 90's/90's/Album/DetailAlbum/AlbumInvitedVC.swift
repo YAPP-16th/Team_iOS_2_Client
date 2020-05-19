@@ -58,13 +58,16 @@ extension AlbumInvitedVC : UITextFieldDelegate {
     }
     
     func buttonSetting(){
-        completeBtn.addTarget(self, action: #selector(touchCompleteBtn), for: .touchUpOutside)
+        completeBtn.addTarget(self, action: #selector(touchCompleteBtn), for: .touchUpInside)
     }
     
     @objc func touchCompleteBtn(){
         // 서버통신 후
+        print("Touch")
         let nextVC = storyboard?.instantiateViewController(withIdentifier: "albumDetailVC") as! AlbumDetailController
-        nextVC.albumUid = albumIndex
-        self.navigationController?.present(nextVC, animated: true)
+        nextVC.albumIndex = albumIndex
+        nextVC.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(nextVC, animated: true)
+
     }
 }
