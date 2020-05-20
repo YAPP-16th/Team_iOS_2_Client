@@ -53,7 +53,7 @@ class AlbumCompleteVC: UIViewController {
 extension AlbumCompleteVC {
     func defaultSetting(){
         albumCompleteBtn.layer.cornerRadius = 10
-        albumLayoutLabel.text = layoutSetting(albumLayout: albumLayout)
+        albumLayoutLabel.text = albumLayout.layoutName
         albumImageView.image = photo
         albumTitleLabel.text = albumName
         albumDateLabel.text = "\(albumStartDate!)  ~  \(albumEndDate!)"
@@ -80,7 +80,7 @@ extension AlbumCompleteVC {
                 case 404:
                     print("\(status) : Not found, no address")
                 case 500 :
-                    print("\(status) : Server error in completealbum - createalbum")
+                    print("\(status) : Server error in AlbumComplete - albumCreate")
                 default :
                     return
                 }
@@ -100,7 +100,7 @@ extension AlbumCompleteVC {
                 case 404:
                     print("\(status) : Not found, no address")
                 case 500 :
-                    print("\(status) : Server error in createalbum - photoupload")
+                    print("\(status) : Server error in AlbumComplete - photoUpload")
                 default :
                     return
                 }

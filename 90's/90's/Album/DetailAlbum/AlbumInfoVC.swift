@@ -132,7 +132,28 @@ extension AlbumInfoVC {
                 case 404:
                     print("\(status) : Not found, no address")
                 case 500 :
-                    print("\(status) : Server error in albumInfo - getowners")
+                    print("\(status) : Server error in AlbumInfo - getOwners")
+                default:
+                    return
+                }
+            }
+        })
+    }
+    
+    // 멤버 추가
+    func networkAddUser(albumuid : Int, username: String, userrole : String, useruid: Int){
+        AlbumService.shared.albumAddUser(albumUid: albumUid, name: username, role: userrole, userUid: useruid, completion: { response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200 :
+                    self.memberTableView.reloadData()
+                    print("albumInfo - add User complete")
+                case 401:
+                    print("\(status) : bad request, no warning in Server")
+                case 404:
+                    print("\(status) : Not found, no address")
+                case 500 :
+                    print("\(status) : Server error in AlbumInfo - addUser")
                 default:
                     return
                 }
@@ -153,7 +174,7 @@ extension AlbumInfoVC {
                 case 404 :
                     print("\(status) : Not found, no address")
                 case 500 :
-                    print("\(status) : Server error in albumInfo - getowners")
+                    print("\(status) : Server error in AlbumInfo - removeUser")
                 default:
                     return
                 }

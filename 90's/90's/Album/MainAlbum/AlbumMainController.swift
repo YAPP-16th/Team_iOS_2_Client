@@ -24,6 +24,7 @@ class AlbumMainController: UIViewController {
         let nextVC = storyboard?.instantiateViewController(withIdentifier : "AlbumNameController") as! AlbumNameController
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
+    
     var albumUidArray : [Int] = []
     var albumNameArray : [String] = []
     var albumCoverUidArray : [Int] = []
@@ -31,8 +32,8 @@ class AlbumMainController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        networkSetting()
         self.tabBarController?.tabBar.isHidden = false
-        AlbumMainreloadView()
     }
     
     override func viewDidLoad() {
@@ -42,8 +43,8 @@ class AlbumMainController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        albumCoverUidArray = []
         albumCoverArray = []
+        albumCoverUidArray = []
     }
 }
 
@@ -64,7 +65,6 @@ extension AlbumMainController {
             introView.isHidden = false
             albumView.isHidden = true
         }
-
     }
     
     func networkSetting(){
@@ -76,7 +76,6 @@ extension AlbumMainController {
                     guard let value = try? JSONDecoder().decode([album].self, from: data) else {return}
                     self.albumUidArray = value.map({$0.uid})
                     self.albumNameArray = value.map({$0.name})
-                    print("albumUid Array = \(self.albumUidArray), albumNameArray = \(self.albumNameArray)")
                     self.networkCoverUidSetting()
                     self.defaultSetting()
                 case 401:
@@ -84,7 +83,7 @@ extension AlbumMainController {
                 case 404:
                     print("\(status) : Not found, no address")
                 case 500 :
-                    print("\(status) : Server error in mainalbum - getalbums")
+                    print("\(status) : Server error in AlbumMain - getAlbums")
                 default:
                     return
                 }
@@ -96,41 +95,41 @@ extension AlbumMainController {
         if albumUidArray.count > 0 {
         
         for i in 0...albumUidArray.count-1 {
-        AlbumService.shared.photoGetPhoto(albumUid: albumUidArray[i], completion: { response in
-            if let status = response.response?.statusCode {
-                switch status {
-                case 200 :
-                    guard let data = response.data else {return}
-                    guard let value = try? JSONDecoder().decode([PhotoDownloadData].self, from: data) else {return}
-                    self.albumCoverUidArray.append(value[0].photoUid)
-                    self.networkCoverImageSetting()
-                case 401:
-                    print("\(status) : bad request, no warning in Server")
-                case 404:
-                    print("\(status) : Not found, no address")
-                case 500 :
-                    print("\(status) : Server error in mainalbum - getphoto")
-                default:
-                    return
+            AlbumService.shared.photoGetPhoto(albumUid: albumUidArray[i], completion: { response in
+                if let status = response.response?.statusCode {
+                    switch status {
+                    case 200 :
+                        guard let data = response.data else {return}
+                        guard let value = try? JSONDecoder().decode([PhotoDownloadData].self, from: data) else {return}
+                        guard let pUid = value.first?.photoUid else {return}
+                        self.albumCoverUidArray.append(pUid)
+                    case 401:
+                        print("\(status) : bad request, no warning in Server")
+                    case 404:
+                        print("\(status) : Not found, no address")
+                    case 500 :
+                        print("\(status) : Server error in AlbumMain - getPhoto")
+                    default:
+                        return
+                    }
+                }
+            })}
+            
+            DispatchQueue.main.asyncAfter(deadline: .now()+1.0){
+                for i in 0...self.albumUidArray.count - 1 {
+                    self.networkCoverImageSetting(albumuid: self.albumUidArray[i], photouid: self.albumCoverUidArray[i])
                 }
             }
-        })
-        }
-            
         }
     }
     
-    func networkCoverImageSetting(){
-        for i in 0...albumCoverUidArray.count-1 {
-            print("setting photo download")
-            AlbumService.shared.photoDownload(albumUid: albumUidArray[i], photoUid: albumCoverUidArray[i], completion: { response in
-                if case .success(let image) = response.result {
-                    self.albumCoverArray.append(image)
-                    print("albumCoverArray = \(self.albumCoverArray)")
-                    self.albumCollectionView.reloadData()
-                }
-            })
-        }
+    func networkCoverImageSetting(albumuid : Int, photouid : Int){
+        AlbumService.shared.photoDownload(albumUid: albumuid, photoUid: photouid, completion: { response in
+            if case .success(let image) = response.result {
+                self.albumCoverArray.append(image)
+                self.albumCollectionView.reloadData()
+            }
+        })
     }
 }
 
@@ -155,12 +154,12 @@ extension AlbumMainController : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return albumCoverArray.count//AlbumDatabase.arrayList.count
+        return albumCoverArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlbumCell", for: indexPath) as! AlbumCell
-        
+
         cell.imageView.image =  albumCoverArray[indexPath.row]
         cell.nameLabel.text = albumNameArray[indexPath.row]
     
@@ -172,6 +171,5 @@ extension AlbumMainController : UICollectionViewDataSource {
 extension AlbumMainController : AlbumMainVCProtocol {
     func AlbumMainreloadView() {
         self.networkSetting()
-        self.albumCollectionView.reloadData()
     }
 }

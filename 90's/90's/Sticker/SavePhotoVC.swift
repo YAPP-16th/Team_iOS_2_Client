@@ -29,13 +29,14 @@ class SavePhotoVC: UIViewController {
     @IBOutlet weak var cancleBtn: UIButton!
     
     var location = CGPoint(x: 0.0, y: 0.0)
-    var size = CGSize(width: 0,height: 0)
+    var deviceSize = CGSize(width: 0,height: 0)
+    
     var originImage : UIImage!
     var selectedLayout : AlbumLayout!
-    // server data
-    var albumUid : Int?
-    var imageName : String?
+    var albumUid : Int = 0
+    var imageName : String = ""
     var dateLabel : UILabel!
+    var renderImage : UIImage?
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -60,17 +61,17 @@ extension SavePhotoVC {
     
     
     func defaultSetting(){
-        let size = isDeviseVersionLow ? returnLayoutSize(selectedLayout: selectedLayout) : returnLayoutBigSize(selectedLayout: selectedLayout)
-        setSaveViewLayout(view: photoView, selectLayout: selectedLayout, size: size)
+        setRenderSaveViewFrameSetting(view: photoView, selectLayout: selectedLayout, size: deviceSize)
         
-        let imageView = UIImageView(image: originImage)
+        var imageView = UIImageView()
+        let layoutSize = returnLayoutBigSize(selectedLayout: selectedLayout)
         photoView.addSubview(imageView)
         
-        imageView.topAnchor.constraint(equalTo: photoView.topAnchor, constant: 0).isActive = true
-        imageView.leadingAnchor.constraint(equalTo: photoView.leadingAnchor, constant: 0).isActive = true
-        imageView.trailingAnchor.constraint(equalTo: photoView.trailingAnchor, constant: 0).isActive = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView = applyImageViewLayout(selectedLayout: selectedLayout, smallBig: layoutSize, imageView: imageView, image: originImage)
         
+        setRenderLayoutViewFrameSetting(view: photoView, imageView: imageView)
+
+        print("saveVC - imageView = \(imageView.frame)")
         dateLabelSetting(imageView: imageView)
     }
     
@@ -90,9 +91,8 @@ extension SavePhotoVC {
         
         dateLabel = UILabel(frame: rect)
         dateLabel.frame = rect
-        dateLabel.attributedText = NSAttributedString(string: dateFormatter.string(from: Date()), attributes: stroke)// dateFormatter.string(from: Date())
+        dateLabel.attributedText = NSAttributedString(string: dateFormatter.string(from: Date()), attributes: stroke)
         dateLabel.font = UIFont(name: "Digital-7 Italic", size: 17)!
-//        dateLabel.textColor = UIColor.colorRGBHex(hex: 0xfea006)
         dateLabel.textAlignment = .right
         
         photoView.addSubview(dateLabel)
@@ -129,15 +129,15 @@ extension SavePhotoVC {
 
 extension SavePhotoVC {
     @objc func touchSaveBtn(){ // 이미지 저장
-//        photoView.addSubview(dateLabel)
-        let renderer = UIGraphicsImageRenderer(bounds: photoView.bounds)
-        let image = renderer.image { ctx in
+        let renderer = UIGraphicsImageRenderer(size: photoView.bounds.size)
+        renderImage = renderer.image { ctx in
             photoView.drawHierarchy(in: photoView.bounds, afterScreenUpdates: true)
         }
-        
-        print("save image is = \(image), name = \(imageName!)")
-        
-        AlbumService.shared.photoUpload(albumUid: 70, image: [image], imageName: imageName!, completion: {
+        print("render image = \(renderImage)")
+        guard let image = renderImage else {return}
+        print("image = \(image)")
+       
+        AlbumService.shared.photoUpload(albumUid: albumUid, image: [image], imageName: imageName, completion: {
             response in
             if let status = response.response?.statusCode {
                 switch status {
@@ -145,19 +145,18 @@ extension SavePhotoVC {
                     print("200")
                     guard let data = response.data else {return}
                     print("received data = \(data)")
-                case 401...404 :
-                    print("forbidden access in \(status)")
+                case 401:
+                    print("\(status) : bad request, no warning in Server")
+                case 404:
+                    print("\(status) : Not found, no address")
+                case 500 :
+                    print("\(status) : Server error in SavePhotoVc - photoUpLoad")
                 default:
                     return
                 }
             }
         })
-        
-        
-        UIImageWriteToSavedPhotosAlbum(originImage,self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
-        
         self.navigationController?.popToRootViewController(animated: true)
-        
     }
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer){
