@@ -254,8 +254,8 @@ extension UIViewController{
             imageView.image = image.imageResize(sizeChange: size)
             return imageView
         case .Mini:
-            size =  CGSize(width: smallBig.width - 24, height: smallBig.height - 48)
-            imageView.frame = CGRect(x: 12, y: 9, width: size.width, height: size.height)
+            size =  CGSize(width: smallBig.width - 20, height: smallBig.height - 76)
+            imageView.frame = CGRect(x: 10, y: 10, width: size.width, height: size.height)
             imageView.image = image.imageResize(sizeChange: size)
             return imageView
         case .Memory:
@@ -264,8 +264,8 @@ extension UIViewController{
             imageView.image = image.imageResize(sizeChange: size)
             return imageView
         case .Portrab:
-            size = CGSize(width: smallBig.width - 20, height: smallBig.height - 24)
-            imageView.frame = CGRect(x: 10, y: 12, width: size.width, height: size.height)
+            size = CGSize(width: smallBig.width, height: smallBig.height - 14)
+            imageView.frame = CGRect(x: 0, y: 20, width: size.width, height: size.height)
             imageView.image = image.imageResize(sizeChange: size)
             return imageView
         case .Tape:
@@ -288,13 +288,13 @@ extension UIViewController{
     
     func getImageViewConstraintY(selecetedLayout : AlbumLayout) -> CGSize {
         switch selecetedLayout {
-        case .Polaroid: return CGSize(width: 10, height: 10)
-        case .Mini: return CGSize(width: 12, height: 9)
-        case .Memory: return CGSize(width: 24, height: 26)
-        case .Portrab: return CGSize(width: 10, height: 12)
-        case .Tape: return CGSize(width: 23, height: 43)
-        case .Portraw: return CGSize(width: 9, height: 15)
-        case .Filmroll: return CGSize(width: 34, height: 3)
+        case .Polaroid: return CGSize(width: 20, height: 50)
+        case .Mini: return CGSize(width: 20, height: 76)
+        case .Memory: return CGSize(width: 48, height: 52)
+        case .Portrab: return CGSize(width: 2, height: 14)
+        case .Tape: return CGSize(width: 44, height: 80)
+        case .Portraw: return CGSize(width: 18, height: 30)
+        case .Filmroll: return CGSize(width: 68, height: 6)
         }
     }
         

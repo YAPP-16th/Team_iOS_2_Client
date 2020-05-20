@@ -8,12 +8,6 @@
 
 import Foundation
 
-let tempAlbumToken : String = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwicm9sZXMiOlsiUk9MRV9URVNURVIiXSwiaWF0IjoxNTg5ODg5Mjg3LCJleHAiOjIyMjA2MDkyODd9.xM_1NEF5IaqgcHuVHQRiuerPwIzbtvFuefV_e1KQIsY"
-
-struct Token : Codable {
-    var token : String?
-}
-
 struct album : Codable {
     var uid : Int
     var name : String
@@ -26,7 +20,6 @@ struct album : Codable {
     var updated_at : String
     var complete : Bool
 }
-
 
 // post, albumGetAlbum 결과
 struct AlbumGetResult : Codable {
