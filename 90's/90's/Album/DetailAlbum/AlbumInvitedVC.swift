@@ -65,7 +65,7 @@ extension AlbumInvitedVC : UITextFieldDelegate {
         // 서버통신 후
         print("Touch")
         let nextVC = storyboard?.instantiateViewController(withIdentifier: "albumDetailVC") as! AlbumDetailController
-        nextVC.albumIndex = albumIndex
+        nextVC.albumUid = albumIndex
         nextVC.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(nextVC, animated: true)
 
