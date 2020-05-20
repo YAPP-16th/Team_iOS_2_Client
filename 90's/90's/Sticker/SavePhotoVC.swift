@@ -61,17 +61,13 @@ extension SavePhotoVC {
     
     
     func defaultSetting(){
-        setRenderSaveViewFrameSetting(view: photoView, selectLayout: selectedLayout, size: deviceSize)
-        
         var imageView = UIImageView()
         let layoutSize = returnLayoutBigSize(selectedLayout: selectedLayout)
         photoView.addSubview(imageView)
         
         imageView = applyImageViewLayout(selectedLayout: selectedLayout, smallBig: layoutSize, imageView: imageView, image: originImage)
-        
         setRenderLayoutViewFrameSetting(view: photoView, imageView: imageView)
 
-        print("saveVC - imageView = \(imageView.frame)")
         dateLabelSetting(imageView: imageView)
     }
     
@@ -80,8 +76,16 @@ extension SavePhotoVC {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yy MM dd"
         
+        print("imageview frame = \(imageView.frame)")
+        print("selected layout = \(selectedLayout.layoutName)")
         let datePosition = selectedLayout.dateLabelFrame
-        let rect = CGRect(x: imageView.frame.width - datePosition.width - 110, y: imageView.frame.height - datePosition.height - 30, width: 110, height: 30)
+        let dateLabelSize = CGSize(width: 110, height: 30)
+        dateLabel = UILabel()
+        photoView.addSubview(dateLabel)
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        dateLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -datePosition.height - 5).isActive = true
+        dateLabel.rightAnchor.constraint(equalTo: imageView.rightAnchor, constant: -datePosition.width - 15).isActive = true
         
         let stroke = [
             NSAttributedString.Key.strokeColor : UIColor.colorRGBHex(hex: 0xf93201),
@@ -89,13 +93,10 @@ extension SavePhotoVC {
             NSAttributedString.Key.strokeWidth : -2.0
             ] as [NSAttributedString.Key : Any]
         
-        dateLabel = UILabel(frame: rect)
-        dateLabel.frame = rect
+        dateLabel.frame.size = dateLabelSize
         dateLabel.attributedText = NSAttributedString(string: dateFormatter.string(from: Date()), attributes: stroke)
         dateLabel.font = UIFont(name: "Digital-7 Italic", size: 17)!
         dateLabel.textAlignment = .right
-        
-        photoView.addSubview(dateLabel)
         
         dateLabel.layer.shadowColor = UIColor.colorRGBHex(hex: 0xf93201).cgColor
         dateLabel.layer.shouldRasterize = true

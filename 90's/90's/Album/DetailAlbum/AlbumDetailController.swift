@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Alamofire
-import AlamofireImage
 
 protocol inviteProtocol {
     func inviteSetting()
@@ -351,7 +349,6 @@ extension AlbumDetailController {
                 }
             }
         })
-        
         
         
         // 2. 앨범에서 사진 uid 가져오기

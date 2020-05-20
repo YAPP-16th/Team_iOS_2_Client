@@ -47,7 +47,6 @@ class ImageRenderVC: UIViewController {
     
     fileprivate var filterImages : [UIImage] = [], stickerImages : [UIImage] = []
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collectionView.reloadData()
@@ -108,7 +107,6 @@ extension ImageRenderVC {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.allowsMultipleSelection = false
-        //renderImage.image = image
         photoView = saveView
     }
     
@@ -120,10 +118,7 @@ extension ImageRenderVC {
         renderImage = applyImageViewLayout(selectedLayout: selectLayout, smallBig: size, imageView: renderImage, image: image!)
         
         setRenderLayoutViewFrameSetting(view: saveView, imageView: layoutImage)
-        print("renderLayout frame = \(layoutImage.frame)")
-//        setRenderImageViewFrameSetting(view: saveView, imageView: renderImage, selectlayout: selectLayout)
-        
-        setRenderSaveViewFrameSetting(view: saveView, selectLayout: selectLayout, size: deviceSize)
+        setRenderImageViewFrameSetting(view: saveView, imageView: renderImage, selectlayout: selectLayout)
         
         view.layoutIfNeeded()
         
