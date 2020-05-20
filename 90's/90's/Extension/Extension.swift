@@ -264,8 +264,8 @@ extension UIViewController{
             imageView.image = image.imageResize(sizeChange: size)
             return imageView
         case .Portrab:
-            size = CGSize(width: smallBig.width, height: smallBig.height - 14)
-            imageView.frame = CGRect(x: 0, y: 20, width: size.width, height: size.height)
+            size = CGSize(width: smallBig.width - 8, height: smallBig.height - 16)
+            imageView.frame = CGRect(x: 4, y: 20, width: size.width, height: size.height)
             imageView.image = image.imageResize(sizeChange: size)
             return imageView
         case .Tape:
@@ -291,7 +291,7 @@ extension UIViewController{
         case .Polaroid: return CGSize(width: 20, height: 50)
         case .Mini: return CGSize(width: 20, height: 76)
         case .Memory: return CGSize(width: 48, height: 52)
-        case .Portrab: return CGSize(width: 2, height: 14)
+        case .Portrab: return CGSize(width: 14, height: 18)
         case .Tape: return CGSize(width: 44, height: 80)
         case .Portraw: return CGSize(width: 18, height: 30)
         case .Filmroll: return CGSize(width: 68, height: 6)
