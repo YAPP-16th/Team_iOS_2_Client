@@ -5,9 +5,7 @@
 //  Created by 성다연 on 16/03/2020.
 //  Copyright © 2020 성다연. All rights reserved.
 //
-
 import UIKit
-
 
 class ImageRenderVC: UIViewController {
     @IBOutlet weak var topView: UIView!
@@ -27,9 +25,10 @@ class ImageRenderVC: UIViewController {
     var photoView : UIView!
     var photoImage : UIImage?
     var selectLayout : AlbumLayout! = .Polaroid
+    var deviceSize : CGSize = CGSize(width: 0, height: 0)
     // server data
-    var albumUid : Int?
-    var imageName : String?
+    var albumUid : Int = 0
+    var imageName : String = ""
     
     // value for checkimageview showing while collection cells changes
     fileprivate var isFilterSelected : Bool = true
@@ -109,14 +108,24 @@ extension ImageRenderVC {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.allowsMultipleSelection = false
-        renderImage.image = image
+        //renderImage.image = image
         photoView = saveView
     }
     
     private func initializeArrays(){
-        let size = isDeviseVersionLow ? returnLayoutSize(selectedLayout: selectLayout) : returnLayoutBigSize(selectedLayout: selectLayout)
-        setSaveViewLayout(view: saveView, selectLayout: selectLayout, size: size)
-        setRenderImageViewLayout()
+        deviceSize = isDeviseVersionLow ? returnLayoutSize(selectedLayout: selectLayout) : returnLayoutBigSize(selectedLayout: selectLayout)
+        
+        let size = returnLayoutBigSize(selectedLayout: selectLayout)
+        layoutImage = applyBackImageViewLayout(selectedLayout: selectLayout, smallBig: size, imageView: layoutImage)
+        renderImage = applyImageViewLayout(selectedLayout: selectLayout, smallBig: size, imageView: renderImage, image: image!)
+        
+        setRenderLayoutViewFrameSetting(view: saveView, imageView: layoutImage)
+        print("renderLayout frame = \(layoutImage.frame)")
+//        setRenderImageViewFrameSetting(view: saveView, imageView: renderImage, selectlayout: selectLayout)
+        
+        setRenderSaveViewFrameSetting(view: saveView, selectLayout: selectLayout, size: deviceSize)
+        
+        view.layoutIfNeeded()
         
         filterImages = PhotoEditorTypes.filterImage.map({ (v : String) -> UIImage in
             return UIImage(named: v)!
@@ -150,15 +159,6 @@ extension ImageRenderVC {
         createPan(view: sticker!.backImageView) // 이미지 옮기기
         self.saveView.addSubview(sticker!)
     }
-    
-    private func setRenderImageViewLayout(){
-        let size = returnLayoutBigSize(selectedLayout: selectLayout)
-        layoutImage = applyBackImageViewLayout(selectedLayout: selectLayout, smallBig: size, imageView: layoutImage)
-        renderImage = applyImageViewLayout(selectedLayout: selectLayout, smallBig: size, imageView: renderImage, image: image!)
-        setImageViewLayout(view: saveView, imageView: layoutImage)
-        
-        view.layoutIfNeeded()
-    }
 }
 
 
@@ -183,18 +183,24 @@ extension ImageRenderVC {
             }
         }
         
-        photoImage = saveView.createImage()
+        let renderer = UIGraphicsImageRenderer(size: saveView.bounds.size)
+        let renderImage = renderer.image { ctx in
+            saveView.drawHierarchy(in: saveView.bounds, afterScreenUpdates: true)
+        }
+        
         resetValues()
         if selectIndex != nil {
             collectionView.deselectItem(at: selectIndex!, animated: false)
         }
+        print("imageRenderVC - renderImage = \(renderImage)")
         
         let nextVC = storyboard?.instantiateViewController(withIdentifier: "savePhotoVC") as! SavePhotoVC
         
-        nextVC.originImage = photoImage
+        nextVC.originImage = renderImage
         nextVC.selectedLayout = selectLayout
         nextVC.albumUid = albumUid
         nextVC.imageName = imageName
+        nextVC.deviceSize = deviceSize
         
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
@@ -288,13 +294,13 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
         }
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-//        selectIndex = indexPath
-//
-//        if let cell = collectionView.cellForItem(at: indexPath) as? photoFilterCollectionCell {
-//            cell.hideimage(value: true)
-//        } else if let cell = collectionView.cellForItem(at: indexPath) as? photoStickerCollectionCell {
-//            cell.hideimage(value: true)
-//        }
-//    }
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        selectIndex = indexPath
+
+        if let cell = collectionView.cellForItem(at: indexPath) as? photoFilterCollectionCell {
+            cell.hideimage(value: true)
+        } else if let cell = collectionView.cellForItem(at: indexPath) as? photoStickerCollectionCell {
+            cell.hideimage(value: true)
+        }
+    }
 }

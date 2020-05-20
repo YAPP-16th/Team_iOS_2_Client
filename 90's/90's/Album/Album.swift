@@ -6,8 +6,6 @@
 //  Copyright © 2020 홍정민. All rights reserved.
 //
 
-
-var AlbumCount : Int = 0
 let AlbumDatabase : AlbumModel = AlbumModel()
 let LayoutDatabase : LayoutModel = LayoutModel()
 let CoverDatabase : CoverModel = CoverModel()
@@ -19,7 +17,6 @@ class LayoutModel {
 class CoverModel {
     var arrayList : [AlbumCover] = [.dreamy2121, .fellinlove, .happilyeverafter, .mysweetyLovesyou, .svibe, .sweetholiday]
 }
-
 
 class Album {
     var user : [String]

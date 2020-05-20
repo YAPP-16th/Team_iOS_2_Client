@@ -62,14 +62,6 @@ extension UICollectionView {
 
 
 extension UIViewController{
-    func setImageViewLayout(view : UIView, imageView : UIImageView){
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        imageView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        imageView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-    }
-    
     func checkDeviseVersion(backView: UIView!){
         if isDeviseVersionLow == false {
             backView.isHidden = false
@@ -77,7 +69,43 @@ extension UIViewController{
             backView.isHidden = true
         }
     }
+       
+    // imageRenderVC - layoutView setting
+    func setRenderLayoutViewFrameSetting(view : UIView, imageView : UIImageView){
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        imageView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        imageView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
+    // imageRenderVC - imageView setting
+    func setRenderImageViewFrameSetting(view: UIView, imageView : UIImageView, selectlayout : AlbumLayout){
+        let top = getImageViewConstraintY(selecetedLayout: selectlayout).width
+        let bottom = getImageViewConstraintY(selecetedLayout: selectlayout).height
+        
     
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: top).isActive = true
+        let distance = (self.view.frame.width - view.frame.width) / 2
+        imageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: distance).isActive = true
+        imageView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -distance).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -bottom).isActive = true
+        print("renderImageView frame = \(imageView.frame)")
+    }
+    
+    // imageRenderVC - saveView setting
+    func setRenderSaveViewFrameSetting(view : UIView, selectLayout : AlbumLayout, size : CGSize){
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.frame.size = size
+        
+        let distance = (self.view.frame.width - view.frame.width) / 2
+        view.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: distance).isActive = true
+        view.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -distance).isActive = true
+        view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 120).isActive = true
+        view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -(120 + self.view.frame.height)).isActive = true
+        view.addShadowEffect()
+    }
+
     // LUT Filter apply
     func colorCubeFilterFromLUT(imageName : String, originalImage : UIImage)-> CIFilter? {
         let size = 64
@@ -258,16 +286,18 @@ extension UIViewController{
         }
     }
     
-    func setSaveViewLayout(view : UIView, selectLayout : AlbumLayout, size : CGSize){
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.frame.size = size
-        
-        view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 120).isActive = true
-        let distance = (self.view.frame.width - view.frame.width) / 2
-        view.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: distance).isActive = true
-        view.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -distance).isActive = true
-//        view.addShadowEffect()
+    func getImageViewConstraintY(selecetedLayout : AlbumLayout) -> CGSize {
+        switch selecetedLayout {
+        case .Polaroid: return CGSize(width: 10, height: 10)
+        case .Mini: return CGSize(width: 12, height: 9)
+        case .Memory: return CGSize(width: 24, height: 26)
+        case .Portrab: return CGSize(width: 10, height: 12)
+        case .Tape: return CGSize(width: 23, height: 43)
+        case .Portraw: return CGSize(width: 9, height: 15)
+        case .Filmroll: return CGSize(width: 34, height: 3)
+        }
     }
+        
     
     // 제네릭 적용
     func subLabelSetting(view : UILabel!, superView : UIView!, top : CGFloat?, left : CGFloat?, right: CGFloat?, bottom: CGFloat?){
@@ -284,33 +314,7 @@ extension UIViewController{
         
         view.contentMode = .scaleToFill
     }
-    
-    func layoutSetting(albumLayout : AlbumLayout) -> String {
-        switch albumLayout {
-        case .Polaroid : return "Polaroid"
-        case .Mini : return "Mini"
-        case .Memory : return "Memory"
-        case .Portrab : return "Portrab"
-        case .Portraw : return "Portraw"
-        case .Filmroll : return "Filmroll"
-        case .Tape : return "Tape"
-        }
-    }
-    
-    
-    /**
-     var layoutUid : Int {
-         switch self {
-         case .Polaroid : return 0
-         case .Mini : return 1
-         case .Memory : return 2
-         case .Portrab : return 3
-         case .Tape : return 4
-         case .Portraw : return 5
-         case .Filmroll : return 6
-         }
-     }
-     */
+
     func getLayoutByUid(value : Int) -> AlbumLayout{
         switch value {
         case 0 : return AlbumLayout.Polaroid

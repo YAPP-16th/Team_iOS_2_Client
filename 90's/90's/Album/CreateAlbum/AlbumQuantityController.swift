@@ -21,7 +21,7 @@ class AlbumQuantityController : UIViewController {
     var albumEndDate:String!
     var albumMaxCount:Int!
     
-    private var maxCountArray = Array(4...30)
+    private var maxCountArray = Array(0...30)
     var initialFlag = true
     
     override func viewDidLoad() {

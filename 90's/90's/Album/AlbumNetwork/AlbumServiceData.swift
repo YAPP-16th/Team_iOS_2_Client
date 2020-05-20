@@ -11,6 +11,7 @@ import AlamofireImage
 
 struct AlbumService : APIManager {
     static let shared = AlbumService()
+
     typealias completeAlbumSerivce = (AFDataResponse<Any>) -> ()
     typealias completePhotoDownloadService = (DataResponse<UIImage, AFError>) -> ()
     let header : HTTPHeaders =  [
@@ -18,18 +19,19 @@ struct AlbumService : APIManager {
     ]
     let tokenHeader : HTTPHeaders = [
         "Content-Type" : "application/json",
-        "X-AUTH-TOKEN" : tempAlbumToken
+        "X-AUTH-TOKEN" : UserDefaults.standard.value(forKey: "jwt") as! String
     ]
     let photoHeader : HTTPHeaders = [
         "Content-type": "multipart/form-data",
-        "X-AUTH-TOKEN" : tempAlbumToken
+        "X-AUTH-TOKEN" : UserDefaults.standard.value(forKey: "jwt") as! String
     ]
 
     // Add User, post, 친구 추가
-    func albumAddUser(albumUid : Int, role : String, userUid : Int, completion: @escaping(completeAlbumSerivce)){
+    func albumAddUser(albumUid : Int,  name: String, role : String, userUid : Int, completion: @escaping(completeAlbumSerivce)){
         let url = Self.url("/album/addUser")
         let body : [String: Any] = [
             "albumUid" : albumUid,
+            "name" : name,
             "role" : role,
             "userUid" : userUid
         ]
