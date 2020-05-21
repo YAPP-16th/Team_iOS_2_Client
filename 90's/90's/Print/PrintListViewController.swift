@@ -19,14 +19,20 @@ class PrintListViewController: UIViewController {
     @IBOutlet weak var demoAlbumImage: UIImageView!
     @IBOutlet weak var cautionTitle: UILabel!
     
-    //아무도 없는 뷰 일때 array와 더미 array 구분해놓음
-    var shipArray : [String] = ["sweetholiday","sweetholiday","sweetholiday","sweetholiday","sweetholiday","sweetholiday","sweetholiday","sweetholiday","sweetholiday","sweetholiday",]
+    var completeAlbums : [album] = []
     
-    let imgIcon = UIImage(named: "90SLogo")?.withRenderingMode(.alwaysOriginal)
+    //앨범 커버에 사용 할 변수
+    var photoUidArray: [Int] = []
+    var albumCoverArray: [UIImage] = []
     
+    //통신에 사용할 Dispatch Group
+    let dispatchGroup = DispatchGroup()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        demoAlbumImage.isHidden = true
+        cautionTitle.isHidden = true
+        gotoAlbum.isHidden = true
         self.gotoAlbum.layer.cornerRadius = 8
         
         // iPhone X..
@@ -41,61 +47,138 @@ class PrintListViewController: UIViewController {
             self.topConstraint.constant = 112
             
         }
-        
-        self.navigationController?.navigationBar.topItem?.title = "앨범 인화"
-        let barButtonItem = UIBarButtonItem(image: imgIcon, style: .plain, target: self, action: nil)
-        self.navigationItem.leftBarButtonItem = barButtonItem
-        
     }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
-        
-        self.tabBarController?.tabBar.isHidden = false
-        self.navigationController?.navigationBar.isHidden = true
-        
-        
-        if shipArray.count != 0 {
-            demoAlbumImage.isHidden = true
-            cautionTitle.isHidden = true
-            gotoAlbum.isHidden = true
-            printListTableView.delegate = self
-            printListTableView.dataSource = self
+        getCompleteAlbums()
+    }
+    
+    
+    
+    func getCompleteAlbums(){
+        AlbumService.shared.albumGetAlbums(completion: {
+            response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200 :
+                    guard let data = response.data else {return}
+                    guard let value = try? JSONDecoder().decode([album].self, from: data) else {return}
+                    self.completeAlbums = value.filter{ $0.complete == true }
+                    print("\(value)")
+                    self.getPhotoUid()
+                case 401:
+                    print("\(status) : bad request, no warning in Server")
+                case 404:
+                    print("\(status) : Not found, no address")
+                case 500 :
+                    print("\(status) : Server error in AlbumMain - getAlbums")
+                default:
+                    return
+                }
+            }
+        })
+    }
+    
+    //photoUid를 가져오는 코드
+    func getPhotoUid(){
+        for i in 0...completeAlbums.count - 1 {
+            dispatchGroup.enter()
             
+            AlbumService.shared.photoGetPhoto(albumUid: completeAlbums[i].uid, completion: { response in
+                if let status = response.response?.statusCode {
+                    switch status {
+                    case 200 :
+                        guard let data = response.data else {return}
+                        guard let value = try? JSONDecoder().decode([PhotoDownloadData].self, from: data) else {return}
+                        let pUid = value.first!.photoUid
+                        self.photoUidArray.append(pUid)
+                        self.dispatchGroup.leave()
+                    case 401:
+                        print("\(status) : bad request, no warning in Server")
+                    case 404:
+                        print("\(status) : Not found, no address")
+                    case 500 :
+                        print("\(status) : Server error in AlbumMain - getPhoto")
+                    default:
+                        return
+                    }
+                }
+            })
         }
-        else {
-            
-            printListTableView.isHidden = true
+        dispatchGroup.notify(queue: .main){
+            self.getAlbumCover()
         }
     }
     
+    
+    //첫번째 photoUid를 통해 표지를 가져오는 코드
+    func getAlbumCover(){
+        for i in 0...self.completeAlbums.count - 1 {
+            self.dispatchGroup.enter()
+            AlbumService.shared.photoDownload(albumUid: completeAlbums[i].uid, photoUid: photoUidArray[i], completion: {
+                response in
+                if case .success(let image) = response.result {
+                    self.albumCoverArray.append(image)
+                    self.dispatchGroup.leave()
+                }
+            })
+        }
+        
+        dispatchGroup.notify(queue: .main){
+            self.setPrintMainUI()
+        }
+
+    }
+    
+    func setPrintMainUI(){
+        if completeAlbums.count != 0 {
+            printListTableView.delegate = self
+            printListTableView.dataSource = self
+            printListTableView.reloadData()
+        }
+        else {
+            demoAlbumImage.isHidden = false
+            cautionTitle.isHidden = false
+            gotoAlbum.isHidden = false
+            printListTableView.isHidden = true
+        }
+    }
 }
+
 
 extension PrintListViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return shipArray.count
+        return completeAlbums.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        
         return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = printListTableView.dequeueReusableCell(withIdentifier: "PrintListTableViewCell", for :indexPath) as! PrintListTableViewCell
+        let item = completeAlbums[indexPath.row]
         
-        if indexPath == [0,3] {
-            cell.state = 2
-        }
-        else if indexPath == [0,2] {
-            cell.state = 1
-        }
+        cell.albumImageView.image = albumCoverArray[indexPath.row]
         
-        cell.albumImageView.image = UIImage(named: shipArray[indexPath.row] )
-        cell.albumDate.text = "20.03.25 - 20.06.25"
-        cell.albumTitle.text = "경진이의 여행 앨범"
-        cell.pictureCount.text = "60/60"
+        let startDate = item.created_at.split(separator: "T")[0]
+        let endDate = item.endDate.split(separator: "T")[0]
+       
+        let idxStartDate:String.Index = startDate.index(startDate.startIndex, offsetBy: 2)
+        let idxEndDate:String.Index = endDate.index(endDate.startIndex, offsetBy: 2)
+        
+        let startDateStr = String(startDate[idxStartDate...]).replacingOccurrences(of: "-", with: ".")
+        let endDateStr = String(endDate[idxEndDate...]).replacingOccurrences(of: "-", with: ".")
+        
+        cell.albumDate.text = startDateStr + "~" + endDateStr
+        cell.albumTitle.text = item.name
+        cell.pictureCount.text = "\(item.photoLimit)/\(item.photoLimit)"
+        
+        
+        //아직 orderStatus의 값이 없기 때문에 서버API 나온 후 업데이트 예정
         
         if cell.state == 0 {
             cell.orderBtn.backgroundColor = .black
@@ -120,11 +203,6 @@ extension PrintListViewController : UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        return 176
-        
-    }
 }
 
 
@@ -137,14 +215,9 @@ extension PrintListViewController : ClickActionDelegate {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "OptionViewController") as! OptionViewController
         
         vc.modalPresentationStyle = .fullScreen
-        print(shipArray[index] )
-        vc.tempImage = UIImage(named: shipArray[index] )
-        self.navigationItem.title = " "
-        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "iconBack")
-        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "iconBack")
-        vc.navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
+        vc.tempImage = albumCoverArray[index]
         self.navigationController?.pushViewController(vc, animated: true)
-//        self.navigationController?.show(vc, sender: true)
+        //        self.navigationController?.show(vc, sender: true)
         
         
         
