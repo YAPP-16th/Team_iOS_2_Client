@@ -82,27 +82,26 @@ extension UIViewController{
     func setRenderImageViewFrameSetting(view: UIView, imageView : UIImageView, selectlayout : AlbumLayout){
         let top = getImageViewConstraintY(selecetedLayout: selectlayout).width
         let bottom = getImageViewConstraintY(selecetedLayout: selectlayout).height
-        
+        let distance = (selectlayout.bigsize.width - imageView.frame.width) / 2
     
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: top).isActive = true
-        let distance = (self.view.frame.width - view.frame.width) / 2
+        
+        print("image distance = \(distance)")
         imageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: distance).isActive = true
         imageView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -distance).isActive = true
         imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -bottom).isActive = true
-        print("renderImageView frame = \(imageView.frame)")
     }
     
     // imageRenderVC - saveView setting
-    func setRenderSaveViewFrameSetting(view : UIView, selectLayout : AlbumLayout, size : CGSize){
+    func setRenderSaveViewFrameSetting(view:UIView, selectLayout : AlbumLayout, size : CGSize){
         view.translatesAutoresizingMaskIntoConstraints = false
         view.frame.size = size
         
         let distance = (self.view.frame.width - view.frame.width) / 2
         view.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: distance).isActive = true
         view.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -distance).isActive = true
-        view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 120).isActive = true
-        view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -(120 + self.view.frame.height)).isActive = true
+        view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: (self.view.frame.height - view.frame.height)/3).isActive = true
         view.addShadowEffect()
     }
 
@@ -244,6 +243,7 @@ extension UIViewController{
         }
     }
     
+    // albumCreate - previewVC
     func applyImageViewLayout(selectedLayout : AlbumLayout, smallBig: CGSize, imageView : UIImageView, image : UIImage) -> UIImageView {
         var size : CGSize = CGSize(width: 0, height: 0)
         
@@ -286,15 +286,59 @@ extension UIViewController{
         }
     }
     
+    // album - Sticker - addPhoto
+    func applyBigImageViewLayout(selectedLayout : AlbumLayout, smallBig: CGSize, imageView : UIImageView, image : UIImage) -> UIImageView {
+        var size : CGSize = CGSize(width: 0, height: 0)
+        
+        switch selectedLayout {
+        case .Polaroid:
+            size = CGSize(width: smallBig.width - 40, height: smallBig.height - 114)
+            imageView.frame = CGRect(x: 20, y: 26, width: size.width, height: size.height)
+            imageView.image = image.imageResize(sizeChange: size)
+            return imageView
+        case .Mini:
+            size =  CGSize(width: smallBig.width - 48, height: smallBig.height - 90)
+            imageView.frame = CGRect(x: 24, y: 20, width: size.width, height: size.height)
+            imageView.image = image.imageResize(sizeChange: size)
+            return imageView
+        case .Memory:
+            size = CGSize(width: smallBig.width - 60, height: smallBig.height - 70)
+            imageView.frame = CGRect(x: 30, y: 35, width: size.width, height: size.height)
+            imageView.image = image.imageResize(sizeChange: size)
+            return imageView
+        case .Portrab:
+            size = CGSize(width: smallBig.width - 26, height: smallBig.height - 30)
+            imageView.frame = CGRect(x: 13, y: 16, width: size.width, height: size.height)
+            imageView.image = image.imageResize(sizeChange: size)
+            return imageView
+        case .Tape:
+            size = CGSize(width: smallBig.width - 44, height: smallBig.height - 114)
+            imageView.frame = CGRect(x: 22, y: 44, width: size.width, height: size.height)
+            imageView.image = image.imageResize(sizeChange: size)
+            return imageView
+        case .Portraw:
+            size = CGSize(width: smallBig.width - 14, height: smallBig.height - 28)
+            imageView.frame = CGRect(x: 7, y: 14, width: size.width, height: size.height)
+            imageView.image = image.imageResize(sizeChange: size)
+            return imageView
+        case .Filmroll:
+            size = CGSize(width: smallBig.width - 72, height: smallBig.height - 6)
+            imageView.frame = CGRect(x: 36, y: 3, width:size.width, height: size.height)
+            imageView.image = image.imageResize(sizeChange: size)
+            return imageView
+        }
+    }
+    
+    // top, bottom
     func getImageViewConstraintY(selecetedLayout : AlbumLayout) -> CGSize {
         switch selecetedLayout {
-        case .Polaroid: return CGSize(width: 10, height: 10)//CGSize(width: 20, height: 50)
-        case .Mini: return CGSize(width: 12, height: 9) //CGSize(width: 20, height: 76)
-        case .Memory: return CGSize(width: 24, height: 26)//CGSize(width: 48, height: 52)
-        case .Portrab: return CGSize(width: 10, height: 12)//CGSize(width: 14, height: 18)
-        case .Tape: return CGSize(width: 23, height: 43)//CGSize(width: 44, height: 80)
-        case .Portraw: return CGSize(width: 9, height: 15)//CGSize(width: 18, height: 30)
-        case .Filmroll: return CGSize(width: 34, height: 3)//CGSize(width: 68, height: 6)
+        case .Polaroid: return CGSize(width: 26, height: 88)
+        case .Mini: return CGSize(width: 20, height: 70) 
+        case .Memory: return CGSize(width: 36, height: 38)
+        case .Portrab: return CGSize(width: 16, height: 14)
+        case .Tape: return CGSize(width: 44, height: 70)
+        case .Portraw: return CGSize(width: 14, height: 14)
+        case .Filmroll: return CGSize(width: 3, height: 3)
         }
     }
         
