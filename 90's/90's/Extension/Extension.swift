@@ -244,7 +244,51 @@ extension UIViewController{
         }
     }
     
+    // albumCreate - previewVC
     func applyImageViewLayout(selectedLayout : AlbumLayout, smallBig: CGSize, imageView : UIImageView, image : UIImage) -> UIImageView {
+        var size : CGSize = CGSize(width: 0, height: 0)
+        
+        switch selectedLayout {
+        case .Polaroid:
+            size = CGSize(width: smallBig.width - 20, height: smallBig.height - 50)
+            imageView.frame = CGRect(x: 10, y: 10, width: size.width, height: size.height)
+            imageView.image = image.imageResize(sizeChange: size)
+            return imageView
+        case .Mini:
+            size =  CGSize(width: smallBig.width - 24, height: smallBig.height - 48)
+            imageView.frame = CGRect(x: 12, y: 9, width: size.width, height: size.height)
+            imageView.image = image.imageResize(sizeChange: size)
+            return imageView
+        case .Memory:
+            size = CGSize(width: smallBig.width - 48, height: smallBig.height - 52)
+            imageView.frame = CGRect(x: 24, y: 26, width: size.width, height: size.height)
+            imageView.image = image.imageResize(sizeChange: size)
+            return imageView
+        case .Portrab:
+            size = CGSize(width: smallBig.width - 20, height: smallBig.height - 24)
+            imageView.frame = CGRect(x: 10, y: 12, width: size.width, height: size.height)
+            imageView.image = image.imageResize(sizeChange: size)
+            return imageView
+        case .Tape:
+            size = CGSize(width: smallBig.width - 44, height: smallBig.height - 80)
+            imageView.frame = CGRect(x: 23, y: 43, width: size.width, height: size.height)
+            imageView.image = image.imageResize(sizeChange: size)
+            return imageView
+        case .Portraw:
+            size = CGSize(width: smallBig.width - 18, height: smallBig.height - 30)
+            imageView.frame = CGRect(x: 9, y: 15, width: size.width, height: size.height)
+            imageView.image = image.imageResize(sizeChange: size)
+            return imageView
+        case .Filmroll:
+            size = CGSize(width: smallBig.width - 68, height: smallBig.height - 6)
+            imageView.frame = CGRect(x: 34, y: 3, width:size.width, height: size.height)
+            imageView.image = image.imageResize(sizeChange: size)
+            return imageView
+        }
+    }
+    
+    // album - Sticker - addPhoto
+    func applyBigImageViewLayout(selectedLayout : AlbumLayout, smallBig: CGSize, imageView : UIImageView, image : UIImage) -> UIImageView {
         var size : CGSize = CGSize(width: 0, height: 0)
         
         switch selectedLayout {

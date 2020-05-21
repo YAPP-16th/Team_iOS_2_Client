@@ -122,7 +122,6 @@ extension AlbumDetailController {
     func defaultSetting(){
         hideView.isHidden = true
         hideWhiteView.layer.cornerRadius = 15
-
         // 순서 바꾸기
         longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gesture:)))
         photoCollectionView.addGestureRecognizer(longPressGesture)
@@ -369,7 +368,7 @@ extension AlbumDetailController {
                 print("\(status) : Server error in AlbumDetailVC - getPhoto")
             default:
                 return
-                }
+                 }
             }
         })
     }
@@ -489,8 +488,6 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
             let size = returnLayoutSize(selectedLayout: selectedLayout!)
             cell.backImageView = applyBackImageViewLayout(selectedLayout: selectedLayout!, smallBig: size, imageView: cell.backImageView)
             cell.backImageView.image = networkPhotoUrlImageArray[indexPath.row+1]
-            //cell.photoImageView = applyImageViewLayout(selectedLayout: selectedLayout!, smallBig: size, imageView: cell.photoImageView, image: networkPhotoUrlImageArray[indexPath.row+1])
-            //AlbumDatabase.arrayList[albumIndex!].photos[indexPath.row+1])
             return cell
         }
     }

@@ -15,14 +15,17 @@ protocol AlbumMainVCProtocol {
 }
 
 class AlbumMainController: UIViewController {
-    @IBOutlet weak var albumMakeBtn:UIButton!
-    @IBOutlet weak var albumIntroLabel: UILabel!
-    @IBOutlet weak var introView: UIView!
     @IBOutlet weak var albumView: UIView!
     @IBOutlet weak var albumCollectionView: UICollectionView!
     @IBAction func clickMakeBtn(_ sender: Any){
         let nextVC = storyboard?.instantiateViewController(withIdentifier : "AlbumNameController") as! AlbumNameController
         self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    @IBOutlet weak var emptyAlbumView: UIView!
+    @IBOutlet weak var emptyAlbumMakeBtn: UIButton!
+    @IBOutlet weak var emptyAlbumLabel: UILabel!
+    @IBAction func emptyAlbumMakeBtn(_ sender: UIButton) {
+        // 로그인 화면 띄우기
     }
     
     var albumUidArray : [Int] = []
@@ -53,19 +56,21 @@ extension AlbumMainController {
     func settingCollectionView(){
         albumCollectionView.delegate = self
         albumCollectionView.dataSource = self
-        albumMakeBtn.layer.cornerRadius = 10
-        albumIntroLabel.text = "앨범을 만들어\n소중한 추억을 쌓아보세요"
+        emptyAlbumLabel.text = "앨범을 만들어\n소중한 추억을 쌓아보세요"
     }
     
-    func defaultSetting(){
-        if(albumUidArray.count > 0){
-            introView.isHidden = true
-            albumView.isHidden = false
-        }else {
-            introView.isHidden = false
-            albumView.isHidden = true
-        }
-    }
+    func switchAlbumEmptyView(value : Bool){
+           switch value {
+           case true:
+               self.emptyAlbumView.isHidden = true
+               self.emptyAlbumMakeBtn.isEnabled = false
+               self.albumView.isHidden = false
+           case false:
+               self.emptyAlbumView.isHidden = false
+               self.emptyAlbumMakeBtn.isEnabled = true
+               self.albumView.isHidden = true
+           }
+       }
     
     func networkSetting(){
         AlbumService.shared.albumGetAlbums(completion: { response in
@@ -77,7 +82,7 @@ extension AlbumMainController {
                     self.albumUidArray = value.map({$0.uid})
                     self.albumNameArray = value.map({$0.name})
                     self.networkCoverUidSetting()
-                    self.defaultSetting()
+                    self.albumUidArray.isEmpty ? self.switchAlbumEmptyView(value: false) : self.switchAlbumEmptyView(value: true)
                 case 401:
                     print("\(status) : bad request, no warning in Server")
                 case 404:
@@ -115,7 +120,7 @@ extension AlbumMainController {
                 }
             })}
             
-            DispatchQueue.main.asyncAfter(deadline: .now()+1.0){
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
                 for i in 0...self.albumUidArray.count - 1 {
                     self.networkCoverImageSetting(albumuid: self.albumUidArray[i], photouid: self.albumCoverUidArray[i])
                 }
@@ -159,10 +164,8 @@ extension AlbumMainController : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlbumCell", for: indexPath) as! AlbumCell
-
         cell.imageView.image =  albumCoverArray[indexPath.row]
         cell.nameLabel.text = albumNameArray[indexPath.row]
-    
         return cell
     }
 }
