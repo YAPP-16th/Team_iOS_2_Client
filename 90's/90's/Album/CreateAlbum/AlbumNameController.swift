@@ -12,6 +12,7 @@ import UIKit
 class AlbumNameController : UIViewController {
     @IBOutlet weak var buttonConstraint: NSLayoutConstraint!
     @IBOutlet weak var tfAlbumName: UITextField!
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var selectorLabel: UILabel!
     @IBOutlet weak var nextBtn: UIButton!
     @IBAction func backBtn(_ sender: UIButton) {
