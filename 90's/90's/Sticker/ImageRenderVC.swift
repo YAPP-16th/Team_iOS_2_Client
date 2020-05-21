@@ -113,14 +113,13 @@ extension ImageRenderVC {
     private func initializeArrays(){
         deviceSize = isDeviseVersionLow ? returnLayoutSize(selectedLayout: selectLayout) : returnLayoutBigSize(selectedLayout: selectLayout)
         
-        let size = returnLayoutBigSize(selectedLayout: selectLayout)
-        layoutImage = applyBackImageViewLayout(selectedLayout: selectLayout, smallBig: size, imageView: layoutImage)
-        renderImage = applyBigImageViewLayout(selectedLayout: selectLayout, smallBig: size, imageView: renderImage, image: image!)
-        
+        layoutImage = applyBackImageViewLayout(selectedLayout: selectLayout, smallBig: deviceSize, imageView: layoutImage)
+        renderImage = applyBigImageViewLayout(selectedLayout: selectLayout, smallBig: deviceSize, imageView: renderImage, image: image!)
+        print("saveview frame = \(saveView.frame)")
+
+        setRenderSaveViewFrameSetting(view: saveView, selectLayout: selectLayout, size: deviceSize)
         setRenderLayoutViewFrameSetting(view: saveView, imageView: layoutImage)
         setRenderImageViewFrameSetting(view: saveView, imageView: renderImage, selectlayout: selectLayout)
-        
-        view.layoutIfNeeded()
         
         filterImages = PhotoEditorTypes.filterImage.map({ (v : String) -> UIImage in
             return UIImage(named: v)!
@@ -160,11 +159,19 @@ extension ImageRenderVC {
 extension ImageRenderVC {
     @objc func touchFilterBtn(){
         isFilterSelected = true
+        stickerBtn.isEnabled = true
+        stickerBtn.titleLabel?.textColor = .lightGray
+        filterBtn.titleLabel?.textColor = .black
+        filterBtn.isEnabled = false
         collectionView.reloadData()
     }
     
     @objc func touchStickerBtn(){
         isFilterSelected = false
+        stickerBtn.titleLabel?.textColor = .black
+        stickerBtn.isEnabled = false
+        filterBtn.titleLabel?.textColor = .lightGray
+        filterBtn.isEnabled = true
         collectionView.reloadData()
     }
     
@@ -187,7 +194,6 @@ extension ImageRenderVC {
         if selectIndex != nil {
             collectionView.deselectItem(at: selectIndex!, animated: false)
         }
-        print("imageRenderVC - renderImage = \(renderImage)")
         
         let nextVC = storyboard?.instantiateViewController(withIdentifier: "savePhotoVC") as! SavePhotoVC
         
@@ -273,19 +279,12 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
             cell.hideimage(value: false)
             let colorcube = colorCubeFilterFromLUT(imageName: PhotoEditorTypes.filterNameArray[indexPath.row], originalImage: image!)
             let image = UIImage.init(cgImage: context.createCGImage((colorcube?.outputImage)!, from: (colorcube?.outputImage)!.extent)!)
-            
             renderImage.image = image
-            stickerBtn.titleLabel?.textColor = .lightGray
-            filterBtn.titleLabel?.textColor = .black
-            isFilterSelected = true
             
         } else if let cell = collectionView.cellForItem(at: indexPath) as? photoStickerCollectionCell {
             cell.hideimage(value: false)
             createStickerView(image: stickerImages[indexPath.row], indexPathRow: indexPath.row)
             
-            stickerBtn.titleLabel?.textColor = .black
-            filterBtn.titleLabel?.textColor = .lightGray
-            isFilterSelected = false
         }
     }
     

@@ -24,9 +24,6 @@ class AlbumMainController: UIViewController {
     @IBOutlet weak var emptyAlbumView: UIView!
     @IBOutlet weak var emptyAlbumMakeBtn: UIButton!
     @IBOutlet weak var emptyAlbumLabel: UILabel!
-    @IBAction func emptyAlbumMakeBtn(_ sender: UIButton) {
-        // 로그인 화면 띄우기
-    }
     
     var albumUidArray : [Int] = []
     var albumNameArray : [String] = []
@@ -37,6 +34,7 @@ class AlbumMainController: UIViewController {
         super.viewWillAppear(animated)
         networkSetting()
         self.tabBarController?.tabBar.isHidden = false
+        print("AlbumMainVC  : viewWillAppear")
     }
     
     override func viewDidLoad() {
@@ -173,6 +171,7 @@ extension AlbumMainController : UICollectionViewDataSource {
 
 extension AlbumMainController : AlbumMainVCProtocol {
     func AlbumMainreloadView() {
-        self.networkSetting()
+        self.viewWillAppear(true)
+        albumCollectionView.reloadData()
     }
 }

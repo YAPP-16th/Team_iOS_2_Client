@@ -62,12 +62,13 @@ extension SavePhotoVC {
     
     func defaultSetting(){
         var imageView = UIImageView()
-        let layoutSize = returnLayoutBigSize(selectedLayout: selectedLayout)
+        setRenderSaveViewFrameSetting(view: photoView, selectLayout: selectedLayout, size: deviceSize)
         photoView.addSubview(imageView)
         
-        imageView = applyImageViewLayout(selectedLayout: selectedLayout, smallBig: layoutSize, imageView: imageView, image: originImage)
+        imageView = applyBackImageViewLayout(selectedLayout: selectedLayout, smallBig: deviceSize, imageView: imageView)
+        imageView.image = originImage
+        
         setRenderLayoutViewFrameSetting(view: photoView, imageView: imageView)
-
         dateLabelSetting(imageView: imageView)
     }
     
@@ -76,8 +77,6 @@ extension SavePhotoVC {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yy MM dd"
         
-        print("imageview frame = \(imageView.frame)")
-        print("selected layout = \(selectedLayout.layoutName)")
         let datePosition = selectedLayout.dateLabelFrame
         let dateLabelSize = CGSize(width: 110, height: 30)
         dateLabel = UILabel()
