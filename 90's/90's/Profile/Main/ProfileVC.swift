@@ -25,6 +25,9 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var logoutBtn: UIButton!
     @IBOutlet weak var leaveBtn: UIButton!
     @IBOutlet weak var lineImageView: UIImageView!
+    //탈퇴 팝업 뷰
+    @IBOutlet weak var leaveView: UIView!
+    @IBOutlet weak var rethinkBtn: UIButton!
     
     let menuArr : [String] = ["주문 내역", "내 정보 관리", "FAQ", "설정"]
     var isDefault = true
@@ -51,10 +54,31 @@ class ProfileVC: UIViewController {
         appDelegate.switchEnterView()
     }
     
+    //프로필 메인 - 회원탈퇴 버튼 클릭 시
     @IBAction func goLeave(_ sender: Any) {
+        let tabCoverImg = UIImageView(image: UIImage(named: "rectangleBlackopacity"))
+        self.tabBarController?.tabBar.addSubview(tabCoverImg)
+        rethinkBtn.layer.cornerRadius = 8.0
+        leaveView.isHidden = false
+    }
+    
+    //탈퇴 뷰 - X 버튼 클릭 시 액션
+    @IBAction func closeBtn(_ sender: Any) {
+        self.tabBarController?.tabBar.subviews.last!.removeFromSuperview()
+        leaveView.isHidden = true
         
     }
     
+    //탈퇴 뷰 - 생각해볼게요 버튼 클릭 시 액션
+    @IBAction func clickThinkBtn(_ sender: Any) {
+        self.tabBarController?.tabBar.subviews.last!.removeFromSuperview()
+        leaveView.isHidden = true
+    }
+    
+    //탈퇴뷰 - 회원탈퇴 버튼 클릭 시 액션
+    @IBAction func clickLeaveBtn(_ sender: Any) {
+        
+    }
     
     func setUI(){
         settingTableView.delegate = self
@@ -62,8 +86,6 @@ class ProfileVC: UIViewController {
         guestLoginBtn.layer.cornerRadius = 8.0
         getProfile()
     }
-    
-    
     
     func getProfile(){
         guard let jwt = UserDefaults.standard.string(forKey: "jwt") else { return }
@@ -124,6 +146,7 @@ class ProfileVC: UIViewController {
         self.present(alert, animated: true)
     }
     
+  
 }
 
 
