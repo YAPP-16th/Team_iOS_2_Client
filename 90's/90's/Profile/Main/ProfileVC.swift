@@ -77,7 +77,9 @@ class ProfileVC: UIViewController {
     
     //탈퇴뷰 - 회원탈퇴 버튼 클릭 시 액션
     @IBAction func clickLeaveBtn(_ sender: Any) {
-        
+        let leaveReasonVC = storyboard?.instantiateViewController(withIdentifier: "LeaveReasonViewController") as! LeaveReasonViewController
+        leaveReasonVC.modalPresentationStyle = .fullScreen
+        self.present(leaveReasonVC, animated: true, completion: nil)
     }
     
     func setUI(){

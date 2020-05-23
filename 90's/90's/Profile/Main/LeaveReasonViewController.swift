@@ -9,13 +9,16 @@
 import UIKit
 
 protocol clickReasonDelegate: NSObjectProtocol {
-    func clickReason(_ isClicked : Bool)
+    func clickReason(_ indexPath : IndexPath)
 }
 
 class LeaveReasonViewController: UIViewController {
-
-    let reasonArray = ["사용하기 어려워요", "오류가 많아서 불편해요", "흥미가 없어졌어요","기타"]
     @IBOutlet weak var reasonTableView: UITableView!
+    @IBOutlet weak var leaveBtn:UIButton!
+    var reasonClickFlag = false
+    
+    let reasonArray = ["사용하기 어려워요", "오류가 많아서 불편해요", "흥미가 없어졌어요","기타"]
+    var selectedIndexPath:IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,12 +29,19 @@ class LeaveReasonViewController: UIViewController {
         dismiss(animated: true)
     }
     
+    //탈퇴 서버 통신
+    @IBAction func clickFinalLeaveBtn(_ sender: Any) {
+        
+    }
+    
     func setUI(){
         reasonTableView.delegate = self
         reasonTableView.dataSource = self
+        leaveBtn.isEnabled = false
+        leaveBtn.layer.cornerRadius = 8.0
     }
-   
-
+    
+    
 }
 
 extension LeaveReasonViewController: UITableViewDelegate, UITableViewDataSource {
@@ -40,7 +50,34 @@ extension LeaveReasonViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ReasonCell") as! ReasonCell
+        cell.indexPath = indexPath
+        
+        if let selectedIndex = self.selectedIndexPath {
+            if(selectedIndex != indexPath) {
+                cell.isClicked = false
+            }else {
+                cell.isClicked = true
+            }
+        }
+        
+        cell.clickReasonDelegate = self
+        cell.reasonLabel.text = reasonArray[indexPath.row]
+        return cell
+    }
+    
+    
+}
+
+extension LeaveReasonViewController: clickReasonDelegate {
+    func clickReason(_ indexPath: IndexPath) {
+        self.selectedIndexPath = indexPath
+        if(!reasonClickFlag){
+            reasonClickFlag = true
+            self.leaveBtn.backgroundColor =  UIColor(displayP3Red: 227/255, green: 62/255, blue: 40/255, alpha: 1.0)
+            self.leaveBtn.isEnabled = true
+        }
+        reasonTableView.reloadData()
     }
     
     

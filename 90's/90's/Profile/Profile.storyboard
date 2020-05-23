@@ -2423,10 +2423,10 @@
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kTt-cq-toK">
-                                <rect key="frame" x="20" y="275" width="374" height="156"/>
+                                <rect key="frame" x="20" y="275" width="374" height="208"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="156" id="QqQ-1E-Asg"/>
+                                    <constraint firstAttribute="height" constant="208" id="QqQ-1E-Asg"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReasonCell" id="EOt-pU-HUR" customClass="ReasonCell" customModule="_0_s" customModuleProvider="target">
@@ -2457,20 +2457,10 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Dq-kd-Tqm">
-                                                    <rect key="frame" x="366" y="5.5" width="8" height="13"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="13" id="chM-mM-L5F"/>
-                                                        <constraint firstAttribute="width" constant="8" id="jBF-M6-o4b"/>
-                                                    </constraints>
-                                                    <state key="normal" image="pathMoreGrey"/>
-                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="7ee-Ag-voo" firstAttribute="centerY" secondItem="CPj-be-lZs" secondAttribute="centerY" id="OBR-7T-6Tl"/>
-                                                <constraint firstItem="3Dq-kd-Tqm" firstAttribute="centerY" secondItem="7ee-Ag-voo" secondAttribute="centerY" id="SzE-tz-s3z"/>
                                                 <constraint firstItem="7ee-Ag-voo" firstAttribute="leading" secondItem="CPj-be-lZs" secondAttribute="trailing" constant="14" id="ZJW-Sk-VbH"/>
-                                                <constraint firstAttribute="trailing" secondItem="3Dq-kd-Tqm" secondAttribute="trailing" id="jkR-4E-d7M"/>
                                                 <constraint firstItem="CPj-be-lZs" firstAttribute="leading" secondItem="og1-Hy-2O6" secondAttribute="leading" id="k2q-i0-UDV"/>
                                                 <constraint firstItem="CPj-be-lZs" firstAttribute="top" secondItem="og1-Hy-2O6" secondAttribute="top" id="rdA-5a-rAL"/>
                                                 <constraint firstAttribute="bottom" secondItem="CPj-be-lZs" secondAttribute="bottom" constant="26" id="usV-cf-y00"/>
@@ -2492,8 +2482,7 @@
                                 </constraints>
                                 <state key="normal" image="iconCancel"/>
                                 <connections>
-                                    <action selector="clickCloseBtn:" destination="JMK-ek-NG4" eventType="touchUpInside" id="pC9-VH-EBk"/>
-                                    <action selector="goBack:" destination="JMK-ek-NG4" eventType="touchUpInside" id="ei0-hd-Qz0"/>
+                                    <action selector="clickCloseBtn:" destination="JMK-ek-NG4" eventType="touchUpInside" id="s4Y-WQ-4iB"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsh-1z-eje">
@@ -2507,8 +2496,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="agreeAllTerms:" destination="JMK-ek-NG4" eventType="touchUpInside" id="B7U-03-wAb"/>
-                                    <action selector="clickOkBtn:" destination="JMK-ek-NG4" eventType="touchUpInside" id="nGi-3a-fzS"/>
+                                    <action selector="clickFinalLeaveBtn:" destination="JMK-ek-NG4" eventType="touchUpInside" id="0ET-y9-3yh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2531,8 +2519,8 @@
                         <viewLayoutGuide key="safeArea" id="ofY-q8-nFR"/>
                     </view>
                     <connections>
-                        <outlet property="okBtn" destination="fsh-1z-eje" id="5Nz-KH-Yv6"/>
-                        <outlet property="reasonTableView" destination="kTt-cq-toK" id="KmI-1X-JLX"/>
+                        <outlet property="leaveBtn" destination="fsh-1z-eje" id="wXg-eF-vxi"/>
+                        <outlet property="reasonTableView" destination="kTt-cq-toK" id="zg6-Km-ypo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MAD-ig-u1m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2556,7 +2544,6 @@
         <image name="path12GreyProfile" width="1" height="12"/>
         <image name="path378Grey1" width="374" height="3"/>
         <image name="pathMoreBlack" width="8" height="13"/>
-        <image name="pathMoreGrey" width="8" height="13"/>
         <image name="pathOpenActionsheet" width="13" height="8"/>
         <image name="pathSeparationGrey" width="378" height="1"/>
         <image name="pathSeparationGrey378GreyProfile" width="378" height="1"/>

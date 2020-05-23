@@ -24,7 +24,7 @@ class ReasonCell: UITableViewCell {
     
     @IBAction func clickAgreeBtn(_ sender: Any) {
         self.isClicked = !isClicked
-        self.clickReasonDelegate.clickReason(self.isClicked)
+        self.clickReasonDelegate.clickReason(self.indexPath)
     }
     
     
