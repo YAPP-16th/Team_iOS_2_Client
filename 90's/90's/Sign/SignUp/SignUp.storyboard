@@ -212,12 +212,12 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9S-qx-riX">
-                                <rect key="frame" x="0.0" y="164" width="414" height="5836"/>
+                                <rect key="frame" x="0.0" y="116" width="414" height="5884"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sqs-nK-Jgy">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="5616"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accessTerms" translatesAutoresizingMaskIntoConstraints="NO" id="7rL-aC-kEo">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accessTerms" translatesAutoresizingMaskIntoConstraints="NO" id="7rL-aC-kEo">
                                                 <rect key="frame" x="36" y="0.0" width="342" height="5616"/>
                                             </imageView>
                                         </subviews>
@@ -245,7 +245,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="4Xs-qe-RIq" firstAttribute="leading" secondItem="wjG-MA-pxX" secondAttribute="leading" constant="18" id="DKf-iD-7pu"/>
-                            <constraint firstItem="u9S-qx-riX" firstAttribute="top" secondItem="4Xs-qe-RIq" secondAttribute="bottom" constant="71" id="aLr-OK-hmN"/>
+                            <constraint firstItem="u9S-qx-riX" firstAttribute="top" secondItem="4Xs-qe-RIq" secondAttribute="bottom" constant="23" id="aLr-OK-hmN"/>
                             <constraint firstItem="4Xs-qe-RIq" firstAttribute="top" secondItem="wjG-MA-pxX" secondAttribute="top" constant="26" id="azp-5w-ED1"/>
                             <constraint firstItem="u9S-qx-riX" firstAttribute="trailing" secondItem="wjG-MA-pxX" secondAttribute="trailing" id="dpA-vV-l5y"/>
                             <constraint firstItem="u9S-qx-riX" firstAttribute="leading" secondItem="wjG-MA-pxX" secondAttribute="leading" id="lgF-TR-Nb8"/>
