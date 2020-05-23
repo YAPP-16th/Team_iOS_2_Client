@@ -9,19 +9,142 @@
 import UIKit
 
 class AlbumInvitedVC: UIViewController {
+    // 회원
+    @IBOutlet weak var albumInvitedView: UIView!
     @IBOutlet weak var albumInvitedTF: UITextField!
     @IBOutlet weak var albumInvitedLabel: UILabel!
-    @IBOutlet weak var completeBtn: UIButton!
+    @IBOutlet weak var albumCompleteBtn: UIButton!
     @IBAction func cancleBtn(_ sender: UIButton) {
         // 앱 종료
     }
+    // 비회원
+    @IBOutlet weak var terminateView: UIView!
+    @IBOutlet weak var terminateLabel: UILabel!
+    @IBOutlet weak var terminateSignupBtn: UIButton!
+    @IBOutlet weak var terminateCancleBtn: UIButton!
     
+    var isUserMember : Bool = false
     var albumIndex : Int = 0
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        autoLogin()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         defaultSetting()
         buttonSetting()
+    }
+}
+
+
+extension AlbumInvitedVC {
+    func defaultSetting(){
+        albumInvitedTF.delegate = self
+        albumInvitedTF.becomeFirstResponder()
+        terminateLabel.text = "90's 회원만 앨범을 열람할 수 있습니다"
+        
+        NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: albumInvitedTF, queue: .main, using: { _ in
+            let value = self.albumInvitedTF.text!.trimmingCharacters(in: .whitespaces)
+            if !value.isEmpty {
+                if value.count >= 4 {
+                    self.albumCompleteBtn.backgroundColor = UIColor.black
+                    self.albumCompleteBtn.isEnabled = true
+                    self.albumInvitedLabel.backgroundColor = UIColor.black
+                }
+            } else {
+                self.albumCompleteBtn.backgroundColor = UIColor.lightGray
+                self.albumCompleteBtn.isEnabled = false
+                self.albumInvitedLabel.backgroundColor = UIColor.lightGray
+            }
+        })
+    }
+
+    func autoLogin(){
+        //기존에 로그인한 데이터가 있을 경우
+        if let email = UserDefaults.standard.string(forKey: "email"){
+            switchUserType(value: true)
+            //소셜 로그인의 경우
+            if(UserDefaults.standard.bool(forKey: "social")){
+                goLogin(email, nil, true)
+            }else {
+                guard let password = UserDefaults.standard.string(forKey: "password") else {return}
+                goLogin(email, password, false)
+            }
+        } else {
+            switchUserType(value: false)
+        }
+    }
+    
+    func switchUserType(value : Bool) {
+        switch value {
+        case true:
+            terminateView.isHidden = true
+            terminateSignupBtn.isEnabled = false
+            terminateCancleBtn.isEnabled = false
+            albumInvitedView.isHidden = false
+            albumInvitedTF.isEnabled = true
+            albumCompleteBtn.isEnabled = true
+        case false:
+            terminateView.isHidden = false
+            terminateSignupBtn.isEnabled = true
+            terminateCancleBtn.isEnabled = true
+            albumInvitedView.isHidden = true
+            albumInvitedTF.isEnabled = false
+            albumCompleteBtn.isEnabled = false
+        }
+    }
+    
+    func buttonSetting(){
+        albumCompleteBtn.addTarget(self, action: #selector(touchAlbumCompleteBtn), for: .touchUpInside)
+        terminateSignupBtn.addTarget(self, action: #selector(touchTerminateSignupBtn), for: .touchUpInside)
+    }
+}
+
+
+extension AlbumInvitedVC {
+    @objc func touchAlbumCompleteBtn(){
+        // 공유앨범 비밀번호 서버통신 후
+        let nextVC = storyboard?.instantiateViewController(withIdentifier: "albumDetailVC") as! AlbumDetailController
+        nextVC.albumUid = albumIndex
+        nextVC.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    @objc func touchTerminateSignupBtn(){
+        let signUpSB = UIStoryboard(name: "SignUp", bundle: nil)
+        let termVC = signUpSB.instantiateViewController(withIdentifier: "TermViewController") as! TermViewController
+        navigationController?.pushViewController(termVC, animated: true)
+    }
+}
+
+
+extension AlbumInvitedVC {
+    //자동로그인 -> 로그인 서버통신
+    func goLogin(_ email: String, _ password: String?, _ social: Bool){
+        LoginService.shared.login(email: email, password: password, sosial: social, completion: { response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200:
+                    guard let data = response.data else { return }
+                    let decoder = JSONDecoder()
+                    let loginResult = try? decoder.decode(SignUpResult.self, from: data)
+                    guard let jwt = loginResult?.jwt else { return }
+                    
+                    //자동로그인 될때마다 jwt 갱신해서 저장
+                    UserDefaults.standard.set(jwt, forKey: "jwt")
+                case 401:
+                    print("\(status) : bad request, no warning in Server")
+                case 404:
+                    print("\(status) : Not found, no address")
+                case 500 :
+                    print("\(status) : Server error in AlbumInvitedVC - goLogin")
+                default:
+                    return
+                }
+            }
+        })
     }
 }
 
@@ -35,39 +158,4 @@ extension AlbumInvitedVC : UITextFieldDelegate {
          albumInvitedTF.resignFirstResponder()
          return true
      }
-    
-    func defaultSetting(){
-        albumInvitedTF.delegate = self
-        albumInvitedTF.becomeFirstResponder()
-        
-        NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: albumInvitedTF, queue: .main, using: { _ in
-            let value = self.albumInvitedTF.text!.trimmingCharacters(in: .whitespaces)
-            if !value.isEmpty {
-                if value.count >= 4 {
-                    self.completeBtn.backgroundColor = UIColor.black
-                    self.completeBtn.isEnabled = true
-                    self.albumInvitedLabel.backgroundColor = UIColor.black
-                    
-                }
-            } else {
-                self.completeBtn.backgroundColor = UIColor.lightGray
-                self.completeBtn.isEnabled = false
-                self.albumInvitedLabel.backgroundColor = UIColor.lightGray
-            }
-        })
-    }
-    
-    func buttonSetting(){
-        completeBtn.addTarget(self, action: #selector(touchCompleteBtn), for: .touchUpInside)
-    }
-    
-    @objc func touchCompleteBtn(){
-        // 서버통신 후
-        print("Touch")
-        let nextVC = storyboard?.instantiateViewController(withIdentifier: "albumDetailVC") as! AlbumDetailController
-        nextVC.albumUid = albumIndex
-        nextVC.modalPresentationStyle = .fullScreen
-        self.navigationController?.pushViewController(nextVC, animated: true)
-
-    }
 }
