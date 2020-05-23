@@ -91,6 +91,7 @@
 		A36DC87124236E45001B3767 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36DC87024236E45001B3767 /* PhotoCell.swift */; };
 		A373907D247903D200F9802B /* LeaveReasonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A373907C247903D200F9802B /* LeaveReasonViewController.swift */; };
 		A373908A247907BC00F9802B /* ReasonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3739089247907BC00F9802B /* ReasonCell.swift */; };
+		A3739094247917E900F9802B /* LeaveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3739093247917E900F9802B /* LeaveService.swift */; };
 		A3768D50246307EE009E64EE /* ChangePhoneService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3768D4F246307EE009E64EE /* ChangePhoneService.swift */; };
 		A37EFE7D246AC5960051227F /* OrderFinalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37EFE7C246AC5960051227F /* OrderFinalViewController.swift */; };
 		A387C1F5246EB99800F59C78 /* AddressSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387C1F4246EB99800F59C78 /* AddressSearchViewController.swift */; };
@@ -612,6 +613,7 @@
 		A36DC87024236E45001B3767 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		A373907C247903D200F9802B /* LeaveReasonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveReasonViewController.swift; sourceTree = "<group>"; };
 		A3739089247907BC00F9802B /* ReasonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReasonCell.swift; sourceTree = "<group>"; };
+		A3739093247917E900F9802B /* LeaveService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveService.swift; sourceTree = "<group>"; };
 		A3768D4F246307EE009E64EE /* ChangePhoneService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhoneService.swift; sourceTree = "<group>"; };
 		A37EFE7C246AC5960051227F /* OrderFinalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFinalViewController.swift; sourceTree = "<group>"; };
 		A387C1F4246EB99800F59C78 /* AddressSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSearchViewController.swift; sourceTree = "<group>"; };
@@ -1728,6 +1730,7 @@
 				A30B21F72462D1FE00BDC75B /* ChangePassService.swift */,
 				A3768D4F246307EE009E64EE /* ChangePhoneService.swift */,
 				A3F30963246F1A7D0051FF6B /* GetProfileService.swift */,
+				A3739093247917E900F9802B /* LeaveService.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -2075,6 +2078,7 @@
 				A3025CA42441AE9800041723 /* FindEmailErrViewController.swift in Sources */,
 				A38A2D102458719E000BF82D /* TelephoneAuthService.swift in Sources */,
 				A3B0D218245DB47800DB90ED /* ChangeEmailService.swift in Sources */,
+				A3739094247917E900F9802B /* LeaveService.swift in Sources */,
 				9BC4EBD62476CFED00A5D6A0 /* StickerImage.swift in Sources */,
 				A3025CA02441ADCA00041723 /* EnterViewController.swift in Sources */,
 				A3B1D7C1246FCAD900D95DE3 /* DefaultUserViewController.swift in Sources */,
