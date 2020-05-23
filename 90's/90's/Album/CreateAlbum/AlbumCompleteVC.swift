@@ -9,6 +9,7 @@
 import UIKit
 
 class AlbumCompleteVC: UIViewController {
+    @IBOutlet weak var completeLabel: UILabel!
     @IBOutlet weak var askLabel: UILabel!
     @IBOutlet weak var albumCompleteBtn: UIButton!
     @IBOutlet weak var albumImageView: UIImageView!
