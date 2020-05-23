@@ -117,7 +117,7 @@ extension AlbumMainController {
                     }
                 }
             })}
-            
+         
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
                 for i in 0...self.albumUidArray.count - 1 {
                     self.networkCoverImageSetting(albumuid: self.albumUidArray[i], photouid: self.albumCoverUidArray[i])
