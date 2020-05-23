@@ -31,7 +31,7 @@ class LeaveReasonViewController: UIViewController {
     
     //탈퇴 서버 통신
     @IBAction func clickFinalLeaveBtn(_ sender: Any) {
-        
+        leave()
     }
     
     func setUI(){
@@ -41,8 +41,39 @@ class LeaveReasonViewController: UIViewController {
         leaveBtn.layer.cornerRadius = 8.0
     }
     
+    func leave(){
+        guard let token = UserDefaults.standard.string(forKey: "jwt") else { return }
+        LeaveService.shared.leave(token: token, completion: {
+            status in
+                switch status {
+                case 200:
+                    //기존의 정보 다 삭제(자체로그인 시 저장하는 정보 : email, password, social, jwt)
+                    UserDefaults.standard.removeObject(forKey: "email")
+                    UserDefaults.standard.removeObject(forKey: "password")
+                    UserDefaults.standard.removeObject(forKey: "social")
+                    UserDefaults.standard.removeObject(forKey: "jwt")
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.switchEnterView()
+                    break
+                case 401...500:
+                    self.showErrAlert()
+                    break
+                default:
+                    return
+                }
+        })
+    }
+    
+    func showErrAlert(){
+        let alert = UIAlertController(title: "오류", message: "회원탈퇴 불가", preferredStyle: .alert)
+              let action = UIAlertAction(title: "확인", style: .default)
+              alert.addAction(action)
+              self.present(alert, animated: true)
+    }
     
 }
+
+
 
 extension LeaveReasonViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
