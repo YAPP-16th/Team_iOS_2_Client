@@ -130,7 +130,6 @@ extension ImageRenderVC {
         sticker = StickerLayout.loadFromZib(image: image)
         sticker?.frame.size = CGSize(width: 120, height: 120)
         sticker?.center = saveView.center
-        print("sticker center = \(sticker?.center)")
         createPan(view: sticker!.backImageView) // 이미지 옮기기
         self.saveView.addSubview(sticker!)
     }
