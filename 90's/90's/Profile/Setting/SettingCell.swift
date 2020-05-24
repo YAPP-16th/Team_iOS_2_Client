@@ -25,18 +25,6 @@ class SettingCell: UITableViewCell {
     @IBOutlet weak var settingNameLabel: UILabel!
     @IBOutlet weak var settingSwitch: UISwitch!
     
-    var isOn : Bool = false {
-        didSet {
-            if(isOn){
-                settingSwitch.isOn = true
-                
-            }
-            else {
-                settingSwitch.isOn = false
-            }
-        }
-    }
-    
     override func awakeFromNib() {
         networkSetting()
         
@@ -50,17 +38,10 @@ class SettingCell: UITableViewCell {
             let content = UNMutableNotificationContent()
             //APN form
             if noticeList[currentIndex ?? 0] == "마케팅 이벤트 알림" {
-                
-                content.title = "90s"
-                content.body = noticeList[currentIndex ?? 0]
-                content.badge = 1
-                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats:false)
-                let request = UNNotificationRequest(identifier: "timerdone", content: content, trigger: trigger)
-                
-//                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-                
+
                 UserDefaults.standard.set("1", forKey: "switch1")
                 print(UserDefaults.standard.value(forKey: "switch1") ?? 0 )
+                sendToken(argument: UserDefaults.standard.integer(forKey: "switch1"))
                 
             }
                 //이건 모르겠는뎅....
@@ -90,14 +71,10 @@ class SettingCell: UITableViewCell {
             }
                 //APN form
             else if noticeList[currentIndex ?? 0] == "구매 및 배송 알림" {
-                content.title = "90s"
-                content.body = noticeList[currentIndex ?? 0]
-                content.badge = 1
-                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats:false)
-                let request = UNNotificationRequest(identifier: "timerdone", content: content, trigger: trigger)
-//                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                
                 UserDefaults.standard.set("4", forKey: "switch4")
                 print(UserDefaults.standard.value(forKey: "switch4") ?? 0 )
+                sendToken(argument: UserDefaults.standard.integer(forKey: "switch4"))
             }
             
         }
@@ -144,7 +121,7 @@ extension SettingCell {
                     self.albumNameArray = value.map({$0.name})
                     self.albumCreateArray = value.map({$0.created_at})
                     self.albumEndArray = value.map({$0.endDate})
-                    print(self.albumEndArray)
+//                    print(self.albumEndArray)
                     
                 case 401:
                     print("\(status) : bad request, no warning in Server")
@@ -164,28 +141,26 @@ extension SettingCell {
         print((albumCreateArray).count)
         let sortedArray = albumEndArray.sorted(by: <)
         print(sortedArray)
+        var endDate = ""
         
-        let endDate = sortedArray[0]
-//        let endDate = "2020-05-31"
+        if sortedArray.count == 0 {
+             endDate = "2099-03-30"
+        }
+        
+        else {
+             endDate = sortedArray[0]
+        }
         
         let dateFormatter = DateFormatter()
-        
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        dateFormatter.timeZone = NSTimeZone(name: "ko_KR") as TimeZone?
         
         guard let date = dateFormatter.date(from: endDate) else {
             fatalError()
         }
-        let testdate : Date = dateFormatter.date(from: endDate) ?? Date()
-        
-        print(testdate)
-        
+                
         let now = NSDate()
         dateFormatter.locale = NSLocale(localeIdentifier: "ko_KR") as Locale
-        
         let startDate = now as Date
-        
-        print(startDate)
         
         let timeInterval = date.timeIntervalSince(startDate)
         
@@ -210,6 +185,7 @@ extension SettingCell {
                 let request = UNNotificationRequest(identifier: "timerdone", content: content, trigger: trigger)
                 UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
             }
+                
             else { // 1주일 보다 많이 남았다.
                 let trigger = UNTimeIntervalNotificationTrigger(timeInterval:  timeInterval - 60*60*24*7 + 100 //100은 constant
                     , repeats:false)
@@ -218,9 +194,24 @@ extension SettingCell {
                 
             }
         }
+            
         else {
             print("UserDefault Value Nil")
         }
+    }
+    
+    //여기로 서버에 전송해주면 될듯
+    func sendToken(argument : Int){
+        
+        if argument == 1 { // 마케팅 알림
+            print(AppDelegate.APN_Token)
+            //일단 보내놓고 
+        }
+        
+        if argument == 4 { // 구매 및 배송 알림
+            print(AppDelegate.APN_Token)
+        }
+        
     }
     
 }
