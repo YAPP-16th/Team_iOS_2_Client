@@ -15,7 +15,7 @@ class LayoutModel {
 }
 
 class CoverModel {
-    let arrayList : [AlbumCover] = []
+    let arrayList : [AlbumCover] = [.Copy, .Paradiso, .HappilyEverAfter, .FavoriteThings, .AwesomeMix, .LessButBetter, .SretroClub, .OneAndOnlyCopy]
 }
 
 class Album {

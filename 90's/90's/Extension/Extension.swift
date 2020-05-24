@@ -124,7 +124,7 @@ extension UIViewController{
         view.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: distance).isActive = true
         view.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -distance).isActive = true
         view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: (self.view.frame.height - view.frame.height)/3).isActive = true
-        view.addShadowEffect()
+//        view.addShadowEffect()
     }
 
     // LUT Filter apply

@@ -65,14 +65,12 @@ class AlbumDetailController : UIViewController {
     var selectedLayout : AlbumLayout?
     // - received data from before vc
     var albumUid : Int = 0
-    //var getAlbum : album?
-    
     var sharingword : String?
     // - network array
     var photoUidArray = [PhotoGetPhotoData]()
     var networkDetailAlbum : album?
     var networkPhotoUidArray : [Int] = []
-    var networkPhotoStringArray : [String] = []
+  
     var networkPhotoUrlImageArray = [UIImage]()
 
     
@@ -375,13 +373,15 @@ extension AlbumDetailController {
     
     // 3. 서버에 앨범 uid와 사진uid 요청
     func NetworkGetPhoto(photoUid : [Int]){
-        for i in 0...photoUid.count-1 {
-            AlbumService.shared.photoDownload(albumUid: albumUid, photoUid: photoUid[i], completion: { response in
-                if case .success(let image) = response.result {
-                    self.networkPhotoUrlImageArray.append(image)
-                    self.photoCollectionView.reloadData()
-                }
-            })
+        if photoUid.count - 1 >= 0 {
+            for i in 0...photoUid.count-1 {
+                AlbumService.shared.photoDownload(albumUid: albumUid, photoUid: photoUid[i], completion: { response in
+                    if case .success(let image) = response.result {
+                        self.networkPhotoUrlImageArray.append(image)
+                        self.photoCollectionView.reloadData()
+                    }
+                })
+            }
         }
     }
     
@@ -472,8 +472,7 @@ extension AlbumDetailController {
 
 extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("network image array = \(networkPhotoUrlImageArray)")
-        return networkPhotoUrlImageArray.count - 1
+        return networkPhotoUrlImageArray.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -487,7 +486,7 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCell
             let size = returnLayoutSize(selectedLayout: selectedLayout!)
             cell.backImageView = applyBackImageViewLayout(selectedLayout: selectedLayout!, smallBig: size, imageView: cell.backImageView)
-            cell.backImageView.image = networkPhotoUrlImageArray[indexPath.row+1]
+            cell.backImageView.image = networkPhotoUrlImageArray[indexPath.row]
             return cell
         }
     }
@@ -576,7 +575,6 @@ extension AlbumDetailController {
             let dest = segue.destination as! AlbumInfoVC
             dest.albumUid = albumUid
             dest.infoAlbum = networkDetailAlbum
-            dest.infoCoverImage = networkPhotoUrlImageArray[0]
         }
     }
 }
