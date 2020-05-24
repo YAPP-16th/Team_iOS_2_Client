@@ -1275,7 +1275,7 @@
                                                     <color key="onTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <connections>
-                                                        <action selector="clickSwitch:" destination="CBu-x7-yuJ" eventType="valueChanged" id="0vy-RK-k3F"/>
+                                                        <action selector="clickSwitch:" destination="CBu-x7-yuJ" eventType="valueChanged" id="yuU-Em-UG0"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
@@ -1292,6 +1292,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="settingNameLabel" destination="Stc-ST-lPS" id="fq1-Ii-QiT"/>
+                                            <outlet property="settingSwitch" destination="ruX-R2-wGg" id="hy0-VD-xNh"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

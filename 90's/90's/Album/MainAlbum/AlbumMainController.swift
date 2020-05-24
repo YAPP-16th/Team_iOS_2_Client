@@ -86,6 +86,48 @@ extension AlbumMainController {
             }
         })
     }
+    
+    func networkCoverUidSetting(){
+        if albumUidArray.count > 0 {
+        
+        for i in 0...albumUidArray.count-1 {
+            AlbumService.shared.photoGetPhoto(albumUid: albumUidArray[i], completion: { response in
+                if let status = response.response?.statusCode {
+                    switch status {
+                    case 200 :
+                        guard let data = response.data else {return}
+                        guard let value = try? JSONDecoder().decode([PhotoDownloadData].self, from: data) else {return}
+                        guard let pUid = value.first?.photoUid else {return}
+                        self.albumCoverUidArray.append(pUid)
+                    case 401:
+                        print("\(status) : bad request, no warning in Server")
+                    case 404:
+                        print("\(status) : Not found, no address")
+                    case 500 :
+                        print("\(status) : Server error in AlbumMain - getPhoto")
+                    default:
+                        return
+                    }
+                }
+            })}
+         
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                for i in 0...self.albumUidArray.count - 1 {
+//                    self.networkCoverImageSetting(albumuid: self.albumUidArray[i], photouid: self.albumCoverUidArray[i])
+                }
+            }
+        }
+    }
+    
+    func networkCoverImageSetting(albumuid : Int, photouid : Int){
+        AlbumService.shared.photoDownload(albumUid: albumuid, photoUid: photouid, completion: { response in
+            if case .success(let image) = response.result {
+                self.albumCoverArray.append(image)
+                self.albumCollectionView.reloadData()
+            }
+        })
+    }
+
 }
 
 

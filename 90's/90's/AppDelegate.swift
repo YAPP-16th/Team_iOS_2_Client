@@ -13,10 +13,8 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window:UIWindow?
-    
-//    var rootViewController : UINavigationController {
-//        return self.window!.rootViewController as! UINavigationController
-//    }
+    static var APN_Token : String? = nil
+
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -57,6 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Print it to console
         print("APNs device token: \(deviceTokenString)")
+        AppDelegate.APN_Token = deviceTokenString
         
         // Persist it in your backend in case it's new
     }
