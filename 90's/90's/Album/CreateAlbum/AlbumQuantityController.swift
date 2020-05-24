@@ -38,7 +38,7 @@ class AlbumQuantityController : UIViewController {
             nextVC.albumName = albumName
             nextVC.albumStartDate = albumStartDate
             nextVC.albumEndDate = albumEndDate
-            nextVC.albumMaxCount = albumMaxCount + 1
+            nextVC.albumMaxCount = albumMaxCount
             
             self.navigationController?.pushViewController(nextVC, animated: true)
         }

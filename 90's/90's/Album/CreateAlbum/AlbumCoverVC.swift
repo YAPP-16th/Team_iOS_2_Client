@@ -18,14 +18,12 @@ class AlbumCoverVC: UIViewController {
     @IBAction func completeBtn(_ sender: UIButton) {
         if initialFlag == false {
             let nextVC = storyboard?.instantiateViewController(withIdentifier: "AlbumLayoutVC") as! AlbumLayoutVC
-            
             nextVC.albumName = albumName
             nextVC.albumStartDate = albumStartDate
             nextVC.albumEndDate = albumEndDate
             nextVC.albumMaxCount = albumMaxCount
             nextVC.albumCover = albumCover
             nextVC.photo = photo
-                   
             self.navigationController?.pushViewController(nextVC, animated: true)
         }
     }

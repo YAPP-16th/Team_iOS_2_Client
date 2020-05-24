@@ -65,8 +65,6 @@ class AlbumDetailController : UIViewController {
     var selectedLayout : AlbumLayout?
     // - received data from before vc
     var albumUid : Int = 0
-    //var getAlbum : album?
-    
     var sharingword : String?
     // - network array
     var photoUidArray = [PhotoGetPhotoData]()
@@ -375,13 +373,15 @@ extension AlbumDetailController {
     
     // 3. 서버에 앨범 uid와 사진uid 요청
     func NetworkGetPhoto(photoUid : [Int]){
-        for i in 0...photoUid.count-1 {
-            AlbumService.shared.photoDownload(albumUid: albumUid, photoUid: photoUid[i], completion: { response in
-                if case .success(let image) = response.result {
-                    self.networkPhotoUrlImageArray.append(image)
-                    self.photoCollectionView.reloadData()
-                }
-            })
+        if photoUid.count - 1 >= 0 {
+            for i in 0...photoUid.count-1 {
+                AlbumService.shared.photoDownload(albumUid: albumUid, photoUid: photoUid[i], completion: { response in
+                    if case .success(let image) = response.result {
+                        self.networkPhotoUrlImageArray.append(image)
+                        self.photoCollectionView.reloadData()
+                    }
+                })
+            }
         }
     }
     
