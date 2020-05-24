@@ -16,7 +16,6 @@ struct album : Codable {
     var count : Int // 앨범 낡기
 //    var orderStatus : String
     var cover: albumCover
-//    var orderStatus : n
     var endDate : String
     var created_at : String
     var updated_at : String
