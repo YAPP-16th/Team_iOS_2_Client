@@ -18,14 +18,14 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var selectorImageView2: UIImageView!
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var buttonConst: NSLayoutConstraint!
+    @IBOutlet weak var topConst: NSLayoutConstraint!
     
     var email:String!
     var pass:String!
+    var keyboardFlag = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tfPass.delegate = self
-        tfEmail.delegate = self
         setUI()
         setTextFieldObserver()
     }
@@ -131,9 +131,10 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
     }
     
     func setUI(){
+        tfPass.delegate = self
+        tfEmail.delegate = self
         emailValidationLabel.isHidden = true
         passValidationLabel.isHidden = true
-        tfEmail.becomeFirstResponder()
         tfPass.isEnabled = false
         loginBtn.isEnabled = false
         loginBtn.layer.cornerRadius = 8.0
@@ -185,14 +186,34 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
         let keyboardHeight = keyboardSize.cgRectValue.height
         
         if(keyboardHeight > 300){
+            //iphoneX~
             buttonConst.constant = keyboardHeight - 18
-        }else{
-            buttonConst.constant = keyboardHeight + 18
+        }else if(!keyboardFlag){
+            //~iphone8
+            keyboardFlag = true
+            topConst.constant += (keyboardHeight/2)
+            self.view.frame.origin.y -= keyboardHeight
+            print("\(self.view.frame.origin.y)")
+            self.view.layoutIfNeeded()
+            
         }
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
-        buttonConst.constant = 18
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
+        let keyboardHeight = keyboardSize.cgRectValue.height
+        
+        if(keyboardHeight > 300){
+            //iphoneX~
+            buttonConst.constant = 18
+        }else if(keyboardFlag){
+            //~iphone8
+            keyboardFlag = false
+            topConst.constant -= (keyboardHeight/2)
+            self.view.frame.origin.y += keyboardHeight
+            self.view.layoutIfNeeded()
+        }
     }
     
     

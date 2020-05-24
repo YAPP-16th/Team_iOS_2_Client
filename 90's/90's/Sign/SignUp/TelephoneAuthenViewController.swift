@@ -16,12 +16,11 @@ class TelephoneAuthenViewController: UIViewController {
     @IBOutlet weak var tfAuthenNumber: UITextField!
     @IBOutlet weak var validationLabel: UILabel!
     @IBOutlet weak var pathImageVIew: UIImageView!
-
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var okBtn: UIButton!
     @IBOutlet weak var askNumberBtn: UIButton!
     @IBOutlet weak var buttonConst: NSLayoutConstraint!
-    
+    @IBOutlet weak var topConst: NSLayoutConstraint!
     //isSocial = true이면 카카오톡 회원가입 (EnterView -> AuthenView)
     //isSocial = false이면 자체 회원가입 (EnterView -> EmailView -> PassView -> AuthenView)
     var isSocial:Bool!
@@ -34,6 +33,7 @@ class TelephoneAuthenViewController: UIViewController {
     var isInitial1 = false
     var isInitial2 = false
     var authenFlag = false
+    var keyboardFlag = false
     var authenNumber:String?
     
     override func viewDidLoad() {
@@ -48,10 +48,10 @@ class TelephoneAuthenViewController: UIViewController {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.switchEnterView()
         }else {
-           //아닐 시 닉네임 입력화면
+            //아닐 시 닉네임 입력화면
             navigationController?.popViewController(animated: true)
         }
-       
+        
     }
     
     //전송 버튼 클릭 시
@@ -75,7 +75,7 @@ class TelephoneAuthenViewController: UIViewController {
         okBtn.isEnabled = false
         okBtn.layer.cornerRadius = 8.0
         askNumberBtn.layer.cornerRadius = 8.0
-       
+        
         if(isSocial){
             pathImageVIew.isHidden = true
             numberLabel.isHidden = true
@@ -221,15 +221,35 @@ class TelephoneAuthenViewController: UIViewController {
         let keyboardHeight = keyboardSize.cgRectValue.height
         
         if(keyboardHeight > 300){
+            //iphoneX~
             buttonConst.constant = keyboardHeight - 18
-        }else{
-            buttonConst.constant = keyboardHeight + 18
+        }else if(!keyboardFlag){
+            //~iphone8
+            keyboardFlag = true
+            topConst.constant += (keyboardHeight/2)
+            self.view.frame.origin.y -= keyboardHeight
+            self.view.layoutIfNeeded()
+            
         }
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
-        buttonConst.constant = 18
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
+        let keyboardHeight = keyboardSize.cgRectValue.height
+        
+        if(keyboardHeight > 300){
+            //iphoneX~
+            buttonConst.constant = 18
+        }else if(keyboardFlag){
+            //~iphone8
+            keyboardFlag = false
+            topConst.constant -= (keyboardHeight/2)
+            self.view.frame.origin.y += keyboardHeight
+            self.view.layoutIfNeeded()
+        }
     }
+    
     
     
     //화면 터치시 키보드 내림
