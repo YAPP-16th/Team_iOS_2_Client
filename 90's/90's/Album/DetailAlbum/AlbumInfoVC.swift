@@ -37,10 +37,7 @@ class AlbumInfoVC: UIViewController {
     }
     
     var albumUid: Int = 0
-    
     var infoAlbum : album?
-    var infoCoverImage : UIImage?
-
     var roleArray : [String] = []
     var userUidArray : [Int] = []
     var userNameArray : [String] = []
@@ -71,10 +68,10 @@ class AlbumInfoVC: UIViewController {
 extension AlbumInfoVC : albumInfoDeleteProtocol {
     func defaultSetting(){
         guard let data = infoAlbum else {return}
-        albumCoverImageView.image = infoCoverImage
+        albumCoverImageView.image = getCoverByUid(value: data.cover.uid)
         albumNameLabel.text = data.name
         albumDateLabel.text = "\(data.created_at.split(separator: "T").first!)  ~ \(data.endDate)"
-        albumCountLabel.text = "\(data.photoLimit - 1)"
+        albumCountLabel.text = "\(data.photoLimit)"
         albumLayoutLabel.text = getLayoutByUid(value: data.layoutUid).layoutName
         
         memberTableView.delegate = self

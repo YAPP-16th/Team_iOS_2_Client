@@ -70,7 +70,7 @@ class AlbumDetailController : UIViewController {
     var photoUidArray = [PhotoGetPhotoData]()
     var networkDetailAlbum : album?
     var networkPhotoUidArray : [Int] = []
-    var networkPhotoStringArray : [String] = []
+  
     var networkPhotoUrlImageArray = [UIImage]()
 
     
@@ -472,8 +472,7 @@ extension AlbumDetailController {
 
 extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("network image array = \(networkPhotoUrlImageArray)")
-        return networkPhotoUrlImageArray.count - 1
+        return networkPhotoUrlImageArray.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -487,7 +486,7 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCell
             let size = returnLayoutSize(selectedLayout: selectedLayout!)
             cell.backImageView = applyBackImageViewLayout(selectedLayout: selectedLayout!, smallBig: size, imageView: cell.backImageView)
-            cell.backImageView.image = networkPhotoUrlImageArray[indexPath.row+1]
+            cell.backImageView.image = networkPhotoUrlImageArray[indexPath.row]
             return cell
         }
     }
@@ -576,7 +575,6 @@ extension AlbumDetailController {
             let dest = segue.destination as! AlbumInfoVC
             dest.albumUid = albumUid
             dest.infoAlbum = networkDetailAlbum
-            dest.infoCoverImage = networkPhotoUrlImageArray[0]
         }
     }
 }
