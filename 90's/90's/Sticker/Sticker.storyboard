@@ -39,8 +39,8 @@
                                     </imageView>
                                 </subviews>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LM2-Cn-VEg">
-                                <rect key="frame" x="0.0" y="752" width="414" height="90"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" misplaced="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LM2-Cn-VEg">
+                                <rect key="frame" x="0.0" y="693" width="414" height="149"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -48,13 +48,37 @@
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="13" id="U8o-TC-k9P">
                                     <size key="itemSize" width="137" height="150"/>
-                                    <size key="headerReferenceSize" width="29" height="0.0"/>
-                                    <size key="footerReferenceSize" width="29" height="0.0"/>
+                                    <size key="headerReferenceSize" width="16" height="0.0"/>
+                                    <size key="footerReferenceSize" width="16" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="stickernamecell" id="bnb-VK-ZRc" customClass="StickerHeaderCell" customModule="_0_s" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="0.0" width="90" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="aEy-yg-vRL">
+                                            <rect key="frame" x="0.0" y="0.0" width="90" height="40"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9y-eq-Ifh">
+                                                    <rect key="frame" x="24" y="10" width="42" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="x9y-eq-Ifh" firstAttribute="centerX" secondItem="aEy-yg-vRL" secondAttribute="centerX" id="p3A-a7-k2W"/>
+                                                <constraint firstItem="x9y-eq-Ifh" firstAttribute="centerY" secondItem="aEy-yg-vRL" secondAttribute="centerY" id="zWg-fg-3do"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="90" height="40"/>
+                                        <connections>
+                                            <outlet property="label" destination="x9y-eq-Ifh" id="NVl-p0-FyO"/>
+                                        </connections>
+                                    </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="stickercell" id="aDS-A2-QAQ" customClass="photoStickerCollectionCell" customModule="_0_s" customModuleProvider="target">
-                                        <rect key="frame" x="29" y="3" width="84" height="84"/>
+                                        <rect key="frame" x="19" y="45" width="84" height="84"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="p1v-wG-nZY">
                                             <rect key="frame" x="0.0" y="0.0" width="84" height="84"/>
@@ -73,40 +97,30 @@
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thumbnailCheckbox" translatesAutoresizingMaskIntoConstraints="NO" id="LBE-Kh-dwo">
-                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="84"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="20"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                    </userDefinedRuntimeAttributes>
-                                                </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="pLp-Cr-VwS" secondAttribute="trailing" id="3Js-Tb-rRI"/>
                                                 <constraint firstItem="pLp-Cr-VwS" firstAttribute="leading" secondItem="p1v-wG-nZY" secondAttribute="leading" id="J4i-8U-IAy"/>
-                                                <constraint firstItem="LBE-Kh-dwo" firstAttribute="width" secondItem="p1v-wG-nZY" secondAttribute="width" id="LdR-jQ-vIR"/>
-                                                <constraint firstItem="LBE-Kh-dwo" firstAttribute="height" secondItem="p1v-wG-nZY" secondAttribute="height" id="M91-GU-LWB"/>
+                                                <constraint firstAttribute="bottom" secondItem="pLp-Cr-VwS" secondAttribute="bottom" id="KwH-Tz-W8K"/>
                                                 <constraint firstAttribute="trailing" secondItem="pLp-Cr-VwS" secondAttribute="trailing" id="RYM-Gx-omN"/>
-                                                <constraint firstItem="LBE-Kh-dwo" firstAttribute="centerX" secondItem="p1v-wG-nZY" secondAttribute="centerX" id="WIU-YJ-oG3"/>
+                                                <constraint firstItem="pLp-Cr-VwS" firstAttribute="leading" secondItem="p1v-wG-nZY" secondAttribute="leading" id="ack-Z8-fEO"/>
                                                 <constraint firstAttribute="bottom" secondItem="pLp-Cr-VwS" secondAttribute="bottom" id="fNq-zs-9hq"/>
-                                                <constraint firstItem="LBE-Kh-dwo" firstAttribute="centerY" secondItem="p1v-wG-nZY" secondAttribute="centerY" id="i73-7K-A4s"/>
+                                                <constraint firstItem="pLp-Cr-VwS" firstAttribute="top" secondItem="p1v-wG-nZY" secondAttribute="top" id="hQG-4X-OoW"/>
                                                 <constraint firstItem="pLp-Cr-VwS" firstAttribute="top" secondItem="p1v-wG-nZY" secondAttribute="top" id="ntQ-L9-0Qq"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="84" height="84"/>
                                         <connections>
-                                            <outlet property="checkImageView" destination="LBE-Kh-dwo" id="4Nz-Qq-0Hk"/>
                                             <outlet property="imageView" destination="pLp-Cr-VwS" id="jV7-o8-SNa"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="4ua-DQ-MPk">
-                                    <rect key="frame" x="0.0" y="0.0" width="29" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="16" height="149"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                                 <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="aC0-nM-vZe">
-                                    <rect key="frame" x="113" y="0.0" width="29" height="90"/>
+                                    <rect key="frame" x="106" y="0.0" width="16" height="149"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                             </collectionView>
@@ -161,55 +175,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="vZB-gV-Ddu">
-                                <rect key="frame" x="0.0" y="704" width="300" height="43"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60j-Zu-2an">
-                                        <rect key="frame" x="0.0" y="0.0" width="75" height="43"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="43" id="PU5-qZ-soa"/>
-                                            <constraint firstAttribute="width" constant="75" id="PoT-PA-LLU"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="16"/>
-                                        <state key="normal" title="Text">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LZN-W2-dkt">
-                                        <rect key="frame" x="75" y="0.0" width="75" height="43"/>
-                                        <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="16"/>
-                                        <state key="normal" title="Real">
-                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RoY-eC-8fq">
-                                        <rect key="frame" x="150" y="0.0" width="75" height="43"/>
-                                        <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="16"/>
-                                        <state key="normal" title="Pixel">
-                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Pp-3a-3wx">
-                                        <rect key="frame" x="225" y="0.0" width="75" height="43"/>
-                                        <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="16"/>
-                                        <state key="normal" title="Illust">
-                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="Xux-hm-cgh"/>
-                                    <constraint firstAttribute="height" constant="43" id="anQ-VP-cnI"/>
-                                </constraints>
-                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="LM2-Cn-VEg" firstAttribute="top" secondItem="vZB-gV-Ddu" secondAttribute="bottom" constant="5" id="31D-IW-3bX"/>
                             <constraint firstItem="pDq-IF-Clj" firstAttribute="width" secondItem="hO3-bs-8dl" secondAttribute="width" id="ADP-Ic-v7W"/>
                             <constraint firstItem="pDq-IF-Clj" firstAttribute="centerX" secondItem="6uv-IX-MBZ" secondAttribute="centerX" id="Cek-Ln-GbQ"/>
-                            <constraint firstItem="vZB-gV-Ddu" firstAttribute="leading" secondItem="6uv-IX-MBZ" secondAttribute="leading" id="Etn-vH-Yv4"/>
                             <constraint firstItem="LM2-Cn-VEg" firstAttribute="width" secondItem="hO3-bs-8dl" secondAttribute="width" id="F68-6o-3ls"/>
                             <constraint firstItem="1SY-3y-bZ7" firstAttribute="trailing" secondItem="6uv-IX-MBZ" secondAttribute="trailing" id="GCI-Bd-3lP"/>
                             <constraint firstItem="1SY-3y-bZ7" firstAttribute="top" secondItem="6uv-IX-MBZ" secondAttribute="top" id="IBd-Jr-wnY"/>
@@ -228,7 +199,6 @@
                         <outlet property="layoutImage" destination="xiV-KI-yob" id="pl4-3Y-55J"/>
                         <outlet property="renderImage" destination="CZd-3N-heV" id="qBu-E7-W8h"/>
                         <outlet property="saveView" destination="RRS-6u-iPj" id="fTZ-jw-hRp"/>
-                        <outlet property="stickerBtnArray" destination="vZB-gV-Ddu" id="OAV-Zn-bma"/>
                         <outlet property="topView" destination="1SY-3y-bZ7" id="QNs-yV-pk5"/>
                     </connections>
                 </viewController>
@@ -441,6 +411,5 @@
     <resources>
         <image name="backicon" width="267" height="267"/>
         <image name="cancleicon" width="267" height="267"/>
-        <image name="thumbnailCheckbox" width="74" height="88"/>
     </resources>
 </document>

@@ -84,7 +84,7 @@ extension SavePhotoVC {
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         
         dateLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -datePosition.height - 5).isActive = true
-        dateLabel.rightAnchor.constraint(equalTo: imageView.rightAnchor, constant: -datePosition.width - 15).isActive = true
+        dateLabel.rightAnchor.constraint(equalTo: imageView.rightAnchor, constant: -datePosition.width - 8).isActive = true
         
         let stroke = [
             NSAttributedString.Key.strokeColor : UIColor.colorRGBHex(hex: 0xf93201),

@@ -180,14 +180,14 @@
                                         </constraints>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyAlbum" translatesAutoresizingMaskIntoConstraints="NO" id="Fwc-Xf-MNj">
-                                        <rect key="frame" x="87" y="177" width="240" height="215"/>
+                                        <rect key="frame" x="87" y="197" width="240" height="215"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="240" id="4No-4Y-ovV"/>
                                             <constraint firstAttribute="height" constant="215" id="hWr-H7-sYj"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zKf-o7-Adc">
-                                        <rect key="frame" x="102" y="503.5" width="210" height="60"/>
+                                        <rect key="frame" x="102" y="523.5" width="210" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="3Lh-oA-WfO"/>
@@ -208,7 +208,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앨범을 만들어 소중한 추억을 만들어보세요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mLE-Gr-vMT">
-                                        <rect key="frame" x="56.5" y="415" width="301" height="25.5"/>
+                                        <rect key="frame" x="56.5" y="435" width="301" height="25.5"/>
                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -218,13 +218,13 @@
                                 <constraints>
                                     <constraint firstItem="Fwc-Xf-MNj" firstAttribute="centerX" secondItem="zLZ-aa-Qx3" secondAttribute="centerX" id="Hdv-K9-hPl"/>
                                     <constraint firstItem="zKf-o7-Adc" firstAttribute="top" secondItem="mLE-Gr-vMT" secondAttribute="bottom" constant="63" id="Lc4-0d-2bF"/>
+                                    <constraint firstItem="mLE-Gr-vMT" firstAttribute="top" secondItem="Fwc-Xf-MNj" secondAttribute="bottom" constant="23" id="Qm7-cd-zMr"/>
                                     <constraint firstItem="BY0-mC-EOt" firstAttribute="top" secondItem="zLZ-aa-Qx3" secondAttribute="top" id="X0b-og-Fd8"/>
                                     <constraint firstItem="mLE-Gr-vMT" firstAttribute="centerX" secondItem="zLZ-aa-Qx3" secondAttribute="centerX" id="ZxY-6G-1vj"/>
                                     <constraint firstAttribute="trailing" secondItem="BY0-mC-EOt" secondAttribute="trailing" id="bzI-yD-f3t"/>
                                     <constraint firstItem="zKf-o7-Adc" firstAttribute="centerX" secondItem="zLZ-aa-Qx3" secondAttribute="centerX" id="fE5-XP-dZw"/>
-                                    <constraint firstItem="mLE-Gr-vMT" firstAttribute="top" secondItem="Fwc-Xf-MNj" secondAttribute="bottom" constant="23" id="m0O-gD-se9"/>
                                     <constraint firstItem="BY0-mC-EOt" firstAttribute="leading" secondItem="zLZ-aa-Qx3" secondAttribute="leading" id="t7n-nw-A0Y"/>
-                                    <constraint firstItem="Fwc-Xf-MNj" firstAttribute="centerY" secondItem="zLZ-aa-Qx3" secondAttribute="centerY" constant="-100" id="yjy-sC-sx4" userLabel="emptyAlbum.centerY = centerY - 100"/>
+                                    <constraint firstItem="Fwc-Xf-MNj" firstAttribute="centerY" secondItem="zLZ-aa-Qx3" secondAttribute="centerY" constant="-80" id="yjy-sC-sx4" userLabel="emptyAlbum.centerY = centerY - 100"/>
                                 </constraints>
                             </view>
                         </subviews>
