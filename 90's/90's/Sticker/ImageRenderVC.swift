@@ -13,39 +13,31 @@ class ImageRenderVC: UIViewController {
     @IBOutlet weak var renderImage: UIImageView!
     @IBOutlet weak var layoutImage: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var filterBtn: UIButton!
-    @IBOutlet weak var stickerBtn: UIButton!
     @IBOutlet weak var completeBtn: UIButton!
+    @IBOutlet weak var stickerBtnArray: UIStackView!
     @IBAction func cancleBtn(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func stickerTypeBtn(_ sender: UIButton) {
     }
     
     // get image from other view
     var image : UIImage?
     var photoView : UIView!
-    var photoImage : UIImage?
     var selectLayout : AlbumLayout! = .Polaroid
     var deviceSize : CGSize = CGSize(width: 0, height: 0)
     // server data
     var albumUid : Int = 0
     var imageName : String = ""
-    
-    // value for checkimageview showing while collection cells changes
-    fileprivate var isFilterSelected : Bool = true
 
     // for sticker
     fileprivate var sticker : StickerLayout?
     fileprivate var initialAngle = CGFloat(), angle = CGFloat(), saveSize = CGFloat()
     fileprivate var savePosition : CGPoint = CGPoint(x: 0, y: 0)
-    fileprivate let stickerArray : [String] = ["heartimage", "starimage", "smileimage"]
-    // for filter
-    fileprivate let context = CIContext(options: nil)
     
-    fileprivate let filterStruct = PhotoEditorTypes()
-    fileprivate var filterIndex = 0
-    fileprivate var selectIndex : IndexPath?
-    
-    fileprivate var filterImages : [UIImage] = [], stickerImages : [UIImage] = []
+    fileprivate var stickerImages : [UIImage] = StickerImage.Basic.imageArray
+    fileprivate let stickerNames : [String] = ["Basic", "Glitter", "Character", "Tape", "Words", "Alphabet", "Number"]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -98,8 +90,6 @@ class ImageRenderVC: UIViewController {
 
 extension ImageRenderVC {
     private func buttonSetting(){
-        filterBtn.addTarget(self, action: #selector(touchFilterBtn), for: .touchUpInside)
-        stickerBtn.addTarget(self, action: #selector(touchStickerBtn), for: .touchUpInside)
         completeBtn.addTarget(self, action: #selector(touchCompleteBtn), for: .touchUpInside)
     }
     
@@ -115,18 +105,10 @@ extension ImageRenderVC {
         
         layoutImage = applyBackImageViewLayout(selectedLayout: selectLayout, smallBig: deviceSize, imageView: layoutImage)
         renderImage = applyBigImageViewLayout(selectedLayout: selectLayout, smallBig: deviceSize, imageView: renderImage, image: image!)
-        print("saveview frame = \(saveView.frame)")
 
         setRenderSaveViewFrameSetting(view: saveView, selectLayout: selectLayout, size: deviceSize)
         setRenderLayoutViewFrameSetting(view: saveView, imageView: layoutImage)
         setRenderImageViewFrameSetting(view: saveView, imageView: renderImage, selectlayout: selectLayout)
-        
-        filterImages = PhotoEditorTypes.filterImage.map({ (v : String) -> UIImage in
-            return UIImage(named: v)!
-        })
-        stickerImages = stickerArray.map({ ( v : String ) -> UIImage in
-            return UIImage(named: v)!
-        })
     }
     
     private func resetValues(){
@@ -157,24 +139,6 @@ extension ImageRenderVC {
 
 
 extension ImageRenderVC {
-    @objc func touchFilterBtn(){
-        isFilterSelected = true
-        stickerBtn.isEnabled = true
-        stickerBtn.titleLabel?.textColor = .lightGray
-        filterBtn.titleLabel?.textColor = .black
-        filterBtn.isEnabled = false
-        collectionView.reloadData()
-    }
-    
-    @objc func touchStickerBtn(){
-        isFilterSelected = false
-        stickerBtn.titleLabel?.textColor = .black
-        stickerBtn.isEnabled = false
-        filterBtn.titleLabel?.textColor = .lightGray
-        filterBtn.isEnabled = true
-        collectionView.reloadData()
-    }
-    
     @objc func touchCompleteBtn(){
         for views in saveView.subviews {
             if(views is StickerLayout){
@@ -191,10 +155,7 @@ extension ImageRenderVC {
         }
         
         resetValues()
-        if selectIndex != nil {
-            collectionView.deselectItem(at: selectIndex!, animated: false)
-        }
-        
+      
         let nextVC = storyboard?.instantiateViewController(withIdentifier: "savePhotoVC") as! SavePhotoVC
         
         nextVC.originImage = renderImage
@@ -227,25 +188,24 @@ extension ImageRenderVC {
 
 
 extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if isFilterSelected == true {   // filter collection
-            return filterImages.count
-        } else {                        // sticker collection
-            return stickerArray.count
+        if section == 0 {
+            return stickerNames.count
+        } else {
+            return stickerImages.count
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        selectIndex = indexPath
-        
-        if isFilterSelected == true {
-            // filter collection
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filtercell", for: indexPath) as! photoFilterCollectionCell
-            cell.imageView.image = filterImages[indexPath.row]
+        if indexPath.section == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "stickernamecell", for: indexPath) as! StickerHeaderCell
+            cell.label.text = stickerNames[indexPath.row]
             return cell
         } else {
-            // sticker collection
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "stickercell", for: indexPath) as! photoStickerCollectionCell
             cell.imageView.image = stickerImages[indexPath.row]
             return cell
@@ -253,10 +213,10 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if isFilterSelected == true {
-            return CGSize(width: 74, height: 88)
+        if indexPath.section == 0 {
+            return CGSize(width: 90, height: 40)
         } else {
-            return CGSize(width: 85, height: 88)
+            return CGSize(width: 84, height: 84)
         }
     }
     
@@ -273,28 +233,20 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectIndex = indexPath
-        
-        if let cell = collectionView.cellForItem(at: indexPath) as? photoFilterCollectionCell {
-            cell.hideimage(value: false)
-            let colorcube = colorCubeFilterFromLUT(imageName: PhotoEditorTypes.filterNameArray[indexPath.row], originalImage: image!)
-            let image = UIImage.init(cgImage: context.createCGImage((colorcube?.outputImage)!, from: (colorcube?.outputImage)!.extent)!)
-            renderImage.image = image
-            
-        } else if let cell = collectionView.cellForItem(at: indexPath) as? photoStickerCollectionCell {
-            cell.hideimage(value: false)
+        if indexPath.section == 0 {
+            let cell = collectionView.cellForItem(at: indexPath) as! StickerHeaderCell
+            cell.label.textColor = .black
+            stickerImages = StickerDatabase.arrayList[indexPath.row].imageArray
+        } else {
             createStickerView(image: stickerImages[indexPath.row], indexPathRow: indexPath.row)
-            
         }
+        //collectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        selectIndex = indexPath
-
-        if let cell = collectionView.cellForItem(at: indexPath) as? photoFilterCollectionCell {
-            cell.hideimage(value: true)
-        } else if let cell = collectionView.cellForItem(at: indexPath) as? photoStickerCollectionCell {
-            cell.hideimage(value: true)
+        if indexPath.section == 0 {
+            let cell = collectionView.cellForItem(at: indexPath) as! StickerHeaderCell
+            cell.label.textColor = .lightGray
         }
     }
 }

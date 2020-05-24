@@ -3,6 +3,7 @@ import UIKit
 
 class AlbumQuantityController : UIViewController {
     
+    @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var tfQuantity: UITextField!
     @IBOutlet weak var selectorLabel: UILabel!
     @IBOutlet weak var nextBtn: UIButton!

@@ -31,6 +31,30 @@ extension Int {
 }
 
 
+extension UILabel {
+    func setLineSpacing(lineSpacing: CGFloat = 0.0, lineHeightMultiple: CGFloat = 0.0) {
+
+        guard let labelText = self.text else { return }
+
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = lineSpacing
+        paragraphStyle.lineHeightMultiple = lineHeightMultiple
+
+        let attributedString:NSMutableAttributedString
+        if let labelattributedText = self.attributedText {
+            attributedString = NSMutableAttributedString(attributedString: labelattributedText)
+        } else {
+            attributedString = NSMutableAttributedString(string: labelText)
+        }
+
+        // Line spacing attribute
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+
+        self.attributedText = attributedString
+    }
+}
+
+
 extension UICollectionViewCell {
     func subImageViewSetting(imageView : UIImageView!, top : CGFloat!, left : CGFloat!, right: CGFloat!, bottom: CGFloat!){
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -86,8 +110,6 @@ extension UIViewController{
     
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: top).isActive = true
-        
-        print("image distance = \(distance)")
         imageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: distance).isActive = true
         imageView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -distance).isActive = true
         imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -bottom).isActive = true
@@ -312,8 +334,8 @@ extension UIViewController{
             imageView.image = image.imageResize(sizeChange: size)
             return imageView
         case .Tape:
-            size = CGSize(width: smallBig.width - 44, height: smallBig.height - 114)
-            imageView.frame = CGRect(x: 22, y: 44, width: size.width, height: size.height)
+            size = CGSize(width: smallBig.width - 36, height: smallBig.height - 116)
+            imageView.frame = CGRect(x: 18, y: 44, width: size.width, height: size.height)
             imageView.image = image.imageResize(sizeChange: size)
             return imageView
         case .Portraw:
@@ -336,7 +358,7 @@ extension UIViewController{
         case .Mini: return CGSize(width: 20, height: 70) 
         case .Memory: return CGSize(width: 36, height: 38)
         case .Portrab: return CGSize(width: 16, height: 14)
-        case .Tape: return CGSize(width: 44, height: 70)
+        case .Tape: return CGSize(width: 44, height: 72)
         case .Portraw: return CGSize(width: 14, height: 14)
         case .Filmroll: return CGSize(width: 3, height: 3)
         }
@@ -369,6 +391,20 @@ extension UIViewController{
         case 5 : return AlbumLayout.Portraw
         case 6 : return AlbumLayout.Filmroll
         default: return AlbumLayout.Polaroid
+        }
+    }
+    
+    func getCoverByUid (value : Int) -> UIImage {
+        switch value {
+        case 1 : return AlbumCover.Copy.image
+        case 2 : return AlbumCover.Paradiso.image
+        case 3 : return AlbumCover.HappilyEverAfter.image
+        case 4 : return AlbumCover.FavoriteThings.image
+        case 5 : return AlbumCover.AwesomeMix.image
+        case 6 : return AlbumCover.LessButBetter.image
+        case 7 : return AlbumCover.SretroClub.image
+        case 8 : return AlbumCover.OneAndOnlyCopy.image
+        default: return AlbumCover.Copy.image
         }
     }
 }
@@ -496,22 +532,6 @@ extension UIView {
             self.layer.borderWidth = 1.0
         }
     }
-}
-
-
-extension UIImageView {
-//    public func imageFromUrl(_ urlString: String?, defaultImgPath : String) {
-//        let defaultImg = UIImage(named: defaultImgPath)
-//        if let url = urlString {
-//            if url.isEmpty {
-//                self.image = defaultImg
-//            } else {
-//                self.kf.setImage(with: URL(string: url), placeholder: defaultImg, options: [.transition(ImageTransition.fade(0.5))])
-//            }
-//        } else {
-//            self.image = defaultImg
-//        }
-//    }
 }
 
 extension UIAlertController {

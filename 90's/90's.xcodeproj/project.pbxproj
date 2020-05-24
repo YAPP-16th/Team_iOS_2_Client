@@ -30,7 +30,6 @@
 		9B1B7A65244C1045008ED381 /* AlbumLayoutPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1B7A64244C1045008ED381 /* AlbumLayoutPreviewVC.swift */; };
 		9B1B7A68244C1590008ED381 /* AlbumLayoutPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1B7A67244C1590008ED381 /* AlbumLayoutPreviewCell.swift */; };
 		9B1B7A6E244C2A9B008ED381 /* AlbumLayoutHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1B7A6D244C2A9B008ED381 /* AlbumLayoutHeaderCell.swift */; };
-		9B31E1942434BBB400A139C6 /* photoFilterCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B31E1932434BBB400A139C6 /* photoFilterCollectionCell.swift */; };
 		9B44EDE12429FC9100B0D774 /* ImageRenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B44EDE02429FC9100B0D774 /* ImageRenderVC.swift */; };
 		9B44EDE52429FCDF00B0D774 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B44EDE42429FCDF00B0D774 /* Extension.swift */; };
 		9B45BD012438734E00497EA5 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B45BD002438734E00497EA5 /* Profile.storyboard */; };
@@ -44,6 +43,7 @@
 		9BAAA9712459624B002567AF /* AlbumServiceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAAA9702459624B002567AF /* AlbumServiceData.swift */; };
 		9BB1C5742441EEBA0035DEBF /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB1C5732441EEBA0035DEBF /* FilterCell.swift */; };
 		9BB1C5762441EEC30035DEBF /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB1C5752441EEC30035DEBF /* FilterViewController.swift */; };
+		9BB3D91F24791DDB00FC1448 /* StickerHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB3D91E24791DDB00FC1448 /* StickerHeaderCell.swift */; };
 		9BB9B555243D694C00B5150F /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB9B554243D694C00B5150F /* OptionViewController.swift */; };
 		9BBBA3DF243F6848002904AC /* AlbumCoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBBA3DE243F6848002904AC /* AlbumCoverVC.swift */; };
 		9BBBA3E1243F690B002904AC /* AlbumCoverCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBBA3E0243F690B002904AC /* AlbumCoverCollectionCell.swift */; };
@@ -51,6 +51,7 @@
 		9BC0DBB22444788F00CA90F7 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0DBB12444788F00CA90F7 /* ProfileVC.swift */; };
 		9BC0DBB4244478A600CA90F7 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC0DBB3244478A600CA90F7 /* ProfileTableViewCell.swift */; };
 		9BC16B1A2435B68F007F106C /* photoStickerCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC16B192435B68F007F106C /* photoStickerCollectionCell.swift */; };
+		9BC4EBD62476CFED00A5D6A0 /* StickerImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC4EBD52476CFED00A5D6A0 /* StickerImage.swift */; };
 		9BC98F062448B3CD002629AF /* StickerLayout.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BC98F052448B3CD002629AF /* StickerLayout.xib */; };
 		9BC98F082448B74E002629AF /* StickerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC98F072448B74E002629AF /* StickerLayout.swift */; };
 		9BD31D37243A05F700D0D719 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD31D36243A05F700D0D719 /* KakaoOpenSDK.framework */; };
@@ -89,6 +90,9 @@
 		A36AF5042473E44D00191A3C /* FindEmailResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36AF5032473E44D00191A3C /* FindEmailResult.swift */; };
 		A36DC86F24236386001B3767 /* AlbumDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36DC86E24236386001B3767 /* AlbumDetailController.swift */; };
 		A36DC87124236E45001B3767 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36DC87024236E45001B3767 /* PhotoCell.swift */; };
+		A373907D247903D200F9802B /* LeaveReasonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A373907C247903D200F9802B /* LeaveReasonViewController.swift */; };
+		A373908A247907BC00F9802B /* ReasonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3739089247907BC00F9802B /* ReasonCell.swift */; };
+		A3739094247917E900F9802B /* LeaveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3739093247917E900F9802B /* LeaveService.swift */; };
 		A3768D50246307EE009E64EE /* ChangePhoneService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3768D4F246307EE009E64EE /* ChangePhoneService.swift */; };
 		A37EFE7D246AC5960051227F /* OrderFinalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37EFE7C246AC5960051227F /* OrderFinalViewController.swift */; };
 		A387C1F5246EB99800F59C78 /* AddressSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387C1F4246EB99800F59C78 /* AddressSearchViewController.swift */; };
@@ -235,7 +239,6 @@
 		9B1B7A64244C1045008ED381 /* AlbumLayoutPreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumLayoutPreviewVC.swift; sourceTree = "<group>"; };
 		9B1B7A67244C1590008ED381 /* AlbumLayoutPreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumLayoutPreviewCell.swift; sourceTree = "<group>"; };
 		9B1B7A6D244C2A9B008ED381 /* AlbumLayoutHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumLayoutHeaderCell.swift; sourceTree = "<group>"; };
-		9B31E1932434BBB400A139C6 /* photoFilterCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoFilterCollectionCell.swift; sourceTree = "<group>"; };
 		9B44EDE02429FC9100B0D774 /* ImageRenderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRenderVC.swift; sourceTree = "<group>"; };
 		9B44EDE42429FCDF00B0D774 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		9B45BD002438734E00497EA5 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
@@ -559,6 +562,7 @@
 		9BAAA9702459624B002567AF /* AlbumServiceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumServiceData.swift; sourceTree = "<group>"; };
 		9BB1C5732441EEBA0035DEBF /* FilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 		9BB1C5752441EEC30035DEBF /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		9BB3D91E24791DDB00FC1448 /* StickerHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerHeaderCell.swift; sourceTree = "<group>"; };
 		9BB9B554243D694C00B5150F /* OptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
 		9BBBA3DE243F6848002904AC /* AlbumCoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCoverVC.swift; sourceTree = "<group>"; };
 		9BBBA3E0243F690B002904AC /* AlbumCoverCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCoverCollectionCell.swift; sourceTree = "<group>"; };
@@ -566,6 +570,7 @@
 		9BC0DBB12444788F00CA90F7 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		9BC0DBB3244478A600CA90F7 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		9BC16B192435B68F007F106C /* photoStickerCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoStickerCollectionCell.swift; sourceTree = "<group>"; };
+		9BC4EBD52476CFED00A5D6A0 /* StickerImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerImage.swift; sourceTree = "<group>"; };
 		9BC98F052448B3CD002629AF /* StickerLayout.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StickerLayout.xib; sourceTree = "<group>"; };
 		9BC98F072448B74E002629AF /* StickerLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerLayout.swift; sourceTree = "<group>"; };
 		9BD31D36243A05F700D0D719 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
@@ -608,6 +613,9 @@
 		A36AF5032473E44D00191A3C /* FindEmailResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindEmailResult.swift; sourceTree = "<group>"; };
 		A36DC86E24236386001B3767 /* AlbumDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailController.swift; sourceTree = "<group>"; };
 		A36DC87024236E45001B3767 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		A373907C247903D200F9802B /* LeaveReasonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveReasonViewController.swift; sourceTree = "<group>"; };
+		A3739089247907BC00F9802B /* ReasonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReasonCell.swift; sourceTree = "<group>"; };
+		A3739093247917E900F9802B /* LeaveService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveService.swift; sourceTree = "<group>"; };
 		A3768D4F246307EE009E64EE /* ChangePhoneService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhoneService.swift; sourceTree = "<group>"; };
 		A37EFE7C246AC5960051227F /* OrderFinalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFinalViewController.swift; sourceTree = "<group>"; };
 		A387C1F4246EB99800F59C78 /* AddressSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSearchViewController.swift; sourceTree = "<group>"; };
@@ -780,14 +788,15 @@
 		9B44EDDF2429EF1500B0D774 /* Sticker */ = {
 			isa = PBXGroup;
 			children = (
+				9BC4EBD52476CFED00A5D6A0 /* StickerImage.swift */,
 				3958515B242F45E600014CB0 /* Sticker.storyboard */,
 				9B44EDE02429FC9100B0D774 /* ImageRenderVC.swift */,
 				9B0B806F24357929009D7B17 /* SavePhotoVC.swift */,
-				9B31E1932434BBB400A139C6 /* photoFilterCollectionCell.swift */,
 				9BC16B192435B68F007F106C /* photoStickerCollectionCell.swift */,
 				9B180807243E10F300AF1CE6 /* StickerPopupVC.swift */,
 				9BC98F052448B3CD002629AF /* StickerLayout.xib */,
 				9BC98F072448B74E002629AF /* StickerLayout.swift */,
+				9BB3D91E24791DDB00FC1448 /* StickerHeaderCell.swift */,
 			);
 			path = Sticker;
 			sourceTree = "<group>";
@@ -1711,6 +1720,8 @@
 				9BC0DBB3244478A600CA90F7 /* ProfileTableViewCell.swift */,
 				A3B1D7B3246FCACE00D95DE3 /* SNSViewController.swift */,
 				A3B1D7C0246FCAD900D95DE3 /* DefaultUserViewController.swift */,
+				A373907C247903D200F9802B /* LeaveReasonViewController.swift */,
+				A3739089247907BC00F9802B /* ReasonCell.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1722,6 +1733,7 @@
 				A30B21F72462D1FE00BDC75B /* ChangePassService.swift */,
 				A3768D4F246307EE009E64EE /* ChangePhoneService.swift */,
 				A3F30963246F1A7D0051FF6B /* GetProfileService.swift */,
+				A3739093247917E900F9802B /* LeaveService.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -2016,6 +2028,7 @@
 				A3E133D824558997007950D8 /* ManageInfoViewController.swift in Sources */,
 				A314260E2450A9E1005487F3 /* LoginResult.swift in Sources */,
 				A318AC72243E290C00245434 /* TermViewController.swift in Sources */,
+				A373907D247903D200F9802B /* LeaveReasonViewController.swift in Sources */,
 				A3CCD8452454BE7B00C73E31 /* SignUpService.swift in Sources */,
 				9B180808243E10F300AF1CE6 /* StickerPopupVC.swift in Sources */,
 				A3B1D7B4246FCACE00D95DE3 /* SNSViewController.swift in Sources */,
@@ -2028,6 +2041,7 @@
 				9B1B7A6E244C2A9B008ED381 /* AlbumLayoutHeaderCell.swift in Sources */,
 				A37EFE7D246AC5960051227F /* OrderFinalViewController.swift in Sources */,
 				A333762A2420DA36000DC7C4 /* Album.swift in Sources */,
+				A373908A247907BC00F9802B /* ReasonCell.swift in Sources */,
 				A333761A2420CFB3000DC7C4 /* AlbumMainController.swift in Sources */,
 				A333762E2420E9D0000DC7C4 /* AlbumQuantityController.swift in Sources */,
 				A318AC7A243E2A5B00245434 /* TelephoneAuthenViewController.swift in Sources */,
@@ -2067,6 +2081,8 @@
 				A3025CA42441AE9800041723 /* FindEmailErrViewController.swift in Sources */,
 				A38A2D102458719E000BF82D /* TelephoneAuthService.swift in Sources */,
 				A3B0D218245DB47800DB90ED /* ChangeEmailService.swift in Sources */,
+				A3739094247917E900F9802B /* LeaveService.swift in Sources */,
+				9BC4EBD62476CFED00A5D6A0 /* StickerImage.swift in Sources */,
 				A3025CA02441ADCA00041723 /* EnterViewController.swift in Sources */,
 				A3B1D7C1246FCAD900D95DE3 /* DefaultUserViewController.swift in Sources */,
 				A3025C9E2441AD9000041723 /* LoginMainViewController.swift in Sources */,
@@ -2088,6 +2104,7 @@
 				A36AF4F32473D5FC00191A3C /* FindEmailService.swift in Sources */,
 				A3CCD8432454B30300C73E31 /* EmailCheckService.swift in Sources */,
 				A3315E0C245C5BA6005536C2 /* OrderCell.swift in Sources */,
+				9BB3D91F24791DDB00FC1448 /* StickerHeaderCell.swift in Sources */,
 				9BC16B1A2435B68F007F106C /* photoStickerCollectionCell.swift in Sources */,
 				39DE24C724547143007E8D40 /* PrintListViewController.swift in Sources */,
 				9BC0DBB4244478A600CA90F7 /* ProfileTableViewCell.swift in Sources */,
@@ -2097,7 +2114,6 @@
 				A3B0D1D9245D6C8400DB90ED /* SettingCell.swift in Sources */,
 				9B6A134E2440D0C500E78E66 /* MemberTableViewCell.swift in Sources */,
 				39CB8C97245DCD2100F28A49 /* PopUp2ViewController.swift in Sources */,
-				9B31E1942434BBB400A139C6 /* photoFilterCollectionCell.swift in Sources */,
 				A31BA4D3243876F0007CA89D /* AlbumNameController.swift in Sources */,
 				A3E133DA245589A1007950D8 /* FAQViewController.swift in Sources */,
 				A36DC87124236E45001B3767 /* PhotoCell.swift in Sources */,

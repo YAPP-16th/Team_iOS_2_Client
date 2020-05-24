@@ -28,24 +28,16 @@ class AlbumMainController: UIViewController {
     var albumUidArray : [Int] = []
     var albumNameArray : [String] = []
     var albumCoverUidArray : [Int] = []
-    var albumCoverArray : [UIImage] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         networkSetting()
         self.tabBarController?.tabBar.isHidden = false
-        print("AlbumMainVC  : viewWillAppear")
     }
     
     override func viewDidLoad() {
          super.viewDidLoad()
          settingCollectionView()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        albumCoverArray = []
-        albumCoverUidArray = []
     }
 }
 
@@ -77,10 +69,11 @@ extension AlbumMainController {
                 case 200 :
                     guard let data = response.data else {return}
                     guard let value = try? JSONDecoder().decode([album].self, from: data) else {return}
-                    self.albumUidArray = value.map({$0.uid})
-                    self.albumNameArray = value.map({$0.name})
-                    self.networkCoverUidSetting()
+                    self.albumUidArray = value.map { $0.uid }
+                    self.albumNameArray = value.map { $0.name }
+                    self.albumCoverUidArray = value.map { $0.cover.uid }
                     self.albumUidArray.isEmpty ? self.switchAlbumEmptyView(value: false) : self.switchAlbumEmptyView(value: true)
+                    self.albumCollectionView.reloadData()
                 case 401:
                     print("\(status) : bad request, no warning in Server")
                 case 404:
@@ -134,6 +127,7 @@ extension AlbumMainController {
             }
         })
     }
+
 }
 
 
@@ -157,12 +151,12 @@ extension AlbumMainController : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return albumCoverArray.count
+        return albumNameArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlbumCell", for: indexPath) as! AlbumCell
-        cell.imageView.image =  albumCoverArray[indexPath.row]
+        cell.imageView.image = getCoverByUid(value: albumCoverUidArray[indexPath.row])
         cell.nameLabel.text = albumNameArray[indexPath.row]
         return cell
     }
