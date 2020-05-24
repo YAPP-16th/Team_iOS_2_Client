@@ -15,7 +15,7 @@ class LayoutModel {
 }
 
 class CoverModel {
-    let arrayList : [AlbumCover] = [.dreamy2121, .fellinlove, .happilyeverafter, .mysweetyLovesyou, .svibe, .sweetholiday]
+    let arrayList : [AlbumCover] = []
 }
 
 class Album {
@@ -142,32 +142,38 @@ enum AlbumLayout {
 
 
 enum AlbumCover {
-    case dreamy2121
-    case fellinlove
-    case sweetholiday
-    case happilyeverafter
-    case mysweetyLovesyou
-    case svibe
+    case Copy
+    case Paradiso
+    case HappilyEverAfter
+    case FavoriteThings
+    case AwesomeMix
+    case LessButBetter
+    case SretroClub
+    case OneAndOnlyCopy
     
     var image : UIImage {
         switch self {
-        case .dreamy2121 : return UIImage(named: "dreamy2121")!
-        case .fellinlove : return UIImage(named: "fellinlove")!
-        case .sweetholiday : return UIImage(named: "sweetholiday")!
-        case .happilyeverafter : return UIImage(named: "happilyeverafter")!
-        case .mysweetyLovesyou : return UIImage(named: "mysweetyLovesyou")!
-        case .svibe : return UIImage(named: "90Svibe")!
+        case .Copy : return UIImage(named: "albumcover1990Copy")!
+        case .Paradiso : return UIImage(named: "albumcoverParadiso")!
+        case .HappilyEverAfter : return UIImage(named: "albumcoverHappilyeverafter")!
+        case .FavoriteThings : return UIImage(named: "albumcoverFavoritethings")!
+        case .AwesomeMix : return UIImage(named: "albumcoverAwsomemix")!
+        case .LessButBetter : return UIImage(named: "albumcoverLessbutbetter")!
+        case .SretroClub : return UIImage(named: "albumcover90Sretroclub")!
+        case .OneAndOnlyCopy : return UIImage(named: "albumcoverOneandonlyCopy")!
         }
     }
     
     var imageName : String {
         switch self {
-        case .dreamy2121 : return "dreamy2121"
-        case .fellinlove : return "fellinlove"
-        case .sweetholiday : return "sweetholiday"
-        case .happilyeverafter : return "happileverafter"
-        case .mysweetyLovesyou : return "mysweetyLovesyou"
-        case .svibe : return "90Svibe"
+        case .Copy : return "1990 Copy"
+        case .Paradiso : return "Paradiso"
+        case .HappilyEverAfter : return "Happily Ever After"
+        case .FavoriteThings : return "Favorite Things"
+        case .AwesomeMix : return "Awesome Mix"
+        case .LessButBetter : return "Less But Better"
+        case .SretroClub : return "Sretro Club"
+        case .OneAndOnlyCopy : return "One & Only Copy"
         }
     }
 }

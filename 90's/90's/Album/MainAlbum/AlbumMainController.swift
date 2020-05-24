@@ -69,7 +69,6 @@ extension AlbumMainController {
                 case 200 :
                     guard let data = response.data else {return}
                     guard let value = try? JSONDecoder().decode([album].self, from: data) else {return}
-                     print("album = \(value)")
                     self.albumUidArray = value.map { $0.uid }
                     self.albumNameArray = value.map { $0.name }
                     self.albumCoverUidArray = value.map { $0.cover.uid }
