@@ -23,6 +23,7 @@ class AlbumCoverVC: UIViewController {
             nextVC.albumStartDate = albumStartDate
             nextVC.albumEndDate = albumEndDate
             nextVC.albumMaxCount = albumMaxCount
+            nextVC.albumCover = albumCover
             nextVC.photo = photo
                    
             self.navigationController?.pushViewController(nextVC, animated: true)
@@ -33,6 +34,7 @@ class AlbumCoverVC: UIViewController {
     var albumStartDate : String!
     var albumEndDate : String!
     var albumMaxCount : Int!
+    var albumCover : Int!
     var photo : UIImage!
     
     var initialFlag : Bool = true
@@ -78,6 +80,7 @@ extension AlbumCoverVC : UICollectionViewDelegate, UICollectionViewDataSource, U
         initialFlag = false
         photo = CoverDatabase.arrayList[indexPath.row].image
         coverImageView.image = CoverDatabase.arrayList[indexPath.row].image
+        albumCover = indexPath.row + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

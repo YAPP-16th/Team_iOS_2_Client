@@ -49,13 +49,14 @@ struct AlbumService : APIManager {
     
     
     // CreateAlbum, Post, 앨범 생성
-    func albumCreate(endDate : String, layoutUid : Int, name : String, photoLimit : Int, completion : @escaping(completeAlbumSerivce)){
+    func albumCreate(endDate : String, layoutUid : Int, name : String, photoLimit : Int, cover : Int, completion : @escaping(completeAlbumSerivce)){
         let url = Self.url("/album/create")
         let body : [String : Any] = [
             "endDate" : endDate,
             "layoutUid" : layoutUid,
             "name" : name,
-            "photoLimit" : photoLimit
+            "photoLimit" : photoLimit,
+            "coverUid" : cover
             ]
         
         AF.request(url, method: .post, parameters: body, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
@@ -171,7 +172,7 @@ extension AlbumService {
         
         AF.request(url,method: .post, parameters: body, encoding: JSONEncoding.default, headers: tokenHeader).responseImage(completionHandler: {response in
             switch response.result {
-            case .success(let image):
+            case .success:
                 completion(response)
             case .failure(let err):
                 print("==> Error in PhotoDownload Service : \(err)")

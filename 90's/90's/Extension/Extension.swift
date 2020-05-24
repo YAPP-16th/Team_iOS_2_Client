@@ -393,6 +393,18 @@ extension UIViewController{
         default: return AlbumLayout.Polaroid
         }
     }
+    
+    func getCoverByUid (value : Int) -> UIImage {
+        switch value {
+        case 1 : return AlbumCover.dreamy2121.image
+        case 2 : return AlbumCover.fellinlove.image
+        case 3 : return AlbumCover.sweetholiday.image
+        case 4 : return AlbumCover.happilyeverafter.image
+        case 5 : return AlbumCover.mysweetyLovesyou.image
+        case 6 : return AlbumCover.svibe.image
+        default: return AlbumCover.dreamy2121.image
+        }
+    }
 }
 
 

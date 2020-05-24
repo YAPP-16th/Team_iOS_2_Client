@@ -28,24 +28,16 @@ class AlbumMainController: UIViewController {
     var albumUidArray : [Int] = []
     var albumNameArray : [String] = []
     var albumCoverUidArray : [Int] = []
-    var albumCoverArray : [UIImage] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         networkSetting()
         self.tabBarController?.tabBar.isHidden = false
-        print("AlbumMainVC  : viewWillAppear")
     }
     
     override func viewDidLoad() {
          super.viewDidLoad()
          settingCollectionView()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        albumCoverArray = []
-        albumCoverUidArray = []
     }
 }
 
@@ -77,10 +69,12 @@ extension AlbumMainController {
                 case 200 :
                     guard let data = response.data else {return}
                     guard let value = try? JSONDecoder().decode([album].self, from: data) else {return}
-                    self.albumUidArray = value.map({$0.uid})
-                    self.albumNameArray = value.map({$0.name})
-                    self.networkCoverUidSetting()
+                     print("album = \(value)")
+                    self.albumUidArray = value.map { $0.uid }
+                    self.albumNameArray = value.map { $0.name }
+                    self.albumCoverUidArray = value.map { $0.cover.uid }
                     self.albumUidArray.isEmpty ? self.switchAlbumEmptyView(value: false) : self.switchAlbumEmptyView(value: true)
+                    self.albumCollectionView.reloadData()
                 case 401:
                     print("\(status) : bad request, no warning in Server")
                 case 404:
@@ -90,47 +84,6 @@ extension AlbumMainController {
                 default:
                     return
                 }
-            }
-        })
-    }
-    
-    func networkCoverUidSetting(){
-        if albumUidArray.count > 0 {
-        
-        for i in 0...albumUidArray.count-1 {
-            AlbumService.shared.photoGetPhoto(albumUid: albumUidArray[i], completion: { response in
-                if let status = response.response?.statusCode {
-                    switch status {
-                    case 200 :
-                        guard let data = response.data else {return}
-                        guard let value = try? JSONDecoder().decode([PhotoDownloadData].self, from: data) else {return}
-                        guard let pUid = value.first?.photoUid else {return}
-                        self.albumCoverUidArray.append(pUid)
-                    case 401:
-                        print("\(status) : bad request, no warning in Server")
-                    case 404:
-                        print("\(status) : Not found, no address")
-                    case 500 :
-                        print("\(status) : Server error in AlbumMain - getPhoto")
-                    default:
-                        return
-                    }
-                }
-            })}
-         
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                for i in 0...self.albumUidArray.count - 1 {
-                    self.networkCoverImageSetting(albumuid: self.albumUidArray[i], photouid: self.albumCoverUidArray[i])
-                }
-            }
-        }
-    }
-    
-    func networkCoverImageSetting(albumuid : Int, photouid : Int){
-        AlbumService.shared.photoDownload(albumUid: albumuid, photoUid: photouid, completion: { response in
-            if case .success(let image) = response.result {
-                self.albumCoverArray.append(image)
-                self.albumCollectionView.reloadData()
             }
         })
     }
@@ -157,12 +110,12 @@ extension AlbumMainController : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return albumCoverArray.count
+        return albumNameArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlbumCell", for: indexPath) as! AlbumCell
-        cell.imageView.image =  albumCoverArray[indexPath.row]
+        cell.imageView.image = getCoverByUid(value: albumCoverUidArray[indexPath.row])
         cell.nameLabel.text = albumNameArray[indexPath.row]
         return cell
     }

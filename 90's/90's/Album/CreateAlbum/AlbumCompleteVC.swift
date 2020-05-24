@@ -36,6 +36,7 @@ class AlbumCompleteVC: UIViewController {
     var albumStartDate : String!
     var albumEndDate : String!
     var albumMaxCount : Int!
+    var albumCover : Int!
     var photo : UIImage!
     var imageName : String!
     var albumUid : Int!
@@ -60,13 +61,12 @@ extension AlbumCompleteVC {
         albumDateLabel.text = "\(albumStartDate!)  ~  \(albumEndDate!)"
         albumCountLabel.text = "\(albumMaxCount - 1)"
         askLabel.text = "이 앨범으로 결정하시겠습니까?\n한 번 앨범을 만들면 수정이 불가능 합니다"
-        
         imageName = albumLayout.layoutName
     }
     
     func createAlbumService(){
         
-        AlbumService.shared.albumCreate(endDate: albumEndDate, layoutUid: albumLayout.layoutUid, name: albumName, photoLimit: albumMaxCount, completion: {
+        AlbumService.shared.albumCreate(endDate: albumEndDate, layoutUid: albumLayout.layoutUid, name: albumName, photoLimit: albumMaxCount, cover: albumCover, completion: {
             response in
             if let status = response.response?.statusCode {
                 switch status {
@@ -74,8 +74,7 @@ extension AlbumCompleteVC {
                     guard let data = response.data else {return}
                     guard let uid = try? JSONDecoder().decode(AlbumCreateResult.self, from: data) else {return}
                     self.albumUid = uid.uid
-                    self.sendCoverImageService(uid: uid.uid)
-                    print("create Album!")
+                    //self.sendCoverImageService(uid: uid.uid)
                 case 401:
                     print("\(status) : bad request, no warning in Server")
                 case 404:
@@ -89,23 +88,23 @@ extension AlbumCompleteVC {
         })
     }
     
-    func sendCoverImageService(uid : Int){
-        AlbumService.shared.photoUpload(albumUid: uid, image: [photo!], imageName: albumLayout.layoutName, completion: {
-            response in
-            if let status = response.response?.statusCode {
-                switch status {
-                case 200 :
-                    print("album create : upload cover image complete")
-                case 401:
-                    print("\(status) : bad request, no warning in Server")
-                case 404:
-                    print("\(status) : Not found, no address")
-                case 500 :
-                    print("\(status) : Server error in AlbumComplete - photoUpload")
-                default :
-                    return
-                }
-            }
-        })
-    }
+//    func sendCoverImageService(uid : Int){
+//        AlbumService.shared.photoUpload(albumUid: uid, image: [photo!], imageName: albumLayout.layoutName, completion: {
+//            response in
+//            if let status = response.response?.statusCode {
+//                switch status {
+//                case 200 :
+//                    print("album create : upload cover image complete")
+//                case 401:
+//                    print("\(status) : bad request, no warning in Server")
+//                case 404:
+//                    print("\(status) : Not found, no address")
+//                case 500 :
+//                    print("\(status) : Server error in AlbumComplete - photoUpload")
+//                default :
+//                    return
+//                }
+//            }
+//        })
+//    }
 }
