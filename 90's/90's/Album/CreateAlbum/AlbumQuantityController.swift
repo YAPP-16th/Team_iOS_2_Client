@@ -22,13 +22,14 @@ class AlbumQuantityController : UIViewController {
     var albumEndDate:String!
     var albumMaxCount:Int!
     
-    private var maxCountArray = Array(0...30)
+    private var maxCountArray = Array(4...30)
     var initialFlag = true
     
     override func viewDidLoad() {
         keyboardSetting()
         setQuantityPicker()
         initialFlag = true
+        tfQuantity.text = "4"
     }
     
     @IBAction func clickNextBtn(_ sender: Any) {

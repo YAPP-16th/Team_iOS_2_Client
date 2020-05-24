@@ -17,7 +17,6 @@ class AlbumDetailController : UIViewController {
     @IBOutlet weak var albumNameLabel: UILabel!
     @IBOutlet weak var albumCountLabel: UILabel!
     @IBOutlet weak var addPhotoBtn: UIButton!
-    
     // Top View 설정
     @IBAction func inviteBtn(_ sender: UIButton) {
         if isSharingAlbum == false {
@@ -51,7 +50,8 @@ class AlbumDetailController : UIViewController {
     
     // 사진 순서 이동
     private var longPressGesture : UILongPressGestureRecognizer!
-    var isEnded : Bool = true
+    var isArrangeEnded : Bool = true
+    var isAlbumComplete : Bool = false
     
     var currentCell : UICollectionViewCell? = nil // 스티커, 필터 전환
     var isSharingAlbum : Bool = false // 공유앨범
@@ -63,6 +63,7 @@ class AlbumDetailController : UIViewController {
     
     var ImageName : String = ""
     var selectedLayout : AlbumLayout?
+    var albumMaxCount : Int = 0
     // - received data from before vc
     var albumUid : Int = 0
     var sharingword : String?
@@ -180,6 +181,17 @@ extension AlbumDetailController {
             setShareView()
         }
     }
+
+    func switchAddBtn(value : Bool) {
+        switch value {
+        case false :
+            addPhotoBtn.isEnabled = true
+            addPhotoBtn.isHidden = false
+        case true :
+            addPhotoBtn.isEnabled = false
+            addPhotoBtn.isHidden = true
+        }
+    }
     
     func setShareView(){
         hideShareTextField.clearButtonMode = .whileEditing
@@ -202,8 +214,6 @@ extension AlbumDetailController {
             }
         })
     }
-    
-    
     
     func setZoomImageView(layout : AlbumLayout) -> CGSize {
         switch layout {
@@ -331,6 +341,7 @@ extension AlbumDetailController {
                     guard let value = try? JSONDecoder().decode(album.self, from: data) else {return}
                     self.networkDetailAlbum = value
                     self.albumNameLabel.text = value.name
+                    self.albumMaxCount = value.photoLimit
                     self.albumCountLabel.text = "사진 개수 미등록"// "\(value.count - 1) 개의 추억이 쌓였습니다"
                     self.selectedLayout = self.getLayoutByUid(value: value.layoutUid)
                     self.hideImageZoom.frame.size = CGSize(width: self.setZoomImageView(layout: self.selectedLayout!).width - 60, height: self.setZoomImageView(layout: self.selectedLayout!).height - 60)
@@ -383,6 +394,9 @@ extension AlbumDetailController {
                 })
             }
         }
+        print("album count = \(photoUidArray.count), \(albumMaxCount)")
+        isAlbumComplete = photoUidArray.count <= albumMaxCount ? false : true
+        switchAddBtn(value: isAlbumComplete)
     }
     
     // 앨범 완성 후 - 앨범 낡기 적용
@@ -431,39 +445,27 @@ extension AlbumDetailController {
     }
     
     @objc func touchAddPhotoBtn() {
-        guard let data = networkDetailAlbum else {return}
-        
-        if (photoUidArray.count-1 >= data.photoLimit) {
-            addPhotoBtn.isEnabled = false
-            
-            let alert = UIAlertController(title: "사진 추가 불가", message: "제한개수를 모두 채웠습니다.", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "확인", style: .default)
-            alert.addAction(okAction)
-            present(alert,animated: true)
-        } else {
-            addPhotoBtn.isEnabled = true
-            switchHideView(value: false)
-        }
+        switchHideView(value: isAlbumComplete)
     }
     
     @objc func handleLongGesture(gesture : UILongPressGestureRecognizer){
         switch gesture.state {
         case .began:
             guard let selectedIndexPath = photoCollectionView.indexPathForItem(at: gesture.location(in: photoCollectionView)) else { break }
-            isEnded = false
+            isArrangeEnded = false
             currentCell = photoCollectionView.cellForItem(at: selectedIndexPath)
             photoCollectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
         case .changed:
             photoCollectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
         case .ended:
-            isEnded = true
+            isArrangeEnded = true
             photoCollectionView.performBatchUpdates({
                 self.photoCollectionView.endInteractiveMovement()
             }, completion: { (result) in
                 self.currentCell = nil
             })
         default:
-            isEnded = true
+            isArrangeEnded = true
             photoCollectionView.cancelInteractiveMovement()
         }
     }
@@ -480,7 +482,7 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if currentCell != nil && isEnded {
+        if currentCell != nil && isArrangeEnded {
             return currentCell!
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCell
