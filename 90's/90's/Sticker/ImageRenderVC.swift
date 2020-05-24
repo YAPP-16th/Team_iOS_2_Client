@@ -19,6 +19,9 @@ class ImageRenderVC: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func stickerTypeBtn(_ sender: UIButton) {
+    }
+    
     // get image from other view
     var image : UIImage?
     var photoView : UIView!
@@ -32,8 +35,9 @@ class ImageRenderVC: UIViewController {
     fileprivate var sticker : StickerLayout?
     fileprivate var initialAngle = CGFloat(), angle = CGFloat(), saveSize = CGFloat()
     fileprivate var savePosition : CGPoint = CGPoint(x: 0, y: 0)
-    fileprivate let stickerArray : [String] = ["heartimage", "starimage", "smileimage"]
-    fileprivate var stickerImages : [UIImage] = []
+    
+    fileprivate var stickerImages : [UIImage] = StickerImage.Basic.imageArray
+    fileprivate let stickerNames : [String] = ["Basic", "Glitter", "Character", "Tape", "Words", "Alphabet", "Number"]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -105,8 +109,6 @@ extension ImageRenderVC {
         setRenderSaveViewFrameSetting(view: saveView, selectLayout: selectLayout, size: deviceSize)
         setRenderLayoutViewFrameSetting(view: saveView, imageView: layoutImage)
         setRenderImageViewFrameSetting(view: saveView, imageView: renderImage, selectlayout: selectLayout)
-        
-        stickerImages = stickerArray.map{ UIImage(named: $0)!}
     }
     
     private func resetValues(){
@@ -186,19 +188,36 @@ extension ImageRenderVC {
 
 
 extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return stickerArray.count
+        if section == 0 {
+            return stickerNames.count
+        } else {
+            return stickerImages.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "stickercell", for: indexPath) as! photoStickerCollectionCell
+        if indexPath.section == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "stickernamecell", for: indexPath) as! StickerHeaderCell
+            cell.label.text = stickerNames[indexPath.row]
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "stickercell", for: indexPath) as! photoStickerCollectionCell
             cell.imageView.image = stickerImages[indexPath.row]
-        return cell
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 84, height: 84)
+        if indexPath.section == 0 {
+            return CGSize(width: 90, height: 40)
+        } else {
+            return CGSize(width: 84, height: 84)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -214,7 +233,20 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        createStickerView(image: stickerImages[indexPath.row], indexPathRow: indexPath.row)
+        if indexPath.section == 0 {
+            let cell = collectionView.cellForItem(at: indexPath) as! StickerHeaderCell
+            cell.label.textColor = .black
+            stickerImages = StickerDatabase.arrayList[indexPath.row].imageArray
+        } else {
+            createStickerView(image: stickerImages[indexPath.row], indexPathRow: indexPath.row)
+        }
+        //collectionView.reloadData()
     }
-   
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            let cell = collectionView.cellForItem(at: indexPath) as! StickerHeaderCell
+            cell.label.textColor = .lightGray
+        }
+    }
 }

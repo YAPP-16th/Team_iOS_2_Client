@@ -8,6 +8,12 @@
 
 import Foundation
 
+let StickerDatabase : StickerModel = StickerModel()
+
+class StickerModel {
+    let arrayList : [StickerImage] = [.Basic, .Glitter, .Character, .Tape, .Words, .Alphabet, .Number]
+}
+
 enum StickerImage {
     case Basic
     case Glitter

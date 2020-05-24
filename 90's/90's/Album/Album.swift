@@ -11,11 +11,11 @@ let LayoutDatabase : LayoutModel = LayoutModel()
 let CoverDatabase : CoverModel = CoverModel()
 
 class LayoutModel {
-    var arrayList : [AlbumLayout] = [.Polaroid, .Mini, .Memory, .Portrab, .Tape, .Portraw, .Filmroll]
+    let arrayList : [AlbumLayout] = [.Polaroid, .Mini, .Memory, .Portrab, .Tape, .Portraw, .Filmroll]
 }
 
 class CoverModel {
-    var arrayList : [AlbumCover] = [.dreamy2121, .fellinlove, .happilyeverafter, .mysweetyLovesyou, .svibe, .sweetholiday]
+    let arrayList : [AlbumCover] = [.dreamy2121, .fellinlove, .happilyeverafter, .mysweetyLovesyou, .svibe, .sweetholiday]
 }
 
 class Album {
