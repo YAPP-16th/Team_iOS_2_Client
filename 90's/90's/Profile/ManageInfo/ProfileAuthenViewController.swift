@@ -20,6 +20,7 @@ class ProfileAuthenViewController: UIViewController {
     @IBOutlet weak var askNumberBtn: UIButton!
     @IBOutlet weak var okBtn: UIButton!
     @IBOutlet weak var buttonConst: NSLayoutConstraint!
+    @IBOutlet weak var topConst: NSLayoutConstraint!
     //이메일 변경인지 패스워드 변경인지 구분할 인덱스
     var authenType:String!
     
@@ -29,6 +30,7 @@ class ProfileAuthenViewController: UIViewController {
     var isInitial2:Bool = false
     var authenFlag = false
     var authenNumber:String?
+    var keyboardFlag = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +57,7 @@ class ProfileAuthenViewController: UIViewController {
     }
     
     func setUI(){
+       
         titleLabel.text = authenType
             switch authenType {
             case "이메일 변경", "비밀번호 변경":
@@ -146,21 +149,41 @@ class ProfileAuthenViewController: UIViewController {
         }
     }
     
-    @objc func keyboardWillShow(_ notification: Notification) {
-        let userInfo = notification.userInfo
-        let keyboardSize = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
-        let keyboardHeight = keyboardSize.cgRectValue.height
-        
-        if(keyboardHeight > 300){
-            buttonConst.constant = keyboardHeight - 18
-        }else{
-            buttonConst.constant = keyboardHeight + 18
-        }
-    }
-    
-    @objc func keyboardWillHide(_ notification: Notification) {
-        buttonConst.constant = 18
-    }
+ @objc func keyboardWillShow(_ notification: Notification) {
+       let userInfo = notification.userInfo
+       let keyboardSize = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
+       let keyboardHeight = keyboardSize.cgRectValue.height
+       
+       if(keyboardHeight > 300){
+           //iphoneX~
+           buttonConst.constant = keyboardHeight - 18
+       }else if(!keyboardFlag){
+           //~iphone8
+           keyboardFlag = true
+           topConst.constant += (keyboardHeight/2)
+           self.view.frame.origin.y -= keyboardHeight
+           self.view.layoutIfNeeded()
+
+       }
+   }
+   
+   @objc func keyboardWillHide(_ notification: Notification) {
+       let userInfo = notification.userInfo
+              let keyboardSize = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
+              let keyboardHeight = keyboardSize.cgRectValue.height
+
+       if(keyboardHeight > 300){
+           //iphoneX~
+           buttonConst.constant = 18
+       }else if(keyboardFlag){
+           //~iphone8
+           keyboardFlag = false
+           topConst.constant -= (keyboardHeight/2)
+           self.view.frame.origin.y += keyboardHeight
+           self.view.layoutIfNeeded()
+       }
+   }
+
     
     
     //화면 터치시 키보드 내림

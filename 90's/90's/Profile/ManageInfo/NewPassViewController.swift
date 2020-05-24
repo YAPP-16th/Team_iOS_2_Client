@@ -18,10 +18,13 @@ class NewPassViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var buttonConst: NSLayoutConstraint!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var topConst: NSLayoutConstraint!
     
     var authenType:String?
     var pass:String!
     var phoneNum:String!
+    var keyboardFlag = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,13 +57,13 @@ class NewPassViewController: UIViewController, UITextFieldDelegate {
         tfConfirmPass.isEnabled = false
         validationLabel.isHidden = true
         nextBtn.layer.cornerRadius = 8.0
-        
+       
         if let type = authenType {
             if(type == "MainFindPass"){
                 self.titleLabel.isHidden = true
             }
         }
-     
+        
     }
     
     func setObserver(){
@@ -107,15 +110,35 @@ class NewPassViewController: UIViewController, UITextFieldDelegate {
         let keyboardHeight = keyboardSize.cgRectValue.height
         
         if(keyboardHeight > 300){
+            //iphoneX~
             buttonConst.constant = keyboardHeight - 18
-        }else{
-            buttonConst.constant = keyboardHeight + 18
+        }else if(!keyboardFlag){
+            //~iphone8
+            keyboardFlag = true
+            topConst.constant += (keyboardHeight/2)
+            self.view.frame.origin.y -= keyboardHeight
+            self.view.layoutIfNeeded()
+            
         }
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
-        buttonConst.constant = 18
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
+        let keyboardHeight = keyboardSize.cgRectValue.height
+        
+        if(keyboardHeight > 300){
+            //iphoneX~
+            buttonConst.constant = 18
+        }else if(keyboardFlag){
+            //~iphone8
+            keyboardFlag = false
+            topConst.constant -= (keyboardHeight/2)
+            self.view.frame.origin.y += keyboardHeight
+            self.view.layoutIfNeeded()
+        }
     }
+    
     
     //화면 터치시 키보드 내림
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

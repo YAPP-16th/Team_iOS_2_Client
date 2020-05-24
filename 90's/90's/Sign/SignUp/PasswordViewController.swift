@@ -17,7 +17,9 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var validationLabel: UILabel!
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var buttonConst: NSLayoutConstraint!
+    @IBOutlet weak var topConst: NSLayoutConstraint!
     
+    var keyboardFlag = false
     var email:String!
     
     override func viewDidLoad() {
@@ -52,6 +54,7 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
         tfConfirmPass.isEnabled = false
         validationLabel.isHidden = true
         nextBtn.layer.cornerRadius = 8.0
+        
     }
     
     func setObserver(){
@@ -98,14 +101,33 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
         let keyboardHeight = keyboardSize.cgRectValue.height
         
         if(keyboardHeight > 300){
+            //iphoneX~
             buttonConst.constant = keyboardHeight - 18
-        }else{
-            buttonConst.constant = keyboardHeight + 18
+        }else if(!keyboardFlag){
+            //~iphone8
+            keyboardFlag = true
+            topConst.constant += (keyboardHeight/2)
+            self.view.frame.origin.y -= keyboardHeight
+            self.view.layoutIfNeeded()
+
         }
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
-        buttonConst.constant = 18
+        let userInfo = notification.userInfo
+               let keyboardSize = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
+               let keyboardHeight = keyboardSize.cgRectValue.height
+
+        if(keyboardHeight > 300){
+            //iphoneX~
+            buttonConst.constant = 18
+        }else if(keyboardFlag){
+            //~iphone8
+            keyboardFlag = false
+            topConst.constant -= (keyboardHeight/2)
+            self.view.frame.origin.y += keyboardHeight
+            self.view.layoutIfNeeded()
+        }
     }
     
     //화면 터치시 키보드 내림

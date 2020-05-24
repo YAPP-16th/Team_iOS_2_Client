@@ -18,7 +18,8 @@ class AuthenViewController: UIViewController {
     @IBOutlet weak var okBtn: UIButton!
     @IBOutlet weak var askNumberBtn: UIButton!
     @IBOutlet weak var buttonConst: NSLayoutConstraint!
-    
+    @IBOutlet weak var topConst: NSLayoutConstraint!
+
     var email:String!
     var pwd:String?
     var nickName:String!
@@ -30,6 +31,7 @@ class AuthenViewController: UIViewController {
     var authenType: String!
     var authenFlag = false
     var authenNumber:String?
+    var keyboardFlag = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +74,7 @@ class AuthenViewController: UIViewController {
         default:
             break
         }
-        
+       
         okBtn.isEnabled = false
         okBtn.layer.cornerRadius = 8.0
         askNumberBtn.layer.cornerRadius = 8.0
@@ -232,15 +234,36 @@ class AuthenViewController: UIViewController {
         let keyboardHeight = keyboardSize.cgRectValue.height
         
         if(keyboardHeight > 300){
+            //iphoneX~
             buttonConst.constant = keyboardHeight - 18
-        }else{
-            buttonConst.constant = keyboardHeight + 18
+        }else if(!keyboardFlag){
+            //~iphone8
+            keyboardFlag = true
+            topConst.constant += (keyboardHeight/2)
+            self.view.frame.origin.y -= keyboardHeight
+            self.view.layoutIfNeeded()
+            
         }
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
-        buttonConst.constant = 18
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
+        let keyboardHeight = keyboardSize.cgRectValue.height
+        
+        if(keyboardHeight > 300){
+            //iphoneX~
+            buttonConst.constant = 18
+        }else if(keyboardFlag){
+            //~iphone8
+            keyboardFlag = false
+            topConst.constant -= (keyboardHeight/2)
+            self.view.frame.origin.y += keyboardHeight
+            self.view.layoutIfNeeded()
+        }
     }
+    
+    
     
     //화면 터치시 키보드 내림
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
