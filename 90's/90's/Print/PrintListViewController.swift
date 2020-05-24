@@ -21,13 +21,7 @@ class PrintListViewController: UIViewController {
     
     var completeAlbums : [album] = []
     
-    //앨범 커버에 사용 할 변수
-    var photoUidArray: [Int] = []
-    var albumCoverArray: [UIImage] = []
     
-    //통신에 사용할 Dispatch Group
-    let dispatchGroup = DispatchGroup()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         demoAlbumImage.isHidden = true
@@ -65,8 +59,7 @@ class PrintListViewController: UIViewController {
                     guard let data = response.data else {return}
                     guard let value = try? JSONDecoder().decode([album].self, from: data) else {return}
                     self.completeAlbums = value.filter{ $0.complete == true }
-                    print("\(value)")
-                    self.getPhotoUid()
+                    self.setPrintMainUI()
                 case 401:
                     print("\(status) : bad request, no warning in Server")
                 case 404:
@@ -80,56 +73,6 @@ class PrintListViewController: UIViewController {
         })
     }
     
-    //photoUid를 가져오는 코드
-    func getPhotoUid(){
-        for i in 0...completeAlbums.count - 1 {
-            dispatchGroup.enter()
-            
-            AlbumService.shared.photoGetPhoto(albumUid: completeAlbums[i].uid, completion: { response in
-                if let status = response.response?.statusCode {
-                    switch status {
-                    case 200 :
-                        guard let data = response.data else {return}
-                        guard let value = try? JSONDecoder().decode([PhotoDownloadData].self, from: data) else {return}
-                        let pUid = value.first!.photoUid
-                        self.photoUidArray.append(pUid)
-                        self.dispatchGroup.leave()
-                    case 401:
-                        print("\(status) : bad request, no warning in Server")
-                    case 404:
-                        print("\(status) : Not found, no address")
-                    case 500 :
-                        print("\(status) : Server error in AlbumMain - getPhoto")
-                    default:
-                        return
-                    }
-                }
-            })
-        }
-        dispatchGroup.notify(queue: .main){
-            self.getAlbumCover()
-        }
-    }
-    
-    
-    //첫번째 photoUid를 통해 표지를 가져오는 코드
-    func getAlbumCover(){
-        for i in 0...self.completeAlbums.count - 1 {
-            self.dispatchGroup.enter()
-            AlbumService.shared.photoDownload(albumUid: completeAlbums[i].uid, photoUid: photoUidArray[i], completion: {
-                response in
-                if case .success(let image) = response.result {
-                    self.albumCoverArray.append(image)
-                    self.dispatchGroup.leave()
-                }
-            })
-        }
-        
-        dispatchGroup.notify(queue: .main){
-            self.setPrintMainUI()
-        }
-
-    }
     
     func setPrintMainUI(){
         if completeAlbums.count != 0 {
@@ -162,10 +105,10 @@ extension PrintListViewController : UITableViewDelegate, UITableViewDataSource {
         let cell = printListTableView.dequeueReusableCell(withIdentifier: "PrintListTableViewCell", for :indexPath) as! PrintListTableViewCell
         let item = completeAlbums[indexPath.row]
         
-        cell.albumImageView.image = albumCoverArray[indexPath.row]
+        cell.albumImageView.image = getCoverByUid(value: item.cover.uid)
         
         let startDate = item.created_at.split(separator: "T")[0]
-        let endDate = item.endDate.split(separator: "T")[0]
+        let endDate = item.endDate
        
         let idxStartDate:String.Index = startDate.index(startDate.startIndex, offsetBy: 2)
         let idxEndDate:String.Index = endDate.index(endDate.startIndex, offsetBy: 2)
@@ -215,7 +158,6 @@ extension PrintListViewController : ClickActionDelegate {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "OptionViewController") as! OptionViewController
         
         vc.modalPresentationStyle = .fullScreen
-        vc.tempImage = albumCoverArray[index]
         self.navigationController?.pushViewController(vc, animated: true)
         //        self.navigationController?.show(vc, sender: true)
         
