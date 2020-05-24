@@ -20,6 +20,7 @@ class AlbumLayoutVC: UIViewController {
             nextVC.albumStartDate = albumStartDate
             nextVC.albumEndDate = albumEndDate
             nextVC.albumMaxCount = albumMaxCount
+            nextVC.albumCover = albumCover
             nextVC.photo = photo
             nextVC.albumLayout = albumLayout
                     
@@ -50,6 +51,7 @@ class AlbumLayoutVC: UIViewController {
     var albumStartDate : String!
     var albumEndDate : String!
     var albumMaxCount : Int!
+    var albumCover : Int!
     var photo : UIImage!
     var albumLayout : AlbumLayout!
     

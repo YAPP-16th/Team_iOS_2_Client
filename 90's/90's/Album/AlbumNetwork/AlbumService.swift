@@ -14,12 +14,30 @@ struct album : Codable {
     var photoLimit : Int
     var layoutUid : Int
     var count : Int // 앨범 낡기
+//    var orderStatus : String
+    var cover: albumCover
 //    var orderStatus : n
     var endDate : String
     var created_at : String
     var updated_at : String
     var complete : Bool
 }
+
+struct albumCover : Codable{
+    var uid : Int
+}
+
+//enum albumOrderStatus : Coda{
+//    case ready
+//    case done
+//
+//    var statusName : String {
+//        switch self {
+//        case .ready : return "ready"
+//        case .done : return "done"
+//        }
+//    }
+//}
 
 // post, albumGetAlbum 결과
 struct AlbumGetResult : Codable {
