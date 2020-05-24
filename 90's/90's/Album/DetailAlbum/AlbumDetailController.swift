@@ -98,7 +98,6 @@ class AlbumDetailController : UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         NetworkSetting()
         photoCollectionView.reloadData()
-        print("isAlbumComplete = \(isAlbumComplete)")
     }
     
     override func viewDidLoad() {
@@ -185,10 +184,10 @@ extension AlbumDetailController {
 
     func switchAddBtn(value : Bool) {
         switch value {
-        case true :
+        case false :
             addPhotoBtn.isEnabled = true
             addPhotoBtn.isHidden = false
-        case false :
+        case true :
             addPhotoBtn.isEnabled = false
             addPhotoBtn.isHidden = true
         }
@@ -369,10 +368,7 @@ extension AlbumDetailController {
                 guard let value = try? JSONDecoder().decode([PhotoGetPhotoData].self, from: data) else {return}
                 self.photoUidArray = value
                 self.networkPhotoUidArray = self.photoUidArray.map{ $0.photoUid }
-                print("photo limit = \(self.photoUidArray.count), \(self.albumMaxCount)")
-                self.isAlbumComplete = self.photoUidArray.count <= self.albumMaxCount ? false : true
                 self.NetworkGetPhoto(photoUid: self.networkPhotoUidArray)
-                self.switchAddBtn(value: self.isAlbumComplete)
             case 401:
                 print("\(status) : bad request, no warning in Server")
             case 404:
@@ -398,6 +394,9 @@ extension AlbumDetailController {
                 })
             }
         }
+        print("album count = \(photoUidArray.count), \(albumMaxCount)")
+        isAlbumComplete = photoUidArray.count <= albumMaxCount ? false : true
+        switchAddBtn(value: isAlbumComplete)
     }
     
     // 앨범 완성 후 - 앨범 낡기 적용
