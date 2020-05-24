@@ -45,11 +45,6 @@ extension SettingViewController : UITableViewDataSource, UITableViewDelegate {
         cell.settingNameLabel.text = noticeList[indexPath.row]
         cell.currentIndex = indexPath.row
         
-        let t1 = (UserDefaults.standard.value(forKey: "switch1"))
-        let t2 = (UserDefaults.standard.value(forKey: "switch2"))
-        let t3 = (UserDefaults.standard.value(forKey: "switch3"))
-        let t4 = (UserDefaults.standard.value(forKey: "switch4"))
-        
         if UserDefaults.standard.integer(forKey: "switch1") == cell.currentIndex! + 1 {
             cell.settingSwitch.isOn = true
         }
@@ -70,16 +65,6 @@ extension SettingViewController : UITableViewDataSource, UITableViewDelegate {
     }
     
     
-    
-}
-
-extension SettingViewController : switchActionDelegate {
-    
-    func didClickedLink(index: Int) {
-        
-        print("Clicked")
-        
-    }
     
 }
 

@@ -9,15 +9,8 @@
 import UIKit
 import Alamofire
 
-protocol switchActionDelegate {
-    
-    func didClickedLink(index: Int)
-    
-}
-
 class SettingCell: UITableViewCell {
     
-    var delegate : switchActionDelegate?
     var currentIndex: Int?
     var state: Int? = 0
     var noticeList = ["마케팅 이벤트 알림","앨범 기간 알림", "앨범이 종료되기 전 알림", "구매 및 배송 알림"]
@@ -46,10 +39,6 @@ class SettingCell: UITableViewCell {
     
     override func awakeFromNib() {
         networkSetting()
-        self.delegate?.didClickedLink(index: currentIndex ?? 0)
-        print(currentIndex) // 여기서 nil뜨네요
-        
-
         
     }
     
@@ -67,7 +56,8 @@ class SettingCell: UITableViewCell {
                 content.badge = 1
                 let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats:false)
                 let request = UNNotificationRequest(identifier: "timerdone", content: content, trigger: trigger)
-                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                
+//                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
                 
                 UserDefaults.standard.set("1", forKey: "switch1")
                 print(UserDefaults.standard.value(forKey: "switch1") ?? 0 )
@@ -82,7 +72,8 @@ class SettingCell: UITableViewCell {
                 
                 let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats:false)
                 let request = UNNotificationRequest(identifier: "timerdone", content: content, trigger: trigger)
-                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                
+//                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
                 
                 UserDefaults.standard.set("2", forKey: "switch2")
                 print(UserDefaults.standard.value(forKey: "switch2") ?? 0 )
@@ -104,7 +95,7 @@ class SettingCell: UITableViewCell {
                 content.badge = 1
                 let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats:false)
                 let request = UNNotificationRequest(identifier: "timerdone", content: content, trigger: trigger)
-                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+//                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
                 UserDefaults.standard.set("4", forKey: "switch4")
                 print(UserDefaults.standard.value(forKey: "switch4") ?? 0 )
             }
@@ -115,11 +106,11 @@ class SettingCell: UITableViewCell {
             print("Switch Off")
             if noticeList[currentIndex ?? 0] == "마케팅 이벤트 알림" {
                 UserDefaults.standard.set(nil, forKey: "switch1")
-                print(UserDefaults.standard.value(forKey: "switch1") ?? "" )
+                print(UserDefaults.standard.value(forKey: "switch1") ?? 0 )
             }
             else if noticeList[currentIndex ?? 0] == "앨범 기간 알림" {
                 UserDefaults.standard.set(nil, forKey: "switch2")
-                print(UserDefaults.standard.value(forKey: "switch2") ?? "" )
+                print(UserDefaults.standard.value(forKey: "switch2") ?? 0 )
                 
             }
             else if noticeList[currentIndex ?? 0] == "앨범이 종료되기 전 알림" {
@@ -128,7 +119,7 @@ class SettingCell: UITableViewCell {
             }
             else if noticeList[currentIndex ?? 0] == "구매 및 배송 알림" {
                 UserDefaults.standard.set(nil, forKey: "switch4")
-                print(UserDefaults.standard.value(forKey: "switch4") ?? "" )
+                print(UserDefaults.standard.value(forKey: "switch4") ?? 0)
             }
             
         }
@@ -174,8 +165,8 @@ extension SettingCell {
         let sortedArray = albumEndArray.sorted(by: <)
         print(sortedArray)
         
-        //        let endDate = sortedArray[0]
-        let endDate = "2020-05-31"
+        let endDate = sortedArray[0]
+//        let endDate = "2020-05-31"
         
         let dateFormatter = DateFormatter()
         
@@ -203,9 +194,7 @@ extension SettingCell {
         
         
         print("\(days) 일 남았습니다.")
-        
         print("\(timeInterval) 초 남았습니다.")
-        print(timeInterval - 60*60*24*7)
         
         let content = UNMutableNotificationContent()
         content.title = "90s"
@@ -213,25 +202,29 @@ extension SettingCell {
         content.badge = 1
         
         if UserDefaults.standard.integer(forKey: "switch3") == 3 {
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 7 //timeInterval - 60*60*24*7 + 100 //100은 constant
-                , repeats:false)
-            let request = UNNotificationRequest(identifier: "timerdone", content: content, trigger: trigger)
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+            if timeInterval - 60*60*24*7 + 100 <= 0 { // 1주일 보다 적게 남았다.
+                print("1주일 미만")
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60*60*24 //임의로 하루 뒤에 트리거 작동 //100은 constant
+                    , repeats:false)
+                content.body = "앨범이 종료되기 전 1주 미만 남았습니다."
+                let request = UNNotificationRequest(identifier: "timerdone", content: content, trigger: trigger)
+                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+            }
+            else { // 1주일 보다 많이 남았다.
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval:  timeInterval - 60*60*24*7 + 100 //100은 constant
+                    , repeats:false)
+                let request = UNNotificationRequest(identifier: "timerdone", content: content, trigger: trigger)
+                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                
+            }
         }
         else {
-            print("UserDefault Nil")
+            print("UserDefault Value Nil")
         }
     }
     
 }
 
-extension Date {
-    func dayMonthYearFormat() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter.string(from: self)
-    }
-}
 
 
 
