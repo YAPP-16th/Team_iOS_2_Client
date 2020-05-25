@@ -136,6 +136,7 @@ class EnterViewController: UIViewController {
                     guard let defaultResult = try? decoder.decode(SignUpResult.self, from: data) else { return }
                     guard  let jwt = defaultResult.jwt else { return }
                     UserDefaults.standard.set(jwt, forKey: "jwt")
+                    print("\(jwt)")
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.switchTab()
                     guard let tabBarVC = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") else { return }

@@ -15,6 +15,7 @@ struct album : Codable {
     var layoutUid : Int
     var count : Int // 앨범 낡기
 //    var orderStatus : String
+    var orderStatus: OrderStatus
     var cover: albumCover
     var endDate : String
     var created_at : String
@@ -24,7 +25,14 @@ struct album : Codable {
 
 struct albumCover : Codable{
     var uid : Int
+    var name : String
 }
+
+struct OrderStatus: Codable {
+    var uid: Int
+    var status: String
+}
+
 
 //enum albumOrderStatus : Coda{
 //    case ready
