@@ -25,6 +25,7 @@ struct album : Codable {
 
 struct albumCover : Codable{
     var uid : Int
+    var name : String
 }
 
 struct OrderStatus: Codable {

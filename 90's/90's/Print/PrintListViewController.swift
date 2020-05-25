@@ -109,6 +109,8 @@ extension PrintListViewController : UITableViewDelegate, UITableViewDataSource {
         
         cell.albumImageView.image = getCoverByUid(value: item.cover.uid)
         
+        
+        
         let startDate = item.created_at.split(separator: "T")[0]
         let endDate = item.endDate
         
@@ -162,9 +164,8 @@ extension PrintListViewController : ClickActionDelegate {
     
     func didClickedLink(index: Int) {
         
-        
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "OptionViewController") as! OptionViewController
-        
+        vc.albumInfo = completeAlbums[index]
         vc.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(vc, animated: true)
         //        self.navigationController?.show(vc, sender: true)

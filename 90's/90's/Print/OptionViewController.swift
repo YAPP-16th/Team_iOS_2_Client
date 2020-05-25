@@ -40,7 +40,6 @@ class OptionViewController : UIViewController {
     @IBOutlet weak var totalSum2: UILabel!
     @IBOutlet weak var totalCount: UILabel!
     
-    @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var firstFlapBtn: UIButton!
     @IBOutlet weak var secondFlapBtn: UIButton!
     
@@ -60,6 +59,15 @@ class OptionViewController : UIViewController {
     
     @IBOutlet weak var backView: UIView!
     
+    
+    @IBOutlet weak var coverImageView: UIImageView!
+    @IBOutlet weak var albumNameLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var photoCountLabel: UILabel!
+    @IBOutlet weak var coverNameLabel: UILabel!
+    @IBOutlet weak var layoutLabel: UILabel!
+    
+    
     var isTotalOptionViewAppear = false
     var coverImage : UIImage? = nil
     var cal1 = false
@@ -70,10 +78,10 @@ class OptionViewController : UIViewController {
     var cal6 = false
     var calc : Int = 0
     var tempImage: UIImage? = nil
-    
+    var albumInfo: album!
     
     override func viewDidLoad() {
-//        self.view.backgroundColor = .white
+        //        self.view.backgroundColor = .white
         super.viewDidLoad()
         self.backView.isHidden = true
         
@@ -92,7 +100,7 @@ class OptionViewController : UIViewController {
         print(navigationBarHeight)
         // iPhone X..
         if UIScreen.main.nativeBounds.height >= 1792.0 {
-
+            
             self.previewImageHeight.constant = 196
             self.topConstraint.constant = navigationBarHeight
         }
@@ -116,7 +124,23 @@ class OptionViewController : UIViewController {
             
         }
         
-        self.coverImageView.image = tempImage
+ 
+        let startDate = albumInfo.created_at.split(separator: "T")[0]
+        let endDate = albumInfo.endDate
+        let idxStartDate:String.Index = startDate.index(startDate.startIndex, offsetBy: 2)
+        let idxEndDate:String.Index = endDate.index(endDate.startIndex, offsetBy: 2)
+        let startDateStr = String(startDate[idxStartDate...]).replacingOccurrences(of: "-", with: ".")
+        let endDateStr = String(endDate[idxEndDate...]).replacingOccurrences(of: "-", with: ".")
+        
+        
+        let coverImage = getCoverByUid(value: albumInfo.cover.uid)
+        coverImageView.image = coverImage
+        albumNameLabel.text = albumInfo.name
+        dateLabel.text = startDateStr + "~" + endDateStr
+        photoCountLabel.text = "\(albumInfo.photoLimit)/\(albumInfo.photoLimit)"
+        coverNameLabel.text = albumInfo.cover.name
+        layoutLabel.text =  self.getLayoutByUid(value: albumInfo.layoutUid).layoutName
+        
         
         normalBtn.isSelected = false
         advanceBtn.isSelected = false
@@ -133,8 +157,12 @@ class OptionViewController : UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.navigationBar.isHidden = false
-
-
+        
+        
+    }
+    
+    @IBAction func goBack(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
     
     //MARK: View IBAction
@@ -307,15 +335,15 @@ class OptionViewController : UIViewController {
         let finalOrderVC = storyboard?.instantiateViewController(withIdentifier: "OrderFinalViewController") as! OrderFinalViewController
         self.navigationController?.pushViewController(finalOrderVC, animated: true)
         
-//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrderFinishViewController") as! OrderFinishViewController
-//
-//        vc.modalPresentationStyle = .fullScreen
-//        self.navigationItem.title = " "
-//        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "iconBack")
-//        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "iconBack")
-//        vc.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
-//        self.navigationController?.pushViewController(vc, animated: true)
-//
+        //        let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrderFinishViewController") as! OrderFinishViewController
+        //
+        //        vc.modalPresentationStyle = .fullScreen
+        //        self.navigationItem.title = " "
+        //        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "iconBack")
+        //        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "iconBack")
+        //        vc.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
+        //        self.navigationController?.pushViewController(vc, animated: true)
+        //
     }
     
     
@@ -443,13 +471,13 @@ class OptionViewController : UIViewController {
     }
     
     
-
+    
     
     @IBAction func adShipInfo(_ sender: Any) {
         
         let storyboard = UIStoryboard(name: "Print", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PopUpViewController") as! PopUpViewController
-                
+        
         vc.modalTransitionStyle = .crossDissolve
         vc.modalPresentationStyle = .overCurrentContext
         self.present(vc, animated: true, completion: nil)
@@ -459,12 +487,12 @@ class OptionViewController : UIViewController {
     @IBAction func superShipinfo(_ sender: Any) {
         
         let storyboard = UIStoryboard(name: "Print", bundle: nil)
-              let vc = storyboard.instantiateViewController(withIdentifier: "PopUp2ViewController") as! PopUp2ViewController
-                      
-              vc.modalTransitionStyle = .crossDissolve
-              vc.modalPresentationStyle = .overCurrentContext
-              self.present(vc, animated: true, completion: nil)
-              
+        let vc = storyboard.instantiateViewController(withIdentifier: "PopUp2ViewController") as! PopUp2ViewController
+        
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: true, completion: nil)
+        
         
     }
     
