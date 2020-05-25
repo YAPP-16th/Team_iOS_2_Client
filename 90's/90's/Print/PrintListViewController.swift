@@ -8,7 +8,6 @@
 
 import UIKit
 
-//Table View 들어감
 
 class PrintListViewController: UIViewController {
     
@@ -48,6 +47,9 @@ class PrintListViewController: UIViewController {
         getCompleteAlbums()
     }
     
+    @IBAction func clickGoToAlbum(_ sender: Any) {
+        self.tabBarController?.selectedIndex = 0
+    }
     
     
     func getCompleteAlbums(){
@@ -109,7 +111,7 @@ extension PrintListViewController : UITableViewDelegate, UITableViewDataSource {
         
         let startDate = item.created_at.split(separator: "T")[0]
         let endDate = item.endDate
-       
+        
         let idxStartDate:String.Index = startDate.index(startDate.startIndex, offsetBy: 2)
         let idxEndDate:String.Index = endDate.index(endDate.startIndex, offsetBy: 2)
         
@@ -120,25 +122,32 @@ extension PrintListViewController : UITableViewDelegate, UITableViewDataSource {
         cell.albumTitle.text = item.name
         cell.pictureCount.text = "\(item.photoLimit)/\(item.photoLimit)"
         
+        let orderStatus = item.orderStatus.status
         
-        //아직 orderStatus의 값이 없기 때문에 서버API 나온 후 업데이트 예정
+        //앨범 인화 Stauts : pending, processing, ready, shipping, done
+        switch orderStatus{
+        case "pending":
+            cell.orderBtn.setBackgroundImage(UIImage(named: "pending"), for: .normal)
+            break
+        case "processing":
+            cell.orderBtn.setBackgroundImage(UIImage(named: "processingButton"), for: .normal)
+            break
+        case "ready":
+            cell.orderBtn.setBackgroundImage(UIImage(named: "readyButton"), for: .normal)
+            break
+        case "shipping":
+            cell.orderBtn.setBackgroundImage(UIImage(named: "shippingButton"), for: .normal)
+            break
+        case "done":
+            cell.orderBtn.setBackgroundImage(UIImage(named: "doneButton"), for: .normal)
+            cell.albumTitle.textColor = UIColor(displayP3Red: 153/255, green: 156/255, blue: 166/255, alpha: 1.0)
+            cell.albumDate.textColor = UIColor(displayP3Red: 153/255, green: 156/255, blue: 166/255, alpha: 1.0)
+            cell.pictureCount.textColor = UIColor(displayP3Red: 153/255, green: 156/255, blue: 166/255, alpha: 1.0)
+                break
+        default:
+            break
+        }
         
-        if cell.state == 0 {
-            cell.orderBtn.backgroundColor = .black
-            cell.orderBtn.setTitle("결제 하기", for: .normal)
-        }
-        else if cell.state == 1 {
-            //            rgb 227 62 40
-            cell.orderBtn.backgroundColor = UIColor(displayP3Red: 225 / 255, green: 62 / 255, blue: 40 / 255, alpha: 1.0)
-            cell.orderBtn.setTitle("결제 완료하기", for: .normal)
-        }
-        else if cell.state == 2 {
-            cell.albumDate.textColor = .lightGray
-            cell.albumTitle.textColor = .lightGray
-            cell.pictureCount.textColor = .lightGray
-            cell.orderBtn.backgroundColor = .lightGray
-            cell.orderBtn.setTitle("신청 완료", for: .normal)
-        }
         cell.delegate = self
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.currentIndex = indexPath.row
@@ -153,7 +162,6 @@ extension PrintListViewController : ClickActionDelegate {
     
     func didClickedLink(index: Int) {
         
-        print("Clicked")
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "OptionViewController") as! OptionViewController
         
