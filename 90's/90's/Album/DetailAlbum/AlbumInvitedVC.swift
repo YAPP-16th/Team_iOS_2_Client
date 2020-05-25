@@ -14,6 +14,7 @@ class AlbumInvitedVC: UIViewController {
     @IBOutlet weak var albumInvitedTF: UITextField!
     @IBOutlet weak var albumInvitedLabel: UILabel!
     @IBOutlet weak var albumCompleteBtn: UIButton!
+    @IBOutlet weak var albumCancleBtn: UIButton!
     @IBAction func cancleBtn(_ sender: UIButton) {
         // 앱 종료
     }
@@ -22,6 +23,7 @@ class AlbumInvitedVC: UIViewController {
     @IBOutlet weak var terminateLabel: UILabel!
     @IBOutlet weak var terminateSignupBtn: UIButton!
     @IBOutlet weak var terminateCancleBtn: UIButton!
+    
     
     var isUserMember : Bool = false
     var albumIndex : Int = 0
@@ -43,7 +45,7 @@ extension AlbumInvitedVC {
     func defaultSetting(){
         albumInvitedTF.delegate = self
         albumInvitedTF.becomeFirstResponder()
-        terminateLabel.text = "90's 회원만 앨범을 열람할 수 있습니다"
+        terminateLabel.text = "90's 회원만 앨범을 \n열람할 수 있습니다"
         
         NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: albumInvitedTF, queue: .main, using: { _ in
             let value = self.albumInvitedTF.text!.trimmingCharacters(in: .whitespaces)
@@ -83,6 +85,7 @@ extension AlbumInvitedVC {
             terminateView.isHidden = true
             terminateSignupBtn.isEnabled = false
             terminateCancleBtn.isEnabled = false
+            albumCancleBtn.isEnabled = true
             albumInvitedView.isHidden = false
             albumInvitedTF.isEnabled = true
             albumCompleteBtn.isEnabled = true
@@ -90,6 +93,7 @@ extension AlbumInvitedVC {
             terminateView.isHidden = false
             terminateSignupBtn.isEnabled = true
             terminateCancleBtn.isEnabled = true
+            albumCancleBtn.isEnabled = false
             albumInvitedView.isHidden = true
             albumInvitedTF.isEnabled = false
             albumCompleteBtn.isEnabled = false
