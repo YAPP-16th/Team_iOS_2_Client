@@ -14,7 +14,7 @@ class MemberTableViewCell: UITableViewCell {
     @IBOutlet weak var memberSubLabel: UILabel!
     @IBOutlet weak var memberDeleteBtn: UIButton!
     @IBAction func memberDeleteBtn(_ sender: UIButton) {
-        infoProtocol?.switchHideView(value: false)
+        infoProtocol?.switchQuitHideView(value: false)
         // 서버 내용 필요
     }
     

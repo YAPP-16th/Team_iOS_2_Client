@@ -9,7 +9,7 @@
 import UIKit
 
 protocol albumInfoDeleteProtocol {
-    func switchHideView(value : Bool)
+    func switchQuitHideView(value : Bool)
 }
 
 class AlbumInfoVC: UIViewController {
@@ -33,7 +33,7 @@ class AlbumInfoVC: UIViewController {
         inviteSetting()
     }
     @IBAction func quitMemberBtn(_ sender: UIButton) {
-        switchHideView(value: false)
+        switchQuitHideView(value: false)
     }
     
     var albumUid: Int = 0
@@ -42,13 +42,12 @@ class AlbumInfoVC: UIViewController {
     var userUidArray : [Int] = []
     var userNameArray : [String] = []
     
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!
         
         if hideView.isHidden == false {
             if touch.view != self.hideWhiteView {
-                switchHideView(value: true)
+                switchQuitHideView(value: true)
             }
         }
     }
@@ -61,6 +60,7 @@ class AlbumInfoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         defaultSetting()
+        hideViewSetting()
     }
 }
 
@@ -84,7 +84,7 @@ extension AlbumInfoVC : albumInfoDeleteProtocol {
         hideCompleteBtn.addTarget(self, action: #selector(touchHideCompleteBtn), for: .touchUpInside)
     }
     
-    func switchHideView(value : Bool){
+    func switchQuitHideView(value : Bool){
         switch value {
         case true :
             hideWhiteViewBottom.constant = -hideWhiteView.frame.height
@@ -183,27 +183,27 @@ extension AlbumInfoVC {
 
 extension AlbumInfoVC {
     @objc func touchHideCancleBtn(){
-        switchHideView(value: true)
+        switchQuitHideView(value: true)
     }
     
     @objc func touchHideCompleteBtn(){
         // 서버통신 - 멤버 삭제
-        switchHideView(value: true)
+        switchQuitHideView(value: true)
         memberTableView.reloadData()
     }
 }
 
 
-extension AlbumInfoVC : inviteProtocol {
+extension AlbumInfoVC {
     func inviteSetting() {
-            let templeteId = "24532";
-            KLKTalkLinkCenter.shared().sendCustom(withTemplateId: templeteId, templateArgs: nil, success: {(warningMsg, argumentMsg) in
-                print("warning message : \(String(describing: warningMsg))")
-                print("argument message : \(String(describing: argumentMsg))")
-            }, failure: {(error) in
-                print("error \(error)")
-            })
-        }
+        let templeteId = "24532"
+        KLKTalkLinkCenter.shared().sendCustom(withTemplateId: templeteId, templateArgs: nil, success: {(warningMsg, argumentMsg) in
+            print("warning message : \(String(describing: warningMsg))")
+            print("argument message : \(String(describing: argumentMsg))")
+        }, failure: {(error) in
+            print("error \(error)")
+        })
+    }
 }
 
 // 오너의 경우 헤더뷰로 하나 넣기

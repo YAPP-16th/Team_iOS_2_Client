@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol inviteProtocol {
-    func inviteSetting()
-}
-
 class AlbumDetailController : UIViewController {
     @IBOutlet weak var photoCollectionView: UICollectionView!
     @IBOutlet weak var albumNameLabel: UILabel!
@@ -228,10 +224,9 @@ extension AlbumDetailController {
     }
     
     func inviteSetting(){
-        print("Setting")
-        let templeteId = "24532";
+        let templeteId = "24532"
            
-           KLKTalkLinkCenter.shared().sendCustom(withTemplateId: templeteId, templateArgs: nil, success: {(warningMsg, argumentMsg) in
+        KLKTalkLinkCenter.shared().sendCustom(withTemplateId: templeteId, templateArgs: nil, success: {(warningMsg, argumentMsg) in
                print("warning message : \(String(describing: warningMsg))")
                print("argument message : \(String(describing: argumentMsg))")
            }, failure: {(error) in
@@ -342,10 +337,10 @@ extension AlbumDetailController {
                     self.networkDetailAlbum = value
                     self.albumNameLabel.text = value.name
                     self.albumMaxCount = value.photoLimit
-                    self.albumCountLabel.text = "사진 개수 미등록"// "\(value.count - 1) 개의 추억이 쌓였습니다"
                     self.selectedLayout = self.getLayoutByUid(value: value.layoutUid)
                     self.hideImageZoom.frame.size = CGSize(width: self.setZoomImageView(layout: self.selectedLayout!).width - 60, height: self.setZoomImageView(layout: self.selectedLayout!).height - 60)
                     self.hideImageZoom.center = self.view.center
+                    self.NetworkGetPhotoUid()
                 case 401:
                     print("\(status) : bad request, no warning in Server")
                 case 404:
@@ -357,8 +352,9 @@ extension AlbumDetailController {
                 }
             }
         })
-        
-        
+    }
+    
+    func NetworkGetPhotoUid(){
         // 2. 앨범에서 사진 uid 가져오기
         AlbumService.shared.photoGetPhoto(albumUid: albumUid, completion: { response in
             if let status = response.response?.statusCode {
@@ -367,6 +363,7 @@ extension AlbumDetailController {
                 guard let data = response.data else {return}
                 guard let value = try? JSONDecoder().decode([PhotoGetPhotoData].self, from: data) else {return}
                 self.photoUidArray = value
+                self.albumCountLabel.text = "\(self.photoUidArray.count) 개의 추억이 쌓였습니다"
                 self.networkPhotoUidArray = self.photoUidArray.map{ $0.photoUid }
                 self.NetworkGetPhoto(photoUid: self.networkPhotoUidArray)
             case 401:
@@ -377,7 +374,7 @@ extension AlbumDetailController {
                 print("\(status) : Server error in AlbumDetailVC - getPhoto")
             default:
                 return
-                 }
+                }
             }
         })
     }
@@ -394,8 +391,7 @@ extension AlbumDetailController {
                 })
             }
         }
-        print("album count = \(photoUidArray.count), \(albumMaxCount)")
-        isAlbumComplete = photoUidArray.count <= albumMaxCount ? false : true
+        isAlbumComplete = photoUidArray.count+1 <= albumMaxCount ? false : true
         switchAddBtn(value: isAlbumComplete)
     }
     
@@ -421,7 +417,7 @@ extension AlbumDetailController {
 }
 
 
-extension AlbumDetailController : inviteProtocol, UITextFieldDelegate{
+extension AlbumDetailController : UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool{
         hideShareTextField.resignFirstResponder()
         return true
@@ -529,7 +525,7 @@ extension AlbumDetailController : UICollectionViewDropDelegate {
     func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
         let destinationIndexPath = coordinator.destinationIndexPath ?? IndexPath(item: 0, section: 0)
         coordinator.session.loadObjects(ofClass: (UIImage.self), completion: { (images) in
-            for photo in images {
+            for _ in images {
 //                AlbumDatabase.arrayList[self.albumIndex!].photos.insert(photo as! UIImage, at: destinationIndexPath.item)
                 collectionView.performBatchUpdates({
                     collectionView.insertItems(at: [destinationIndexPath])

@@ -938,30 +938,52 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZDO-fR-fq2">
                                 <rect key="frame" x="36" y="219" width="342" height="274"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="90's 회원만 앨범을 열람할 수 있습니다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MmR-Dm-7RY">
-                                        <rect key="frame" x="29" y="66" width="285" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="90's 회원만 앨범을 열람할 수 있습니다" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MmR-Dm-7RY">
+                                        <rect key="frame" x="2.5" y="66" width="337.5" height="89"/>
+                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="21"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jnT-aa-BGk">
-                                        <rect key="frame" x="29" y="195" width="148" height="51"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="회원가입"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jnT-aa-BGk">
+                                        <rect key="frame" x="18" y="196" width="306" height="60"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="rHQ-uX-xWY"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="17"/>
+                                        <state key="normal" title="회원가입 하기 ">
+                                            <color key="titleColor" red="0.93742531539999996" green="0.94878894089999999" blue="0.96078735589999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lIt-Iz-hWb">
-                                        <rect key="frame" x="172" y="195" width="148" height="51"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="종료"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUc-Zk-qMe">
+                                        <rect key="frame" x="284" y="8" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="A0Y-0t-YF2"/>
+                                            <constraint firstAttribute="height" constant="50" id="usM-yB-avy"/>
+                                        </constraints>
+                                        <state key="normal" image="cancelButtonWhite"/>
                                         <connections>
-                                            <action selector="cancleBtn:" destination="Pqn-gr-mha" eventType="touchUpInside" id="kVc-ox-Yc9"/>
+                                            <action selector="cancleBtn:" destination="Pqn-gr-mha" eventType="touchUpInside" id="wFn-qI-jO6"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
+                                    <constraint firstItem="MmR-Dm-7RY" firstAttribute="centerX" secondItem="ZDO-fR-fq2" secondAttribute="centerX" id="NY7-27-5M7"/>
+                                    <constraint firstAttribute="trailing" secondItem="LUc-Zk-qMe" secondAttribute="trailing" constant="8" id="QTH-Me-dnS"/>
+                                    <constraint firstItem="LUc-Zk-qMe" firstAttribute="top" secondItem="ZDO-fR-fq2" secondAttribute="top" constant="8" id="UTf-uE-IJS"/>
+                                    <constraint firstItem="jnT-aa-BGk" firstAttribute="leading" secondItem="ZDO-fR-fq2" secondAttribute="leading" constant="18" id="XUF-rt-duh"/>
+                                    <constraint firstItem="jnT-aa-BGk" firstAttribute="top" secondItem="MmR-Dm-7RY" secondAttribute="bottom" constant="41" id="gVe-UJ-RJ1"/>
+                                    <constraint firstItem="MmR-Dm-7RY" firstAttribute="top" secondItem="ZDO-fR-fq2" secondAttribute="top" constant="66" id="nvd-ON-VVc"/>
                                     <constraint firstAttribute="height" constant="274" id="x6M-pP-1HU"/>
+                                    <constraint firstAttribute="trailing" secondItem="jnT-aa-BGk" secondAttribute="trailing" constant="18" id="xGb-lp-6VL"/>
+                                    <constraint firstAttribute="bottom" secondItem="jnT-aa-BGk" secondAttribute="bottom" constant="18" id="xbv-bv-Nf1"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -984,11 +1006,12 @@
                         <viewLayoutGuide key="safeArea" id="yrW-o0-zKy"/>
                     </view>
                     <connections>
+                        <outlet property="albumCancleBtn" destination="WdI-oW-FTU" id="uO8-hU-47x"/>
                         <outlet property="albumCompleteBtn" destination="9DU-cn-MQk" id="DqA-Jd-cX1"/>
                         <outlet property="albumInvitedLabel" destination="CjO-dO-iso" id="MCf-eF-0hH"/>
                         <outlet property="albumInvitedTF" destination="2d1-VB-2oG" id="FmC-UX-eZJ"/>
                         <outlet property="albumInvitedView" destination="cS8-mh-oCF" id="dPI-tg-Tlo"/>
-                        <outlet property="terminateCancleBtn" destination="lIt-Iz-hWb" id="vTd-Sk-jWl"/>
+                        <outlet property="terminateCancleBtn" destination="LUc-Zk-qMe" id="8aT-Ik-YkY"/>
                         <outlet property="terminateLabel" destination="MmR-Dm-7RY" id="Inb-jD-4lQ"/>
                         <outlet property="terminateSignupBtn" destination="jnT-aa-BGk" id="jFy-Hh-L3Z"/>
                         <outlet property="terminateView" destination="ZDO-fR-fq2" id="VzF-09-MFR"/>
@@ -1981,7 +2004,7 @@
                                         <rect key="frame" x="0.0" y="-57" width="414" height="903"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zQg-Hh-LUS">
-                                                <rect key="frame" x="0.0" y="808" width="414" height="264"/>
+                                                <rect key="frame" x="0.0" y="900" width="414" height="264"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ldk-YC-a84">
                                                         <rect key="frame" x="18" y="154" width="150" height="72"/>
@@ -1996,13 +2019,13 @@
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="5"/>
+                                                                <integer key="value" value="10"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="NO"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smx-YZ-zeZ">
-                                                        <rect key="frame" x="175" y="154" width="221" height="72"/>
+                                                        <rect key="frame" x="186" y="154" width="210" height="72"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="72" id="qqh-he-cpk"/>
@@ -2013,7 +2036,7 @@
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="5"/>
+                                                                <integer key="value" value="10"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
@@ -2031,20 +2054,26 @@
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
+                                                    <constraint firstItem="smx-YZ-zeZ" firstAttribute="leading" secondItem="Ldk-YC-a84" secondAttribute="trailing" constant="18" id="EIW-53-OLk"/>
                                                     <constraint firstItem="Ldk-YC-a84" firstAttribute="leading" secondItem="zQg-Hh-LUS" secondAttribute="leading" constant="18" id="Ee4-6V-pua"/>
-                                                    <constraint firstAttribute="bottom" secondItem="smx-YZ-zeZ" secondAttribute="bottom" constant="38" id="Nzs-Yl-Fgc"/>
                                                     <constraint firstAttribute="height" constant="264" id="Pgk-11-s3c"/>
                                                     <constraint firstAttribute="bottom" secondItem="Ldk-YC-a84" secondAttribute="bottom" constant="38" id="Qrw-JF-Zhe"/>
-                                                    <constraint firstItem="smx-YZ-zeZ" firstAttribute="leading" secondItem="Ldk-YC-a84" secondAttribute="trailing" constant="7" id="bIN-nE-baD"/>
+                                                    <constraint firstAttribute="bottom" secondItem="smx-YZ-zeZ" secondAttribute="bottom" constant="38" id="RW4-BT-98j"/>
                                                     <constraint firstAttribute="trailing" secondItem="smx-YZ-zeZ" secondAttribute="trailing" constant="18" id="eCu-pa-4u2"/>
                                                     <constraint firstItem="ntA-l3-TFA" firstAttribute="top" secondItem="zQg-Hh-LUS" secondAttribute="top" constant="50" id="gxe-GJ-clX"/>
                                                     <constraint firstItem="ntA-l3-TFA" firstAttribute="centerX" secondItem="zQg-Hh-LUS" secondAttribute="centerX" id="tDE-Uk-OHl"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="zQg-Hh-LUS" secondAttribute="bottom" constant="-169" id="EKP-t9-zLd"/>
+                                            <constraint firstAttribute="bottom" secondItem="zQg-Hh-LUS" secondAttribute="bottom" constant="-261" id="EKP-t9-zLd"/>
                                             <constraint firstAttribute="trailing" secondItem="zQg-Hh-LUS" secondAttribute="trailing" id="Fh3-ON-sjP"/>
                                             <constraint firstItem="zQg-Hh-LUS" firstAttribute="leading" secondItem="YCX-hA-EGl" secondAttribute="leading" id="Ilc-3a-ij8"/>
                                         </constraints>
@@ -2084,7 +2113,7 @@
                         <outlet property="hideLabel" destination="ntA-l3-TFA" id="eDg-5L-MYV"/>
                         <outlet property="hideView" destination="YCX-hA-EGl" id="NG6-33-UgV"/>
                         <outlet property="hideWhiteView" destination="zQg-Hh-LUS" id="6on-EQ-wHw"/>
-                        <outlet property="hideWhiteViewBottom" destination="Pgk-11-s3c" id="mni-DX-Msm"/>
+                        <outlet property="hideWhiteViewBottom" destination="EKP-t9-zLd" id="2Gl-ML-SJd"/>
                         <outlet property="memberTableView" destination="pj7-Nw-P4u" id="xPl-wr-ka6"/>
                     </connections>
                 </viewController>
@@ -2341,7 +2370,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="90SLogo" width="41" height="20"/>
+        <image name="90SLogo" width="45" height="20"/>
         <image name="addMember" width="86" height="19"/>
         <image name="addPhotoButton" width="63" height="63"/>
         <image name="albumThumbnailCheckbox" width="104" height="108"/>
