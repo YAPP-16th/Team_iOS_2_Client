@@ -33,6 +33,8 @@ class ImageRenderVC: UIViewController {
     fileprivate var initialAngle = CGFloat(), angle = CGFloat(), saveSize = CGFloat()
     fileprivate var savePosition : CGPoint = CGPoint(x: 0, y: 0)
     
+    // collection data
+    fileprivate var isSelectedName : IndexPath = [0,0]
     fileprivate var stickerImages : [UIImage] = StickerImage.Basic.imageArray
     fileprivate let stickerNames : [String] = ["Basic", "Glitter", "Character", "Tape", "Words", "Alphabet", "Number"]
     
@@ -94,6 +96,7 @@ extension ImageRenderVC {
         stickerCollectionView.dataSource = self
         stickerCollectionView.delegate = self
         stickerCollectionView.allowsMultipleSelection = false
+        nameCollectionView.allowsMultipleSelection = false
         nameCollectionView.dataSource = self
         nameCollectionView.delegate = self
         photoView = saveView
@@ -201,11 +204,15 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.nameCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "stickernamecell", for: indexPath) as! StickerHeaderCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "stickerHeaderCell", for: indexPath) as! StickerHeaderCell
             cell.label.text = stickerNames[indexPath.row]
+            cell.label.textColor = .lightGray
+            if isSelectedName == indexPath {
+                cell.label.textColor = .black
+            }
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "stickercell", for: indexPath) as! photoStickerCollectionCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "stickerCell", for: indexPath) as! photoStickerCollectionCell
             cell.imageView.image = stickerImages[indexPath.row]
             return cell
         }
@@ -213,7 +220,7 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == self.nameCollectionView {
-            return CGSize(width: 90, height: 40)
+            return CGSize(width: 80, height: 40)
         } else {
             return CGSize(width: 84, height: 84)
         }
@@ -229,26 +236,20 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
         collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         if collectionView == self.nameCollectionView {
-            return 10.0
+            return 0.0
         } else {
-            return 2.0
+            return 7.0
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.nameCollectionView {
-            let cell = collectionView.cellForItem(at: indexPath) as! StickerHeaderCell
-            cell.label.textColor = .black
+            isSelectedName = indexPath
             stickerImages = StickerDatabase.arrayList[indexPath.row].imageArray
+            nameCollectionView.reloadData()
+            stickerCollectionView.reloadData()
         } else {
             createStickerView(image: stickerImages[indexPath.row], indexPathRow: indexPath.row)
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        if collectionView == self.nameCollectionView {
-            let cell = collectionView.cellForItem(at: indexPath) as! StickerHeaderCell
-            cell.label.textColor = .lightGray
         }
     }
 }
