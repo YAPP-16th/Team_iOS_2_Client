@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol inviteProtocol {
-    func inviteSetting()
-}
-
 class AlbumDetailController : UIViewController {
     @IBOutlet weak var photoCollectionView: UICollectionView!
     @IBOutlet weak var albumNameLabel: UILabel!
@@ -228,10 +224,9 @@ extension AlbumDetailController {
     }
     
     func inviteSetting(){
-        print("Setting")
-        let templeteId = "24532";
+        let templeteId = "24532"
            
-           KLKTalkLinkCenter.shared().sendCustom(withTemplateId: templeteId, templateArgs: nil, success: {(warningMsg, argumentMsg) in
+        KLKTalkLinkCenter.shared().sendCustom(withTemplateId: templeteId, templateArgs: nil, success: {(warningMsg, argumentMsg) in
                print("warning message : \(String(describing: warningMsg))")
                print("argument message : \(String(describing: argumentMsg))")
            }, failure: {(error) in
@@ -422,7 +417,7 @@ extension AlbumDetailController {
 }
 
 
-extension AlbumDetailController : inviteProtocol, UITextFieldDelegate{
+extension AlbumDetailController : UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool{
         hideShareTextField.resignFirstResponder()
         return true
@@ -530,7 +525,7 @@ extension AlbumDetailController : UICollectionViewDropDelegate {
     func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
         let destinationIndexPath = coordinator.destinationIndexPath ?? IndexPath(item: 0, section: 0)
         coordinator.session.loadObjects(ofClass: (UIImage.self), completion: { (images) in
-            for photo in images {
+            for _ in images {
 //                AlbumDatabase.arrayList[self.albumIndex!].photos.insert(photo as! UIImage, at: destinationIndexPath.item)
                 collectionView.performBatchUpdates({
                     collectionView.insertItems(at: [destinationIndexPath])

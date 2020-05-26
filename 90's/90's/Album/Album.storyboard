@@ -2004,7 +2004,7 @@
                                         <rect key="frame" x="0.0" y="-57" width="414" height="903"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zQg-Hh-LUS">
-                                                <rect key="frame" x="0.0" y="808" width="414" height="264"/>
+                                                <rect key="frame" x="0.0" y="900" width="414" height="264"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ldk-YC-a84">
                                                         <rect key="frame" x="18" y="154" width="150" height="72"/>
@@ -2019,13 +2019,13 @@
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="5"/>
+                                                                <integer key="value" value="10"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="NO"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smx-YZ-zeZ">
-                                                        <rect key="frame" x="175" y="154" width="221" height="72"/>
+                                                        <rect key="frame" x="186" y="154" width="210" height="72"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="72" id="qqh-he-cpk"/>
@@ -2036,7 +2036,7 @@
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="5"/>
+                                                                <integer key="value" value="10"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
@@ -2054,20 +2054,26 @@
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
+                                                    <constraint firstItem="smx-YZ-zeZ" firstAttribute="leading" secondItem="Ldk-YC-a84" secondAttribute="trailing" constant="18" id="EIW-53-OLk"/>
                                                     <constraint firstItem="Ldk-YC-a84" firstAttribute="leading" secondItem="zQg-Hh-LUS" secondAttribute="leading" constant="18" id="Ee4-6V-pua"/>
-                                                    <constraint firstAttribute="bottom" secondItem="smx-YZ-zeZ" secondAttribute="bottom" constant="38" id="Nzs-Yl-Fgc"/>
                                                     <constraint firstAttribute="height" constant="264" id="Pgk-11-s3c"/>
                                                     <constraint firstAttribute="bottom" secondItem="Ldk-YC-a84" secondAttribute="bottom" constant="38" id="Qrw-JF-Zhe"/>
-                                                    <constraint firstItem="smx-YZ-zeZ" firstAttribute="leading" secondItem="Ldk-YC-a84" secondAttribute="trailing" constant="7" id="bIN-nE-baD"/>
+                                                    <constraint firstAttribute="bottom" secondItem="smx-YZ-zeZ" secondAttribute="bottom" constant="38" id="RW4-BT-98j"/>
                                                     <constraint firstAttribute="trailing" secondItem="smx-YZ-zeZ" secondAttribute="trailing" constant="18" id="eCu-pa-4u2"/>
                                                     <constraint firstItem="ntA-l3-TFA" firstAttribute="top" secondItem="zQg-Hh-LUS" secondAttribute="top" constant="50" id="gxe-GJ-clX"/>
                                                     <constraint firstItem="ntA-l3-TFA" firstAttribute="centerX" secondItem="zQg-Hh-LUS" secondAttribute="centerX" id="tDE-Uk-OHl"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="zQg-Hh-LUS" secondAttribute="bottom" constant="-169" id="EKP-t9-zLd"/>
+                                            <constraint firstAttribute="bottom" secondItem="zQg-Hh-LUS" secondAttribute="bottom" constant="-261" id="EKP-t9-zLd"/>
                                             <constraint firstAttribute="trailing" secondItem="zQg-Hh-LUS" secondAttribute="trailing" id="Fh3-ON-sjP"/>
                                             <constraint firstItem="zQg-Hh-LUS" firstAttribute="leading" secondItem="YCX-hA-EGl" secondAttribute="leading" id="Ilc-3a-ij8"/>
                                         </constraints>
@@ -2107,7 +2113,7 @@
                         <outlet property="hideLabel" destination="ntA-l3-TFA" id="eDg-5L-MYV"/>
                         <outlet property="hideView" destination="YCX-hA-EGl" id="NG6-33-UgV"/>
                         <outlet property="hideWhiteView" destination="zQg-Hh-LUS" id="6on-EQ-wHw"/>
-                        <outlet property="hideWhiteViewBottom" destination="Pgk-11-s3c" id="mni-DX-Msm"/>
+                        <outlet property="hideWhiteViewBottom" destination="EKP-t9-zLd" id="2Gl-ML-SJd"/>
                         <outlet property="memberTableView" destination="pj7-Nw-P4u" id="xPl-wr-ka6"/>
                     </connections>
                 </viewController>
