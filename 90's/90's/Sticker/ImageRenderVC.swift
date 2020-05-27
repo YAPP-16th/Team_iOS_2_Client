@@ -195,7 +195,7 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 {
+        if collectionView == self.nameCollectionView {
             return stickerNames.count
         } else {
             return stickerImages.count
