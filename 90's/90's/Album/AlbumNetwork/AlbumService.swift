@@ -14,7 +14,6 @@ struct album : Codable {
     var photoLimit : Int
     var layoutUid : Int
     var count : Int // 앨범 낡기
-//    var orderStatus : String
     var orderStatus: OrderStatus
     var cover: albumCover
     var endDate : String
@@ -32,19 +31,6 @@ struct OrderStatus: Codable {
     var uid: Int
     var status: String
 }
-
-
-//enum albumOrderStatus : Coda{
-//    case ready
-//    case done
-//
-//    var statusName : String {
-//        switch self {
-//        case .ready : return "ready"
-//        case .done : return "done"
-//        }
-//    }
-//}
 
 // post, albumGetAlbum 결과
 struct AlbumGetResult : Codable {
@@ -81,8 +67,9 @@ struct AlbumCreateResult : Codable {
 }
 
 // post
-struct AlbumAddUserData : Codable {
+struct AlbumUserData : Codable {
     var albumUid : Int
+    var name : String
     var role : String
     var userUid : Int
 }

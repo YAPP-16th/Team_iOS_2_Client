@@ -38,6 +38,9 @@ class AlbumInfoVC: UIViewController {
     
     var albumUid: Int = 0
     var infoAlbum : album?
+    
+    var userArray : [AlbumUserData] = []
+    
     var roleArray : [String] = []
     var userUidArray : [Int] = []
     var userNameArray : [String] = []
@@ -105,7 +108,9 @@ extension AlbumInfoVC : albumInfoDeleteProtocol {
         let alert = UIAlertController(title: "멤버 삭제", message: "멤버 삭제 완료!", preferredStyle: .alert)
         let action = UIAlertAction(title: "확인", style: .default)
         alert.addAction(action)
-        self.present(alert, animated: true)
+        self.present(alert, animated: true){
+            self.memberTableView.reloadData()
+        }
     }
 }
 
@@ -118,11 +123,11 @@ extension AlbumInfoVC {
                 switch status {
                 case 200:
                     guard let data = response.data else {return}
-                    guard let value = try? JSONDecoder().decode([AlbumGetOwnersResult].self, from: data) else {return}
-                    
-                    self.roleArray = value.map { $0.role }
-                    self.userUidArray = value.map { $0.userUid }
-                    self.userNameArray = value.map { $0.name }
+                    guard let value = try? JSONDecoder().decode([AlbumUserData].self, from: data) else {return}
+                    self.userArray = value.map { $0 }
+                    self.roleArray = self.userArray.map { $0.role }
+                    self.userUidArray = self.userArray.map { $0.userUid }
+                    self.userNameArray = self.userArray.map { $0.name }
                     self.memberTableView.reloadData()
                 case 401:
                     print("\(status) : bad request, no warning in Server")
@@ -138,8 +143,9 @@ extension AlbumInfoVC {
     }
     
     // 멤버 추가
-    func networkAddUser(albumuid : Int, username: String, userrole : String, useruid: Int){
+    func networkAddUser(username: String, userrole : String, useruid: Int){
         AlbumService.shared.albumAddUser(albumUid: albumUid, name: username, role: userrole, userUid: useruid, completion: { response in
+            
             if let status = response.response?.statusCode {
                 switch status {
                 case 200 :
@@ -159,13 +165,14 @@ extension AlbumInfoVC {
     }
     
     // 멤버 삭제
-    func networkRemoveUser(uid : Int, userRole : String){
-        AlbumService.shared.albumRemoveUser(albumUid: albumUid, role: userRole, userUid: uid, completion: { response in
+    func networkRemoveUser(userName : String, userRole : String, userUid: Int){
+        AlbumService.shared.albumRemoveUser(albumUid: albumUid, role: userRole, name: userName, userUid: userUid, completion: { response in
             if let status = response.response?.statusCode {
                 switch status {
                 case 200 :
                     self.removedAlert()
-                    print("removed user success")
+                    self.memberTableView.reloadData()
+                    print("removed user")
                 case 401 :
                     print("\(status) : bad request, no warning in Server")
                 case 404 :
@@ -187,9 +194,14 @@ extension AlbumInfoVC {
     }
     
     @objc func touchHideCompleteBtn(){
-        // 서버통신 - 멤버 삭제
         switchQuitHideView(value: true)
         memberTableView.reloadData()
+    }
+    
+    @objc func touchMemberDeleteBtn(_ sender : UIButton){
+        let item = userArray[sender.tag]
+        networkRemoveUser(userName: item.name, userRole: item.role, userUid: item.userUid)
+        userArray.remove(at: sender.tag)
     }
 }
 
@@ -226,6 +238,7 @@ extension AlbumInfoVC : UITableViewDelegate, UITableViewDataSource {
             cell.memberDeleteBtn.isEnabled = true
         }
         cell.memberDeleteBtn.tag = indexPath.row
+        cell.memberDeleteBtn.addTarget(self, action: #selector(touchMemberDeleteBtn(_:)), for: .touchUpInside)
     
         return cell
     }
