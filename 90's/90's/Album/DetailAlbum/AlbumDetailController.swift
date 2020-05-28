@@ -43,6 +43,8 @@ class AlbumDetailController : UIViewController {
     @IBAction func hideShareCancleBtn(_ sender: UIButton) { switchShareView(value: true) }
     @IBAction func touchhideShareCompleteBtn(_ sender: UIButton) { inviteSetting() }
     
+    // old filter
+    private let context = CIContext(options: nil)
     
     // 사진 순서 이동
     private var longPressGesture : UILongPressGestureRecognizer!
@@ -60,6 +62,7 @@ class AlbumDetailController : UIViewController {
     var ImageName : String = ""
     var selectedLayout : AlbumLayout?
     var albumMaxCount : Int = 0
+    var albumOldCount : Int = 0
     // - received data from before vc
     var albumUid : Int = 0
     var sharingword : String?
@@ -140,7 +143,6 @@ extension AlbumDetailController {
             }, completion: { finish in
                 self.hideView.isHidden = true
             } )
-            
         case false:
             self.hidewhiteviewBottom.constant = 0
             UIView.animate(withDuration: 0.5, delay: 0.25, animations: {
@@ -150,6 +152,7 @@ extension AlbumDetailController {
         }
     }
     
+    // 사진 하나 선택 시
     func switchZoomView(value : Bool){
         switch value {
         case true :
@@ -165,6 +168,7 @@ extension AlbumDetailController {
         }
     }
     
+    // 앨범 비밀번호
     func switchShareView(value : Bool){
         switch value {
         case true :
@@ -178,6 +182,7 @@ extension AlbumDetailController {
         }
     }
 
+    // 완료된 앨범일 경우 사진 추가 못함
     func switchAddBtn(value : Bool) {
         switch value {
         case false :
@@ -186,6 +191,7 @@ extension AlbumDetailController {
         case true :
             addPhotoBtn.isEnabled = false
             addPhotoBtn.isHidden = true
+            networkAddCount()
         }
     }
     
@@ -234,6 +240,14 @@ extension AlbumDetailController {
            })
        }
     
+    func applyLUTImage(originImage : UIImage) -> UIImage{
+        let test = colorCubeFilterFromLUT(imageName: "old_filter", originalImage: originImage)
+        print("test = \(test)")
+        let result = test?.outputImage
+        let image = UIImage.init(cgImage: context.createCGImage(result!, from: result!.extent)!)
+           
+        return image
+    }
 
     func setOldFilter(image : UIImage) -> UIImage{
         let inputImage : CIImage = CIImage.init(image: image)!
@@ -337,9 +351,11 @@ extension AlbumDetailController {
                     self.networkDetailAlbum = value
                     self.albumNameLabel.text = value.name
                     self.albumMaxCount = value.photoLimit
+                    self.isAlbumComplete = value.complete
                     self.selectedLayout = self.getLayoutByUid(value: value.layoutUid)
                     self.hideImageZoom.frame.size = CGSize(width: self.setZoomImageView(layout: self.selectedLayout!).width - 60, height: self.setZoomImageView(layout: self.selectedLayout!).height - 60)
-                    self.hideImageZoom.center = self.view.center
+                    self.albumOldCount = value.count
+//                    self.hideImageZoom.center = self.view.center
                     self.NetworkGetPhotoUid()
                 case 401:
                     print("\(status) : bad request, no warning in Server")
@@ -385,12 +401,27 @@ extension AlbumDetailController {
             for i in 0...photoUid.count-1 {
                 AlbumService.shared.photoDownload(albumUid: albumUid, photoUid: photoUid[i], completion: { response in
                     if case .success(let image) = response.result {
-                        self.networkPhotoUrlImageArray.append(image)
+                        var originImage = image
+                        if self.isAlbumComplete == true {
+                            for i in 0...self.albumOldCount {
+                                originImage = self.applyLUTImage(originImage: originImage)
+                            }
+                        }
+                        
+                        self.networkPhotoUrlImageArray.append(originImage)
                         self.photoCollectionView.reloadData()
                     }
                 })
             }
         }
+        
+//        if self.isAlbumComplete == true {
+//            for i in 0...networkPhotoUrlImageArray.count {
+//                for _ in 0...albumOldCount {
+//                    networkPhotoUrlImageArray[i] = applyLUTImage(originImage: networkPhotoUrlImageArray[i])
+//                }
+//            }
+//        }
         isAlbumComplete = photoUidArray.count+1 <= albumMaxCount ? false : true
         switchAddBtn(value: isAlbumComplete)
     }
@@ -401,7 +432,7 @@ extension AlbumDetailController {
             if let status = response.response?.statusCode {
                 switch status {
                 case 200:
-                    print("album add order count success")
+                    print("album add order plus count successfully added")
                 case 401:
                     print("\(status) : bad request, no warning in Server")
                 case 404:
@@ -483,8 +514,19 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCell
             let size = returnLayoutSize(selectedLayout: selectedLayout!)
+            
             cell.backImageView = applyBackImageViewLayout(selectedLayout: selectedLayout!, smallBig: size, imageView: cell.backImageView)
             cell.backImageView.image = networkPhotoUrlImageArray[indexPath.row]
+            
+//            if isAlbumComplete == true {
+////                for _ in 0...albumOldCount {
+//                    networkPhotoUrlImageArray[indexPath.row] = applyLUTImage(originImage: networkPhotoUrlImageArray[indexPath.row])
+////                }
+//            }
+            
+            
+            
+            
             return cell
         }
     }

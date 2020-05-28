@@ -123,12 +123,9 @@ struct AlbumService : APIManager {
     
     // plusCount, get 앨범 낡기 카운드
     func albumPlusCount(uid: Int, completion : @escaping(completeAlbumSerivce)){
-        let url = Self.url("/album/plusCount")
-        let body : [String : Any] = [
-            "uid" : uid
-        ]
+        let url = Self.url("/album/plusCount/\(uid)")
         
-        AF.request(url, method: .get, parameters: body, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
             response in
             switch response.result {
             case .success:
