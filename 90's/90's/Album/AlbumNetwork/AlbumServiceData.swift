@@ -140,10 +140,11 @@ struct AlbumService : APIManager {
     }
     
     // removeUser, post
-    func albumRemoveUser(albumUid : Int, role : String, userUid : Int, completion: @escaping(completeAlbumSerivce)){
+    func albumRemoveUser(albumUid : Int, role : String, name : String, userUid : Int, completion: @escaping(completeAlbumSerivce)){
         let url = Self.url("/album/removeUser")
         let body : [String : Any] = [
             "albumUid" : albumUid,
+            "name" : name,
             "role" : role,
             "userUid" : userUid
         ]
