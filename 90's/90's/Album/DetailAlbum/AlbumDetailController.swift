@@ -240,14 +240,13 @@ extension AlbumDetailController {
            })
        }
     
-    func applyLUTImage(originImage : UIImage) -> UIImage{
-        let test = colorCubeFilterFromLUT(imageName: "old_filter", originalImage: originImage)
-        print("test = \(test)")
-        let result = test?.outputImage
-        let image = UIImage.init(cgImage: context.createCGImage(result!, from: result!.extent)!)
-           
-        return image
-    }
+//    func applyLUTImage(originImage : UIImage) -> UIImage {
+//        let test = colorCubeFilterFromLUT(imageName: "LUT", originalImage: originImage)
+//        let result = test?.outputImage
+//        let image = UIImage.init(cgImage: context.createCGImage(result!, from: result!.extent)!)
+//
+//        return image
+//    }
 
     func setOldFilter(image : UIImage) -> UIImage{
         let inputImage : CIImage = CIImage.init(image: image)!
@@ -403,25 +402,17 @@ extension AlbumDetailController {
                     if case .success(let image) = response.result {
                         var originImage = image
                         if self.isAlbumComplete == true {
-                            for i in 0...self.albumOldCount {
-                                originImage = self.applyLUTImage(originImage: originImage)
-                            }
+                            //for i in 0...self.albumOldCount { // 속도 느려서 한번만 적용 (임시)
+                            originImage = self.setOldFilter(image: originImage)
+                            //}
                         }
-                        
                         self.networkPhotoUrlImageArray.append(originImage)
                         self.photoCollectionView.reloadData()
                     }
                 })
             }
         }
-        
-//        if self.isAlbumComplete == true {
-//            for i in 0...networkPhotoUrlImageArray.count {
-//                for _ in 0...albumOldCount {
-//                    networkPhotoUrlImageArray[i] = applyLUTImage(originImage: networkPhotoUrlImageArray[i])
-//                }
-//            }
-//        }
+
         isAlbumComplete = photoUidArray.count+1 <= albumMaxCount ? false : true
         switchAddBtn(value: isAlbumComplete)
     }

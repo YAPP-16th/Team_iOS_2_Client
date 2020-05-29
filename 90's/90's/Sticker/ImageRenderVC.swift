@@ -10,12 +10,14 @@ import UIKit
 class ImageRenderVC: UIViewController {
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var saveView: UIView!
+    @IBOutlet weak var focusView: UIView!
     @IBOutlet weak var renderImage: UIImageView!
     @IBOutlet weak var layoutImage: UIImageView!
     @IBOutlet weak var nameCollectionView: UICollectionView!
     @IBOutlet weak var stickerCollectionView: UICollectionView!
     @IBOutlet weak var completeBtn: UIButton!
     @IBAction func cancleBtn(_ sender: UIButton) {
+        focusView.isHidden = true
         navigationController?.popViewController(animated: true)
     }
     
@@ -30,7 +32,7 @@ class ImageRenderVC: UIViewController {
 
     // for sticker
     fileprivate var sticker : StickerLayout?
-    fileprivate var initialAngle = CGFloat(), angle = CGFloat(), saveSize = CGFloat()
+    fileprivate var initialAngle = CGFloat(), saveAngle = CGFloat(), saveSize = CGFloat()
     fileprivate var savePosition : CGPoint = CGPoint(x: 0, y: 0)
     
     // collection data
@@ -40,6 +42,12 @@ class ImageRenderVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        for view in saveView.subviews {
+            if view is StickerLayout {
+                view.removeFromSuperview()
+            }
+        }
         stickerCollectionView.reloadData()
     }
     
@@ -51,8 +59,17 @@ class ImageRenderVC: UIViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first
+        if focusView.isHidden == false {
+            if touch?.view == focusView {
+                focusView.isHidden = true
+            }
+        }
         if sticker != nil {
-            self.initialAngle = pToA(touches.first!)
+            self.initialAngle = pToA(touch!)
+            if touch?.view == sticker?.backImageView {
+                focusView.isHidden = false
+            }
         }
     }
     
@@ -62,20 +79,18 @@ class ImageRenderVC: UIViewController {
         if sticker != nil {
             switch touch!.view {
             case sticker?.rotateImageView :
-                let ang = pToA(touch!) - self.initialAngle
-                let absoluteAngle = self.angle + ang
+                let ang = pToA(touch!) - initialAngle
+                let absoluteAngle = saveAngle + ang
                 sticker?.transform = (sticker?.transform.rotated(by: ang))!
-                self.angle = absoluteAngle
-                
+                saveAngle = absoluteAngle
             case sticker?.resizeImageView :
                 let position = touch!.location(in: self.view)
                 let target = sticker?.center
                 let size = max((position.x / target!.x), (position.y / target!.y))
                 let scale = CGAffineTransform(scaleX: size, y: size)
-                let rotate = CGAffineTransform(rotationAngle: angle)
+                let rotate = CGAffineTransform(rotationAngle: saveAngle)
                 saveSize = size
                 sticker?.transform = scale.concatenating(rotate)
-                
             case sticker?.cancleImageView :
                 sticker?.removeFromSuperview()
                 sticker = nil
@@ -114,8 +129,10 @@ extension ImageRenderVC {
     }
     
     private func resetValues(){
-        angle = CGFloat()
+        sticker = nil
+        saveAngle = CGFloat()
         saveSize = CGFloat()
+        focusView.isHidden = true
         stickerCollectionView.reloadData()
     }
     
@@ -135,6 +152,7 @@ extension ImageRenderVC {
         sticker?.frame.size = CGSize(width: 120, height: 120)
         sticker?.center = saveView.center
         createPan(view: sticker!.backImageView) // 이미지 옮기기
+        focusView.isHidden = false
         self.saveView.addSubview(sticker!)
     }
 }
@@ -143,6 +161,7 @@ extension ImageRenderVC {
 extension ImageRenderVC {
     @objc func touchCompleteBtn(){
         for views in saveView.subviews {
+            print("view = \(views)")
             if(views is StickerLayout){
                 (views as! StickerLayout).cancleImageView.isHidden = true
                 (views as! StickerLayout).rotateImageView.isHidden = true
@@ -178,12 +197,15 @@ extension ImageRenderVC {
     }
     
     @objc func handlePanGesture(panGesture: UIPanGestureRecognizer){
-        let transition = panGesture.translation(in: sticker)
         /// todo : 팬에 기울기도 적용하기
-        panGesture.setTranslation(CGPoint.zero, in: sticker)
         if sticker != nil {
+            let transition = panGesture.translation(in: sticker)
+            let scale = CGAffineTransform(scaleX: saveSize, y: saveSize)
+            let rotate = CGAffineTransform(rotationAngle: saveAngle)
             sticker!.center = CGPoint(x: sticker!.center.x + transition.x, y: sticker!.center.y + transition.y)
-            savePosition = sticker!.frame.origin
+//            sticker!.transform = scale.concatenating(rotate)
+            panGesture.setTranslation(CGPoint.zero, in: sticker)
+            
         }
     }
 }
