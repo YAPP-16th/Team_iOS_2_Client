@@ -25,7 +25,7 @@ class PopUp2ViewController: UIViewController {
         super.viewDidLoad()
         okBtn.layer.cornerRadius = 8
         PopupView.layer.cornerRadius = 14
-        contentTextView.text = "입금확인이 된 이후 영업일 기준 당일에\n\(albumName!)가 도착합니다. 안전하게 댁까지 전달해드릴게요!)"
+        contentTextView.text = "입금확인이 된 이후 영업일 기준 당일에\n\(albumName!)가 도착합니다. 안전하게 댁까지 전달해드릴게요!"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,14 +52,5 @@ class PopUp2ViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

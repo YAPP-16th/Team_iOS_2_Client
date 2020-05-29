@@ -10,7 +10,7 @@ import UIKit
 
 class OptionViewController : UIViewController {
     
-    //MARK: Constraint IBOutlet
+    //MARK: Constraint I BOutlet
     @IBOutlet weak var BottomViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var FirstOptionConstraint: NSLayoutConstraint!
     @IBOutlet weak var SecondOptionConstraint: NSLayoutConstraint!
@@ -18,48 +18,12 @@ class OptionViewController : UIViewController {
     @IBOutlet weak var countOptionViewConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var completeBtnConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var previewImageHeight: NSLayoutConstraint!
-    @IBOutlet weak var titleTopreviewConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var completeBtnTopConstraint: NSLayoutConstraint!
     
-    
-    
-    //MARK: View IBOutlet
-    @IBOutlet weak var OptionView: UIView!
-    @IBOutlet weak var CompleteBtn: UIButton!
-    @IBOutlet weak var FirstOptionView: UIView!
-    @IBOutlet weak var SecondOptionView: UIView!
-    @IBOutlet weak var countOptionView: UIView!
-    
+    //메인화면 Outlet
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var nextBtn: UIButton!
-    @IBOutlet weak var totalSum1: UILabel!
-    @IBOutlet weak var totalSum2: UILabel!
-    @IBOutlet weak var totalCount: UILabel!
-    
-    @IBOutlet weak var firstFlapBtn: UIButton!
-    @IBOutlet weak var secondFlapBtn: UIButton!
-    
-    @IBOutlet weak var normalBtn: UIButton!
-    @IBOutlet weak var advanceBtn: UIButton!
-    
-    @IBOutlet weak var noramlShipBtn: UIButton!
-    @IBOutlet weak var superAdShipBtn: UIButton!
-    @IBOutlet weak var advanceShipBtn: UIButton!
-  
-    
-    @IBOutlet weak var printLabel: UILabel!
-    @IBOutlet weak var shipLabel: UILabel!
-    
-    @IBOutlet weak var orderBtn: UIButton!
-    @IBOutlet weak var previewImage: UIImageView!
-    
-    @IBOutlet weak var backView: UIView!
-    
-    
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var albumNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -67,16 +31,47 @@ class OptionViewController : UIViewController {
     @IBOutlet weak var coverNameLabel: UILabel!
     @IBOutlet weak var layoutLabel: UILabel!
     
+    //주문 - 옵션 선택 뷰
+    @IBOutlet weak var OptionView: UIView!
+    @IBOutlet weak var FirstOptionView: UIView!
+    @IBOutlet weak var SecondOptionView: UIView!
+    @IBOutlet weak var firstFlapBtn: UIButton!
+    @IBOutlet weak var secondFlapBtn: UIButton!
+    @IBOutlet weak var normalBtn: UIButton!
+    @IBOutlet weak var advanceBtn: UIButton!
+    @IBOutlet weak var noramlShipBtn: UIButton!
+    @IBOutlet weak var superAdShipBtn: UIButton!
+    @IBOutlet weak var advanceShipBtn: UIButton!
+    @IBOutlet weak var CompleteBtn: UIButton! //옵션 담기 버튼
+
+    
+    @IBOutlet weak var nextBtn: UIButton!
+    
+    //주문 - 주문 확인 뷰
+    @IBOutlet weak var countOptionView: UIView!
+    @IBOutlet weak var totalSum1: UILabel!
+    @IBOutlet weak var totalSum2: UILabel!
+    @IBOutlet weak var totalCount: UILabel!
+
+
+    
+    
+  
+    
+    @IBOutlet weak var printLabel: UILabel!
+    @IBOutlet weak var shipLabel: UILabel!
+    
+    @IBOutlet weak var previewImage: UIImageView! //주문확인 화면image
+    @IBOutlet weak var orderInfoLabel: UILabel!
+    @IBOutlet weak var orderBtn: UIButton! //주문하기 버튼
+
+    @IBOutlet weak var backView: UIView!
+    
+
+    
     
     var isTotalOptionViewAppear = false
-    var coverImage : UIImage? = nil
-    var cal1 = false
-    var cal2 = false
-    var cal3 = false
-    var cal4 = false
-    var cal5 = false
-    var cal6 = false
-    var calc : Int = 0
+
     var tempImage: UIImage? = nil
     var albumInfo: album!
     var photoCount: Int!
@@ -215,8 +210,6 @@ class OptionViewController : UIViewController {
         
         self.backView.isHidden = false
         self.BottomViewConstraint.constant = self.view.frame.height
-        self.totalSum1.text = String(calc)
-        self.totalSum2.text = String(calc)
         self.countOptionViewConstraint.constant = self.view.frame.height - 443
         self.countOptionView.isHidden = false
         
@@ -347,16 +340,14 @@ class OptionViewController : UIViewController {
         var old = Int(self.totalCount.text ?? "1")
         old! = old! - 1
         self.totalCount.text = String(old!)
-        self.totalSum1.text = String(calc * old!)
-        self.totalSum2.text = String(calc * old!)
+       
     }
     
     @IBAction func plusBtnAction(_ sender: Any) {
         var old = Int(self.totalCount.text ?? "1")
         old! = old! + 1
         self.totalCount.text = String(old!)
-        self.totalSum1.text = String(calc * old!)
-        self.totalSum2.text = String(calc * old!)
+ 
     }
     
     
@@ -419,6 +410,7 @@ class OptionViewController : UIViewController {
         
         let storyboard = UIStoryboard(name: "Print", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PopUpViewController") as! PopUpViewController
+        vc.albumName = albumInfo.name
 
         vc.modalTransitionStyle = .crossDissolve
         vc.modalPresentationStyle = .overCurrentContext
