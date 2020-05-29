@@ -16,20 +16,16 @@ class PopUp2ViewController: UIViewController {
     @IBOutlet weak var PopupView: UIView!
     
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    @IBOutlet weak var contentTextView: UITextView!
     
-    @IBAction func cancel(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
+    var albumName:String!
     
-    @IBAction func ok(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         okBtn.layer.cornerRadius = 8
         PopupView.layer.cornerRadius = 14
-        // Do any additional setup after loading the view.
+        contentTextView.text = "입금확인이 된 이후 영업일 기준 당일에\n\(albumName!)가 도착합니다. 안전하게 댁까지 전달해드릴게요!)"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +44,13 @@ class PopUp2ViewController: UIViewController {
         
     }
     
+    @IBAction func cancel(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func ok(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 
     /*
     // MARK: - Navigation

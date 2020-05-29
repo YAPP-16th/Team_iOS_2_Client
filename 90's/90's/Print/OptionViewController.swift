@@ -45,11 +45,11 @@ class OptionViewController : UIViewController {
     
     @IBOutlet weak var normalBtn: UIButton!
     @IBOutlet weak var advanceBtn: UIButton!
-    @IBOutlet weak var superAdBtn: UIButton!
     
     @IBOutlet weak var noramlShipBtn: UIButton!
-    @IBOutlet weak var advanceShipBtn: UIButton!
     @IBOutlet weak var superAdShipBtn: UIButton!
+    @IBOutlet weak var advanceShipBtn: UIButton!
+  
     
     @IBOutlet weak var printLabel: UILabel!
     @IBOutlet weak var shipLabel: UILabel!
@@ -80,9 +80,14 @@ class OptionViewController : UIViewController {
     var tempImage: UIImage? = nil
     var albumInfo: album!
     var photoCount: Int!
+    var totalPrice = 14300 //14300이 기존 가격
+    var isClickPaperType = false
+    var isClickShipType = false
+    var paperType = ""
+    var shipType = ""
+    
     
     override func viewDidLoad() {
-        //        self.view.backgroundColor = .white
         super.viewDidLoad()
         self.backView.isHidden = true
         
@@ -125,7 +130,7 @@ class OptionViewController : UIViewController {
             
         }
         
- 
+        
         let startDate = albumInfo.created_at.split(separator: "T")[0]
         let endDate = albumInfo.endDate
         let idxStartDate:String.Index = startDate.index(startDate.startIndex, offsetBy: 2)
@@ -145,7 +150,6 @@ class OptionViewController : UIViewController {
         
         normalBtn.isSelected = false
         advanceBtn.isSelected = false
-        superAdBtn.isSelected = false
         noramlShipBtn.isSelected = false
         advanceShipBtn.isSelected = false
         superAdShipBtn.isSelected = false
@@ -158,8 +162,6 @@ class OptionViewController : UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.navigationBar.isHidden = false
-        
-        
     }
     
     @IBAction func goBack(_ sender: Any) {
@@ -175,11 +177,6 @@ class OptionViewController : UIViewController {
         
         
         if isTotalOptionViewAppear {
-            self.BottomViewConstraint.constant = self.view.frame.height
-            self.scrollView.isScrollEnabled = true
-        }
-        else
-        {
             self.backView.isHidden = false
             self.scrollView.isScrollEnabled = false
             // iPhone X..
@@ -194,6 +191,12 @@ class OptionViewController : UIViewController {
                 self.BottomViewConstraint.constant = self.view.frame.height  - 516 + 30
                 
             }
+            
+        }
+        else
+        {
+            self.BottomViewConstraint.constant = self.view.frame.height
+            self.scrollView.isScrollEnabled = true
         }
         UIView.animate(withDuration: 1, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations: {self.view.layoutIfNeeded()})
         
@@ -238,9 +241,9 @@ class OptionViewController : UIViewController {
         
         if firstFlapBtn.isSelected {
             
-            self.FirstOptionConstraint.constant = 239
+            self.FirstOptionConstraint.constant = 175
             self.SecondOptionConstraint.constant = 0
-            self.stackViewConnected.constant = 50.5 + 239
+            self.stackViewConnected.constant = 50.5 + 175
             self.FirstOptionView.isHidden = false
             self.SecondOptionView.isHidden = true
             
@@ -357,130 +360,78 @@ class OptionViewController : UIViewController {
     }
     
     
-    @IBAction func normalClick(_ sender: Any) {
-        cal1 = !cal1
-        calc =  0
-        print(calc)
-        normalBtn.isSelected = true
-        advanceBtn.isSelected = false
-        superAdBtn.isSelected = false
-        normalBtn.setImage(UIImage(named: "ovalSelectOption"), for: .selected)
-        self.printLabel.text = "유광"
+    
+    //종이 타입 클릭 시
+    @IBAction func paperTypeClick(_ sender: Any) {
+        if(!isClickPaperType) {
+            isClickPaperType = !isClickPaperType
+        }
         
-        if (noramlShipBtn.isSelected  == true || advanceBtn.isSelected == true || superAdBtn.isSelected == true) && ( normalBtn.isSelected == true || advanceShipBtn.isSelected == true || superAdShipBtn.isSelected == true)
-        {
+        let btn = sender as! UIButton
+        
+        if(btn.tag == 1){
+            normalBtn.isSelected = true
+            advanceBtn.isSelected = false
+        }else if(btn.tag == 2){
+            normalBtn.isSelected = false
+            advanceBtn.isSelected = true
+        }
+        
+        if (isClickShipType){
             CompleteBtn.backgroundColor = .black
         }
         
     }
     
-    @IBAction func adClick(_ sender: Any) {
-        cal2 = !cal2
-        if cal2 {
-            calc = calc + 0
+    
+    //배송 타입 클릭 시
+    @IBAction func shipTypeClick(_ sender: Any) {
+        if(!isClickShipType) {
+            isClickShipType = !isClickShipType
         }
-        else {
-            calc = calc - 0
-        }
-        print(calc)
-        normalBtn.isSelected = false
-        advanceBtn.isSelected = true
-        superAdBtn.isSelected = false
-        advanceBtn.setImage(UIImage(named: "ovalSelectOption"), for: .selected)
-        self.printLabel.text = "무광"
         
-        if (noramlShipBtn.isSelected  == true || advanceBtn.isSelected == true || superAdBtn.isSelected == true) && ( normalBtn.isSelected == true || advanceShipBtn.isSelected == true || superAdShipBtn.isSelected == true)
-        {
+        let btn = sender as! UIButton
+        
+        if(btn.tag == 3){
+            noramlShipBtn.isSelected = true
+            advanceShipBtn.isSelected = false
+            superAdShipBtn.isSelected = false
+        }else if(btn.tag == 4){
+            noramlShipBtn.isSelected = false
+            superAdShipBtn.isSelected = true
+            advanceShipBtn.isSelected = false
+        }else if(btn.tag == 5){
+            noramlShipBtn.isSelected = false
+            superAdShipBtn.isSelected = false
+            advanceShipBtn.isSelected = true
+        }
+        
+        if (isClickPaperType){
             CompleteBtn.backgroundColor = .black
         }
         
     }
     
-    @IBAction func ad2Click(_ sender: Any) {
-        cal3 = !cal3
-        if cal3 {
-            calc = calc + 0
-        }
-        else {
-            calc = calc - 0
-        }
-        print(calc)
-        normalBtn.isSelected = false
-        advanceBtn.isSelected = false
-        superAdBtn.isSelected = true
-        superAdBtn.setImage(UIImage(named: "ovalSelectOption"), for: .selected)
-        self.printLabel.text = "랜덤"
-        
-        if (noramlShipBtn.isSelected  == true || advanceBtn.isSelected == true || superAdBtn.isSelected == true) && ( normalBtn.isSelected == true || advanceShipBtn.isSelected == true || superAdShipBtn.isSelected == true)
-        {
-            CompleteBtn.backgroundColor = .black
-        }
-        
-    }
     
-    @IBAction func normalShipClick(_ sender: Any) {
-        cal4 = !cal4
-        if cal4 {
-            calc = calc + 5000
-        }
-        else {
-            calc = calc - 5000
-        }
-        
-        print(calc)
-        noramlShipBtn.isSelected = true
-        advanceShipBtn.isSelected = false
-        superAdShipBtn.isSelected = false
-        noramlShipBtn.setImage(UIImage(named: "ovalSelectOption"), for: .selected)
-        self.shipLabel.text = "일반"
-        
-        if (noramlShipBtn.isSelected  == true || advanceBtn.isSelected == true || superAdBtn.isSelected == true) && ( normalBtn.isSelected == true || advanceShipBtn.isSelected == true || superAdShipBtn.isSelected == true)
-        {
-            CompleteBtn.backgroundColor = .black
-        }
-    }
-    
-    
-    
-    @IBAction func adShipClick(_ sender: Any) {
-        cal5 = !cal5
-        if cal5 {
-            calc = calc + 5000
-        }
-        else {
-            calc = calc - 5000
-        }
-        noramlShipBtn.isSelected = false
-        advanceShipBtn.isSelected = true
-        superAdShipBtn.isSelected = false
-        advanceShipBtn.setImage(UIImage(named: "ovalSelectOption"), for: .selected)
-        self.shipLabel.text = "특급"
-        
-        if (noramlShipBtn.isSelected  == true || advanceBtn.isSelected == true || superAdBtn.isSelected == true) && ( normalBtn.isSelected == true || advanceShipBtn.isSelected == true || superAdShipBtn.isSelected == true)
-        {
-            CompleteBtn.backgroundColor = .black
-        }
-    }
-    
-    
-    
-    
+
+    //일반 배송 info 버튼 클릭 시
     @IBAction func adShipInfo(_ sender: Any) {
         
         let storyboard = UIStoryboard(name: "Print", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PopUpViewController") as! PopUpViewController
-        
+
         vc.modalTransitionStyle = .crossDissolve
         vc.modalPresentationStyle = .overCurrentContext
         self.present(vc, animated: true, completion: nil)
         
     }
     
+    //등기 배송 info 버튼 클릭 시
     @IBAction func superShipinfo(_ sender: Any) {
         
         let storyboard = UIStoryboard(name: "Print", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PopUp2ViewController") as! PopUp2ViewController
-        
+        vc.albumName = albumInfo.name
         vc.modalTransitionStyle = .crossDissolve
         vc.modalPresentationStyle = .overCurrentContext
         self.present(vc, animated: true, completion: nil)
@@ -489,26 +440,5 @@ class OptionViewController : UIViewController {
     }
     
     
-    @IBAction func ad2ShipClick(_ sender: Any) {
-        cal6 = !cal6
-        if cal6 {
-            calc = calc + 10000
-        }
-        else {
-            calc = calc - 10000
-        }
-        noramlShipBtn.isSelected = false
-        advanceShipBtn.isSelected = false
-        superAdShipBtn.isSelected = true
-        superAdShipBtn.setImage(UIImage(named: "ovalSelectOption"), for: .selected)
-        self.shipLabel.text = "등기"
-        
-        if (noramlShipBtn.isSelected  == true || advanceBtn.isSelected == true || superAdBtn.isSelected == true) && ( normalBtn.isSelected == true || advanceShipBtn.isSelected == true || superAdShipBtn.isSelected == true)
-        {
-            CompleteBtn.backgroundColor = .black
-        }
-        
-        
-    }
     
 }
