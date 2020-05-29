@@ -43,7 +43,8 @@ class OptionViewController : UIViewController {
     @IBOutlet weak var superAdShipBtn: UIButton!
     @IBOutlet weak var advanceShipBtn: UIButton!
     @IBOutlet weak var CompleteBtn: UIButton! //옵션 담기 버튼
-
+    @IBOutlet weak var shipTypeLabel: UILabel!
+    
     
     @IBOutlet weak var nextBtn: UIButton!
     
@@ -52,35 +53,31 @@ class OptionViewController : UIViewController {
     @IBOutlet weak var totalSum1: UILabel!
     @IBOutlet weak var totalSum2: UILabel!
     @IBOutlet weak var totalCount: UILabel!
-
-
     
-    
-  
     
     @IBOutlet weak var printLabel: UILabel!
     @IBOutlet weak var shipLabel: UILabel!
     
-    @IBOutlet weak var previewImage: UIImageView! //주문확인 화면image
+    @IBOutlet weak var previewImage: UIImageView!
     @IBOutlet weak var orderInfoLabel: UILabel!
     @IBOutlet weak var orderBtn: UIButton! //주문하기 버튼
-
-    @IBOutlet weak var backView: UIView!
     
-
+    @IBOutlet weak var backView: UIView!
     
     
     var isTotalOptionViewAppear = false
-
+    
     var tempImage: UIImage? = nil
     var albumInfo: album!
     var photoCount: Int!
     var totalPrice = 14300 //14300이 기존 가격
+    var afterPrice = 0
     var isClickPaperType = false
     var isClickShipType = false
     var paperType = ""
     var shipType = ""
-    
+    var coverImage:UIImage!
+    var layoutName:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,7 +86,6 @@ class OptionViewController : UIViewController {
         self.totalCount.text = "1"
         self.printLabel.text = ""
         self.shipLabel.text = ""
-        self.previewImage.image = self.coverImageView.image
         
         OptionView.layer.cornerRadius = 14
         countOptionView.layer.cornerRadius = 14
@@ -134,13 +130,14 @@ class OptionViewController : UIViewController {
         let endDateStr = String(endDate[idxEndDate...]).replacingOccurrences(of: "-", with: ".")
         
         
-        let coverImage = getCoverByUid(value: albumInfo.cover.uid)
+        coverImage = getCoverByUid(value: albumInfo.cover.uid)
         coverImageView.image = coverImage
         albumNameLabel.text = albumInfo.name
         dateLabel.text = startDateStr + "~" + endDateStr
         photoCountLabel.text = "\(photoCount!)/\(albumInfo.photoLimit)"
         coverNameLabel.text = albumInfo.cover.name
-        layoutLabel.text =  self.getLayoutByUid(value: albumInfo.layoutUid).layoutName
+        layoutName = self.getLayoutByUid(value: albumInfo.layoutUid).layoutName
+        layoutLabel.text = layoutName
         
         
         normalBtn.isSelected = false
@@ -174,6 +171,12 @@ class OptionViewController : UIViewController {
         if isTotalOptionViewAppear {
             self.backView.isHidden = false
             self.scrollView.isScrollEnabled = false
+            if(isClickShipType && isClickPaperType){
+                self.CompleteBtn.isEnabled = true
+            }else {
+                self.CompleteBtn.isEnabled = false
+            }
+            
             // iPhone X..
             if UIScreen.main.nativeBounds.height >= 1792.0 {
                 
@@ -211,6 +214,23 @@ class OptionViewController : UIViewController {
         self.backView.isHidden = false
         self.BottomViewConstraint.constant = self.view.frame.height
         self.countOptionViewConstraint.constant = self.view.frame.height - 443
+        self.previewImage.image = coverImage
+        self.shipLabel.text = albumInfo.name
+        
+        self.orderInfoLabel.text = "커버: \(albumInfo.cover.name) / 포토레이아웃: \(layoutName ?? "") / 인화용지: \(paperType) / 배송: \(shipType)"
+        
+        totalPrice = 14300
+        if(shipType == "특급(+10,000원)"){
+            totalPrice += 10000
+        }else if(shipType == "등기(+15,000원)"){
+            totalPrice += 15000
+        }
+        
+        afterPrice = totalPrice
+        
+        totalSum1.text = totalPrice.numberToPrice(totalPrice)
+        totalSum2.text = totalPrice.numberToPrice(totalPrice)
+        
         self.countOptionView.isHidden = false
         
         UIView.animate(withDuration: 1, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations: {self.view.layoutIfNeeded()})
@@ -313,6 +333,8 @@ class OptionViewController : UIViewController {
         
         
     }
+    
+    
     @IBAction func countOptionCancelClick(_ sender: Any) {
         self.backView.isHidden = true
         self.scrollView.isScrollEnabled = true
@@ -337,18 +359,30 @@ class OptionViewController : UIViewController {
     
     
     @IBAction func minusBtnAction(_ sender: Any) {
-        var old = Int(self.totalCount.text ?? "1")
-        old! = old! - 1
-        self.totalCount.text = String(old!)
-       
+        var num = Int(totalCount.text!)!
+
+        if(num>1) {
+            num -= 1
+            totalCount.text = "\(num)"
+
+            
+            afterPrice -= totalPrice
+            totalSum1.text = afterPrice.numberToPrice(afterPrice)
+            totalSum2.text = afterPrice.numberToPrice(afterPrice)
+        }
     }
     
     @IBAction func plusBtnAction(_ sender: Any) {
-        var old = Int(self.totalCount.text ?? "1")
-        old! = old! + 1
-        self.totalCount.text = String(old!)
- 
+        var num = Int(totalCount.text!)!
+
+        num += 1
+        totalCount.text = "\(num)"
+        
+        afterPrice += totalPrice
+        totalSum1.text = afterPrice.numberToPrice(afterPrice)
+        totalSum2.text = afterPrice.numberToPrice(afterPrice)
     }
+    
     
     
     
@@ -363,13 +397,18 @@ class OptionViewController : UIViewController {
         if(btn.tag == 1){
             normalBtn.isSelected = true
             advanceBtn.isSelected = false
+            paperType = "유광"
         }else if(btn.tag == 2){
             normalBtn.isSelected = false
             advanceBtn.isSelected = true
+            paperType = "무광"
         }
+        
+        printLabel.text = paperType
         
         if (isClickShipType){
             CompleteBtn.backgroundColor = .black
+            self.CompleteBtn.isEnabled = true
         }
         
     }
@@ -387,31 +426,38 @@ class OptionViewController : UIViewController {
             noramlShipBtn.isSelected = true
             advanceShipBtn.isSelected = false
             superAdShipBtn.isSelected = false
+            shipType = "일반"
         }else if(btn.tag == 4){
             noramlShipBtn.isSelected = false
             superAdShipBtn.isSelected = true
             advanceShipBtn.isSelected = false
+            shipType = "특급(+10,000원)"
         }else if(btn.tag == 5){
             noramlShipBtn.isSelected = false
             superAdShipBtn.isSelected = false
             advanceShipBtn.isSelected = true
+            shipType = "등기(+15,000원)"
         }
+        
+        shipTypeLabel.text = shipType
+        
         
         if (isClickPaperType){
             CompleteBtn.backgroundColor = .black
+            self.CompleteBtn.isEnabled = true
         }
         
     }
     
     
-
+    
     //일반 배송 info 버튼 클릭 시
     @IBAction func adShipInfo(_ sender: Any) {
         
         let storyboard = UIStoryboard(name: "Print", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PopUpViewController") as! PopUpViewController
         vc.albumName = albumInfo.name
-
+        
         vc.modalTransitionStyle = .crossDissolve
         vc.modalPresentationStyle = .overCurrentContext
         self.present(vc, animated: true, completion: nil)
