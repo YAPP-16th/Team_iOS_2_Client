@@ -78,6 +78,7 @@ class OptionViewController : UIViewController {
     var shipType = ""
     var coverImage:UIImage!
     var layoutName:String!
+    var num = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -352,6 +353,13 @@ class OptionViewController : UIViewController {
         self.countOptionView.isHidden = true
         
         let finalOrderVC = storyboard?.instantiateViewController(withIdentifier: "OrderFinalViewController") as! OrderFinalViewController
+        finalOrderVC.coverImage = self.coverImage
+        finalOrderVC.albumInfo = self.albumInfo
+        finalOrderVC.afterPrice = self.afterPrice
+        finalOrderVC.paperType = self.paperType
+        finalOrderVC.shipType = self.shipType
+        finalOrderVC.layoutName = self.layoutName
+        finalOrderVC.num = self.num
         self.navigationController?.pushViewController(finalOrderVC, animated: true)
         
     }
@@ -359,7 +367,7 @@ class OptionViewController : UIViewController {
     
     
     @IBAction func minusBtnAction(_ sender: Any) {
-        var num = Int(totalCount.text!)!
+        num = Int(totalCount.text!)!
 
         if(num>1) {
             num -= 1
@@ -373,7 +381,7 @@ class OptionViewController : UIViewController {
     }
     
     @IBAction func plusBtnAction(_ sender: Any) {
-        var num = Int(totalCount.text!)!
+        num = Int(totalCount.text!)!
 
         num += 1
         totalCount.text = "\(num)"
