@@ -79,6 +79,7 @@ class OptionViewController : UIViewController {
     var calc : Int = 0
     var tempImage: UIImage? = nil
     var albumInfo: album!
+    var photoCount: Int!
     
     override func viewDidLoad() {
         //        self.view.backgroundColor = .white
@@ -137,7 +138,7 @@ class OptionViewController : UIViewController {
         coverImageView.image = coverImage
         albumNameLabel.text = albumInfo.name
         dateLabel.text = startDateStr + "~" + endDateStr
-        photoCountLabel.text = "\(albumInfo.photoLimit)/\(albumInfo.photoLimit)"
+        photoCountLabel.text = "\(photoCount!)/\(albumInfo.photoLimit)"
         coverNameLabel.text = albumInfo.cover.name
         layoutLabel.text =  self.getLayoutByUid(value: albumInfo.layoutUid).layoutName
         
@@ -335,15 +336,6 @@ class OptionViewController : UIViewController {
         let finalOrderVC = storyboard?.instantiateViewController(withIdentifier: "OrderFinalViewController") as! OrderFinalViewController
         self.navigationController?.pushViewController(finalOrderVC, animated: true)
         
-        //        let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrderFinishViewController") as! OrderFinishViewController
-        //
-        //        vc.modalPresentationStyle = .fullScreen
-        //        self.navigationItem.title = " "
-        //        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "iconBack")
-        //        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "iconBack")
-        //        vc.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
-        //        self.navigationController?.pushViewController(vc, animated: true)
-        //
     }
     
     

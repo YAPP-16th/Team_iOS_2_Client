@@ -19,7 +19,8 @@ class PrintListViewController: UIViewController {
     @IBOutlet weak var cautionTitle: UILabel!
     
     var completeAlbums : [album] = []
-    
+    var photoUidArray:[Int] = []
+    var dispatchGroup = DispatchGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +62,9 @@ class PrintListViewController: UIViewController {
                     guard let data = response.data else {return}
                     guard let value = try? JSONDecoder().decode([album].self, from: data) else {return}
                     self.completeAlbums = value.filter{ $0.complete == true }
-                    self.setPrintMainUI()
+                    if(self.completeAlbums.count != 0){
+                        self.getPhotoCount()
+                    }
                 case 401:
                     print("\(status) : bad request, no warning in Server")
                 case 404:
@@ -74,6 +77,36 @@ class PrintListViewController: UIViewController {
             }
         })
     }
+    
+    func getPhotoCount(){
+        for i in 0...completeAlbums.count-1 {
+            dispatchGroup.enter()
+            AlbumService.shared.photoGetPhoto(albumUid: completeAlbums[i].uid, completion: { response in
+                if let status = response.response?.statusCode {
+                    switch status {
+                    case 200:
+                        guard let data = response.data else {return}
+                        guard let value = try? JSONDecoder().decode([PhotoGetPhotoData].self, from: data) else {return}
+                        self.photoUidArray.append(value.count)
+                        self.dispatchGroup.leave()
+                    case 401:
+                        print("\(status) : bad request, no warning in Server")
+                    case 404:
+                        print("\(status) : Not found, no address")
+                    case 500 :
+                        print("\(status) : Server error in AlbumDetailVC - getPhoto")
+                    default:
+                        return
+                    }
+                }
+            })
+        }
+    
+        dispatchGroup.notify(queue: DispatchQueue.main){
+            self.setPrintMainUI()
+        }
+    }
+    
     
     
     func setPrintMainUI(){
@@ -122,7 +155,7 @@ extension PrintListViewController : UITableViewDelegate, UITableViewDataSource {
         
         cell.albumDate.text = startDateStr + "~" + endDateStr
         cell.albumTitle.text = item.name
-        cell.pictureCount.text = "\(item.photoLimit)/\(item.photoLimit)"
+        cell.pictureCount.text = "\(photoUidArray[indexPath.row])/\(item.photoLimit)"
         
         let orderStatus = item.orderStatus.status
         
@@ -145,7 +178,7 @@ extension PrintListViewController : UITableViewDelegate, UITableViewDataSource {
             cell.albumTitle.textColor = UIColor(displayP3Red: 153/255, green: 156/255, blue: 166/255, alpha: 1.0)
             cell.albumDate.textColor = UIColor(displayP3Red: 153/255, green: 156/255, blue: 166/255, alpha: 1.0)
             cell.pictureCount.textColor = UIColor(displayP3Red: 153/255, green: 156/255, blue: 166/255, alpha: 1.0)
-                break
+            break
         default:
             break
         }
@@ -166,10 +199,9 @@ extension PrintListViewController : ClickActionDelegate {
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "OptionViewController") as! OptionViewController
         vc.albumInfo = completeAlbums[index]
+        vc.photoCount = self.photoUidArray[index]
         vc.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(vc, animated: true)
-        //        self.navigationController?.show(vc, sender: true)
-        
         
         
     }
