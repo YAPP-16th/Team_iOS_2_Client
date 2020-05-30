@@ -298,9 +298,9 @@
                                 <viewLayoutGuide key="safeArea" id="rbI-GB-z0t"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="piZ-Kt-JiQ">
-                                <rect key="frame" x="20" y="138" width="312" height="72"/>
+                                <rect key="frame" x="20" y="138" width="312" height="48"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="72" id="nYg-bt-eLt"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="72" id="nYg-bt-eLt"/>
                                 </constraints>
                                 <string key="text">이 앨범은 어떤 앨범인가요?
 이름을 정해 주세요 :)</string>
@@ -309,7 +309,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="앨범 이름 입력" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iW7-rn-GAu">
-                                <rect key="frame" x="20" y="284" width="374" height="30"/>
+                                <rect key="frame" x="20" y="260" width="374" height="30"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="7n7-Xw-TD6"/>
@@ -332,7 +332,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="haU-dI-sys">
-                                <rect key="frame" x="20" y="325" width="374" height="1"/>
+                                <rect key="frame" x="20" y="301" width="374" height="1"/>
                                 <color key="backgroundColor" red="0.78064209220000003" green="0.78773427009999997" blue="0.81569117310000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="cKZ-Bb-qgU"/>
@@ -365,6 +365,7 @@
                         <outlet property="buttonConstraint" destination="Ygv-u8-5Lb" id="qMj-5q-glP"/>
                         <outlet property="nameLabel" destination="piZ-Kt-JiQ" id="3d8-mL-WaQ"/>
                         <outlet property="nextBtn" destination="bb4-ii-0MG" id="c5i-XI-DPH"/>
+                        <outlet property="nextLabelHeight" destination="nYg-bt-eLt" id="8Ko-qT-J6V"/>
                         <outlet property="selectorLabel" destination="haU-dI-sys" id="AwJ-Lc-mZ7"/>
                         <outlet property="tfAlbumName" destination="iW7-rn-GAu" id="clp-AZ-9lQ"/>
                     </connections>

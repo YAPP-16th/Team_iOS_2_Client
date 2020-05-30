@@ -15,6 +15,12 @@ class AlbumNameController : UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var selectorLabel: UILabel!
     @IBOutlet weak var nextBtn: UIButton!
+    
+    @IBOutlet weak var nextLabelHeight: NSLayoutConstraint!
+    
+    
+    
+    
     @IBAction func backBtn(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -28,6 +34,26 @@ class AlbumNameController : UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
+        
+        
+        // iPhone X..
+        if UIScreen.main.nativeBounds.height >= 1792.0 {
+            
+        }
+            // iPhone 8..
+        else if UIScreen.main.nativeBounds.height <= 1334.0
+        {
+            let navigationBarHeight: CGFloat = self.navigationController!.navigationBar.frame.height +
+            UIApplication.shared.statusBarFrame.size.height
+            
+            self.nameLabel.frame.size = CGSize(width: self.nameLabel.frame.width, height: (self.view.frame.height - navigationBarHeight) * (0.0880196))
+            
+            self.nextBtn.frame.size = CGSize(width: self.nextBtn.frame.width, height: (self.view.frame.height - navigationBarHeight) * (0.0880196))
+            
+            
+        }
+    
+        
     }
     
     override func viewDidLoad() {

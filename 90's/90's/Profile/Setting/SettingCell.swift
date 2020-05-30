@@ -13,7 +13,7 @@ class SettingCell: UITableViewCell {
     
     var currentIndex: Int?
     var state: Int? = 0
-    var noticeList = ["마케팅 이벤트 알림","앨범 기간 알림", "앨범이 종료되기 전 알림", "구매 및 배송 알림"]
+    var noticeList = ["마케팅 이벤트 알림", "앨범이 종료되기 전 알림", "구매 및 배송 알림"]
     var albumUidArray : [Int] = []
     var albumNameArray : [String] = []
     var albumCreateArray : [String] = []
@@ -44,37 +44,22 @@ class SettingCell: UITableViewCell {
                 sendToken(argument: UserDefaults.standard.integer(forKey: "switch1"))
                 
             }
-                //이건 모르겠는뎅....
-            else if noticeList[currentIndex ?? 0] == "앨범 기간 알림" {
                 
-                content.title = "90s"
-                content.body = noticeList[currentIndex ?? 0]
-                content.badge = 1
-                
-                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats:false)
-                let request = UNNotificationRequest(identifier: "timerdone", content: content, trigger: trigger)
-                
-//                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-                
-                UserDefaults.standard.set("2", forKey: "switch2")
-                print(UserDefaults.standard.value(forKey: "switch2") ?? 0 )
-                
-            }
                 //알람 트리거로 해결 가능. 앨범 만든 날짜 , timeInterval 이용
             else if noticeList[currentIndex ?? 0] == "앨범이 종료되기 전 알림" {
                 
-                UserDefaults.standard.set("3" , forKey: "switch3")
+                UserDefaults.standard.set("2" , forKey: "switch2")
                 calcDate()
-                print(UserDefaults.standard.value(forKey: "switch3") ?? 0 )
+                print(UserDefaults.standard.value(forKey: "switch2") ?? 0 )
                 
                 
             }
                 //APN form
             else if noticeList[currentIndex ?? 0] == "구매 및 배송 알림" {
                 
-                UserDefaults.standard.set("4", forKey: "switch4")
-                print(UserDefaults.standard.value(forKey: "switch4") ?? 0 )
-                sendToken(argument: UserDefaults.standard.integer(forKey: "switch4"))
+                UserDefaults.standard.set("3", forKey: "switch3")
+                print(UserDefaults.standard.value(forKey: "switch3") ?? 0 )
+                sendToken(argument: UserDefaults.standard.integer(forKey: "switch3"))
             }
             
         }
@@ -85,18 +70,14 @@ class SettingCell: UITableViewCell {
                 UserDefaults.standard.set(nil, forKey: "switch1")
                 print(UserDefaults.standard.value(forKey: "switch1") ?? 0 )
             }
-            else if noticeList[currentIndex ?? 0] == "앨범 기간 알림" {
+
+            else if noticeList[currentIndex ?? 0] == "앨범이 종료되기 전 알림" {
                 UserDefaults.standard.set(nil, forKey: "switch2")
                 print(UserDefaults.standard.value(forKey: "switch2") ?? 0 )
-                
-            }
-            else if noticeList[currentIndex ?? 0] == "앨범이 종료되기 전 알림" {
-                UserDefaults.standard.set(nil, forKey: "switch3")
-                print(UserDefaults.standard.value(forKey: "switch3") ?? 0 )
             }
             else if noticeList[currentIndex ?? 0] == "구매 및 배송 알림" {
-                UserDefaults.standard.set(nil, forKey: "switch4")
-                print(UserDefaults.standard.value(forKey: "switch4") ?? 0)
+                UserDefaults.standard.set(nil, forKey: "switch3")
+                print(UserDefaults.standard.value(forKey: "switch3") ?? 0)
             }
             
         }
@@ -208,7 +189,7 @@ extension SettingCell {
             //일단 보내놓고 
         }
         
-        if argument == 4 { // 구매 및 배송 알림
+        if argument == 3 { // 구매 및 배송 알림
             print(AppDelegate.APN_Token)
         }
         
