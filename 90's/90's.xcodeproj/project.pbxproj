@@ -692,7 +692,6 @@
 				A3F3094C246EE7B70051FF6B /* NetworkResult */,
 				A3F3093E246EE4F60051FF6B /* NetworkService */,
 				9BB9B554243D694C00B5150F /* OptionViewController.swift */,
-				39585162242F46D500014CB0 /* Print.storyboard */,
 				390A33ED243F6A52002E9F57 /* OrderFinishViewController.swift */,
 				39DE24C624547143007E8D40 /* PrintListViewController.swift */,
 				39DE24C8245472F4007E8D40 /* PrintListTableViewCell.swift */,
@@ -701,6 +700,7 @@
 				39CB8C96245DCD2100F28A49 /* PopUp2ViewController.swift */,
 				A387C1F4246EB99800F59C78 /* AddressSearchViewController.swift */,
 				A387C201246EBA4300F59C78 /* AddressCell.swift */,
+				39585162242F46D500014CB0 /* Print.storyboard */,
 			);
 			path = Print;
 			sourceTree = "<group>";
@@ -2291,7 +2291,7 @@
 				CODE_SIGN_ENTITLEMENTS = "90's/90's.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.03;
 				DEVELOPMENT_TEAM = C7X33ZVY6P;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2309,7 +2309,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				MARKETING_VERSION = 1.02;
+				MARKETING_VERSION = 1.03;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yappiOS2.90-s";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2328,7 +2328,7 @@
 				CODE_SIGN_ENTITLEMENTS = "90's/90's.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.03;
 				DEVELOPMENT_TEAM = C7X33ZVY6P;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2346,7 +2346,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				MARKETING_VERSION = 1.02;
+				MARKETING_VERSION = 1.03;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yappiOS2.90-s";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -143,6 +143,7 @@ class OptionViewController : UIViewController {
         
         normalBtn.isSelected = false
         advanceBtn.isSelected = false
+
         noramlShipBtn.isSelected = false
         advanceShipBtn.isSelected = false
         superAdShipBtn.isSelected = false
@@ -258,6 +259,7 @@ class OptionViewController : UIViewController {
             self.FirstOptionConstraint.constant = 175
             self.SecondOptionConstraint.constant = 0
             self.stackViewConnected.constant = 50.5 + 175
+
             self.FirstOptionView.isHidden = false
             self.SecondOptionView.isHidden = true
             
@@ -411,6 +413,7 @@ class OptionViewController : UIViewController {
             advanceBtn.isSelected = true
             paperType = "무광"
         }
+
         
         printLabel.text = paperType
         
@@ -459,6 +462,7 @@ class OptionViewController : UIViewController {
     
     
     
+    
     //일반 배송 info 버튼 클릭 시
     @IBAction func adShipInfo(_ sender: Any) {
         
@@ -486,5 +490,6 @@ class OptionViewController : UIViewController {
     }
     
     
+
     
 }

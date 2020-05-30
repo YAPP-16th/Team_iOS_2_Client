@@ -194,7 +194,9 @@ extension AlbumDetailController {
             networkAddCount()
         }
     }
-    
+}
+
+extension AlbumDetailController {
     func setShareView(){
         hideShareTextField.clearButtonMode = .whileEditing
         hideShareTextField.becomeFirstResponder()
@@ -240,14 +242,13 @@ extension AlbumDetailController {
            })
        }
     
-    func applyLUTImage(originImage : UIImage) -> UIImage{
-        let test = colorCubeFilterFromLUT(imageName: "old_filter", originalImage: originImage)
-        print("test = \(test)")
-        let result = test?.outputImage
-        let image = UIImage.init(cgImage: context.createCGImage(result!, from: result!.extent)!)
-           
-        return image
-    }
+//    func applyLUTImage(originImage : UIImage) -> UIImage {
+//        let test = colorCubeFilterFromLUT(imageName: "oldfilter_lut", originalImage: originImage)
+//        let result = test?.outputImage
+//        let image = UIImage.init(cgImage: context.createCGImage(result!, from: result!.extent)!)
+//
+//        return image
+//    }
 
     func setOldFilter(image : UIImage) -> UIImage{
         let inputImage : CIImage = CIImage.init(image: image)!
@@ -403,25 +404,17 @@ extension AlbumDetailController {
                     if case .success(let image) = response.result {
                         var originImage = image
                         if self.isAlbumComplete == true {
-                            for i in 0...self.albumOldCount {
-                                originImage = self.applyLUTImage(originImage: originImage)
+                            for _ in 0...self.albumOldCount { 
+                                originImage = self.setOldFilter(image: originImage)
                             }
                         }
-                        
                         self.networkPhotoUrlImageArray.append(originImage)
                         self.photoCollectionView.reloadData()
                     }
                 })
             }
         }
-        
-//        if self.isAlbumComplete == true {
-//            for i in 0...networkPhotoUrlImageArray.count {
-//                for _ in 0...albumOldCount {
-//                    networkPhotoUrlImageArray[i] = applyLUTImage(originImage: networkPhotoUrlImageArray[i])
-//                }
-//            }
-//        }
+
         isAlbumComplete = photoUidArray.count+1 <= albumMaxCount ? false : true
         switchAddBtn(value: isAlbumComplete)
     }
