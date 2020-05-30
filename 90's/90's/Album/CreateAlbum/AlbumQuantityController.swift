@@ -23,7 +23,6 @@ class AlbumQuantityController : UIViewController {
     var albumMaxCount:Int!
     
     private var maxCountArray = Array(4...30)
-    var initialFlag = true
     
     override func viewDidLoad() {
         keyboardSetting()
@@ -32,7 +31,6 @@ class AlbumQuantityController : UIViewController {
     }
     
     @IBAction func clickNextBtn(_ sender: Any) {
-        if initialFlag == false {
             let nextVC = storyboard?.instantiateViewController(withIdentifier: "AlbumCoverVC") as! AlbumCoverVC
             
             nextVC.albumName = albumName
@@ -41,7 +39,6 @@ class AlbumQuantityController : UIViewController {
             nextVC.albumMaxCount = albumMaxCount
             
             self.navigationController?.pushViewController(nextVC, animated: true)
-        }
     }
     
     
@@ -50,7 +47,6 @@ class AlbumQuantityController : UIViewController {
         self.nextBtn.backgroundColor = UIColor.black
         self.nextBtn.backgroundColor = UIColor.colorRGBHex(hex: 0xe33e28)
         self.nextBtn.isEnabled = true
-        initialFlag = true
         tfQuantity.text = "4"
     }
     

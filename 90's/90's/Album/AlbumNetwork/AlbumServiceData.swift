@@ -48,7 +48,6 @@ struct AlbumService : APIManager {
         })
     }
     
-    
     // CreateAlbum, Post, 앨범 생성
     func albumCreate(endDate : String, layoutUid : Int, name : String, photoLimit : Int, cover : Int, completion : @escaping(completeAlbumService)){
         let url = Self.url("/album/create")
@@ -58,7 +57,7 @@ struct AlbumService : APIManager {
             "name" : name,
             "photoLimit" : photoLimit,
             "coverUid" : cover
-            ]
+        ]
         
         AF.request(url, method: .post, parameters: body, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
             response in

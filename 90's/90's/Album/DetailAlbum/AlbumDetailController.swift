@@ -34,7 +34,6 @@ class AlbumDetailController : UIViewController {
     @IBAction func hideShareCancleBtn(_ sender: UIButton) { switchShareView(value: true) }
     @IBAction func touchhideShareCompleteBtn(_ sender: UIButton) { inviteSetting() }
     
-    
     // old filter
     private let context = CIContext(options: nil)
     
