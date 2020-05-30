@@ -67,7 +67,7 @@ class OrderFinalViewController: UIViewController {
     //취소 시트 -> 확인 버튼 클릭
     @IBAction func clickOkBtn(_ sender: Any) {
         dismissActionView()
-        navigationController?.popToViewController(self.navigationController!.viewControllers[1], animated: true)
+        navigationController?.popToViewController(self.navigationController!.viewControllers[0], animated: true)
     }
     
     //우편번호 검색 버튼 클릭
