@@ -116,8 +116,8 @@ class OptionViewController : UIViewController {
             self.countOptionView.isHidden = true
             self.FirstOptionConstraint.constant = 0
             self.SecondOptionConstraint.constant = 0
-            self.completeBtnConstraint.constant = 36
-            self.stackViewConnected.constant = 50.5
+            self.completeBtnConstraint.constant = 36 / 2
+            self.stackViewConnected.constant = 70.5
             self.countOptionViewConstraint.constant = self.view.frame.height
             
         }
@@ -188,7 +188,7 @@ class OptionViewController : UIViewController {
                 // iPhone 8..
             else if UIScreen.main.nativeBounds.height <= 1334.0
             {
-                self.BottomViewConstraint.constant = self.view.frame.height  - 516 + 30
+                self.BottomViewConstraint.constant = self.view.frame.height  - 516 + 30 + 30
                 
             }
             
@@ -250,7 +250,7 @@ class OptionViewController : UIViewController {
             // iPhone 8..
         else if UIScreen.main.nativeBounds.height <= 1334.0
         {
-            self.BottomViewConstraint.constant = self.view.frame.height  - 516 + 30
+            self.BottomViewConstraint.constant = self.view.frame.height  - 516 + 30 + 30
             
         }
         
@@ -258,7 +258,7 @@ class OptionViewController : UIViewController {
             
             self.FirstOptionConstraint.constant = 175
             self.SecondOptionConstraint.constant = 0
-            self.stackViewConnected.constant = 50.5 + 175
+            self.stackViewConnected.constant = 70.5 + 175
 
             self.FirstOptionView.isHidden = false
             self.SecondOptionView.isHidden = true
@@ -268,13 +268,14 @@ class OptionViewController : UIViewController {
             
             self.FirstOptionConstraint.constant = 0
             self.SecondOptionConstraint.constant = 0
-            self.stackViewConnected.constant = 50.5
+            self.stackViewConnected.constant = 70.5
             self.FirstOptionView.isHidden = true
             self.SecondOptionView.isHidden = true
             
             if CompleteBtn.backgroundColor == .black {
-                self.BottomViewConstraint.constant = self.view.frame.height - 320
-                self.completeBtnTopConstraint.constant = 10
+                self.BottomViewConstraint.constant = self.view.frame.height - (320 * 1.1)
+                
+                self.completeBtnTopConstraint.constant = 42
                 
             }
             
@@ -295,14 +296,14 @@ class OptionViewController : UIViewController {
             // iPhone 8..
         else if UIScreen.main.nativeBounds.height <= 1334.0
         {
-            self.BottomViewConstraint.constant = self.view.frame.height  - 516 + 30
+            self.BottomViewConstraint.constant = self.view.frame.height  - 516 + 30 + 30
             
         }
         
         if firstFlapBtn.isSelected {
             self.FirstOptionConstraint.constant = 0
             self.SecondOptionConstraint.constant = 239
-            self.stackViewConnected.constant = 50.5
+            self.stackViewConnected.constant = 70.5
             self.FirstOptionView.isHidden = true
             self.firstFlapBtn.isSelected = false
             self.SecondOptionView.isHidden = false
@@ -324,8 +325,9 @@ class OptionViewController : UIViewController {
             firstFlapBtn.isSelected = false
             
             if CompleteBtn.backgroundColor == .black {
-                self.BottomViewConstraint.constant = self.view.frame.height - 320
-                self.completeBtnTopConstraint.constant = 10
+                self.BottomViewConstraint.constant = self.view.frame.height - (320 * 1.1)
+                
+                self.completeBtnTopConstraint.constant = 42
                 
             }
             
@@ -490,6 +492,15 @@ class OptionViewController : UIViewController {
     }
     
     
-
+    @IBAction func superShip2info(_ sender: Any) {
+        
+        let storyboard = UIStoryboard(name: "Print", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "PopUp3ViewController") as! PopUp3ViewController
+        vc.albumName = albumInfo.name
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: true, completion: nil)
+    }
+    
     
 }
