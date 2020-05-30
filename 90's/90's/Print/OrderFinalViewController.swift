@@ -180,10 +180,9 @@ class OrderFinalViewController: UIViewController {
             shipTypeIndex = 3
         }
         
-        guard let jwt = UserDefaults.standard.string(forKey: "jwt") else { return }
         
         
-        OrderService.shared.order(token: jwt, amount: num, albumUid: albumInfo.uid, recipient: tfRecipient.text!, postalCode: tfPostNumber.text!, address: tfMainAddress.text!, addressDetail: tfSubAddress.text ?? "", phoneNum: phoneNum, message: tvMemo.text ?? "", paperType1: paperTypeIndex, paperType2: paperType2Index, postType: shipTypeIndex, cost: "\(afterPrice)", completion: { response in
+        OrderService.shared.order(amount: num, albumUid: albumInfo.uid, recipient: tfRecipient.text!, postalCode: tfPostNumber.text!, address: tfMainAddress.text!, addressDetail: tfSubAddress.text ?? "", phoneNum: phoneNum, message: tvMemo.text ?? "", paperType1: paperTypeIndex, paperType2: paperType2Index, postType: shipTypeIndex, cost: "\(afterPrice)", completion: { response in
             if let status = response.response?.statusCode {
                 switch status {
                 case 200:

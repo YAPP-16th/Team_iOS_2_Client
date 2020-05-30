@@ -15,6 +15,7 @@ protocol OrderDetailDelegate {
 class OrderListViewController: UIViewController {
     @IBOutlet weak var noAlbumView: UIView!
     @IBOutlet weak var orderListTableView: UITableView!
+    @IBOutlet weak var goAlbumBtn: UIButton!
     
     var orderList:[GetOrderResult] = []
     var cost = 0
@@ -38,24 +39,29 @@ class OrderListViewController: UIViewController {
     }
     
     func setUI(){
+        goAlbumBtn.layer.cornerRadius = 8.0
         orderListTableView.delegate = self
         orderListTableView.dataSource = self
     }
     
     func getOrder(){
-        guard let jwt = UserDefaults.standard.string(forKey: "jwt") else { return }
-        GetOrderService.shared.getOrder(token: jwt, completion: { response in
+        GetOrderService.shared.getOrder(completion: { response in
             if let status = response.response?.statusCode {
                 switch status {
                 case 200:
                     guard let data = response.data else { return }
                     let decoder = JSONDecoder()
                     guard let value = try? decoder.decode([GetOrderResult].self, from: data) else { return }
-                    print("orderList \(value)")
                     self.orderList = value.filter
                         {$0.album.orderStatus.status != "pending"}
-                    print("filtered OrderList \(value)")
-                    self.orderListTableView.reloadData()
+                    if(self.orderList.count != 0){
+                        self.noAlbumView.isHidden = true
+                        self.orderListTableView.isHidden = false
+                        self.orderListTableView.reloadData()
+                    }else {
+                        self.noAlbumView.isHidden = false
+                        self.orderListTableView.isHidden = true
+                    }
                     break
                 case 401...500:
                     self.showErrAlert()

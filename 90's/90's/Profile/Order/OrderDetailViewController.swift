@@ -37,7 +37,9 @@ class OrderDetailViewController: UIViewController {
     @IBOutlet weak var cancelOptionBtn: UIButton!
     @IBOutlet weak var okOptionBtn: UIButton!
     
+    //클립보드에 복사할 문자열
     var copyStr:String!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

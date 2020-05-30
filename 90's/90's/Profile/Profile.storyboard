@@ -1535,6 +1535,7 @@
                         <viewLayoutGuide key="safeArea" id="yZL-hA-9rB"/>
                     </view>
                     <connections>
+                        <outlet property="goAlbumBtn" destination="5Ff-Am-gtH" id="auB-Ez-YTZ"/>
                         <outlet property="noAlbumView" destination="d7I-eQ-9UM" id="PlG-An-JMy"/>
                         <outlet property="orderListTableView" destination="zCN-7j-mMf" id="8c4-Br-rw0"/>
                     </connections>

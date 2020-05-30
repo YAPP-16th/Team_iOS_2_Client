@@ -13,9 +13,9 @@ struct GetOrderService : APIManager {
     let getOrderURL = url("/album/order/getAlbumOrders")
     typealias completeGetProfile = (AFDataResponse<Any>) -> ()
     
-    func getOrder(token:String, completion: @escaping(completeGetProfile)){
+    func getOrder(completion: @escaping(completeGetProfile)){
         let header: HTTPHeaders =  ["Content-Type" : "application/json",
-                                    "X-AUTH-TOKEN" :  token]
+                                    "X-AUTH-TOKEN" :  UserDefaults.standard.string(forKey: "jwt") ?? ""]
         
         AF.request(getOrderURL, method: .get, headers: header).responseJSON(completionHandler: {
             response in

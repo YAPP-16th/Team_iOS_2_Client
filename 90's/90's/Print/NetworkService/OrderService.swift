@@ -15,14 +15,14 @@ struct OrderService : APIManager {
     typealias completeOrder = (AFDataResponse<Any>) -> ()
     
     
-    func order(token: String, amount: Int, albumUid:Int, recipient:String,
+    func order(amount: Int, albumUid:Int, recipient:String,
                postalCode:String, address:String, addressDetail:String,
                phoneNum:String, message:String,
                paperType1:Int,paperType2:Int,
                postType:Int, cost:String, completion: @escaping(completeOrder)){
         
         let header: HTTPHeaders =  ["Content-Type" : "application/json",
-                                    "X-AUTH-TOKEN": token]
+                                       "X-AUTH-TOKEN" :  UserDefaults.standard.string(forKey: "jwt") ?? ""]
         
         let body: [String:Any] = [
             "albumUid": albumUid,

@@ -136,10 +136,15 @@ struct AlbumService : APIManager {
     }
     
     // getAlbums, get, 앨범 목록
-    func albumGetAlbums(completion : @escaping(completeAlbumService)){
+    func albumGetAlbums( completion : @escaping(completeAlbumService)){
         let url = Self.url("/album/getAlbums")
         
-        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
+        let header: HTTPHeaders = [
+               "Content-Type" : "application/json",
+               "X-AUTH-TOKEN" : UserDefaults.standard.string(forKey: "jwt") ?? ""
+           ]
+        
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: header).responseJSON(completionHandler: {
             response in
             switch response.result {
             case .success:
