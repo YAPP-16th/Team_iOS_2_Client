@@ -241,6 +241,7 @@ class AuthenViewController: UIViewController {
             keyboardFlag = true
             topConst.constant += (keyboardHeight/2)
             self.view.frame.origin.y -= keyboardHeight
+            print("2:\(keyboardHeight)")
             self.view.layoutIfNeeded()
             
         }
@@ -259,6 +260,8 @@ class AuthenViewController: UIViewController {
             keyboardFlag = false
             topConst.constant -= (keyboardHeight/2)
             self.view.frame.origin.y += keyboardHeight
+            print("2: \(keyboardHeight)")
+
             self.view.layoutIfNeeded()
         }
     }

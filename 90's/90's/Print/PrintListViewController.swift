@@ -101,7 +101,7 @@ class PrintListViewController: UIViewController {
                 }
             })
         }
-    
+        
         dispatchGroup.notify(queue: DispatchQueue.main){
             self.setPrintMainUI()
         }
@@ -196,14 +196,22 @@ extension PrintListViewController : UITableViewDelegate, UITableViewDataSource {
 extension PrintListViewController : ClickActionDelegate {
     
     func didClickedLink(index: Int) {
-        
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "OptionViewController") as! OptionViewController
-        vc.albumInfo = completeAlbums[index]
-        vc.photoCount = self.photoUidArray[index]
-        vc.modalPresentationStyle = .fullScreen
-        self.navigationController?.pushViewController(vc, animated: true)
-        
-        
+        switch completeAlbums[index].orderStatus.status {
+        case "pending":
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "OptionViewController") as! OptionViewController
+            vc.albumInfo = completeAlbums[index]
+            vc.photoCount = self.photoUidArray[index]
+            vc.modalPresentationStyle = .fullScreen
+            self.navigationController?.pushViewController(vc, animated: true)
+            break
+        case "processing", "ready", "shipping", "done":
+            let profileSB = UIStoryboard.init(name: "Profile", bundle: nil)
+            let profileOrderVC = profileSB.instantiateViewController(withIdentifier: "OrderDetailViewController") as! OrderDetailViewController
+    
+            break
+        default:
+            break
+        }
     }
     
 }
