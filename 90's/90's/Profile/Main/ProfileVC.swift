@@ -29,6 +29,9 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var leaveView: UIView!
     @IBOutlet weak var rethinkBtn: UIButton!
     
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    
+    
     let menuArr : [String] = ["주문 내역", "내 정보 관리", "FAQ", "설정"]
     var isDefault = true
     
@@ -40,6 +43,17 @@ class ProfileVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
+        
+        // iPhone X..
+        if UIScreen.main.nativeBounds.height >= 1792.0 {
+            
+            self.topConstraint.constant = 34
+        }
+            // iPhone 8..
+        else if UIScreen.main.nativeBounds.height <= 1334.0
+        {
+            self.topConstraint.constant = 34 / 2
+        }
     }
     
     @IBAction func goLogin(_ sender: Any) {

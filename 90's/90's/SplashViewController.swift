@@ -46,9 +46,10 @@ class SplashViewController: UIViewController {
 
 //            vc.modalTransitionStyle = .crossDissolve
 //            vc.modalPresentationStyle = .overCurrentContext
-            vc.modalPresentationStyle = .fullScreen
+//            vc.modalPresentationStyle = .fullScreen
             
             let enterNav = UINavigationController(rootViewController: vc)
+            enterNav.modalPresentationStyle = .fullScreen
             self.present(enterNav, animated: true, completion: nil)
 
         }
