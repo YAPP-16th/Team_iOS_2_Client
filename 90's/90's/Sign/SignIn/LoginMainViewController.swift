@@ -45,6 +45,7 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
         
         email = tfEmail.text!
         pass = tfPass.text!
+    
         
         if(!email.validateEmail()){
             emailValidationLabel.isHidden = false
@@ -138,6 +139,7 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
         tfPass.isEnabled = false
         loginBtn.isEnabled = false
         loginBtn.layer.cornerRadius = 8.0
+        
     }
     
     //TextField에 대한 옵저버 처리
@@ -191,11 +193,9 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
         }else if(!keyboardFlag){
             //~iphone8
             keyboardFlag = true
-            topConst.constant += (keyboardHeight/2)
+            topConst.constant += 70
             self.view.frame.origin.y -= keyboardHeight
-            print("\(self.view.frame.origin.y)")
             self.view.layoutIfNeeded()
-            
         }
     }
     
@@ -210,8 +210,8 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
         }else if(keyboardFlag){
             //~iphone8
             keyboardFlag = false
-            topConst.constant -= (keyboardHeight/2)
-            self.view.frame.origin.y += keyboardHeight
+            topConst.constant -= 70
+            self.view.frame.origin.y = 0
             self.view.layoutIfNeeded()
         }
     }
