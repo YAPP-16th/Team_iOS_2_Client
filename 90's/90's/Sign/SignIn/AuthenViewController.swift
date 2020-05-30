@@ -19,7 +19,7 @@ class AuthenViewController: UIViewController {
     @IBOutlet weak var askNumberBtn: UIButton!
     @IBOutlet weak var buttonConst: NSLayoutConstraint!
     @IBOutlet weak var topConst: NSLayoutConstraint!
-
+    
     var email:String!
     var pwd:String?
     var nickName:String!
@@ -74,7 +74,7 @@ class AuthenViewController: UIViewController {
         default:
             break
         }
-       
+        
         okBtn.isEnabled = false
         okBtn.layer.cornerRadius = 8.0
         askNumberBtn.layer.cornerRadius = 8.0
@@ -239,11 +239,9 @@ class AuthenViewController: UIViewController {
         }else if(!keyboardFlag){
             //~iphone8
             keyboardFlag = true
-            topConst.constant += (keyboardHeight/2)
+            topConst.constant += 70
             self.view.frame.origin.y -= keyboardHeight
-            print("2:\(keyboardHeight)")
             self.view.layoutIfNeeded()
-            
         }
     }
     
@@ -258,10 +256,8 @@ class AuthenViewController: UIViewController {
         }else if(keyboardFlag){
             //~iphone8
             keyboardFlag = false
-            topConst.constant -= (keyboardHeight/2)
-            self.view.frame.origin.y += keyboardHeight
-            print("2: \(keyboardHeight)")
-
+            topConst.constant -= 70
+            self.view.frame.origin.y = 0
             self.view.layoutIfNeeded()
         }
     }
@@ -271,6 +267,7 @@ class AuthenViewController: UIViewController {
     //화면 터치시 키보드 내림
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         tfTelephone.endEditing(true)
+        tfAuthenNumber.endEditing(true)
     }
     
     //키보드 리턴 버튼 클릭 시 키보드 내림

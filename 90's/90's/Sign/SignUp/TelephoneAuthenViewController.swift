@@ -226,7 +226,7 @@ class TelephoneAuthenViewController: UIViewController {
         }else if(!keyboardFlag){
             //~iphone8
             keyboardFlag = true
-            topConst.constant += (keyboardHeight/2)
+            topConst.constant += 70
             self.view.frame.origin.y -= keyboardHeight
             self.view.layoutIfNeeded()
             
@@ -244,8 +244,8 @@ class TelephoneAuthenViewController: UIViewController {
         }else if(keyboardFlag){
             //~iphone8
             keyboardFlag = false
-            topConst.constant -= (keyboardHeight/2)
-            self.view.frame.origin.y += keyboardHeight
+            topConst.constant -= 70
+            self.view.frame.origin.y = 0
             self.view.layoutIfNeeded()
         }
     }
@@ -255,6 +255,7 @@ class TelephoneAuthenViewController: UIViewController {
     //화면 터치시 키보드 내림
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         tfTelephone.endEditing(true)
+        tfAuthenNumber.endEditing(true)
     }
     
     //키보드 리턴 버튼 클릭 시 키보드 내림
