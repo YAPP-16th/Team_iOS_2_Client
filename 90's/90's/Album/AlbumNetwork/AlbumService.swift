@@ -27,6 +27,10 @@ struct albumCover : Codable{
     var name : String
 }
 
+struct albumPassword : Codable {
+    var password : String
+}
+
 struct OrderStatus: Codable {
     var uid: Int
     var status: String

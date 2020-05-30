@@ -25,12 +25,7 @@ class StickerLayout: UIView {
     
     class func loadFromZib(image : UIImage) -> StickerLayout {
         let view = Bundle.main.loadNibNamed("StickerLayout", owner: self, options: nil)?.first as! StickerLayout
-        let fixedWidth : CGFloat = 100
-        let newHeight = fixedWidth * image.size.height / image.size.width
-        
-        //view.backImageView.image = image.resizeImage(image: image, newSize: CGSize(width: fixedWidth, height: newHeight))
-            view.backImageView.image = image.imageResize(sizeChange: CGSize(width: 100, height: 100))
-        view.backImageView.contentMode = .scaleAspectFit
+        view.backImageView.image = image.imageResize(sizeChange: CGSize(width: 100, height: 100))
         view.frame.size = CGSize(width: 120, height: 120)
         view.layoutIfNeeded()
         return view
