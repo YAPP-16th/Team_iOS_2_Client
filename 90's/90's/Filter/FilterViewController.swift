@@ -534,9 +534,6 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             let filteredImage = UIImage(cgImage: cgImage)
 //            self.filteredImage.image = filteredImage.mergeWith(topImage: self.topImage! , bottomImage: filteredImage).applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
             
-            //            self.filteredImage.image = filteredImage.applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
-            
-            
         }
     }
     
