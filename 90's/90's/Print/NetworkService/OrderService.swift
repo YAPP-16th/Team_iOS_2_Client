@@ -11,7 +11,7 @@ import Alamofire
 struct OrderService : APIManager {
     static let shared = OrderService()
 
-    let orderURL = url("album/order/createAlbumOrder")
+    let orderURL = url("/album/order/createAlbumOrder")
     typealias completeOrder = (AFDataResponse<Any>) -> ()
     
     
