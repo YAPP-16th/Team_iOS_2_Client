@@ -194,7 +194,9 @@ extension AlbumDetailController {
             networkAddCount()
         }
     }
-    
+}
+
+extension AlbumDetailController {
     func setShareView(){
         hideShareTextField.clearButtonMode = .whileEditing
         hideShareTextField.becomeFirstResponder()
@@ -241,7 +243,7 @@ extension AlbumDetailController {
        }
     
 //    func applyLUTImage(originImage : UIImage) -> UIImage {
-//        let test = colorCubeFilterFromLUT(imageName: "LUT", originalImage: originImage)
+//        let test = colorCubeFilterFromLUT(imageName: "oldfilter_lut", originalImage: originImage)
 //        let result = test?.outputImage
 //        let image = UIImage.init(cgImage: context.createCGImage(result!, from: result!.extent)!)
 //
@@ -402,9 +404,9 @@ extension AlbumDetailController {
                     if case .success(let image) = response.result {
                         var originImage = image
                         if self.isAlbumComplete == true {
-                            //for i in 0...self.albumOldCount { // 속도 느려서 한번만 적용 (임시)
-                            originImage = self.setOldFilter(image: originImage)
-                            //}
+                            for _ in 0...self.albumOldCount { 
+                                originImage = self.setOldFilter(image: originImage)
+                            }
                         }
                         self.networkPhotoUrlImageArray.append(originImage)
                         self.photoCollectionView.reloadData()
