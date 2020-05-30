@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		390A33EE243F6A52002E9F57 /* OrderFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390A33ED243F6A52002E9F57 /* OrderFinishViewController.swift */; };
 		390D3DC3246FD069003916C4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390D3DC2246FD069003916C4 /* SplashViewController.swift */; };
-		392F7790242F4BC70000BC3C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 392F778F242F4BC70000BC3C /* Default-568h@2x.png */; };
 		39411378243061A500087E1B /* CheckPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39411377243061A500087E1B /* CheckPhotoViewController.swift */; };
 		3958515C242F45E600014CB0 /* Sticker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3958515B242F45E600014CB0 /* Sticker.storyboard */; };
 		3958515E242F460000014CB0 /* Filter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3958515D242F460000014CB0 /* Filter.storyboard */; };
@@ -221,7 +220,6 @@
 		390D3DC2246FD069003916C4 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		3929B104245DEFD100B7C7EA /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		3929B106245DEFD800B7C7EA /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
-		392F778F242F4BC70000BC3C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		39411377243061A500087E1B /* CheckPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckPhotoViewController.swift; sourceTree = "<group>"; };
 		3958515B242F45E600014CB0 /* Sticker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sticker.storyboard; sourceTree = "<group>"; };
 		3958515D242F460000014CB0 /* Filter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Filter.storyboard; sourceTree = "<group>"; };
@@ -1750,7 +1748,6 @@
 			isa = PBXGroup;
 			children = (
 				9BD31D38243A08CE00D0D719 /* KakaoOpenSDK-Bridging-Header.h */,
-				392F778F242F4BC70000BC3C /* Default-568h@2x.png */,
 				A33376142420CFB3000DC7C4 /* 90's */,
 				A33376132420CFB3000DC7C4 /* Products */,
 				9B142B04242F2226005ABE17 /* Frameworks */,
@@ -1983,7 +1980,6 @@
 				9B45BD012438734E00497EA5 /* Profile.storyboard in Resources */,
 				39585163242F46D500014CB0 /* Print.storyboard in Resources */,
 				A33376222420CFB6000DC7C4 /* LaunchScreen.storyboard in Resources */,
-				392F7790242F4BC70000BC3C /* Default-568h@2x.png in Resources */,
 				A333761F2420CFB6000DC7C4 /* Assets.xcassets in Resources */,
 				9BA7A7EE2467D05E00C39B56 /* Digital-7 Italic.ttf in Resources */,
 				9BA7A7F02467D06400C39B56 /* Digital-7.ttf in Resources */,

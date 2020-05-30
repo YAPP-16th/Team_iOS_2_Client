@@ -57,7 +57,7 @@ class NewPassViewController: UIViewController, UITextFieldDelegate {
         tfConfirmPass.isEnabled = false
         validationLabel.isHidden = true
         nextBtn.layer.cornerRadius = 8.0
-       
+        
         if let type = authenType {
             if(type == "MainFindPass"){
                 self.titleLabel.isHidden = true
@@ -115,7 +115,7 @@ class NewPassViewController: UIViewController, UITextFieldDelegate {
         }else if(!keyboardFlag){
             //~iphone8
             keyboardFlag = true
-            topConst.constant += (keyboardHeight/2)
+            topConst.constant += 70
             self.view.frame.origin.y -= keyboardHeight
             self.view.layoutIfNeeded()
             
@@ -133,8 +133,8 @@ class NewPassViewController: UIViewController, UITextFieldDelegate {
         }else if(keyboardFlag){
             //~iphone8
             keyboardFlag = false
-            topConst.constant -= (keyboardHeight/2)
-            self.view.frame.origin.y += keyboardHeight
+            topConst.constant -= 70
+            self.view.frame.origin.y = 0
             self.view.layoutIfNeeded()
         }
     }

@@ -57,25 +57,25 @@ class ProfileAuthenViewController: UIViewController {
     }
     
     func setUI(){
-       
+        
         titleLabel.text = authenType
-            switch authenType {
-            case "이메일 변경", "비밀번호 변경":
-                validationLabel.isHidden = true
-                okBtn.isEnabled = false
-                okBtn.layer.cornerRadius = 8.0
-                askNumberBtn.layer.cornerRadius = 8.0
-                break
-            case "전화번호 변경":
-                subTitleLabel.text = "새로운 전화번호를\n인증해주세요"
-                validationLabel.isHidden = true
-                okBtn.isEnabled = false
-                okBtn.layer.cornerRadius = 8.0
-                askNumberBtn.layer.cornerRadius = 8.0
-                break
-            default:
-                break
-            }
+        switch authenType {
+        case "이메일 변경", "비밀번호 변경":
+            validationLabel.isHidden = true
+            okBtn.isEnabled = false
+            okBtn.layer.cornerRadius = 8.0
+            askNumberBtn.layer.cornerRadius = 8.0
+            break
+        case "전화번호 변경":
+            subTitleLabel.text = "새로운 전화번호를\n인증해주세요"
+            validationLabel.isHidden = true
+            okBtn.isEnabled = false
+            okBtn.layer.cornerRadius = 8.0
+            askNumberBtn.layer.cornerRadius = 8.0
+            break
+        default:
+            break
+        }
         
         
     }
@@ -149,46 +149,46 @@ class ProfileAuthenViewController: UIViewController {
         }
     }
     
- @objc func keyboardWillShow(_ notification: Notification) {
-       let userInfo = notification.userInfo
-       let keyboardSize = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
-       let keyboardHeight = keyboardSize.cgRectValue.height
-       
-       if(keyboardHeight > 300){
-           //iphoneX~
-           buttonConst.constant = keyboardHeight - 18
-       }else if(!keyboardFlag){
-           //~iphone8
-           keyboardFlag = true
-           topConst.constant += (keyboardHeight/2)
-           self.view.frame.origin.y -= keyboardHeight
-           self.view.layoutIfNeeded()
-
-       }
-   }
-   
-   @objc func keyboardWillHide(_ notification: Notification) {
-       let userInfo = notification.userInfo
-              let keyboardSize = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
-              let keyboardHeight = keyboardSize.cgRectValue.height
-
-       if(keyboardHeight > 300){
-           //iphoneX~
-           buttonConst.constant = 18
-       }else if(keyboardFlag){
-           //~iphone8
-           keyboardFlag = false
-           topConst.constant -= (keyboardHeight/2)
-           self.view.frame.origin.y += keyboardHeight
-           self.view.layoutIfNeeded()
-       }
-   }
-
+    @objc func keyboardWillShow(_ notification: Notification) {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
+        let keyboardHeight = keyboardSize.cgRectValue.height
+        
+        if(keyboardHeight > 300){
+            //iphoneX~
+            buttonConst.constant = keyboardHeight - 18
+        }else if(!keyboardFlag){
+            //~iphone8
+            keyboardFlag = true
+            topConst.constant += 70
+            self.view.frame.origin.y -= keyboardHeight
+            self.view.layoutIfNeeded()
+            
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
+        let keyboardHeight = keyboardSize.cgRectValue.height
+        
+        if(keyboardHeight > 300){
+            //iphoneX~
+            buttonConst.constant = 18
+        }else if(keyboardFlag){
+            //~iphone8
+            topConst.constant -= 70
+            self.view.frame.origin.y = 0
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     
     
     //화면 터치시 키보드 내림
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         tfTelephone.endEditing(true)
+        tfAuthenNumber.endEditing(true)
     }
     
     //키보드 리턴 버튼 클릭 시 키보드 내림

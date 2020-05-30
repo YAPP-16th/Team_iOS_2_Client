@@ -106,26 +106,27 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
         }else if(!keyboardFlag){
             //~iphone8
             keyboardFlag = true
-            topConst.constant += (keyboardHeight/2)
+            topConst.constant += 70
             self.view.frame.origin.y -= keyboardHeight
             self.view.layoutIfNeeded()
-
+            
+            
         }
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
         let userInfo = notification.userInfo
-               let keyboardSize = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
-               let keyboardHeight = keyboardSize.cgRectValue.height
-
+        let keyboardSize = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
+        let keyboardHeight = keyboardSize.cgRectValue.height
+        
         if(keyboardHeight > 300){
             //iphoneX~
             buttonConst.constant = 18
         }else if(keyboardFlag){
             //~iphone8
             keyboardFlag = false
-            topConst.constant -= (keyboardHeight/2)
-            self.view.frame.origin.y += keyboardHeight
+            topConst.constant -= 70
+            self.view.frame.origin.y = 0
             self.view.layoutIfNeeded()
         }
     }
