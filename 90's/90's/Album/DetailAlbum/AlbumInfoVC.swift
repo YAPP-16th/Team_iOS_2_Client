@@ -35,6 +35,9 @@ class AlbumInfoVC: UIViewController {
     @IBAction func quitMemberBtn(_ sender: UIButton) {
         switchQuitHideView(value: false)
     }
+    @IBOutlet weak var albumPasswordCopyBtn: UIButton!
+    @IBOutlet weak var albumPasswordUploadBtn: UIButton!
+    
     
     var albumUid: Int = 0
     var infoAlbum : album?
@@ -77,8 +80,12 @@ extension AlbumInfoVC : albumInfoDeleteProtocol {
         albumCountLabel.text = "\(data.photoLimit)"
         albumLayoutLabel.text = getLayoutByUid(value: data.layoutUid).layoutName
         
+        
         memberTableView.delegate = self
         memberTableView.dataSource = self
+        
+        albumPasswordCopyBtn.addTarget(self, action: #selector(touchPasswordCopyBtn), for: .touchUpInside)
+        albumPasswordUploadBtn.addTarget(self, action: #selector(touchPasswordUploadBtn), for: .touchUpInside)
     }
     
     func hideViewSetting(){
@@ -103,6 +110,7 @@ extension AlbumInfoVC : albumInfoDeleteProtocol {
             hideView.isHidden = false
         }
     }
+  
     
     func removedAlert(){
         let alert = UIAlertController(title: "멤버 삭제", message: "멤버 삭제 완료!", preferredStyle: .alert)
@@ -185,6 +193,50 @@ extension AlbumInfoVC {
             }
         })
     }
+    
+    func networkGetPassword(){
+        AlbumService.shared.albumGetPassword(uid: albumUid, completion: {
+            response in
+            if let status = response.response?.statusCode {
+                switch status {
+                    case 200 :
+                        guard let data = response.data else {return}
+                        guard let value = try? JSONDecoder().decode(albumPassword.self, from: data) else {return}
+                        UIPasteboard.general.string = value.password
+                    case 401 :
+                        print("\(status) : bad request, no warning in Server")
+                    case 404 :
+                        print("\(status) : Not found, no address")
+                    case 500 :
+                        print("\(status) : Server error in AlbumInfo - getPassword")
+                    default:
+                        return
+                }
+            }
+        })
+    }
+    
+    func networkUpdatePassword(){
+        AlbumService.shared.albumUploadPasswrod(uid: albumUid, completion: {
+            response in
+            if let status = response.response?.statusCode {
+                switch status {
+                    case 200 :
+                        guard let data = response.data else {return}
+                        guard let value = try? JSONDecoder().decode(albumPassword.self, from: data) else {return}
+                        UIPasteboard.general.string = value.password
+                    case 401 :
+                        print("\(status) : bad request, no warning in Server")
+                    case 404 :
+                        print("\(status) : Not found, no address")
+                    case 500 :
+                        print("\(status) : Server error in AlbumInfo - uploadPassword")
+                    default:
+                        return
+                }
+            }
+        })
+    }
 }
 
 
@@ -202,6 +254,14 @@ extension AlbumInfoVC {
         let item = userArray[sender.tag]
         networkRemoveUser(userName: item.name, userRole: item.role, userUid: item.userUid)
         userArray.remove(at: sender.tag)
+    }
+    
+    @objc func touchPasswordCopyBtn(){
+        networkGetPassword()
+    }
+    
+    @objc func touchPasswordUploadBtn(){
+        networkUpdatePassword()
     }
 }
 
