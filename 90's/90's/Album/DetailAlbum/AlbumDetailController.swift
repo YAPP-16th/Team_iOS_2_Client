@@ -10,8 +10,6 @@ import UIKit
 
 class AlbumDetailController : UIViewController {
     @IBOutlet weak var photoCollectionView: UICollectionView!
-    @IBOutlet weak var albumNameLabel: UILabel!
-    @IBOutlet weak var albumCountLabel: UILabel!
     @IBOutlet weak var addPhotoBtn: UIButton!
     // Top View 설정
     @IBAction func inviteBtn(_ sender: UIButton) {
@@ -43,6 +41,7 @@ class AlbumDetailController : UIViewController {
     @IBAction func hideShareCancleBtn(_ sender: UIButton) { switchShareView(value: true) }
     @IBAction func touchhideShareCompleteBtn(_ sender: UIButton) { inviteSetting() }
     
+    
     // old filter
     private let context = CIContext(options: nil)
     
@@ -70,8 +69,9 @@ class AlbumDetailController : UIViewController {
     var photoUidArray = [PhotoGetPhotoData]()
     var networkDetailAlbum : album?
     var networkPhotoUidArray : [Int] = []
-  
-    var networkPhotoUrlImageArray = [UIImage]()
+    var networkPhotoUrlImageArray : [UIImage] = []
+    var networkHeaderName : String = ""
+    var networkHedaerCount : Int = 0
 
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -350,7 +350,7 @@ extension AlbumDetailController {
                     guard let data = response.data else {return}
                     guard let value = try? JSONDecoder().decode(album.self, from: data) else {return}
                     self.networkDetailAlbum = value
-                    self.albumNameLabel.text = value.name
+                    self.networkHeaderName = value.name
                     self.albumMaxCount = value.photoLimit
                     self.isAlbumComplete = value.complete
                     self.selectedLayout = self.getLayoutByUid(value: value.layoutUid)
@@ -380,7 +380,7 @@ extension AlbumDetailController {
                 guard let data = response.data else {return}
                 guard let value = try? JSONDecoder().decode([PhotoGetPhotoData].self, from: data) else {return}
                 self.photoUidArray = value
-                self.albumCountLabel.text = "\(self.photoUidArray.count) 개의 추억이 쌓였습니다"
+                self.networkHedaerCount = self.photoUidArray.count
                 self.networkPhotoUidArray = self.photoUidArray.map{ $0.photoUid }
                 self.NetworkGetPhoto(photoUid: self.networkPhotoUidArray)
             case 401:
@@ -500,6 +500,14 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "albumdetailheadercell", for: indexPath) as! DetailAbumCell
+        header.albumTitle.text = networkHeaderName
+        header.albumCount.text = "\(networkHedaerCount) 개의 추억이 쌓였습니다"
+        return header
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if currentCell != nil && isArrangeEnded {
