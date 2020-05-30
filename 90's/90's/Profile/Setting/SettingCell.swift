@@ -73,6 +73,7 @@ class SettingCell: UITableViewCell {
 
             else if noticeList[currentIndex ?? 0] == "앨범이 종료되기 전 알림" {
                 UserDefaults.standard.set(nil, forKey: "switch2")
+                print(noticeList[currentIndex ?? 0])
                 print(UserDefaults.standard.value(forKey: "switch2") ?? 0 )
             }
             else if noticeList[currentIndex ?? 0] == "구매 및 배송 알림" {
@@ -143,9 +144,7 @@ extension SettingCell {
         dateFormatter.locale = NSLocale(localeIdentifier: "ko_KR") as Locale
         let startDate = now as Date
         
-        let timeInterval = date.timeIntervalSince(startDate)
-        
-        
+        let timeInterval = date.timeIntervalSince(startDate)        
         let days = Int(timeInterval / 86400)
         
         
@@ -157,10 +156,10 @@ extension SettingCell {
         content.body = "앨범이 종료되기 전 \(days) 일 남았습니다."
         content.badge = 1
         
-        if UserDefaults.standard.integer(forKey: "switch3") == 3 {
-            if timeInterval - 60*60*24*7 + 100 <= 0 { // 1주일 보다 적게 남았다.
+        if UserDefaults.standard.integer(forKey: "switch2") == 2 {
+            if days  <= 7 { // 1주일 보다 적게 남았다.
                 print("1주일 미만")
-                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60*60*24 //임의로 하루 뒤에 트리거 작동 //100은 constant
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10 //60*60*24 //임의로 하루 뒤에 트리거 작동 //100은 constant
                     , repeats:false)
                 content.body = "앨범이 종료되기 전 1주 미만 남았습니다."
                 let request = UNNotificationRequest(identifier: "timerdone", content: content, trigger: trigger)
