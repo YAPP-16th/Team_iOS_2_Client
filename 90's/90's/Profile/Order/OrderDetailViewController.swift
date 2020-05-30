@@ -38,7 +38,6 @@ class OrderDetailViewController: UIViewController {
     @IBOutlet weak var okOptionBtn: UIButton!
     
     var copyStr:String!
-    var orderStatus: Status!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,12 +85,12 @@ class OrderDetailViewController: UIViewController {
         let range = startIndex..<endIndex
         copyStr = String(str[range])
         
-        //입금 대기 상태일 때만 주문취소 버튼 표시
-        if(orderStatus == .wait){
-            cancelBtn.isHidden = false
-        }else {
-            cancelBtn.isHidden = false
-        }
+//        //입금 대기 상태일 때만 주문취소 버튼 표시
+//        if(orderStatus == .wait){
+//            cancelBtn.isHidden = false
+//        }else {
+//            cancelBtn.isHidden = false
+//        }
         
         //주문취소 뷰
         imageView.isHidden = true

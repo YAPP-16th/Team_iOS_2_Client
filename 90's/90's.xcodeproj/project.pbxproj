@@ -115,6 +115,8 @@
 		A3CCD8432454B30300C73E31 /* EmailCheckService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCD8422454B30300C73E31 /* EmailCheckService.swift */; };
 		A3CCD8452454BE7B00C73E31 /* SignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCD8442454BE7B00C73E31 /* SignUpService.swift */; };
 		A3CCD8472454C31B00C73E31 /* SignUpResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCD8462454C31B00C73E31 /* SignUpResult.swift */; };
+		A3CCF7BF24827FE200BCDD35 /* GetOrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCF7BE24827FE200BCDD35 /* GetOrderService.swift */; };
+		A3CCF7CC2482819200BCDD35 /* GetOrderResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCF7CB2482819200BCDD35 /* GetOrderResult.swift */; };
 		A3D8758F24448BCE0085F17B /* AuthenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D8758E24448BCE0085F17B /* AuthenViewController.swift */; };
 		A3E133D624558988007950D8 /* OrderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E133D524558988007950D8 /* OrderListViewController.swift */; };
 		A3E133D824558997007950D8 /* ManageInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E133D724558997007950D8 /* ManageInfoViewController.swift */; };
@@ -641,6 +643,8 @@
 		A3CCD8422454B30300C73E31 /* EmailCheckService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCheckService.swift; sourceTree = "<group>"; };
 		A3CCD8442454BE7B00C73E31 /* SignUpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpService.swift; sourceTree = "<group>"; };
 		A3CCD8462454C31B00C73E31 /* SignUpResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResult.swift; sourceTree = "<group>"; };
+		A3CCF7BE24827FE200BCDD35 /* GetOrderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOrderService.swift; sourceTree = "<group>"; };
+		A3CCF7CB2482819200BCDD35 /* GetOrderResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOrderResult.swift; sourceTree = "<group>"; };
 		A3D8758E24448BCE0085F17B /* AuthenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenViewController.swift; sourceTree = "<group>"; };
 		A3E133D524558988007950D8 /* OrderListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewController.swift; sourceTree = "<group>"; };
 		A3E133D724558997007950D8 /* ManageInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageInfoViewController.swift; sourceTree = "<group>"; };
@@ -1742,6 +1746,7 @@
 				A3768D4F246307EE009E64EE /* ChangePhoneService.swift */,
 				A3F30963246F1A7D0051FF6B /* GetProfileService.swift */,
 				A3739093247917E900F9802B /* LeaveService.swift */,
+				A3CCF7BE24827FE200BCDD35 /* GetOrderService.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -1822,6 +1827,7 @@
 			isa = PBXGroup;
 			children = (
 				A3F30971246F1C0B0051FF6B /* ProfileResult.swift */,
+				A3CCF7CB2482819200BCDD35 /* GetOrderResult.swift */,
 			);
 			path = NetworkResult;
 			sourceTree = "<group>";
@@ -2114,6 +2120,7 @@
 				A36AF4F32473D5FC00191A3C /* FindEmailService.swift in Sources */,
 				A3CCD8432454B30300C73E31 /* EmailCheckService.swift in Sources */,
 				A3315E0C245C5BA6005536C2 /* OrderCell.swift in Sources */,
+				A3CCF7CC2482819200BCDD35 /* GetOrderResult.swift in Sources */,
 				39DE31422482204B00660FD6 /* PopUp3ViewController.swift in Sources */,
 				9BB3D91F24791DDB00FC1448 /* StickerHeaderCell.swift in Sources */,
 				9BC16B1A2435B68F007F106C /* photoStickerCollectionCell.swift in Sources */,
@@ -2121,6 +2128,7 @@
 				A3A1D7592482206300FF00A4 /* OrderService.swift in Sources */,
 				9BC0DBB4244478A600CA90F7 /* ProfileTableViewCell.swift in Sources */,
 				A30B21E12462BCAC00BDC75B /* NewPassViewController.swift in Sources */,
+				A3CCF7BF24827FE200BCDD35 /* GetOrderService.swift in Sources */,
 				A3F30964246F1A7D0051FF6B /* GetProfileService.swift in Sources */,
 				9BB1C5762441EEC30035DEBF /* FilterViewController.swift in Sources */,
 				A3B0D1D9245D6C8400DB90ED /* SettingCell.swift in Sources */,

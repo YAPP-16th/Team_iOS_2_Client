@@ -209,7 +209,7 @@ extension PrintListViewController : ClickActionDelegate {
         case "processing", "ready", "shipping", "done":
             let profileSB = UIStoryboard.init(name: "Profile", bundle: nil)
             let profileOrderVC = profileSB.instantiateViewController(withIdentifier: "OrderDetailViewController") as! OrderDetailViewController
-    
+            navigationController?.pushViewController(profileOrderVC, animated: true)
             break
         default:
             break
