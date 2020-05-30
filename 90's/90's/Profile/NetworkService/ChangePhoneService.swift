@@ -10,12 +10,13 @@ import Alamofire
 
 struct ChangePhoneService : APIManager {
     static let shared = ChangePhoneService()
-    let header: HTTPHeaders =  ["Content-Type" : "application/json",
-                                "X-AUTH-TOKEN" :  UserDefaults.standard.string(forKey: "jwt") ?? ""]
     let changePhoneURL = url("/user/updatePhoneNumber")
     typealias completeChangePhone = (AFDataResponse<Any>) -> ()
     
     func changePhone(phoneNum: String, completion: @escaping(completeChangePhone)){
+        
+        let header: HTTPHeaders =  ["Content-Type" : "application/json",
+                                       "X-AUTH-TOKEN" :  UserDefaults.standard.string(forKey: "jwt") ?? ""]
         
         let body: [String:Any] = [
             "phoneNum": phoneNum

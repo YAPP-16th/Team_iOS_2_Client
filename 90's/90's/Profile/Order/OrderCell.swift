@@ -15,5 +15,4 @@ class OrderCell: UITableViewCell {
     @IBOutlet weak var albumNameLabel: UILabel!
     @IBOutlet weak var albumPriceLabel: UILabel!
     @IBOutlet weak var orderNumberLabel: UILabel!
-    @IBOutlet weak var statusLabel: UILabel!
     }

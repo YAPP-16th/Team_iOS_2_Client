@@ -8,22 +8,6 @@
 
 import UIKit
 
-enum Status: String {
-    case wait = "입금대기"
-    case confirm = "입금확인"
-    case ready = "배송준비"
-    case deliver = "배송중"
-    case complete = "배송완료"
-}
-
-struct Order {
-    var albumImage:String
-    var albumStatus:Status
-    var albumName:String
-    var albumPrice:Int
-    var albumNum:Int
-}
-
 protocol OrderDetailDelegate {
     func clickDetailBtn(_ index : Int)
 }
@@ -31,10 +15,14 @@ protocol OrderDetailDelegate {
 class OrderListViewController: UIViewController {
     @IBOutlet weak var noAlbumView: UIView!
     @IBOutlet weak var orderListTableView: UITableView!
-    var isExistAlbum = true
+    @IBOutlet weak var goAlbumBtn: UIButton!
     
-    //더미데이터
-    var orderList = [Order(albumImage: "mysweetyLovesyou", albumStatus: .wait, albumName: "현창이의 행복한 앨범1", albumPrice: 20000, albumNum: 1), Order(albumImage: "mysweetyLovesyou", albumStatus: .confirm, albumName: "현창이의 행복한 앨범2", albumPrice: 20000, albumNum: 1), Order(albumImage: "mysweetyLovesyou", albumStatus: .ready, albumName: "현창이의 행복한 앨범3", albumPrice: 20000, albumNum: 1), Order(albumImage: "mysweetyLovesyou", albumStatus: .deliver, albumName: "현창이의 행복한 앨범4", albumPrice: 20000, albumNum: 1), Order(albumImage: "mysweetyLovesyou", albumStatus: .complete, albumName: "현창이의 행복한 앨범5", albumPrice: 20000, albumNum: 1)]
+    var orderList:[GetOrderResult] = []
+    var cost = 0
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getOrder()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,19 +33,52 @@ class OrderListViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    //인화하러가기 버튼 클릭 시 액션
+    //주문앨범이 없을 시 출력 -> 인화하러 가기 버튼 클릭 시 액션
     @IBAction func clickPrintBtn(_ sender: Any) {
         self.tabBarController?.selectedIndex = 0
     }
     
     func setUI(){
+        goAlbumBtn.layer.cornerRadius = 8.0
         orderListTableView.delegate = self
         orderListTableView.dataSource = self
-        
-        //앨범이 존재하지 않을 시 주문내역 테이블뷰 히든 처리
-        if(!isExistAlbum){
-            orderListTableView.isHidden = true
-        }
+    }
+    
+    func getOrder(){
+        GetOrderService.shared.getOrder(completion: { response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200:
+                    guard let data = response.data else { return }
+                    let decoder = JSONDecoder()
+                    guard let value = try? decoder.decode([GetOrderResult].self, from: data) else { return }
+                    self.orderList = value.filter
+                        {$0.album.orderStatus.status != "pending"}
+                    if(self.orderList.count != 0){
+                        self.noAlbumView.isHidden = true
+                        self.orderListTableView.isHidden = false
+                        self.orderListTableView.reloadData()
+                    }else {
+                        self.noAlbumView.isHidden = false
+                        self.orderListTableView.isHidden = true
+                    }
+                    break
+                case 401...500:
+                    self.showErrAlert()
+                    break
+                default:
+                    return
+                }
+            }
+            
+        })
+    }
+    
+    func showErrAlert(){
+        let alert = UIAlertController(title: "오류", message: "주문내역 조회 불가", preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(action)
+        self.present(alert, animated: true)
     }
     
 }
@@ -69,30 +90,45 @@ extension OrderListViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let orderDetailVC = storyboard?.instantiateViewController(withIdentifier: "OrderDetailViewController") as! OrderDetailViewController
-        orderDetailVC.orderStatus = orderList[indexPath.row].albumStatus
         navigationController?.pushViewController(orderDetailVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OrderCell") as! OrderCell
-        let orderData = orderList[indexPath.row]
-        cell.albumImageView.image = UIImage(named: orderData.albumImage)
+        let item = orderList[indexPath.row]
         
-        switch orderData.albumStatus {
-        case .wait:
-            cell.statusImageView.backgroundColor = UIColor(red: 227/255, green: 62/255, blue: 40/255, alpha: 1.0)
-        case .ready, .confirm, .deliver:
-            cell.statusImageView.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
+        //statusCode에 따라 이미지 변경
+        let orderStatus = item.album.orderStatus.status
+        switch orderStatus{
+        case "processing":
+            cell.statusImageView.image = UIImage(named: "processingTag")
             break
-        case .complete:
-            cell.statusImageView.backgroundColor = UIColor(red: 199/255, green: 201/255, blue: 208/255, alpha: 1.0)
+        case "ready":
+            cell.statusImageView.image = UIImage(named: "paymentConfirmation")
+            break
+        case "shipping":
+            cell.statusImageView.image = UIImage(named: "shipmentInProgress")
+            break
+        case "done":
+            cell.statusImageView.image = UIImage(named: "deliveryCompleted")
+            break
+        default:
             break
         }
         
-        cell.statusLabel.text = orderData.albumStatus.rawValue
-        cell.albumNameLabel.text = orderData.albumName
-        cell.albumPriceLabel.text = orderData.albumPrice.numberToPrice(orderData.albumPrice) + " 원"
-        cell.orderNumberLabel.text = "\(orderData.albumNum)개"
+        //앨범 커버 이미지 설정
+        cell.albumImageView.image = getCoverByUid(value: item.album.cover.uid)
+        
+        //앨범 이름
+        cell.albumNameLabel.text = item.album.name
+        
+        cost = Int(item.cost)!
+        
+        //앨범 가격
+        cell.albumPriceLabel.text = cost.numberToPrice(cost)+"원"
+        
+        //앨범 개수
+        cell.orderNumberLabel.text = "\(item.amount)개"
         return cell
     }
 }
