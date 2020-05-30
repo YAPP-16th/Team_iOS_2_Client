@@ -144,7 +144,7 @@ class OptionViewController : UIViewController {
         
         normalBtn.isSelected = false
         advanceBtn.isSelected = false
-        superAdBtn.isSelected = false
+//        superAdBtn.isSelected = false
         noramlShipBtn.isSelected = false
         advanceShipBtn.isSelected = false
         superAdShipBtn.isSelected = false
@@ -237,9 +237,9 @@ class OptionViewController : UIViewController {
         
         if firstFlapBtn.isSelected {
             
-            self.FirstOptionConstraint.constant = 239
+            self.FirstOptionConstraint.constant = 239 - 61
             self.SecondOptionConstraint.constant = 0
-            self.stackViewConnected.constant = 50.5 + 239
+            self.stackViewConnected.constant = 50.5 + 239 - 61
             self.FirstOptionView.isHidden = false
             self.SecondOptionView.isHidden = true
             
@@ -367,15 +367,15 @@ class OptionViewController : UIViewController {
     
     @IBAction func normalClick(_ sender: Any) {
         cal1 = !cal1
-        calc =  0
+        calc +=  0
         print(calc)
         normalBtn.isSelected = true
         advanceBtn.isSelected = false
-        superAdBtn.isSelected = false
         normalBtn.setImage(UIImage(named: "ovalSelectOption"), for: .selected)
         self.printLabel.text = "유광"
         
-        if (noramlShipBtn.isSelected  == true || advanceBtn.isSelected == true || superAdBtn.isSelected == true) && ( normalBtn.isSelected == true || advanceShipBtn.isSelected == true || superAdShipBtn.isSelected == true)
+        if ( superAdShipBtn.isSelected == true || noramlShipBtn.isSelected  == true || superAdShipBtn.isSelected == true) &&
+            ( normalBtn.isSelected == true || advanceBtn.isSelected == true)
         {
             CompleteBtn.backgroundColor = .black
         }
@@ -384,56 +384,25 @@ class OptionViewController : UIViewController {
     
     @IBAction func adClick(_ sender: Any) {
         cal2 = !cal2
-        if cal2 {
-            calc = calc + 0
-        }
-        else {
-            calc = calc - 0
-        }
+        calc +=  0
+        
         print(calc)
         normalBtn.isSelected = false
         advanceBtn.isSelected = true
-        superAdBtn.isSelected = false
         advanceBtn.setImage(UIImage(named: "ovalSelectOption"), for: .selected)
         self.printLabel.text = "무광"
         
-        if (noramlShipBtn.isSelected  == true || advanceBtn.isSelected == true || superAdBtn.isSelected == true) && ( normalBtn.isSelected == true || advanceShipBtn.isSelected == true || superAdShipBtn.isSelected == true)
+        if ( superAdShipBtn.isSelected == true || noramlShipBtn.isSelected  == true || superAdShipBtn.isSelected == true) &&
+        ( normalBtn.isSelected == true || advanceBtn.isSelected == true)
         {
             CompleteBtn.backgroundColor = .black
         }
         
     }
-    
-    @IBAction func ad2Click(_ sender: Any) {
-        cal3 = !cal3
-        if cal3 {
-            calc = calc + 0
-        }
-        else {
-            calc = calc - 0
-        }
-        print(calc)
-        normalBtn.isSelected = false
-        advanceBtn.isSelected = false
-        superAdBtn.isSelected = true
-        superAdBtn.setImage(UIImage(named: "ovalSelectOption"), for: .selected)
-        self.printLabel.text = "랜덤"
         
-        if (noramlShipBtn.isSelected  == true || advanceBtn.isSelected == true || superAdBtn.isSelected == true) && ( normalBtn.isSelected == true || advanceShipBtn.isSelected == true || superAdShipBtn.isSelected == true)
-        {
-            CompleteBtn.backgroundColor = .black
-        }
-        
-    }
-    
     @IBAction func normalShipClick(_ sender: Any) {
         cal4 = !cal4
-        if cal4 {
-            calc = calc + 5000
-        }
-        else {
-            calc = calc - 5000
-        }
+        calc +=  0
         
         print(calc)
         noramlShipBtn.isSelected = true
@@ -442,7 +411,8 @@ class OptionViewController : UIViewController {
         noramlShipBtn.setImage(UIImage(named: "ovalSelectOption"), for: .selected)
         self.shipLabel.text = "일반"
         
-        if (noramlShipBtn.isSelected  == true || advanceBtn.isSelected == true || superAdBtn.isSelected == true) && ( normalBtn.isSelected == true || advanceShipBtn.isSelected == true || superAdShipBtn.isSelected == true)
+        if ( superAdShipBtn.isSelected == true || noramlShipBtn.isSelected  == true || superAdShipBtn.isSelected == true) &&
+        ( normalBtn.isSelected == true || advanceBtn.isSelected == true)
         {
             CompleteBtn.backgroundColor = .black
         }
@@ -453,22 +423,46 @@ class OptionViewController : UIViewController {
     @IBAction func adShipClick(_ sender: Any) {
         cal5 = !cal5
         if cal5 {
-            calc = calc + 5000
+            calc = calc + 10000
         }
         else {
-            calc = calc - 5000
+            calc = calc - 10000
         }
         noramlShipBtn.isSelected = false
         advanceShipBtn.isSelected = true
         superAdShipBtn.isSelected = false
         advanceShipBtn.setImage(UIImage(named: "ovalSelectOption"), for: .selected)
-        self.shipLabel.text = "특급"
+        self.shipLabel.text = "특급배송"
         
-        if (noramlShipBtn.isSelected  == true || advanceBtn.isSelected == true || superAdBtn.isSelected == true) && ( normalBtn.isSelected == true || advanceShipBtn.isSelected == true || superAdShipBtn.isSelected == true)
+        if ( superAdShipBtn.isSelected == true || noramlShipBtn.isSelected  == true || superAdShipBtn.isSelected == true) &&
+        ( normalBtn.isSelected == true || advanceBtn.isSelected == true)
         {
             CompleteBtn.backgroundColor = .black
         }
     }
+    
+    @IBAction func ad2ShipClick(_ sender: Any) {
+         cal6 = !cal6
+         if cal6 {
+             calc = calc + 15000
+         }
+         else {
+             calc = calc - 15000
+         }
+         noramlShipBtn.isSelected = false
+         advanceShipBtn.isSelected = false
+         superAdShipBtn.isSelected = true
+         superAdShipBtn.setImage(UIImage(named: "ovalSelectOption"), for: .selected)
+         self.shipLabel.text = "등기배송"
+         
+         if ( superAdShipBtn.isSelected == true || noramlShipBtn.isSelected  == true || superAdShipBtn.isSelected == true) &&
+         ( normalBtn.isSelected == true || advanceBtn.isSelected == true)
+         {
+             CompleteBtn.backgroundColor = .black
+         }
+         
+         
+     }
     
     
     
@@ -497,26 +491,6 @@ class OptionViewController : UIViewController {
     }
     
     
-    @IBAction func ad2ShipClick(_ sender: Any) {
-        cal6 = !cal6
-        if cal6 {
-            calc = calc + 10000
-        }
-        else {
-            calc = calc - 10000
-        }
-        noramlShipBtn.isSelected = false
-        advanceShipBtn.isSelected = false
-        superAdShipBtn.isSelected = true
-        superAdShipBtn.setImage(UIImage(named: "ovalSelectOption"), for: .selected)
-        self.shipLabel.text = "등기"
-        
-        if (noramlShipBtn.isSelected  == true || advanceBtn.isSelected == true || superAdBtn.isSelected == true) && ( normalBtn.isSelected == true || advanceShipBtn.isSelected == true || superAdShipBtn.isSelected == true)
-        {
-            CompleteBtn.backgroundColor = .black
-        }
-        
-        
-    }
+ 
     
 }
