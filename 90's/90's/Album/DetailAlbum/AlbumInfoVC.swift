@@ -217,7 +217,7 @@ extension AlbumInfoVC {
     }
     
     func networkUpdatePassword(){
-        AlbumService.shared.albumUploadPasswrod(uid: albumUid, completion: {
+        AlbumService.shared.albumUploadPassword(uid: albumUid, completion: {
             response in
             if let status = response.response?.statusCode {
                 switch status {

@@ -12,7 +12,8 @@ import AlamofireImage
 struct AlbumService : APIManager {
     static let shared = AlbumService()
 
-    typealias completeAlbumSerivce = (AFDataResponse<Any>) -> ()
+    typealias completeAlbumService = (AFDataResponse<Any>) -> ()
+    typealias completeAlbumPasswordService = (DataResponse<Any, AFError>) -> ()
     typealias completePhotoDownloadService = (DataResponse<UIImage, AFError>) -> ()
     let header : HTTPHeaders =  [
         "Content-Type" : "application/json"
@@ -27,7 +28,7 @@ struct AlbumService : APIManager {
     ]
 
     // Add User, post, 친구 추가
-    func albumAddUser(albumUid : Int,  name: String, role : String, userUid : Int, completion: @escaping(completeAlbumSerivce)){
+    func albumAddUser(albumUid : Int,  name: String, role : String, userUid : Int, completion: @escaping(completeAlbumService)){
         let url = Self.url("/album/addUser")
         let body : [String: Any] = [
             "albumUid" : albumUid,
@@ -49,7 +50,7 @@ struct AlbumService : APIManager {
     
     
     // CreateAlbum, Post, 앨범 생성
-    func albumCreate(endDate : String, layoutUid : Int, name : String, photoLimit : Int, cover : Int, completion : @escaping(completeAlbumSerivce)){
+    func albumCreate(endDate : String, layoutUid : Int, name : String, photoLimit : Int, cover : Int, completion : @escaping(completeAlbumService)){
         let url = Self.url("/album/create")
         let body : [String : Any] = [
             "endDate" : endDate,
@@ -71,7 +72,7 @@ struct AlbumService : APIManager {
     }
 
     // getAlbum, post, 앨범 정보 가져오기
-    func albumGetAlbum(uid:Int, completion : @escaping(completeAlbumSerivce)){
+    func albumGetAlbum(uid:Int, completion : @escaping(completeAlbumService)){
         let url = Self.url("/album/getAlbum")
         let body : [String : Any] = [
             "uid" : uid
@@ -89,7 +90,7 @@ struct AlbumService : APIManager {
     }
     
     // getAlbumOwners, post, 앨범 오너 정보
-    func albumGetOwners(uid : Int, completion : @escaping(completeAlbumSerivce)){
+    func albumGetOwners(uid : Int, completion : @escaping(completeAlbumService)){
         let url = Self.url("/album/getAlbumOwners")
         let body : [String : Any] = [
             "uid":uid
@@ -107,7 +108,7 @@ struct AlbumService : APIManager {
     }
     
     // getAlbumPassword, get, 앨범 비밀번호
-    func albumGetPassword(uid: Int, completion : @escaping(completeAlbumSerivce)) {
+    func albumGetPassword(uid: Int, completion : @escaping(completeAlbumService)) {
         let url = Self.url("/album/getAlbumPassword/\(uid)")
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
@@ -121,7 +122,7 @@ struct AlbumService : APIManager {
         })
     }
     
-    func albumUploadPasswrod(uid: Int, completion : @escaping(completeAlbumSerivce)) {
+    func albumUploadPassword(uid: Int, completion : @escaping(completeAlbumService)) {
         let url = Self.url("/album/updateAlbumPassword/\(uid)")
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
@@ -136,7 +137,7 @@ struct AlbumService : APIManager {
     }
     
     // getAlbums, get, 앨범 목록
-    func albumGetAlbums(completion : @escaping(completeAlbumSerivce)){
+    func albumGetAlbums(completion : @escaping(completeAlbumService)){
         let url = Self.url("/album/getAlbums")
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
@@ -151,7 +152,7 @@ struct AlbumService : APIManager {
     }
     
     // plusCount, get 앨범 낡기 카운드
-    func albumPlusCount(uid: Int, completion : @escaping(completeAlbumSerivce)){
+    func albumPlusCount(uid: Int, completion : @escaping(completeAlbumService)){
         let url = Self.url("/album/plusCount/\(uid)")
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
@@ -166,7 +167,7 @@ struct AlbumService : APIManager {
     }
     
     // removeUser, post
-    func albumRemoveUser(albumUid : Int, role : String, name : String, userUid : Int, completion: @escaping(completeAlbumSerivce)){
+    func albumRemoveUser(albumUid : Int, role : String, name : String, userUid : Int, completion: @escaping(completeAlbumService)){
         let url = Self.url("/album/removeUser")
         let body : [String : Any] = [
             "albumUid" : albumUid,
@@ -208,7 +209,7 @@ extension AlbumService {
     }
     
     // photoGetPhoto, post, 사진 목록의 사진 uid
-    func photoGetPhoto(albumUid : Int, completion: @escaping(completeAlbumSerivce)){
+    func photoGetPhoto(albumUid : Int, completion: @escaping(completeAlbumService)){
         let url = Self.url("/photo/getPhotos")
         let body : [String : Any] = [
             "uid" : albumUid
@@ -227,7 +228,7 @@ extension AlbumService {
     
     
     // photoUpload, post, 사진 업로드
-    func photoUpload(albumUid : Int, image: [UIImage], imageName: String!, completion: @escaping(completeAlbumSerivce)){
+    func photoUpload(albumUid : Int, image: [UIImage], imageName: String!, completion: @escaping(completeAlbumService)){
         let url = Self.url("/photo/upload")
         let body : [String : Any] = [
             "albumUid" : albumUid

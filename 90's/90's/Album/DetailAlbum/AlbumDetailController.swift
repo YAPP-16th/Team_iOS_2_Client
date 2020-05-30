@@ -63,7 +63,7 @@ class AlbumDetailController : UIViewController {
     var networkDetailAlbum : album?
     var networkPhotoUidArray : [Int] = []
     var networkPhotoUrlImageArray : [UIImage] = []
-    var networkHeaderName : String = ""
+    var networkHeaderName : String = "Title"
     var networkHedaerCount : Int = 0
 
     
@@ -373,6 +373,7 @@ extension AlbumDetailController {
                 self.networkHedaerCount = self.photoUidArray.count
                 self.networkPhotoUidArray = self.photoUidArray.map{ $0.photoUid }
                 self.NetworkGetPhoto(photoUid: self.networkPhotoUidArray)
+                self.photoCollectionView.reloadData()
             case 401:
                 print("\(status) : bad request, no warning in Server")
             case 404:
@@ -445,7 +446,6 @@ extension AlbumDetailController {
         let goNextVC = storyBoard.instantiateViewController(withIdentifier: "FilterViewController") as! FilterViewController
         goNextVC.modalPresentationStyle = .fullScreen
         self.present(goNextVC, animated: true)
-
     }
     
     @objc func touchAlbumBtn(){

@@ -28,8 +28,7 @@ class AlbumQuantityController : UIViewController {
     override func viewDidLoad() {
         keyboardSetting()
         setQuantityPicker()
-        initialFlag = true
-        tfQuantity.text = "4"
+        defaultSetting()
     }
     
     @IBAction func clickNextBtn(_ sender: Any) {
@@ -45,6 +44,15 @@ class AlbumQuantityController : UIViewController {
         }
     }
     
+    
+    func defaultSetting(){
+        self.selectorLabel.backgroundColor = UIColor.black
+        self.nextBtn.backgroundColor = UIColor.black
+        self.nextBtn.backgroundColor = UIColor.colorRGBHex(hex: 0xe33e28)
+        self.nextBtn.isEnabled = true
+        initialFlag = true
+        tfQuantity.text = "4"
+    }
     
     func setQuantityPicker(){
         quantityPicker.delegate = self
@@ -72,14 +80,6 @@ extension AlbumQuantityController : UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.albumMaxCount = maxCountArray[row]
         tfQuantity.text = "\(maxCountArray[row])"
-        
-        if(initialFlag){
-            self.selectorLabel.backgroundColor = UIColor.black
-            self.nextBtn.backgroundColor = UIColor.black
-            self.nextBtn.backgroundColor = UIColor.colorRGBHex(hex: 0xe33e28)
-            self.nextBtn.isEnabled = true
-            initialFlag = false
-        }
     }
 }
 
