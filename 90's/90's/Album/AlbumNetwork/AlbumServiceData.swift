@@ -13,7 +13,7 @@ struct AlbumService : APIManager {
     static let shared = AlbumService()
 
     typealias completeAlbumService = (AFDataResponse<Any>) -> ()
-    typealias completeAlbumPasswordService = (DataResponse<Any, AFError>) -> ()
+    typealias completeAlbumPasswordService = (DataResponse<Optional<Data>, AFError>) -> ()
     typealias completePhotoDownloadService = (DataResponse<UIImage, AFError>) -> ()
     let header : HTTPHeaders =  [
         "Content-Type" : "application/json"
@@ -108,10 +108,10 @@ struct AlbumService : APIManager {
     }
     
     // getAlbumPassword, get, 앨범 비밀번호
-    func albumGetPassword(uid: Int, completion : @escaping(completeAlbumService)) {
+    func albumGetPassword(uid: Int, completion : @escaping(completeAlbumPasswordService)) {
         let url = Self.url("/album/getAlbumPassword/\(uid)")
         
-        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: tokenHeader).response(completionHandler: {
             response in
             switch response.result {
             case .success :
@@ -122,10 +122,10 @@ struct AlbumService : APIManager {
         })
     }
     
-    func albumUploadPassword(uid: Int, completion : @escaping(completeAlbumService)) {
+    func albumUploadPassword(uid: Int, completion : @escaping(completeAlbumPasswordService)) {
         let url = Self.url("/album/updateAlbumPassword/\(uid)")
         
-        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: tokenHeader).response(completionHandler: {
             response in
             switch response.result {
             case .success:
