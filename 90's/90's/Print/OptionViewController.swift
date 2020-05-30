@@ -10,7 +10,7 @@ import UIKit
 
 class OptionViewController : UIViewController {
     
-    //MARK: Constraint IBOutlet
+    //MARK: Constraint I BOutlet
     @IBOutlet weak var BottomViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var FirstOptionConstraint: NSLayoutConstraint!
     @IBOutlet weak var SecondOptionConstraint: NSLayoutConstraint!
@@ -18,48 +18,12 @@ class OptionViewController : UIViewController {
     @IBOutlet weak var countOptionViewConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var completeBtnConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var previewImageHeight: NSLayoutConstraint!
-    @IBOutlet weak var titleTopreviewConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var completeBtnTopConstraint: NSLayoutConstraint!
     
-    
-    
-    //MARK: View IBOutlet
-    @IBOutlet weak var OptionView: UIView!
-    @IBOutlet weak var CompleteBtn: UIButton!
-    @IBOutlet weak var FirstOptionView: UIView!
-    @IBOutlet weak var SecondOptionView: UIView!
-    @IBOutlet weak var countOptionView: UIView!
-    
+    //메인화면 Outlet
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var nextBtn: UIButton!
-    @IBOutlet weak var totalSum1: UILabel!
-    @IBOutlet weak var totalSum2: UILabel!
-    @IBOutlet weak var totalCount: UILabel!
-    
-    @IBOutlet weak var firstFlapBtn: UIButton!
-    @IBOutlet weak var secondFlapBtn: UIButton!
-    
-    @IBOutlet weak var normalBtn: UIButton!
-    @IBOutlet weak var advanceBtn: UIButton!
-    @IBOutlet weak var superAdBtn: UIButton!
-    
-    @IBOutlet weak var noramlShipBtn: UIButton!
-    @IBOutlet weak var advanceShipBtn: UIButton!
-    @IBOutlet weak var superAdShipBtn: UIButton!
-    
-    @IBOutlet weak var printLabel: UILabel!
-    @IBOutlet weak var shipLabel: UILabel!
-    
-    @IBOutlet weak var orderBtn: UIButton!
-    @IBOutlet weak var previewImage: UIImageView!
-    
-    @IBOutlet weak var backView: UIView!
-    
-    
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var albumNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -67,28 +31,62 @@ class OptionViewController : UIViewController {
     @IBOutlet weak var coverNameLabel: UILabel!
     @IBOutlet weak var layoutLabel: UILabel!
     
+    //주문 - 옵션 선택 뷰
+    @IBOutlet weak var OptionView: UIView!
+    @IBOutlet weak var FirstOptionView: UIView!
+    @IBOutlet weak var SecondOptionView: UIView!
+    @IBOutlet weak var firstFlapBtn: UIButton!
+    @IBOutlet weak var secondFlapBtn: UIButton!
+    @IBOutlet weak var normalBtn: UIButton!
+    @IBOutlet weak var advanceBtn: UIButton!
+    @IBOutlet weak var noramlShipBtn: UIButton!
+    @IBOutlet weak var superAdShipBtn: UIButton!
+    @IBOutlet weak var advanceShipBtn: UIButton!
+    @IBOutlet weak var CompleteBtn: UIButton! //옵션 담기 버튼
+    @IBOutlet weak var shipTypeLabel: UILabel!
+    
+    
+    @IBOutlet weak var nextBtn: UIButton!
+    
+    //주문 - 주문 확인 뷰
+    @IBOutlet weak var countOptionView: UIView!
+    @IBOutlet weak var totalSum1: UILabel!
+    @IBOutlet weak var totalSum2: UILabel!
+    @IBOutlet weak var totalCount: UILabel!
+    
+    
+    @IBOutlet weak var printLabel: UILabel!
+    @IBOutlet weak var shipLabel: UILabel!
+    
+    @IBOutlet weak var previewImage: UIImageView!
+    @IBOutlet weak var orderInfoLabel: UILabel!
+    @IBOutlet weak var orderBtn: UIButton! //주문하기 버튼
+    
+    @IBOutlet weak var backView: UIView!
+    
     
     var isTotalOptionViewAppear = false
-    var coverImage : UIImage? = nil
-    var cal1 = false
-    var cal2 = false
-    var cal3 = false
-    var cal4 = false
-    var cal5 = false
-    var cal6 = false
-    var calc : Int = 0
+    
     var tempImage: UIImage? = nil
     var albumInfo: album!
+    var photoCount: Int!
+    var totalPrice = 14300 //14300이 기존 가격
+    var afterPrice = 0
+    var isClickPaperType = false
+    var isClickShipType = false
+    var paperType = ""
+    var shipType = ""
+    var coverImage:UIImage!
+    var layoutName:String!
+    var num = 1
     
     override func viewDidLoad() {
-        //        self.view.backgroundColor = .white
         super.viewDidLoad()
         self.backView.isHidden = true
         
         self.totalCount.text = "1"
         self.printLabel.text = ""
         self.shipLabel.text = ""
-        self.previewImage.image = self.coverImageView.image
         
         OptionView.layer.cornerRadius = 14
         countOptionView.layer.cornerRadius = 14
@@ -124,7 +122,7 @@ class OptionViewController : UIViewController {
             
         }
         
- 
+        
         let startDate = albumInfo.created_at.split(separator: "T")[0]
         let endDate = albumInfo.endDate
         let idxStartDate:String.Index = startDate.index(startDate.startIndex, offsetBy: 2)
@@ -133,18 +131,19 @@ class OptionViewController : UIViewController {
         let endDateStr = String(endDate[idxEndDate...]).replacingOccurrences(of: "-", with: ".")
         
         
-        let coverImage = getCoverByUid(value: albumInfo.cover.uid)
+        coverImage = getCoverByUid(value: albumInfo.cover.uid)
         coverImageView.image = coverImage
         albumNameLabel.text = albumInfo.name
         dateLabel.text = startDateStr + "~" + endDateStr
-        photoCountLabel.text = "\(albumInfo.photoLimit)/\(albumInfo.photoLimit)"
+        photoCountLabel.text = "\(photoCount!)/\(albumInfo.photoLimit)"
         coverNameLabel.text = albumInfo.cover.name
-        layoutLabel.text =  self.getLayoutByUid(value: albumInfo.layoutUid).layoutName
+        layoutName = self.getLayoutByUid(value: albumInfo.layoutUid).layoutName
+        layoutLabel.text = layoutName
         
         
         normalBtn.isSelected = false
         advanceBtn.isSelected = false
-//        superAdBtn.isSelected = false
+
         noramlShipBtn.isSelected = false
         advanceShipBtn.isSelected = false
         superAdShipBtn.isSelected = false
@@ -157,8 +156,6 @@ class OptionViewController : UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.navigationBar.isHidden = false
-        
-        
     }
     
     @IBAction func goBack(_ sender: Any) {
@@ -174,13 +171,14 @@ class OptionViewController : UIViewController {
         
         
         if isTotalOptionViewAppear {
-            self.BottomViewConstraint.constant = self.view.frame.height
-            self.scrollView.isScrollEnabled = true
-        }
-        else
-        {
             self.backView.isHidden = false
             self.scrollView.isScrollEnabled = false
+            if(isClickShipType && isClickPaperType){
+                self.CompleteBtn.isEnabled = true
+            }else {
+                self.CompleteBtn.isEnabled = false
+            }
+            
             // iPhone X..
             if UIScreen.main.nativeBounds.height >= 1792.0 {
                 
@@ -193,6 +191,12 @@ class OptionViewController : UIViewController {
                 self.BottomViewConstraint.constant = self.view.frame.height  - 516 + 30
                 
             }
+            
+        }
+        else
+        {
+            self.BottomViewConstraint.constant = self.view.frame.height
+            self.scrollView.isScrollEnabled = true
         }
         UIView.animate(withDuration: 1, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations: {self.view.layoutIfNeeded()})
         
@@ -211,9 +215,24 @@ class OptionViewController : UIViewController {
         
         self.backView.isHidden = false
         self.BottomViewConstraint.constant = self.view.frame.height
-        self.totalSum1.text = String(calc)
-        self.totalSum2.text = String(calc)
         self.countOptionViewConstraint.constant = self.view.frame.height - 443
+        self.previewImage.image = coverImage
+        self.shipLabel.text = albumInfo.name
+        
+        self.orderInfoLabel.text = "커버: \(albumInfo.cover.name) / 포토레이아웃: \(layoutName ?? "") / 인화용지: \(paperType) / 배송: \(shipType)"
+        
+        totalPrice = 14300
+        if(shipType == "특급(+10,000원)"){
+            totalPrice += 10000
+        }else if(shipType == "등기(+15,000원)"){
+            totalPrice += 15000
+        }
+        
+        afterPrice = totalPrice
+        
+        totalSum1.text = totalPrice.numberToPrice(totalPrice)
+        totalSum2.text = totalPrice.numberToPrice(totalPrice)
+        
         self.countOptionView.isHidden = false
         
         UIView.animate(withDuration: 1, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations: {self.view.layoutIfNeeded()})
@@ -237,9 +256,10 @@ class OptionViewController : UIViewController {
         
         if firstFlapBtn.isSelected {
             
-            self.FirstOptionConstraint.constant = 239 - 61
+            self.FirstOptionConstraint.constant = 175
             self.SecondOptionConstraint.constant = 0
-            self.stackViewConnected.constant = 50.5 + 239 - 61
+            self.stackViewConnected.constant = 50.5 + 175
+
             self.FirstOptionView.isHidden = false
             self.SecondOptionView.isHidden = true
             
@@ -316,6 +336,8 @@ class OptionViewController : UIViewController {
         
         
     }
+    
+    
     @IBAction func countOptionCancelClick(_ sender: Any) {
         self.backView.isHidden = true
         self.scrollView.isScrollEnabled = true
@@ -333,144 +355,120 @@ class OptionViewController : UIViewController {
         self.countOptionView.isHidden = true
         
         let finalOrderVC = storyboard?.instantiateViewController(withIdentifier: "OrderFinalViewController") as! OrderFinalViewController
+        finalOrderVC.coverImage = self.coverImage
+        finalOrderVC.albumInfo = self.albumInfo
+        finalOrderVC.afterPrice = self.afterPrice
+        finalOrderVC.paperType = self.paperType
+        finalOrderVC.shipType = self.shipType
+        finalOrderVC.layoutName = self.layoutName
+        finalOrderVC.num = self.num
         self.navigationController?.pushViewController(finalOrderVC, animated: true)
         
-        //        let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrderFinishViewController") as! OrderFinishViewController
-        //
-        //        vc.modalPresentationStyle = .fullScreen
-        //        self.navigationItem.title = " "
-        //        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "iconBack")
-        //        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "iconBack")
-        //        vc.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
-        //        self.navigationController?.pushViewController(vc, animated: true)
-        //
     }
     
     
     
     @IBAction func minusBtnAction(_ sender: Any) {
-        var old = Int(self.totalCount.text ?? "1")
-        old! = old! - 1
-        self.totalCount.text = String(old!)
-        self.totalSum1.text = String(calc * old!)
-        self.totalSum2.text = String(calc * old!)
+        num = Int(totalCount.text!)!
+
+        if(num>1) {
+            num -= 1
+            totalCount.text = "\(num)"
+
+            
+            afterPrice -= totalPrice
+            totalSum1.text = afterPrice.numberToPrice(afterPrice)
+            totalSum2.text = afterPrice.numberToPrice(afterPrice)
+        }
     }
     
     @IBAction func plusBtnAction(_ sender: Any) {
-        var old = Int(self.totalCount.text ?? "1")
-        old! = old! + 1
-        self.totalCount.text = String(old!)
-        self.totalSum1.text = String(calc * old!)
-        self.totalSum2.text = String(calc * old!)
+        num = Int(totalCount.text!)!
+
+        num += 1
+        totalCount.text = "\(num)"
+        
+        afterPrice += totalPrice
+        totalSum1.text = afterPrice.numberToPrice(afterPrice)
+        totalSum2.text = afterPrice.numberToPrice(afterPrice)
     }
     
     
-    @IBAction func normalClick(_ sender: Any) {
-        cal1 = !cal1
-        calc +=  0
-        print(calc)
-        normalBtn.isSelected = true
-        advanceBtn.isSelected = false
-        normalBtn.setImage(UIImage(named: "ovalSelectOption"), for: .selected)
-        self.printLabel.text = "유광"
+    
+    
+    //종이 타입 클릭 시
+    @IBAction func paperTypeClick(_ sender: Any) {
+        if(!isClickPaperType) {
+            isClickPaperType = !isClickPaperType
+        }
         
-        if ( superAdShipBtn.isSelected == true || noramlShipBtn.isSelected  == true || superAdShipBtn.isSelected == true) &&
-            ( normalBtn.isSelected == true || advanceBtn.isSelected == true)
-        {
+        let btn = sender as! UIButton
+        
+        if(btn.tag == 1){
+            normalBtn.isSelected = true
+            advanceBtn.isSelected = false
+            paperType = "유광"
+        }else if(btn.tag == 2){
+            normalBtn.isSelected = false
+            advanceBtn.isSelected = true
+            paperType = "무광"
+        }
+
+        
+        printLabel.text = paperType
+        
+        if (isClickShipType){
             CompleteBtn.backgroundColor = .black
+            self.CompleteBtn.isEnabled = true
         }
         
     }
     
-    @IBAction func adClick(_ sender: Any) {
-        cal2 = !cal2
-        calc +=  0
+    
+    //배송 타입 클릭 시
+    @IBAction func shipTypeClick(_ sender: Any) {
+        if(!isClickShipType) {
+            isClickShipType = !isClickShipType
+        }
         
-        print(calc)
-        normalBtn.isSelected = false
-        advanceBtn.isSelected = true
-        advanceBtn.setImage(UIImage(named: "ovalSelectOption"), for: .selected)
-        self.printLabel.text = "무광"
+        let btn = sender as! UIButton
         
-        if ( superAdShipBtn.isSelected == true || noramlShipBtn.isSelected  == true || superAdShipBtn.isSelected == true) &&
-        ( normalBtn.isSelected == true || advanceBtn.isSelected == true)
-        {
+        if(btn.tag == 3){
+            noramlShipBtn.isSelected = true
+            advanceShipBtn.isSelected = false
+            superAdShipBtn.isSelected = false
+            shipType = "일반"
+        }else if(btn.tag == 4){
+            noramlShipBtn.isSelected = false
+            superAdShipBtn.isSelected = true
+            advanceShipBtn.isSelected = false
+            shipType = "특급(+10,000원)"
+        }else if(btn.tag == 5){
+            noramlShipBtn.isSelected = false
+            superAdShipBtn.isSelected = false
+            advanceShipBtn.isSelected = true
+            shipType = "등기(+15,000원)"
+        }
+        
+        shipTypeLabel.text = shipType
+        
+        
+        if (isClickPaperType){
             CompleteBtn.backgroundColor = .black
+            self.CompleteBtn.isEnabled = true
         }
         
     }
-        
-    @IBAction func normalShipClick(_ sender: Any) {
-        cal4 = !cal4
-        calc +=  0
-        
-        print(calc)
-        noramlShipBtn.isSelected = true
-        advanceShipBtn.isSelected = false
-        superAdShipBtn.isSelected = false
-        noramlShipBtn.setImage(UIImage(named: "ovalSelectOption"), for: .selected)
-        self.shipLabel.text = "일반"
-        
-        if ( superAdShipBtn.isSelected == true || noramlShipBtn.isSelected  == true || superAdShipBtn.isSelected == true) &&
-        ( normalBtn.isSelected == true || advanceBtn.isSelected == true)
-        {
-            CompleteBtn.backgroundColor = .black
-        }
-    }
-    
-    
-    
-    @IBAction func adShipClick(_ sender: Any) {
-        cal5 = !cal5
-        if cal5 {
-            calc = calc + 10000
-        }
-        else {
-            calc = calc - 10000
-        }
-        noramlShipBtn.isSelected = false
-        advanceShipBtn.isSelected = true
-        superAdShipBtn.isSelected = false
-        advanceShipBtn.setImage(UIImage(named: "ovalSelectOption"), for: .selected)
-        self.shipLabel.text = "특급배송"
-        
-        if ( superAdShipBtn.isSelected == true || noramlShipBtn.isSelected  == true || superAdShipBtn.isSelected == true) &&
-        ( normalBtn.isSelected == true || advanceBtn.isSelected == true)
-        {
-            CompleteBtn.backgroundColor = .black
-        }
-    }
-    
-    @IBAction func ad2ShipClick(_ sender: Any) {
-         cal6 = !cal6
-         if cal6 {
-             calc = calc + 15000
-         }
-         else {
-             calc = calc - 15000
-         }
-         noramlShipBtn.isSelected = false
-         advanceShipBtn.isSelected = false
-         superAdShipBtn.isSelected = true
-         superAdShipBtn.setImage(UIImage(named: "ovalSelectOption"), for: .selected)
-         self.shipLabel.text = "등기배송"
-         
-         if ( superAdShipBtn.isSelected == true || noramlShipBtn.isSelected  == true || superAdShipBtn.isSelected == true) &&
-         ( normalBtn.isSelected == true || advanceBtn.isSelected == true)
-         {
-             CompleteBtn.backgroundColor = .black
-         }
-         
-         
-     }
     
     
     
     
+    //일반 배송 info 버튼 클릭 시
     @IBAction func adShipInfo(_ sender: Any) {
         
         let storyboard = UIStoryboard(name: "Print", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PopUpViewController") as! PopUpViewController
+        vc.albumName = albumInfo.name
         
         vc.modalTransitionStyle = .crossDissolve
         vc.modalPresentationStyle = .overCurrentContext
@@ -478,11 +476,12 @@ class OptionViewController : UIViewController {
         
     }
     
+    //등기 배송 info 버튼 클릭 시
     @IBAction func superShipinfo(_ sender: Any) {
         
         let storyboard = UIStoryboard(name: "Print", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PopUp2ViewController") as! PopUp2ViewController
-        
+        vc.albumName = albumInfo.name
         vc.modalTransitionStyle = .crossDissolve
         vc.modalPresentationStyle = .overCurrentContext
         self.present(vc, animated: true, completion: nil)
@@ -491,6 +490,6 @@ class OptionViewController : UIViewController {
     }
     
     
- 
+
     
 }

@@ -23,19 +23,29 @@ class OrderFinalViewController: UIViewController {
     @IBOutlet weak var tfTelephone1: UITextField!
     @IBOutlet weak var tfTelephone2: UITextField!
     @IBOutlet weak var tfTelephone3: UITextField!
-    @IBOutlet weak var tfMemo: UITextField!
+    @IBOutlet weak var tvMemo: UITextView!
     @IBOutlet weak var payBtn: UIButton!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var cancelOptionBtn: UIButton!
     @IBOutlet weak var okOptionBtn: UIButton!
     @IBOutlet weak var sheetHeightConst: NSLayoutConstraint!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    var albumInfo: album!
+    var afterPrice:Int = 0
+    var paperType = ""
+    var shipType = ""
+    var coverImage:UIImage!
+    var layoutName:String!
+    var num = 0
     
     var agreeFlag:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        setRecognizer()
     }
     
     //네비게이션바 - 뒤로가기 버튼 클릭 시
@@ -62,6 +72,7 @@ class OrderFinalViewController: UIViewController {
     @IBAction func clickSearchAddress(_ sender: Any) {
         let addressSearchVC = storyboard?.instantiateViewController(withIdentifier: "AddressSearchViewController") as! AddressSearchViewController
         addressSearchVC.searchDelegate = self
+        addressSearchVC.modalPresentationStyle = .fullScreen
         present(addressSearchVC, animated: true)
     }
     
@@ -70,8 +81,10 @@ class OrderFinalViewController: UIViewController {
         let agreeBtn = sender as! UIButton
         if(!agreeFlag){
             agreeBtn.setBackgroundImage(UIImage(named: "checkboxActBlack"), for: .normal)
+            payBtn.isEnabled = true
         }else {
             agreeBtn.setBackgroundImage(UIImage(named: "checkboxgray"), for: .normal)
+            payBtn.isEnabled = false
         }
         agreeFlag = !agreeFlag
     }
@@ -80,38 +93,63 @@ class OrderFinalViewController: UIViewController {
     //결제하기 버튼 클릭 시
     @IBAction func clickPayBtn(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrderFinishViewController") as! OrderFinishViewController
-        
-        vc.modalPresentationStyle = .fullScreen
-        self.navigationItem.title = " "
-        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "iconBack")
-        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "iconBack")
-        vc.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
         self.navigationController?.pushViewController(vc, animated: true)
-        
     }
     
-
     
     func setUI(){
         self.navigationController?.isNavigationBarHidden = true
+        payBtn.isEnabled = false
+        
+        //주문제품 정보 설정
+        coverImageView.image = coverImage
+        albumNameLabel.text = albumInfo.name
+        optionLabel.text =  "커버: \(albumInfo.cover.name) / 포토레이아웃: \(layoutName ?? "") / 인화용지: \(paperType) / 배송: \(shipType)"
+        priceLabel.text = afterPrice.numberToPrice(afterPrice)
+        numLabel.text = "\(num)개"
+        
+        //테두리, 코너 설정
         for subView in self.contentView.subviews {
             if subView is UITextField{
                 subView.layer.borderWidth = 1.0
                 subView.layer.cornerRadius = 8.0
                 subView.layer.borderColor = UIColor(red: 219/255, green: 201/255, blue: 208/255, alpha: 0.7).cgColor
                 (subView as! UITextField).addLeftPadding()
+                subView.tintColor = UIColor(red: 227/255, green: 62/255, blue: 40/255, alpha: 1.0)
             }
+            tvMemo.layer.borderWidth = 1.0
+            tvMemo.layer.cornerRadius = 8.0
+            tvMemo.layer.borderColor = UIColor(red: 219/255, green: 201/255, blue: 208/255, alpha: 0.7).cgColor
+            tvMemo.tintColor = UIColor(red: 227/255, green: 62/255, blue: 40/255, alpha: 1.0)
+            tvMemo.textContainerInset = UIEdgeInsets(top: 13.0, left: 12.0, bottom: 13.0, right: 12.0)
             if subView is UIButton {
                 subView.layer.cornerRadius = 8.0
             }
         }
         
         //주문취소 뷰
-              imageView.isHidden = true
-              sheetHeightConst.constant = 0
-              cancelOptionBtn.layer.cornerRadius = 8.0
-              okOptionBtn.layer.cornerRadius = 8.0
+        imageView.isHidden = true
+        sheetHeightConst.constant = 0
+        cancelOptionBtn.layer.cornerRadius = 8.0
+        okOptionBtn.layer.cornerRadius = 8.0
+        
+        
     }
+    
+    func setRecognizer(){
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(scrollviewTap))
+        singleTapGestureRecognizer.numberOfTapsRequired = 1
+        singleTapGestureRecognizer.isEnabled = true
+        singleTapGestureRecognizer.cancelsTouchesInView = false
+        self.scrollView.addGestureRecognizer(singleTapGestureRecognizer)
+    }
+    
+    @objc func scrollviewTap(sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
+    
+    
+    
     
     func showActionView(){
         UIView.animate(withDuration: 0.5, animations: {
@@ -120,15 +158,19 @@ class OrderFinalViewController: UIViewController {
             self.view.layoutIfNeeded()
         })
     }
- 
+    
     
     func dismissActionView(){
-           UIView.animate(withDuration: 0.2, animations: {
-               self.imageView.isHidden = true
-               self.sheetHeightConst.constant = 0
-               self.view.layoutIfNeeded()
-           })
-       }
+        UIView.animate(withDuration: 0.2, animations: {
+            self.imageView.isHidden = true
+            self.sheetHeightConst.constant = 0
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
 }
 
 extension OrderFinalViewController : SearchAddressDelegate {
