@@ -106,6 +106,35 @@ struct AlbumService : APIManager {
         })
     }
     
+    // getAlbumPassword, get, 앨범 비밀번호
+    func albumGetPassword(uid: Int, completion : @escaping(completeAlbumSerivce)) {
+        let url = Self.url("/album/getAlbumPassword/\(uid)")
+        
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
+            response in
+            switch response.result {
+            case .success :
+                completion(response)
+            case .failure(let err):
+                print("==> Error in AlbumGetPassword Service : \(err)")
+            }
+        })
+    }
+    
+    func albumUploadPasswrod(uid: Int, completion : @escaping(completeAlbumSerivce)) {
+        let url = Self.url("/album/updateAlbumPassword/\(uid)")
+        
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
+            response in
+            switch response.result {
+            case .success:
+                completion(response)
+            case .failure(let err):
+                print("==> Error in AlbumUpdatePassword Service : \(err)")
+            }
+        })
+    }
+    
     // getAlbums, get, 앨범 목록
     func albumGetAlbums(completion : @escaping(completeAlbumSerivce)){
         let url = Self.url("/album/getAlbums")
