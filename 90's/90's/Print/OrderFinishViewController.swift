@@ -22,6 +22,8 @@ class OrderFinishViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         goBackAlbumBtn.layer.cornerRadius = 10
+        orderCodeLabel.text = "주문번호:" + orderCode
+        priceLabel.text = "\(price.numberToPrice(price))원"
     }
     
 

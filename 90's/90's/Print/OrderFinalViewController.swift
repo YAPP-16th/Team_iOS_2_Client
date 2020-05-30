@@ -195,6 +195,8 @@ class OrderFinalViewController: UIViewController {
                     print("\(self.orderCode)")
                     //결제완료 내역으로 이동
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrderFinishViewController") as! OrderFinishViewController
+                    vc.orderCode = self.orderCode
+                    vc.price = self.afterPrice
                     self.navigationController?.pushViewController(vc, animated: true)
                     break
                 case 401...500:
