@@ -10,18 +10,9 @@ import UIKit
 
 class AlbumDetailController : UIViewController {
     @IBOutlet weak var photoCollectionView: UICollectionView!
-    @IBOutlet weak var albumNameLabel: UILabel!
-    @IBOutlet weak var albumCountLabel: UILabel!
     @IBOutlet weak var addPhotoBtn: UIButton!
     // Top View 설정
-    @IBAction func inviteBtn(_ sender: UIButton) {
-        if isSharingAlbum == false {
-            switchShareView(value: false)
-        } else {
-            // + 확인 버튼 - 공유앨범 서버 통신
-            inviteSetting()
-        }
-    }
+    @IBOutlet weak var inviteBtn: UIButton!
     @IBOutlet weak var infoBtn: UIButton!
     @IBAction func backBtn(_ sender: UIButton) { self.navigationController?.popToRootViewController(animated: true) }
     // 사진 추가 버튼을 눌렀을 때
@@ -42,6 +33,7 @@ class AlbumDetailController : UIViewController {
     @IBOutlet weak var hideShareLine: UILabel!
     @IBAction func hideShareCancleBtn(_ sender: UIButton) { switchShareView(value: true) }
     @IBAction func touchhideShareCompleteBtn(_ sender: UIButton) { inviteSetting() }
+    
     
     // old filter
     private let context = CIContext(options: nil)
@@ -70,8 +62,9 @@ class AlbumDetailController : UIViewController {
     var photoUidArray = [PhotoGetPhotoData]()
     var networkDetailAlbum : album?
     var networkPhotoUidArray : [Int] = []
-  
-    var networkPhotoUrlImageArray = [UIImage]()
+    var networkPhotoUrlImageArray : [UIImage] = []
+    var networkHeaderName : String = ""
+    var networkHedaerCount : Int = 0
 
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -126,6 +119,7 @@ extension AlbumDetailController {
     }
     
     func buttonSetting(){
+        inviteBtn.addTarget(self, action: #selector(touchInivteBtn), for: .touchUpInside)
         addPhotoBtn.addTarget(self, action: #selector(touchAddPhotoBtn), for: .touchUpInside)
         hideAddAlbumBtn.addTarget(self, action: #selector(touchAlbumBtn), for: .touchUpInside)
         hideAddPhotoBtn.addTarget(self, action: #selector(touchCameraBtn), for: .touchUpInside)
@@ -182,15 +176,19 @@ extension AlbumDetailController {
         }
     }
 
-    // 완료된 앨범일 경우 사진 추가 못함
-    func switchAddBtn(value : Bool) {
+    // 완료된 앨범일 경우
+    func switchAlbumComplete(value : Bool){
         switch value {
         case false :
             addPhotoBtn.isEnabled = true
             addPhotoBtn.isHidden = false
-        case true :
+            inviteBtn.isEnabled = true
+            inviteBtn.isHidden = false
+        case true:
             addPhotoBtn.isEnabled = false
             addPhotoBtn.isHidden = true
+            inviteBtn.isEnabled = false
+            inviteBtn.isHidden = true
             networkAddCount()
         }
     }
@@ -221,13 +219,13 @@ extension AlbumDetailController {
     
     func setZoomImageView(layout : AlbumLayout) -> CGSize {
         switch layout {
-        case .Polaroid : return AlbumLayout.Polaroid.bigsize
-        case .Mini : return AlbumLayout.Mini.bigsize
-        case .Memory : return AlbumLayout.Memory.bigsize
-        case .Portrab : return AlbumLayout.Portrab.bigsize
-        case .Portraw : return AlbumLayout.Portraw.bigsize
-        case .Tape : return AlbumLayout.Tape.bigsize
-        case .Filmroll : return AlbumLayout.Filmroll.bigsize
+        case .Polaroid : return AlbumLayout.Polaroid.deviceHighSize
+        case .Mini : return AlbumLayout.Mini.deviceHighSize
+        case .Memory : return AlbumLayout.Memory.deviceHighSize
+        case .Portrab : return AlbumLayout.Portrab.deviceHighSize
+        case .Portraw : return AlbumLayout.Portraw.deviceHighSize
+        case .Tape : return AlbumLayout.Tape.deviceHighSize
+        case .Filmroll : return AlbumLayout.Filmroll.deviceHighSize
         }
     }
     
@@ -242,14 +240,6 @@ extension AlbumDetailController {
            })
        }
     
-//    func applyLUTImage(originImage : UIImage) -> UIImage {
-//        let test = colorCubeFilterFromLUT(imageName: "oldfilter_lut", originalImage: originImage)
-//        let result = test?.outputImage
-//        let image = UIImage.init(cgImage: context.createCGImage(result!, from: result!.extent)!)
-//
-//        return image
-//    }
-
     func setOldFilter(image : UIImage) -> UIImage{
         let inputImage : CIImage = CIImage.init(image: image)!
         let context = CIContext()
@@ -350,13 +340,13 @@ extension AlbumDetailController {
                     guard let data = response.data else {return}
                     guard let value = try? JSONDecoder().decode(album.self, from: data) else {return}
                     self.networkDetailAlbum = value
-                    self.albumNameLabel.text = value.name
+                    self.networkHeaderName = value.name
                     self.albumMaxCount = value.photoLimit
                     self.isAlbumComplete = value.complete
                     self.selectedLayout = self.getLayoutByUid(value: value.layoutUid)
                     self.hideImageZoom.frame.size = CGSize(width: self.setZoomImageView(layout: self.selectedLayout!).width - 60, height: self.setZoomImageView(layout: self.selectedLayout!).height - 60)
                     self.albumOldCount = value.count
-//                    self.hideImageZoom.center = self.view.center
+                    self.hideImageZoom.center = self.view.center
                     self.NetworkGetPhotoUid()
                 case 401:
                     print("\(status) : bad request, no warning in Server")
@@ -380,7 +370,7 @@ extension AlbumDetailController {
                 guard let data = response.data else {return}
                 guard let value = try? JSONDecoder().decode([PhotoGetPhotoData].self, from: data) else {return}
                 self.photoUidArray = value
-                self.albumCountLabel.text = "\(self.photoUidArray.count) 개의 추억이 쌓였습니다"
+                self.networkHedaerCount = self.photoUidArray.count
                 self.networkPhotoUidArray = self.photoUidArray.map{ $0.photoUid }
                 self.NetworkGetPhoto(photoUid: self.networkPhotoUidArray)
             case 401:
@@ -416,7 +406,7 @@ extension AlbumDetailController {
         }
 
         isAlbumComplete = photoUidArray.count+1 <= albumMaxCount ? false : true
-        switchAddBtn(value: isAlbumComplete)
+        switchAlbumComplete(value: isAlbumComplete)
     }
     
     // 앨범 완성 후 - 앨범 낡기 적용
@@ -464,6 +454,15 @@ extension AlbumDetailController {
         }
     }
     
+    @objc func touchInivteBtn(){
+        if isSharingAlbum == false {
+            switchShareView(value: false)
+        } else {
+            // + 확인 버튼 - 공유앨범 서버 통신
+            inviteSetting()
+        }
+    }
+    
     @objc func touchAddPhotoBtn() {
         switchHideView(value: isAlbumComplete)
     }
@@ -501,6 +500,14 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
         return 1
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "albumdetailheadercell", for: indexPath) as! DetailAbumCell
+        header.albumTitle.text = networkHeaderName
+        header.albumCount.text = "\(networkHedaerCount) 개의 추억이 쌓였습니다"
+        return header
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if currentCell != nil && isArrangeEnded {
             return currentCell!
@@ -510,16 +517,7 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
             
             cell.backImageView = applyBackImageViewLayout(selectedLayout: selectedLayout!, smallBig: size, imageView: cell.backImageView)
             cell.backImageView.image = networkPhotoUrlImageArray[indexPath.row]
-            
-//            if isAlbumComplete == true {
-////                for _ in 0...albumOldCount {
-//                    networkPhotoUrlImageArray[indexPath.row] = applyLUTImage(originImage: networkPhotoUrlImageArray[indexPath.row])
-////                }
-//            }
-            
-            
-            
-            
+    
             return cell
         }
     }
