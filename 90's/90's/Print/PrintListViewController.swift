@@ -64,6 +64,8 @@ class PrintListViewController: UIViewController {
                     self.completeAlbums = value.filter{ $0.complete == true }
                     if(self.completeAlbums.count != 0){
                         self.getPhotoCount()
+                    }else {
+                        self.setPrintMainUI()
                     }
                 case 401:
                     print("\(status) : bad request, no warning in Server")

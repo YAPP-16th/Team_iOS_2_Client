@@ -11,11 +11,11 @@ import Alamofire
 struct OrderService : APIManager {
     static let shared = OrderService()
 
-    let orderURL = url("album/order/createAlbumOrder")
+    let orderURL = url("/album/order/createAlbumOrder")
     typealias completeOrder = (AFDataResponse<Any>) -> ()
     
     
-    func order(token: String, albumUid:Int, recipient:String,
+    func order(token: String, amount: Int, albumUid:Int, recipient:String,
                postalCode:String, address:String, addressDetail:String,
                phoneNum:String, message:String,
                paperType1:Int,paperType2:Int,
@@ -26,6 +26,7 @@ struct OrderService : APIManager {
         
         let body: [String:Any] = [
             "albumUid": albumUid,
+            "amount": amount,
             "recipient": recipient,
             "postalCode": postalCode,
             "address": address,

@@ -102,6 +102,7 @@
 		A38A2D102458719E000BF82D /* TelephoneAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38A2D0F2458719E000BF82D /* TelephoneAuthService.swift */; };
 		A38A2D3824588E99000BF82D /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38A2D3724588E99000BF82D /* LoginService.swift */; };
 		A3A1D7592482206300FF00A4 /* OrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A1D7582482206300FF00A4 /* OrderService.swift */; };
+		A3A1D78D2482548100FF00A4 /* OrderResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A1D78C2482548100FF00A4 /* OrderResult.swift */; };
 		A3B0D1BE245D547800DB90ED /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D1BD245D547800DB90ED /* QuestionCell.swift */; };
 		A3B0D1CB245D548300DB90ED /* AnswerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D1CA245D548300DB90ED /* AnswerCell.swift */; };
 		A3B0D1D9245D6C8400DB90ED /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D1D8245D6C8400DB90ED /* SettingCell.swift */; };
@@ -627,6 +628,7 @@
 		A38A2D0F2458719E000BF82D /* TelephoneAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelephoneAuthService.swift; sourceTree = "<group>"; };
 		A38A2D3724588E99000BF82D /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		A3A1D7582482206300FF00A4 /* OrderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderService.swift; sourceTree = "<group>"; };
+		A3A1D78C2482548100FF00A4 /* OrderResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderResult.swift; sourceTree = "<group>"; };
 		A3B0D1BD245D547800DB90ED /* QuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
 		A3B0D1CA245D548300DB90ED /* AnswerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCell.swift; sourceTree = "<group>"; };
 		A3B0D1D8245D6C8400DB90ED /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
@@ -1811,6 +1813,7 @@
 			isa = PBXGroup;
 			children = (
 				A3F3094D246EE7C90051FF6B /* AddressResult.swift */,
+				A3A1D78C2482548100FF00A4 /* OrderResult.swift */,
 			);
 			path = NetworkResult;
 			sourceTree = "<group>";
@@ -2082,6 +2085,7 @@
 				9BBBA3E3243F6FD5002904AC /* AlbumCompleteVC.swift in Sources */,
 				A36DC86F24236386001B3767 /* AlbumDetailController.swift in Sources */,
 				9B1B7A68244C1590008ED381 /* AlbumLayoutPreviewCell.swift in Sources */,
+				A3A1D78D2482548100FF00A4 /* OrderResult.swift in Sources */,
 				A318AC76243E292600245434 /* PasswordViewController.swift in Sources */,
 				A3E133D624558988007950D8 /* OrderListViewController.swift in Sources */,
 				A3025CA42441AE9800041723 /* FindEmailErrViewController.swift in Sources */,

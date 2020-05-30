@@ -13,24 +13,25 @@ class OrderFinishViewController : UIViewController {
     
     @IBOutlet weak var goBackAlbumBtn: UIButton!
     @IBOutlet weak var copyBtn: UIButton!
+    @IBOutlet weak var orderCodeLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    
+    var orderCode:String = ""
+    var price:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         goBackAlbumBtn.layer.cornerRadius = 10
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-//           self.tabBarController?.tabBar.isHidden = false
-           self.navigationController?.navigationBar.isHidden = false
-       }
+
     
     
     @IBAction func cancelgotoAlbum(_ sender: Any) {
-//        self.dismiss(animated: true, completion: nil)
-        self.navigationController?.popToRootViewController(animated: true)
-//        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popToViewController(self.navigationController!.viewControllers[0], animated: true)
     }
     
+
     
 }
 

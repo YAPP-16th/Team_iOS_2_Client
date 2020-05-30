@@ -39,6 +39,7 @@ class OrderFinalViewController: UIViewController {
     var coverImage:UIImage!
     var layoutName:String!
     var num = 0
+    var orderCode = ""
     
     var agreeFlag:Bool = false
     
@@ -66,7 +67,7 @@ class OrderFinalViewController: UIViewController {
     //취소 시트 -> 확인 버튼 클릭
     @IBAction func clickOkBtn(_ sender: Any) {
         dismissActionView()
-        navigationController?.popToViewController(self.navigationController!.viewControllers[1], animated: true)
+        navigationController?.popToViewController(self.navigationController!.viewControllers[0], animated: true)
     }
     
     //우편번호 검색 버튼 클릭
@@ -182,18 +183,19 @@ class OrderFinalViewController: UIViewController {
         guard let jwt = UserDefaults.standard.string(forKey: "jwt") else { return }
         
         
-        OrderService.shared.order(token: jwt, albumUid: albumInfo.uid, recipient: tfRecipient.text!, postalCode: tfPostNumber.text!, address: tfMainAddress.text!, addressDetail: tfSubAddress.text ?? "", phoneNum: phoneNum, message: tvMemo.text ?? "", paperType1: paperTypeIndex, paperType2: paperType2Index, postType: shipTypeIndex, cost: "\(afterPrice)", completion: { response in
+        OrderService.shared.order(token: jwt, amount: num, albumUid: albumInfo.uid, recipient: tfRecipient.text!, postalCode: tfPostNumber.text!, address: tfMainAddress.text!, addressDetail: tfSubAddress.text ?? "", phoneNum: phoneNum, message: tvMemo.text ?? "", paperType1: paperTypeIndex, paperType2: paperType2Index, postType: shipTypeIndex, cost: "\(afterPrice)", completion: { response in
             if let status = response.response?.statusCode {
                 switch status {
                 case 200:
                     //데이터 디코딩
                     guard let data = response.data else { return }
                     let decoder = JSONDecoder()
-                    
+                    guard let value = try? decoder.decode(OrderResult.self, from: data) else { return }
+                    self.orderCode = value.orderCode
+                    print("\(self.orderCode)")
                     //결제완료 내역으로 이동
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrderFinishViewController") as! OrderFinishViewController
                     self.navigationController?.pushViewController(vc, animated: true)
-                    
                     break
                 case 401...500:
                     self.showErrAlert()
