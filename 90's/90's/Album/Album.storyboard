@@ -1063,9 +1063,6 @@
                                             <constraint firstAttribute="width" constant="44" id="2zA-Z8-4Vg"/>
                                         </constraints>
                                         <state key="normal" title="초대" image="iconInvitation"/>
-                                        <connections>
-                                            <action selector="inviteBtn:" destination="xQZ-oo-bAJ" eventType="touchUpInside" id="yVh-sA-Vku"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0YD-Gg-ahy">
                                         <rect key="frame" x="360" y="12" width="44" height="54"/>
@@ -1384,6 +1381,7 @@
                         <outlet property="hideWhiteView" destination="Wo5-uJ-SMg" id="BWa-ce-3TR"/>
                         <outlet property="hidewhiteviewBottom" destination="1Jy-sH-L27" id="4wv-wj-oHB"/>
                         <outlet property="infoBtn" destination="0YD-Gg-ahy" id="JBX-Ry-zVR"/>
+                        <outlet property="inviteBtn" destination="9yo-aO-9Ei" id="h6g-4T-a0m"/>
                         <outlet property="photoCollectionView" destination="J2e-XA-xYZ" id="z0v-x7-vs4"/>
                     </connections>
                 </viewController>

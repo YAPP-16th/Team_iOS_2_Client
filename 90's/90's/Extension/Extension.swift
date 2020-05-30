@@ -106,7 +106,7 @@ extension UIViewController{
     func setRenderImageViewFrameSetting(view: UIView, imageView : UIImageView, selectlayout : AlbumLayout){
         let top = getImageViewConstraintY(selecetedLayout: selectlayout).width
         let bottom = getImageViewConstraintY(selecetedLayout: selectlayout).height
-        let distance = (selectlayout.bigsize.width - imageView.frame.width) / 2
+        let distance = (selectlayout.deviceHighSize.width - imageView.frame.width) / 2
     
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: top).isActive = true
@@ -124,7 +124,6 @@ extension UIViewController{
         view.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: distance).isActive = true
         view.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -distance).isActive = true
         view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: (self.view.frame.height - view.frame.height)/3).isActive = true
-//        view.addShadowEffect()
     }
 
     // LUT Filter apply
@@ -219,15 +218,27 @@ extension UIViewController{
         }
     }
     
-    func returnLayoutBigSize(selectedLayout : AlbumLayout) -> CGSize {
+    func returnLayoutStickerLowDeviceSize(selectedLayout : AlbumLayout) -> CGSize {
         switch selectedLayout {
-        case .Polaroid : return AlbumLayout.Polaroid.bigsize
-        case .Mini : return AlbumLayout.Mini.bigsize
-        case .Memory : return AlbumLayout.Memory.bigsize
-        case .Portrab : return AlbumLayout.Portrab.bigsize
-        case .Tape : return AlbumLayout.Tape.bigsize
-        case .Portraw : return AlbumLayout.Portraw.bigsize
-        case .Filmroll : return AlbumLayout.Filmroll.bigsize
+        case .Polaroid : return AlbumLayout.Polaroid.deviceLowSize
+        case .Mini : return AlbumLayout.Mini.deviceLowSize
+        case .Memory : return AlbumLayout.Memory.deviceLowSize
+        case .Portrab : return AlbumLayout.Portrab.deviceLowSize
+        case .Tape : return AlbumLayout.Tape.deviceLowSize
+        case .Portraw : return AlbumLayout.Portraw.deviceLowSize
+        case .Filmroll : return AlbumLayout.Filmroll.deviceLowSize
+        }
+    }
+    
+    func returnLayoutStickerHighDeviceSize(selectedLayout : AlbumLayout) -> CGSize {
+        switch selectedLayout {
+        case .Polaroid : return AlbumLayout.Polaroid.deviceHighSize
+        case .Mini : return AlbumLayout.Mini.deviceHighSize
+        case .Memory : return AlbumLayout.Memory.deviceHighSize
+        case .Portrab : return AlbumLayout.Portrab.deviceHighSize
+        case .Tape : return AlbumLayout.Tape.deviceHighSize
+        case .Portraw : return AlbumLayout.Portraw.deviceHighSize
+        case .Filmroll : return AlbumLayout.Filmroll.deviceHighSize
         }
     }
     
@@ -309,46 +320,65 @@ extension UIViewController{
     }
     
     // album - Sticker - addPhoto
-    func applyBigImageViewLayout(selectedLayout : AlbumLayout, smallBig: CGSize, imageView : UIImageView, image : UIImage) -> UIImageView {
+    func applyStickerLowDeviceImageViewLayout(selectedLayout : AlbumLayout, smallBig: CGSize, imageView : UIImageView, image : UIImage) -> UIImageView {
+        var size : CGSize = CGSize(width: 0, height: 0)
+        
+        switch selectedLayout {
+        case .Polaroid :
+            size = CGSize(width: smallBig.width - 26, height: smallBig.height - 75)
+            imageView.frame = CGRect(x: 13, y: 14, width: size.width, height: size.height)
+        case .Mini :
+            size = CGSize(width: smallBig.width - 30, height: smallBig.height - 67)
+            imageView.frame = CGRect(x: 15, y: 13, width: size.width, height: size.height)
+        case .Memory :
+            size = CGSize(width: smallBig.width - 46, height: smallBig.height - 52)
+        imageView.frame = CGRect(x: 23, y: 26, width: size.width, height: size.height)
+        case .Portrab :
+            size = CGSize(width: smallBig.width - 16, height: smallBig.height - 14)
+            imageView.frame = CGRect(x: 8, y: 7, width: size.width, height: size.height)
+        case .Tape :
+            size = CGSize(width: smallBig.width - 28, height: smallBig.height - 88)
+            imageView.frame = CGRect(x: 14, y: 35, width: size.width, height: size.height)
+        case .Portraw :
+            size = CGSize(width: smallBig.width - 6, height: smallBig.height - 18)
+            imageView.frame = CGRect(x: 3, y: 9, width: size.width, height: size.height)
+        case .Filmroll :
+            size = CGSize(width: smallBig.width - 60, height: smallBig.height - 2)
+            imageView.frame = CGRect(x: 30, y: 1, width: size.width, height: size.height)
+        }
+        imageView.image = image.imageResize(sizeChange: size)
+        return imageView
+    }
+    
+    // album - Sticker - addPhoto
+    func applyStickerHighDeviceImageViewLayout(selectedLayout : AlbumLayout, smallBig: CGSize, imageView : UIImageView, image : UIImage) -> UIImageView {
         var size : CGSize = CGSize(width: 0, height: 0)
         
         switch selectedLayout {
         case .Polaroid:
             size = CGSize(width: smallBig.width - 40, height: smallBig.height - 114)
             imageView.frame = CGRect(x: 20, y: 26, width: size.width, height: size.height)
-            imageView.image = image.imageResize(sizeChange: size)
-            return imageView
         case .Mini:
             size =  CGSize(width: smallBig.width - 48, height: smallBig.height - 90)
             imageView.frame = CGRect(x: 24, y: 20, width: size.width, height: size.height)
-            imageView.image = image.imageResize(sizeChange: size)
-            return imageView
         case .Memory:
             size = CGSize(width: smallBig.width - 60, height: smallBig.height - 70)
             imageView.frame = CGRect(x: 30, y: 35, width: size.width, height: size.height)
-            imageView.image = image.imageResize(sizeChange: size)
-            return imageView
         case .Portrab:
             size = CGSize(width: smallBig.width - 26, height: smallBig.height - 30)
             imageView.frame = CGRect(x: 13, y: 16, width: size.width, height: size.height)
-            imageView.image = image.imageResize(sizeChange: size)
-            return imageView
         case .Tape:
             size = CGSize(width: smallBig.width - 36, height: smallBig.height - 116)
             imageView.frame = CGRect(x: 18, y: 44, width: size.width, height: size.height)
-            imageView.image = image.imageResize(sizeChange: size)
-            return imageView
         case .Portraw:
             size = CGSize(width: smallBig.width - 14, height: smallBig.height - 28)
             imageView.frame = CGRect(x: 7, y: 14, width: size.width, height: size.height)
-            imageView.image = image.imageResize(sizeChange: size)
-            return imageView
         case .Filmroll:
             size = CGSize(width: smallBig.width - 72, height: smallBig.height - 6)
             imageView.frame = CGRect(x: 36, y: 3, width:size.width, height: size.height)
-            imageView.image = image.imageResize(sizeChange: size)
-            return imageView
         }
+        imageView.image = image.imageResize(sizeChange: size)
+        return imageView
     }
     
     // top, bottom
@@ -472,6 +502,28 @@ extension UIImage {
         let mergedImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return mergedImage
+    }
+    
+    func resizeImage(image: UIImage, newSize: CGSize) -> (UIImage) {
+        let newRect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height).integral
+        UIGraphicsBeginImageContextWithOptions(newSize, true, 0)
+        let context = UIGraphicsGetCurrentContext()
+
+        // Set the quality level to use when rescaling
+        context!.interpolationQuality = CGInterpolationQuality.default
+        let flipVertical = CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: newSize.height )
+        context!.concatenate(flipVertical)
+
+        // Draw into the context; this scales the image
+        context?.draw(image.cgImage!, in: CGRect(x: 0.0,y: 0.0, width: newRect.width, height: newRect.height))
+
+        let newImageRef = context!.makeImage()! as CGImage
+        let newImage = UIImage(cgImage: newImageRef)
+
+        // Get the resized image from the context and a UIImage
+        UIGraphicsEndImageContext()
+
+        return newImage
     }
 }
 

@@ -12,14 +12,7 @@ class AlbumDetailController : UIViewController {
     @IBOutlet weak var photoCollectionView: UICollectionView!
     @IBOutlet weak var addPhotoBtn: UIButton!
     // Top View 설정
-    @IBAction func inviteBtn(_ sender: UIButton) {
-        if isSharingAlbum == false {
-            switchShareView(value: false)
-        } else {
-            // + 확인 버튼 - 공유앨범 서버 통신
-            inviteSetting()
-        }
-    }
+    @IBOutlet weak var inviteBtn: UIButton!
     @IBOutlet weak var infoBtn: UIButton!
     @IBAction func backBtn(_ sender: UIButton) { self.navigationController?.popToRootViewController(animated: true) }
     // 사진 추가 버튼을 눌렀을 때
@@ -126,6 +119,7 @@ extension AlbumDetailController {
     }
     
     func buttonSetting(){
+        inviteBtn.addTarget(self, action: #selector(touchInivteBtn), for: .touchUpInside)
         addPhotoBtn.addTarget(self, action: #selector(touchAddPhotoBtn), for: .touchUpInside)
         hideAddAlbumBtn.addTarget(self, action: #selector(touchAlbumBtn), for: .touchUpInside)
         hideAddPhotoBtn.addTarget(self, action: #selector(touchCameraBtn), for: .touchUpInside)
@@ -182,15 +176,19 @@ extension AlbumDetailController {
         }
     }
 
-    // 완료된 앨범일 경우 사진 추가 못함
-    func switchAddBtn(value : Bool) {
+    // 완료된 앨범일 경우
+    func switchAlbumComplete(value : Bool){
         switch value {
         case false :
             addPhotoBtn.isEnabled = true
             addPhotoBtn.isHidden = false
-        case true :
+            inviteBtn.isEnabled = true
+            inviteBtn.isHidden = false
+        case true:
             addPhotoBtn.isEnabled = false
             addPhotoBtn.isHidden = true
+            inviteBtn.isEnabled = false
+            inviteBtn.isHidden = true
             networkAddCount()
         }
     }
@@ -221,13 +219,13 @@ extension AlbumDetailController {
     
     func setZoomImageView(layout : AlbumLayout) -> CGSize {
         switch layout {
-        case .Polaroid : return AlbumLayout.Polaroid.bigsize
-        case .Mini : return AlbumLayout.Mini.bigsize
-        case .Memory : return AlbumLayout.Memory.bigsize
-        case .Portrab : return AlbumLayout.Portrab.bigsize
-        case .Portraw : return AlbumLayout.Portraw.bigsize
-        case .Tape : return AlbumLayout.Tape.bigsize
-        case .Filmroll : return AlbumLayout.Filmroll.bigsize
+        case .Polaroid : return AlbumLayout.Polaroid.deviceHighSize
+        case .Mini : return AlbumLayout.Mini.deviceHighSize
+        case .Memory : return AlbumLayout.Memory.deviceHighSize
+        case .Portrab : return AlbumLayout.Portrab.deviceHighSize
+        case .Portraw : return AlbumLayout.Portraw.deviceHighSize
+        case .Tape : return AlbumLayout.Tape.deviceHighSize
+        case .Filmroll : return AlbumLayout.Filmroll.deviceHighSize
         }
     }
     
@@ -242,14 +240,6 @@ extension AlbumDetailController {
            })
        }
     
-//    func applyLUTImage(originImage : UIImage) -> UIImage {
-//        let test = colorCubeFilterFromLUT(imageName: "oldfilter_lut", originalImage: originImage)
-//        let result = test?.outputImage
-//        let image = UIImage.init(cgImage: context.createCGImage(result!, from: result!.extent)!)
-//
-//        return image
-//    }
-
     func setOldFilter(image : UIImage) -> UIImage{
         let inputImage : CIImage = CIImage.init(image: image)!
         let context = CIContext()
@@ -356,7 +346,7 @@ extension AlbumDetailController {
                     self.selectedLayout = self.getLayoutByUid(value: value.layoutUid)
                     self.hideImageZoom.frame.size = CGSize(width: self.setZoomImageView(layout: self.selectedLayout!).width - 60, height: self.setZoomImageView(layout: self.selectedLayout!).height - 60)
                     self.albumOldCount = value.count
-//                    self.hideImageZoom.center = self.view.center
+                    self.hideImageZoom.center = self.view.center
                     self.NetworkGetPhotoUid()
                 case 401:
                     print("\(status) : bad request, no warning in Server")
@@ -416,7 +406,7 @@ extension AlbumDetailController {
         }
 
         isAlbumComplete = photoUidArray.count+1 <= albumMaxCount ? false : true
-        switchAddBtn(value: isAlbumComplete)
+        switchAlbumComplete(value: isAlbumComplete)
     }
     
     // 앨범 완성 후 - 앨범 낡기 적용
@@ -461,6 +451,15 @@ extension AlbumDetailController {
     @objc func touchAlbumBtn(){
         present(galleryPicker, animated: true){
             self.switchHideView(value: true)
+        }
+    }
+    
+    @objc func touchInivteBtn(){
+        if isSharingAlbum == false {
+            switchShareView(value: false)
+        } else {
+            // + 확인 버튼 - 공유앨범 서버 통신
+            inviteSetting()
         }
     }
     
@@ -518,16 +517,7 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
             
             cell.backImageView = applyBackImageViewLayout(selectedLayout: selectedLayout!, smallBig: size, imageView: cell.backImageView)
             cell.backImageView.image = networkPhotoUrlImageArray[indexPath.row]
-            
-//            if isAlbumComplete == true {
-////                for _ in 0...albumOldCount {
-//                    networkPhotoUrlImageArray[indexPath.row] = applyLUTImage(originImage: networkPhotoUrlImageArray[indexPath.row])
-////                }
-//            }
-            
-            
-            
-            
+    
             return cell
         }
     }

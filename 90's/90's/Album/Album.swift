@@ -91,7 +91,19 @@ enum AlbumLayout {
         }
     }
     
-    var bigsize : CGSize{
+    var deviceLowSize : CGSize {
+        switch self {
+        case .Polaroid : return CGSize(width: 290, height: 332)
+        case .Mini : return CGSize(width: 259, height: 354)
+        case .Memory : return CGSize(width: 311, height: 281)
+        case .Portrab : return CGSize(width: 291, height: 348)
+        case .Tape : return CGSize(width: 294, height: 304)
+        case .Portraw : return CGSize(width: 330, height: 202)
+        case .Filmroll : return CGSize(width: 267, height: 357)
+        }
+    }
+    
+    var deviceHighSize : CGSize{
         switch self {
         case .Polaroid : return CGSize(width: 368, height: 447)
         case .Mini : return CGSize(width: 338, height: 463)

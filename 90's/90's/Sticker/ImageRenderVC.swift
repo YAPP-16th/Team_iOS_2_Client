@@ -118,10 +118,10 @@ extension ImageRenderVC {
     }
     
     private func initializeArrays(){
-        deviceSize = isDeviseVersionLow ? returnLayoutSize(selectedLayout: selectLayout) : returnLayoutBigSize(selectedLayout: selectLayout)
+        deviceSize = isDeviseVersionLow ? returnLayoutSize(selectedLayout: selectLayout) : returnLayoutStickerHighDeviceSize(selectedLayout: selectLayout)
         
         layoutImage = applyBackImageViewLayout(selectedLayout: selectLayout, smallBig: deviceSize, imageView: layoutImage)
-        renderImage = applyBigImageViewLayout(selectedLayout: selectLayout, smallBig: deviceSize, imageView: renderImage, image: image!)
+        renderImage = applyStickerHighDeviceImageViewLayout(selectedLayout: selectLayout, smallBig: deviceSize, imageView: renderImage, image: image!)
 
         setRenderSaveViewFrameSetting(view: saveView, selectLayout: selectLayout, size: deviceSize)
         setRenderLayoutViewFrameSetting(view: saveView, imageView: layoutImage)
@@ -200,8 +200,8 @@ extension ImageRenderVC {
         /// todo : 팬에 기울기도 적용하기
         if sticker != nil {
             let transition = panGesture.translation(in: sticker)
-            let scale = CGAffineTransform(scaleX: saveSize, y: saveSize)
-            let rotate = CGAffineTransform(rotationAngle: saveAngle)
+//            let scale = CGAffineTransform(scaleX: saveSize, y: saveSize)
+//            let rotate = CGAffineTransform(rotationAngle: saveAngle)
             sticker!.center = CGPoint(x: sticker!.center.x + transition.x, y: sticker!.center.y + transition.y)
 //            sticker!.transform = scale.concatenating(rotate)
             panGesture.setTranslation(CGPoint.zero, in: sticker)
