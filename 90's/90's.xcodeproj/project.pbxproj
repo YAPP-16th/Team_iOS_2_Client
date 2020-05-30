@@ -100,6 +100,7 @@
 		A38A2D0E24587170000BF82D /* TelephoneAuthResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38A2D0D24587170000BF82D /* TelephoneAuthResult.swift */; };
 		A38A2D102458719E000BF82D /* TelephoneAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38A2D0F2458719E000BF82D /* TelephoneAuthService.swift */; };
 		A38A2D3824588E99000BF82D /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38A2D3724588E99000BF82D /* LoginService.swift */; };
+		A3A1D7592482206300FF00A4 /* OrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A1D7582482206300FF00A4 /* OrderService.swift */; };
 		A3B0D1BE245D547800DB90ED /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D1BD245D547800DB90ED /* QuestionCell.swift */; };
 		A3B0D1CB245D548300DB90ED /* AnswerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D1CA245D548300DB90ED /* AnswerCell.swift */; };
 		A3B0D1D9245D6C8400DB90ED /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B0D1D8245D6C8400DB90ED /* SettingCell.swift */; };
@@ -623,6 +624,7 @@
 		A38A2D0D24587170000BF82D /* TelephoneAuthResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelephoneAuthResult.swift; sourceTree = "<group>"; };
 		A38A2D0F2458719E000BF82D /* TelephoneAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelephoneAuthService.swift; sourceTree = "<group>"; };
 		A38A2D3724588E99000BF82D /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		A3A1D7582482206300FF00A4 /* OrderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderService.swift; sourceTree = "<group>"; };
 		A3B0D1BD245D547800DB90ED /* QuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
 		A3B0D1CA245D548300DB90ED /* AnswerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCell.swift; sourceTree = "<group>"; };
 		A3B0D1D8245D6C8400DB90ED /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
@@ -1797,6 +1799,7 @@
 			isa = PBXGroup;
 			children = (
 				A3F3094A246EE5200051FF6B /* AddressService.swift */,
+				A3A1D7582482206300FF00A4 /* OrderService.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -2107,6 +2110,7 @@
 				9BB3D91F24791DDB00FC1448 /* StickerHeaderCell.swift in Sources */,
 				9BC16B1A2435B68F007F106C /* photoStickerCollectionCell.swift in Sources */,
 				39DE24C724547143007E8D40 /* PrintListViewController.swift in Sources */,
+				A3A1D7592482206300FF00A4 /* OrderService.swift in Sources */,
 				9BC0DBB4244478A600CA90F7 /* ProfileTableViewCell.swift in Sources */,
 				A30B21E12462BCAC00BDC75B /* NewPassViewController.swift in Sources */,
 				A3F30964246F1A7D0051FF6B /* GetProfileService.swift in Sources */,

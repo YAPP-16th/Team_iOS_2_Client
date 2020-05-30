@@ -66,6 +66,7 @@ class OrderFinalViewController: UIViewController {
     //취소 시트 -> 확인 버튼 클릭
     @IBAction func clickOkBtn(_ sender: Any) {
         dismissActionView()
+        navigationController?.popToViewController(self.navigationController!.viewControllers[1], animated: true)
     }
     
     //우편번호 검색 버튼 클릭
@@ -92,14 +93,20 @@ class OrderFinalViewController: UIViewController {
     
     //결제하기 버튼 클릭 시
     @IBAction func clickPayBtn(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrderFinishViewController") as! OrderFinishViewController
-        self.navigationController?.pushViewController(vc, animated: true)
+        if(tfRecipient.text == "" || tfPostNumber.text == "" || tfTelephone1.text == "" || tfTelephone2.text == "" ||
+            tfTelephone3.text == ""){
+            self.showEmptyAlert()
+        }else {
+            self.goOrder()
+        }
     }
     
     
     func setUI(){
         self.navigationController?.isNavigationBarHidden = true
         payBtn.isEnabled = false
+        tfPostNumber.isEnabled = false
+        tfMainAddress.isEnabled = false
         
         //주문제품 정보 설정
         coverImageView.image = coverImage
@@ -109,6 +116,7 @@ class OrderFinalViewController: UIViewController {
         numLabel.text = "\(num)개"
         
         //테두리, 코너 설정
+        
         for subView in self.contentView.subviews {
             if subView is UITextField{
                 subView.layer.borderWidth = 1.0
@@ -148,10 +156,72 @@ class OrderFinalViewController: UIViewController {
         self.view.endEditing(true)
     }
     
+    func goOrder(){
+        let phoneNum = tfTelephone1.text! + tfTelephone2.text!+tfTelephone3.text!
+        
+        
+        //PaperType과 ShipType에 따라 Index 변환
+        var paperTypeIndex = 0
+        let paperType2Index = 1 //기본값
+        var shipTypeIndex = 0
+        
+        if(paperType == "유광"){
+            paperTypeIndex = 1
+        }else {
+            paperTypeIndex = 2
+        }
+        
+        if(shipType == "일반"){
+            shipTypeIndex = 1
+        }else if(shipType == "특급(+10,000원)"){
+            shipTypeIndex = 2
+        }else {
+            shipTypeIndex = 3
+        }
+        
+        guard let jwt = UserDefaults.standard.string(forKey: "jwt") else { return }
+        
+        
+        OrderService.shared.order(token: jwt, albumUid: albumInfo.uid, recipient: tfRecipient.text!, postalCode: tfPostNumber.text!, address: tfMainAddress.text!, addressDetail: tfSubAddress.text ?? "", phoneNum: phoneNum, message: tvMemo.text ?? "", paperType1: paperTypeIndex, paperType2: paperType2Index, postType: shipTypeIndex, cost: "\(afterPrice)", completion: { response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200:
+                    //데이터 디코딩
+                    guard let data = response.data else { return }
+                    let decoder = JSONDecoder()
+                    
+                    //결제완료 내역으로 이동
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrderFinishViewController") as! OrderFinishViewController
+                    self.navigationController?.pushViewController(vc, animated: true)
+                    
+                    break
+                case 401...500:
+                    self.showErrAlert()
+                    break
+                default:
+                    return
+                }
+            }
+        })
+    }
     
+    func showErrAlert(){
+        let alert = UIAlertController(title: "오류", message: "주문 불가", preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(action)
+        self.present(alert, animated: true)
+    }
+    
+    func showEmptyAlert(){
+        let alert = UIAlertController(title: "입력 필요", message: "필수항목을 입력해주세요", preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(action)
+        self.present(alert, animated: true)
+    }
     
     
     func showActionView(){
+        self.view.endEditing(true)
         UIView.animate(withDuration: 0.5, animations: {
             self.imageView.isHidden = false
             self.sheetHeightConst.constant = 264
