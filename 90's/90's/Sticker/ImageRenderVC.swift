@@ -123,6 +123,7 @@ extension ImageRenderVC {
         layoutImage = applyBackImageViewLayout(selectedLayout: selectLayout, smallBig: deviceSize, imageView: layoutImage)
         renderImage = isDeviseVersionLow ? applyStickerLowDeviceImageViewLayout(selectedLayout: selectLayout, smallBig: deviceSize, imageView: renderImage, image: image!) : applyStickerHighDeviceImageViewLayout(selectedLayout: selectLayout, smallBig: deviceSize, imageView: renderImage, image: image!)
 
+
         setRenderSaveViewFrameSetting(view: saveView, selectLayout: selectLayout, size: deviceSize)
         setRenderLayoutViewFrameSetting(view: saveView, imageView: layoutImage)
         setRenderImageViewFrameSetting(view: saveView, imageView: renderImage, selectlayout: selectLayout)
