@@ -118,10 +118,10 @@ extension ImageRenderVC {
     }
     
     private func initializeArrays(){
-        deviceSize = isDeviseVersionLow ? returnLayoutSize(selectedLayout: selectLayout) : returnLayoutStickerHighDeviceSize(selectedLayout: selectLayout)
+        deviceSize = isDeviseVersionLow ? returnLayoutStickerLowDeviceSize(selectedLayout: selectLayout) : returnLayoutStickerHighDeviceSize(selectedLayout: selectLayout)
         
         layoutImage = applyBackImageViewLayout(selectedLayout: selectLayout, smallBig: deviceSize, imageView: layoutImage)
-        renderImage = applyStickerHighDeviceImageViewLayout(selectedLayout: selectLayout, smallBig: deviceSize, imageView: renderImage, image: image!)
+        renderImage = isDeviseVersionLow ? applyStickerLowDeviceImageViewLayout(selectedLayout: selectLayout, smallBig: deviceSize, imageView: renderImage, image: image!) : applyStickerHighDeviceImageViewLayout(selectedLayout: selectLayout, smallBig: deviceSize, imageView: renderImage, image: image!)
 
         setRenderSaveViewFrameSetting(view: saveView, selectLayout: selectLayout, size: deviceSize)
         setRenderLayoutViewFrameSetting(view: saveView, imageView: layoutImage)
