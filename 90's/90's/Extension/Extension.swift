@@ -9,7 +9,6 @@
 import UIKit
 import AVFoundation
 
-
 extension String {
     //이메일 정규식 검증
     public func validateEmail() -> Bool {
@@ -18,7 +17,6 @@ extension String {
         let predicate = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return predicate.evaluate(with: self)
     }
-
 }
 
 extension Int {

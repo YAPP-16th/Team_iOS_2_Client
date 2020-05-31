@@ -114,6 +114,12 @@ struct AlbumService : APIManager {
             response in
             switch response.result {
             case .success :
+                guard let data = response.data else {return}
+                if let string = String(data: data, encoding: .utf8) {
+                    UIPasteboard.general.string = string
+                } else {
+                    print("not a valid UTF-8 sequence")
+                }
                 completion(response)
             case .failure(let err):
                 print("==> Error in AlbumGetPassword Service : \(err)")
@@ -128,6 +134,13 @@ struct AlbumService : APIManager {
             response in
             switch response.result {
             case .success:
+                guard let data = response.data else {return}
+                if let string = String(data: data, encoding: .utf8) {
+                    UIPasteboard.general.string = string
+                } else {
+                    print("not a valid UTF-8 sequence")
+                }
+                completion(response)
                 completion(response)
             case .failure(let err):
                 print("==> Error in AlbumUpdatePassword Service : \(err)")

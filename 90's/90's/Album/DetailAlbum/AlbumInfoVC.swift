@@ -200,9 +200,7 @@ extension AlbumInfoVC {
             if let status = response.response?.statusCode {
                 switch status {
                     case 200 :
-                        guard let data = response.data else {return}
-                        guard let value = try? JSONDecoder().decode(albumPassword.self, from: data) else {return}
-                        UIPasteboard.general.string = value.password
+                        print("get password success")
                     case 401 :
                         print("\(status) : bad request, no warning in Server")
                     case 404 :
@@ -222,9 +220,7 @@ extension AlbumInfoVC {
             if let status = response.response?.statusCode {
                 switch status {
                     case 200 :
-                        guard let data = response.data else {return}
-                        guard let value = try? JSONDecoder().decode(albumPassword.self, from: data) else {return}
-                        UIPasteboard.general.string = value.password
+                        print("upload password success")
                     case 401 :
                         print("\(status) : bad request, no warning in Server")
                     case 404 :
