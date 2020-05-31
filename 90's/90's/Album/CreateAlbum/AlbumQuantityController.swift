@@ -20,7 +20,7 @@ class AlbumQuantityController : UIViewController {
     var albumName:String!
     var albumStartDate:String!
     var albumEndDate:String!
-    var albumMaxCount:Int!
+    var albumMaxCount:Int = 4
     
     private var maxCountArray = Array(4...30)
     

@@ -150,7 +150,7 @@ extension ImageRenderVC {
     private func createStickerView(image : UIImage, indexPathRow : Int){
         sticker = StickerLayout.loadFromZib(image: image)
         sticker?.frame.size = CGSize(width: 120, height: 120)
-        sticker?.center = saveView.center
+        sticker?.center = CGPoint(x: saveView.center.x - 30, y: saveView.center.y - 200)
         createPan(view: sticker!.backImageView) // 이미지 옮기기
         focusView.isHidden = false
         self.saveView.addSubview(sticker!)
@@ -166,7 +166,6 @@ extension ImageRenderVC {
                 (views as! StickerLayout).cancleImageView.isHidden = true
                 (views as! StickerLayout).rotateImageView.isHidden = true
                 (views as! StickerLayout).resizeImageView.isHidden = true
-                (views as! StickerLayout).backImageView.isHidden = true
             }
         }
         
