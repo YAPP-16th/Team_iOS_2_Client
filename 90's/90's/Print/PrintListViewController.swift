@@ -22,6 +22,10 @@ class PrintListViewController: UIViewController {
     var photoUidArray:[Int] = []
     var dispatchGroup = DispatchGroup()
     
+    //주문내역 상세에 들어갈 데이터
+    var orderData:GetOrderResult!
+    var cost = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         demoAlbumImage.isHidden = true
@@ -207,13 +211,47 @@ extension PrintListViewController : ClickActionDelegate {
             self.navigationController?.pushViewController(vc, animated: true)
             break
         case "processing", "ready", "shipping", "done":
-            let profileSB = UIStoryboard.init(name: "Profile", bundle: nil)
-            let profileOrderVC = profileSB.instantiateViewController(withIdentifier: "OrderDetailViewController") as! OrderDetailViewController
-            navigationController?.pushViewController(profileOrderVC, animated: true)
+            let selectedAlbumIndex = completeAlbums[index].uid
+            self.getOrder(albumUid: selectedAlbumIndex)
             break
         default:
             break
         }
     }
+    
+    func getOrder(albumUid: Int){
+        GetOrderService.shared.getOrder(completion: { response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200:
+                    guard let data = response.data else { return }
+                    let decoder = JSONDecoder()
+                    guard let value = try? decoder.decode([GetOrderResult].self, from: data) else { return }
+                    self.orderData = value.filter {$0.album.uid == albumUid}.first!
+                    self.cost = Int(self.orderData.cost)!
+                    let profileSB = UIStoryboard.init(name: "Profile", bundle: nil)
+                    let orderDetailVC = profileSB.instantiateViewController(withIdentifier: "OrderDetailViewController") as! OrderDetailViewController
+                    orderDetailVC.orderData = self.orderData
+                    orderDetailVC.cost = self.cost
+                    self.navigationController?.pushViewController(orderDetailVC, animated: true)
+                    break
+                case 401...500:
+                    self.showErrAlert()
+                    break
+                default:
+                    return
+                }
+            }
+            
+        })
+    }
+    
+    func showErrAlert(){
+        let alert = UIAlertController(title: "오류", message: "주문내역 상세 조회 불가", preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(action)
+        self.present(alert, animated: true)
+    }
+    
     
 }

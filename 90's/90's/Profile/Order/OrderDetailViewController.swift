@@ -27,7 +27,6 @@ class OrderDetailViewController: UIViewController {
     //결제 정보
     @IBOutlet weak var accountLabel: UILabel!
     @IBOutlet weak var depositLabel: UILabel!
-    @IBOutlet weak var depositPeriodLabel: UILabel!
     
    //커스텀 주문취소 뷰
     @IBOutlet weak var sheetHeightConst: NSLayoutConstraint!
@@ -40,6 +39,9 @@ class OrderDetailViewController: UIViewController {
     //클립보드에 복사할 문자열
     var copyStr:String!
     
+    //사용 데이터
+    var orderData:GetOrderResult!
+    var cost = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +74,7 @@ class OrderDetailViewController: UIViewController {
     }
     
     func setUI(){
-        //Label 텍스트 일부만 DemiLight
+        //계좌정보 텍스트 일부만 DemiLight
         let attributedString = NSMutableAttributedString(string: accountLabel.text!, attributes: [
             .font: UIFont(name: "NotoSansCJKkr-Bold", size: 14.0)!,
             .foregroundColor: UIColor(white: 0.0, alpha: 1.0)
@@ -80,19 +82,62 @@ class OrderDetailViewController: UIViewController {
         attributedString.addAttribute(.font, value: UIFont(name: "NotoSansCJKkr-DemiLight", size: 14.0)!, range: NSRange(location: 0, length: 4))
         accountLabel.attributedText = attributedString
 
-        //복사할 string
+        //클립보드에 복사할 String
         let str = accountLabel.text!
         let startIndex = str.index(str.startIndex, offsetBy: 5)
         let endIndex = str.endIndex
         let range = startIndex..<endIndex
         copyStr = String(str[range])
         
-//        //입금 대기 상태일 때만 주문취소 버튼 표시
-//        if(orderStatus == .wait){
-//            cancelBtn.isHidden = false
-//        }else {
-//            cancelBtn.isHidden = false
-//        }
+        
+        //앨범 정보
+        albumImageView.image = getCoverByUid(value: orderData.album.cover.uid)
+        albumNameLabel.text = orderData.album.name
+        
+        let layoutName = getLayoutByUid(value: orderData.album.layoutUid).layoutName
+        let paperType = orderData.paperType1.uid
+        let shipType = orderData.postType.uid
+        
+       
+        var strPaperType = ""
+        var strShipType = ""
+        
+        if(paperType == 1){
+            strPaperType = "유광"
+        }else{
+            strPaperType = "무광"
+        }
+        
+        if(shipType == 1){
+            strShipType = "일반"
+        }else if(shipType == 2){
+            strShipType = "고급"
+        }else {
+            strShipType = "최고급"
+        }
+        
+        albumOptionLabel.text = "커버: \(orderData.album.cover.name) / 포토레이아웃: \(layoutName ?? "") / 인화용지: \(strPaperType) / 배송: \(strShipType)"
+        
+        albumPriceLabel.text = "\(cost.numberToPrice(cost))원"
+        albumNumLabel.text = "\(orderData.amount)개"
+        orderNumberLabel.text = "주문번호 \(orderData.orderCode)"
+        
+        //입금 대기 상태일 때만 주문취소 버튼 표시
+        if(orderData.album.orderStatus.status == "processing"){
+            cancelBtn.isHidden = false
+        }else {
+            cancelBtn.isHidden = false
+        }
+        
+        //배송정보
+        nameLabel.text = orderData.recipient
+        addressLabel.text = "(\(orderData.postalCode)) \(orderData.address) \(orderData.addressDetail)"
+        phoneLabel.text = orderData.phoneNum
+        memoLabel.text = orderData.message
+        //결제 정보
+        depositLabel.text = "\(cost.numberToPrice(cost))원"
+        
+        
         
         //주문취소 뷰
         imageView.isHidden = true
