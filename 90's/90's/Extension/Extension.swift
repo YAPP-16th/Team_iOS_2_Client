@@ -86,11 +86,7 @@ extension UICollectionView {
 
 extension UIViewController{
     func checkDeviseVersion(backView: UIView!){
-        if isDeviseVersionLow == false {
-            backView.isHidden = false
-        }else {
-            backView.isHidden = true
-        }
+        backView.isHidden = isDeviseVersionLow ? true : false
     }
        
     // imageRenderVC - layoutView setting
@@ -205,7 +201,7 @@ extension UIViewController{
         return pixelValues!
     }
     
-    func returnLayoutSize(selectedLayout : AlbumLayout) -> CGSize{
+    func returnLayoutPreviewSize(selectedLayout : AlbumLayout) -> CGSize{
         switch selectedLayout {
         case .Polaroid : return AlbumLayout.Polaroid.size
         case .Mini : return AlbumLayout.Mini.size
@@ -241,6 +237,7 @@ extension UIViewController{
         }
     }
     
+    // stickerVC, previewVC - layoutview
     func applyBackImageViewLayout(selectedLayout : AlbumLayout, smallBig: CGSize, imageView : UIImageView ) -> UIImageView {
         switch selectedLayout {
             

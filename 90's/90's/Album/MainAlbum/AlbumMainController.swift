@@ -73,7 +73,6 @@ extension AlbumMainController {
                     self.albumNameArray = value.map { $0.name }
                     self.albumCoverUidArray = value.map { $0.cover.uid }
                     self.albumUidArray.isEmpty ? self.switchAlbumEmptyView(value: false) : self.switchAlbumEmptyView(value: true)
-                   
                     self.albumCollectionView.reloadData()
                 case 401:
                     print("\(status) : bad request, no warning in Server")
@@ -110,6 +109,7 @@ extension AlbumMainController : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("album count = \(albumNameArray.count)")
         return albumNameArray.count
     }
     
@@ -124,6 +124,6 @@ extension AlbumMainController : UICollectionViewDataSource {
 
 extension AlbumMainController : AlbumMainVCProtocol {
     func AlbumMainreloadView() {
-        networkSetting()
+        albumCollectionView.reloadData()
     }
 }

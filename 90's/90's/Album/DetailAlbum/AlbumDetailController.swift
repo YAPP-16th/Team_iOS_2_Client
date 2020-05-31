@@ -512,7 +512,7 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
             return currentCell!
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCell
-            let size = returnLayoutSize(selectedLayout: selectedLayout!)
+            let size = returnLayoutPreviewSize(selectedLayout: selectedLayout!)
             
             cell.backImageView = applyBackImageViewLayout(selectedLayout: selectedLayout!, smallBig: size, imageView: cell.backImageView)
             cell.backImageView.image = networkPhotoUrlImageArray[indexPath.row]
@@ -522,7 +522,7 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return returnLayoutSize(selectedLayout: selectedLayout!)
+        return returnLayoutPreviewSize(selectedLayout: selectedLayout!)
         //return CGSize(width: view.frame.width/2 - 26, height: view.frame.height/4 + 10)
     }
     

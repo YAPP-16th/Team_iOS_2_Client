@@ -18,6 +18,10 @@
                     <subviews>
                         <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8yc-vt-zpZ">
                             <rect key="frame" x="18" y="18" width="84" height="84"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="84" id="G5O-eI-xLR"/>
+                                <constraint firstAttribute="width" constant="84" id="xfY-tQ-Muf"/>
+                            </constraints>
                         </imageView>
                         <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stickerControlRotate" translatesAutoresizingMaskIntoConstraints="NO" id="kg6-Dw-xYd">
                             <rect key="frame" x="101" y="0.0" width="19" height="19"/>
