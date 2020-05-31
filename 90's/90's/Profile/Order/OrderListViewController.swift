@@ -88,8 +88,12 @@ extension OrderListViewController : UITableViewDelegate, UITableViewDataSource {
         return orderList.count
     }
     
+    //셀 클릭 시 이동
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let orderDetailVC = storyboard?.instantiateViewController(withIdentifier: "OrderDetailViewController") as! OrderDetailViewController
+        
+        orderDetailVC.orderData = orderList[indexPath.row]
+        orderDetailVC.cost = cost
         navigationController?.pushViewController(orderDetailVC, animated: true)
     }
     

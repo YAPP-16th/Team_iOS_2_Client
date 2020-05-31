@@ -20,6 +20,7 @@ struct GetOrderResult: Codable {
     var addressDetail: String
     var phoneNum: String
     var message: String
+    var postalCode:String
     var trackingNum:String?
 }
 
