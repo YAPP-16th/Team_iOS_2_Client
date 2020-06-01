@@ -31,9 +31,10 @@ class ImageRenderVC: UIViewController {
     var imageName : String = ""
 
     // for sticker
+    fileprivate var stickerNumber : Int = 0
     fileprivate var sticker : StickerLayout?
+    fileprivate var stickerArray : [StickerLayout] = []
     fileprivate var initialAngle = CGFloat(), saveAngle = CGFloat(), saveSize = CGFloat()
-    fileprivate var savePosition : CGPoint = CGPoint(x: 0, y: 0)
     
     // collection data
     fileprivate var isSelectedName : IndexPath = [0,0]
@@ -55,7 +56,7 @@ class ImageRenderVC: UIViewController {
         super.viewDidLoad()
         buttonSetting()
         defaultSetting()
-        initializeArrays()
+        layoutSetting()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -65,6 +66,7 @@ class ImageRenderVC: UIViewController {
                 focusView.isHidden = true
             }
         }
+      
         if sticker != nil {
             self.initialAngle = pToA(touch!)
             if touch?.view == sticker?.backImageView {
@@ -117,12 +119,20 @@ extension ImageRenderVC {
         photoView = saveView
     }
     
-    private func initializeArrays(){
-        deviceSize = isDeviseVersionLow ? returnLayoutStickerLowDeviceSize(selectedLayout: selectLayout) : returnLayoutStickerHighDeviceSize(selectedLayout: selectLayout)
+    private func layoutSetting(){
+        deviceSize = isDeviseVersionLow ?
+            returnLayoutStickerLowDeviceSize(selectedLayout: selectLayout) :
+            returnLayoutStickerHighDeviceSize(selectedLayout: selectLayout)
         
+        // 레이아웃 크기 조정
         layoutImage = applyBackImageViewLayout(selectedLayout: selectLayout, smallBig: deviceSize, imageView: layoutImage)
-        renderImage = isDeviseVersionLow ? applyStickerLowDeviceImageViewLayout(selectedLayout: selectLayout, smallBig: deviceSize, imageView: renderImage, image: image!) : applyStickerHighDeviceImageViewLayout(selectedLayout: selectLayout, smallBig: deviceSize, imageView: renderImage, image: image!)
+        
+        // 사진 크기 조정
+        renderImage = isDeviseVersionLow ?
+            applyStickerLowDeviceImageViewLayout(selectedLayout: selectLayout, smallBig: deviceSize, imageView: renderImage, image: image!) :
+            applyStickerHighDeviceImageViewLayout(selectedLayout: selectLayout, smallBig: deviceSize, imageView: renderImage, image: image!)
 
+        // 뷰 위치 조정
         setRenderSaveViewFrameSetting(view: saveView, selectLayout: selectLayout, size: deviceSize)
         setRenderLayoutViewFrameSetting(view: saveView, imageView: layoutImage)
         setRenderImageViewFrameSetting(view: saveView, imageView: renderImage, selectlayout: selectLayout)
@@ -130,6 +140,8 @@ extension ImageRenderVC {
     
     private func resetValues(){
         sticker = nil
+        stickerNumber = 0
+        stickerArray = []
         saveAngle = CGFloat()
         saveSize = CGFloat()
         focusView.isHidden = true
@@ -152,8 +164,12 @@ extension ImageRenderVC {
         sticker?.frame.size = CGSize(width: 120, height: 120)
         sticker?.center = CGPoint(x: saveView.center.x - 30, y: saveView.center.y - 200)
         createPan(view: sticker!.backImageView) // 이미지 옮기기
+        sticker?.stickerNumber = stickerNumber
         focusView.isHidden = false
         self.saveView.addSubview(sticker!)
+        
+        stickerNumber = stickerNumber + 1
+        stickerArray.append(sticker!)
     }
 }
 

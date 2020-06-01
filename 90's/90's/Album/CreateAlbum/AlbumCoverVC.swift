@@ -36,6 +36,7 @@ class AlbumCoverVC: UIViewController {
     var photo : UIImage!
     
     var initialFlag : Bool = true
+    var selectedCell : Int?//AlbumCoverCollectionCell?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -67,23 +68,22 @@ extension AlbumCoverVC : UICollectionViewDelegate, UICollectionViewDataSource, U
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        print("cell for item")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "albumcovercell", for: indexPath) as! AlbumCoverCollectionCell
         cell.imageView.image = CoverDatabase.arrayList[indexPath.row].image
+        cell.selectImageView.isHidden = true
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("did select item")
         let cell = collectionView.cellForItem(at: indexPath) as! AlbumCoverCollectionCell
+        selectedCell = indexPath.row
         cell.selectImageView.isHidden = false
         initialFlag = false
         photo = CoverDatabase.arrayList[indexPath.row].image
         coverImageView.image = CoverDatabase.arrayList[indexPath.row].image
         albumCover = indexPath.row + 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! AlbumCoverCollectionCell
-        cell.selectImageView.isHidden = true
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
