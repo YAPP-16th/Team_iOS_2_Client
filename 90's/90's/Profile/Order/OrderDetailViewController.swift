@@ -120,8 +120,8 @@ class OrderDetailViewController: UIViewController {
         
         albumPriceLabel.text = "\(cost.numberToPrice(cost))원"
         albumNumLabel.text = "\(orderData.amount)개"
-        orderNumberLabel.text = "주문번호 \(orderData.orderCode)"
-        
+        orderNumberLabel.text = "주문번호: \(orderData.orderCode)"
+        orderNumberLabel.sizeToFit()
         //입금 대기 상태일 때만 주문취소 버튼 표시
         if(orderData.album.orderStatus.status == "processing"){
             cancelBtn.isHidden = false
