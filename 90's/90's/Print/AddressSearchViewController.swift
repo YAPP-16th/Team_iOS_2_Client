@@ -83,9 +83,9 @@ class AddressSearchViewController: UIViewController, UITextFieldDelegate {
                     }
                     
                     if let documents = addressResult.documents?.first {
-                        if let roadAddress = documents.road_address {
-                            self.roadAddress = roadAddress.address_name
-                            self.zipCode = roadAddress.zone_no
+                        if let zoneNo = documents.road_address?.zone_no {
+                            self.roadAddress = documents.road_address?.address_name
+                            self.zipCode = zoneNo
                             self.numAddress = documents.address_name
                             self.addressTableView.reloadData()
                             self.addressTableView.isHidden = false
