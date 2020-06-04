@@ -11,6 +11,9 @@
         <array key="NotoSansCJKkr-Bold.otf">
             <string>NotoSansCJKkr-Bold</string>
         </array>
+        <array key="NotoSansCJKkr-Medium.otf">
+            <string>NotoSansCJKkr-Medium</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Tab Bar Controller-->
@@ -101,12 +104,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gyF-NU-JWW">
-                                <rect key="frame" x="18" y="694" width="378" height="72"/>
-                                <color key="backgroundColor" red="0.59999999999999998" green="0.61176470589999998" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" title="회원가입">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gyF-NU-JWW">
+                                <rect key="frame" x="249" y="829" width="88" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="14"/>
+                                <state key="normal" title="이메일로 가입">
+                                    <color key="titleColor" red="0.19215686274509802" green="0.19607843137254902" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="goSignUp:" destination="Kl4-YZ-EKj" eventType="touchUpInside" id="cvP-lt-z8N"/>
@@ -128,7 +131,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ZR-dE-K51">
-                                <rect key="frame" x="18" y="776" width="378" height="72"/>
+                                <rect key="frame" x="18" y="745" width="378" height="67"/>
                                 <color key="backgroundColor" red="1" green="0.92549019610000005" blue="0.023529411760000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="18"/>
                                 <state key="normal" title="카카오톡 로그인">
@@ -138,57 +141,61 @@
                                     <action selector="goKaKaoLogin:" destination="Kl4-YZ-EKj" eventType="touchUpInside" id="K2K-AA-1cJ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0B-Ns-c1S">
-                                <rect key="frame" x="18" y="612" width="378" height="72"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="18"/>
-                                <state key="normal" title="로그인">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0B-Ns-c1S">
+                                <rect key="frame" x="87" y="829" width="115" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="14"/>
+                                <state key="normal" title="이메일로 로그인">
+                                    <color key="titleColor" red="0.19215686274509802" green="0.19607843137254902" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="goSignIn:" destination="Kl4-YZ-EKj" eventType="touchUpInside" id="kbJ-7V-a1a"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kakaoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="X4N-D0-W1v">
-                                <rect key="frame" x="48" y="802" width="23" height="20"/>
+                                <rect key="frame" x="48" y="768.5" width="23" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="7fx-fo-Rcb"/>
                                     <constraint firstAttribute="width" constant="23" id="BKw-Ye-tfW"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginMainImage" translatesAutoresizingMaskIntoConstraints="NO" id="Hal-53-v5m">
-                                <rect key="frame" x="26.5" y="100" width="361" height="475"/>
+                                <rect key="frame" x="61.5" y="144" width="291" height="382"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Hal-53-v5m" secondAttribute="height" multiplier="361:475" id="5YW-bq-L3W"/>
+                                    <constraint firstAttribute="width" secondItem="Hal-53-v5m" secondAttribute="height" multiplier="291:382" id="5YW-bq-L3W"/>
                                 </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ho7-2f-tgC">
+                                <rect key="frame" x="20" y="668" width="374" height="67"/>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="path11Black" translatesAutoresizingMaskIntoConstraints="NO" id="hra-hJ-8k0">
+                                <rect key="frame" x="219" y="834" width="2" height="11"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="6ZR-dE-K51" firstAttribute="height" secondItem="m0B-Ns-c1S" secondAttribute="height" id="17t-Zh-e1J"/>
-                            <constraint firstItem="gyF-NU-JWW" firstAttribute="top" secondItem="m0B-Ns-c1S" secondAttribute="bottom" constant="10" id="3Vm-ZS-Q2D"/>
-                            <constraint firstItem="gyF-NU-JWW" firstAttribute="leading" secondItem="6ZR-dE-K51" secondAttribute="leading" id="4Iy-zQ-oBr"/>
-                            <constraint firstItem="6ZR-dE-K51" firstAttribute="top" secondItem="gyF-NU-JWW" secondAttribute="bottom" constant="10" id="4mw-zC-s8A"/>
                             <constraint firstItem="X4N-D0-W1v" firstAttribute="centerY" secondItem="6ZR-dE-K51" secondAttribute="centerY" id="8yx-xG-FhB"/>
-                            <constraint firstItem="m0B-Ns-c1S" firstAttribute="trailing" secondItem="gyF-NU-JWW" secondAttribute="trailing" id="B5T-4b-Xew"/>
                             <constraint firstItem="X4N-D0-W1v" firstAttribute="leading" secondItem="6ZR-dE-K51" secondAttribute="leading" constant="30" id="Bjr-6a-wxy"/>
-                            <constraint firstItem="6ZR-dE-K51" firstAttribute="height" secondItem="2Xd-AV-6mJ" secondAttribute="height" multiplier="0.0880196" id="CHU-pR-OUV"/>
-                            <constraint firstItem="gyF-NU-JWW" firstAttribute="trailing" secondItem="6ZR-dE-K51" secondAttribute="trailing" id="Ccx-12-dvt"/>
-                            <constraint firstItem="Hal-53-v5m" firstAttribute="height" secondItem="2Xd-AV-6mJ" secondAttribute="height" multiplier="0.580685" id="DjO-cY-JjW"/>
-                            <constraint firstItem="2Xd-AV-6mJ" firstAttribute="bottom" secondItem="6ZR-dE-K51" secondAttribute="bottom" constant="14" id="N5c-AB-F6e"/>
-                            <constraint firstItem="Hal-53-v5m" firstAttribute="top" secondItem="yBc-9e-YdG" secondAttribute="bottom" constant="6" id="OtC-Gj-B2n"/>
-                            <constraint firstItem="gyF-NU-JWW" firstAttribute="height" secondItem="6ZR-dE-K51" secondAttribute="height" id="PX7-Ri-eMh"/>
+                            <constraint firstItem="6ZR-dE-K51" firstAttribute="height" secondItem="2Xd-AV-6mJ" secondAttribute="height" multiplier="0.0819071" id="CHU-pR-OUV"/>
+                            <constraint firstItem="Hal-53-v5m" firstAttribute="height" secondItem="2Xd-AV-6mJ" secondAttribute="height" multiplier="0.466993" id="DjO-cY-JjW"/>
+                            <constraint firstItem="6ZR-dE-K51" firstAttribute="height" secondItem="Ho7-2f-tgC" secondAttribute="height" id="GiP-Ra-n2r"/>
+                            <constraint firstItem="2Xd-AV-6mJ" firstAttribute="bottom" secondItem="6ZR-dE-K51" secondAttribute="bottom" constant="50" id="N5c-AB-F6e"/>
+                            <constraint firstItem="Hal-53-v5m" firstAttribute="top" secondItem="yBc-9e-YdG" secondAttribute="bottom" constant="50" id="OtC-Gj-B2n"/>
                             <constraint firstItem="Hal-53-v5m" firstAttribute="centerX" secondItem="2Xd-AV-6mJ" secondAttribute="centerX" id="Pk0-Xr-jEQ"/>
                             <constraint firstItem="6ZR-dE-K51" firstAttribute="leading" secondItem="2Xd-AV-6mJ" secondAttribute="leading" constant="18" id="UQ3-fj-Dqm"/>
-                            <constraint firstItem="m0B-Ns-c1S" firstAttribute="leading" secondItem="gyF-NU-JWW" secondAttribute="leading" id="c7n-8w-Rkg"/>
+                            <constraint firstItem="2Xd-AV-6mJ" firstAttribute="trailing" secondItem="Ho7-2f-tgC" secondAttribute="trailing" constant="20" id="eiH-gY-mZH"/>
                             <constraint firstItem="2Xd-AV-6mJ" firstAttribute="trailing" secondItem="yBc-9e-YdG" secondAttribute="trailing" constant="18" id="lfu-UV-gvs"/>
+                            <constraint firstItem="6ZR-dE-K51" firstAttribute="top" secondItem="Ho7-2f-tgC" secondAttribute="bottom" constant="10" id="qCj-ix-6WR"/>
                             <constraint firstItem="2Xd-AV-6mJ" firstAttribute="trailing" secondItem="6ZR-dE-K51" secondAttribute="trailing" constant="18" id="uH3-Zr-hjj"/>
                             <constraint firstItem="yBc-9e-YdG" firstAttribute="top" secondItem="2Xd-AV-6mJ" secondAttribute="top" constant="23" id="yGW-JZ-EQZ"/>
+                            <constraint firstItem="Ho7-2f-tgC" firstAttribute="leading" secondItem="2Xd-AV-6mJ" secondAttribute="leading" constant="20" id="yqq-xF-WMU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2Xd-AV-6mJ"/>
                     </view>
                     <navigationItem key="navigationItem" id="6WV-2l-DRU"/>
                     <connections>
+                        <outlet property="appleLoginView" destination="Ho7-2f-tgC" id="kVZ-yh-XgK"/>
                         <outlet property="kakaoLoginBtn" destination="6ZR-dE-K51" id="CKW-MT-Gin"/>
                         <outlet property="loginBtn" destination="m0B-Ns-c1S" id="1i3-BP-FzB"/>
                         <outlet property="signUpBtn" destination="gyF-NU-JWW" id="Dcy-RG-Zmb"/>
@@ -196,7 +203,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GV0-AA-f0h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1736" y="-672"/>
+            <point key="canvasLocation" x="1734.7826086956522" y="-672.32142857142856"/>
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="SQm-9b-ly5">
@@ -229,6 +236,7 @@
     <resources>
         <image name="kakaoIcon" width="24" height="20"/>
         <image name="loginMainImage" width="361" height="475"/>
+        <image name="path11Black" width="2" height="11"/>
         <image name="splash_1" width="414" height="896"/>
     </resources>
 </document>

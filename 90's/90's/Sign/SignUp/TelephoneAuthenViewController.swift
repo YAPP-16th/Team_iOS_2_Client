@@ -28,6 +28,7 @@ class TelephoneAuthenViewController: UIViewController {
     var pwd:String?
     var nickName:String!
     var telephone:String!
+    var isAppleId:Bool!
     
     var isClicked = false
     var isInitial1 = false
@@ -186,6 +187,7 @@ class TelephoneAuthenViewController: UIViewController {
                         UserDefaults.standard.set(self.email, forKey: "email")
                         UserDefaults.standard.set(self.isSocial, forKey: "social")
                         UserDefaults.standard.set(jwt, forKey: "jwt")
+                        UserDefaults.standard.set(self.isAppleId, forKey: "isAppleId")
                     }
                     let completeVC = self.storyboard?.instantiateViewController(withIdentifier: "CompleteViewController") as! CompleteViewController
                     completeVC.isSocial = self.isSocial

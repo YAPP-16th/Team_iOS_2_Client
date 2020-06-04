@@ -7,15 +7,24 @@
 //
 
 import UIKit
+import AuthenticationServices
 
 class EnterViewController: UIViewController {
+    
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var signUpBtn: UIButton!
     @IBOutlet weak var kakaoLoginBtn: UIButton!
+    @IBOutlet weak var appleLoginView: UIView!
     
     var initialEnter:Bool = true
+    var socialEmail:String = ""
+    var socialName:String = ""
+    var isRevokedAppleId = false
+    var isAppleId = false
+    var isInitialAppleLogin = true
     
     override func viewWillAppear(_ animated: Bool) {
+
         if(initialEnter){
             autoLogin()
         }
@@ -23,16 +32,36 @@ class EnterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if #available(iOS 13.0, *) {
+            
+            //애플로그인 버튼 생성
+            let button = ASAuthorizationAppleIDButton()
+            button.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress)
+                , for: .touchUpInside)
+            button.cornerRadius = 8.0
+            appleLoginView.addSubview(button)
+            
+            //버튼에 constraint 추가
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.bottomAnchor.constraint(equalTo: appleLoginView.bottomAnchor).isActive = true
+            button.topAnchor.constraint(equalTo: appleLoginView.topAnchor).isActive = true
+            button.leftAnchor.constraint(equalTo: appleLoginView.leftAnchor).isActive = true
+            button.rightAnchor.constraint(equalTo: appleLoginView.rightAnchor).isActive = true
+            
+        }
         setUI()
     }
     
     func autoLogin(){
         //기존에 로그인한 데이터가 있을 경우
         if let email = UserDefaults.standard.string(forKey: "email"){
-            //소셜 로그인의 경우
+            //소셜 로그인의 경우 애플아이디 제외 자동로그인
             if(UserDefaults.standard.bool(forKey: "social")){
-                goLogin(email, nil, true)
+                if(!UserDefaults.standard.bool(forKey: "isAppleId")){
+                    goLogin(email, nil, true)
+                }
             }else {
+                //자체 로그인
                 guard let password = UserDefaults.standard.string(forKey: "password") else {return}
                 goLogin(email, password, false)
             }
@@ -59,6 +88,34 @@ class EnterViewController: UIViewController {
         let termVC = signUpSB.instantiateViewController(withIdentifier: "TermViewController") as! TermViewController
         navigationController?.pushViewController(termVC, animated: true)
     }
+    
+    //애플 로그인 버튼 클릭 시
+    @available(iOS 13.0, *)
+    @objc func handleAuthorizationAppleIDButtonPress(){
+        
+        //revoke상태인지 확인
+        let provider = ASAuthorizationAppleIDProvider()
+        if let identifier = UserDefaults.standard.string(forKey: "appleIdentifier") {
+            provider.getCredentialState(forUserID: identifier, completion: {
+                    (credentialState, error) in
+                if(credentialState == .revoked){
+                    self.isRevokedAppleId = true
+                }
+            })
+        }
+
+        let request = ASAuthorizationAppleIDProvider().createRequest()
+        request.requestedScopes = [.fullName,.email]
+        let controller = ASAuthorizationController(authorizationRequests: [request])
+        controller.delegate = self
+        controller.presentationContextProvider = self
+        controller.performRequests()
+        
+
+        
+    }
+    
+    
     
     //카카오톡 회원가입
     @IBAction func goKaKaoLogin(_ sender: Any) {
@@ -97,16 +154,11 @@ class EnterViewController: UIViewController {
                         let email = user.account?.email,
                         let nickName = user.account?.profile?.nickname
                         else { return }
-                    print("\(email) & \(nickName)")
+                    self.socialEmail = email
+                    self.socialName = nickName
                     
-                    //전화번호 인증화면 이동
-                    let signUpSB = UIStoryboard(name: "SignUp", bundle: nil)
-                    let authenVC = signUpSB.instantiateViewController(withIdentifier: "TelephoneAuthenViewController") as! TelephoneAuthenViewController
-                    
-                    authenVC.isSocial = true
-                    authenVC.email = email
-                    authenVC.nickName = nickName
-                    self.navigationController?.pushViewController(authenVC, animated: true)
+                    //로그아웃 후 재 로그인하는 경우와(이미 회원) 회원가입하는 경우 분기 위해 이메일 체크
+                    self.checkEmail()
                 })
                 
             }else {
@@ -165,11 +217,21 @@ class EnterViewController: UIViewController {
                     let loginResult = try? decoder.decode(SignUpResult.self, from: data)
                     guard let jwt = loginResult?.jwt else { return }
                     
-                    //자동로그인 될때마다 jwt 갱신해서 저장
+                    //로그인 될때마다 jwt 갱신해서 저장
                     UserDefaults.standard.set(jwt, forKey: "jwt")
+                    UserDefaults.standard.set(email, forKey: "email")
+                    UserDefaults.standard.set(password, forKey: "password")
+                    UserDefaults.standard.set(social, forKey: "social")
+                    UserDefaults.standard.set(self.isAppleId, forKey: "isAppleId")
+
                     
-                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    appDelegate.switchTab()
+                    //이미 가입된 애플아이디 && revoked상태 이면 탈퇴시키고 전화번호 입력화면으로 이동
+                    if(self.isRevokedAppleId){
+                        self.leave()
+                    }else {
+                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                        appDelegate.switchTab()
+                    }
                     break
                 case 400...404:
                     self.showErrAlert()
@@ -186,11 +248,142 @@ class EnterViewController: UIViewController {
         })
     }
     
+    func checkEmail(){
+        EmailCheckService.shared.emailCheck(email: socialEmail, completion: {
+            response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200:
+                    guard let data = response.data else { return }
+                    let decoder = JSONDecoder()
+                    let checkEmailResult = try? decoder.decode(CheckEmailResult.self, from: data)
+                    guard let isExist = checkEmailResult?.result else { return }
+                    if(isExist){
+                        self.goLogin(self.socialEmail, nil, true)
+                    }else {
+                        //전화번호 인증화면 이동
+                        self.goAuthenView()
+                    }
+                    break
+                case 401...404:
+                    let alert = UIAlertController(title: "오류", message: "이메일 중복체크 불가", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "확인", style: .default)
+                    alert.addAction(action)
+                    self.present(alert, animated: true)
+                    break
+                default:
+                    return
+                }
+            }
+        })
+        
+    }
+    
+    func leave(){
+        guard let token = UserDefaults.standard.string(forKey: "jwt") else { return }
+        LeaveService.shared.leave(token: token, completion: {
+            status in
+            switch status {
+            case 200:
+                //기존의 정보 다 삭제(자체로그인 시 저장하는 정보 : email, password, social, jwt)
+                UserDefaults.standard.removeObject(forKey: "email")
+                UserDefaults.standard.removeObject(forKey: "password")
+                UserDefaults.standard.removeObject(forKey: "social")
+                UserDefaults.standard.removeObject(forKey: "jwt")
+
+                //전화번호 인증화면으로 이동
+                self.goAuthenView()
+                break
+            case 401...500:
+                self.showErrAlert()
+                break
+            default:
+                return
+            }
+        })
+    }
+    
+    func goAuthenView(){
+        let signUpSB = UIStoryboard(name: "SignUp", bundle: nil)
+        let authenVC = signUpSB.instantiateViewController(withIdentifier: "TelephoneAuthenViewController") as! TelephoneAuthenViewController
+        authenVC.isSocial = true
+        authenVC.email = self.socialEmail
+        authenVC.nickName = self.socialName
+        authenVC.isAppleId = self.isAppleId
+        self.navigationController?.pushViewController(authenVC, animated: true)
+    }
+    
+    func showLeaveErrAlert(){
+        let alert = UIAlertController(title: "오류", message: "회원탈퇴 불가", preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(action)
+        self.present(alert, animated: true)
+    }
+    
+    
     func showErrAlert(){
         let alert = UIAlertController(title: "오류", message: "로그인 불가", preferredStyle: .alert)
         let action = UIAlertAction(title: "확인", style: .default)
         alert.addAction(action)
         self.present(alert, animated: true)
+    }
+    
+    
+    
+}
+
+@available(iOS 13.0, *)
+extension EnterViewController : ASAuthorizationControllerDelegate,
+ASAuthorizationControllerPresentationContextProviding {
+    //로그인 context화면을 어느 곳에 띄울지 설정
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
+    
+    
+    //로그인 후 응답을 받는 부분
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            let userIdentifer = credential.user
+            let appleName = "\(credential.fullName?.familyName ?? "")\(credential.fullName?.givenName ?? "")"
+            let appleEmail = "\(credential.email ?? "")"
+            self.isAppleId = true
+            
+            print("userIdentifier \(userIdentifer)")
+
+            //애플 email은 처음인증시에만 이름과 이메일을 던져주므로 인증했을 때 정보를 저장하고 지우지 않음
+            if(appleName != "" && appleEmail != ""){
+                //애플로 회원가입 -> 첫 인증
+                UserDefaults.standard.set(appleEmail, forKey: "appleEmail")
+                UserDefaults.standard.set(appleName, forKey: "appleName")
+                UserDefaults.standard.set(userIdentifer, forKey: "appleIdentifier")
+                self.socialEmail = appleEmail
+                self.socialName = appleName
+            }else {
+                isInitialAppleLogin = false
+            }
+            
+            
+            let provider = ASAuthorizationAppleIDProvider()
+            provider.getCredentialState(forUserID: userIdentifer, completion: {
+                (credentialState, error) in
+                switch(credentialState){
+                case .authorized:
+                    //애플로 회원가입
+                    if(self.isInitialAppleLogin || self.isRevokedAppleId){
+                        self.checkEmail()
+                    }else {
+                        if let savedEmail = UserDefaults.standard.string(forKey: "appleEmail") {
+                            self.goLogin(savedEmail, nil, true)
+                        }
+                    }
+                    
+                    break
+                @unknown default:
+                    break
+                }
+            })
+        }
     }
     
     
