@@ -135,6 +135,8 @@ class EnterViewController: UIViewController {
                         else { return }
                     self.socialEmail = email
                     self.socialName = nickName
+                    
+                    //로그아웃 후 재 로그인하는 경우와(이미 회원) 회원가입하는 경우 분기 위해 이메일 체크
                     self.checkEmail()
                 })
                 
@@ -196,6 +198,9 @@ class EnterViewController: UIViewController {
                     
                     //자동로그인 될때마다 jwt 갱신해서 저장
                     UserDefaults.standard.set(jwt, forKey: "jwt")
+                    UserDefaults.standard.set(email, forKey: "email")
+                    UserDefaults.standard.set(password, forKey: "password")
+                    UserDefaults.standard.set(social, forKey: "social")
                     
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.switchTab()
