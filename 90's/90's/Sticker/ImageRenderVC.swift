@@ -31,7 +31,6 @@ class ImageRenderVC: UIViewController {
     var imageName : String = ""
 
     // for sticker
-    fileprivate var stickerNumber : Int = 0
     fileprivate var sticker : StickerLayout?
     fileprivate var stickerArray : [StickerLayout] = []
     fileprivate var initialAngle = CGFloat(), saveAngle = CGFloat(), saveSize = CGFloat()
@@ -78,7 +77,11 @@ class ImageRenderVC: UIViewController {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
         
+        
+        print("touch = \(String(describing: touch?.view?.description)),\n \(touch?.view?.mask)")
+        
         if sticker != nil {
+            
             switch touch!.view {
             case sticker?.rotateImageView :
                 let ang = pToA(touch!) - initialAngle
@@ -140,7 +143,6 @@ extension ImageRenderVC {
     
     private func resetValues(){
         sticker = nil
-        stickerNumber = 0
         stickerArray = []
         saveAngle = CGFloat()
         saveSize = CGFloat()
@@ -164,11 +166,9 @@ extension ImageRenderVC {
         sticker?.frame.size = CGSize(width: 120, height: 120)
         sticker?.center = CGPoint(x: saveView.center.x - 30, y: saveView.center.y - 200)
         createPan(view: sticker!.backImageView) // 이미지 옮기기
-        sticker?.stickerNumber = stickerNumber
         focusView.isHidden = false
         self.saveView.addSubview(sticker!)
-        
-        stickerNumber = stickerNumber + 1
+       
         stickerArray.append(sticker!)
     }
 }

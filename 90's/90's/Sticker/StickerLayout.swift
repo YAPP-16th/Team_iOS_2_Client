@@ -23,11 +23,9 @@ class StickerLayout: UIView {
         super.init(coder: coder)
     }
     
-    var stickerNumber : Int = 0
     var stickerInitialAngle : CGFloat = CGFloat()
     var stickerAngle : CGFloat = CGFloat()
     var stickerSize : CGFloat = CGFloat()
-    
     
     class func loadFromZib(image : UIImage) -> StickerLayout {
         let view = Bundle.main.loadNibNamed("StickerLayout", owner: self, options: nil)?.first as! StickerLayout
@@ -36,8 +34,8 @@ class StickerLayout: UIView {
         return view
     }
     
-    func setStickerNumber(num : Int) {
-        stickerNumber = num
+    func setStickerTag(num : Int) {
+        
     }
     
     func setStickerRevise(angle : CGFloat, size : CGFloat){

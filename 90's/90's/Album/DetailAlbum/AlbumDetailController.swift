@@ -394,6 +394,9 @@ extension AlbumDetailController {
                     if case .success(let image) = response.result {
                         var originImage = image
                         if self.isAlbumComplete == true {
+                            if self.albumOldCount > 10 {
+                                self.albumOldCount = 10
+                            }
                             for _ in 0...self.albumOldCount { 
                                 originImage = self.setOldFilter(image: originImage)
                             }
