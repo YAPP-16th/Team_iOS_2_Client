@@ -121,7 +121,7 @@ extension UIViewController{
         view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: (self.view.frame.height - view.frame.height)/3).isActive = true
     }
 
-    // LUT Filter apply
+    // LUT Filter apply, filter 파일 코드 정리
     func colorCubeFilterFromLUT(imageName : String, originalImage : UIImage)-> CIFilter? {
         let size = 64
         
@@ -403,7 +403,6 @@ extension UIViewController{
         }
         else if bottom != nil { view.bottomAnchor.constraint(equalTo: superView.bottomAnchor, constant: -bottom!).isActive = true
         }
-        
         view.contentMode = .scaleToFill
     }
 

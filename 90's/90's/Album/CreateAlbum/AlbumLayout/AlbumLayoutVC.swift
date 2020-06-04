@@ -56,6 +56,7 @@ class AlbumLayoutVC: UIViewController {
     var albumLayout : AlbumLayout!
     
     var initialFlag : Bool = true
+    var selectedCell : albumLayoutCollectionCell?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -101,13 +102,13 @@ extension AlbumLayoutVC : UICollectionViewDelegate, UICollectionViewDataSource, 
         layoutImageView.image = layoutImageArray[indexPath.row]
         albumLayout = LayoutDatabase.arrayList[indexPath.row]
         initialFlag = false
+        
         let cell = collectionView.cellForItem(at: indexPath) as! albumLayoutCollectionCell
+        if selectedCell != nil {
+            selectedCell?.selectImageView.isHidden = true
+        }
+        selectedCell = cell
         cell.selectImageView.isHidden = false
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! albumLayoutCollectionCell
-        cell.selectImageView.isHidden = true
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

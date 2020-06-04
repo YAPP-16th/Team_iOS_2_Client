@@ -626,7 +626,7 @@
                                                         <constraint firstAttribute="width" constant="104" id="pW1-Oc-eHy"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="albumThumbnailCheckbox" translatesAutoresizingMaskIntoConstraints="NO" id="KJ4-Zj-U9x">
+                                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="albumThumbnailCheckbox" translatesAutoresizingMaskIntoConstraints="NO" id="KJ4-Zj-U9x">
                                                     <rect key="frame" x="0.0" y="0.0" width="104" height="108"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="108" id="H4W-S7-xu3"/>
@@ -1594,7 +1594,7 @@
                                                         <constraint firstAttribute="height" constant="102" id="p4C-P2-sov"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="layoutThumbnailCheckbox" translatesAutoresizingMaskIntoConstraints="NO" id="T2y-D1-X7F">
+                                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="layoutThumbnailCheckbox" translatesAutoresizingMaskIntoConstraints="NO" id="T2y-D1-X7F">
                                                     <rect key="frame" x="0.0" y="0.0" width="74" height="102"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="74" id="4fP-vz-vZb"/>

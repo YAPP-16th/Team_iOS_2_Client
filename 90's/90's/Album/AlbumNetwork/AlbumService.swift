@@ -11,6 +11,7 @@ import Foundation
 struct album : Codable {
     var uid : Int
     var name : String
+    var password : String
     var photoLimit : Int
     var layoutUid : Int
     var count : Int // 앨범 낡기
@@ -34,19 +35,6 @@ struct albumPassword : Codable {
 struct OrderStatus: Codable {
     var uid: Int
     var status: String
-}
-
-// post, albumGetAlbum 결과
-struct AlbumGetResult : Codable {
-    var complete : Bool
-    var count : Int
-    var created_at : String
-    var endDate : String
-    var layoutUid : Int
-    var name : String
-    var photoLimit : Int
-    var uid : Int
-    var updated_at : String
 }
 
 // post

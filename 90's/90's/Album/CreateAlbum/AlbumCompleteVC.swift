@@ -74,7 +74,6 @@ extension AlbumCompleteVC {
                     guard let data = response.data else {return}
                     guard let uid = try? JSONDecoder().decode(AlbumCreateResult.self, from: data) else {return}
                     self.albumUid = uid.uid
-                    //self.sendCoverImageService(uid: uid.uid)
                 case 401:
                     print("\(status) : bad request, no warning in Server")
                 case 404:
@@ -87,24 +86,4 @@ extension AlbumCompleteVC {
             }
         })
     }
-    
-//    func sendCoverImageService(uid : Int){
-//        AlbumService.shared.photoUpload(albumUid: uid, image: [photo!], imageName: albumLayout.layoutName, completion: {
-//            response in
-//            if let status = response.response?.statusCode {
-//                switch status {
-//                case 200 :
-//                    print("album create : upload cover image complete")
-//                case 401:
-//                    print("\(status) : bad request, no warning in Server")
-//                case 404:
-//                    print("\(status) : Not found, no address")
-//                case 500 :
-//                    print("\(status) : Server error in AlbumComplete - photoUpload")
-//                default :
-//                    return
-//                }
-//            }
-//        })
-//    }
 }

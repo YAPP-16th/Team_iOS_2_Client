@@ -27,10 +27,12 @@ class AlbumInvitedVC: UIViewController {
     
     var isUserMember : Bool = false
     var albumIndex : Int = 0
+    var password : String = ""
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         autoLogin()
+        networkGetPassword()
     }
     
     override func viewDidLoad() {
@@ -54,6 +56,9 @@ extension AlbumInvitedVC {
                     self.albumCompleteBtn.backgroundColor = UIColor.black
                     self.albumCompleteBtn.isEnabled = true
                     self.albumInvitedLabel.backgroundColor = UIColor.black
+                    if value == self.password {
+                        
+                    }
                 }
             } else {
                 self.albumCompleteBtn.backgroundColor = UIColor.lightGray
@@ -149,6 +154,11 @@ extension AlbumInvitedVC {
                 }
             }
         })
+    }
+    
+    func networkGetPassword(){
+        // 비밀번호 조회 api
+        // password = value
     }
 }
 

@@ -14,6 +14,9 @@ class albumLayoutCollectionCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        selectImageView.isHidden = true
     }
+//    
+//    override func prepareForReuse() {
+//        selectImageView.isHidden = true
+//    }
 }
