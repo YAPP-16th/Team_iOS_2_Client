@@ -45,6 +45,7 @@ class OrderDetailViewController: UIViewController {
     
     //사용 데이터
     var orderData:GetOrderResult!
+    var albumOrderUid:Int = 0
     var cost = 0
     
     override func viewDidLoad() {
@@ -69,6 +70,7 @@ class OrderDetailViewController: UIViewController {
     //주문 취소 시트 -> 확인 버튼 클릭
     @IBAction func clickOkBtn(_ sender: Any) {
         dismissActionView()
+        cancelOrder()
     }
     
     //복사하기 버튼 클릭 시 액션
@@ -97,6 +99,8 @@ class OrderDetailViewController: UIViewController {
         
         
         //앨범 정보
+        albumOrderUid = orderData.uid
+        
         albumImageView.image = getCoverByUid(value: orderData.album.cover.uid)
         albumNameLabel.text = orderData.album.name
         
@@ -122,12 +126,13 @@ class OrderDetailViewController: UIViewController {
             strShipType = "최고급"
         }
         
-        albumOptionLabel.text = "커버: \(orderData.album.cover.name) / 포토레이아웃: \(layoutName ?? "") / 인화용지: \(strPaperType) / 배송: \(strShipType)"
+        albumOptionLabel.text = "커버: \(orderData.album.cover.name) / 포토레이아웃: \(layoutName) / 인화용지: \(strPaperType) / 배송: \(strShipType)"
         
         albumPriceLabel.text = "\(cost.numberToPrice(cost))원"
         albumNumLabel.text = "\(orderData.amount)개"
         orderNumberLabel.text = "주문번호: \(orderData.orderCode)"
         orderNumberLabel.sizeToFit()
+        
         //입금 대기 상태일 때만 주문취소 버튼 표시
         if(orderData.album.orderStatus.status == "processing"){
             cancelBtn.isHidden = false
@@ -152,6 +157,41 @@ class OrderDetailViewController: UIViewController {
         
     }
     
+    
+    func cancelOrder(){
+        print("\(albumOrderUid)")
+        CancelOrderService.shared.cancelOrder(albumOrderUid: self.albumOrderUid, completion: {
+            status in
+            print("\(status)")
+            switch(status){
+            case 200:
+                self.showSuccessAlert()
+                break
+            case 400...500:
+                self.showErrAlert()
+                break
+            default:
+                break
+            }
+        })
+    }
+    
+    func showSuccessAlert(){
+        let alert = UIAlertController(title: "주문취소 완료", message: "주문취소 되었습니다", preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(action)
+        self.present(alert, animated: true)
+    }
+    
+    
+    func showErrAlert(){
+        let alert = UIAlertController(title: "오류", message: "주문취소 불가", preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(action)
+        self.present(alert, animated: true)
+    }
+    
+    
     func showActionView(){
         UIView.animate(withDuration: 0.5, animations: {
             self.imageView.isHidden = false
@@ -175,7 +215,7 @@ class OrderDetailViewController: UIViewController {
             self.view.layoutIfNeeded()
         },completion: {
             _ in
-            UIView.animate(withDuration: 1.0, animations: {
+            UIView.animate(withDuration: 0.9, animations: {
                 self.copyHeightConst.constant = 0
                 self.imageView.isHidden = true
                 self.view.layoutIfNeeded()

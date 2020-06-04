@@ -9,6 +9,7 @@
 import Foundation
 
 struct GetOrderResult: Codable {
+    let uid:Int
     let album:album
     let paperType1:PaperType
     let postType:PostType

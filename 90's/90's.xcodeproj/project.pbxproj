@@ -118,6 +118,7 @@
 		A3CCF7BF24827FE200BCDD35 /* GetOrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCF7BE24827FE200BCDD35 /* GetOrderService.swift */; };
 		A3CCF7CC2482819200BCDD35 /* GetOrderResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCF7CB2482819200BCDD35 /* GetOrderResult.swift */; };
 		A3D8758F24448BCE0085F17B /* AuthenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D8758E24448BCE0085F17B /* AuthenViewController.swift */; };
+		A3DC0BA72488D00B002A0C07 /* CancelOrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DC0BA62488D00B002A0C07 /* CancelOrderService.swift */; };
 		A3E133D624558988007950D8 /* OrderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E133D524558988007950D8 /* OrderListViewController.swift */; };
 		A3E133D824558997007950D8 /* ManageInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E133D724558997007950D8 /* ManageInfoViewController.swift */; };
 		A3E133DA245589A1007950D8 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E133D9245589A1007950D8 /* FAQViewController.swift */; };
@@ -646,6 +647,7 @@
 		A3CCF7BE24827FE200BCDD35 /* GetOrderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOrderService.swift; sourceTree = "<group>"; };
 		A3CCF7CB2482819200BCDD35 /* GetOrderResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOrderResult.swift; sourceTree = "<group>"; };
 		A3D8758E24448BCE0085F17B /* AuthenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenViewController.swift; sourceTree = "<group>"; };
+		A3DC0BA62488D00B002A0C07 /* CancelOrderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelOrderService.swift; sourceTree = "<group>"; };
 		A3E133D524558988007950D8 /* OrderListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewController.swift; sourceTree = "<group>"; };
 		A3E133D724558997007950D8 /* ManageInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageInfoViewController.swift; sourceTree = "<group>"; };
 		A3E133D9245589A1007950D8 /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
@@ -1747,6 +1749,7 @@
 				A3F30963246F1A7D0051FF6B /* GetProfileService.swift */,
 				A3739093247917E900F9802B /* LeaveService.swift */,
 				A3CCF7BE24827FE200BCDD35 /* GetOrderService.swift */,
+				A3DC0BA62488D00B002A0C07 /* CancelOrderService.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -2131,6 +2134,7 @@
 				A3CCF7BF24827FE200BCDD35 /* GetOrderService.swift in Sources */,
 				A3F30964246F1A7D0051FF6B /* GetProfileService.swift in Sources */,
 				9BB1C5762441EEC30035DEBF /* FilterViewController.swift in Sources */,
+				A3DC0BA72488D00B002A0C07 /* CancelOrderService.swift in Sources */,
 				A3B0D1D9245D6C8400DB90ED /* SettingCell.swift in Sources */,
 				9B6A134E2440D0C500E78E66 /* MemberTableViewCell.swift in Sources */,
 				39CB8C97245DCD2100F28A49 /* PopUp2ViewController.swift in Sources */,
