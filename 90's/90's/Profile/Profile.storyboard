@@ -922,8 +922,8 @@
                                     <constraint firstItem="g1S-bz-QG2" firstAttribute="top" secondItem="XvP-6y-BWx" secondAttribute="top" id="vn0-gJ-Ugo"/>
                                 </constraints>
                             </scrollView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="rectangleBlackopacity" translatesAutoresizingMaskIntoConstraints="NO" id="ZkA-KB-I5P">
-                                <rect key="frame" x="0.0" y="583" width="375" height="197"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rectangleBlackopacity" translatesAutoresizingMaskIntoConstraints="NO" id="ZkA-KB-I5P">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="780"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="780" id="Zcr-lo-MGn"/>
                                 </constraints>
@@ -966,6 +966,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rectangle251Actionsheet" translatesAutoresizingMaskIntoConstraints="NO" id="1SE-Bu-rt4">
+                                <rect key="frame" x="0.0" y="760" width="375" height="0.0"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="VkD-EC-nFo"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="클립보드에 복사되었습니다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXA-3Q-lnF">
+                                <rect key="frame" x="68.5" y="899" width="238" height="32"/>
+                                <fontDescription key="fontDescription" name="NotoSansCJKkr-DemiLight" family="Noto Sans CJK KR" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="copyIcon" translatesAutoresizingMaskIntoConstraints="NO" id="iPB-X7-xEk">
+                                <rect key="frame" x="165.5" y="829" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="4EF-wm-NEc"/>
+                                    <constraint firstAttribute="width" constant="44" id="zi8-BX-Vnj"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -978,15 +997,22 @@
                             <constraint firstItem="Xkf-A5-f49" firstAttribute="bottom" secondItem="0ZM-2m-qnk" secondAttribute="bottom" id="9CH-sp-DwM"/>
                             <constraint firstItem="Xkf-A5-f49" firstAttribute="trailing" secondItem="XvP-6y-BWx" secondAttribute="trailing" id="Evi-dR-Vpk"/>
                             <constraint firstItem="0ZM-2m-qnk" firstAttribute="trailing" secondItem="Xkf-A5-f49" secondAttribute="trailing" id="FMz-Ml-2v4"/>
+                            <constraint firstAttribute="bottom" secondItem="1SE-Bu-rt4" secondAttribute="bottom" constant="20" symbolic="YES" id="FfE-5a-3bS"/>
+                            <constraint firstItem="HXA-3Q-lnF" firstAttribute="centerX" secondItem="iPB-X7-xEk" secondAttribute="centerX" id="JG8-qv-nMQ"/>
                             <constraint firstItem="0ZM-2m-qnk" firstAttribute="leading" secondItem="Xkf-A5-f49" secondAttribute="leading" id="JfL-bL-rdb"/>
                             <constraint firstItem="XvP-6y-BWx" firstAttribute="leading" secondItem="Xkf-A5-f49" secondAttribute="leading" id="KzK-Ty-kIz"/>
                             <constraint firstItem="ZkA-KB-I5P" firstAttribute="leading" secondItem="Xkf-A5-f49" secondAttribute="leading" id="QnG-Hi-vwn"/>
+                            <constraint firstAttribute="trailing" secondItem="1SE-Bu-rt4" secondAttribute="trailing" id="Sac-jz-o05"/>
                             <constraint firstItem="ULo-2c-5LW" firstAttribute="trailing" secondItem="0ZM-2m-qnk" secondAttribute="trailing" constant="-18" id="Xqx-FB-oi2"/>
                             <constraint firstItem="ULo-2c-5LW" firstAttribute="height" secondItem="hDK-KE-Y4U" secondAttribute="height" id="aMw-dK-WhO"/>
+                            <constraint firstItem="iPB-X7-xEk" firstAttribute="centerX" secondItem="1SE-Bu-rt4" secondAttribute="centerX" id="dIV-ws-6mM"/>
+                            <constraint firstItem="1SE-Bu-rt4" firstAttribute="leading" secondItem="YTQ-6V-6yO" secondAttribute="leading" id="eQU-xU-2Cj"/>
                             <constraint firstItem="XvP-6y-BWx" firstAttribute="top" secondItem="uEn-V4-8MS" secondAttribute="bottom" id="gZr-ld-bqb"/>
                             <constraint firstItem="ZkA-KB-I5P" firstAttribute="top" secondItem="YTQ-6V-6yO" secondAttribute="top" id="hao-Pt-QjR"/>
                             <constraint firstItem="hDK-KE-Y4U" firstAttribute="leading" secondItem="0ZM-2m-qnk" secondAttribute="leading" constant="18" id="jhm-BR-iBH"/>
                             <constraint firstItem="cFs-Oa-AOR" firstAttribute="centerX" secondItem="0ZM-2m-qnk" secondAttribute="centerX" id="kaE-oj-Q0U"/>
+                            <constraint firstItem="HXA-3Q-lnF" firstAttribute="top" secondItem="iPB-X7-xEk" secondAttribute="bottom" constant="26" id="nBW-Ep-qL5"/>
+                            <constraint firstItem="1SE-Bu-rt4" firstAttribute="top" secondItem="iPB-X7-xEk" secondAttribute="top" constant="-69" id="pkX-dv-RvJ"/>
                             <constraint firstItem="anu-3y-ksn" firstAttribute="top" secondItem="YRK-b6-3hO" secondAttribute="top" id="sPK-uZ-o8a"/>
                             <constraint firstItem="0ZM-2m-qnk" firstAttribute="bottom" secondItem="ZkA-KB-I5P" secondAttribute="bottom" id="tTS-vA-4OG"/>
                             <constraint firstItem="0ZM-2m-qnk" firstAttribute="top" secondItem="cFs-Oa-AOR" secondAttribute="top" constant="-50" id="tb8-0e-5uR"/>
@@ -1011,6 +1037,7 @@
                         <outlet property="albumPriceLabel" destination="tgg-GX-CS7" id="bmq-MY-bqW"/>
                         <outlet property="cancelBtn" destination="Mwt-0D-QFa" id="UAT-GC-VFd"/>
                         <outlet property="cancelOptionBtn" destination="hDK-KE-Y4U" id="4Kb-ci-Ati"/>
+                        <outlet property="copyHeightConst" destination="VkD-EC-nFo" id="18k-QG-Oqd"/>
                         <outlet property="depositLabel" destination="7h9-i2-VAu" id="RXn-AM-dIX"/>
                         <outlet property="imageView" destination="ZkA-KB-I5P" id="psK-c0-rYG"/>
                         <outlet property="memoLabel" destination="1Pi-qy-h6O" id="st2-Gx-iBX"/>
@@ -2488,6 +2515,7 @@
         <image name="cancelButtonProfile" width="68" height="26"/>
         <image name="checkboxgray" width="25" height="24"/>
         <image name="copyButton" width="68" height="26"/>
+        <image name="copyIcon" width="44" height="44"/>
         <image name="headBox" width="414" height="116"/>
         <image name="iconBack" width="14" height="23"/>
         <image name="iconCancel" width="21" height="21"/>

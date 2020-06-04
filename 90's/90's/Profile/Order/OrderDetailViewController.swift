@@ -28,7 +28,7 @@ class OrderDetailViewController: UIViewController {
     @IBOutlet weak var accountLabel: UILabel!
     @IBOutlet weak var depositLabel: UILabel!
     
-   //커스텀 주문취소 뷰
+    //커스텀 주문취소 뷰
     @IBOutlet weak var sheetHeightConst: NSLayoutConstraint!
     @IBOutlet weak var imageView: UIImageView!
     
@@ -38,6 +38,10 @@ class OrderDetailViewController: UIViewController {
     
     //클립보드에 복사할 문자열
     var copyStr:String!
+    
+    //복사하기 클릭 시 나타나는 커스텀 뷰
+    @IBOutlet weak var copyHeightConst: NSLayoutConstraint!
+    
     
     //사용 데이터
     var orderData:GetOrderResult!
@@ -69,6 +73,8 @@ class OrderDetailViewController: UIViewController {
     
     //복사하기 버튼 클릭 시 액션
     @IBAction func clickCopyBtn(_ sender: Any) {
+        showCopyView()
+        //문자열 복사 코드
         let pasteBoard = UIPasteboard.general
         pasteBoard.string = copyStr
     }
@@ -81,7 +87,7 @@ class OrderDetailViewController: UIViewController {
         ])
         attributedString.addAttribute(.font, value: UIFont(name: "NotoSansCJKkr-DemiLight", size: 14.0)!, range: NSRange(location: 0, length: 4))
         accountLabel.attributedText = attributedString
-
+        
         //클립보드에 복사할 String
         let str = accountLabel.text!
         let startIndex = str.index(str.startIndex, offsetBy: 5)
@@ -98,7 +104,7 @@ class OrderDetailViewController: UIViewController {
         let paperType = orderData.paperType1.uid
         let shipType = orderData.postType.uid
         
-       
+        
         var strPaperType = ""
         var strShipType = ""
         
@@ -138,7 +144,6 @@ class OrderDetailViewController: UIViewController {
         depositLabel.text = "\(cost.numberToPrice(cost))원"
         
         
-        
         //주문취소 뷰
         imageView.isHidden = true
         sheetHeightConst.constant = 0
@@ -161,7 +166,21 @@ class OrderDetailViewController: UIViewController {
             self.sheetHeightConst.constant = 0
             self.view.layoutIfNeeded()
         })
-
+    }
+    
+    func showCopyView(){
+        UIView.animate(withDuration: 1.0, animations: {
+            self.imageView.isHidden = false
+            self.copyHeightConst.constant = 264
+            self.view.layoutIfNeeded()
+        },completion: {
+            _ in
+            UIView.animate(withDuration: 1.0, animations: {
+                self.copyHeightConst.constant = 0
+                self.imageView.isHidden = true
+                self.view.layoutIfNeeded()
+            })
+        })
     }
     
 }
