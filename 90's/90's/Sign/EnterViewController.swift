@@ -7,13 +7,18 @@
 //
 
 import UIKit
+import AuthenticationServices
 
 class EnterViewController: UIViewController {
+    
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var signUpBtn: UIButton!
     @IBOutlet weak var kakaoLoginBtn: UIButton!
+    @IBOutlet weak var appleLoginView: UIView!
     
     var initialEnter:Bool = true
+    var socialEmail:String = ""
+    var socialName:String = ""
     
     override func viewWillAppear(_ animated: Bool) {
         if(initialEnter){
@@ -23,6 +28,23 @@ class EnterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if #available(iOS 13.0, *) {
+            
+            //애플로그인 버튼 생성
+            let button = ASAuthorizationAppleIDButton()
+            button.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress)
+                , for: .touchUpInside)
+            button.cornerRadius = 8.0
+            appleLoginView.addSubview(button)
+            
+            //버튼에 constraint 추가
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.bottomAnchor.constraint(equalTo: appleLoginView.bottomAnchor).isActive = true
+            button.topAnchor.constraint(equalTo: appleLoginView.topAnchor).isActive = true
+            button.leftAnchor.constraint(equalTo: appleLoginView.leftAnchor).isActive = true
+            button.rightAnchor.constraint(equalTo: appleLoginView.rightAnchor).isActive = true
+            
+        }
         setUI()
     }
     
@@ -59,6 +81,20 @@ class EnterViewController: UIViewController {
         let termVC = signUpSB.instantiateViewController(withIdentifier: "TermViewController") as! TermViewController
         navigationController?.pushViewController(termVC, animated: true)
     }
+    
+    //애플 로그인 버튼 클릭 시
+    @available(iOS 13.0, *)
+    @objc func handleAuthorizationAppleIDButtonPress(){
+
+        let request = ASAuthorizationAppleIDProvider().createRequest()
+        request.requestedScopes = [.fullName,.email]
+        let controller = ASAuthorizationController(authorizationRequests: [request])
+        controller.delegate = self
+        controller.presentationContextProvider = self
+        controller.performRequests()
+    }
+    
+    
     
     //카카오톡 회원가입
     @IBAction func goKaKaoLogin(_ sender: Any) {
@@ -97,16 +133,9 @@ class EnterViewController: UIViewController {
                         let email = user.account?.email,
                         let nickName = user.account?.profile?.nickname
                         else { return }
-                    print("\(email) & \(nickName)")
-                    
-                    //전화번호 인증화면 이동
-                    let signUpSB = UIStoryboard(name: "SignUp", bundle: nil)
-                    let authenVC = signUpSB.instantiateViewController(withIdentifier: "TelephoneAuthenViewController") as! TelephoneAuthenViewController
-                    
-                    authenVC.isSocial = true
-                    authenVC.email = email
-                    authenVC.nickName = nickName
-                    self.navigationController?.pushViewController(authenVC, animated: true)
+                    self.socialEmail = email
+                    self.socialName = nickName
+                    self.checkEmail()
                 })
                 
             }else {
@@ -186,6 +215,43 @@ class EnterViewController: UIViewController {
         })
     }
     
+    func checkEmail(){
+        EmailCheckService.shared.emailCheck(email: socialEmail, completion: {
+            response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200:
+                    guard let data = response.data else { return }
+                    let decoder = JSONDecoder()
+                    let checkEmailResult = try? decoder.decode(CheckEmailResult.self, from: data)
+                    guard let isExist = checkEmailResult?.result else { return }
+                    if(isExist){
+                        self.goLogin(self.socialEmail, nil, true)
+                    }else {
+                        //전화번호 인증화면 이동
+                        let signUpSB = UIStoryboard(name: "SignUp", bundle: nil)
+                        let authenVC = signUpSB.instantiateViewController(withIdentifier: "TelephoneAuthenViewController") as! TelephoneAuthenViewController
+                        authenVC.isSocial = true
+                        authenVC.email = self.socialEmail
+                        authenVC.nickName = self.socialName
+                        self.navigationController?.pushViewController(authenVC, animated: true)
+                    }
+                    break
+                case 401...404:
+                    let alert = UIAlertController(title: "오류", message: "이메일 중복체크 불가", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "확인", style: .default)
+                    alert.addAction(action)
+                    self.present(alert, animated: true)
+                    break
+                default:
+                    return
+                }
+            }
+        })
+        
+    }
+    
+    
     func showErrAlert(){
         let alert = UIAlertController(title: "오류", message: "로그인 불가", preferredStyle: .alert)
         let action = UIAlertAction(title: "확인", style: .default)
@@ -194,5 +260,25 @@ class EnterViewController: UIViewController {
     }
     
     
+    
+}
+
+@available(iOS 13.0, *)
+extension EnterViewController : ASAuthorizationControllerDelegate,
+ASAuthorizationControllerPresentationContextProviding {
+    //로그인 context화면을 어느 곳에 띄울지 설정
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
+    
+    //로그인 후 응답을 받는 부분
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            let userIdentifer = credential.user
+            self.socialName = "\(credential.fullName)"
+            self.socialEmail = "\(credential.email)"
+          
+        }
+    }
     
 }
