@@ -52,6 +52,7 @@ class LeaveReasonViewController: UIViewController {
                     UserDefaults.standard.removeObject(forKey: "password")
                     UserDefaults.standard.removeObject(forKey: "social")
                     UserDefaults.standard.removeObject(forKey: "jwt")
+                    UserDefaults.standard.removeObject(forKey: "isAppleId")
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.switchEnterView()
                     break

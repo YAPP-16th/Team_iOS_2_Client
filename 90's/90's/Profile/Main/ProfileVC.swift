@@ -91,9 +91,15 @@ class ProfileVC: UIViewController {
     
     //탈퇴뷰 - 회원탈퇴 버튼 클릭 시 액션
     @IBAction func clickLeaveBtn(_ sender: Any) {
-        let leaveReasonVC = storyboard?.instantiateViewController(withIdentifier: "LeaveReasonViewController") as! LeaveReasonViewController
-        leaveReasonVC.modalPresentationStyle = .fullScreen
-        self.present(leaveReasonVC, animated: true, completion: nil)
+        //애플아이디일 경우 탈퇴 불가 -> 아이폰 설정에서 앱과 연결 끊을 시 자동탈퇴되도록 자체 탈퇴 막음
+        if UserDefaults.standard.bool(forKey: "isAppleId") {
+            showCannotLeaveAlert()
+        }else {
+            let leaveReasonVC = storyboard?.instantiateViewController(withIdentifier: "LeaveReasonViewController") as! LeaveReasonViewController
+            leaveReasonVC.modalPresentationStyle = .fullScreen
+            self.present(leaveReasonVC, animated: true, completion: nil)
+        }
+        
     }
     
     func setUI(){
@@ -146,6 +152,7 @@ class ProfileVC: UIViewController {
         }
     }
     
+    //로그아웃시 사용되는 메소드 - 모든 정보 지움
     func removeSavedUserInfo(){
         UserDefaults.standard.removeObject(forKey: "email")
         UserDefaults.standard.removeObject(forKey: "password")
@@ -154,7 +161,7 @@ class ProfileVC: UIViewController {
     }
     
     
-    
+    //프로필 조회 불가 시 경고창
     func showErrAlert(){
         let alert = UIAlertController(title: "오류", message: "프로필 조회 불가", preferredStyle: .alert)
         let action = UIAlertAction(title: "확인", style: .default)
@@ -162,7 +169,15 @@ class ProfileVC: UIViewController {
         self.present(alert, animated: true)
     }
     
-  
+    //애플아이디일 경우 탈퇴 불가 경고창
+    func showCannotLeaveAlert(){
+        let alert = UIAlertController(title: "탈퇴불가", message: "아이폰 설정에서 앱과의 APPLE ID 사용을 중단해주세요", preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(action)
+        self.present(alert, animated: true)
+    }
+    
+    
 }
 
 

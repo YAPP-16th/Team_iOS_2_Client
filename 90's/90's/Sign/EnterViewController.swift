@@ -19,8 +19,12 @@ class EnterViewController: UIViewController {
     var initialEnter:Bool = true
     var socialEmail:String = ""
     var socialName:String = ""
+    var isRevokedAppleId = false
+    var isAppleId = false
+    var isInitialAppleLogin = true
     
     override func viewWillAppear(_ animated: Bool) {
+
         if(initialEnter){
             autoLogin()
         }
@@ -51,10 +55,13 @@ class EnterViewController: UIViewController {
     func autoLogin(){
         //기존에 로그인한 데이터가 있을 경우
         if let email = UserDefaults.standard.string(forKey: "email"){
-            //소셜 로그인의 경우
+            //소셜 로그인의 경우 애플아이디 제외 자동로그인
             if(UserDefaults.standard.bool(forKey: "social")){
-                goLogin(email, nil, true)
+                if(!UserDefaults.standard.bool(forKey: "isAppleId")){
+                    goLogin(email, nil, true)
+                }
             }else {
+                //자체 로그인
                 guard let password = UserDefaults.standard.string(forKey: "password") else {return}
                 goLogin(email, password, false)
             }
@@ -85,6 +92,17 @@ class EnterViewController: UIViewController {
     //애플 로그인 버튼 클릭 시
     @available(iOS 13.0, *)
     @objc func handleAuthorizationAppleIDButtonPress(){
+        
+        //revoke상태인지 확인
+        let provider = ASAuthorizationAppleIDProvider()
+        if let identifier = UserDefaults.standard.string(forKey: "appleIdentifier") {
+            provider.getCredentialState(forUserID: identifier, completion: {
+                    (credentialState, error) in
+                if(credentialState == .revoked){
+                    self.isRevokedAppleId = true
+                }
+            })
+        }
 
         let request = ASAuthorizationAppleIDProvider().createRequest()
         request.requestedScopes = [.fullName,.email]
@@ -92,6 +110,9 @@ class EnterViewController: UIViewController {
         controller.delegate = self
         controller.presentationContextProvider = self
         controller.performRequests()
+        
+
+        
     }
     
     
@@ -196,14 +217,21 @@ class EnterViewController: UIViewController {
                     let loginResult = try? decoder.decode(SignUpResult.self, from: data)
                     guard let jwt = loginResult?.jwt else { return }
                     
-                    //자동로그인 될때마다 jwt 갱신해서 저장
+                    //로그인 될때마다 jwt 갱신해서 저장
                     UserDefaults.standard.set(jwt, forKey: "jwt")
                     UserDefaults.standard.set(email, forKey: "email")
                     UserDefaults.standard.set(password, forKey: "password")
                     UserDefaults.standard.set(social, forKey: "social")
+                    UserDefaults.standard.set(self.isAppleId, forKey: "isAppleId")
+
                     
-                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    appDelegate.switchTab()
+                    //이미 가입된 애플아이디 && revoked상태 이면 탈퇴시키고 전화번호 입력화면으로 이동
+                    if(self.isRevokedAppleId){
+                        self.leave()
+                    }else {
+                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                        appDelegate.switchTab()
+                    }
                     break
                 case 400...404:
                     self.showErrAlert()
@@ -234,12 +262,7 @@ class EnterViewController: UIViewController {
                         self.goLogin(self.socialEmail, nil, true)
                     }else {
                         //전화번호 인증화면 이동
-                        let signUpSB = UIStoryboard(name: "SignUp", bundle: nil)
-                        let authenVC = signUpSB.instantiateViewController(withIdentifier: "TelephoneAuthenViewController") as! TelephoneAuthenViewController
-                        authenVC.isSocial = true
-                        authenVC.email = self.socialEmail
-                        authenVC.nickName = self.socialName
-                        self.navigationController?.pushViewController(authenVC, animated: true)
+                        self.goAuthenView()
                     }
                     break
                 case 401...404:
@@ -254,6 +277,47 @@ class EnterViewController: UIViewController {
             }
         })
         
+    }
+    
+    func leave(){
+        guard let token = UserDefaults.standard.string(forKey: "jwt") else { return }
+        LeaveService.shared.leave(token: token, completion: {
+            status in
+            switch status {
+            case 200:
+                //기존의 정보 다 삭제(자체로그인 시 저장하는 정보 : email, password, social, jwt)
+                UserDefaults.standard.removeObject(forKey: "email")
+                UserDefaults.standard.removeObject(forKey: "password")
+                UserDefaults.standard.removeObject(forKey: "social")
+                UserDefaults.standard.removeObject(forKey: "jwt")
+
+                //전화번호 인증화면으로 이동
+                self.goAuthenView()
+                break
+            case 401...500:
+                self.showErrAlert()
+                break
+            default:
+                return
+            }
+        })
+    }
+    
+    func goAuthenView(){
+        let signUpSB = UIStoryboard(name: "SignUp", bundle: nil)
+        let authenVC = signUpSB.instantiateViewController(withIdentifier: "TelephoneAuthenViewController") as! TelephoneAuthenViewController
+        authenVC.isSocial = true
+        authenVC.email = self.socialEmail
+        authenVC.nickName = self.socialName
+        authenVC.isAppleId = self.isAppleId
+        self.navigationController?.pushViewController(authenVC, animated: true)
+    }
+    
+    func showLeaveErrAlert(){
+        let alert = UIAlertController(title: "오류", message: "회원탈퇴 불가", preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(action)
+        self.present(alert, animated: true)
     }
     
     
@@ -276,14 +340,52 @@ ASAuthorizationControllerPresentationContextProviding {
         return self.view.window!
     }
     
+    
     //로그인 후 응답을 받는 부분
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
             let userIdentifer = credential.user
-            self.socialName = "\(credential.fullName)"
-            self.socialEmail = "\(credential.email)"
-          
+            let appleName = "\(credential.fullName?.familyName ?? "")\(credential.fullName?.givenName ?? "")"
+            let appleEmail = "\(credential.email ?? "")"
+            self.isAppleId = true
+            
+            print("userIdentifier \(userIdentifer)")
+
+            //애플 email은 처음인증시에만 이름과 이메일을 던져주므로 인증했을 때 정보를 저장하고 지우지 않음
+            if(appleName != "" && appleEmail != ""){
+                //애플로 회원가입 -> 첫 인증
+                UserDefaults.standard.set(appleEmail, forKey: "appleEmail")
+                UserDefaults.standard.set(appleName, forKey: "appleName")
+                UserDefaults.standard.set(userIdentifer, forKey: "appleIdentifier")
+                self.socialEmail = appleEmail
+                self.socialName = appleName
+            }else {
+                isInitialAppleLogin = false
+            }
+            
+            
+            let provider = ASAuthorizationAppleIDProvider()
+            provider.getCredentialState(forUserID: userIdentifer, completion: {
+                (credentialState, error) in
+                switch(credentialState){
+                case .authorized:
+                    //애플로 회원가입
+                    if(self.isInitialAppleLogin || self.isRevokedAppleId){
+                        self.checkEmail()
+                    }else {
+                        if let savedEmail = UserDefaults.standard.string(forKey: "appleEmail") {
+                            self.goLogin(savedEmail, nil, true)
+                        }
+                    }
+                    
+                    break
+                @unknown default:
+                    break
+                }
+            })
         }
     }
+    
+    
     
 }
