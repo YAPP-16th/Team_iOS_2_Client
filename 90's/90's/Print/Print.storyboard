@@ -1711,18 +1711,17 @@
                                                     <constraint firstAttribute="height" constant="1" id="xzp-7J-1yo"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현창은행" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Afl-5m-Kf6">
-                                                <rect key="frame" x="50" y="722" width="68" height="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="조경진" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Afl-5m-Kf6">
+                                                <rect key="frame" x="50" y="722" width="39" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="2vO-yp-qki"/>
-                                                    <constraint firstAttribute="width" constant="68" id="Bmg-IV-hCi"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-DemiLight" family="Noto Sans CJK KR" pointSize="14"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123-3456-4562" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AF8-Tp-Ena">
-                                                <rect key="frame" x="262.5" y="720" width="94.5" height="24"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기업은행 274 071668 01 019" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AF8-Tp-Ena">
+                                                <rect key="frame" x="185" y="720" width="172" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" priority="250" constant="160" id="eyZ-ch-7su"/>
                                                     <constraint firstAttribute="height" constant="24" id="nOg-60-F4t"/>
@@ -1990,16 +1989,16 @@
                                 </constraints>
                             </scrollView>
                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="rectangleBlackopacity" translatesAutoresizingMaskIntoConstraints="NO" id="Rwf-RU-FSF">
-                                <rect key="frame" x="0.0" y="711" width="236" height="269"/>
+                                <rect key="frame" x="0.0" y="1000" width="236" height="269"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rectangle251Actionsheet" translatesAutoresizingMaskIntoConstraints="NO" id="8Pi-uk-d0w">
-                                <rect key="frame" x="0.0" y="716" width="375" height="264"/>
+                                <rect key="frame" x="0.0" y="980" width="375" height="0.0"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="264" id="aWe-bI-oW0"/>
+                                    <constraint firstAttribute="height" id="aWe-bI-oW0"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f9f-wa-ECb">
-                                <rect key="frame" x="18" y="870.5" width="150" height="72"/>
+                                <rect key="frame" x="18" y="1134.5" width="150" height="72"/>
                                 <color key="backgroundColor" red="0.59999999999999998" green="0.61176470589999998" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="4O1-WZ-PIS"/>
@@ -2014,7 +2013,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dak-e8-sER">
-                                <rect key="frame" x="175" y="870.5" width="182" height="72"/>
+                                <rect key="frame" x="175" y="1134.5" width="182" height="72"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="16"/>
                                 <state key="normal" title="확인">
@@ -2025,7 +2024,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="작성된 내용은 저장되지 않습니다. 나가시겠습니까?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KbF-16-rJS">
-                                <rect key="frame" x="55.5" y="766" width="264" height="62.5"/>
+                                <rect key="frame" x="55.5" y="1030" width="264" height="62.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="250" constant="62" id="Luq-Xh-1Bf"/>
                                     <constraint firstAttribute="width" constant="264" id="oF5-Mu-oCU"/>
