@@ -86,7 +86,7 @@ extension UICollectionView {
 
 extension UIViewController{
     func checkDeviseVersion(backView: UIView!){
-        backView.isHidden = isDeviseVersionLow ? true : false
+        backView.isHidden = iPhone8Model() ? true : false
     }
        
     // imageRenderVC - layoutView setting
@@ -318,6 +318,9 @@ extension UIViewController{
     // album - Sticker - addPhoto
     func applyStickerLowDeviceImageViewLayout(selectedLayout : AlbumLayout, smallBig: CGSize, imageView : UIImageView, image : UIImage) -> UIImageView {
         var size : CGSize = CGSize(width: 0, height: 0)
+        print(selectedLayout)
+        print(smallBig)
+        print("==============")
         
         switch selectedLayout {
         case .Polaroid :
@@ -342,6 +345,8 @@ extension UIViewController{
             size = CGSize(width: smallBig.width - 60, height: smallBig.height - 2)
             imageView.frame = CGRect(x: 30, y: 1, width: size.width, height: size.height)
         }
+        print(size)
+        print(imageView.frame)
         imageView.image = image.imageResize(sizeChange: size)
         return imageView
     }
@@ -605,5 +610,99 @@ extension Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.string(from: self)
+    }
+}
+
+
+extension UIViewController {
+///Identifier 찾기
+    func getDeviceIdentifier() -> String {
+        var systemInfo = utsname()
+        uname(&systemInfo)
+        let machineMirror = Mirror(reflecting: systemInfo.machine)
+        let identifier = machineMirror.children.reduce("") { identifier, element in
+            guard let value = element.value as? Int8, value != 0 else { return identifier }
+            return identifier + String(UnicodeScalar(UInt8(value)))
+        }
+        return identifier
+    }
+    /**
+     디바이스 모델 (iPhone, iPad) 이름 전달 (iPhone6, iPhone7 Plus...)
+     */
+    func deviceModelName() -> String {
+        
+        let model = UIDevice.current.model
+        
+        switch model {
+        case "iPhone":
+            return self.iPhoneModel()
+            
+        default:
+            return "Unknown Model : \(model)"
+        }
+        
+    }
+    
+    /**
+     iPhone 모델 이름 (iPhone6, iPhone7 Plus...)
+     */
+    func iPhoneModel() -> String {
+        
+        let identifier = self.getDeviceIdentifier()
+        
+        switch identifier {
+        case "iPhone1,1" :
+            return "iPhone"
+        case "iPhone1,2" :
+            return "iPhone3G"
+        case "iPhone2,1" :
+            return "iPhone3GS"
+        case "iPhone3,1", "iPhone3,2", "iPhone3,3" :
+            return "iPhone4"
+        case "iPhone4,1" :
+            return "iPhone4s"
+        case "iPhone5,1", "iPhone5,2" :
+            return "iPhone5"
+        case "iPhone5,3", "iPhone5,4" :
+            return "iPhone5c"
+        case "iPhone6,1", "iPhone6,2" :
+            return "iPhone5s"
+        case "iPhone7,2" :
+            return "iPhone6"
+        case "iPhone7,1" :
+            return "iPhone6 Plus"
+        case "iPhone8,1" :
+            return "iPhone6s"
+        case "iPhone8,2" :
+            return "iPhone6s Plus"
+        case "iPhone8,4" :
+            return "iPhone SE"
+        case "iPhone9,1", "iPhone9,3" :
+            return "iPhone7"
+        case "iPhone9,2", "iPhone9,4" :
+            return "iPhone7 Plus"
+        case "iPhone10,1", "iPhone10,4" :
+            return "iPhone8"
+        case "iPhone10,2", "iPhone10,5" :
+            return "iPhone8 Plus"
+        case "iPhone10,3", "iPhone10,6" :
+            return "iPhoneX"
+        default:
+            return "Unknown iPhone : \(identifier)"
+        }
+    }
+
+    
+    func iPhone8Model() -> Bool {
+        let identifier = self.getDeviceIdentifier()
+        
+        switch identifier {
+        case "iPhone1,1", "iPhone1,2","iPhone2,1","iPhone3,1", "iPhone3,2", "iPhone3,3", "iPhone4,1" , "iPhone5,1", "iPhone5,2","iPhone5,3", "iPhone5,4","iPhone6,1", "iPhone6,2" , "iPhone7,2" ,"iPhone7,1","iPhone8,1","iPhone8,2","iPhone8,4","iPhone9,1", "iPhone9,3", "iPhone9,2", "iPhone9,4", "iPhone10,1", "iPhone10,4" :
+            return true
+        case "iPhone10,2", "iPhone10,5", "iPhone10,3", "iPhone10,6" :
+            return false
+        default:
+            return false
+        }
     }
 }

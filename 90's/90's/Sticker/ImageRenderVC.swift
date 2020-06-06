@@ -77,11 +77,7 @@ class ImageRenderVC: UIViewController {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
         
-        
-        print("touch = \(String(describing: touch?.view?.description)),\n \(touch?.view?.mask)")
-        
         if sticker != nil {
-            
             switch touch!.view {
             case sticker?.rotateImageView :
                 let ang = pToA(touch!) - initialAngle
@@ -123,7 +119,7 @@ extension ImageRenderVC {
     }
     
     private func layoutSetting(){
-        deviceSize = isDeviseVersionLow ?
+        deviceSize = iPhone8Model() ?
             returnLayoutStickerLowDeviceSize(selectedLayout: selectLayout) :
             returnLayoutStickerHighDeviceSize(selectedLayout: selectLayout)
         
@@ -131,14 +127,14 @@ extension ImageRenderVC {
         layoutImage = applyBackImageViewLayout(selectedLayout: selectLayout, smallBig: deviceSize, imageView: layoutImage)
         
         // 사진 크기 조정
-        renderImage = isDeviseVersionLow ?
+        renderImage = iPhone8Model() ?
             applyStickerLowDeviceImageViewLayout(selectedLayout: selectLayout, smallBig: deviceSize, imageView: renderImage, image: image!) :
             applyStickerHighDeviceImageViewLayout(selectedLayout: selectLayout, smallBig: deviceSize, imageView: renderImage, image: image!)
 
         // 뷰 위치 조정
         setRenderSaveViewFrameSetting(view: saveView, selectLayout: selectLayout, size: deviceSize)
-        setRenderLayoutViewFrameSetting(view: saveView, imageView: layoutImage)
-        setRenderImageViewFrameSetting(view: saveView, imageView: renderImage, selectlayout: selectLayout)
+//        setRenderLayoutViewFrameSetting(view: saveView, imageView: layoutImage)
+//        setRenderImageViewFrameSetting(view: saveView, imageView: renderImage, selectlayout: selectLayout)
     }
     
     private func resetValues(){
@@ -214,10 +210,10 @@ extension ImageRenderVC {
         /// todo : 팬에 기울기도 적용하기
         if sticker != nil {
             let transition = panGesture.translation(in: sticker)
-//            let scale = CGAffineTransform(scaleX: saveSize, y: saveSize)
-//            let rotate = CGAffineTransform(rotationAngle: saveAngle)
+            let scale = CGAffineTransform(scaleX: saveSize, y: saveSize)
+            let rotate = CGAffineTransform(rotationAngle: saveAngle)
+            
             sticker!.center = CGPoint(x: sticker!.center.x + transition.x, y: sticker!.center.y + transition.y)
-//            sticker!.transform = scale.concatenating(rotate)
             panGesture.setTranslation(CGPoint.zero, in: sticker)
             
         }
@@ -256,7 +252,7 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == self.nameCollectionView {
-            return CGSize(width: 80, height: 40)
+            return CGSize(width: 84, height: 40)
         } else {
             return CGSize(width: 84, height: 84)
         }
@@ -272,7 +268,7 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
         collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         if collectionView == self.nameCollectionView {
-            return 0.0
+            return 1.0
         } else {
             return 7.0
         }

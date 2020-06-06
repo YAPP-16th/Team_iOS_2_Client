@@ -8,8 +8,6 @@
 
 import UIKit
 
-var isDeviseVersionLow : Bool = false // 이건 임시방편....
-
 protocol AlbumMainVCProtocol {
     func AlbumMainreloadView()
 }
@@ -33,11 +31,13 @@ class AlbumMainController: UIViewController {
         super.viewWillAppear(animated)
         networkSetting()
         self.tabBarController?.tabBar.isHidden = false
+        
     }
     
     override func viewDidLoad() {
          super.viewDidLoad()
          settingCollectionView()
+        
     }
 }
 

@@ -388,9 +388,8 @@ extension AlbumDetailController {
 
 extension AlbumDetailController {
     @objc func touchCameraBtn(){
-        print(AlbumDetailController.deviceModelName())
-//        "iPhone6s" "iPhone6" "iPhone5s" "iPhone5c" "iPhone5" "iPhone4s" "iPhone4"
-        if AlbumDetailController.deviceModelName() == "iPhone6s Plus" || AlbumDetailController.deviceModelName() == "iPhone6s" || AlbumDetailController.deviceModelName() == "iPhone6" || AlbumDetailController.deviceModelName() == "iPhone5s" || AlbumDetailController.deviceModelName() == "iPhone5c" || AlbumDetailController.deviceModelName() == "iPhone5" || AlbumDetailController.deviceModelName() == "iPhone4s" || AlbumDetailController.deviceModelName() == "iPhone4" {
+        
+        if iPhone8Model() {
             let storyBoard = UIStoryboard(name: "Filter", bundle: nil)
             let goNextVC = storyBoard.instantiateViewController(withIdentifier: "NonFilterViewController") as! NonFilterViewController
             goNextVC.modalPresentationStyle = .fullScreen
@@ -480,6 +479,7 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
 //        let movedItem = AlbumDatabase.arrayList[albumIndex!].photos[sourceIndexPath.row]
 //        AlbumDatabase.arrayList[albumIndex!].photos.remove(at: sourceIndexPath.row)
 //        AlbumDatabase.arrayList[albumIndex!].photos.insert(movedItem, at: destinationIndexPath.item)
@@ -561,87 +561,3 @@ extension AlbumDetailController {
     }
 }
 
-extension AlbumDetailController {
-    
-
-    
-///Identifier 찾기
-    static func getDeviceIdentifier() -> String {
-        var systemInfo = utsname()
-        uname(&systemInfo)
-        let machineMirror = Mirror(reflecting: systemInfo.machine)
-        let identifier = machineMirror.children.reduce("") { identifier, element in
-            guard let value = element.value as? Int8, value != 0 else { return identifier }
-            return identifier + String(UnicodeScalar(UInt8(value)))
-        }
-        
-        return identifier
-    }
-    
-    /**
-     디바이스 모델 (iPhone, iPad) 이름 전달 (iPhone6, iPhone7 Plus...)
-     */
-    static func deviceModelName() -> String {
-        
-        let model = UIDevice.current.model
-        
-        switch model {
-        case "iPhone":
-            return self.iPhoneModel()
-            
-        default:
-            return "Unknown Model : \(model)"
-        }
-        
-    }
-    
-    /**
-     iPhone 모델 이름 (iPhone6, iPhone7 Plus...)
-     */
-    static func iPhoneModel() -> String {
-        
-        let identifier = self.getDeviceIdentifier()
-        
-        switch identifier {
-        case "iPhone1,1" :
-            return "iPhone"
-        case "iPhone1,2" :
-            return "iPhone3G"
-        case "iPhone2,1" :
-            return "iPhone3GS"
-        case "iPhone3,1", "iPhone3,2", "iPhone3,3" :
-            return "iPhone4"
-        case "iPhone4,1" :
-            return "iPhone4s"
-        case "iPhone5,1", "iPhone5,2" :
-            return "iPhone5"
-        case "iPhone5,3", "iPhone5,4" :
-            return "iPhone5c"
-        case "iPhone6,1", "iPhone6,2" :
-            return "iPhone5s"
-        case "iPhone7,2" :
-            return "iPhone6"
-        case "iPhone7,1" :
-            return "iPhone6 Plus"
-        case "iPhone8,1" :
-            return "iPhone6s"
-        case "iPhone8,2" :
-            return "iPhone6s Plus"
-        case "iPhone8,4" :
-            return "iPhone SE"
-        case "iPhone9,1", "iPhone9,3" :
-            return "iPhone7"
-        case "iPhone9,2", "iPhone9,4" :
-            return "iPhone7 Plus"
-        case "iPhone10,1", "iPhone10,4" :
-            return "iPhone8"
-        case "iPhone10,2", "iPhone10,5" :
-            return "iPhone8 Plus"
-        case "iPhone10,3", "iPhone10,6" :
-            return "iPhoneX"
-        default:
-            return "Unknown iPhone : \(identifier)"
-        }
-    }
-
-}

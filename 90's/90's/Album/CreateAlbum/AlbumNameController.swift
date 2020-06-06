@@ -115,13 +115,7 @@ extension AlbumNameController {
         let keyboardSize = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
         let keyboardHeight = keyboardSize.cgRectValue.height
         
-        // iphone8 : 260, 11 : 346
-        if keyboardHeight > 300 { // iphone 11 !
-            buttonConstraint.constant = nextBtn.frame.height/2 - (keyboardHeight + 16)
-        }else { // iphone ~ 8
-            buttonConstraint.constant = -(keyboardHeight + 10)
-            isDeviseVersionLow = true
-        }
+        buttonConstraint.constant = iPhone8Model() ? nextBtn.frame.height/2 - (keyboardHeight + 16) : -(keyboardHeight + 10)
         
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 1, initialSpringVelocity: 0.0, options: [], animations: {self.view.layoutIfNeeded()})
        }
