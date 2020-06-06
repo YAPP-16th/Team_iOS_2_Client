@@ -26,6 +26,8 @@ class AlbumInfoVC: UIViewController {
     @IBOutlet weak var albumLayoutLabel: UILabel!
     @IBOutlet weak var albumCoverImageView: UIImageView!
     @IBOutlet weak var memberTableView: UITableView!
+    @IBOutlet weak var scroll: UIScrollView!
+    @IBOutlet weak var memberTableConst: NSLayoutConstraint!
     @IBAction func backBtn(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -136,7 +138,13 @@ extension AlbumInfoVC {
                     self.roleArray = self.userArray.map { $0.role }
                     self.userUidArray = self.userArray.map { $0.userUid }
                     self.userNameArray = self.userArray.map { $0.name }
+                    for i in 0...8{
+                    self.userNameArray.append("jm")
+                        self.userUidArray.append(i)
+                        self.roleArray.append("")
+                    }
                     self.memberTableView.reloadData()
+
                 case 401:
                     print("\(status) : bad request, no warning in Server")
                 case 404:
@@ -295,13 +303,17 @@ extension AlbumInfoVC : UITableViewDelegate, UITableViewDataSource {
         }
         cell.memberDeleteBtn.tag = indexPath.row
         cell.memberDeleteBtn.addTarget(self, action: #selector(touchMemberDeleteBtn(_:)), for: .touchUpInside)
-    
+
+
+        self.memberTableConst.constant = self.memberTableView.contentSize.height+35
+        self.memberTableView.layoutIfNeeded()
+ print("tableViewHeight \(self.memberTableView.frame.height)")
+ print("contentHeight \(self.memberTableView.contentSize.height)")
+
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
-    }
+
 }
 
 
