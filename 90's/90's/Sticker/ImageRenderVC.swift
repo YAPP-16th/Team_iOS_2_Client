@@ -168,7 +168,6 @@ extension ImageRenderVC {
         createPan(view: sticker!.backImageView) // 이미지 옮기기
         focusView.isHidden = false
         self.saveView.addSubview(sticker!)
-       
         stickerArray.append(sticker!)
     }
 }

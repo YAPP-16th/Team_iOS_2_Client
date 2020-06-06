@@ -52,7 +52,7 @@ class AlbumDetailController : UIViewController {
     var albumUid : Int = 0
     var sharingword : String?
     // - network array
-    var photoUidArray = [PhotoGetPhotoData]()
+    var photoUidArray = [PhotoGetPhotosData]()
     var networkDetailAlbum : album?
     var networkPhotoUidArray : [Int] = []
     var networkPhotoUrlImageArray : [UIImage] = []
@@ -320,12 +320,12 @@ extension AlbumDetailController {
             switch status {
             case 200:
                 guard let data = response.data else {return}
-                guard let value = try? JSONDecoder().decode([PhotoGetPhotoData].self, from: data) else {return}
-                self.photoUidArray = value
+                guard let value = try? JSONDecoder().decode([PhotoGetPhotosData].self, from: data) else {return}
+                
                 self.networkHedaerCount = self.photoUidArray.count
-                self.networkPhotoUidArray = self.photoUidArray.map{ $0.photoUid }
+                self.photoUidArray = value.sorted { $0.photoOrder < $1.photoOrder }
+                self.networkPhotoUidArray = self.photoUidArray.map { $0.uid }
                 self.NetworkGetPhoto(photoUid: self.networkPhotoUidArray)
-                self.photoCollectionView.reloadData()
             case 401:
                 print("\(status) : bad request, no warning in Server")
             case 404:
@@ -360,7 +360,6 @@ extension AlbumDetailController {
                 })
             }
         }
-
         isAlbumComplete = photoUidArray.count+1 <= albumMaxCount ? false : true
         switchAlbumComplete(value: isAlbumComplete)
     }

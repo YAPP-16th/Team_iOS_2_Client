@@ -100,6 +100,12 @@ struct PhotoGetPhotoData : Codable {
     var photoUid : Int
 }
 
+struct PhotoGetPhotosData : Codable {
+    var album : album
+    var uid : Int
+    var photoOrder : Int
+}
+
 // post
 struct PhotoUploadData : Codable {
     var albumUid : Int
