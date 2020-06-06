@@ -25,11 +25,9 @@ class AlbumCompleteVC: UIViewController {
     }
     @IBAction func completeBtn(_ sender: UIButton) {
         self.createAlbumService()
-        mainProtocol?.AlbumMainreloadView()
         self.navigationController?.popToRootViewController(animated: true)
     }
     var albumLayout : AlbumLayout!
-    var mainProtocol : AlbumMainVCProtocol?
     var isAllDataSettle : Bool = false
     
     var albumName : String!
