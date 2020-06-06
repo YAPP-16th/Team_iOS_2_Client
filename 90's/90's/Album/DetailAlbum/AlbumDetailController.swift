@@ -388,9 +388,8 @@ extension AlbumDetailController {
 
 extension AlbumDetailController {
     @objc func touchCameraBtn(){
-        print(AlbumDetailController.deviceModelName())
-//        "iPhone6s" "iPhone6" "iPhone5s" "iPhone5c" "iPhone5" "iPhone4s" "iPhone4"
-        if UIViewController.deviceModelName() == "iPhone6s Plus" || UIViewController.deviceModelName() == "iPhone6s" || UIViewController.deviceModelName() == "iPhone6" || UIViewController.deviceModelName() == "iPhone5s" || UIViewController.deviceModelName() == "iPhone5c" || UIViewController.deviceModelName() == "iPhone5" || UIViewController.deviceModelName() == "iPhone4s" || UIViewController.deviceModelName() == "iPhone4" {
+        
+        if iPhone8Model() {
             let storyBoard = UIStoryboard(name: "Filter", bundle: nil)
             let goNextVC = storyBoard.instantiateViewController(withIdentifier: "NonFilterViewController") as! NonFilterViewController
             goNextVC.modalPresentationStyle = .fullScreen

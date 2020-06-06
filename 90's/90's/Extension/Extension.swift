@@ -86,7 +86,7 @@ extension UICollectionView {
 
 extension UIViewController{
     func checkDeviseVersion(backView: UIView!){
-        backView.isHidden = isDeviseVersionLow ? true : false
+        backView.isHidden = iPhone8Model() ? true : false
     }
        
     // imageRenderVC - layoutView setting
@@ -610,11 +610,8 @@ extension Date {
 
 
 extension UIViewController {
-    
-
-    
 ///Identifier 찾기
-    static func getDeviceIdentifier() -> String {
+    func getDeviceIdentifier() -> String {
         var systemInfo = utsname()
         uname(&systemInfo)
         let machineMirror = Mirror(reflecting: systemInfo.machine)
@@ -622,14 +619,12 @@ extension UIViewController {
             guard let value = element.value as? Int8, value != 0 else { return identifier }
             return identifier + String(UnicodeScalar(UInt8(value)))
         }
-        
         return identifier
     }
-    
     /**
      디바이스 모델 (iPhone, iPad) 이름 전달 (iPhone6, iPhone7 Plus...)
      */
-    static func deviceModelName() -> String {
+    func deviceModelName() -> String {
         
         let model = UIDevice.current.model
         
@@ -646,7 +641,7 @@ extension UIViewController {
     /**
      iPhone 모델 이름 (iPhone6, iPhone7 Plus...)
      */
-    static func iPhoneModel() -> String {
+    func iPhoneModel() -> String {
         
         let identifier = self.getDeviceIdentifier()
         
@@ -692,4 +687,17 @@ extension UIViewController {
         }
     }
 
+    
+    func iPhone8Model() -> Bool {
+        let identifier = self.getDeviceIdentifier()
+        
+        switch identifier {
+        case "iPhone1,1", "iPhone1,2","iPhone2,1","iPhone3,1", "iPhone3,2", "iPhone3,3", "iPhone4,1" , "iPhone5,1", "iPhone5,2","iPhone5,3", "iPhone5,4","iPhone6,1", "iPhone6,2" , "iPhone7,2" ,"iPhone7,1","iPhone8,1","iPhone8,2","iPhone8,4","iPhone9,1", "iPhone9,3", "iPhone9,2", "iPhone9,4", "iPhone10,1", "iPhone10,4" :
+            return true
+        case "iPhone10,2", "iPhone10,5", "iPhone10,3", "iPhone10,6" :
+            return false
+        default:
+            return false
+        }
+    }
 }

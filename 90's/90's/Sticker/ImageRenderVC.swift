@@ -119,7 +119,7 @@ extension ImageRenderVC {
     }
     
     private func layoutSetting(){
-        deviceSize = isDeviseVersionLow ?
+        deviceSize = iPhone8Model() ?
             returnLayoutStickerLowDeviceSize(selectedLayout: selectLayout) :
             returnLayoutStickerHighDeviceSize(selectedLayout: selectLayout)
         
@@ -127,7 +127,7 @@ extension ImageRenderVC {
         layoutImage = applyBackImageViewLayout(selectedLayout: selectLayout, smallBig: deviceSize, imageView: layoutImage)
         
         // 사진 크기 조정
-        renderImage = isDeviseVersionLow ?
+        renderImage = iPhone8Model() ?
             applyStickerLowDeviceImageViewLayout(selectedLayout: selectLayout, smallBig: deviceSize, imageView: renderImage, image: image!) :
             applyStickerHighDeviceImageViewLayout(selectedLayout: selectLayout, smallBig: deviceSize, imageView: renderImage, image: image!)
 

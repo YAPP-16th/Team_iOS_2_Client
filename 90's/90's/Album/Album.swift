@@ -152,6 +152,18 @@ enum AlbumLayout {
         case .Filmroll: return CGSize(width: 50, height: 16)
         }
     }
+    
+    var corpImage : UIImage {
+        switch self {
+        case .Polaroid: return UIImage(named: "cropPolaroid")!
+        case .Mini: return UIImage(named: "cropMini")!
+        case .Memory: return UIImage(named: "cropMemory")!
+        case .Portrab: return UIImage(named: "cropPortrab")!
+        case .Tape: return UIImage(named: "cropTape")!
+        case .Portraw: return UIImage(named: "cropPortraw")!
+        case .Filmroll: return UIImage(named: "cropFilmroll")!
+        }
+    }
 }
 
 
