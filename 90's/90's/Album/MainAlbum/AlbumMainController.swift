@@ -8,7 +8,7 @@
 
 import UIKit
 
-var isDeviseVersionLow : Bool = false // 이건 임시방편....
+var isDeviseVersionLow : Bool = true // 이건 임시방편....
 
 protocol AlbumMainVCProtocol {
     func AlbumMainreloadView()
