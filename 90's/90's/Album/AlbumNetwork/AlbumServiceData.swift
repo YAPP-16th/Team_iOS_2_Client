@@ -168,6 +168,20 @@ struct AlbumService : APIManager {
         })
     }
     
+    func albumJoinPassword(password : String, completion : @escaping(completeAlbumService)){
+        let url = Self.url("/album/joinAlbumByPassword")
+        
+        AF.request(url, method: .post, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
+            response in
+            switch response.result {
+            case .success:
+                completion(response)
+            case .failure(let err):
+                print("==> Error in CheckPassword Service : \(err)")
+            }
+        })
+    }
+    
     // plusCount, get 앨범 낡기 카운드
     func albumPlusCount(uid: Int, completion : @escaping(completeAlbumService)){
         let url = Self.url("/album/plusCount/\(uid)")

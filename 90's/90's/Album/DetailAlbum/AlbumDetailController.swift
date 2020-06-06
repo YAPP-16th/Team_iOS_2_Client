@@ -26,12 +26,6 @@ class AlbumDetailController : UIViewController {
     // 사진 확대 시
     @IBOutlet weak var hideImageZoom: UIImageView!
     
-    // 공유앨범 비밀번호
-    @IBOutlet weak var hideSharePasswordView: UIView!
-    @IBOutlet weak var hideShareTextField: UITextField!
-    @IBOutlet weak var hideShareCompleteBtn : UIButton!
-    @IBOutlet weak var hideShareLine: UILabel!
-    @IBAction func hideShareCancleBtn(_ sender: UIButton) { switchShareView(value: true) }
     @IBAction func touchhideShareCompleteBtn(_ sender: UIButton) { inviteSetting() }
     
     // old filter
@@ -77,10 +71,6 @@ class AlbumDetailController : UIViewController {
                     switchZoomView(value: true)
                 }
             }
-            if hideSharePasswordView.isHidden == true {
-                hideShareTextField.endEditing(true)
-                hideShareTextField.resignFirstResponder()
-            }
         }
     }
     
@@ -106,7 +96,6 @@ extension AlbumDetailController {
         photoCollectionView.dataSource = self
         photoCollectionView.dragInteractionEnabled = true
         galleryPicker.delegate = self
-        hideShareTextField.delegate = self
     }
     
     func defaultSetting(){
@@ -160,20 +149,6 @@ extension AlbumDetailController {
             }
         }
     }
-    
-    // 앨범 비밀번호
-    func switchShareView(value : Bool){
-        switch value {
-        case true :
-            self.hideView.isHidden = true
-            self.hideSharePasswordView.isHidden = true
-            self.hideShareTextField.resignFirstResponder()
-        case false:
-            self.hideView.isHidden = false
-            self.hideSharePasswordView.isHidden = false
-            setShareView()
-        }
-    }
 
     // 완료된 앨범일 경우
     func switchAlbumComplete(value : Bool){
@@ -194,28 +169,6 @@ extension AlbumDetailController {
 }
 
 extension AlbumDetailController {
-    func setShareView(){
-        hideShareTextField.clearButtonMode = .whileEditing
-        hideShareTextField.becomeFirstResponder()
-        
-        NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: hideShareTextField, queue: .main, using: { _ in
-            let value = self.hideShareTextField.text!.trimmingCharacters(in: .whitespaces)
-            
-            if !value.isEmpty {
-                if value.count >= 4 {
-                    self.sharingword = self.hideShareTextField.text!
-                    self.hideShareCompleteBtn.backgroundColor = UIColor.black
-                    self.hideShareCompleteBtn.isEnabled = true
-                    self.hideShareLine.backgroundColor = UIColor.black
-                }
-            } else {
-                self.hideShareCompleteBtn.backgroundColor = UIColor.lightGray
-                self.hideShareCompleteBtn.isEnabled = false
-                self.hideShareLine.backgroundColor = UIColor.lightGray
-            }
-        })
-    }
-    
     func setZoomImageView(layout : AlbumLayout) -> CGSize {
         switch layout {
         case .Polaroid : return AlbumLayout.Polaroid.deviceHighSize
@@ -394,6 +347,9 @@ extension AlbumDetailController {
                     if case .success(let image) = response.result {
                         var originImage = image
                         if self.isAlbumComplete == true {
+                            if self.albumOldCount > 10 {
+                                self.albumOldCount = 10
+                            }
                             for _ in 0...self.albumOldCount { 
                                 originImage = self.setOldFilter(image: originImage)
                             }
@@ -431,14 +387,6 @@ extension AlbumDetailController {
 }
 
 
-extension AlbumDetailController : UITextFieldDelegate{
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
-        hideShareTextField.resignFirstResponder()
-        return true
-    }
-}
-
-
 extension AlbumDetailController {
     @objc func touchCameraBtn(){
         let storyBoard = UIStoryboard(name: "Filter", bundle: nil)
@@ -454,12 +402,7 @@ extension AlbumDetailController {
     }
     
     @objc func touchInivteBtn(){
-        if isSharingAlbum == false {
-            switchShareView(value: false)
-        } else {
-            // + 확인 버튼 - 공유앨범 서버 통신
-            inviteSetting()
-        }
+        inviteSetting()
     }
     
     @objc func touchAddPhotoBtn() {
@@ -534,8 +477,7 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! PhotoCell
-//        hideImageZoom.image = setOldFilter(image: cell.photoImageView.image!)
-        hideImageZoom.image = cell.backImageView.image//cell.photoImageView.image
+        hideImageZoom.image = cell.backImageView.image
         switchZoomView(value: false)
     }
 }

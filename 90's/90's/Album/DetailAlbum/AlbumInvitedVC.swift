@@ -27,12 +27,10 @@ class AlbumInvitedVC: UIViewController {
     
     var isUserMember : Bool = false
     var albumIndex : Int = 0
-    var password : String = ""
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         autoLogin()
-        networkGetPassword()
     }
     
     override func viewDidLoad() {
@@ -56,9 +54,7 @@ extension AlbumInvitedVC {
                     self.albumCompleteBtn.backgroundColor = UIColor.black
                     self.albumCompleteBtn.isEnabled = true
                     self.albumInvitedLabel.backgroundColor = UIColor.black
-                    if value == self.password {
-                        
-                    }
+                    self.networkGetPassword(passwd: value)
                 }
             } else {
                 self.albumCompleteBtn.backgroundColor = UIColor.lightGray
@@ -156,9 +152,33 @@ extension AlbumInvitedVC {
         })
     }
     
-    func networkGetPassword(){
+    func networkGetPassword(passwd : String){
         // 비밀번호 조회 api
-        // password = value
+        AlbumService.shared.albumJoinPassword(password: passwd, completion: { response in
+            if let status = response.response?.statusCode {
+                switch status {
+                case 200 :
+                    guard let data = response.data else { return }
+                    guard let value = try? JSONDecoder().decode(album.self, from: data) else { return }
+                    self.presentDetailAlbum(albumUid: value.uid)
+                    case 401:
+                        print("\(status) : bad request, no warning in Server")
+                    case 404:
+                        print("\(status) : Not found, no address")
+                    case 500 :
+                        print("\(status) : Server error in AlbumInvitedVC - goLogin")
+                    default:
+                        return
+                }
+            }
+        })
+    }
+    
+    func presentDetailAlbum(albumUid : Int){
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "albumDetailVC") as! AlbumDetailController
+        nextVC.modalTransitionStyle = .coverVertical
+        nextVC.albumUid = albumUid
+        self.present(nextVC, animated: true)
     }
 }
 
