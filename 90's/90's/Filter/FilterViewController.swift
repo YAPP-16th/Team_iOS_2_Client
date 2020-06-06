@@ -8,7 +8,7 @@
 
 import UIKit
 import AVFoundation
-//import LUTFilter
+import LUTFilter
 
 struct Filter {
     let filterName : String
@@ -112,7 +112,6 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         delegateSetting()
         setUpCoreImage()
         filterName = PhotoEditorTypes.filterNameArray[filterIndex]
-        //        filterCollectionView.selectItem(at: [0,0], animated: true, scrollPosition: .centeredHorizontally)
         
         
         let leftSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
@@ -166,7 +165,6 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     override func viewWillAppear(_ animated: Bool) {
         
-        
         self.filteredImage.image = UIImage(named: "b_None")
         let size = CGSize(width:   self.filteredImage.frame.width  , height: self.filteredImage.frame.height )
         let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
@@ -179,6 +177,10 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         UIApplication.shared.setStatusBarHidden(true, with: .slide)
         // .none, .slide, .fade
     }
+    
+
+
+
     
     @IBAction func photoCancel(_ sender: Any) {
         
@@ -532,7 +534,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
         DispatchQueue.main.async {
             let filteredImage = UIImage(cgImage: cgImage)
-            //self.filteredImage.image = filteredImage.mergeWith(topImage: self.topImage! , bottomImage: filteredImage).applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
+            self.filteredImage.image = filteredImage.mergeWith(topImage: self.topImage! , bottomImage: filteredImage).applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
             
         }
     }
@@ -760,3 +762,4 @@ extension UIImageView {
     
     
 }
+

@@ -18,6 +18,7 @@
 		39585169242F49F300014CB0 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39585168242F49F300014CB0 /* SignUp.storyboard */; };
 		3960F96D246681AC007B50A3 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929B104245DEFD100B7C7EA /* UserNotifications.framework */; };
 		3960F97B246681AE007B50A3 /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929B106245DEFD800B7C7EA /* PushKit.framework */; };
+		398DAC98248B7AEC0044F9E2 /* NonFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398DAC97248B7AEC0044F9E2 /* NonFilterViewController.swift */; };
 		39CB8C8A245DC92600F28A49 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CB8C89245DC92600F28A49 /* PopUpViewController.swift */; };
 		39CB8C97245DCD2100F28A49 /* PopUp2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CB8C96245DCD2100F28A49 /* PopUp2ViewController.swift */; };
 		39DE24C724547143007E8D40 /* PrintListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DE24C624547143007E8D40 /* PrintListViewController.swift */; };
@@ -231,6 +232,7 @@
 		39585162242F46D500014CB0 /* Print.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Print.storyboard; sourceTree = "<group>"; };
 		39585166242F49EA00014CB0 /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		39585168242F49F300014CB0 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		398DAC97248B7AEC0044F9E2 /* NonFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonFilterViewController.swift; sourceTree = "<group>"; };
 		39B078F5246FC0E300383195 /* 90's.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "90's.entitlements"; sourceTree = "<group>"; };
 		39CB8C89245DC92600F28A49 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		39CB8C96245DCD2100F28A49 /* PopUp2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUp2ViewController.swift; sourceTree = "<group>"; };
@@ -694,6 +696,7 @@
 				9BB1C5732441EEBA0035DEBF /* FilterCell.swift */,
 				39411377243061A500087E1B /* CheckPhotoViewController.swift */,
 				3958515D242F460000014CB0 /* Filter.storyboard */,
+				398DAC97248B7AEC0044F9E2 /* NonFilterViewController.swift */,
 			);
 			path = Filter;
 			sourceTree = "<group>";
@@ -2071,6 +2074,7 @@
 				39CB8C8A245DC92600F28A49 /* PopUpViewController.swift in Sources */,
 				A3768D50246307EE009E64EE /* ChangePhoneService.swift in Sources */,
 				A3E133DC245589A7007950D8 /* SettingViewController.swift in Sources */,
+				398DAC98248B7AEC0044F9E2 /* NonFilterViewController.swift in Sources */,
 				9B1807FE243DEE7A00AF1CE6 /* AlbumLayoutVC.swift in Sources */,
 				9B0B807024357929009D7B17 /* SavePhotoVC.swift in Sources */,
 				A387C1F5246EB99800F59C78 /* AddressSearchViewController.swift in Sources */,
@@ -2315,7 +2319,7 @@
 				CODE_SIGN_ENTITLEMENTS = "90's/90's.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.51;
+				CURRENT_PROJECT_VERSION = 1.53;
 				DEVELOPMENT_TEAM = C7X33ZVY6P;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2333,7 +2337,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				MARKETING_VERSION = 1.51;
+				MARKETING_VERSION = 1.53;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yappiOS2.90-s";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2352,7 +2356,7 @@
 				CODE_SIGN_ENTITLEMENTS = "90's/90's.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.51;
+				CURRENT_PROJECT_VERSION = 1.53;
 				DEVELOPMENT_TEAM = C7X33ZVY6P;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2370,7 +2374,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				MARKETING_VERSION = 1.51;
+				MARKETING_VERSION = 1.53;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yappiOS2.90-s";
 				PRODUCT_NAME = "$(TARGET_NAME)";

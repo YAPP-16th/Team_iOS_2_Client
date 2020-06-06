@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VYO-y6-G1L">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -229,6 +230,21 @@
                 <swipeGestureRecognizer delaysTouchesBegan="YES" direction="right" id="tdE-KZ-5Fu" userLabel="Right Swipe Gesture Recognizer"/>
             </objects>
             <point key="canvasLocation" x="4312.8000000000002" y="78.710644677661179"/>
+        </scene>
+        <!--Non Filter View Controller-->
+        <scene sceneID="G5g-lB-lnq">
+            <objects>
+                <viewController storyboardIdentifier="NonFilterViewController" id="TTe-Jg-Uy3" customClass="NonFilterViewController" customModule="_0_s" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="spo-bt-FaQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Rhv-w9-3gD"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xgg-Cp-1UX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4313" y="774"/>
         </scene>
         <!--Check Photo View Controller-->
         <scene sceneID="YHu-nv-2RK">
