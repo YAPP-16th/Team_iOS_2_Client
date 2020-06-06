@@ -18,10 +18,7 @@ struct AlbumService : APIManager {
     let header : HTTPHeaders =  [
         "Content-Type" : "application/json"
     ]
-    let tokenHeader : HTTPHeaders = [
-        "Content-Type" : "application/json",
-        "X-AUTH-TOKEN" : UserDefaults.standard.value(forKey: "jwt") as! String
-    ]
+   
     let photoHeader : HTTPHeaders = [
         "Content-type": "multipart/form-data",
         "X-AUTH-TOKEN" : UserDefaults.standard.value(forKey: "jwt") as! String
@@ -30,6 +27,10 @@ struct AlbumService : APIManager {
     // Add User, post, 친구 추가
     func albumAddUser(albumUid : Int,  name: String, role : String, userUid : Int, completion: @escaping(completeAlbumService)){
         let url = Self.url("/album/addUser")
+        let tokenHeader : HTTPHeaders = [
+               "Content-Type" : "application/json",
+               "X-AUTH-TOKEN" : UserDefaults.standard.value(forKey: "jwt") as! String
+           ]
         let body : [String: Any] = [
             "albumUid" : albumUid,
             "name" : name,
@@ -51,6 +52,10 @@ struct AlbumService : APIManager {
     // CreateAlbum, Post, 앨범 생성
     func albumCreate(endDate : String, layoutUid : Int, name : String, photoLimit : Int, cover : Int, completion : @escaping(completeAlbumService)){
         let url = Self.url("/album/create")
+        let tokenHeader : HTTPHeaders = [
+               "Content-Type" : "application/json",
+               "X-AUTH-TOKEN" : UserDefaults.standard.value(forKey: "jwt") as! String
+           ]
         let body : [String : Any] = [
             "endDate" : endDate,
             "layoutUid" : layoutUid,
@@ -73,6 +78,10 @@ struct AlbumService : APIManager {
     // getAlbum, post, 앨범 정보 가져오기
     func albumGetAlbum(uid:Int, completion : @escaping(completeAlbumService)){
         let url = Self.url("/album/getAlbum")
+        let tokenHeader : HTTPHeaders = [
+               "Content-Type" : "application/json",
+               "X-AUTH-TOKEN" : UserDefaults.standard.value(forKey: "jwt") as! String
+           ]
         let body : [String : Any] = [
             "uid" : uid
         ]
@@ -91,6 +100,10 @@ struct AlbumService : APIManager {
     // getAlbumOwners, post, 앨범 오너 정보
     func albumGetOwners(uid : Int, completion : @escaping(completeAlbumService)){
         let url = Self.url("/album/getAlbumOwners")
+        let tokenHeader : HTTPHeaders = [
+               "Content-Type" : "application/json",
+               "X-AUTH-TOKEN" : UserDefaults.standard.value(forKey: "jwt") as! String
+           ]
         let body : [String : Any] = [
             "uid":uid
         ]
@@ -109,6 +122,10 @@ struct AlbumService : APIManager {
     // getAlbumPassword, get, 앨범 비밀번호
     func albumGetPassword(uid: Int, completion : @escaping(completeAlbumPasswordService)) {
         let url = Self.url("/album/getAlbumPassword/\(uid)")
+        let tokenHeader : HTTPHeaders = [
+               "Content-Type" : "application/json",
+               "X-AUTH-TOKEN" : UserDefaults.standard.value(forKey: "jwt") as! String
+           ]
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: tokenHeader).response(completionHandler: {
             response in
@@ -129,6 +146,10 @@ struct AlbumService : APIManager {
     
     func albumUploadPassword(uid: Int, completion : @escaping(completeAlbumPasswordService)) {
         let url = Self.url("/album/updateAlbumPassword/\(uid)")
+        let tokenHeader : HTTPHeaders = [
+               "Content-Type" : "application/json",
+               "X-AUTH-TOKEN" : UserDefaults.standard.value(forKey: "jwt") as! String
+           ]
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: tokenHeader).response(completionHandler: {
             response in
@@ -170,6 +191,10 @@ struct AlbumService : APIManager {
     
     func albumJoinPassword(password : String, completion : @escaping(completeAlbumService)){
         let url = Self.url("/album/joinAlbumByPassword")
+        let tokenHeader : HTTPHeaders = [
+               "Content-Type" : "application/json",
+               "X-AUTH-TOKEN" : UserDefaults.standard.value(forKey: "jwt") as! String
+           ]
         
         AF.request(url, method: .post, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
             response in
@@ -185,6 +210,10 @@ struct AlbumService : APIManager {
     // plusCount, get 앨범 낡기 카운드
     func albumPlusCount(uid: Int, completion : @escaping(completeAlbumService)){
         let url = Self.url("/album/plusCount/\(uid)")
+        let tokenHeader : HTTPHeaders = [
+               "Content-Type" : "application/json",
+               "X-AUTH-TOKEN" : UserDefaults.standard.value(forKey: "jwt") as! String
+           ]
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
             response in
@@ -199,6 +228,10 @@ struct AlbumService : APIManager {
     
     // removeUser, post
     func albumRemoveUser(albumUid : Int, role : String, name : String, userUid : Int, completion: @escaping(completeAlbumService)){
+        let tokenHeader : HTTPHeaders = [
+               "Content-Type" : "application/json",
+               "X-AUTH-TOKEN" : UserDefaults.standard.value(forKey: "jwt") as! String
+           ]
         let url = Self.url("/album/removeUser")
         let body : [String : Any] = [
             "albumUid" : albumUid,
@@ -224,6 +257,10 @@ extension AlbumService {
     // photoDownload, post, 사진 가져오기
     func photoDownload(albumUid : Int, photoUid : Int, completion : @escaping(completePhotoDownloadService)) {
         let url = Self.url("/photo/download")
+        let tokenHeader : HTTPHeaders = [
+               "Content-Type" : "application/json",
+               "X-AUTH-TOKEN" : UserDefaults.standard.value(forKey: "jwt") as! String
+           ]
         let body : [String : Any] = [
             "albumUid" : albumUid,
             "photoUid" : photoUid
@@ -242,6 +279,10 @@ extension AlbumService {
     // photoGetPhoto, post, 사진 목록의 사진 uid
     func photoGetPhoto(albumUid : Int, completion: @escaping(completeAlbumService)){
         let url = Self.url("/photo/getPhotos")
+        let tokenHeader : HTTPHeaders = [
+               "Content-Type" : "application/json",
+               "X-AUTH-TOKEN" : UserDefaults.standard.value(forKey: "jwt") as! String
+           ]
         let body : [String : Any] = [
             "uid" : albumUid
         ]
