@@ -479,6 +479,7 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
 //        let movedItem = AlbumDatabase.arrayList[albumIndex!].photos[sourceIndexPath.row]
 //        AlbumDatabase.arrayList[albumIndex!].photos.remove(at: sourceIndexPath.row)
 //        AlbumDatabase.arrayList[albumIndex!].photos.insert(movedItem, at: destinationIndexPath.item)

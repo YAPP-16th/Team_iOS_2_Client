@@ -38,16 +38,6 @@ class AlbumMainController: UIViewController {
          super.viewDidLoad()
          settingCollectionView()
         
-        print(UIViewController.deviceModelName())
-        
-        if UIViewController.deviceModelName() == "iPhone8" {
-            
-            isDeviseVersionLow = true
-        }
-        else {
-            isDeviseVersionLow = false
-        }
-        print(isDeviseVersionLow)
     }
 }
 
