@@ -91,6 +91,7 @@ enum AlbumLayout {
         }
     }
     
+    // sticker
     var deviceLowSize : CGSize {
         switch self {
         case .Polaroid : return CGSize(width: 290, height: 332)
@@ -103,6 +104,7 @@ enum AlbumLayout {
         }
     }
     
+    // sticker 
     var deviceHighSize : CGSize{
         switch self {
         case .Polaroid : return CGSize(width: 368, height: 447)

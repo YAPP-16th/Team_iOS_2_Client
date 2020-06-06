@@ -124,6 +124,7 @@ extension AlbumMainController : UICollectionViewDataSource {
 
 extension AlbumMainController : AlbumMainVCProtocol {
     func AlbumMainreloadView() {
+        print("reload album main collectionview data")
         albumCollectionView.reloadData()
     }
 }
