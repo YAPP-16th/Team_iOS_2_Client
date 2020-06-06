@@ -15,6 +15,7 @@ class EnterViewController: UIViewController {
     @IBOutlet weak var signUpBtn: UIButton!
     @IBOutlet weak var kakaoLoginBtn: UIButton!
     @IBOutlet weak var appleLoginView: UIView!
+    @IBOutlet weak var designedAppleView: UIView!
     
     var initialEnter:Bool = true
     var socialEmail:String = ""
@@ -24,7 +25,7 @@ class EnterViewController: UIViewController {
     var isInitialAppleLogin = true
     
     override func viewWillAppear(_ animated: Bool) {
-
+        
         if(initialEnter){
             autoLogin()
         }
@@ -33,7 +34,9 @@ class EnterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if #available(iOS 13.0, *) {
-            
+            designedAppleView.layer.cornerRadius = 8.0
+            designedAppleView.isUserInteractionEnabled = false
+
             //애플로그인 버튼 생성
             let button = ASAuthorizationAppleIDButton()
             button.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress)
@@ -47,8 +50,10 @@ class EnterViewController: UIViewController {
             button.topAnchor.constraint(equalTo: appleLoginView.topAnchor).isActive = true
             button.leftAnchor.constraint(equalTo: appleLoginView.leftAnchor).isActive = true
             button.rightAnchor.constraint(equalTo: appleLoginView.rightAnchor).isActive = true
-            
+        }else {
+            designedAppleView.isHidden = true
         }
+        
         setUI()
     }
     
@@ -97,13 +102,13 @@ class EnterViewController: UIViewController {
         let provider = ASAuthorizationAppleIDProvider()
         if let identifier = UserDefaults.standard.string(forKey: "appleIdentifier") {
             provider.getCredentialState(forUserID: identifier, completion: {
-                    (credentialState, error) in
+                (credentialState, error) in
                 if(credentialState == .revoked){
                     self.isRevokedAppleId = true
                 }
             })
         }
-
+        
         let request = ASAuthorizationAppleIDProvider().createRequest()
         request.requestedScopes = [.fullName,.email]
         let controller = ASAuthorizationController(authorizationRequests: [request])
@@ -111,7 +116,7 @@ class EnterViewController: UIViewController {
         controller.presentationContextProvider = self
         controller.performRequests()
         
-
+        
         
     }
     
@@ -223,7 +228,7 @@ class EnterViewController: UIViewController {
                     UserDefaults.standard.set(password, forKey: "password")
                     UserDefaults.standard.set(social, forKey: "social")
                     UserDefaults.standard.set(self.isAppleId, forKey: "isAppleId")
-
+                    
                     
                     //이미 가입된 애플아이디 && revoked상태 이면 탈퇴시키고 전화번호 입력화면으로 이동
                     if(self.isRevokedAppleId){
@@ -290,7 +295,7 @@ class EnterViewController: UIViewController {
                 UserDefaults.standard.removeObject(forKey: "password")
                 UserDefaults.standard.removeObject(forKey: "social")
                 UserDefaults.standard.removeObject(forKey: "jwt")
-
+                
                 //전화번호 인증화면으로 이동
                 self.goAuthenView()
                 break
@@ -350,7 +355,7 @@ ASAuthorizationControllerPresentationContextProviding {
             self.isAppleId = true
             
             print("userIdentifier \(userIdentifer)")
-
+            
             //애플 email은 처음인증시에만 이름과 이메일을 던져주므로 인증했을 때 정보를 저장하고 지우지 않음
             if(appleName != "" && appleEmail != ""){
                 //애플로 회원가입 -> 첫 인증
