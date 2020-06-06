@@ -9,7 +9,7 @@
 import UIKit
 
 var isDeviseVersionLow : Bool = true // 이건 임시방편....
-
+//true = iPhone 8
 protocol AlbumMainVCProtocol {
     func AlbumMainreloadView()
 }
@@ -33,11 +33,23 @@ class AlbumMainController: UIViewController {
         super.viewWillAppear(animated)
         networkSetting()
         self.tabBarController?.tabBar.isHidden = false
+        
     }
     
     override func viewDidLoad() {
          super.viewDidLoad()
          settingCollectionView()
+        
+        print(UIViewController.deviceModelName())
+        
+        if UIViewController.deviceModelName() == "iPhone8" {
+            
+            isDeviseVersionLow = true
+        }
+        else {
+            isDeviseVersionLow = false
+        }
+        print(isDeviseVersionLow)
     }
 }
 

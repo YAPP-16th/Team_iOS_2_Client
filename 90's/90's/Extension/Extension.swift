@@ -318,6 +318,9 @@ extension UIViewController{
     // album - Sticker - addPhoto
     func applyStickerLowDeviceImageViewLayout(selectedLayout : AlbumLayout, smallBig: CGSize, imageView : UIImageView, image : UIImage) -> UIImageView {
         var size : CGSize = CGSize(width: 0, height: 0)
+        print(selectedLayout)
+        print(smallBig)
+        print("==============")
         
         switch selectedLayout {
         case .Polaroid :
@@ -342,6 +345,8 @@ extension UIViewController{
             size = CGSize(width: smallBig.width - 60, height: smallBig.height - 2)
             imageView.frame = CGRect(x: 30, y: 1, width: size.width, height: size.height)
         }
+        print(size)
+        print(imageView.frame)
         imageView.image = image.imageResize(sizeChange: size)
         return imageView
     }
