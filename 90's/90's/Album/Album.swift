@@ -153,7 +153,7 @@ enum AlbumLayout {
         }
     }
     
-    var corpImage : UIImage {
+    var cropImage : UIImage {
         switch self {
         case .Polaroid: return UIImage(named: "cropPolaroid")!
         case .Mini: return UIImage(named: "cropMini")!

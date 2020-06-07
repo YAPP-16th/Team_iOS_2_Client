@@ -85,10 +85,6 @@ extension UICollectionView {
 
 
 extension UIViewController{
-    func checkDeviseVersion(backView: UIView!){
-        backView.isHidden = iPhone8Model() ? true : false
-    }
-       
     // imageRenderVC - layoutView setting
     func setRenderLayoutViewFrameSetting(view : UIView, imageView : UIImageView){
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -318,9 +314,6 @@ extension UIViewController{
     // album - Sticker - addPhoto
     func applyStickerLowDeviceImageViewLayout(selectedLayout : AlbumLayout, smallBig: CGSize, imageView : UIImageView, image : UIImage) -> UIImageView {
         var size : CGSize = CGSize(width: 0, height: 0)
-        print(selectedLayout)
-        print(smallBig)
-        print("==============")
         
         switch selectedLayout {
         case .Polaroid :
@@ -440,19 +433,6 @@ extension UIViewController{
 }
 
 
-extension UIImage {
-    func imageResize (sizeChange:CGSize)-> UIImage{
-        let hasAlpha = true
-        let scale: CGFloat = 0.0 // Use scale factor of main screen
-        
-        UIGraphicsBeginImageContextWithOptions(sizeChange, !hasAlpha, scale)
-        self.draw(in: CGRect(origin: CGPoint.zero, size: sizeChange))
-        
-        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
-        return scaledImage!
-    }
-}
-
 extension UIView {
     public func createImage() -> UIImage {
         UIGraphicsBeginImageContextWithOptions(
@@ -524,6 +504,28 @@ extension UIImage {
         UIGraphicsEndImageContext()
 
         return newImage
+    }
+    
+    func imageResize (sizeChange:CGSize)-> UIImage{
+        let hasAlpha = true
+        let scale: CGFloat = 0.0 // Use scale factor of main screen
+        
+        UIGraphicsBeginImageContextWithOptions(sizeChange, !hasAlpha, scale)
+        self.draw(in: CGRect(origin: CGPoint.zero, size: sizeChange))
+        
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        return scaledImage!
+    }
+    
+    func cropToRect(rect: CGRect!) -> UIImage? {
+        let scaledRect = CGRect(x: rect.origin.x * self.scale,
+                                y: rect.origin.y * self.scale,
+                                width: rect.size.width * self.scale,
+                                height: rect.size.height * self.scale);
+        guard let imageRef: CGImage = self.cgImage?.cropping(to:scaledRect) else { return nil }
+
+        let croppedImage: UIImage = UIImage(cgImage: imageRef, scale: self.scale, orientation: self.imageOrientation)
+        return croppedImage
     }
 }
 
