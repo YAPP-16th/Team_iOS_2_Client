@@ -539,10 +539,10 @@ extension AlbumDetailController : UIImagePickerControllerDelegate, UINavigationC
         
         dismiss(animated: true){
             let storyboard = UIStoryboard(name: "Sticker", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "imageRenderVC") as! ImageRenderVC
+            let vc = storyboard.instantiateViewController(withIdentifier: "imageCropVC") as! ImageCropVC
             vc.modalPresentationStyle = .fullScreen
             vc.image = tempImage
-            vc.selectLayout = self.selectedLayout
+            vc.selectedLayout = self.selectedLayout
             vc.albumUid = self.albumUid
             vc.imageName = self.ImageName
             self.navigationController?.pushViewController(vc, animated: true)

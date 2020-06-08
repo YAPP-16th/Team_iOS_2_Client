@@ -114,7 +114,7 @@
                                     <constraint firstItem="hBx-ce-UgQ" firstAttribute="centerY" secondItem="amS-Qc-RXZ" secondAttribute="centerY" id="IRc-qh-2iS"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eg6-LP-LRb">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eg6-LP-LRb" customClass="CropAreaView" customModule="_0_s" customModuleProvider="target">
                                 <rect key="frame" x="54" y="285" width="307" height="312"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
