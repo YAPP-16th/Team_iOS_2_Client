@@ -73,11 +73,11 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>회원님의 카메라에 접근합니다!</string>
+	<string> $(PRODUCT_NAME) 회원님의 소중한 사진 촬영을 위해 사진을 촬영하려면 카메라 엑세스 권한이 필요합니다.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>회원님의 사진첩에 사진을 추가합니다!</string>
+	<string> $(PRODUCT_NAME) 회원님이 만드신 추억 사진을 저장하려면 앨범 엑세스 권한이 필요합니다.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>회원님의 사진첩에 접근합니다!</string>
+	<string>$(PRODUCT_NAME) 회원님이 앨범에 접근하기 위해 앨범 엑세스 권한이 필요합니다.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Digital-7.ttf</string>

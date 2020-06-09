@@ -71,7 +71,7 @@ UINavigationControllerDelegate{
             print(error)
             return
         }
-        
+        UIImageWriteToSavedPhotosAlbum(image , nil, nil, nil)
 
         print("success")
     }

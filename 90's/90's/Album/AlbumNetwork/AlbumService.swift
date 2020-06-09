@@ -112,3 +112,35 @@ struct PhotoUploadData : Codable {
     var image : String // file
     var photoOrder : Int // 사진 순서
 }
+
+//Put
+
+
+//{
+//  "album": {
+//    "complete": true,
+//    "count": 0,
+//    "cover": {
+//      "name": "string",
+//      "path": "string",
+//      "uid": 0
+//    },
+//    "created_at": "2020-06-06T12:02:26.160Z",
+//    "endDate": "string",
+//    "layoutUid": 0,
+//    "name": "string",
+//    "orderStatus": {
+//      "status": "string",
+//      "uid": 0
+//    },
+//    "password": "string",
+//    "photoLimit": 0,
+//    "uid": 0,
+//    "updated_at": "2020-06-06T12:02:26.160Z"
+//  },
+//  "created_at": "2020-06-06T12:02:26.160Z",
+//  "photoOrder": 0,
+//  "uid": 0,
+//  "updated_at": "2020-06-06T12:02:26.160Z",
+//  "url": "string"
+//}

@@ -323,7 +323,9 @@ extension AlbumDetailController {
                 guard let value = try? JSONDecoder().decode([PhotoGetPhotosData].self, from: data) else {return}
                 
                 self.networkHedaerCount = self.photoUidArray.count
+                print("order = \(value.map {$0.photoOrder})")
                 self.photoUidArray = value.sorted { $0.photoOrder < $1.photoOrder }
+                print("order = \(self.photoUidArray.map {$0.photoOrder })")
                 self.networkPhotoUidArray = self.photoUidArray.map { $0.uid }
                 self.NetworkGetPhoto(photoUid: self.networkPhotoUidArray)
             case 401:
@@ -381,6 +383,26 @@ extension AlbumDetailController {
                     return
                 }
             }
+        })
+    }
+    
+    func networkPhotoReOrder(photoOrder : Int , photoUid: Int) {
+        AlbumService.shared.photoReOrder(photoOrder: photoOrder,
+             photoUid: photoUid, completion: { response in
+                if let status = response.response?.statusCode {
+                    switch status {
+                    case 200:
+                        print("Success")
+                    case 401:
+                        print("\(status) : bad request, no warning in Server")
+                    case 404:
+                        print("\(status) : Not found, no address")
+                    case 500 :
+                        print("\(status) : Server error in AlbumDetailVC - PhotoReOrder")
+                    default:
+                        return
+                    }
+                }
         })
     }
 }
@@ -480,9 +502,24 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         
-//        let movedItem = AlbumDatabase.arrayList[albumIndex!].photos[sourceIndexPath.row]
-//        AlbumDatabase.arrayList[albumIndex!].photos.remove(at: sourceIndexPath.row)
-//        AlbumDatabase.arrayList[albumIndex!].photos.insert(movedItem, at: destinationIndexPath.item)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: sourceIndexPath) as! PhotoCell
+
+        let movedItem = photoUidArray[sourceIndexPath.row]
+
+        let tmp = photoUidArray[sourceIndexPath.row].photoOrder
+        print(tmp)
+        photoUidArray[sourceIndexPath.row].photoOrder = destinationIndexPath.row
+
+        photoUidArray[destinationIndexPath.row].photoOrder = tmp
+        print("order = \(photoUidArray.map {$0.photoOrder })")
+        networkPhotoReOrder(photoOrder: photoUidArray[sourceIndexPath.row].photoOrder,
+                            photoUid: photoUidArray[sourceIndexPath.row].uid)
+
+        networkPhotoReOrder(photoOrder: photoUidArray[destinationIndexPath.row].photoOrder,
+                            photoUid: photoUidArray[destinationIndexPath.row].uid)
+
+//        self.photoCollectionView.reloadData()
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

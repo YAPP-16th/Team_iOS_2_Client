@@ -325,4 +325,24 @@ extension AlbumService {
             }
         }
     }
+    
+    // photoOrder , put, 사진 순서 바꾸기
+    func photoReOrder(photoOrder : Int, photoUid : Int, completion: @escaping(completeAlbumService)){
+        let url = Self.url("/photo/updatePhotoOrder/\(photoUid)/\(photoOrder)")
+        let tokenHeader : HTTPHeaders = [
+            "Content-Type" : "application/json",
+            "X-AUTH-TOKEN" : UserDefaults.standard.value(forKey: "jwt") as! String
+        ]
+        
+        AF.request(url, method: .put, encoding: JSONEncoding.default, headers: tokenHeader).responseJSON(completionHandler: {
+            response in
+            switch response.result {
+            case .success:
+                completion(response)
+            case .failure(let err):
+                print("==> Error in PhotoGetPhotos Service : \(err)")
+            }
+        })
+        
+    }
 }

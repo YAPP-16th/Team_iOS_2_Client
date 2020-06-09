@@ -133,7 +133,7 @@ extension ImageRenderVC {
 
         // 뷰 위치 조정
         setRenderSaveViewFrameSetting(view: saveView, selectLayout: selectLayout, size: deviceSize)
-//        setRenderLayoutViewFrameSetting(view: saveView, imageView: layoutImage)
+        setRenderLayoutViewFrameSetting(view: saveView, imageView: layoutImage)
 //        setRenderImageViewFrameSetting(view: saveView, imageView: renderImage, selectlayout: selectLayout)
     }
     
