@@ -8,7 +8,7 @@
 
 import UIKit
 import AVFoundation
-//import LUTFilter
+import LUTFilter
 
 struct Filter {
     let filterName : String
@@ -218,9 +218,14 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                 
         print(self.filteredImage.image?.size)
         
-        
+        let storyboard = UIStoryboard(name: "Sticker", bundle: nil)
+        let nextVC = storyboard.instantiateViewController(withIdentifier: "imageCropVC") as! ImageCropVC
+        let navi = UINavigationController(rootViewController: nextVC)
+        navi.modalPresentationStyle = .fullScreen
+        nextVC.image = self.filteredImage.image!
+        self.present(navi, animated: true, completion: nil)
 
-        UIImageWriteToSavedPhotosAlbum(self.filteredImage.image! , nil, nil, nil)
+//        UIImageWriteToSavedPhotosAlbum(self.filteredImage.image! , nil, nil, nil)
         
         let tempImage = self.filteredImage.image
         self.albumBtn.layer.masksToBounds = true
@@ -534,7 +539,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
         DispatchQueue.main.async {
             let filteredImage = UIImage(cgImage: cgImage)
-            //self.filteredImage.image = filteredImage.mergeWith(topImage: self.topImage! , bottomImage: filteredImage).applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
+            self.filteredImage.image = filteredImage.mergeWith(topImage: self.topImage! , bottomImage: filteredImage).applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
             
         }
     }
@@ -734,7 +739,7 @@ extension FilterViewController : UIImagePickerControllerDelegate, UINavigationCo
         
         dismiss(animated: true,completion: {
             let storyboard = UIStoryboard(name: "Sticker", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "imageRenderVC") as! ImageRenderVC
+            let vc = storyboard.instantiateViewController(withIdentifier: "imageCropVC") as! ImageCropVC
             vc.modalPresentationStyle = .fullScreen
             vc.image = tempImage
             self.present(vc, animated: true, completion: nil)
