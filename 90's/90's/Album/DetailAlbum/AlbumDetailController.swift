@@ -45,7 +45,7 @@ class AlbumDetailController : UIViewController {
     }()
     
     var ImageName : String = ""
-    var selectedLayout : AlbumLayout?
+    var selectedLayout : AlbumLayout = .Polaroid
     var albumMaxCount : Int = 0
     var albumOldCount : Int = 0
     // - received data from before vc
@@ -296,7 +296,7 @@ extension AlbumDetailController {
                     self.albumMaxCount = value.photoLimit
                     self.isAlbumComplete = value.complete
                     self.selectedLayout = self.getLayoutByUid(value: value.layoutUid)
-                    self.hideImageZoom.frame.size = CGSize(width: self.setZoomImageView(layout: self.selectedLayout!).width - 60, height: self.setZoomImageView(layout: self.selectedLayout!).height - 60)
+                    self.hideImageZoom.frame.size = CGSize(width: self.setZoomImageView(layout: self.selectedLayout).width - 60, height: self.setZoomImageView(layout: self.selectedLayout).height - 60)
                     self.albumOldCount = value.count
                     self.hideImageZoom.center = self.view.center
                     self.NetworkGetPhotoUid()
@@ -326,6 +326,7 @@ extension AlbumDetailController {
                 self.photoUidArray = value.sorted { $0.photoOrder < $1.photoOrder }
                 self.networkPhotoUidArray = self.photoUidArray.map { $0.uid }
                 self.NetworkGetPhoto(photoUid: self.networkPhotoUidArray)
+                self.photoCollectionView.reloadData()
             case 401:
                 print("\(status) : bad request, no warning in Server")
             case 404:
@@ -464,9 +465,8 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
             return currentCell!
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCell
-            let size = returnLayoutPreviewSize(selectedLayout: selectedLayout!)
-            
-            cell.backImageView = applyBackImageViewLayout(selectedLayout: selectedLayout!, smallBig: size, imageView: cell.backImageView)
+    
+            cell.backImageView = applyBackImageViewLayout(selectedLayout: selectedLayout, smallBig: selectedLayout.size, imageView: cell.backImageView)
             cell.backImageView.image = networkPhotoUrlImageArray[indexPath.row]
     
             return cell
@@ -474,7 +474,7 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return returnLayoutPreviewSize(selectedLayout: selectedLayout!)
+        return selectedLayout.size
         //return CGSize(width: view.frame.width/2 - 26, height: view.frame.height/4 + 10)
     }
     
@@ -539,10 +539,10 @@ extension AlbumDetailController : UIImagePickerControllerDelegate, UINavigationC
         
         dismiss(animated: true){
             let storyboard = UIStoryboard(name: "Sticker", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "imageRenderVC") as! ImageRenderVC
+            let vc = storyboard.instantiateViewController(withIdentifier: "imageCropVC") as! ImageCropVC
             vc.modalPresentationStyle = .fullScreen
             vc.image = tempImage
-            vc.selectLayout = self.selectedLayout
+            vc.selectedLayout = self.selectedLayout
             vc.albumUid = self.albumUid
             vc.imageName = self.ImageName
             self.navigationController?.pushViewController(vc, animated: true)

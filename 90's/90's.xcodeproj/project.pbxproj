@@ -24,10 +24,10 @@
 		39DE24C724547143007E8D40 /* PrintListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DE24C624547143007E8D40 /* PrintListViewController.swift */; };
 		39DE24C9245472F4007E8D40 /* PrintListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DE24C8245472F4007E8D40 /* PrintListTableViewCell.swift */; };
 		39DE31422482204B00660FD6 /* PopUp3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DE31412482204B00660FD6 /* PopUp3ViewController.swift */; };
+		9B03C2D9248BB71E003DC206 /* ImageCropVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B03C2D8248BB71E003DC206 /* ImageCropVC.swift */; };
 		9B0B807024357929009D7B17 /* SavePhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0B806F24357929009D7B17 /* SavePhotoVC.swift */; };
 		9B1807FE243DEE7A00AF1CE6 /* AlbumLayoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1807FD243DEE7A00AF1CE6 /* AlbumLayoutVC.swift */; };
 		9B180800243DF53200AF1CE6 /* albumLayoutCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1807FF243DF53200AF1CE6 /* albumLayoutCollectionCell.swift */; };
-		9B180808243E10F300AF1CE6 /* StickerPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B180807243E10F300AF1CE6 /* StickerPopupVC.swift */; };
 		9B1B7A65244C1045008ED381 /* AlbumLayoutPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1B7A64244C1045008ED381 /* AlbumLayoutPreviewVC.swift */; };
 		9B1B7A68244C1590008ED381 /* AlbumLayoutPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1B7A67244C1590008ED381 /* AlbumLayoutPreviewCell.swift */; };
 		9B1B7A6E244C2A9B008ED381 /* AlbumLayoutHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1B7A6D244C2A9B008ED381 /* AlbumLayoutHeaderCell.swift */; };
@@ -239,11 +239,11 @@
 		39DE24C624547143007E8D40 /* PrintListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintListViewController.swift; sourceTree = "<group>"; };
 		39DE24C8245472F4007E8D40 /* PrintListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintListTableViewCell.swift; sourceTree = "<group>"; };
 		39DE31412482204B00660FD6 /* PopUp3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUp3ViewController.swift; sourceTree = "<group>"; };
+		9B03C2D8248BB71E003DC206 /* ImageCropVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCropVC.swift; sourceTree = "<group>"; };
 		9B0B806F24357929009D7B17 /* SavePhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePhotoVC.swift; sourceTree = "<group>"; };
 		9B142B10242F2475005ABE17 /* LUTFilter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LUTFilter.framework; sourceTree = "<group>"; };
 		9B1807FD243DEE7A00AF1CE6 /* AlbumLayoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumLayoutVC.swift; sourceTree = "<group>"; };
 		9B1807FF243DF53200AF1CE6 /* albumLayoutCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = albumLayoutCollectionCell.swift; sourceTree = "<group>"; };
-		9B180807243E10F300AF1CE6 /* StickerPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerPopupVC.swift; sourceTree = "<group>"; };
 		9B1B7A64244C1045008ED381 /* AlbumLayoutPreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumLayoutPreviewVC.swift; sourceTree = "<group>"; };
 		9B1B7A67244C1590008ED381 /* AlbumLayoutPreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumLayoutPreviewCell.swift; sourceTree = "<group>"; };
 		9B1B7A6D244C2A9B008ED381 /* AlbumLayoutHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumLayoutHeaderCell.swift; sourceTree = "<group>"; };
@@ -749,6 +749,35 @@
 			path = SignUp;
 			sourceTree = "<group>";
 		};
+		9B03C2CA248BB6B2003DC206 /* RenderImage */ = {
+			isa = PBXGroup;
+			children = (
+				9B44EDE02429FC9100B0D774 /* ImageRenderVC.swift */,
+				9B0B806F24357929009D7B17 /* SavePhotoVC.swift */,
+				9BB3D91E24791DDB00FC1448 /* StickerHeaderCell.swift */,
+				9BC16B192435B68F007F106C /* photoStickerCollectionCell.swift */,
+			);
+			path = RenderImage;
+			sourceTree = "<group>";
+		};
+		9B03C2D6248BB6C3003DC206 /* StickerData */ = {
+			isa = PBXGroup;
+			children = (
+				9BC4EBD52476CFED00A5D6A0 /* StickerImage.swift */,
+				9BC98F052448B3CD002629AF /* StickerLayout.xib */,
+				9BC98F072448B74E002629AF /* StickerLayout.swift */,
+			);
+			path = StickerData;
+			sourceTree = "<group>";
+		};
+		9B03C2D7248BB706003DC206 /* CropImage */ = {
+			isa = PBXGroup;
+			children = (
+				9B03C2D8248BB71E003DC206 /* ImageCropVC.swift */,
+			);
+			path = CropImage;
+			sourceTree = "<group>";
+		};
 		9B142B04242F2226005ABE17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -804,15 +833,10 @@
 		9B44EDDF2429EF1500B0D774 /* Sticker */ = {
 			isa = PBXGroup;
 			children = (
-				9BC4EBD52476CFED00A5D6A0 /* StickerImage.swift */,
 				3958515B242F45E600014CB0 /* Sticker.storyboard */,
-				9B44EDE02429FC9100B0D774 /* ImageRenderVC.swift */,
-				9B0B806F24357929009D7B17 /* SavePhotoVC.swift */,
-				9BC16B192435B68F007F106C /* photoStickerCollectionCell.swift */,
-				9B180807243E10F300AF1CE6 /* StickerPopupVC.swift */,
-				9BC98F052448B3CD002629AF /* StickerLayout.xib */,
-				9BC98F072448B74E002629AF /* StickerLayout.swift */,
-				9BB3D91E24791DDB00FC1448 /* StickerHeaderCell.swift */,
+				9B03C2D6248BB6C3003DC206 /* StickerData */,
+				9B03C2CA248BB6B2003DC206 /* RenderImage */,
+				9B03C2D7248BB706003DC206 /* CropImage */,
 			);
 			path = Sticker;
 			sourceTree = "<group>";
@@ -2050,9 +2074,9 @@
 				A3E133D824558997007950D8 /* ManageInfoViewController.swift in Sources */,
 				A314260E2450A9E1005487F3 /* LoginResult.swift in Sources */,
 				A318AC72243E290C00245434 /* TermViewController.swift in Sources */,
+				9B03C2D9248BB71E003DC206 /* ImageCropVC.swift in Sources */,
 				A373907D247903D200F9802B /* LeaveReasonViewController.swift in Sources */,
 				A3CCD8452454BE7B00C73E31 /* SignUpService.swift in Sources */,
-				9B180808243E10F300AF1CE6 /* StickerPopupVC.swift in Sources */,
 				A3B1D7B4246FCACE00D95DE3 /* SNSViewController.swift in Sources */,
 				A3025CA22441AE3700041723 /* FindEmailViewController.swift in Sources */,
 				A3B0D201245D9DF800DB90ED /* NewEmailViewController.swift in Sources */,

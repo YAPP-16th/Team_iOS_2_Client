@@ -59,12 +59,12 @@
 | Vadidation Check           | ⭕️            |
 | Sharing Album              | ❌            |
 | Ratio Button               | ⭕️            |
-| Address API                | ❌            |
+| Address API                | ⭕️            |
 | Custom Delegate , Protocol | ⭕️            |
-| FAQ                        | ❌            |
+| FAQ                        | ⭕️            |
 | Pay System In App          | ⭕️            |
 | Kakao Social Login         | ⭕️            |
-| Kakao Invitation Link      | ❌            |
+| Kakao Invitation Link      | ⭕️           |
 | APNs                       | ❌            |
 
 
@@ -94,4 +94,10 @@ Please [**issues**](https://github.com/YAPP-16th/Team_iOS_2_Client/issues) to se
 [LUT_Filter](https://github.com/tango5614/LUTFilter-IOS)
 
 [iOS_APNs](http://monibu1548.github.io/2018/05/29/push-cert/)
+
+[AlamoFire](https://github.com/Alamofire/Alamofire)
+
+[AlamoFireImage](https://github.com/Alamofire/AlamofireImage)
+
+[Lottie](https://github.com/airbnb/lottie-iosAl)
 
