@@ -119,9 +119,7 @@ extension ImageRenderVC {
     }
     
     private func layoutSetting(){
-        deviceSize = iPhone8Model() ?
-            returnLayoutStickerLowDeviceSize(selectedLayout: selectLayout) :
-            returnLayoutStickerHighDeviceSize(selectedLayout: selectLayout)
+        deviceSize = iPhone8Model() ? selectLayout.deviceLowSize : selectLayout.deviceHighSize
         
         // 레이아웃 크기 조정
         layoutImage = applyBackImageViewLayout(selectedLayout: selectLayout, smallBig: deviceSize, imageView: layoutImage)

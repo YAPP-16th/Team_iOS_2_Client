@@ -45,7 +45,7 @@ class AlbumDetailController : UIViewController {
     }()
     
     var ImageName : String = ""
-    var selectedLayout : AlbumLayout?
+    var selectedLayout : AlbumLayout = .Polaroid
     var albumMaxCount : Int = 0
     var albumOldCount : Int = 0
     // - received data from before vc
@@ -296,7 +296,7 @@ extension AlbumDetailController {
                     self.albumMaxCount = value.photoLimit
                     self.isAlbumComplete = value.complete
                     self.selectedLayout = self.getLayoutByUid(value: value.layoutUid)
-                    self.hideImageZoom.frame.size = CGSize(width: self.setZoomImageView(layout: self.selectedLayout!).width - 60, height: self.setZoomImageView(layout: self.selectedLayout!).height - 60)
+                    self.hideImageZoom.frame.size = CGSize(width: self.setZoomImageView(layout: self.selectedLayout).width - 60, height: self.setZoomImageView(layout: self.selectedLayout).height - 60)
                     self.albumOldCount = value.count
                     self.hideImageZoom.center = self.view.center
                     self.NetworkGetPhotoUid()
@@ -464,9 +464,8 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
             return currentCell!
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCell
-            let size = returnLayoutPreviewSize(selectedLayout: selectedLayout!)
-            
-            cell.backImageView = applyBackImageViewLayout(selectedLayout: selectedLayout!, smallBig: size, imageView: cell.backImageView)
+    
+            cell.backImageView = applyBackImageViewLayout(selectedLayout: selectedLayout, smallBig: selectedLayout.size, imageView: cell.backImageView)
             cell.backImageView.image = networkPhotoUrlImageArray[indexPath.row]
     
             return cell
@@ -474,7 +473,7 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return returnLayoutPreviewSize(selectedLayout: selectedLayout!)
+        return selectedLayout.size
         //return CGSize(width: view.frame.width/2 - 26, height: view.frame.height/4 + 10)
     }
     

@@ -104,16 +104,40 @@ enum AlbumLayout {
         }
     }
     
+    var innerFrameLowSize : CGSize {
+        switch self {
+        case .Polaroid: return CGSize(width: 263, height: 257)
+        case .Mini : return CGSize(width: 228, height: 286)
+        case .Memory: return CGSize(width: 265, height: 227)
+        case .Portrab: return CGSize(width: 275, height: 332)
+        case .Tape: return CGSize(width: 294, height: 304)
+        case .Portraw: return CGSize(width: 324, height: 184)
+        case .Filmroll: return CGSize(width: 208, height: 354)
+        }
+    }
+    
     // sticker 
     var deviceHighSize : CGSize{
         switch self {
-        case .Polaroid : return CGSize(width: 368, height: 447)
+        case .Polaroid : return CGSize(width: 344, height: 394)
         case .Mini : return CGSize(width: 338, height: 463)
         case .Memory : return CGSize(width: 354, height: 320)
         case .Portrab : return CGSize(width: 346, height: 414)
         case .Tape : return CGSize(width: 354, height: 366)
         case .Portraw : return CGSize(width: 361, height: 221)
         case .Filmroll : return CGSize(width: 332, height: 444)
+        }
+    }
+    
+    var innerFrameHighSize : CGSize {
+        switch self {
+        case .Polaroid: return CGSize(width: 312, height: 306)
+        case .Mini : return CGSize(width: 302, height: 380)
+        case .Memory: return CGSize(width: 302, height: 260)
+        case .Portrab: return CGSize(width: 326, height: 392)
+        case .Tape: return CGSize(width: 316, height: 258)
+        case .Portraw: return CGSize(width: 352, height: 200)
+        case .Filmroll: return CGSize(width: 258, height: 440)
         }
     }
     

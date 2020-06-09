@@ -44,6 +44,7 @@ class ImageCropVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         defaultSetting()
+        layoutSetting()
     }
 }
  
@@ -58,15 +59,15 @@ extension ImageCropVC : UIScrollViewDelegate {
 extension ImageCropVC {
     func defaultSetting(){
         photoImageView.image = image
+    }
+    
+    func layoutSetting(){
+        layoutImageView.translatesAutoresizingMaskIntoConstraints = false
         layoutImageView.image = selectedLayout.cropImage
-        layoutImageView.center = view.center
+        layoutImageView.frame.size = iPhone8Model() ? selectedLayout.innerFrameLowSize : selectedLayout.innerFrameHighSize
         
-        let deviceSize = iPhone8Model() ?
-            returnLayoutStickerLowDeviceSize(selectedLayout: selectedLayout) :
-            returnLayoutStickerHighDeviceSize(selectedLayout: selectedLayout)
-        
-        layoutImageView = applyBackImageViewLayout(selectedLayout: selectedLayout, smallBig: deviceSize, imageView: layoutImageView)
-        setRenderLayoutViewFrameSetting(view: view, imageView: layoutImageView)
+        layoutImageView.centerYAnchor.constraint(equalTo: self.cropView.centerYAnchor).isActive = true
+        layoutImageView.centerXAnchor.constraint(equalTo: self.cropView.centerXAnchor).isActive = true
     }
     
     func nextVC(){
