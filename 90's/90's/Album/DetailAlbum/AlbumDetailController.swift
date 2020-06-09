@@ -326,6 +326,7 @@ extension AlbumDetailController {
                 self.photoUidArray = value.sorted { $0.photoOrder < $1.photoOrder }
                 self.networkPhotoUidArray = self.photoUidArray.map { $0.uid }
                 self.NetworkGetPhoto(photoUid: self.networkPhotoUidArray)
+                self.photoCollectionView.reloadData()
             case 401:
                 print("\(status) : bad request, no warning in Server")
             case 404:

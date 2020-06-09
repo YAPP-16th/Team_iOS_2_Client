@@ -268,17 +268,17 @@ extension UIViewController{
         
         switch selectedLayout {
         case .Polaroid:
-            size = CGSize(width: smallBig.width - 40, height: smallBig.height - 114)
-            imageView.frame = CGRect(x: 20, y: 26, width: size.width, height: size.height)
+            size = CGSize(width: smallBig.width - 40, height: smallBig.height - 87)
+            imageView.frame = CGRect(x: 18, y: 26, width: size.width, height: size.height)
         case .Mini:
-            size =  CGSize(width: smallBig.width - 48, height: smallBig.height - 90)
+            size =  CGSize(width: smallBig.width - 48, height: smallBig.height - 82)
             imageView.frame = CGRect(x: 24, y: 20, width: size.width, height: size.height)
         case .Memory:
-            size = CGSize(width: smallBig.width - 60, height: smallBig.height - 70)
+            size = CGSize(width: smallBig.width - 60, height: smallBig.height - 60)
             imageView.frame = CGRect(x: 30, y: 35, width: size.width, height: size.height)
         case .Portrab:
-            size = CGSize(width: smallBig.width - 26, height: smallBig.height - 30)
-            imageView.frame = CGRect(x: 13, y: 16, width: size.width, height: size.height)
+            size = CGSize(width: smallBig.width - 26, height: smallBig.height - 21)
+            imageView.frame = CGRect(x: 13, y: 10, width: size.width, height: size.height)
         case .Tape:
             size = CGSize(width: smallBig.width - 36, height: smallBig.height - 116)
             imageView.frame = CGRect(x: 18, y: 44, width: size.width, height: size.height)

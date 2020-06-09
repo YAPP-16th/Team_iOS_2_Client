@@ -12,13 +12,7 @@ class ImageCropVC: UIViewController {
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var layoutImageView: UIImageView!
     @IBOutlet weak var cropView: UIView!
-    @IBOutlet weak var scrollView: UIScrollView! {
-        didSet {
-            scrollView.delegate = self
-            scrollView.minimumZoomScale = 1.0
-            scrollView.maximumZoomScale = 10.0
-        }
-    }
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBAction func backBtn(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
@@ -59,6 +53,11 @@ extension ImageCropVC : UIScrollViewDelegate {
 extension ImageCropVC {
     func defaultSetting(){
         photoImageView.image = image
+        scrollView.delegate = self
+        scrollView.alwaysBounceVertical = false
+        scrollView.alwaysBounceHorizontal = false
+        scrollView.minimumZoomScale = 1.0
+        scrollView.maximumZoomScale = 10.0
     }
     
     func layoutSetting(){

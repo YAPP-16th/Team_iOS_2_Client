@@ -131,7 +131,7 @@ enum AlbumLayout {
     
     var innerFrameHighSize : CGSize {
         switch self {
-        case .Polaroid: return CGSize(width: 312, height: 306)
+        case .Polaroid: return CGSize(width: 314, height: 306)
         case .Mini : return CGSize(width: 302, height: 380)
         case .Memory: return CGSize(width: 302, height: 260)
         case .Portrab: return CGSize(width: 326, height: 392)
@@ -167,7 +167,7 @@ enum AlbumLayout {
     
     var dateLabelFrame : CGSize {
         switch self {
-        case .Polaroid: return CGSize(width: 40, height: 103)
+        case .Polaroid: return CGSize(width: 40, height: 90)
         case .Mini : return CGSize(width: 34, height: 85)
         case .Memory: return CGSize(width: 44, height: 44)
         case .Portrab: return CGSize(width: 32, height: 25)
