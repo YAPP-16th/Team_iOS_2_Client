@@ -50,12 +50,12 @@ UINavigationControllerDelegate{
         if let image = info[.originalImage] as? UIImage {
             self.tempImage = image
             let storyboard = UIStoryboard(name: "Sticker", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "imageRenderVC") as! ImageRenderVC
-            vc.modalPresentationStyle = .fullScreen
-            vc.image = self.tempImage
-            self.picker.dismiss(animated: true) {
-                self.present(vc, animated: true, completion: nil)
-            }
+            let nextVC = storyboard.instantiateViewController(withIdentifier: "imageCropVC") as! ImageCropVC
+            let navi = UINavigationController(rootViewController: nextVC)
+            navi.modalPresentationStyle = .fullScreen
+            nextVC.image = self.tempImage
+            self.present(navi, animated: true, completion: nil)
+            
 //            UIImageWriteToSavedPhotosAlbum(image, self, #selector(savedImage), nil)
         }
         
