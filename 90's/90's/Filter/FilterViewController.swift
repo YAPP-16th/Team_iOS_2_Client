@@ -221,8 +221,12 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         let storyboard = UIStoryboard(name: "Sticker", bundle: nil)
         let nextVC = storyboard.instantiateViewController(withIdentifier: "imageCropVC") as! ImageCropVC
         let navi = UINavigationController(rootViewController: nextVC)
+
         navi.modalPresentationStyle = .fullScreen
+        navi.navigationBar.isHidden = true
+
         nextVC.image = self.filteredImage.image!
+//        self.navigationController!.pushViewController(navi, animated: true)
         self.present(navi, animated: true, completion: nil)
 
 //        UIImageWriteToSavedPhotosAlbum(self.filteredImage.image! , nil, nil, nil)
