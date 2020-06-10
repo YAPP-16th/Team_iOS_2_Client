@@ -853,6 +853,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZDO-fR-fq2">
+                                <rect key="frame" x="36" y="219" width="342" height="274"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="90's 회원만 앨범을 열람할 수 있습니다" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MmR-Dm-7RY">
+                                        <rect key="frame" x="2.5" y="66" width="337.5" height="89"/>
+                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jnT-aa-BGk">
+                                        <rect key="frame" x="18" y="196" width="306" height="60"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="rHQ-uX-xWY"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="17"/>
+                                        <state key="normal" title="회원가입 하기 ">
+                                            <color key="titleColor" red="0.93742531539999996" green="0.94878894089999999" blue="0.96078735589999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUc-Zk-qMe">
+                                        <rect key="frame" x="284" y="8" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="A0Y-0t-YF2"/>
+                                            <constraint firstAttribute="height" constant="50" id="usM-yB-avy"/>
+                                        </constraints>
+                                        <state key="normal" image="cancelButtonWhite"/>
+                                        <connections>
+                                            <action selector="cancleBtn:" destination="Pqn-gr-mha" eventType="touchUpInside" id="wFn-qI-jO6"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="MmR-Dm-7RY" firstAttribute="centerX" secondItem="ZDO-fR-fq2" secondAttribute="centerX" id="NY7-27-5M7"/>
+                                    <constraint firstAttribute="trailing" secondItem="LUc-Zk-qMe" secondAttribute="trailing" constant="8" id="QTH-Me-dnS"/>
+                                    <constraint firstItem="LUc-Zk-qMe" firstAttribute="top" secondItem="ZDO-fR-fq2" secondAttribute="top" constant="8" id="UTf-uE-IJS"/>
+                                    <constraint firstItem="jnT-aa-BGk" firstAttribute="leading" secondItem="ZDO-fR-fq2" secondAttribute="leading" constant="18" id="XUF-rt-duh"/>
+                                    <constraint firstItem="jnT-aa-BGk" firstAttribute="top" secondItem="MmR-Dm-7RY" secondAttribute="bottom" constant="41" id="gVe-UJ-RJ1"/>
+                                    <constraint firstItem="MmR-Dm-7RY" firstAttribute="top" secondItem="ZDO-fR-fq2" secondAttribute="top" constant="66" id="nvd-ON-VVc"/>
+                                    <constraint firstAttribute="height" constant="274" id="x6M-pP-1HU"/>
+                                    <constraint firstAttribute="trailing" secondItem="jnT-aa-BGk" secondAttribute="trailing" constant="18" id="xGb-lp-6VL"/>
+                                    <constraint firstAttribute="bottom" secondItem="jnT-aa-BGk" secondAttribute="bottom" constant="18" id="xbv-bv-Nf1"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cS8-mh-oCF">
                                 <rect key="frame" x="36" y="219" width="342" height="274"/>
                                 <subviews>
@@ -928,63 +985,6 @@
                                     <constraint firstItem="CjO-dO-iso" firstAttribute="centerX" secondItem="cS8-mh-oCF" secondAttribute="centerX" id="g7F-KS-eab"/>
                                     <constraint firstAttribute="trailing" secondItem="9DU-cn-MQk" secondAttribute="trailing" constant="16" id="ge0-aE-FWr"/>
                                     <constraint firstItem="CjO-dO-iso" firstAttribute="top" secondItem="2d1-VB-2oG" secondAttribute="bottom" constant="7" id="v04-bt-VIb"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZDO-fR-fq2">
-                                <rect key="frame" x="36" y="219" width="342" height="274"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="90's 회원만 앨범을 열람할 수 있습니다" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MmR-Dm-7RY">
-                                        <rect key="frame" x="2.5" y="66" width="337.5" height="89"/>
-                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="21"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jnT-aa-BGk">
-                                        <rect key="frame" x="18" y="196" width="306" height="60"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="rHQ-uX-xWY"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="17"/>
-                                        <state key="normal" title="회원가입 하기 ">
-                                            <color key="titleColor" red="0.93742531539999996" green="0.94878894089999999" blue="0.96078735589999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUc-Zk-qMe">
-                                        <rect key="frame" x="284" y="8" width="50" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="A0Y-0t-YF2"/>
-                                            <constraint firstAttribute="height" constant="50" id="usM-yB-avy"/>
-                                        </constraints>
-                                        <state key="normal" image="cancelButtonWhite"/>
-                                        <connections>
-                                            <action selector="cancleBtn:" destination="Pqn-gr-mha" eventType="touchUpInside" id="wFn-qI-jO6"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstItem="MmR-Dm-7RY" firstAttribute="centerX" secondItem="ZDO-fR-fq2" secondAttribute="centerX" id="NY7-27-5M7"/>
-                                    <constraint firstAttribute="trailing" secondItem="LUc-Zk-qMe" secondAttribute="trailing" constant="8" id="QTH-Me-dnS"/>
-                                    <constraint firstItem="LUc-Zk-qMe" firstAttribute="top" secondItem="ZDO-fR-fq2" secondAttribute="top" constant="8" id="UTf-uE-IJS"/>
-                                    <constraint firstItem="jnT-aa-BGk" firstAttribute="leading" secondItem="ZDO-fR-fq2" secondAttribute="leading" constant="18" id="XUF-rt-duh"/>
-                                    <constraint firstItem="jnT-aa-BGk" firstAttribute="top" secondItem="MmR-Dm-7RY" secondAttribute="bottom" constant="41" id="gVe-UJ-RJ1"/>
-                                    <constraint firstItem="MmR-Dm-7RY" firstAttribute="top" secondItem="ZDO-fR-fq2" secondAttribute="top" constant="66" id="nvd-ON-VVc"/>
-                                    <constraint firstAttribute="height" constant="274" id="x6M-pP-1HU"/>
-                                    <constraint firstAttribute="trailing" secondItem="jnT-aa-BGk" secondAttribute="trailing" constant="18" id="xGb-lp-6VL"/>
-                                    <constraint firstAttribute="bottom" secondItem="jnT-aa-BGk" secondAttribute="bottom" constant="18" id="xbv-bv-Nf1"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
