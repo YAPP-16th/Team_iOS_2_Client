@@ -48,23 +48,25 @@ UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         // 이미지 저장.
         if let image = info[.originalImage] as? UIImage {
-            //            self.tempImage = image
             
-            
-            FilterViewController.tempImage = image
-            FilterViewController.roadToFlag = true
-            
+            self.tempImage = image
+            AlbumDetailController.tmpImage = self.tempImage
+
         }
         
         if let url = info[.mediaURL] as? URL, UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(url.path) {
             UISaveVideoAtPathToSavedPhotosAlbum(url.path, self, #selector(savedVideo), nil)
         }
-        self.picker.dismiss(animated: true) {
-            print("Here")
-            if self.openFlag {
-                self.dismiss(animated: true, completion: nil)
-            }
+        
+        
+        self.picker.dismiss(animated: false) {
+            self.dismiss(animated: false, completion: {
+                print("Here")
+                
+
+            })
         }
+        
     }
     
     @objc
