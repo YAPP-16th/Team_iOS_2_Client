@@ -83,7 +83,8 @@ class AddressSearchViewController: UIViewController, UITextFieldDelegate {
                     }
                     
                     if let documents = addressResult.documents?.first {
-                        if let zoneNo = documents.road_address?.zone_no {
+                        let zoneNo = documents.road_address?.zone_no
+                        if zoneNo != "" {
                             self.roadAddress = documents.road_address?.address_name
                             self.zipCode = zoneNo
                             self.numAddress = documents.address_name
