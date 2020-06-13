@@ -35,7 +35,9 @@ class OrderListViewController: UIViewController {
     
     //주문앨범이 없을 시 출력 -> 인화하러 가기 버튼 클릭 시 액션
     @IBAction func clickPrintBtn(_ sender: Any) {
-        self.tabBarController?.selectedIndex = 0
+        let printSB = UIStoryboard(name: "Print", bundle: nil)
+        let printMainVC = printSB.instantiateViewController(withIdentifier: "PrintListViewController") as! PrintListViewController
+        self.navigationController?.pushViewController(printMainVC, animated: true)
     }
     
     func setUI(){

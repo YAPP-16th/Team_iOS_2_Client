@@ -28,6 +28,10 @@ class PrintListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if tabBarController?.tabBar.isHidden == true {
+            print("hihihi")
+            tabBarController?.tabBar.isHidden = false
+        }
         demoAlbumImage.isHidden = true
         cautionTitle.isHidden = true
         gotoAlbum.isHidden = true
