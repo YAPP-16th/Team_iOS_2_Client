@@ -8,7 +8,7 @@
 
 import UIKit
 import AVFoundation
-//import LUTFilter
+import LUTFilter
 
 struct Filter {
     let filterName : String
@@ -102,8 +102,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     var resizedPixelBuffers: [CVPixelBuffer?] = []
 
     var FilterArray: [String] = []
-    static var roadToFlag : Bool = false
-    static var tempImage : UIImage? = nil
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -184,8 +183,8 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
 
     
     @IBAction func photoCancel(_ sender: Any) {
-        
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
+//        self.dismiss(animated: true, completion: nil)
         self.captureSession.stopRunning()
     }
     
@@ -212,21 +211,25 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         print(self.filteredImage.frame.size)
         print(self.filteredImage.image?.size)
         
-        FilterViewController.roadToFlag = true
+        
+        let storyboard = UIStoryboard(name: "Sticker", bundle: nil)
+        let nextVC = storyboard.instantiateViewController(withIdentifier: "imageCropVC") as! ImageCropVC
+        nextVC.image = self.filteredImage.image
+        
+        self.navigationController?.pushViewController(nextVC, animated: true)
+
 //        UIImageWriteToSavedPhotosAlbum(self.filteredImage.image! , nil, nil, nil)
         
-        FilterViewController.tempImage = self.filteredImage.image
         self.albumBtn.layer.masksToBounds = true
         self.albumBtn.layer.cornerRadius = self.albumBtn.bounds.width / 2
         
-        self.albumBtn.setBackgroundImage(FilterViewController.tempImage, for: UIControl.State.normal)
+        self.albumBtn.setBackgroundImage(self.filteredImage.image , for: UIControl.State.normal)
         
-        captureSession.beginConfiguration()
-        captureSession.commitConfiguration()
-        captureSession.startRunning()
+//        captureSession.beginConfiguration()
+//        captureSession.commitConfiguration()
+//        captureSession.startRunning()
         
-        
-        self.dismiss(animated: true, completion: nil)
+//        self.dismiss(animated: true, completion: nil)
         
     }
     
@@ -513,7 +516,7 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
         DispatchQueue.main.async {
             let filteredImage = UIImage(cgImage: cgImage)
-            //self.filteredImage.image = filteredImage.mergeWith(topImage: self.topImage! , bottomImage: filteredImage).applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
+            self.filteredImage.image = filteredImage.mergeWith(topImage: self.topImage! , bottomImage: filteredImage).applyLUTFilter(LUT: UIImage(named: self.filterName), volume: 1.0)
             
         }
     }

@@ -58,6 +58,7 @@ class AlbumDetailController : UIViewController {
     var networkPhotoUrlImageArray : [UIImage] = []
     var networkHeaderName : String = "Title"
     var networkHedaerCount : Int = 0
+    static var tmpImage : UIImage? = nil
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if hideView.isHidden == false {
@@ -79,16 +80,15 @@ class AlbumDetailController : UIViewController {
         NetworkSetting()
         photoCollectionView.reloadData()
         
-        if FilterViewController.roadToFlag {
+        print(AlbumDetailController.tmpImage)
+        
+        if AlbumDetailController.tmpImage != nil {
             let storyboard = UIStoryboard(name: "Sticker", bundle: nil)
             let nextVC = storyboard.instantiateViewController(withIdentifier: "imageCropVC") as! ImageCropVC
-                                
-            nextVC.modalPresentationStyle = .fullScreen
-            nextVC.navigationController?.navigationBar.isHidden = true
-            nextVC.image = FilterViewController.tempImage
-//            self.present(navi, animated: true, completion: nil)
+            nextVC.image = AlbumDetailController.tmpImage
             self.navigationController?.pushViewController(nextVC, animated: true)
         }
+        
     }
     
     override func viewDidLoad() {
@@ -405,12 +405,14 @@ extension AlbumDetailController {
             let goNextVC = storyBoard.instantiateViewController(withIdentifier: "NonFilterViewController") as! NonFilterViewController
             goNextVC.modalPresentationStyle = .fullScreen
             self.present(goNextVC, animated: true)
+            
         }
         else {
         let storyBoard = UIStoryboard(name: "Filter", bundle: nil)
         let goNextVC = storyBoard.instantiateViewController(withIdentifier: "FilterViewController") as! FilterViewController
         goNextVC.modalPresentationStyle = .fullScreen
-        self.present(goNextVC, animated: true)
+        self.navigationController?.pushViewController(goNextVC, animated: true)
+//        self.present(goNextVC, animated: true)
         }
         
     }

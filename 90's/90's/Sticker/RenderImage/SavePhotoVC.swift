@@ -37,7 +37,7 @@ class SavePhotoVC: UIViewController {
     var imageName : String = ""
     var dateLabel : UILabel!
     var renderImage : UIImage?
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         defaultSetting()
@@ -136,7 +136,7 @@ extension SavePhotoVC {
         print("render image = \(renderImage)")
         guard let image = renderImage else {return}
         print("image = \(image)")
-        FilterViewController.roadToFlag = false
+        
         AlbumService.shared.photoUpload(albumUid: albumUid, image: [image], imageName: imageName, completion: {
             response in
             if let status = response.response?.statusCode {
@@ -156,7 +156,24 @@ extension SavePhotoVC {
                 }
             }
         })
-        self.navigationController?.popToRootViewController(animated: true)
+        
+        
+        if iPhone8Model() {
+            AlbumDetailController.tmpImage = nil
+            let viewControllers : [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+            
+            print(viewControllers.count)
+            
+            self.navigationController?.popToViewController(viewControllers[viewControllers.count - 4 ], animated: false)
+        }
+        else {
+            
+            let viewControllers : [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+            
+            print(viewControllers.count)
+            
+            self.navigationController?.popToViewController(viewControllers[viewControllers.count - 5 ], animated: false)
+        }
     }
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer){
