@@ -10,70 +10,76 @@ import UIKit
 
 class ImageCropVC: UIViewController {
     @IBOutlet weak var photoImageView: UIImageView!
-    @IBOutlet weak var layoutImageView: UIImageView!
     @IBOutlet weak var cropView: UIView!
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBAction func backBtn(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
     @IBAction func nextBtn(_ sender: UIButton) { nextVC() }
     
-    var image : UIImage?
+    var layoutImageView : UIImageView = UIImageView()
+    var layoutCustomSize : CGFloat = CGFloat()
+    var layoutRatio : CGFloat = CGFloat()
+    
+    var image : UIImage!
+    var imageRadio : CGFloat = CGFloat()
     var selectedLayout : AlbumLayout! = .Polaroid
     var albumUid : Int = 0
     var imageName : String = ""
-    var cropArea : CGRect {
-        get{
-            let factor = photoImageView.image!.size.width/view.frame.width
-            let scale = 1/scrollView.zoomScale
-            let imageFrame = photoImageView.imageFrame()
-            let x = (scrollView.contentOffset.x + layoutImageView.frame.origin.x - imageFrame.origin.x) * scale * factor
-            let y = (scrollView.contentOffset.y + layoutImageView.frame.origin.y - imageFrame.origin.y) * scale * factor
-            let width = layoutImageView.frame.size.width * scale * factor
-            let height = layoutImageView.frame.size.height * scale * factor
-            return CGRect(x: x, y: y, width: width, height: height)
-        }
-    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        defaultSetting()
         layoutSetting()
     }
+    
+    
+//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        let touch = touches.first
+//
+//        if touch?.view == layoutImageView {
+//            let position = touch!.location(in: self.view)
+//            let target = layoutImageView.center
+//            let size = max((position.x / target.x), (position.y / target.y))
+//            let scale = CGAffineTransform(scaleX: size, y: size)
+//            layoutCustomSize = size
+//            layoutImageView.transform = scale
+//        }
+//    }
+    
 }
  
 
-extension ImageCropVC : UIScrollViewDelegate {
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return photoImageView
-    }
-}
-
-
 extension ImageCropVC {
-    func defaultSetting(){
-        photoImageView.image = image
-        scrollView.delegate = self
-        scrollView.alwaysBounceVertical = false
-        scrollView.alwaysBounceHorizontal = false
-        scrollView.minimumZoomScale = 1.0
-        scrollView.maximumZoomScale = 10.0
-    }
-    
-    func layoutSetting(){
-        layoutImageView.translatesAutoresizingMaskIntoConstraints = false
-        layoutImageView.image = selectedLayout.cropImage
-        layoutImageView.frame.size = iPhone8Model() ? selectedLayout.innerFrameLowSize : selectedLayout.innerFrameHighSize
+    private func layoutSetting(){
+        layoutRatio = min(layoutImageView.frame.width / layoutImageView.frame.height,
+                                 layoutImageView.frame.height / layoutImageView.frame.width)
+        imageRadio = min(image.size.width / image.size.height,
+                                image.size.height / image.size.width)
+        photoImageView.image = image.resizeImage(image: image, newSize: CGSize(width: image.size.width, height: image.size.height))
         
-        layoutImageView.centerYAnchor.constraint(equalTo: self.cropView.centerYAnchor).isActive = true
-        layoutImageView.centerXAnchor.constraint(equalTo: self.cropView.centerXAnchor).isActive = true
+        layoutImageView = UIImageView(image: selectedLayout.cropImage)
+        layoutImageView.isUserInteractionEnabled = true
+        layoutImageView.frame.size = iPhone8Model() ? selectedLayout.innerFrameLowSize : selectedLayout.innerFrameHighSize
+        layoutImageView.center = cropView.center
+        
+        // 1. 이미지 크기를 모름
+        // 2. 이미지 비율을 알아서 이미지 크기를 view width or height 에 맞춤
+        // 3. 레이아웃 이미지를 이미지 크기에 맞춤
+        // 4. 이미지 자름
+        print("image size = \(imageRadio), \(photoImageView.image?.size)")
+        
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(panGesture:)))
+        layoutImageView.addGestureRecognizer(panGesture)
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinchGesture(pinchGesture:)))
+        layoutImageView.addGestureRecognizer(pinchGesture)
+        self.cropView.addSubview(layoutImageView)
     }
     
-    func nextVC(){
-        let croppedCGImage = photoImageView.image?.cgImage?.cropping(to: cropArea)
+    private func nextVC(){
+        let croppedCGImage = photoImageView.image?.cgImage?.cropping(to: layoutImageView.frame)
         let croppedImage = UIImage(cgImage: croppedCGImage!)
+        print("cropped image frame = \(croppedImage.size)")
         image = croppedImage
-        scrollView.zoomScale = 1
         
         if image != nil {
             let nextVC = storyboard?.instantiateViewController(withIdentifier: "imageRenderVC") as! ImageRenderVC
@@ -88,6 +94,20 @@ extension ImageCropVC {
         }
     }
 }
+
+
+extension ImageCropVC {
+    @objc private func handlePanGesture(panGesture: UIPanGestureRecognizer){
+        let transtition = panGesture.translation(in: self.view)
+        panGesture.view!.center = CGPoint(x: panGesture.view!.center.x + transtition.x, y: panGesture.view!.center.y + transtition.y)
+        panGesture.setTranslation(.zero, in: self.view)
+    }
+    @objc private func handlePinchGesture(pinchGesture : UIPinchGestureRecognizer){
+        pinchGesture.view?.transform = (pinchGesture.view?.transform.scaledBy(x: pinchGesture.scale, y: pinchGesture.scale))!
+        pinchGesture.scale = 1.0
+    }
+}
+
 
 class CropAreaView: UIImageView {
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {

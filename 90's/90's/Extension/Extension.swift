@@ -86,6 +86,7 @@ extension UIViewController{
         imageView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
+    
     // imageRenderVC - imageView setting
     func setRenderImageViewFrameSetting(view: UIView, imageView : UIImageView, selectlayout : AlbumLayout){
         let top = getImageViewConstraintY(selecetedLayout: selectlayout).width
@@ -193,10 +194,8 @@ extension UIViewController{
     
     // stickerVC, previewVC - layoutview
     func applyBackImageViewLayout(selectedLayout : AlbumLayout, smallBig: CGSize, imageView : UIImageView ) -> UIImageView {
-        
         imageView.frame = CGRect(x: 0, y: 0, width: smallBig.width, height: smallBig.height)
         imageView.image = selectedLayout.image
-        
         return imageView
     }
     

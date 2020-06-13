@@ -166,7 +166,7 @@ extension ImageRenderVC {
 
 
 extension ImageRenderVC {
-    @objc func touchCompleteBtn(){
+    @objc private func touchCompleteBtn(){
         for views in saveView.subviews {
             print("view = \(views)")
             if(views is StickerLayout){
@@ -194,7 +194,7 @@ extension ImageRenderVC {
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
-    @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer){
+    @objc private func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer){
         if let error = error {
             print(error.localizedDescription)
         } else {
@@ -202,7 +202,7 @@ extension ImageRenderVC {
         }
     }
     
-    @objc func handlePanGesture(panGesture: UIPanGestureRecognizer){
+    @objc private func handlePanGesture(panGesture: UIPanGestureRecognizer){
         /// todo : 팬에 기울기도 적용하기
         if sticker != nil {
             let transition = panGesture.translation(in: sticker)
