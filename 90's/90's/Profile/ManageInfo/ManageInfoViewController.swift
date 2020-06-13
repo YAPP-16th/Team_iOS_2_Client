@@ -25,6 +25,7 @@ class ManageInfoViewController: UIViewController {
     }
     
     func setUI(){
+        self.tabBarController?.tabBar.isHidden = true
         infoTableView.delegate = self
         infoTableView.dataSource = self
     }

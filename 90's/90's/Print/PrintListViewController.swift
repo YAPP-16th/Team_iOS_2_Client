@@ -26,12 +26,9 @@ class PrintListViewController: UIViewController {
     var orderData:GetOrderResult!
     var cost = 0
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        if tabBarController?.tabBar.isHidden == true {
-            print("hihihi")
-            tabBarController?.tabBar.isHidden = false
-        }
         demoAlbumImage.isHidden = true
         cautionTitle.isHidden = true
         gotoAlbum.isHidden = true
@@ -54,6 +51,9 @@ class PrintListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         getCompleteAlbums()
+        if tabBarController?.tabBar.isHidden == true {
+            tabBarController?.tabBar.isHidden = false
+        }
     }
     
     @IBAction func clickGoToAlbum(_ sender: Any) {
