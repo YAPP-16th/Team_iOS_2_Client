@@ -260,10 +260,12 @@ extension AlbumInfoVC {
     
     @objc func touchPasswordCopyBtn(){
         networkGetPassword()
+        copyPasswordAlert()
     }
     
     @objc func touchPasswordUploadBtn(){
         networkUpdatePassword()
+        requestNewPasswordAlert()
     }
 }
 
@@ -277,6 +279,20 @@ extension AlbumInfoVC {
         }, failure: {(error) in
             print("error \(error)")
         })
+    }
+    
+    func copyPasswordAlert(){
+        let alert = UIAlertController(title: "비밀번호 복사", message: "비밀번호가 클립보드에 복사 되었습니다!", preferredStyle: UIAlertController.Style.alert)
+        let accept = UIAlertAction(title: "확인", style: .default, handler: nil)
+        alert.addAction(accept)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func requestNewPasswordAlert(){
+        let alert = UIAlertController(title: "비밀번호 재발급", message: "재발급된 비밀번호가 클립보드에 복사 되었습니다!", preferredStyle: UIAlertController.Style.alert)
+        let accept = UIAlertAction(title: "확인", style: .default, handler: nil)
+        alert.addAction(accept)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
