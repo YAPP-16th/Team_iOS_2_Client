@@ -120,8 +120,7 @@ class PrintListViewController: UIViewController {
             printListTableView.delegate = self
             printListTableView.dataSource = self
             printListTableView.reloadData()
-        }
-        else {
+        }else {
             demoAlbumImage.isHidden = false
             cautionTitle.isHidden = false
             gotoAlbum.isHidden = false

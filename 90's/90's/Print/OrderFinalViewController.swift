@@ -216,7 +216,7 @@ class OrderFinalViewController: UIViewController {
     }
     
     func showEmptyAlert(){
-        let alert = UIAlertController(title: "입력 필요", message: "필수항목을 입력해주세요", preferredStyle: .alert)
+        let alert = UIAlertController(title: "입력 필요", message: "배송정보를 입력해주세요", preferredStyle: .alert)
         let action = UIAlertAction(title: "확인", style: .default)
         alert.addAction(action)
         self.present(alert, animated: true)
