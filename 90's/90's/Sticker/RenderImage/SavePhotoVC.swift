@@ -136,7 +136,7 @@ extension SavePhotoVC {
         print("render image = \(renderImage)")
         guard let image = renderImage else {return}
         print("image = \(image)")
-       
+        FilterViewController.roadToFlag = false
         AlbumService.shared.photoUpload(albumUid: albumUid, image: [image], imageName: imageName, completion: {
             response in
             if let status = response.response?.statusCode {

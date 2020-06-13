@@ -102,7 +102,8 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     var resizedPixelBuffers: [CVPixelBuffer?] = []
 
     var FilterArray: [String] = []
-    
+    static var roadToFlag : Bool = false
+    static var tempImage : UIImage? = nil
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -211,35 +212,21 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         print(self.filteredImage.frame.size)
         print(self.filteredImage.image?.size)
         
-        
-//        let Image = self.filteredImage.image!.imageResize(sizeChange: CGSize(width: self.filteredImage.frame.width, height: self.filteredImage.frame.height))
-        
-//        self.filteredImage.image = self.filteredImage.image!.imageResize(sizeChange: CGSize(width: self.filteredImage.frame.width, height: self.filteredImage.frame.height))
-                
-        print(self.filteredImage.image?.size)
-        
-        let storyboard = UIStoryboard(name: "Sticker", bundle: nil)
-        let nextVC = storyboard.instantiateViewController(withIdentifier: "imageCropVC") as! ImageCropVC
-        let navi = UINavigationController(rootViewController: nextVC)
-
-        navi.modalPresentationStyle = .fullScreen
-        navi.navigationBar.isHidden = true
-
-        nextVC.image = self.filteredImage.image!
-//        self.navigationController!.pushViewController(navi, animated: true)
-        self.present(navi, animated: true, completion: nil)
-
+        FilterViewController.roadToFlag = true
 //        UIImageWriteToSavedPhotosAlbum(self.filteredImage.image! , nil, nil, nil)
         
-        let tempImage = self.filteredImage.image
+        FilterViewController.tempImage = self.filteredImage.image
         self.albumBtn.layer.masksToBounds = true
         self.albumBtn.layer.cornerRadius = self.albumBtn.bounds.width / 2
         
-        self.albumBtn.setBackgroundImage(tempImage, for: UIControl.State.normal)
+        self.albumBtn.setBackgroundImage(FilterViewController.tempImage, for: UIControl.State.normal)
         
         captureSession.beginConfiguration()
         captureSession.commitConfiguration()
         captureSession.startRunning()
+        
+        
+        self.dismiss(animated: true, completion: nil)
         
     }
     
@@ -264,23 +251,6 @@ class FilterViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }
     
     @IBAction func showFilter(_ sender: Any) {
-        
-        
-        //        if UIScreen.main.nativeBounds.height == 1792.0 {
-        //            self.outputimageViewConstraint.constant = 115
-        //            self.collectionViewHeight.constant = -80
-        //            self.galleryConstraint.constant = 102
-        //            self.filterConstraint.constant = 102
-        //
-        //        }
-        //        else if UIScreen.main.nativeBounds.height == 1334.0
-        //        {
-        //            self.outputimageViewConstraint.constant = 115
-        //            self.collectionViewHeight.constant = -80
-        //            self.galleryConstraint.constant = 102
-        //            self.filterConstraint.constant = 102
-        //        }
-        
         
         if isCollectionViewAppear {
             

@@ -58,7 +58,6 @@ class AlbumDetailController : UIViewController {
     var networkPhotoUrlImageArray : [UIImage] = []
     var networkHeaderName : String = "Title"
     var networkHedaerCount : Int = 0
-
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if hideView.isHidden == false {
@@ -79,6 +78,17 @@ class AlbumDetailController : UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         NetworkSetting()
         photoCollectionView.reloadData()
+        
+        if FilterViewController.roadToFlag {
+            let storyboard = UIStoryboard(name: "Sticker", bundle: nil)
+            let nextVC = storyboard.instantiateViewController(withIdentifier: "imageCropVC") as! ImageCropVC
+                                
+            nextVC.modalPresentationStyle = .fullScreen
+            nextVC.navigationController?.navigationBar.isHidden = true
+            nextVC.image = FilterViewController.tempImage
+//            self.present(navi, animated: true, completion: nil)
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }
     }
     
     override func viewDidLoad() {

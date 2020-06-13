@@ -154,7 +154,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             }
         }
-        
+         
             
         if KLKTalkLinkCenter.shared().isTalkLinkCallback(url) {
             let params = url.query
@@ -163,6 +163,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //callback from kakaotalk link
             print("kakaoopen2")
             print(params)
+            if params == "https://apps.apple.com/kr/app/90s-%EB%B6%88%ED%8E%B8%ED%95%9C-%EC%95%84%EB%82%A0%EB%A1%9C%EA%B7%B8-%EC%82%AC%EC%A7%84%EC%B2%A9/id1512639762" {
+            if let url = URL(string: params!) {
+                
+                UIApplication.shared.open(url, options: [:])
+            }
+                
+            }
+
             return true
         }
         
