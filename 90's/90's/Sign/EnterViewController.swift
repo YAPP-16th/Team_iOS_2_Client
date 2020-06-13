@@ -155,13 +155,18 @@ class EnterViewController: UIViewController {
                 })
                 
                 KOSessionTask.userMeTask(completion: { (userInfoErr, user) in
+                    print("\(user)")
                     guard let user = user,
                         let email = user.account?.email,
                         let nickName = user.account?.profile?.nickname
-                        else { return }
+                        else {
+                            self.unlinkKaKaoLogin()
+                            return
+                    }
                     self.socialEmail = email
                     self.socialName = nickName
                     
+                    print("\(self.socialEmail)")
                     //로그아웃 후 재 로그인하는 경우와(이미 회원) 회원가입하는 경우 분기 위해 이메일 체크
                     self.checkEmail()
                 })
@@ -170,6 +175,19 @@ class EnterViewController: UIViewController {
                 print("로그인 에러: \(error)")
             }
         }
+        
+    }
+    
+    func unlinkKaKaoLogin(){
+        KOSessionTask.unlinkTask(completionHandler: {
+            (success, err) in
+            if(success){
+                print("success")
+            }else {
+                print("\(err)")
+            }
+            
+        })
         
     }
     
