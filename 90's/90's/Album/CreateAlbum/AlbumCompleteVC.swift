@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 
 class AlbumCompleteVC: UIViewController {
     @IBOutlet weak var completeLabel: UILabel!
@@ -17,17 +18,20 @@ class AlbumCompleteVC: UIViewController {
     @IBOutlet weak var albumDateLabel: UILabel!
     @IBOutlet weak var albumCountLabel: UILabel!
     @IBOutlet weak var albumLayoutLabel: UILabel!
+    @IBOutlet weak var lottieView: UIView!
+    
     @IBAction func cancleBtn(_ sender: UIButton) {
         self.navigationController?.popToRootViewController(animated: true)
     }
+    
     @IBAction func backBtn(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
+    
     @IBAction func completeBtn(_ sender: UIButton) {
         self.createAlbumService()
-        mainProtocol?.AlbumMainreloadView()
-        self.navigationController?.popToRootViewController(animated: true)
     }
+    
     var albumLayout : AlbumLayout!
     var mainProtocol : AlbumMainVCProtocol?
     var isAllDataSettle : Bool = false
@@ -40,9 +44,10 @@ class AlbumCompleteVC: UIViewController {
     var photo : UIImage!
     var imageName : String!
     var albumUid : Int!
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
     }
     
     override func viewDidLoad() {
@@ -53,7 +58,28 @@ class AlbumCompleteVC: UIViewController {
 
 
 extension AlbumCompleteVC {
+    func playAnimation(){
+        lottieView.isHidden = false
+        let animationView = AnimationView(name:"complete_album")
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        lottieView.addSubview(animationView)
+        
+        animationView.topAnchor.constraint(equalTo: lottieView.topAnchor, constant: 150.0).isActive = true
+        animationView.heightAnchor.constraint(equalToConstant: 434.0).isActive = true
+        animationView.leadingAnchor.constraint(equalTo: lottieView.leadingAnchor).isActive = true
+        animationView.trailingAnchor.constraint(equalTo: lottieView.trailingAnchor).isActive = true
+        animationView.layoutIfNeeded()
+        
+        //애니메이션 재생(애니메이션 재생모드 미 설정시 1회)
+        animationView.play(completion: {
+            _ in
+            self.mainProtocol?.AlbumMainreloadView()
+            self.navigationController?.popToRootViewController(animated: true)
+        })
+    }
+    
     func defaultSetting(){
+        lottieView.isHidden = true
         albumCompleteBtn.layer.cornerRadius = 10
         albumLayoutLabel.text = albumLayout.layoutName
         albumImageView.image = photo
@@ -74,6 +100,7 @@ extension AlbumCompleteVC {
                     guard let data = response.data else {return}
                     guard let uid = try? JSONDecoder().decode(AlbumCreateResult.self, from: data) else {return}
                     self.albumUid = uid.uid
+                    self.playAnimation()
                 case 401:
                     print("\(status) : bad request, no warning in Server")
                 case 404:

@@ -77,6 +77,7 @@
 		A318AC7C243E2A7600245434 /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A318AC7B243E2A7600245434 /* CompleteViewController.swift */; };
 		A318AC7E243E2F9E00245434 /* TermCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A318AC7D243E2F9E00245434 /* TermCell.swift */; };
 		A31BA4D3243876F0007CA89D /* AlbumNameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31BA4D2243876F0007CA89D /* AlbumNameController.swift */; };
+		A32681022494AF0200059F40 /* complete_album.json in Resources */ = {isa = PBXBuildFile; fileRef = A32680F62494AF0200059F40 /* complete_album.json */; };
 		A3315E0C245C5BA6005536C2 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3315E0B245C5BA6005536C2 /* OrderCell.swift */; };
 		A3315E23245C6C54005536C2 /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3315E22245C6C54005536C2 /* OrderDetailViewController.swift */; };
 		A33376162420CFB3000DC7C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33376152420CFB3000DC7C4 /* AppDelegate.swift */; };
@@ -605,6 +606,7 @@
 		A318AC7B243E2A7600245434 /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
 		A318AC7D243E2F9E00245434 /* TermCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermCell.swift; sourceTree = "<group>"; };
 		A31BA4D2243876F0007CA89D /* AlbumNameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumNameController.swift; sourceTree = "<group>"; };
+		A32680F62494AF0200059F40 /* complete_album.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = complete_album.json; path = ../../../../Downloads/complete_album.json; sourceTree = "<group>"; };
 		A3315E0B245C5BA6005536C2 /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		A3315E22245C6C54005536C2 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
 		A33376122420CFB3000DC7C4 /* 90's.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "90's.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -820,6 +822,7 @@
 		9B44EDDE2429ED9200B0D774 /* Album */ = {
 			isa = PBXGroup;
 			children = (
+				A32680F62494AF0200059F40 /* complete_album.json */,
 				A33376292420DA36000DC7C4 /* Album.swift */,
 				3958515F242F461800014CB0 /* Album.storyboard */,
 				9BAAA962245961F3002567AF /* AlbumNetwork */,
@@ -2019,6 +2022,7 @@
 				9B45BD012438734E00497EA5 /* Profile.storyboard in Resources */,
 				39585163242F46D500014CB0 /* Print.storyboard in Resources */,
 				A33376222420CFB6000DC7C4 /* LaunchScreen.storyboard in Resources */,
+				A32681022494AF0200059F40 /* complete_album.json in Resources */,
 				A333761F2420CFB6000DC7C4 /* Assets.xcassets in Resources */,
 				9BA7A7EE2467D05E00C39B56 /* Digital-7 Italic.ttf in Resources */,
 				9BA7A7F02467D06400C39B56 /* Digital-7.ttf in Resources */,

@@ -2247,6 +2247,10 @@
                                                     <constraint firstItem="YtE-CB-cts" firstAttribute="top" secondItem="fYV-c1-EwF" secondAttribute="bottom" constant="12" id="wj9-I8-gJe"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gBS-VW-uFb">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
@@ -2257,9 +2261,13 @@
                                             <constraint firstItem="zpU-0s-2nO" firstAttribute="leading" secondItem="vLj-4F-Ar4" secondAttribute="leading" id="8YI-Zh-0Tn"/>
                                             <constraint firstAttribute="height" constant="818" id="EeO-PL-vUF"/>
                                             <constraint firstItem="rAg-Si-sza" firstAttribute="top" secondItem="zpU-0s-2nO" secondAttribute="bottom" constant="16" id="Ixb-KJ-2fN"/>
+                                            <constraint firstItem="gBS-VW-uFb" firstAttribute="top" secondItem="vLj-4F-Ar4" secondAttribute="top" id="Vgn-Cw-XYK"/>
                                             <constraint firstItem="4dO-Am-UQG" firstAttribute="top" secondItem="l0j-a1-5Yj" secondAttribute="bottom" constant="12" id="a5i-s3-Xsa"/>
+                                            <constraint firstAttribute="trailing" secondItem="gBS-VW-uFb" secondAttribute="trailing" id="jve-Nx-njk"/>
+                                            <constraint firstAttribute="bottom" secondItem="gBS-VW-uFb" secondAttribute="bottom" id="n6b-0r-bg6"/>
                                             <constraint firstItem="rAg-Si-sza" firstAttribute="leading" secondItem="vLj-4F-Ar4" secondAttribute="leading" constant="20" id="pDM-Pr-mfl"/>
                                             <constraint firstAttribute="trailing" secondItem="zpU-0s-2nO" secondAttribute="trailing" id="rSl-vS-Srp"/>
+                                            <constraint firstItem="gBS-VW-uFb" firstAttribute="leading" secondItem="vLj-4F-Ar4" secondAttribute="leading" id="uSH-FN-gZo"/>
                                             <constraint firstItem="zpU-0s-2nO" firstAttribute="top" secondItem="vLj-4F-Ar4" secondAttribute="top" id="vXL-BU-JZg"/>
                                         </constraints>
                                     </view>
@@ -2315,6 +2323,7 @@
                         <outlet property="albumTitleLabel" destination="2xQ-UF-IhK" id="hGg-3R-cfJ"/>
                         <outlet property="askLabel" destination="w22-uL-NtZ" id="pL6-Va-HCH"/>
                         <outlet property="completeLabel" destination="rAg-Si-sza" id="W03-WU-yPw"/>
+                        <outlet property="lottieView" destination="gBS-VW-uFb" id="bIc-w0-980"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nrn-9j-2zx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
