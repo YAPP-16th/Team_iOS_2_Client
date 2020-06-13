@@ -82,6 +82,9 @@ class OrderDetailViewController: UIViewController {
     }
     
     func setUI(){
+        if tabBarController?.tabBar.isHidden == false {
+            tabBarController?.tabBar.isHidden = true
+        }
         //계좌정보 텍스트 일부만 DemiLight
         let attributedString = NSMutableAttributedString(string: accountLabel.text!, attributes: [
             .font: UIFont(name: "NotoSansCJKkr-Bold", size: 14.0)!,

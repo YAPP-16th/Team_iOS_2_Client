@@ -41,6 +41,7 @@ class FAQViewController: UIViewController {
     }
     
     func setUI(){
+        self.tabBarController?.tabBar.isHidden = true
         faqTableView.delegate = self
         faqTableView.dataSource = self
     }

@@ -29,6 +29,7 @@ class SettingViewController: UIViewController {
     }
     
     func setUI(){
+        self.tabBarController?.tabBar.isHidden = true
         settingTableView.dataSource = self
         settingTableView.delegate = self
     }

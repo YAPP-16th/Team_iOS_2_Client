@@ -103,6 +103,9 @@ class ProfileVC: UIViewController {
     }
     
     func setUI(){
+        if tabBarController?.tabBar.isHidden == true {
+            tabBarController?.tabBar.isHidden = false
+        }
         settingTableView.delegate = self
         settingTableView.dataSource = self
         guestLoginBtn.layer.cornerRadius = 8.0
