@@ -1619,10 +1619,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="1412"/>
                                 <subviews>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YCX-hA-EGl">
-                                        <rect key="frame" x="0.0" y="-57" width="414" height="854"/>
+                                        <rect key="frame" x="0.0" y="-57" width="414" height="1029"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zQg-Hh-LUS">
-                                                <rect key="frame" x="0.0" y="851" width="414" height="264"/>
+                                                <rect key="frame" x="0.0" y="1026" width="414" height="264"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ldk-YC-a84">
                                                         <rect key="frame" x="18" y="154" width="150" height="72"/>
@@ -1697,7 +1697,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="1412" translatesAutoresizingMaskIntoConstraints="NO" id="CHN-qL-8H0">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="769"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="944"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C9U-jv-BTd" userLabel="TopView">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
@@ -1831,49 +1831,16 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="password" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4me-mH-0Md">
-                                                                <rect key="frame" x="94" y="168" width="56" height="21"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="21" id="CdX-Oh-46m"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="14"/>
-                                                                <color key="textColor" red="0.61994165180000005" green="0.63072854280000001" blue="0.66667240859999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zbx-Pp-odo">
-                                                                <rect key="frame" x="170" y="165" width="74" height="30"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="30" id="I9g-2h-dht"/>
-                                                                    <constraint firstAttribute="width" constant="74" id="bFU-xz-pb8"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="14"/>
-                                                                <state key="normal" title="복사하기"/>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uaC-4k-uPw">
-                                                                <rect key="frame" x="252" y="165" width="74" height="30"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="74" id="1eO-YI-2Sf"/>
-                                                                    <constraint firstAttribute="height" constant="30" id="BUb-YR-QZH"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="14"/>
-                                                                <state key="normal" title="재발급"/>
-                                                            </button>
                                                         </subviews>
                                                         <constraints>
-                                                            <constraint firstItem="uaC-4k-uPw" firstAttribute="leading" secondItem="Zbx-Pp-odo" secondAttribute="trailing" constant="8" id="6EK-TN-xoA"/>
                                                             <constraint firstItem="yew-CA-wb1" firstAttribute="centerX" secondItem="N88-20-pIA" secondAttribute="centerX" constant="49" id="95m-Vn-APs"/>
-                                                            <constraint firstItem="Zbx-Pp-odo" firstAttribute="centerX" secondItem="N88-20-pIA" secondAttribute="centerX" id="CfS-Nq-VBS"/>
                                                             <constraint firstItem="yew-CA-wb1" firstAttribute="leading" secondItem="ZyZ-gF-lJ9" secondAttribute="trailing" constant="7" id="H6X-oi-51G"/>
-                                                            <constraint firstItem="Zbx-Pp-odo" firstAttribute="top" secondItem="n7G-AU-PDS" secondAttribute="bottom" constant="9" id="Rdc-Pe-4UY"/>
                                                             <constraint firstItem="n7G-AU-PDS" firstAttribute="leading" secondItem="wdh-BQ-H00" secondAttribute="trailing" constant="5.5" id="SIm-aF-YU6"/>
-                                                            <constraint firstItem="Zbx-Pp-odo" firstAttribute="leading" secondItem="4me-mH-0Md" secondAttribute="trailing" constant="20" id="Vxb-vY-Wbu"/>
                                                             <constraint firstItem="i4y-WA-AyI" firstAttribute="centerX" secondItem="N88-20-pIA" secondAttribute="centerX" constant="49" id="XQk-Ex-vmO"/>
                                                             <constraint firstItem="wdh-BQ-H00" firstAttribute="top" secondItem="v3d-Oc-H3o" secondAttribute="bottom" constant="12" id="ZIJ-aC-zK4"/>
                                                             <constraint firstItem="i4y-WA-AyI" firstAttribute="leading" secondItem="v3d-Oc-H3o" secondAttribute="trailing" constant="7" id="aoa-Ib-tTM"/>
                                                             <constraint firstItem="i4y-WA-AyI" firstAttribute="top" secondItem="yew-CA-wb1" secondAttribute="bottom" constant="12" id="fgD-Yc-izT"/>
-                                                            <constraint firstItem="uaC-4k-uPw" firstAttribute="top" secondItem="n7G-AU-PDS" secondAttribute="bottom" constant="9" id="hJu-NX-nPK"/>
                                                             <constraint firstItem="n7G-AU-PDS" firstAttribute="top" secondItem="i4y-WA-AyI" secondAttribute="bottom" constant="12" id="lKJ-ZT-Fah"/>
-                                                            <constraint firstItem="4me-mH-0Md" firstAttribute="top" secondItem="wdh-BQ-H00" secondAttribute="bottom" constant="12" id="lxz-75-bdT"/>
                                                             <constraint firstItem="v3d-Oc-H3o" firstAttribute="top" secondItem="ZyZ-gF-lJ9" secondAttribute="bottom" constant="12" id="mBW-HG-V1f"/>
                                                             <constraint firstItem="ZyZ-gF-lJ9" firstAttribute="top" secondItem="faa-Sz-1RU" secondAttribute="bottom" constant="20" id="nEh-6X-Dpc"/>
                                                             <constraint firstItem="faa-Sz-1RU" firstAttribute="top" secondItem="N88-20-pIA" secondAttribute="top" constant="22" id="nYU-So-gCC"/>
@@ -1988,7 +1955,7 @@
                                                 </prototypes>
                                             </tableView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fO-Pc-rcl" userLabel="quitButton">
-                                                <rect key="frame" x="0.0" y="679" width="414" height="70"/>
+                                                <rect key="frame" x="0.0" y="854" width="414" height="70"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="70" id="rul-re-a9e"/>
                                                 </constraints>
@@ -2008,25 +1975,51 @@
                                                     <action selector="inviteBtn:" destination="ZwE-5H-XaB" eventType="touchUpInside" id="MPb-hU-zJ5"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zbx-Pp-odo">
+                                                <rect key="frame" x="134" y="689" width="146" height="41"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="41" id="IyK-71-auI"/>
+                                                    <constraint firstAttribute="width" constant="146" id="hnw-C8-GMf"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="12"/>
+                                                <state key="normal" title="비밀번호 복사하기">
+                                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uaC-4k-uPw">
+                                                <rect key="frame" x="134" y="743" width="146" height="41"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="41" id="hrZ-5M-hRa"/>
+                                                    <constraint firstAttribute="width" constant="146" id="uic-9o-mbl"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="12"/>
+                                                <state key="normal" title="비밀번호 재발급">
+                                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="pj7-Nw-P4u" secondAttribute="trailing" id="2iY-ip-kBC"/>
-                                            <constraint firstItem="9fO-Pc-rcl" firstAttribute="top" secondItem="pj7-Nw-P4u" secondAttribute="bottom" constant="20" id="4uk-lM-sBD"/>
+                                            <constraint firstItem="uaC-4k-uPw" firstAttribute="centerX" secondItem="CHN-qL-8H0" secondAttribute="centerX" id="6k7-TX-FfN"/>
                                             <constraint firstAttribute="bottom" secondItem="9fO-Pc-rcl" secondAttribute="bottom" constant="20" id="8gB-aK-1iG"/>
                                             <constraint firstItem="jC4-MJ-SUu" firstAttribute="top" secondItem="C9U-jv-BTd" secondAttribute="bottom" id="F77-bW-27e"/>
+                                            <constraint firstItem="Zbx-Pp-odo" firstAttribute="centerX" secondItem="CHN-qL-8H0" secondAttribute="centerX" id="HRw-KU-kGe"/>
                                             <constraint firstItem="0Xy-ew-9ut" firstAttribute="centerX" secondItem="CHN-qL-8H0" secondAttribute="centerX" id="L2w-rG-O12"/>
                                             <constraint firstAttribute="trailing" secondItem="Fz7-Ep-JFz" secondAttribute="trailing" constant="19" id="MoS-QI-FTb"/>
                                             <constraint firstItem="Fz7-Ep-JFz" firstAttribute="top" secondItem="0Xy-ew-9ut" secondAttribute="bottom" constant="5" id="NUj-Cz-3d9"/>
                                             <constraint firstItem="C9U-jv-BTd" firstAttribute="leading" secondItem="CHN-qL-8H0" secondAttribute="leading" id="Orc-fY-7eb"/>
                                             <constraint firstItem="pj7-Nw-P4u" firstAttribute="top" secondItem="fSF-Oq-AqN" secondAttribute="bottom" constant="25" id="Pis-w0-den"/>
+                                            <constraint firstItem="uaC-4k-uPw" firstAttribute="top" secondItem="Zbx-Pp-odo" secondAttribute="bottom" constant="13" id="Ssm-Ph-hmg"/>
                                             <constraint firstAttribute="trailing" secondItem="jC4-MJ-SUu" secondAttribute="trailing" id="Upv-7K-2RC"/>
                                             <constraint firstItem="fSF-Oq-AqN" firstAttribute="top" secondItem="0Xy-ew-9ut" secondAttribute="bottom" constant="12" id="XQa-vv-ZQQ"/>
                                             <constraint firstItem="9fO-Pc-rcl" firstAttribute="leading" secondItem="CHN-qL-8H0" secondAttribute="leading" id="YOc-Sf-MoK"/>
                                             <constraint firstAttribute="trailing" secondItem="9fO-Pc-rcl" secondAttribute="trailing" id="iOc-76-vgN"/>
                                             <constraint firstItem="0Xy-ew-9ut" firstAttribute="top" secondItem="jC4-MJ-SUu" secondAttribute="bottom" constant="2" id="mU4-3w-2pf"/>
                                             <constraint firstItem="jC4-MJ-SUu" firstAttribute="top" secondItem="C9U-jv-BTd" secondAttribute="bottom" id="o23-0q-pYZ"/>
+                                            <constraint firstItem="Zbx-Pp-odo" firstAttribute="top" secondItem="pj7-Nw-P4u" secondAttribute="bottom" constant="30" id="qb7-c3-cI1"/>
                                             <constraint firstItem="pj7-Nw-P4u" firstAttribute="leading" secondItem="CHN-qL-8H0" secondAttribute="leading" id="qnn-78-Fav"/>
+                                            <constraint firstItem="9fO-Pc-rcl" firstAttribute="top" secondItem="uaC-4k-uPw" secondAttribute="bottom" constant="70" id="t1C-x5-4I4"/>
                                             <constraint firstItem="jC4-MJ-SUu" firstAttribute="leading" secondItem="CHN-qL-8H0" secondAttribute="leading" id="yNv-hZ-E7D"/>
                                             <constraint firstAttribute="trailing" secondItem="C9U-jv-BTd" secondAttribute="trailing" id="yOw-nP-0yg"/>
                                             <constraint firstItem="C9U-jv-BTd" firstAttribute="top" secondItem="CHN-qL-8H0" secondAttribute="top" id="yY4-cu-7QK"/>

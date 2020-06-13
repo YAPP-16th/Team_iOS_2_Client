@@ -82,10 +82,13 @@ extension AlbumInfoVC : albumInfoDeleteProtocol {
         albumCountLabel.text = "\(data.photoLimit)"
         albumLayoutLabel.text = getLayoutByUid(value: data.layoutUid).layoutName
         
-        
         memberTableView.delegate = self
         memberTableView.dataSource = self
         
+        albumPasswordCopyBtn.layer.borderWidth = 1.0
+        albumPasswordCopyBtn.layer.borderColor = UIColor.lightGray.cgColor
+        albumPasswordUploadBtn.layer.borderWidth = 1.0
+        albumPasswordUploadBtn.layer.borderColor = UIColor.lightGray.cgColor
         albumPasswordCopyBtn.addTarget(self, action: #selector(touchPasswordCopyBtn), for: .touchUpInside)
         albumPasswordUploadBtn.addTarget(self, action: #selector(touchPasswordUploadBtn), for: .touchUpInside)
     }
@@ -138,13 +141,7 @@ extension AlbumInfoVC {
                     self.roleArray = self.userArray.map { $0.role }
                     self.userUidArray = self.userArray.map { $0.userUid }
                     self.userNameArray = self.userArray.map { $0.name }
-                    for i in 0...8{
-                    self.userNameArray.append("jm")
-                        self.userUidArray.append(i)
-                        self.roleArray.append("")
-                    }
                     self.memberTableView.reloadData()
-
                 case 401:
                     print("\(status) : bad request, no warning in Server")
                 case 404:
@@ -255,6 +252,7 @@ extension AlbumInfoVC {
     }
     
     @objc func touchMemberDeleteBtn(_ sender : UIButton){
+        print("touch user = \(sender.tag)")
         let item = userArray[sender.tag]
         networkRemoveUser(userName: item.name, userRole: item.role, userUid: item.userUid)
         userArray.remove(at: sender.tag)
@@ -294,22 +292,23 @@ extension AlbumInfoVC : UITableViewDelegate, UITableViewDataSource {
         if roleArray[indexPath.row] == "ROLE_CREATOR" {
             cell.memberImageView.image = UIImage(named: "iconOwner")
             cell.memberNameLabel.text = userNameArray[indexPath.row]
+            cell.memberSubLabel.text = "Owner"
             cell.memberDeleteBtn.isEnabled = false
             cell.memberDeleteBtn.isHidden = true
         } else {
             cell.memberImageView.image = UIImage(named: "iconMembers")
             cell.memberNameLabel.text = userNameArray[indexPath.row]
+            cell.memberSubLabel.text = "Member"
             cell.memberDeleteBtn.isEnabled = true
+            cell.memberDeleteBtn.isHidden = false
         }
+        
         cell.memberDeleteBtn.tag = indexPath.row
         cell.memberDeleteBtn.addTarget(self, action: #selector(touchMemberDeleteBtn(_:)), for: .touchUpInside)
-
-
-        self.memberTableConst.constant = self.memberTableView.contentSize.height+35
+        
+        self.memberTableConst.constant = self.memberTableView.contentSize.height + 35 
         self.memberTableView.layoutIfNeeded()
- print("tableViewHeight \(self.memberTableView.frame.height)")
- print("contentHeight \(self.memberTableView.contentSize.height)")
-
+        
         return cell
     }
     
