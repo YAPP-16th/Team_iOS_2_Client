@@ -100,17 +100,17 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
         let keyboardSize = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
         let keyboardHeight = keyboardSize.cgRectValue.height
         
-        if(keyboardHeight > 300){
-            //iphoneX~
+        let frameHeight = self.view.frame.height
+        print("\(frameHeight)")
+        if(frameHeight >= 736.0){
+            //iphone6+, iphoneX ... (화면이 큰 휴대폰)
             buttonConst.constant = keyboardHeight - 18
         }else if(!keyboardFlag){
-            //~iphone8
+            //~iphone8, iphone7 (화면이 작은 휴대폰)
             keyboardFlag = true
             topConst.constant += 70
             self.view.frame.origin.y -= keyboardHeight
             self.view.layoutIfNeeded()
-            
-            
         }
     }
     
@@ -118,8 +118,9 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
         let userInfo = notification.userInfo
         let keyboardSize = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
         let keyboardHeight = keyboardSize.cgRectValue.height
-        
-        if(keyboardHeight > 300){
+        let frameHeight = self.view.frame.height
+
+        if(frameHeight >= 736.0){
             //iphoneX~
             buttonConst.constant = 18
         }else if(keyboardFlag){
