@@ -24,10 +24,10 @@ class NonFilterViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         if openFlag == false {
-        openCamera()
+            openCamera()
         }
     }
-
+    
     func openCamera()
     {
         openFlag = !openFlag
@@ -40,7 +40,7 @@ class NonFilterViewController: UIViewController {
             print("Camera not available")
         }
     }
-
+    
 }
 extension NonFilterViewController : UIImagePickerControllerDelegate,
 UINavigationControllerDelegate{
@@ -48,21 +48,23 @@ UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         // 이미지 저장.
         if let image = info[.originalImage] as? UIImage {
-            self.tempImage = image
-            let storyboard = UIStoryboard(name: "Sticker", bundle: nil)
-            let nextVC = storyboard.instantiateViewController(withIdentifier: "imageCropVC") as! ImageCropVC
-            let navi = UINavigationController(rootViewController: nextVC)
-            navi.modalPresentationStyle = .fullScreen
-            nextVC.image = self.tempImage
-            self.present(navi, animated: true, completion: nil)
+            //            self.tempImage = image
             
-//            UIImageWriteToSavedPhotosAlbum(image, self, #selector(savedImage), nil)
+            
+            FilterViewController.tempImage = image
+            FilterViewController.roadToFlag = true
+            
         }
         
         if let url = info[.mediaURL] as? URL, UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(url.path) {
             UISaveVideoAtPathToSavedPhotosAlbum(url.path, self, #selector(savedVideo), nil)
         }
-        picker.dismiss(animated: true, completion: nil)
+        self.picker.dismiss(animated: true) {
+            print("Here")
+            if self.openFlag {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     @objc
@@ -72,7 +74,7 @@ UINavigationControllerDelegate{
             return
         }
         
-
+        
         print("success")
     }
     
@@ -84,12 +86,12 @@ UINavigationControllerDelegate{
         }
         print("success")
     }
-        
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-            self.picker.dismiss(animated: true) {
-                if self.openFlag {
-                    self.dismiss(animated: true, completion: nil)
-                }
+        self.picker.dismiss(animated: true) {
+            if self.openFlag {
+                self.dismiss(animated: true, completion: nil)
+            }
         }
         
     }
