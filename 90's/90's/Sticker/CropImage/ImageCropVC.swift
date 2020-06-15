@@ -55,18 +55,17 @@ extension ImageCropVC {
                                  layoutImageView.frame.height / layoutImageView.frame.width)
         imageRadio = min(image.size.width / image.size.height,
                                 image.size.height / image.size.width)
-        photoImageView.image = image.resizeImage(image: image, newSize: CGSize(width: image.size.width, height: image.size.height))
+     
+        let imageSize = image.size.width > image.size.height ?
+            CGSize(width: cropView.frame.width, height: ceil(cropView.frame.width * imageRadio)) :
+            CGSize(width: ceil(cropView.frame.height * imageRadio), height: cropView.frame.height)
+        photoImageView.image = image.imageResize(sizeChange: imageSize)
+        print("image size = \(imageSize), \(photoImageView.image?.size)")
         
         layoutImageView = UIImageView(image: selectedLayout.cropImage)
         layoutImageView.isUserInteractionEnabled = true
         layoutImageView.frame.size = iPhone8Model() ? selectedLayout.innerFrameLowSize : selectedLayout.innerFrameHighSize
         layoutImageView.center = cropView.center
-        
-        // 1. 이미지 크기를 모름
-        // 2. 이미지 비율을 알아서 이미지 크기를 view width or height 에 맞춤
-        // 3. 레이아웃 이미지를 이미지 크기에 맞춤
-        // 4. 이미지 자름
-        print("image size = \(imageRadio), \(photoImageView.image?.size)")
         
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(panGesture:)))
         layoutImageView.addGestureRecognizer(panGesture)
