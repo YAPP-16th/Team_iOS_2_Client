@@ -20,8 +20,8 @@ class ImageCropVC: UIViewController {
     var layoutImageView : UIImageView = UIImageView()
     
     var layoutAbsoluteSize : CGSize = CGSize(width: 100, height: 100)
-    var layoutRatio : CGFloat = CGFloat()
-    var imageRatio : CGFloat = CGFloat()
+    var layoutRatio : CGFloat = 0.0
+    var imageRatio : CGFloat = 0.0
     var imageSize : CGSize = CGSize(width: 0, height: 0)
     var imageFrame : CGRect = CGRect(x: 0, y: 0, width: 0, height: 0)
     
@@ -57,7 +57,8 @@ extension ImageCropVC {
             
         if tempSize.width >= imageSize.width  {
             tempRatio = round((imageSize.width / tempSize.width) * 1000) / 1000
-        } else if tempSize.height >= imageSize.height {
+        }
+        if tempSize.height >= imageSize.height {
             tempRatio = round((imageSize.height / tempSize.height) * 1000) / 1000
         }
         
@@ -78,7 +79,8 @@ extension ImageCropVC {
                                    left: 0,
                                    right: 0,
                                    bottom: (cropView.frame.height - imageSize.height) / 2)
-        } else if imageSize.height == cropView.frame.height {
+        }
+        if imageSize.height == cropView.frame.height {
             setSubViewFrameSetting(view: cropView, subView: layoutView,
                                    top: 0,
                                    left: (cropView.frame.width - imageSize.width) / 2,
@@ -99,7 +101,8 @@ extension ImageCropVC {
                                    left: (imageSize.width - layoutView.frame.width) / 2,
                                    right: (imageSize.width - layoutView.frame.width) / 2,
                                    bottom: 0)
-        } else if imageSize.height == layoutView.frame.height {
+        }
+        if imageSize.height == layoutView.frame.height {
             setSubViewFrameSetting(view: layoutView, subView: layoutImageView,
                                    top: (imageSize.height - layoutView.frame.height) / 2,
                                    left: 0,
@@ -107,6 +110,7 @@ extension ImageCropVC {
                                    bottom: (imageSize.height - layoutView.frame.height) / 2)
         }
         
+        print("layout origin = \(layoutView.frame.origin)")
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(panGesture:)))
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinchGesture(pinchGesture:)))
         layoutImageView.addGestureRecognizer(panGesture)
@@ -135,12 +139,32 @@ extension ImageCropVC {
 
 extension ImageCropVC {
     @objc private func handlePanGesture(panGesture: UIPanGestureRecognizer){
-        let transtition = panGesture.translation(in: self.view)
-        panGesture.view!.center = CGPoint(x: panGesture.view!.center.x + transtition.x, y: panGesture.view!.center.y + transtition.y)
-        panGesture.setTranslation(.zero, in: self.view)
-        print("layoutview frame = \(layoutView.frame)")
-        self.view.layoutIfNeeded()
+        guard let senderView = panGesture.view else { return }
+        let translation = panGesture.translation(in: self.view)
+       
+        // 상하 조절
+        if senderView.frame.origin.y < 0.0 {
+            senderView.frame.origin = CGPoint(x: senderView.frame.origin.x, y: 0)
+        }
+        if senderView.frame.origin.y > layoutView.frame.height - senderView.frame.height {
+            senderView.frame.origin = CGPoint(x: senderView.frame.origin.x, y: layoutView.frame.height - senderView.frame.height)
+        }
+        
+        // 좌우 조절
+        if senderView.frame.origin.x + senderView.frame.size.width > view.frame.width {
+            senderView.frame.origin = CGPoint(x: view.frame.width - senderView.frame.size.width, y: senderView.frame.origin.y)
+        }
+        if senderView.frame.origin.x < view.frame.origin.x {
+            senderView.frame.origin = CGPoint(x: view.frame.origin.x, y: senderView.frame.origin.y)
+        }
+        
+        if let centerX = panGesture.view?.center.x,
+            let centerY = panGesture.view?.center.y {
+            senderView.center = CGPoint.init(x: centerX + translation.x, y: centerY + translation.y)
+            panGesture.setTranslation(CGPoint.zero, in: self.view)
+        }
     }
+    
     @objc private func handlePinchGesture(pinchGesture : UIPinchGestureRecognizer){
         pinchGesture.view?.transform = (pinchGesture.view?.transform.scaledBy(x: pinchGesture.scale, y: pinchGesture.scale))!
         layoutRatio = pinchGesture.scale * layoutRatio
