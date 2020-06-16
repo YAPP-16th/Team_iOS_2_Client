@@ -78,6 +78,15 @@ extension UITextField {
 
 
 extension UIViewController{
+    // imageCropVC - layoutView setting
+    func setSubViewFrameSetting(view : UIView, subView : UIView, top : CGFloat, left: CGFloat, right: CGFloat, bottom : CGFloat){
+        subView.translatesAutoresizingMaskIntoConstraints = false
+        subView.topAnchor.constraint(equalTo: view.topAnchor, constant: top).isActive = true
+        subView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: left).isActive = true
+        subView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -right).isActive = true
+        subView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -bottom).isActive = true
+    }
+    
     // imageRenderVC - layoutView setting
     func setRenderLayoutViewFrameSetting(view : UIView, imageView : UIImageView){
         imageView.translatesAutoresizingMaskIntoConstraints = false

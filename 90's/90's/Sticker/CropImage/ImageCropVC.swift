@@ -16,12 +16,16 @@ class ImageCropVC: UIViewController {
     }
     @IBAction func nextBtn(_ sender: UIButton) { nextVC() }
     
-    var layoutImageView : UIImageView = UIImageView()
-    var layoutRatio : CGFloat = CGFloat()
     var layoutView : UIView = UIView()
+    var layoutImageView : UIImageView = UIImageView()
+    
+    var layoutAbsoluteSize : CGSize = CGSize(width: 100, height: 100)
+    var layoutRatio : CGFloat = CGFloat()
+    var imageRatio : CGFloat = CGFloat()
+    var imageSize : CGSize = CGSize(width: 0, height: 0)
+    var imageFrame : CGRect = CGRect(x: 0, y: 0, width: 0, height: 0)
     
     var image : UIImage!
-    var imageRadio : CGFloat = CGFloat()
     var selectedLayout : AlbumLayout! = .Polaroid
     var albumUid : Int = 0
     var imageName : String = ""
@@ -29,70 +33,90 @@ class ImageCropVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageResizing()
-        layoutSetting()
+        defaultSetting()
+        layoutViewSetting()
+        layoutImageViewSetting()
     }
-    
-    
-//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        let touch = touches.first
-//
-//        if touch?.view == layoutImageView {
-//            let position = touch!.location(in: self.view)
-//            let target = layoutImageView.center
-//            let size = max((position.x / target.x), (position.y / target.y))
-//            let scale = CGAffineTransform(scaleX: size, y: size)
-//            layoutCustomSize = size
-//            layoutImageView.transform = scale
-//        }
-//    }
-    
 }
  
 
 extension ImageCropVC {
-    private func imageResizing(){
-        imageRadio = min(image.size.width / image.size.height,
-                                image.size.height / image.size.width)
-        let imageSize = image.size.width > image.size.height ?
-            CGSize(width: cropView.frame.width, height: ceil(cropView.frame.width * imageRadio)) :
-            CGSize(width: ceil(cropView.frame.height * imageRadio), height: cropView.frame.height)
+    private func defaultSetting(){
+        // 이미지 비율 구하기
+        imageRatio = min(image.size.width / image.size.height, image.size.height / image.size.width)
+        // 이미지 크기 지정
+        imageSize = image.size.width > image.size.height ?
+            CGSize(width: cropView.frame.width, height: ceil(cropView.frame.width * imageRatio)) :
+            CGSize(width: ceil(cropView.frame.height * imageRatio), height: cropView.frame.height)
+        // 이미지 크기 조절
         photoImageView.image = image.imageResize(sizeChange: imageSize)
         
-        layoutView.translatesAutoresizingMaskIntoConstraints = false
-        layoutView.isUserInteractionEnabled = true
-        self.cropView.addSubview(layoutView)
+        let tempSize = iPhone8Model() ?
+                selectedLayout.innerFrameLowSize : selectedLayout.innerFrameHighSize
+        var tempRatio : CGFloat = CGFloat()
+            
+        if tempSize.width >= imageSize.width  {
+            tempRatio = round((imageSize.width / tempSize.width) * 1000) / 1000
+        } else if tempSize.height >= imageSize.height {
+            tempRatio = round((imageSize.height / tempSize.height) * 1000) / 1000
+        }
         
-        layoutView.frame.size = iPhone8Model() ? selectedLayout.innerFrameLowSize : selectedLayout.innerFrameHighSize
-        layoutView.centerXAnchor.constraint(equalTo: cropView.centerXAnchor).isActive = true
-        layoutView.centerYAnchor.constraint(equalTo: cropView.centerYAnchor).isActive = true
-        
-        layoutImageView = UIImageView(image: selectedLayout.cropImage)
-        layoutImageView.isUserInteractionEnabled = true
-        self.layoutView.addSubview(layoutImageView)
+        // 레이아웃 최대 크기
+        layoutAbsoluteSize = CGSize(width: ceil(tempSize.width * tempRatio),
+                                    height: ceil(tempSize.height * tempRatio))
+        print("image size = \(imageSize), layoutview size = \(layoutAbsoluteSize)")
     }
     
-    private func layoutSetting(){
+    // 이미지 크기 만큼의 뷰
+    private func layoutViewSetting(){
+        layoutView.isUserInteractionEnabled = true
+        self.cropView.addSubview(layoutView)
+    
+        if imageSize.width == cropView.frame.width {
+            setSubViewFrameSetting(view: cropView, subView: layoutView,
+                                   top: (cropView.frame.height - imageSize.height) / 2,
+                                   left: 0,
+                                   right: 0,
+                                   bottom: (cropView.frame.height - imageSize.height) / 2)
+        } else if imageSize.height == cropView.frame.height {
+            setSubViewFrameSetting(view: cropView, subView: layoutView,
+                                   top: 0,
+                                   left: (cropView.frame.width - imageSize.width) / 2,
+                                   right: (cropView.frame.width - imageSize.width) / 2,
+                                   bottom: 0)
+        }
+    }
+    
+    private func layoutImageViewSetting(){
+        layoutImageView = UIImageView(image: selectedLayout.cropImage)
+        layoutImageView.isUserInteractionEnabled = true
+        layoutImageView.frame.size = layoutAbsoluteSize
+        self.layoutView.addSubview(layoutImageView)
         
-//        layoutImageView.frame.size = iPhone8Model() ? selectedLayout.innerFrameLowSize : selectedLayout.innerFrameHighSize
-        layoutImageView.translatesAutoresizingMaskIntoConstraints = false
-        layoutImageView.leftAnchor.constraint(equalTo: layoutView.leftAnchor).isActive = true
-        layoutImageView.rightAnchor.constraint(equalTo: layoutView.rightAnchor).isActive = true
-        layoutImageView.topAnchor.constraint(equalTo: layoutView.topAnchor).isActive = true
-        layoutImageView.bottomAnchor.constraint(equalTo: layoutView.bottomAnchor).isActive = true
+        if imageSize.width == layoutView.frame.width {
+            setSubViewFrameSetting(view: layoutView, subView: layoutImageView,
+                                   top: 0,
+                                   left: (imageSize.width - layoutView.frame.width) / 2,
+                                   right: (imageSize.width - layoutView.frame.width) / 2,
+                                   bottom: 0)
+        } else if imageSize.height == layoutView.frame.height {
+            setSubViewFrameSetting(view: layoutView, subView: layoutImageView,
+                                   top: (imageSize.height - layoutView.frame.height) / 2,
+                                   left: 0,
+                                   right: 0,
+                                   bottom: (imageSize.height - layoutView.frame.height) / 2)
+        }
         
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(panGesture:)))
-        layoutImageView.addGestureRecognizer(panGesture)
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinchGesture(pinchGesture:)))
+        layoutImageView.addGestureRecognizer(panGesture)
         layoutImageView.addGestureRecognizer(pinchGesture)
     }
     
     private func nextVC(){
         let croppedImage : UIImage = photoImageView.image!.cropToRect(rect: layoutImageView.frame)!
-        print("cropped image = \(croppedImage), \(layoutImageView.frame), \(photoImageView.image)")
-        //let croppedCGImage = photoImageView.image?.cgImage?.cropping(to: layoutImageView.frame)
-        //let croppedImage = UIImage(cgImage: croppedCGImage!)
         image = croppedImage
+        print("crop image = \(layoutImageView.frame)")
         
         if image != nil {
             let nextVC = storyboard?.instantiateViewController(withIdentifier: "imageRenderVC") as! ImageRenderVC
@@ -114,19 +138,12 @@ extension ImageCropVC {
         let transtition = panGesture.translation(in: self.view)
         panGesture.view!.center = CGPoint(x: panGesture.view!.center.x + transtition.x, y: panGesture.view!.center.y + transtition.y)
         panGesture.setTranslation(.zero, in: self.view)
+        print("layoutview frame = \(layoutView.frame)")
         self.view.layoutIfNeeded()
     }
     @objc private func handlePinchGesture(pinchGesture : UIPinchGestureRecognizer){
         pinchGesture.view?.transform = (pinchGesture.view?.transform.scaledBy(x: pinchGesture.scale, y: pinchGesture.scale))!
-        layoutRatio = pinchGesture.scale
+        layoutRatio = pinchGesture.scale * layoutRatio
         pinchGesture.scale = 1.0
     }
-}
-
-
-class CropAreaView: UIImageView {
-    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-        return false
-    }
-    
 }
