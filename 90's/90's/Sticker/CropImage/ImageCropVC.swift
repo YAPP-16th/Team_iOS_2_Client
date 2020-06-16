@@ -17,8 +17,8 @@ class ImageCropVC: UIViewController {
     @IBAction func nextBtn(_ sender: UIButton) { nextVC() }
     
     var layoutImageView : UIImageView = UIImageView()
-    var layoutCustomSize : CGFloat = CGFloat()
     var layoutRatio : CGFloat = CGFloat()
+    var layoutView : UIView = UIView()
     
     var image : UIImage!
     var imageRadio : CGFloat = CGFloat()
@@ -29,6 +29,7 @@ class ImageCropVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        imageResizing()
         layoutSetting()
     }
     
@@ -50,34 +51,47 @@ class ImageCropVC: UIViewController {
  
 
 extension ImageCropVC {
-    private func layoutSetting(){
-        layoutRatio = min(layoutImageView.frame.width / layoutImageView.frame.height,
-                                 layoutImageView.frame.height / layoutImageView.frame.width)
+    private func imageResizing(){
         imageRadio = min(image.size.width / image.size.height,
                                 image.size.height / image.size.width)
-     
         let imageSize = image.size.width > image.size.height ?
             CGSize(width: cropView.frame.width, height: ceil(cropView.frame.width * imageRadio)) :
             CGSize(width: ceil(cropView.frame.height * imageRadio), height: cropView.frame.height)
         photoImageView.image = image.imageResize(sizeChange: imageSize)
-        print("image size = \(imageSize), \(photoImageView.image?.size)")
+        
+        layoutView.translatesAutoresizingMaskIntoConstraints = false
+        layoutView.isUserInteractionEnabled = true
+        self.cropView.addSubview(layoutView)
+        
+        layoutView.frame.size = iPhone8Model() ? selectedLayout.innerFrameLowSize : selectedLayout.innerFrameHighSize
+        layoutView.centerXAnchor.constraint(equalTo: cropView.centerXAnchor).isActive = true
+        layoutView.centerYAnchor.constraint(equalTo: cropView.centerYAnchor).isActive = true
         
         layoutImageView = UIImageView(image: selectedLayout.cropImage)
         layoutImageView.isUserInteractionEnabled = true
-        layoutImageView.frame.size = iPhone8Model() ? selectedLayout.innerFrameLowSize : selectedLayout.innerFrameHighSize
-        layoutImageView.center = cropView.center
+        self.layoutView.addSubview(layoutImageView)
+    }
+    
+    private func layoutSetting(){
+        
+//        layoutImageView.frame.size = iPhone8Model() ? selectedLayout.innerFrameLowSize : selectedLayout.innerFrameHighSize
+        layoutImageView.translatesAutoresizingMaskIntoConstraints = false
+        layoutImageView.leftAnchor.constraint(equalTo: layoutView.leftAnchor).isActive = true
+        layoutImageView.rightAnchor.constraint(equalTo: layoutView.rightAnchor).isActive = true
+        layoutImageView.topAnchor.constraint(equalTo: layoutView.topAnchor).isActive = true
+        layoutImageView.bottomAnchor.constraint(equalTo: layoutView.bottomAnchor).isActive = true
         
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(panGesture:)))
         layoutImageView.addGestureRecognizer(panGesture)
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinchGesture(pinchGesture:)))
         layoutImageView.addGestureRecognizer(pinchGesture)
-        self.cropView.addSubview(layoutImageView)
     }
     
     private func nextVC(){
-        let croppedCGImage = photoImageView.image?.cgImage?.cropping(to: layoutImageView.frame)
-        let croppedImage = UIImage(cgImage: croppedCGImage!)
-        print("cropped image frame = \(croppedImage.size)")
+        let croppedImage : UIImage = photoImageView.image!.cropToRect(rect: layoutImageView.frame)!
+        print("cropped image = \(croppedImage), \(layoutImageView.frame), \(photoImageView.image)")
+        //let croppedCGImage = photoImageView.image?.cgImage?.cropping(to: layoutImageView.frame)
+        //let croppedImage = UIImage(cgImage: croppedCGImage!)
         image = croppedImage
         
         if image != nil {
@@ -100,9 +114,11 @@ extension ImageCropVC {
         let transtition = panGesture.translation(in: self.view)
         panGesture.view!.center = CGPoint(x: panGesture.view!.center.x + transtition.x, y: panGesture.view!.center.y + transtition.y)
         panGesture.setTranslation(.zero, in: self.view)
+        self.view.layoutIfNeeded()
     }
     @objc private func handlePinchGesture(pinchGesture : UIPinchGestureRecognizer){
         pinchGesture.view?.transform = (pinchGesture.view?.transform.scaledBy(x: pinchGesture.scale, y: pinchGesture.scale))!
+        layoutRatio = pinchGesture.scale
         pinchGesture.scale = 1.0
     }
 }
