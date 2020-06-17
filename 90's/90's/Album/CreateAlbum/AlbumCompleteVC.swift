@@ -34,7 +34,6 @@ class AlbumCompleteVC: UIViewController {
     
     var albumLayout : AlbumLayout!
     var mainProtocol : AlbumMainVCProtocol?
-    var isAllDataSettle : Bool = false
     
     var albumName : String!
     var albumStartDate : String!

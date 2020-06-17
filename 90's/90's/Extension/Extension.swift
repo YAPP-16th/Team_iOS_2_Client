@@ -340,6 +340,11 @@ extension UIViewController{
         default: return AlbumCover.Copy.image
         }
     }
+    
+    func goToRootVC(value : Int){
+        let vc : [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+        self.navigationController?.popToViewController(vc[vc.count - value], animated: true)
+    }
 }
 
 

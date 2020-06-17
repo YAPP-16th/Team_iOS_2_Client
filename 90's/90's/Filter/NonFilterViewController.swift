@@ -48,10 +48,13 @@ UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         // 이미지 저장.
         if let image = info[.originalImage] as? UIImage {
-            
             self.tempImage = image
-            AlbumDetailController.tmpImage = self.tempImage
-
+            
+            let storyboard = UIStoryboard(name: "Sticker", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "imageCropVC") as! ImageCropVC
+            vc.modalPresentationStyle = .fullScreen
+            vc.image = image
+            self.present(vc, animated: true)
         }
         
         if let url = info[.mediaURL] as? URL, UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(url.path) {

@@ -17,7 +17,7 @@ class SavePhotoVC: UIViewController {
         switchHideView(value: true)
     }
     @IBAction func cnacleViewCompleteBtn(_ sender: UIButton) {
-        self.navigationController?.popToRootViewController(animated: true)
+        goToRootVC(value: 4)
     }
     
     @IBOutlet weak var switchBtn: UISwitch!
@@ -133,18 +133,14 @@ extension SavePhotoVC {
         renderImage = renderer.image { ctx in
             photoView.drawHierarchy(in: photoView.bounds, afterScreenUpdates: true)
         }
-        print("render image = \(renderImage)")
         guard let image = renderImage else {return}
-        print("image = \(image)")
         
         AlbumService.shared.photoUpload(albumUid: albumUid, image: [image], imageName: imageName, completion: {
             response in
             if let status = response.response?.statusCode {
                 switch status {
                 case 200:
-                    print("200")
-                    guard let data = response.data else {return}
-                    print("received data = \(data)")
+                    print("\(status) : success")
                 case 401:
                     print("\(status) : bad request, no warning in Server")
                 case 404:
@@ -157,23 +153,7 @@ extension SavePhotoVC {
             }
         })
         
-        
-        if iPhone8Model() {
-            AlbumDetailController.tmpImage = nil
-            let viewControllers : [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
-            
-            print(viewControllers.count)
-            
-            self.navigationController?.popToViewController(viewControllers[viewControllers.count - 4 ], animated: false)
-        }
-        else {
-            
-            let viewControllers : [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
-            
-            print(viewControllers.count)
-            
-            self.navigationController?.popToViewController(viewControllers[viewControllers.count - 5 ], animated: false)
-        }
+        iPhone8Model() ? goToRootVC(value: 4) : goToRootVC(value: 5)
     }
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer){

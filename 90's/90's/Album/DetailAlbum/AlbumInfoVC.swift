@@ -35,17 +35,19 @@ class AlbumInfoVC: UIViewController {
         inviteSetting()
     }
     @IBAction func quitMemberBtn(_ sender: UIButton) {
-        switchQuitHideView(value: false)
+        let owner = userArray.first!
+        networkRemoveUser(userName: owner.name, userRole: owner.role, userUid: owner.userUid)
+        mainProtocol?.AlbumMainreloadView()
+        self.navigationController?.popToRootViewController(animated: true)
     }
     @IBOutlet weak var albumPasswordCopyBtn: UIButton!
     @IBOutlet weak var albumPasswordUploadBtn: UIButton!
     
-    
     var albumUid: Int = 0
     var infoAlbum : album?
+    var mainProtocol : AlbumMainVCProtocol?
     
     var userArray : [AlbumUserData] = []
-    
     var roleArray : [String] = []
     var userUidArray : [Int] = []
     var userNameArray : [String] = []
@@ -74,7 +76,7 @@ class AlbumInfoVC: UIViewController {
 
 
 extension AlbumInfoVC : albumInfoDeleteProtocol {
-    func defaultSetting(){
+    private func defaultSetting(){
         guard let data = infoAlbum else {return}
         albumCoverImageView.image = getCoverByUid(value: data.cover.uid)
         albumNameLabel.text = data.name
@@ -93,7 +95,7 @@ extension AlbumInfoVC : albumInfoDeleteProtocol {
         albumPasswordUploadBtn.addTarget(self, action: #selector(touchPasswordUploadBtn), for: .touchUpInside)
     }
     
-    func hideViewSetting(){
+    private func hideViewSetting(){
         hideLabel.text = "앨범에서 해당 멤버를\n삭제하시겠습니까?"
         hideCancleBtn.addTarget(self, action: #selector(touchHideCancleBtn), for: .touchUpInside)
         hideCompleteBtn.addTarget(self, action: #selector(touchHideCompleteBtn), for: .touchUpInside)
@@ -117,7 +119,7 @@ extension AlbumInfoVC : albumInfoDeleteProtocol {
     }
   
     
-    func removedAlert(){
+    private func removedAlert(){
         let alert = UIAlertController(title: "멤버 삭제", message: "멤버 삭제 완료!", preferredStyle: .alert)
         let action = UIAlertAction(title: "확인", style: .default)
         alert.addAction(action)
@@ -130,7 +132,7 @@ extension AlbumInfoVC : albumInfoDeleteProtocol {
 
 extension AlbumInfoVC {
     // 멤버 목록 가져오기
-    func networkSetting(){
+    private func networkSetting(){
         AlbumService.shared.albumGetOwners(uid:albumUid, completion: { response in
             if let status = response.response?.statusCode {
                 switch status {
@@ -156,7 +158,7 @@ extension AlbumInfoVC {
     }
     
     // 멤버 추가
-    func networkAddUser(username: String, userrole : String, useruid: Int){
+    private func networkAddUser(username: String, userrole : String, useruid: Int){
         AlbumService.shared.albumAddUser(albumUid: albumUid, name: username, role: userrole, userUid: useruid, completion: { response in
             
             if let status = response.response?.statusCode {
@@ -178,7 +180,7 @@ extension AlbumInfoVC {
     }
     
     // 멤버 삭제
-    func networkRemoveUser(userName : String, userRole : String, userUid: Int){
+    private func networkRemoveUser(userName : String, userRole : String, userUid: Int){
         AlbumService.shared.albumRemoveUser(albumUid: albumUid, role: userRole, name: userName, userUid: userUid, completion: { response in
             if let status = response.response?.statusCode {
                 switch status {
@@ -199,7 +201,7 @@ extension AlbumInfoVC {
         })
     }
     
-    func networkGetPassword(){
+    private func networkGetPassword(){
         AlbumService.shared.albumGetPassword(uid: albumUid, completion: {
             response in
             if let status = response.response?.statusCode {
@@ -219,7 +221,7 @@ extension AlbumInfoVC {
         })
     }
     
-    func networkUpdatePassword(){
+    private func networkUpdatePassword(){
         AlbumService.shared.albumUploadPassword(uid: albumUid, completion: {
             response in
             if let status = response.response?.statusCode {
@@ -242,28 +244,27 @@ extension AlbumInfoVC {
 
 
 extension AlbumInfoVC {
-    @objc func touchHideCancleBtn(){
+    @objc private func touchHideCancleBtn(){
         switchQuitHideView(value: true)
     }
     
-    @objc func touchHideCompleteBtn(){
+    @objc private func touchHideCompleteBtn(){
         switchQuitHideView(value: true)
         memberTableView.reloadData()
     }
     
-    @objc func touchMemberDeleteBtn(_ sender : UIButton){
-        print("touch user = \(sender.tag)")
+    @objc private func touchMemberDeleteBtn(_ sender : UIButton){
         let item = userArray[sender.tag]
         networkRemoveUser(userName: item.name, userRole: item.role, userUid: item.userUid)
         userArray.remove(at: sender.tag)
     }
     
-    @objc func touchPasswordCopyBtn(){
+    @objc private func touchPasswordCopyBtn(){
         networkGetPassword()
         copyPasswordAlert()
     }
     
-    @objc func touchPasswordUploadBtn(){
+    @objc private func touchPasswordUploadBtn(){
         networkUpdatePassword()
         requestNewPasswordAlert()
     }
@@ -271,7 +272,7 @@ extension AlbumInfoVC {
 
 
 extension AlbumInfoVC {
-    func inviteSetting() {
+    private func inviteSetting() {
         let templeteId = "24532"
         KLKTalkLinkCenter.shared().sendCustom(withTemplateId: templeteId, templateArgs: nil, success: {(warningMsg, argumentMsg) in
             print("warning message : \(String(describing: warningMsg))")
@@ -281,14 +282,14 @@ extension AlbumInfoVC {
         })
     }
     
-    func copyPasswordAlert(){
+    private func copyPasswordAlert(){
         let alert = UIAlertController(title: "비밀번호 복사", message: "비밀번호가 클립보드에 복사 되었습니다!", preferredStyle: UIAlertController.Style.alert)
         let accept = UIAlertAction(title: "확인", style: .default, handler: nil)
         alert.addAction(accept)
         self.present(alert, animated: true, completion: nil)
     }
     
-    func requestNewPasswordAlert(){
+    private func requestNewPasswordAlert(){
         let alert = UIAlertController(title: "비밀번호 재발급", message: "재발급된 비밀번호가 클립보드에 복사 되었습니다!", preferredStyle: UIAlertController.Style.alert)
         let accept = UIAlertAction(title: "확인", style: .default, handler: nil)
         alert.addAction(accept)
@@ -327,8 +328,6 @@ extension AlbumInfoVC : UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-    
-
 }
 
 
