@@ -68,7 +68,7 @@ extension SavePhotoVC {
         imageView = applyBackImageViewLayout(selectedLayout: selectedLayout, smallBig: deviceSize, imageView: imageView)
         imageView.image = originImage
         
-        setRenderLayoutViewFrameSetting(view: photoView, imageView: imageView)
+        setRenderLayoutViewFrameSetting(view: photoView, imageView: imageView, top: 0, left: 0, right: 0, bottom: 0)
         dateLabelSetting(imageView: imageView)
     }
     

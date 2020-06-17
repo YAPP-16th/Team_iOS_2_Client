@@ -184,6 +184,13 @@ extension AlbumInvitedVC {
 
 
 extension AlbumInvitedVC : UITextFieldDelegate {
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if action == #selector(copy(_:)) || action == #selector(paste(_:)) {
+            return true
+        }
+        return super.canPerformAction(action, withSender: sender)
+    }
+    
      override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
          albumInvitedTF.endEditing(true)
      }

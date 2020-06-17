@@ -78,14 +78,24 @@ extension UITextField {
 
 
 extension UIViewController{
-    // imageRenderVC - layoutView setting
-    func setRenderLayoutViewFrameSetting(view : UIView, imageView : UIImageView){
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        imageView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        imageView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    // imageCropVC - layoutView setting
+    func setSubViewFrameSetting(view : UIView, subView : UIView, top : CGFloat, left: CGFloat, right: CGFloat, bottom : CGFloat){
+        subView.translatesAutoresizingMaskIntoConstraints = false
+        subView.topAnchor.constraint(equalTo: view.topAnchor, constant: top).isActive = true
+        subView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: left).isActive = true
+        subView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -right).isActive = true
+        subView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -bottom).isActive = true
     }
+    
+    // imageRenderVC - layoutView setting
+    func setRenderLayoutViewFrameSetting(view : UIView, imageView : UIImageView, top: CGFloat, left : CGFloat, right: CGFloat, bottom : CGFloat){
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: top).isActive = true
+        imageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: left).isActive = true
+        imageView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -right).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -bottom).isActive = true
+    }
+    
     // imageRenderVC - imageView setting
     func setRenderImageViewFrameSetting(view: UIView, imageView : UIImageView, selectlayout : AlbumLayout){
         let top = getImageViewConstraintY(selecetedLayout: selectlayout).width
@@ -193,10 +203,8 @@ extension UIViewController{
     
     // stickerVC, previewVC - layoutview
     func applyBackImageViewLayout(selectedLayout : AlbumLayout, smallBig: CGSize, imageView : UIImageView ) -> UIImageView {
-        
         imageView.frame = CGRect(x: 0, y: 0, width: smallBig.width, height: smallBig.height)
         imageView.image = selectedLayout.image
-        
         return imageView
     }
     

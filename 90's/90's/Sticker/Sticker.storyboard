@@ -72,34 +72,16 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dhB-qF-dwd">
                                 <rect key="frame" x="0.0" y="122" width="414" height="638"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="10" translatesAutoresizingMaskIntoConstraints="NO" id="Xke-Fx-t5E">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KKl-ru-FJo">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="638"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KKl-ru-FJo">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="638"/>
-                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </imageView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="KKl-ru-FJo" firstAttribute="top" secondItem="Xke-Fx-t5E" secondAttribute="top" id="5MU-9c-Cgt"/>
-                                            <constraint firstAttribute="trailing" secondItem="KKl-ru-FJo" secondAttribute="trailing" id="DgY-RC-3YK"/>
-                                            <constraint firstItem="KKl-ru-FJo" firstAttribute="leading" secondItem="Xke-Fx-t5E" secondAttribute="leading" id="el5-Cw-GBl"/>
-                                            <constraint firstItem="KKl-ru-FJo" firstAttribute="centerX" secondItem="Xke-Fx-t5E" secondAttribute="centerX" id="oLK-ZP-G16"/>
-                                            <constraint firstAttribute="bottom" secondItem="KKl-ru-FJo" secondAttribute="bottom" id="oog-rc-Dgg"/>
-                                            <constraint firstItem="KKl-ru-FJo" firstAttribute="centerY" secondItem="Xke-Fx-t5E" secondAttribute="centerY" id="smt-Qm-YGN"/>
-                                        </constraints>
-                                    </scrollView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eg6-LP-LRb" customClass="CropAreaView" customModule="_0_s" customModuleProvider="target">
-                                        <rect key="frame" x="53" y="163" width="307" height="312"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="Xke-Fx-t5E" firstAttribute="leading" secondItem="dhB-qF-dwd" secondAttribute="leading" id="8ET-af-bQd"/>
-                                    <constraint firstItem="Xke-Fx-t5E" firstAttribute="top" secondItem="dhB-qF-dwd" secondAttribute="top" id="PCt-Zt-UMC"/>
-                                    <constraint firstAttribute="trailing" secondItem="Xke-Fx-t5E" secondAttribute="trailing" id="doc-qg-pIs"/>
-                                    <constraint firstAttribute="bottom" secondItem="Xke-Fx-t5E" secondAttribute="bottom" id="lcV-Yf-afe"/>
+                                    <constraint firstItem="KKl-ru-FJo" firstAttribute="leading" secondItem="dhB-qF-dwd" secondAttribute="leading" id="XSW-aI-WbB"/>
+                                    <constraint firstItem="KKl-ru-FJo" firstAttribute="top" secondItem="dhB-qF-dwd" secondAttribute="top" id="ag1-Wa-A1i"/>
+                                    <constraint firstAttribute="bottom" secondItem="KKl-ru-FJo" secondAttribute="bottom" id="ixR-WL-cxr"/>
+                                    <constraint firstAttribute="trailing" secondItem="KKl-ru-FJo" secondAttribute="trailing" id="tU9-5y-Pi1"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="amS-Qc-RXZ" userLabel="BottomView">
@@ -108,7 +90,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사진 영역을 지정해 주세요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBx-ce-UgQ">
                                         <rect key="frame" x="119.5" y="41" width="175" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.65517944100000003" green="0.66616463660000003" blue="0.69412243370000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -137,9 +119,7 @@
                     </view>
                     <connections>
                         <outlet property="cropView" destination="dhB-qF-dwd" id="FjU-Y6-E1p"/>
-                        <outlet property="layoutImageView" destination="Eg6-LP-LRb" id="BaR-de-5rb"/>
                         <outlet property="photoImageView" destination="KKl-ru-FJo" id="ADa-k3-zxo"/>
-                        <outlet property="scrollView" destination="Xke-Fx-t5E" id="IH2-O7-6rz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tgh-TF-nIF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
