@@ -51,21 +51,21 @@ extension ImageCropVC {
         // 이미지 크기 조절
         photoImageView.image = image.imageResize(sizeChange: imageSize)
         
-        let tempSize = iPhone8Model() ?
+        let commonLayoutSize = iPhone8Model() ?
                 selectedLayout.innerFrameLowSize : selectedLayout.innerFrameHighSize
         var tempRatio : CGFloat = CGFloat()
-            
-        if tempSize.width >= imageSize.width  {
-            tempRatio = round((imageSize.width / tempSize.width) * 1000) / 1000
+       
+        if commonLayoutSize.width >= imageSize.width || commonLayoutSize.height >= imageSize.height {
+            if commonLayoutSize.width >= imageSize.width  {
+                tempRatio = round((imageSize.width / commonLayoutSize.width) * 1000) / 1000
+            } else if commonLayoutSize.height >= imageSize.height {
+                tempRatio = round((imageSize.height / commonLayoutSize.height) * 1000) / 1000
+            }
+            layoutAbsoluteSize = CGSize(width: ceil(commonLayoutSize.width * tempRatio),
+            height: ceil(commonLayoutSize.height * tempRatio))
+        } else {
+            layoutAbsoluteSize = commonLayoutSize
         }
-        if tempSize.height >= imageSize.height {
-            tempRatio = round((imageSize.height / tempSize.height) * 1000) / 1000
-        }
-        
-        // 레이아웃 최대 크기
-        layoutAbsoluteSize = CGSize(width: ceil(tempSize.width * tempRatio),
-                                    height: ceil(tempSize.height * tempRatio))
-        print("image size = \(imageSize), layoutview size = \(layoutAbsoluteSize)")
     }
     
     // 이미지 크기 만큼의 뷰
@@ -73,20 +73,12 @@ extension ImageCropVC {
         layoutView.isUserInteractionEnabled = true
         self.cropView.addSubview(layoutView)
     
-        if imageSize.width == cropView.frame.width {
-            setSubViewFrameSetting(view: cropView, subView: layoutView,
-                                   top: (cropView.frame.height - imageSize.height) / 2,
-                                   left: 0,
-                                   right: 0,
-                                   bottom: (cropView.frame.height - imageSize.height) / 2)
-        }
-        if imageSize.height == cropView.frame.height {
-            setSubViewFrameSetting(view: cropView, subView: layoutView,
-                                   top: 0,
-                                   left: (cropView.frame.width - imageSize.width) / 2,
-                                   right: (cropView.frame.width - imageSize.width) / 2,
-                                   bottom: 0)
-        }
+        setSubViewFrameSetting(view: cropView, subView: layoutView,
+            top: (cropView.frame.height - imageSize.height) / 2,
+            left: (cropView.frame.width - imageSize.width ) / 2,
+            right: (cropView.frame.width - imageSize.width ) / 2,
+            bottom: (cropView.frame.height - imageSize.height) / 2)
+        layoutView.frame.size = imageSize
     }
     
     private func layoutImageViewSetting(){
@@ -95,22 +87,13 @@ extension ImageCropVC {
         layoutImageView.frame.size = layoutAbsoluteSize
         self.layoutView.addSubview(layoutImageView)
         
-        if imageSize.width == layoutView.frame.width {
-            setSubViewFrameSetting(view: layoutView, subView: layoutImageView,
-                                   top: 0,
-                                   left: (imageSize.width - layoutView.frame.width) / 2,
-                                   right: (imageSize.width - layoutView.frame.width) / 2,
-                                   bottom: 0)
-        }
-        if imageSize.height == layoutView.frame.height {
-            setSubViewFrameSetting(view: layoutView, subView: layoutImageView,
-                                   top: (imageSize.height - layoutView.frame.height) / 2,
-                                   left: 0,
-                                   right: 0,
-                                   bottom: (imageSize.height - layoutView.frame.height) / 2)
-        }
+        setSubViewFrameSetting(view: cropView, subView: layoutImageView,
+            top: (cropView.frame.height - layoutImageView.frame.height) / 2,
+            left: (cropView.frame.width - layoutImageView.frame.width ) / 2,
+            right: (cropView.frame.width - layoutImageView.frame.width ) / 2,
+            bottom: (cropView.frame.height - layoutImageView.frame.height) / 2)
         
-        print("layout origin = \(layoutView.frame.origin)")
+        
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(panGesture:)))
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinchGesture(pinchGesture:)))
         layoutImageView.addGestureRecognizer(panGesture)
@@ -120,7 +103,6 @@ extension ImageCropVC {
     private func nextVC(){
         let croppedImage : UIImage = photoImageView.image!.cropToRect(rect: layoutImageView.frame)!
         image = croppedImage
-        print("crop image = \(layoutImageView.frame)")
         
         if image != nil {
             let nextVC = storyboard?.instantiateViewController(withIdentifier: "imageRenderVC") as! ImageRenderVC

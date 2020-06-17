@@ -88,12 +88,12 @@ extension UIViewController{
     }
     
     // imageRenderVC - layoutView setting
-    func setRenderLayoutViewFrameSetting(view : UIView, imageView : UIImageView){
+    func setRenderLayoutViewFrameSetting(view : UIView, imageView : UIImageView, top: CGFloat, left : CGFloat, right: CGFloat, bottom : CGFloat){
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        imageView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        imageView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: top).isActive = true
+        imageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: left).isActive = true
+        imageView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -right).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -bottom).isActive = true
     }
     
     // imageRenderVC - imageView setting
