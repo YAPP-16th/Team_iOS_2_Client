@@ -19,11 +19,9 @@ class ImageCropVC: UIViewController {
     var layoutView : UIView = UIView()
     var layoutImageView : UIImageView = UIImageView()
     
-    var layoutAbsoluteSize : CGSize = CGSize(width: 100, height: 100)
-    var layoutRatio : CGFloat = 0.0
+    var layoutAbsoluteSize : CGSize = CGSize(width: 0, height: 0)
     var imageRatio : CGFloat = 0.0
     var imageSize : CGSize = CGSize(width: 0, height: 0)
-    var imageFrame : CGRect = CGRect(x: 0, y: 0, width: 0, height: 0)
     
     var image : UIImage!
     var selectedLayout : AlbumLayout! = .Polaroid
@@ -93,7 +91,6 @@ extension ImageCropVC {
             right: (cropView.frame.width - layoutImageView.frame.width ) / 2,
             bottom: (cropView.frame.height - layoutImageView.frame.height) / 2)
         
-        
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(panGesture:)))
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinchGesture(pinchGesture:)))
         layoutImageView.addGestureRecognizer(panGesture)
@@ -140,6 +137,7 @@ extension ImageCropVC {
             senderView.frame.origin = CGPoint(x: view.frame.origin.x, y: senderView.frame.origin.y)
         }
         
+        // 부드럽게 만들기 = 이동 후 인식 -> 인식 후 이동
         if let centerX = panGesture.view?.center.x,
             let centerY = panGesture.view?.center.y {
             senderView.center = CGPoint.init(x: centerX + translation.x, y: centerY + translation.y)
@@ -148,8 +146,14 @@ extension ImageCropVC {
     }
     
     @objc private func handlePinchGesture(pinchGesture : UIPinchGestureRecognizer){
-        pinchGesture.view?.transform = (pinchGesture.view?.transform.scaledBy(x: pinchGesture.scale, y: pinchGesture.scale))!
-        layoutRatio = pinchGesture.scale * layoutRatio
+        guard let senderView = pinchGesture.view else {return}
+        
+        if senderView.frame.width >= layoutView.frame.width ||
+            senderView.frame.height >= layoutView.frame.height {
+            senderView.transform = senderView.transform.scaledBy(x: 1.0, y: 1.0)
+        } else {
+            senderView.transform = (senderView.transform.scaledBy(x: pinchGesture.scale, y: pinchGesture.scale))
+        }
         pinchGesture.scale = 1.0
     }
 }
