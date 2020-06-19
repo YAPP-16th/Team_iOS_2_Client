@@ -109,7 +109,6 @@ extension AlbumMainController : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("album count = \(albumNameArray.count)")
         return albumNameArray.count
     }
     
@@ -124,7 +123,6 @@ extension AlbumMainController : UICollectionViewDataSource {
 
 extension AlbumMainController : AlbumMainVCProtocol {
     func AlbumMainreloadView() {
-        print("reload album main collectionview data")
         albumCollectionView.reloadData()
     }
 }

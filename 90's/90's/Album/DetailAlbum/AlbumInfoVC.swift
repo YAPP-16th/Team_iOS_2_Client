@@ -35,17 +35,20 @@ class AlbumInfoVC: UIViewController {
         inviteSetting()
     }
     @IBAction func quitMemberBtn(_ sender: UIButton) {
-        let owner = userArray.first!
-        networkRemoveUser(userName: owner.name, userRole: owner.role, userUid: owner.userUid)
-        mainProtocol?.AlbumMainreloadView()
-        self.navigationController?.popToRootViewController(animated: true)
+        person = userArray.first!
+        personTag = 0 // 순서 무작위기 떄문에 본인 정보를 가져와서 대조해야함
+        hideLabel.text = "이 앨범에서 나가시겠습니까?"
+        switchQuitHideView(value: false)
     }
+    
     @IBOutlet weak var albumPasswordCopyBtn: UIButton!
     @IBOutlet weak var albumPasswordUploadBtn: UIButton!
     
     var albumUid: Int = 0
     var infoAlbum : album?
     var mainProtocol : AlbumMainVCProtocol?
+    var person : AlbumUserData!
+    var personTag : Int = 0
     
     var userArray : [AlbumUserData] = []
     var roleArray : [String] = []
@@ -105,27 +108,14 @@ extension AlbumInfoVC : albumInfoDeleteProtocol {
         switch value {
         case true :
             hideWhiteViewBottom.constant = -hideWhiteView.frame.height
-            UIView.animate(withDuration: 0.5, delay: 0.25, animations: {
-                self.view.layoutIfNeeded()
-            })
             hideView.isHidden = true
         case false :
             hideWhiteViewBottom.constant = 0
-            UIView.animate(withDuration: 0.5, delay: 0.25, animations: {
-                self.view.layoutIfNeeded()
-            })
             hideView.isHidden = false
         }
-    }
-  
-    
-    private func removedAlert(){
-        let alert = UIAlertController(title: "멤버 삭제", message: "멤버 삭제 완료!", preferredStyle: .alert)
-        let action = UIAlertAction(title: "확인", style: .default)
-        alert.addAction(action)
-        self.present(alert, animated: true){
-            self.memberTableView.reloadData()
-        }
+        UIView.animate(withDuration: 0.5, delay: 0.25, animations: {
+            self.view.layoutIfNeeded()
+        })
     }
 }
 
@@ -139,6 +129,7 @@ extension AlbumInfoVC {
                 case 200:
                     guard let data = response.data else {return}
                     guard let value = try? JSONDecoder().decode([AlbumUserData].self, from: data) else {return}
+                    self.person = value.first!
                     self.userArray = value.map { $0 }
                     self.roleArray = self.userArray.map { $0.role }
                     self.userUidArray = self.userArray.map { $0.userUid }
@@ -185,9 +176,7 @@ extension AlbumInfoVC {
             if let status = response.response?.statusCode {
                 switch status {
                 case 200 :
-                    self.removedAlert()
                     self.memberTableView.reloadData()
-                    print("removed user")
                 case 401 :
                     print("\(status) : bad request, no warning in Server")
                 case 404 :
@@ -249,14 +238,23 @@ extension AlbumInfoVC {
     }
     
     @objc private func touchHideCompleteBtn(){
+        networkRemoveUser(userName: person.name, userRole: person.role, userUid: person.userUid)
+        userArray.remove(at: personTag)
+        
+        if personTag == 0 {
+            mainProtocol?.AlbumMainreloadView()
+            self.navigationController?.popToRootViewController(animated: true)
+        } else {
+            memberTableView.reloadData()
+        }
         switchQuitHideView(value: true)
-        memberTableView.reloadData()
     }
     
     @objc private func touchMemberDeleteBtn(_ sender : UIButton){
-        let item = userArray[sender.tag]
-        networkRemoveUser(userName: item.name, userRole: item.role, userUid: item.userUid)
-        userArray.remove(at: sender.tag)
+        person = userArray[sender.tag]
+        personTag = sender.tag
+        hideLabel.text = "앨범에서 해당 멤버를\n삭제하시겠습니까?"
+        switchQuitHideView(value: false)
     }
     
     @objc private func touchPasswordCopyBtn(){
