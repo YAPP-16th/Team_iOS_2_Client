@@ -15,7 +15,6 @@ class MemberTableViewCell: UITableViewCell {
     @IBOutlet weak var memberDeleteBtn: UIButton!
     @IBAction func memberDeleteBtn(_ sender: UIButton) {
         infoProtocol?.switchQuitHideView(value: false)
-        // 서버 내용 필요
     }
     
     var infoProtocol : albumInfoDeleteProtocol?

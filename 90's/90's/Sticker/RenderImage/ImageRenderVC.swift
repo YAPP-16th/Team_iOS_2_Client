@@ -130,7 +130,6 @@ extension ImageRenderVC {
         // 뷰 위치 조정
         setRenderSaveViewFrameSetting(view: saveView, selectLayout: selectLayout, size: deviceSize)
         setRenderLayoutViewFrameSetting(view: saveView, imageView: layoutImage, top: 0, left: 0, right: 0, bottom: 0)
-//        setRenderImageViewFrameSetting(view: saveView, imageView: renderImage, selectlayout: selectLayout)
     }
     
     private func resetValues(){
@@ -162,13 +161,25 @@ extension ImageRenderVC {
         self.saveView.addSubview(sticker!)
         stickerArray.append(sticker!)
     }
+    
+    private func goToNextVC(image : UIImage){
+        resetValues()
+        let nextVC = storyboard?.instantiateViewController(withIdentifier: "savePhotoVC") as! SavePhotoVC
+               
+        nextVC.originImage = image
+        nextVC.selectedLayout = selectLayout
+        nextVC.albumUid = albumUid
+        nextVC.imageName = imageName
+        nextVC.deviceSize = deviceSize
+        
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
 }
 
 
 extension ImageRenderVC {
     @objc private func touchCompleteBtn(){
         for views in saveView.subviews {
-            print("view = \(views)")
             if(views is StickerLayout){
                 (views as! StickerLayout).cancleImageView.isHidden = true
                 (views as! StickerLayout).rotateImageView.isHidden = true
@@ -181,17 +192,7 @@ extension ImageRenderVC {
             saveView.drawHierarchy(in: saveView.bounds, afterScreenUpdates: true)
         }
         
-        resetValues()
-      
-        let nextVC = storyboard?.instantiateViewController(withIdentifier: "savePhotoVC") as! SavePhotoVC
-        
-        nextVC.originImage = renderImage
-        nextVC.selectedLayout = selectLayout
-        nextVC.albumUid = albumUid
-        nextVC.imageName = imageName
-        nextVC.deviceSize = deviceSize
-        
-        self.navigationController?.pushViewController(nextVC, animated: true)
+        goToNextVC(image: renderImage)
     }
     
     @objc private func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer){
@@ -203,16 +204,12 @@ extension ImageRenderVC {
     }
     
     @objc private func handlePanGesture(panGesture: UIPanGestureRecognizer){
-        /// todo : 팬에 기울기도 적용하기
-        if sticker != nil {
-            let transition = panGesture.translation(in: sticker)
-            let scale = CGAffineTransform(scaleX: saveSize, y: saveSize)
-            let rotate = CGAffineTransform(rotationAngle: saveAngle)
+        let transition = panGesture.translation(in: sticker)
+        let scale = CGAffineTransform(scaleX: saveSize, y: saveSize)
+        let rotate = CGAffineTransform(rotationAngle: saveAngle)
             
-            sticker!.center = CGPoint(x: sticker!.center.x + transition.x, y: sticker!.center.y + transition.y)
-            panGesture.setTranslation(CGPoint.zero, in: sticker)
-            
-        }
+        sticker!.center = CGPoint(x: sticker!.center.x + transition.x, y: sticker!.center.y + transition.y)
+        panGesture.setTranslation(CGPoint.zero, in: sticker)
     }
 }
 
@@ -223,11 +220,7 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == self.nameCollectionView {
-            return stickerNames.count
-        } else {
-            return stickerImages.count
-        }
+        return collectionView == self.nameCollectionView ? stickerNames.count : stickerImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -247,11 +240,7 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == self.nameCollectionView {
-            return CGSize(width: 84, height: 40)
-        } else {
-            return CGSize(width: 84, height: 84)
-        }
+        return collectionView == self.nameCollectionView ? CGSize(width: 84, height: 40) : CGSize(width: 84, height: 84)
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -263,11 +252,7 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, layout
         collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        if collectionView == self.nameCollectionView {
-            return 1.0
-        } else {
-            return 7.0
-        }
+        return collectionView == self.nameCollectionView ? 1.0 : 7.0
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

@@ -25,7 +25,6 @@ class AlbumDetailController : UIViewController {
     
     // 사진 확대 시
     @IBOutlet weak var hideImageZoom: UIImageView!
-    
     @IBAction func touchhideShareCompleteBtn(_ sender: UIButton) { inviteSetting() }
     
     // old filter
@@ -37,7 +36,6 @@ class AlbumDetailController : UIViewController {
     var isAlbumComplete : Bool = false
     
     var currentCell : UICollectionViewCell? = nil // 스티커, 필터 전환
-    var isSharingAlbum : Bool = false // 공유앨범
     var galleryPicker : UIImagePickerController = {
         let picker : UIImagePickerController = UIImagePickerController()
         picker.sourceType = .photoLibrary
@@ -58,7 +56,6 @@ class AlbumDetailController : UIViewController {
     var networkPhotoUrlImageArray : [UIImage] = []
     var networkHeaderName : String = "Title"
     var networkHedaerCount : Int = 0
-    static var tmpImage : UIImage? = nil
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if hideView.isHidden == false {
@@ -79,16 +76,6 @@ class AlbumDetailController : UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         NetworkSetting()
         photoCollectionView.reloadData()
-        
-        print(AlbumDetailController.tmpImage)
-        
-        if AlbumDetailController.tmpImage != nil {
-            let storyboard = UIStoryboard(name: "Sticker", bundle: nil)
-            let nextVC = storyboard.instantiateViewController(withIdentifier: "imageCropVC") as! ImageCropVC
-            nextVC.image = AlbumDetailController.tmpImage
-            self.navigationController?.pushViewController(nextVC, animated: true)
-        }
-        
     }
     
     override func viewDidLoad() {
@@ -399,19 +386,16 @@ extension AlbumDetailController {
 
 extension AlbumDetailController {
     @objc func touchCameraBtn(){
-        
         if iPhone8Model() {
             let storyBoard = UIStoryboard(name: "Filter", bundle: nil)
             let goNextVC = storyBoard.instantiateViewController(withIdentifier: "NonFilterViewController") as! NonFilterViewController
             goNextVC.modalPresentationStyle = .fullScreen
             self.present(goNextVC, animated: true)
-            
-        }
-        else {
-        let storyBoard = UIStoryboard(name: "Filter", bundle: nil)
-        let goNextVC = storyBoard.instantiateViewController(withIdentifier: "FilterViewController") as! FilterViewController
-        goNextVC.modalPresentationStyle = .fullScreen
-        self.navigationController?.pushViewController(goNextVC, animated: true)
+        } else {
+            let storyBoard = UIStoryboard(name: "Filter", bundle: nil)
+            let goNextVC = storyBoard.instantiateViewController(withIdentifier: "FilterViewController") as! FilterViewController
+            goNextVC.modalPresentationStyle = .fullScreen
+            self.navigationController?.pushViewController(goNextVC, animated: true)
 //        self.present(goNextVC, animated: true)
         }
         

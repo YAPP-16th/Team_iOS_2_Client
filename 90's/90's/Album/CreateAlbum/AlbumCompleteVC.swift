@@ -34,7 +34,6 @@ class AlbumCompleteVC: UIViewController {
     
     var albumLayout : AlbumLayout!
     var mainProtocol : AlbumMainVCProtocol?
-    var isAllDataSettle : Bool = false
     
     var albumName : String!
     var albumStartDate : String!
@@ -80,6 +79,7 @@ extension AlbumCompleteVC {
     
     func defaultSetting(){
         lottieView.isHidden = true
+        albumCompleteBtn.isHidden = false
         albumCompleteBtn.layer.cornerRadius = 10
         albumLayoutLabel.text = albumLayout.layoutName
         albumImageView.image = photo
@@ -100,6 +100,7 @@ extension AlbumCompleteVC {
                     guard let data = response.data else {return}
                     guard let uid = try? JSONDecoder().decode(AlbumCreateResult.self, from: data) else {return}
                     self.albumUid = uid.uid
+                    self.albumCompleteBtn.isHidden = true
                     self.playAnimation()
                 case 401:
                     print("\(status) : bad request, no warning in Server")
