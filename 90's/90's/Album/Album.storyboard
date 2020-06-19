@@ -386,10 +386,10 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="78"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qp0-8g-IZd">
-                                        <rect key="frame" x="311" y="0.0" width="103" height="78"/>
+                                        <rect key="frame" x="334" y="0.0" width="80" height="78"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="78" id="XFp-6x-hi0"/>
-                                            <constraint firstAttribute="width" constant="103" id="aZA-oY-wL2"/>
+                                            <constraint firstAttribute="width" constant="80" id="aZA-oY-wL2"/>
                                         </constraints>
                                         <state key="normal" image="cancleicon">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -715,9 +715,9 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="78"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lyg-UG-S5L">
-                                        <rect key="frame" x="311" y="0.0" width="103" height="78"/>
+                                        <rect key="frame" x="334" y="0.0" width="80" height="78"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="103" id="0fb-WM-XeZ"/>
+                                            <constraint firstAttribute="width" constant="80" id="0fb-WM-XeZ"/>
                                             <constraint firstAttribute="height" constant="78" id="AR3-zQ-208"/>
                                         </constraints>
                                         <state key="normal" image="cancleicon">
@@ -1310,7 +1310,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7S2-wT-ag5">
-                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DFE-ho-eBc">
                                     <size key="itemSize" width="128" height="128"/>
@@ -1385,38 +1385,26 @@
                                     </constraints>
                                 </collectionReusableView>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oTz-XI-d3H">
-                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Krj-VJ-rMa">
-                                        <rect key="frame" x="364" y="6" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="V3n-cL-DnL"/>
-                                            <constraint firstAttribute="height" constant="40" id="pyG-Dd-L1b"/>
-                                        </constraints>
-                                        <state key="normal" image="iconCancel"/>
-                                        <connections>
-                                            <action selector="cancleBtn:" destination="2bX-Ae-WX2" eventType="touchUpInside" id="rTN-vT-s0f"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Krj-VJ-rMa">
+                                <rect key="frame" x="334" y="44" width="80" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Krj-VJ-rMa" secondAttribute="bottom" constant="10" id="FwS-yk-Dvc"/>
-                                    <constraint firstAttribute="height" constant="56" id="jFe-Wx-0jX"/>
-                                    <constraint firstAttribute="trailing" secondItem="Krj-VJ-rMa" secondAttribute="trailing" constant="10" id="uin-y8-c7A"/>
+                                    <constraint firstAttribute="height" constant="80" id="QA6-m0-4F5"/>
+                                    <constraint firstAttribute="width" constant="80" id="hY4-ME-VgD"/>
                                 </constraints>
-                            </view>
+                                <state key="normal" image="cancleicon"/>
+                                <connections>
+                                    <action selector="cancleBtn:" destination="2bX-Ae-WX2" eventType="touchUpInside" id="rTN-vT-s0f"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="7S2-wT-ag5" firstAttribute="top" secondItem="oTz-XI-d3H" secondAttribute="bottom" id="01k-2b-3tN"/>
                             <constraint firstItem="7S2-wT-ag5" firstAttribute="trailing" secondItem="JaO-gi-rCO" secondAttribute="trailing" id="2Yo-uA-tgs"/>
                             <constraint firstItem="7S2-wT-ag5" firstAttribute="leading" secondItem="JaO-gi-rCO" secondAttribute="leading" id="3Rq-vf-RwN"/>
-                            <constraint firstItem="oTz-XI-d3H" firstAttribute="trailing" secondItem="JaO-gi-rCO" secondAttribute="trailing" id="4ms-Zg-Rsu"/>
                             <constraint firstItem="JaO-gi-rCO" firstAttribute="bottom" secondItem="7S2-wT-ag5" secondAttribute="bottom" id="H98-z5-H5l"/>
-                            <constraint firstItem="oTz-XI-d3H" firstAttribute="top" secondItem="JaO-gi-rCO" secondAttribute="top" id="Xv5-BE-KFi"/>
-                            <constraint firstItem="oTz-XI-d3H" firstAttribute="leading" secondItem="JaO-gi-rCO" secondAttribute="leading" id="z0i-fl-4li"/>
+                            <constraint firstItem="Krj-VJ-rMa" firstAttribute="top" secondItem="JaO-gi-rCO" secondAttribute="top" id="clo-1K-8df"/>
+                            <constraint firstItem="JaO-gi-rCO" firstAttribute="trailing" secondItem="Krj-VJ-rMa" secondAttribute="trailing" id="nN8-HB-CQP"/>
+                            <constraint firstItem="7S2-wT-ag5" firstAttribute="top" secondItem="JaO-gi-rCO" secondAttribute="top" id="ptb-m8-sKD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JaO-gi-rCO"/>
                     </view>
@@ -2348,7 +2336,6 @@
         <image name="iconAdd" width="22" height="22"/>
         <image name="iconAlbumAct" width="30" height="26"/>
         <image name="iconAlbumInact" width="31" height="26"/>
-        <image name="iconCancel" width="21" height="21"/>
         <image name="iconInformation" width="24" height="25"/>
         <image name="iconInvitation" width="27" height="24"/>
         <image name="iconMembers" width="19" height="19"/>
