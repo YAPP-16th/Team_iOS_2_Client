@@ -43,6 +43,7 @@ class AlbumQuantityController : UIViewController {
     
     
     func defaultSetting(){
+        quantityLabel.textLineSpacing(firstText: "앨범에 들어갈", secondText: "사진의 수량을 정해 주세요")
         self.selectorLabel.backgroundColor = UIColor.black
         self.nextBtn.backgroundColor = UIColor.black
         self.nextBtn.backgroundColor = UIColor.colorRGBHex(hex: 0xe33e28)

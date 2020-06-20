@@ -82,7 +82,7 @@ extension AlbumLayoutVC {
         }
         layoutCollectionView.delegate = self
         layoutCollectionView.dataSource = self
-        layoutLabel.text = "앨범 레이아웃을\n선택해 주세요"
+        layoutLabel.textLineSpacing(firstText: "앨범 레이아웃을", secondText: "선택해 주세요")
     }
 }
 
