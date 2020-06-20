@@ -56,7 +56,7 @@ extension UILabel {
         let style = NSMutableParagraphStyle()
         let attrString = NSMutableAttributedString()
         style.lineSpacing = 10.0
-        let first = NSAttributedString(string: firstText, attributes: [.font: UIFont(name: "NeoDunggeunmo-Regular", size: 24.0)!])
+        let first = NSAttributedString(string: firstText+"\n", attributes: [.font: UIFont(name: "NeoDunggeunmo-Regular", size: 24.0)!])
         attrString.append(first)
         
         if secondText != nil {

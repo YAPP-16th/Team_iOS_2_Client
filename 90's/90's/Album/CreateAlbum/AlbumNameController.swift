@@ -29,19 +29,6 @@ class AlbumNameController : UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
-        
-      
-//        let navigationBarHeight: CGFloat = self.navigationController!.navigationBar.frame.height +
-//            UIApplication.shared.statusBarFrame.size.height
-//
-//        self.nameLabel.frame.size = CGSize(width: self.nameLabel.frame.width, height: (self.view.frame.height - navigationBarHeight) * (0.0880196))
-//
-//        self.nextBtn.frame.size = CGSize(width: self.nextBtn.frame.width, height: (self.view.frame.height - navigationBarHeight) * (0.0880196))
-//
-//
-//        }
-//
-//
     }
     
     override func viewDidLoad() {

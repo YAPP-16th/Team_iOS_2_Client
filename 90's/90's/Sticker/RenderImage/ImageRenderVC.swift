@@ -76,7 +76,7 @@ class ImageRenderVC: UIViewController {
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
-        
+
         if sticker != nil {
             switch touch!.view {
             case sticker?.resizeImageView :
@@ -84,13 +84,14 @@ class ImageRenderVC: UIViewController {
                 let target = sticker?.center
                 let size = max((position.x / target!.x), (position.y / target!.y))
                 let scale = CGAffineTransform(scaleX: size, y: size)
-                
+
                 let ang = pToA(touch!) - initialAngle
                 let absoluteAngle = saveAngle + ang
-                //sticker?.transform = (sticker?.transform.rotated(by: ang))!
+                let rotate = CGAffineTransform(rotationAngle: absoluteAngle)
+              
                 saveAngle = absoluteAngle
                 saveSize = size
-                sticker?.transform = scale.concatenating(CGAffineTransform(rotationAngle: ang))
+                sticker?.transform = scale.concatenating(rotate)
             case sticker?.cancleImageView :
                 sticker?.removeFromSuperview()
                 sticker = nil
@@ -188,7 +189,6 @@ extension ImageRenderVC {
         for views in saveView.subviews {
             if(views is StickerLayout){
                 (views as! StickerLayout).cancleImageView.isHidden = true
-                (views as! StickerLayout).rotateImageView.isHidden = true
                 (views as! StickerLayout).resizeImageView.isHidden = true
             }
         }
