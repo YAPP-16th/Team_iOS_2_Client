@@ -76,20 +76,20 @@ class ImageRenderVC: UIViewController {
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
-        
+
         if sticker != nil {
             switch touch!.view {
-            case sticker?.rotateImageView :
-                let ang = pToA(touch!) - initialAngle
-                let absoluteAngle = saveAngle + ang
-                sticker?.transform = (sticker?.transform.rotated(by: ang))!
-                saveAngle = absoluteAngle
             case sticker?.resizeImageView :
                 let position = touch!.location(in: self.view)
                 let target = sticker?.center
                 let size = max((position.x / target!.x), (position.y / target!.y))
                 let scale = CGAffineTransform(scaleX: size, y: size)
-                let rotate = CGAffineTransform(rotationAngle: saveAngle)
+
+                let ang = pToA(touch!) - initialAngle
+                let absoluteAngle = saveAngle + ang
+                let rotate = CGAffineTransform(rotationAngle: absoluteAngle)
+              
+                saveAngle = absoluteAngle
                 saveSize = size
                 sticker?.transform = scale.concatenating(rotate)
             case sticker?.cancleImageView :
@@ -146,17 +146,24 @@ extension ImageRenderVC {
         let c = sticker!.convert(sticker!.center, from:sticker!.superview!)
         return atan2(loc.y - c.y, loc.x - c.x)
     }
-    
-    private func createPan(view : UIImageView){
+  
+    private func createGesture(view : UIImageView){
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.handlePanGesture(panGesture:)))
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinchGesture(pinchGesture:)))
+        let rotateGesture = UIRotationGestureRecognizer(target: self, action: #selector(handleRotateGesture(rotateGesture:)))
+        
+        panGesture.maximumNumberOfTouches = 1
+        
         view.addGestureRecognizer(panGesture)
+        view.addGestureRecognizer(pinchGesture)
+        view.addGestureRecognizer(rotateGesture)
     }
     
     private func createStickerView(image : UIImage, indexPathRow : Int){
         sticker = StickerLayout.loadFromZib(image: image)
-        sticker?.frame.size = CGSize(width: 120, height: 120)
-        sticker?.center = CGPoint(x: saveView.center.x - 30, y: saveView.center.y - 200)
-        createPan(view: sticker!.backImageView) // 이미지 옮기기
+        sticker!.frame.size = CGSize(width: 120, height: 120)
+        sticker!.center = CGPoint(x: saveView.center.x - 30, y: saveView.center.y - 200)
+        createGesture(view: sticker!.backImageView)
         focusView.isHidden = false
         self.saveView.addSubview(sticker!)
         stickerArray.append(sticker!)
@@ -182,7 +189,6 @@ extension ImageRenderVC {
         for views in saveView.subviews {
             if(views is StickerLayout){
                 (views as! StickerLayout).cancleImageView.isHidden = true
-                (views as! StickerLayout).rotateImageView.isHidden = true
                 (views as! StickerLayout).resizeImageView.isHidden = true
             }
         }
@@ -205,11 +211,21 @@ extension ImageRenderVC {
     
     @objc private func handlePanGesture(panGesture: UIPanGestureRecognizer){
         let transition = panGesture.translation(in: sticker)
-        let scale = CGAffineTransform(scaleX: saveSize, y: saveSize)
-        let rotate = CGAffineTransform(rotationAngle: saveAngle)
-            
+        
         sticker!.center = CGPoint(x: sticker!.center.x + transition.x, y: sticker!.center.y + transition.y)
         panGesture.setTranslation(CGPoint.zero, in: sticker)
+    }
+    
+    @objc private func handlePinchGesture(pinchGesture : UIPinchGestureRecognizer){
+        sticker!.transform = (sticker!.transform.scaledBy(x: pinchGesture.scale, y: pinchGesture.scale))
+        saveSize = pinchGesture.scale
+        pinchGesture.scale = 1.0
+    }
+    
+    @objc private func handleRotateGesture(rotateGesture : UIRotationGestureRecognizer){
+        sticker!.transform = sticker!.transform.rotated(by: rotateGesture.rotation)
+        saveAngle = rotateGesture.rotation
+        rotateGesture.rotation = 0
     }
 }
 

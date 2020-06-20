@@ -87,6 +87,7 @@ extension AlbumCompleteVC {
         albumDateLabel.text = "\(albumStartDate!)  ~  \(albumEndDate!)"
         albumCountLabel.text = "\(albumMaxCount!)"
         askLabel.text = "이 앨범으로 결정하시겠습니까?\n한 번 앨범을 만들면 수정이 불가능 합니다"
+        completeLabel.textLineSpacing(firstText: "마지막으로", secondText: "앨범을 확인해 주세요")
         imageName = albumLayout.layoutName
     }
     

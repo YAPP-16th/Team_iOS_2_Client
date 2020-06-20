@@ -35,8 +35,6 @@ class AlbumInfoVC: UIViewController {
         inviteSetting()
     }
     @IBAction func quitMemberBtn(_ sender: UIButton) {
-        person = userArray.first!
-        personTag = 0 // 순서 무작위기 떄문에 본인 정보를 가져와서 대조해야함
         hideLabel.text = "이 앨범에서 나가시겠습니까?"
         switchQuitHideView(value: false)
     }
@@ -47,8 +45,9 @@ class AlbumInfoVC: UIViewController {
     var albumUid: Int = 0
     var infoAlbum : album?
     var mainProtocol : AlbumMainVCProtocol?
-    var person : AlbumUserData!
-    var personTag : Int = 0
+    var me : AlbumUserData!
+    var other : AlbumUserData!
+    var otherTag : Int = 0
     
     var userArray : [AlbumUserData] = []
     var roleArray : [String] = []
@@ -129,7 +128,9 @@ extension AlbumInfoVC {
                 case 200:
                     guard let data = response.data else {return}
                     guard let value = try? JSONDecoder().decode([AlbumUserData].self, from: data) else {return}
-                    self.person = value.first!
+                    let identify = value.compactMap { $0.userUid }.first
+                    self.me = value.filter {$0.userUid == identify }.first
+                    self.other = self.me
                     self.userArray = value.map { $0 }
                     self.roleArray = self.userArray.map { $0.role }
                     self.userUidArray = self.userArray.map { $0.userUid }
@@ -238,10 +239,10 @@ extension AlbumInfoVC {
     }
     
     @objc private func touchHideCompleteBtn(){
-        networkRemoveUser(userName: person.name, userRole: person.role, userUid: person.userUid)
-        userArray.remove(at: personTag)
+        networkRemoveUser(userName: other.name, userRole: other.role, userUid: other.userUid)
+        userArray.remove(at: otherTag)
         
-        if personTag == 0 {
+        if otherTag == 0 {
             mainProtocol?.AlbumMainreloadView()
             self.navigationController?.popToRootViewController(animated: true)
         } else {
@@ -251,8 +252,8 @@ extension AlbumInfoVC {
     }
     
     @objc private func touchMemberDeleteBtn(_ sender : UIButton){
-        person = userArray[sender.tag]
-        personTag = sender.tag
+        other = userArray[sender.tag]
+        otherTag = sender.tag
         hideLabel.text = "앨범에서 해당 멤버를\n삭제하시겠습니까?"
         switchQuitHideView(value: false)
     }
@@ -298,7 +299,7 @@ extension AlbumInfoVC {
 // 오너의 경우 헤더뷰로 하나 넣기
 extension AlbumInfoVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userUidArray.count
+        return userArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -327,5 +328,3 @@ extension AlbumInfoVC : UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 }
-
-

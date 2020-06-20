@@ -55,6 +55,7 @@ class AlbumCoverVC: UIViewController {
 
 extension AlbumCoverVC {
     func defaultSetting(){
+        coverLabel.textLineSpacing(firstText: "앨범 커버를", secondText: "선택해 주세요")
         coverCollectionView.delegate = self
         coverCollectionView.dataSource = self
         coverLabel.text = "앨범 커버를\n선택해 주세요"

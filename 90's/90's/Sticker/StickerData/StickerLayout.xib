@@ -16,18 +16,11 @@
                 <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Jf-St-2Hx">
                     <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8yc-vt-zpZ">
+                        <imageView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8yc-vt-zpZ">
                             <rect key="frame" x="18" y="18" width="84" height="84"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="84" id="G5O-eI-xLR"/>
                                 <constraint firstAttribute="width" constant="84" id="xfY-tQ-Muf"/>
-                            </constraints>
-                        </imageView>
-                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stickerControlRotate" translatesAutoresizingMaskIntoConstraints="NO" id="kg6-Dw-xYd">
-                            <rect key="frame" x="101" y="0.0" width="19" height="19"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="19" id="AaI-CT-vR0"/>
-                                <constraint firstAttribute="width" constant="19" id="EZV-wb-yuL"/>
                             </constraints>
                         </imageView>
                         <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stckerControlSize" translatesAutoresizingMaskIntoConstraints="NO" id="DrU-KH-0SN">
@@ -46,14 +39,12 @@
                         </imageView>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="kg6-Dw-xYd" secondAttribute="trailing" id="59m-an-Ghh"/>
                         <constraint firstAttribute="trailing" secondItem="DrU-KH-0SN" secondAttribute="trailing" id="96H-uS-Kap"/>
                         <constraint firstAttribute="trailing" secondItem="8yc-vt-zpZ" secondAttribute="trailing" constant="18" id="Mha-9s-OAc"/>
                         <constraint firstItem="8yc-vt-zpZ" firstAttribute="top" secondItem="4Jf-St-2Hx" secondAttribute="top" constant="18" id="O0Y-r6-tnc"/>
                         <constraint firstItem="iUk-eu-78S" firstAttribute="top" secondItem="4Jf-St-2Hx" secondAttribute="top" id="Y7L-2d-ijt"/>
                         <constraint firstAttribute="bottom" secondItem="8yc-vt-zpZ" secondAttribute="bottom" constant="18" id="fa4-5T-Vak"/>
                         <constraint firstAttribute="bottom" secondItem="DrU-KH-0SN" secondAttribute="bottom" id="gvX-Qc-2GJ"/>
-                        <constraint firstItem="kg6-Dw-xYd" firstAttribute="top" secondItem="4Jf-St-2Hx" secondAttribute="top" id="iYF-k5-Bpg"/>
                         <constraint firstItem="8yc-vt-zpZ" firstAttribute="leading" secondItem="4Jf-St-2Hx" secondAttribute="leading" constant="18" id="oVI-hn-Zgg"/>
                         <constraint firstItem="iUk-eu-78S" firstAttribute="leading" secondItem="4Jf-St-2Hx" secondAttribute="leading" id="t5i-vu-apt"/>
                     </constraints>
@@ -70,7 +61,6 @@
                 <outlet property="backImageView" destination="8yc-vt-zpZ" id="GQm-pK-yH9"/>
                 <outlet property="cancleImageView" destination="iUk-eu-78S" id="S9Q-2v-WHV"/>
                 <outlet property="resizeImageView" destination="DrU-KH-0SN" id="vh8-Uq-AKy"/>
-                <outlet property="rotateImageView" destination="kg6-Dw-xYd" id="0vZ-oM-Tjg"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="101.78571428571428"/>
         </view>
@@ -78,6 +68,5 @@
     <resources>
         <image name="stckerControlSize" width="19" height="19"/>
         <image name="stickerControlCancel" width="19" height="19"/>
-        <image name="stickerControlRotate" width="19" height="19"/>
     </resources>
 </document>
