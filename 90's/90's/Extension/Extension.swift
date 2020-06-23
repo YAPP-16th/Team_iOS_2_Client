@@ -77,7 +77,6 @@ extension UILabel {
             let second = NSAttributedString(string: secondText!, attributes: [.font : UIFont(name: "NeoDunggeunmo-Regular", size: 24.0)!])
             attrString.append(second)
         }
-        
         attrString.addAttributes([.paragraphStyle : style], range: NSMakeRange(0, attrString.length))
         
         self.attributedText = attrString

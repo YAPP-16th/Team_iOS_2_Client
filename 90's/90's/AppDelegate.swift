@@ -248,8 +248,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let albumSB: UIStoryboard = UIStoryboard(name: "Album", bundle: .main)
         let enterVC = albumSB.instantiateViewController(withIdentifier: "AlbumInvitedVC") as! AlbumInvitedVC
-        let detailVC = albumSB.instantiateViewController(withIdentifier: "albumDetailVC") as! AlbumDetailController
-
+        
         
         let tabVC = mainRoot.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
         let tabNav = UINavigationController(rootViewController: tabVC)

@@ -12,7 +12,7 @@ protocol AlbumMainVCProtocol {
     func AlbumMainreloadView()
 }
 
-class AlbumMainController: UIViewController {
+class AlbumMainVC : UIViewController {
     @IBOutlet weak var albumView: UIView!
     @IBOutlet weak var albumCollectionView: UICollectionView!
     @IBAction func clickMakeBtn(_ sender: Any){
@@ -35,14 +35,13 @@ class AlbumMainController: UIViewController {
     }
     
     override func viewDidLoad() {
-         super.viewDidLoad()
-         settingCollectionView()
-        
+        super.viewDidLoad()
+        settingCollectionView()
     }
 }
 
 
-extension AlbumMainController {
+extension AlbumMainVC {
     func settingCollectionView(){
         albumCollectionView.delegate = self
         albumCollectionView.dataSource = self
@@ -90,20 +89,20 @@ extension AlbumMainController {
 
 
 
-extension AlbumMainController : UICollectionViewDelegateFlowLayout {
+extension AlbumMainVC : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width/2 - 26, height: view.frame.height/4 + 10)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let albumDetailVC = storyboard?.instantiateViewController(withIdentifier: "albumDetailVC") as! AlbumDetailController
+        let albumDetailVC = storyboard?.instantiateViewController(withIdentifier: "albumDetailVC") as! AlbumDetailVC
         albumDetailVC.albumUid = albumUidArray[indexPath.row]
         navigationController?.pushViewController(albumDetailVC, animated: true)
     }
 }
 
 
-extension AlbumMainController : UICollectionViewDataSource {
+extension AlbumMainVC : UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -121,7 +120,7 @@ extension AlbumMainController : UICollectionViewDataSource {
 }
 
 
-extension AlbumMainController : AlbumMainVCProtocol {
+extension AlbumMainVC : AlbumMainVCProtocol {
     func AlbumMainreloadView() {
         albumCollectionView.reloadData()
     }
