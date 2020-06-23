@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class AlbumQuantityController : UIViewController {
+class AlbumQuantityVC : UIViewController {
     
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var tfQuantity: UITextField!
@@ -16,12 +16,10 @@ class AlbumQuantityController : UIViewController {
     }
     
     let quantityPicker = UIPickerView()
-    
     var albumName:String!
     var albumStartDate:String!
     var albumEndDate:String!
     var albumMaxCount:Int = 4
-    
     private var maxCountArray = Array(4...30)
     
     override func viewDidLoad() {
@@ -31,23 +29,21 @@ class AlbumQuantityController : UIViewController {
     }
     
     @IBAction func clickNextBtn(_ sender: Any) {
-            let nextVC = storyboard?.instantiateViewController(withIdentifier: "AlbumCoverVC") as! AlbumCoverVC
+        let nextVC = storyboard?.instantiateViewController(withIdentifier: "AlbumCoverVC") as! AlbumCoverVC
             
-            nextVC.albumName = albumName
-            nextVC.albumStartDate = albumStartDate
-            nextVC.albumEndDate = albumEndDate
-            nextVC.albumMaxCount = albumMaxCount
+        nextVC.albumName = albumName
+        nextVC.albumStartDate = albumStartDate
+        nextVC.albumEndDate = albumEndDate
+        nextVC.albumMaxCount = albumMaxCount
             
-            self.navigationController?.pushViewController(nextVC, animated: true)
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     
     func defaultSetting(){
         quantityLabel.textLineSpacing(firstText: "앨범에 들어갈", secondText: "사진의 수량을 정해 주세요")
         self.selectorLabel.backgroundColor = UIColor.black
-        self.nextBtn.backgroundColor = UIColor.black
-        self.nextBtn.backgroundColor = UIColor.colorRGBHex(hex: 0xe33e28)
-        self.nextBtn.isEnabled = true
+        self.nextBtn.switchComplete(next: true)
         tfQuantity.text = "4"
     }
     
@@ -67,7 +63,7 @@ class AlbumQuantityController : UIViewController {
 
 
 
-extension AlbumQuantityController : UIPickerViewDelegate {
+extension AlbumQuantityVC : UIPickerViewDelegate {
     //pickerView에 표시될 내용
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return "\(maxCountArray[row])"
@@ -81,7 +77,7 @@ extension AlbumQuantityController : UIPickerViewDelegate {
 }
 
 
-extension AlbumQuantityController : UIPickerViewDataSource {
+extension AlbumQuantityVC : UIPickerViewDataSource {
     //몇 개씩 보여줄지 결정(pickerView 열의 개수)
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -93,7 +89,7 @@ extension AlbumQuantityController : UIPickerViewDataSource {
 }
 
 
-extension AlbumQuantityController {
+extension AlbumQuantityVC {
     func keyboardSetting(){
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)

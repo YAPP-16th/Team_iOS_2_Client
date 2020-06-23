@@ -14,9 +14,10 @@ class AlbumLayoutPreviewVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    let photoStringArray : [String] = ["preview1","preview2","preview3","preview4","preview5","preview6"]
-    var photoArray : [UIImage] = []
     var selectedLayout : AlbumLayout!
+    let photoArray : [UIImage] = [UIImage(named: "preview1")!, UIImage(named: "preview2")!,
+                                  UIImage(named: "preview3")!, UIImage(named: "preview4")!,
+                                  UIImage(named: "preview5")!, UIImage(named: "preview6")!]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +30,6 @@ extension AlbumLayoutPreviewVC {
     func defaultSetting(){
         layoutCollectionView.delegate = self
         layoutCollectionView.dataSource = self
-        
-        photoArray = photoStringArray.map({(value : String) -> UIImage in
-            return UIImage(named: value)!
-        } )
     }
 }
 
@@ -57,7 +54,21 @@ extension AlbumLayoutPreviewVC : UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    
         selectedLayout.size
     }
+}
+
+
+
+class AlbumLayoutHeaderCell: UICollectionViewCell {
+}
+
+
+class AlbumLayoutPreviewCell: UICollectionViewCell {
+    @IBOutlet weak var backimageView: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var backimageTop: NSLayoutConstraint!
+    @IBOutlet weak var backimageLeft: NSLayoutConstraint!
+    @IBOutlet weak var backimageRight: NSLayoutConstraint!
+    @IBOutlet weak var backimageBottom: NSLayoutConstraint!
 }

@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-class AlbumPeriodController : UIViewController {
-    
+class AlbumPeriodVC : UIViewController {
+    @IBOutlet weak var label: UILabel!
     @IBOutlet weak var tfOpenDate: UITextField!
     @IBOutlet weak var tfExpireDate: UITextField!
     @IBOutlet weak var nextBtn: UIButton!
@@ -24,8 +24,8 @@ class AlbumPeriodController : UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func clickNextBtn(_ sender: Any) {
-        if initialFlag == false {
-            let nextVC = storyboard?.instantiateViewController(withIdentifier : "AlbumQuantityController") as! AlbumQuantityController
+        if !tfExpireDate.text!.isEmpty {
+            let nextVC = storyboard?.instantiateViewController(withIdentifier : "AlbumQuantityController") as! AlbumQuantityVC
            
             nextVC.albumName = albumName
             nextVC.albumStartDate = tfOpenDate.text!
@@ -37,19 +37,18 @@ class AlbumPeriodController : UIViewController {
     }
     
     var albumName:String!
-    var initialFlag = true
     let datePicker = UIDatePicker()
     let formatter = DateFormatter()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setOpenDate()
-        keyboardSetting()
+        defaultSetting()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setDatePicker()
+        keyboardSetting()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -58,12 +57,13 @@ class AlbumPeriodController : UIViewController {
 }
 
 
-extension AlbumPeriodController {
+extension AlbumPeriodVC {
     //앨범 시작일은 현재 날짜로 고정
-    func setOpenDate(){
+    func defaultSetting(){
         formatter.dateFormat = "yyyy.MM.dd"
         tfOpenDate.text = formatter.string(from: Date())
         tfExpireDate.placeholder = formatter.string(from: Date())
+        label.textLineSpacing(firstText: "앨범의 기간을 정해주세요", secondText: nil)
         nextBtn.layer.cornerRadius = 10
     }
     
@@ -81,26 +81,21 @@ extension AlbumPeriodController {
         datePicker.addTarget(self, action:#selector(changePickerValue), for: .valueChanged)
     }
     
-    //datePicker값 변경될 때 마다 TF의 값 변경되게 설정
-    @objc func changePickerValue(){
-        tfExpireDate.text = formatter.string(from: datePicker.date)
-        
-        if(initialFlag){
-            self.selectorLabel1.backgroundColor = UIColor.black
-            self.selectorLabel2.backgroundColor = UIColor.black
-            self.nextBtn.backgroundColor = UIColor.colorRGBHex(hex: 0xe33e28)
-            self.nextBtn.isEnabled = true
-            initialFlag = false
-        }
-    }
-}
-
-
-extension AlbumPeriodController {
     func keyboardSetting(){
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+}
+
+
+extension AlbumPeriodVC {
+    @objc func changePickerValue(){
+           tfExpireDate.text = formatter.string(from: datePicker.date)
+           
+           self.selectorLabel1.backgroundColor = UIColor.black
+           self.selectorLabel2.backgroundColor = UIColor.black
+           self.nextBtn.switchComplete(next: true)
+       }
     
     @objc func keyboardWillShow(_ notification: Notification) {
         buttonConstraint.constant = datePicker.frame.height + 10

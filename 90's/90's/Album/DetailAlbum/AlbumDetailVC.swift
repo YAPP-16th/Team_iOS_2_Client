@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AlbumDetailController : UIViewController {
+class AlbumDetailVC : UIViewController {
     @IBOutlet weak var photoCollectionView: UICollectionView!
     @IBOutlet weak var addPhotoBtn: UIButton!
     // Top View 설정
@@ -87,7 +87,7 @@ class AlbumDetailController : UIViewController {
 }
 
 
-extension AlbumDetailController {
+extension AlbumDetailVC {
     func delegateSetting(){
         photoCollectionView.delegate = self
         photoCollectionView.dataSource = self
@@ -112,7 +112,7 @@ extension AlbumDetailController {
 }
 
 
-extension AlbumDetailController {
+extension AlbumDetailVC {
     func switchHideView(value : Bool){
         switch value {
         case true:
@@ -165,7 +165,7 @@ extension AlbumDetailController {
     }
 }
 
-extension AlbumDetailController {
+extension AlbumDetailVC {
     func setZoomImageView(layout : AlbumLayout) -> CGSize {
         switch layout {
         case .Polaroid : return AlbumLayout.Polaroid.deviceHighSize
@@ -277,7 +277,7 @@ extension AlbumDetailController {
 }
 
 /* 네트워크 함수 */
-extension AlbumDetailController {
+extension AlbumDetailVC {
     func NetworkSetting(){
         self.networkPhotoUrlImageArray = []
         
@@ -384,7 +384,7 @@ extension AlbumDetailController {
 }
 
 
-extension AlbumDetailController {
+extension AlbumDetailVC {
     @objc func touchCameraBtn(){
         if iPhone8Model() {
             let storyBoard = UIStoryboard(name: "Filter", bundle: nil)
@@ -439,7 +439,7 @@ extension AlbumDetailController {
 }
 
 
-extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension AlbumDetailVC : UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return networkPhotoUrlImageArray.count
     }
@@ -489,7 +489,7 @@ extension AlbumDetailController : UICollectionViewDataSource, UICollectionViewDe
 }
 
 // 순서 바꾸기
-extension AlbumDetailController : UICollectionViewDropDelegate {
+extension AlbumDetailVC : UICollectionViewDropDelegate {
     func collectionView(_ collectionView: UICollectionView, canHandle session: UIDropSession) -> Bool {
         return session.canLoadObjects(ofClass: NSString.self)
     }
@@ -516,7 +516,7 @@ extension AlbumDetailController : UICollectionViewDropDelegate {
 }
 
 
-extension AlbumDetailController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension AlbumDetailVC : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.photoCollectionView.reloadData()
         dismiss(animated: true, completion: nil)
@@ -547,7 +547,7 @@ extension AlbumDetailController : UIImagePickerControllerDelegate, UINavigationC
 }
 
 
-extension AlbumDetailController {
+extension AlbumDetailVC {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GoToInfoVC" {
             let dest = segue.destination as! AlbumInfoVC

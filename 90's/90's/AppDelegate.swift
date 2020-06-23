@@ -43,6 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //카카오톡 사용자 토큰 주기적 갱신
         KOSession.shared()?.isAutomaticPeriodicRefresh = true
+        UITabBar.appearance().backgroundColor = UIColor.colorRGBHex(hex: 0xeef0f5)
+        UITabBar.appearance().layer.borderWidth = 0.0
+        UITabBar.appearance().clipsToBounds = true
         
         return true
     }
@@ -232,6 +235,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabVC = mainSB.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
         let tabNav = UINavigationController(rootViewController: tabVC)
         tabNav.isNavigationBarHidden = true
+        tabVC.selectedIndex = 1
         
         self.window?.rootViewController = tabNav
         self.window?.makeKeyAndVisible()
@@ -247,8 +251,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let albumSB: UIStoryboard = UIStoryboard(name: "Album", bundle: .main)
         let enterVC = albumSB.instantiateViewController(withIdentifier: "AlbumInvitedVC") as! AlbumInvitedVC
-        let detailVC = albumSB.instantiateViewController(withIdentifier: "albumDetailVC") as! AlbumDetailController
-
+        
         
         let tabVC = mainRoot.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
         let tabNav = UINavigationController(rootViewController: tabVC)

@@ -111,7 +111,7 @@ extension AlbumInvitedVC {
 extension AlbumInvitedVC {
     @objc func touchAlbumCompleteBtn(){
         // 공유앨범 비밀번호 서버통신 후
-        let nextVC = storyboard?.instantiateViewController(withIdentifier: "albumDetailVC") as! AlbumDetailController
+        let nextVC = storyboard?.instantiateViewController(withIdentifier: "albumDetailVC") as! AlbumDetailVC
         nextVC.albumUid = albumIndex
         nextVC.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(nextVC, animated: true)
@@ -175,7 +175,7 @@ extension AlbumInvitedVC {
     }
     
     func presentDetailAlbum(albumUid : Int){
-        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "albumDetailVC") as! AlbumDetailController
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "albumDetailVC") as! AlbumDetailVC
         nextVC.modalTransitionStyle = .coverVertical
         nextVC.albumUid = albumUid
         self.present(nextVC, animated: true)

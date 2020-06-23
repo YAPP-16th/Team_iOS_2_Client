@@ -115,3 +115,13 @@ extension AlbumLayoutVC : UICollectionViewDelegate, UICollectionViewDataSource, 
         return CGSize(width: 74, height: 102)
     }
 }
+
+
+class albumLayoutCollectionCell: UICollectionViewCell {
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var selectImageView: UIImageView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+}

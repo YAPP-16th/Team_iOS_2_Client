@@ -9,7 +9,7 @@
 import UIKit
 
 
-class AlbumNameController : UIViewController {
+class AlbumNameVC : UIViewController {
     @IBOutlet weak var buttonConstraint: NSLayoutConstraint!
     @IBOutlet weak var tfAlbumName: UITextField!
     @IBOutlet weak var nameLabel: UILabel!
@@ -20,7 +20,7 @@ class AlbumNameController : UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func clickNextBtn(_ sender : Any){
-        let nextVC = storyboard?.instantiateViewController(withIdentifier : "AlbumPeriodController") as! AlbumPeriodController
+        let nextVC = storyboard?.instantiateViewController(withIdentifier : "AlbumPeriodController") as! AlbumPeriodVC
         nextVC.albumName = tfAlbumName.text!
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
@@ -39,7 +39,7 @@ class AlbumNameController : UIViewController {
 }
 
 
-extension AlbumNameController : UITextFieldDelegate {
+extension AlbumNameVC : UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         tfAlbumName.endEditing(true)
     }
@@ -51,29 +51,28 @@ extension AlbumNameController : UITextFieldDelegate {
 }
 
 
-extension AlbumNameController {
+extension AlbumNameVC {
     func textFieldSetting(){
         tfAlbumName.delegate = self
         tfAlbumName.becomeFirstResponder()
         tfAlbumName.clearButtonMode = .whileEditing
-        nameLabel.textLineSpacing(firstText: "이 앨범은 어떤 앨범인가요?", secondText: "이름을 정해 주세요 :)")
     }
     
     func defaultSetting(){
         nextBtn.layer.cornerRadius = 10
         nextBtn.isEnabled = false
+        nameLabel.textLineSpacing(firstText: "이 앨범은 어떤 앨범인가요?", secondText: "이름을 정해 주세요 :)")
+        
         NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: tfAlbumName, queue: .main, using : {
             _ in
             let str = self.tfAlbumName.text!.trimmingCharacters(in: .whitespaces)
             
             if !str.isEmpty {
                 self.selectorLabel.backgroundColor = UIColor.black
-                self.nextBtn.backgroundColor = UIColor.colorRGBHex(hex: 0xe33e28)
-                self.nextBtn.isEnabled = true
-            }else {
+                self.nextBtn.switchComplete(next: true)
+            } else {
                 self.selectorLabel.backgroundColor = UIColor.lightGray
-                self.nextBtn.backgroundColor = UIColor.lightGray
-                self.nextBtn.isEnabled = false
+                self.nextBtn.switchComplete(next: false)
             }
         })
     }
@@ -85,7 +84,7 @@ extension AlbumNameController {
 }
 
 
-extension AlbumNameController {
+extension AlbumNameVC {
     @objc func keyboardWillShow(_ notification: Notification) {
         let userInfo = notification.userInfo
         let keyboardSize = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
