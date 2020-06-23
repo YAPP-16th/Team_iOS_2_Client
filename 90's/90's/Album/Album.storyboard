@@ -277,7 +277,7 @@
                                             <constraint firstAttribute="width" constant="74" id="dOu-t8-WwQ"/>
                                             <constraint firstAttribute="height" constant="78" id="fbI-4h-7RY"/>
                                         </constraints>
-                                        <state key="normal" image="backicon">
+                                        <state key="normal" image="iconBack">
                                             <color key="titleColor" red="0.19598248600000001" green="0.1883642673" blue="0.18039122220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
@@ -298,10 +298,7 @@
                                 <viewLayoutGuide key="safeArea" id="rbI-GB-z0t"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="piZ-Kt-JiQ">
-                                <rect key="frame" x="20" y="138" width="312" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="72" id="nYg-bt-eLt"/>
-                                </constraints>
+                                <rect key="frame" x="20" y="132" width="312" height="48"/>
                                 <string key="text">이 앨범은 어떤 앨범인가요?
 이름을 정해 주세요 :)</string>
                                 <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="24"/>
@@ -309,7 +306,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="앨범 이름 입력" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iW7-rn-GAu">
-                                <rect key="frame" x="20" y="260" width="374" height="30"/>
+                                <rect key="frame" x="20" y="254" width="374" height="30"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="7n7-Xw-TD6"/>
@@ -332,7 +329,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="haU-dI-sys">
-                                <rect key="frame" x="20" y="301" width="374" height="1"/>
+                                <rect key="frame" x="20" y="295" width="374" height="1"/>
                                 <color key="backgroundColor" red="0.78064209220000003" green="0.78773427009999997" blue="0.81569117310000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="cKZ-Bb-qgU"/>
@@ -348,7 +345,7 @@
                             <constraint firstItem="iW7-rn-GAu" firstAttribute="top" secondItem="piZ-Kt-JiQ" secondAttribute="bottom" constant="74" id="1aV-gf-hV6"/>
                             <constraint firstItem="iW7-rn-GAu" firstAttribute="leading" secondItem="J80-he-hTM" secondAttribute="leading" constant="20" id="2VU-zV-k2k"/>
                             <constraint firstItem="2An-ls-IV1" firstAttribute="top" secondItem="J80-he-hTM" secondAttribute="top" id="CQE-n8-lz9"/>
-                            <constraint firstItem="piZ-Kt-JiQ" firstAttribute="top" secondItem="2An-ls-IV1" secondAttribute="bottom" constant="16" id="Oad-oh-B8x"/>
+                            <constraint firstItem="piZ-Kt-JiQ" firstAttribute="top" secondItem="2An-ls-IV1" secondAttribute="bottom" constant="10" id="Oad-oh-B8x"/>
                             <constraint firstItem="piZ-Kt-JiQ" firstAttribute="leading" secondItem="J80-he-hTM" secondAttribute="leading" constant="20" id="P5Y-Mw-xab"/>
                             <constraint firstItem="bb4-ii-0MG" firstAttribute="leading" secondItem="J80-he-hTM" secondAttribute="leading" constant="18" id="ViU-18-R2w"/>
                             <constraint firstItem="2An-ls-IV1" firstAttribute="trailing" secondItem="J80-he-hTM" secondAttribute="trailing" id="Wfo-iU-XWS"/>
@@ -365,7 +362,6 @@
                         <outlet property="buttonConstraint" destination="Ygv-u8-5Lb" id="qMj-5q-glP"/>
                         <outlet property="nameLabel" destination="piZ-Kt-JiQ" id="3d8-mL-WaQ"/>
                         <outlet property="nextBtn" destination="bb4-ii-0MG" id="c5i-XI-DPH"/>
-                        <outlet property="nextLabelHeight" destination="nYg-bt-eLt" id="8Ko-qT-J6V"/>
                         <outlet property="selectorLabel" destination="haU-dI-sys" id="AwJ-Lc-mZ7"/>
                         <outlet property="tfAlbumName" destination="iW7-rn-GAu" id="clp-AZ-9lQ"/>
                     </connections>
@@ -406,7 +402,7 @@
                                             <constraint firstAttribute="height" constant="78" id="H5W-Le-OA6"/>
                                             <constraint firstAttribute="width" constant="74" id="HZC-MU-beb"/>
                                         </constraints>
-                                        <state key="normal" image="backicon">
+                                        <state key="normal" image="iconBack">
                                             <color key="titleColor" red="0.19598248600000001" green="0.1883642673" blue="0.18039122220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
@@ -429,7 +425,7 @@
                                 <viewLayoutGuide key="safeArea" id="xd0-uL-iq5"/>
                             </view>
                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="2020년 4월 5일" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8su-4P-hsC">
-                                <rect key="frame" x="20" y="236" width="170" height="36"/>
+                                <rect key="frame" x="20" y="212" width="170" height="36"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="0Jt-U9-gdN"/>
@@ -454,7 +450,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="부터" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymS-RA-KWa">
-                                <rect key="frame" x="200" y="236" width="44.5" height="36"/>
+                                <rect key="frame" x="200" y="212" width="44.5" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="X1W-kJ-9Oi"/>
                                 </constraints>
@@ -463,7 +459,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8jM-ix-1Li">
-                                <rect key="frame" x="20" y="293" width="170" height="36"/>
+                                <rect key="frame" x="20" y="269" width="170" height="36"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="XW1-3F-t3w"/>
@@ -473,13 +469,13 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앨범의 기간을 정해주세요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgC-i9-9kR">
-                                <rect key="frame" x="20" y="156" width="288" height="24"/>
+                                <rect key="frame" x="20" y="132" width="288" height="24"/>
                                 <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2w-Nx-F1J">
-                                <rect key="frame" x="20" y="278" width="170" height="1"/>
+                                <rect key="frame" x="20" y="254" width="170" height="1"/>
                                 <color key="backgroundColor" red="0.78064209220000003" green="0.78773427009999997" blue="0.81569117310000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="6DV-AC-Jnl"/>
@@ -490,7 +486,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WTD-4Z-PcN">
-                                <rect key="frame" x="20" y="335" width="170" height="1"/>
+                                <rect key="frame" x="20" y="311" width="170" height="1"/>
                                 <color key="backgroundColor" red="0.78064209220000003" green="0.78773427009999997" blue="0.81569117310000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="170" id="K21-FG-5XV"/>
@@ -501,7 +497,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="까지" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQY-K9-EVx">
-                                <rect key="frame" x="200" y="293" width="44.5" height="36"/>
+                                <rect key="frame" x="200" y="269" width="44.5" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="t5P-ND-40f"/>
                                 </constraints>
@@ -523,7 +519,7 @@
                             <constraint firstItem="WTD-4Z-PcN" firstAttribute="top" secondItem="8jM-ix-1Li" secondAttribute="bottom" constant="6" id="VSL-BW-uVS"/>
                             <constraint firstItem="GJP-J7-lRP" firstAttribute="leading" secondItem="VlB-Fq-AUg" secondAttribute="leading" constant="18" id="aI6-8R-2ir"/>
                             <constraint firstItem="8jM-ix-1Li" firstAttribute="top" secondItem="f2w-Nx-F1J" secondAttribute="bottom" constant="14" id="aTJ-V5-mpX"/>
-                            <constraint firstItem="rgC-i9-9kR" firstAttribute="top" secondItem="AiF-Fm-aR8" secondAttribute="bottom" constant="34" id="aWb-LY-jWv"/>
+                            <constraint firstItem="rgC-i9-9kR" firstAttribute="top" secondItem="AiF-Fm-aR8" secondAttribute="bottom" constant="10" id="aWb-LY-jWv"/>
                             <constraint firstItem="ymS-RA-KWa" firstAttribute="top" secondItem="rgC-i9-9kR" secondAttribute="bottom" constant="56" id="cBP-0f-05s"/>
                             <constraint firstItem="VlB-Fq-AUg" firstAttribute="bottom" secondItem="GJP-J7-lRP" secondAttribute="bottom" constant="14" id="ipG-EH-yZM"/>
                             <constraint firstItem="8su-4P-hsC" firstAttribute="top" secondItem="rgC-i9-9kR" secondAttribute="bottom" constant="56" id="jLz-Qn-dLy"/>
@@ -537,6 +533,7 @@
                     </view>
                     <connections>
                         <outlet property="buttonConstraint" destination="ipG-EH-yZM" id="V4s-ot-8vc"/>
+                        <outlet property="label" destination="rgC-i9-9kR" id="6CT-Ou-656"/>
                         <outlet property="nextBtn" destination="GJP-J7-lRP" id="2mF-Xl-7XO"/>
                         <outlet property="selectorLabel1" destination="f2w-Nx-F1J" id="P1X-MW-LKS"/>
                         <outlet property="selectorLabel2" destination="WTD-4Z-PcN" id="mvP-xO-4Kh"/>
@@ -580,7 +577,7 @@
                                             <constraint firstAttribute="height" constant="78" id="OuZ-4P-8Dn"/>
                                         </constraints>
                                         <inset key="titleEdgeInsets" minX="0.0" minY="-1" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" image="backicon">
+                                        <state key="normal" image="iconBack">
                                             <color key="titleColor" red="0.19598248600000001" green="0.1883642673" blue="0.18039122220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
@@ -661,11 +658,8 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앨범 커버를 선택해 주세요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZ7-jr-2XM">
-                                <rect key="frame" x="20" y="138" width="300" height="72"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="72" id="n2m-cF-9B6"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앨범 커버를 선택해 주세요" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZ7-jr-2XM">
+                                <rect key="frame" x="20" y="132" width="300" height="24"/>
                                 <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -685,7 +679,7 @@
                             <constraint firstItem="NfI-z8-F2Y" firstAttribute="leading" secondItem="rQh-Dm-2md" secondAttribute="leading" constant="70.5" id="M2W-1y-hJ2"/>
                             <constraint firstItem="OeO-3M-aNO" firstAttribute="trailing" secondItem="rQh-Dm-2md" secondAttribute="trailing" id="Vk7-O6-Hjj"/>
                             <constraint firstItem="rQh-Dm-2md" firstAttribute="trailing" secondItem="NfI-z8-F2Y" secondAttribute="trailing" constant="70.5" id="aE2-MF-llQ"/>
-                            <constraint firstItem="PZ7-jr-2XM" firstAttribute="top" secondItem="OeO-3M-aNO" secondAttribute="bottom" constant="16" id="iI3-We-GpE"/>
+                            <constraint firstItem="PZ7-jr-2XM" firstAttribute="top" secondItem="OeO-3M-aNO" secondAttribute="bottom" constant="10" id="iI3-We-GpE"/>
                             <constraint firstItem="OeO-3M-aNO" firstAttribute="top" secondItem="rQh-Dm-2md" secondAttribute="top" id="lqe-bM-mST"/>
                             <constraint firstItem="ehu-hz-X3a" firstAttribute="bottom" secondItem="rQh-Dm-2md" secondAttribute="bottom" id="nUr-vc-k0j"/>
                             <constraint firstItem="ehu-hz-X3a" firstAttribute="trailing" secondItem="rQh-Dm-2md" secondAttribute="trailing" id="omP-Ny-jgU"/>
@@ -734,7 +728,7 @@
                                             <constraint firstAttribute="height" constant="78" id="3Qm-fJ-Tkj"/>
                                             <constraint firstAttribute="width" constant="74" id="o4B-0G-pRi"/>
                                         </constraints>
-                                        <state key="normal" image="backicon">
+                                        <state key="normal" image="iconBack">
                                             <color key="titleColor" red="0.19598248600000001" green="0.1883642673" blue="0.18039122220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
@@ -755,7 +749,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="장" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDe-Hq-PKX">
-                                <rect key="frame" x="105" y="291" width="23" height="36"/>
+                                <rect key="frame" x="105" y="261" width="23" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="23" id="0yh-0J-oUm"/>
                                     <constraint firstAttribute="height" constant="36" id="1PI-oE-Ll1"/>
@@ -765,10 +759,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDy-IC-0Tw">
-                                <rect key="frame" x="20" y="138" width="300" height="72"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="72" id="Pr1-ZK-OMF"/>
-                                </constraints>
+                                <rect key="frame" x="20" y="132" width="300" height="48"/>
                                 <string key="text">앨범에 들어갈
 사진의 수량을 정해 주세요</string>
                                 <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="24"/>
@@ -792,7 +783,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="sG0-uv-ffg">
-                                <rect key="frame" x="20" y="291" width="80" height="36"/>
+                                <rect key="frame" x="20" y="261" width="80" height="36"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="WET-aS-haU"/>
@@ -802,7 +793,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JiD-n6-nnS">
-                                <rect key="frame" x="20" y="333" width="80" height="1"/>
+                                <rect key="frame" x="20" y="303" width="80" height="1"/>
                                 <color key="backgroundColor" red="0.78064209220000003" green="0.78773427009999997" blue="0.81569117310000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="NsV-JN-CfP"/>
@@ -816,7 +807,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="sG0-uv-ffg" firstAttribute="leading" secondItem="DMi-XU-Ug0" secondAttribute="leading" constant="20" id="75T-ek-p6t"/>
-                            <constraint firstItem="CDy-IC-0Tw" firstAttribute="top" secondItem="xAJ-bm-MCP" secondAttribute="bottom" constant="16" id="D9L-HI-QDD"/>
+                            <constraint firstItem="CDy-IC-0Tw" firstAttribute="top" secondItem="xAJ-bm-MCP" secondAttribute="bottom" constant="10" id="D9L-HI-QDD"/>
                             <constraint firstItem="JiD-n6-nnS" firstAttribute="leading" secondItem="37K-eO-SQ8" secondAttribute="leadingMargin" id="Kug-DB-gV8"/>
                             <constraint firstItem="JDe-Hq-PKX" firstAttribute="leading" secondItem="sG0-uv-ffg" secondAttribute="trailing" constant="5" id="bVF-Kx-n1e"/>
                             <constraint firstItem="CDy-IC-0Tw" firstAttribute="leading" secondItem="DMi-XU-Ug0" secondAttribute="leading" constant="20" id="c0g-zF-5IK"/>
@@ -1049,7 +1040,7 @@
                                             <constraint firstAttribute="height" constant="78" id="8Ps-xl-ihT"/>
                                             <constraint firstAttribute="width" constant="74" id="k8q-zU-Cb0"/>
                                         </constraints>
-                                        <state key="normal" image="backicon">
+                                        <state key="normal" image="iconBack">
                                             <color key="titleColor" red="0.19598248600000001" green="0.1883642673" blue="0.18039122220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
@@ -1447,7 +1438,7 @@
                                             <constraint firstAttribute="height" constant="78" id="XHf-q3-0UI"/>
                                             <constraint firstAttribute="width" constant="74" id="fOk-g9-9t6"/>
                                         </constraints>
-                                        <state key="normal" image="backicon">
+                                        <state key="normal" image="iconBack">
                                             <color key="titleColor" red="0.19598248600000001" green="0.1883642673" blue="0.18039122220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
@@ -1529,16 +1520,13 @@
                                 </collectionReusableView>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앨범 레이아웃을 선택해 주세요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qf2-nH-qvg">
-                                <rect key="frame" x="20" y="138" width="348" height="72"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="72" id="kj8-OR-Hpk"/>
-                                </constraints>
+                                <rect key="frame" x="20" y="132" width="348" height="24"/>
                                 <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WNZ-32-Aib">
-                                <rect key="frame" x="70" y="230" width="274" height="425"/>
+                                <rect key="frame" x="70" y="202" width="274" height="453"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wfo-Gm-5ve" userLabel="Line">
                                 <rect key="frame" x="0.0" y="709" width="414" height="1"/>
@@ -1572,9 +1560,9 @@
                             <constraint firstItem="h90-9n-Bhs" firstAttribute="width" secondItem="ZY7-AJ-FZx" secondAttribute="width" id="DFK-rd-gnJ"/>
                             <constraint firstAttribute="trailing" secondItem="Wfo-Gm-5ve" secondAttribute="trailing" id="FWh-Ul-3aB"/>
                             <constraint firstItem="o4j-wg-9RT" firstAttribute="trailing" secondItem="Tiq-OO-IaX" secondAttribute="trailing" id="NCW-Qx-m3V"/>
-                            <constraint firstItem="Qf2-nH-qvg" firstAttribute="top" secondItem="o4j-wg-9RT" secondAttribute="bottom" constant="16" id="S1M-7t-Qug"/>
-                            <constraint firstItem="WNZ-32-Aib" firstAttribute="top" secondItem="Qf2-nH-qvg" secondAttribute="bottom" constant="20" id="apm-UA-DPZ"/>
+                            <constraint firstItem="Qf2-nH-qvg" firstAttribute="top" secondItem="o4j-wg-9RT" secondAttribute="bottom" constant="10" id="S1M-7t-Qug"/>
                             <constraint firstItem="o4j-wg-9RT" firstAttribute="leading" secondItem="Tiq-OO-IaX" secondAttribute="leading" id="cBn-DR-lRo"/>
+                            <constraint firstItem="WNZ-32-Aib" firstAttribute="top" secondItem="o4j-wg-9RT" secondAttribute="bottom" constant="80" id="eOe-3m-UNV"/>
                             <constraint firstItem="Tiq-OO-IaX" firstAttribute="trailing" secondItem="WNZ-32-Aib" secondAttribute="trailing" constant="70" id="fUg-Ru-cqP"/>
                             <constraint firstItem="Tiq-OO-IaX" firstAttribute="bottom" secondItem="h90-9n-Bhs" secondAttribute="bottom" constant="26" id="hDQ-7D-Axz"/>
                             <constraint firstItem="WNZ-32-Aib" firstAttribute="leading" secondItem="Tiq-OO-IaX" secondAttribute="leading" constant="70" id="hwz-Xy-350"/>
@@ -1618,7 +1606,7 @@
                                                             <constraint firstAttribute="width" constant="74" id="8oF-Ry-O6t"/>
                                                             <constraint firstAttribute="height" constant="78" id="g0P-Bj-iS6"/>
                                                         </constraints>
-                                                        <state key="normal" image="backicon">
+                                                        <state key="normal" image="iconBack">
                                                             <color key="titleColor" red="0.19598248600000001" green="0.1883642673" blue="0.18039122220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
                                                         <connections>
@@ -2098,7 +2086,7 @@
                                                             <constraint firstAttribute="height" constant="78" id="Beq-7F-HZC"/>
                                                             <constraint firstAttribute="width" constant="74" id="Prj-ev-lSs"/>
                                                         </constraints>
-                                                        <state key="normal" image="backicon">
+                                                        <state key="normal" image="iconBack">
                                                             <color key="titleColor" red="0.19598248600000001" green="0.1883642673" blue="0.18039122220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
                                                         <connections>
@@ -2116,10 +2104,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앨범이 완성되었습니다!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAg-Si-sza">
-                                                <rect key="frame" x="20" y="94" width="264" height="72"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="72" id="tup-MO-y8M"/>
-                                                </constraints>
+                                                <rect key="frame" x="20" y="88" width="264" height="24"/>
                                                 <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -2248,7 +2233,7 @@
                                             <constraint firstItem="4dO-Am-UQG" firstAttribute="width" secondItem="vLj-4F-Ar4" secondAttribute="width" multiplier="0.917874" id="7fN-Vb-IVK"/>
                                             <constraint firstItem="zpU-0s-2nO" firstAttribute="leading" secondItem="vLj-4F-Ar4" secondAttribute="leading" id="8YI-Zh-0Tn"/>
                                             <constraint firstAttribute="height" constant="818" id="EeO-PL-vUF"/>
-                                            <constraint firstItem="rAg-Si-sza" firstAttribute="top" secondItem="zpU-0s-2nO" secondAttribute="bottom" constant="16" id="Ixb-KJ-2fN"/>
+                                            <constraint firstItem="rAg-Si-sza" firstAttribute="top" secondItem="zpU-0s-2nO" secondAttribute="bottom" constant="10" id="Ixb-KJ-2fN"/>
                                             <constraint firstItem="gBS-VW-uFb" firstAttribute="top" secondItem="vLj-4F-Ar4" secondAttribute="top" id="Vgn-Cw-XYK"/>
                                             <constraint firstItem="4dO-Am-UQG" firstAttribute="top" secondItem="l0j-a1-5Yj" secondAttribute="bottom" constant="12" id="a5i-s3-Xsa"/>
                                             <constraint firstAttribute="trailing" secondItem="gBS-VW-uFb" secondAttribute="trailing" id="jve-Nx-njk"/>
@@ -2324,7 +2309,6 @@
         <image name="addMember" width="86" height="19"/>
         <image name="addPhotoButton" width="63" height="63"/>
         <image name="albumThumbnailCheckbox" width="104" height="108"/>
-        <image name="backicon" width="267" height="267"/>
         <image name="cameraIcon" width="109" height="69"/>
         <image name="cancelButtonWhite" width="37" height="37"/>
         <image name="cancleicon" width="267" height="267"/>
@@ -2336,6 +2320,7 @@
         <image name="iconAdd" width="22" height="22"/>
         <image name="iconAlbumAct" width="30" height="26"/>
         <image name="iconAlbumInact" width="31" height="26"/>
+        <image name="iconBack" width="14" height="23"/>
         <image name="iconInformation" width="24" height="25"/>
         <image name="iconInvitation" width="27" height="24"/>
         <image name="iconMembers" width="19" height="19"/>

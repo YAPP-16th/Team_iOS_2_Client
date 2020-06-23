@@ -16,7 +16,7 @@ class AlbumMainController: UIViewController {
     @IBOutlet weak var albumView: UIView!
     @IBOutlet weak var albumCollectionView: UICollectionView!
     @IBAction func clickMakeBtn(_ sender: Any){
-        let nextVC = storyboard?.instantiateViewController(withIdentifier : "AlbumNameController") as! AlbumNameController
+        let nextVC = storyboard?.instantiateViewController(withIdentifier : "AlbumNameController") as! AlbumNameVC
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     @IBOutlet weak var emptyAlbumView: UIView!

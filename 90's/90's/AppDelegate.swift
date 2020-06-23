@@ -232,6 +232,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabVC = mainSB.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
         let tabNav = UINavigationController(rootViewController: tabVC)
         tabNav.isNavigationBarHidden = true
+        tabVC.selectedIndex = 1
         
         self.window?.rootViewController = tabNav
         self.window?.makeKeyAndVisible()

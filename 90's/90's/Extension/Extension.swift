@@ -19,6 +19,20 @@ extension String {
     }
 }
 
+
+extension UIButton {
+    func switchComplete(next : Bool){
+        switch next {
+        case true :
+            self.isEnabled = true
+            self.backgroundColor = UIColor.colorRGBHex(hex: 0xe33e28)
+        case false :
+            self.isEnabled = false
+            self.backgroundColor = UIColor.colorRGBHex(hex: 0xc7c9d0)
+        }
+    }
+}
+
 extension Int {
     public func numberToPrice(_ price : Int) -> String {
         let numberFormatter = NumberFormatter()
@@ -95,8 +109,6 @@ extension UITextField {
 
 
 extension UIViewController{
-    
-    
     // imageCropVC - layoutView setting
     func setSubViewFrameSetting(view : UIView, subView : UIView, top : CGFloat, left: CGFloat, right: CGFloat, bottom : CGFloat){
         subView.translatesAutoresizingMaskIntoConstraints = false

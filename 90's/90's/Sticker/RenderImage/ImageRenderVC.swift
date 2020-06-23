@@ -81,8 +81,7 @@ class ImageRenderVC: UIViewController {
             switch touch!.view {
             case sticker?.resizeImageView :
                 let position = touch!.location(in: self.view)
-                let target = sticker?.center
-                let size = max((position.x / target!.x), (position.y / target!.y))
+                let size = max((position.x / sticker!.center.x), (position.y / sticker!.center.y))
                 let scale = CGAffineTransform(scaleX: size, y: size)
 
                 let ang = pToA(touch!) - initialAngle
@@ -116,6 +115,7 @@ extension ImageRenderVC {
         nameCollectionView.dataSource = self
         nameCollectionView.delegate = self
         photoView = saveView
+        layoutImage.addSubview(renderImage)
     }
     
     private func layoutSetting(){
