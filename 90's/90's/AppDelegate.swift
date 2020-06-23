@@ -43,6 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //카카오톡 사용자 토큰 주기적 갱신
         KOSession.shared()?.isAutomaticPeriodicRefresh = true
+        UITabBar.appearance().backgroundColor = UIColor.colorRGBHex(hex: 0xeef0f5)
+        UITabBar.appearance().layer.borderWidth = 0.0
+        UITabBar.appearance().clipsToBounds = true
         
         return true
     }

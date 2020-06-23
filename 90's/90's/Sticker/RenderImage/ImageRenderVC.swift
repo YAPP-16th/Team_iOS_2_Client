@@ -53,7 +53,6 @@ class ImageRenderVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        buttonSetting()
         defaultSetting()
         layoutSetting()
     }
@@ -103,10 +102,6 @@ class ImageRenderVC: UIViewController {
 
 
 extension ImageRenderVC {
-    private func buttonSetting(){
-        completeBtn.addTarget(self, action: #selector(touchCompleteBtn), for: .touchUpInside)
-    }
-    
     private func defaultSetting(){
         stickerCollectionView.dataSource = self
         stickerCollectionView.delegate = self
@@ -115,11 +110,12 @@ extension ImageRenderVC {
         nameCollectionView.dataSource = self
         nameCollectionView.delegate = self
         photoView = saveView
-        layoutImage.addSubview(renderImage)
+        completeBtn.addTarget(self, action: #selector(touchCompleteBtn), for: .touchUpInside)
     }
     
     private func layoutSetting(){
         deviceSize = iPhone8Model() ? selectLayout.deviceLowSize : selectLayout.deviceHighSize
+        layoutImage.addSubview(renderImage)
         
         // 레이아웃 크기 조정
         layoutImage = applyBackImageViewLayout(selectedLayout: selectLayout, smallBig: deviceSize, imageView: layoutImage)
