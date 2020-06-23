@@ -9,7 +9,7 @@ import UIKit
 
 class ImageRenderVC: UIViewController {
     @IBOutlet weak var topView: UIView!
-    @IBOutlet weak var saveView: UIView!
+//    @IBOutlet weak var saveView: UIView!
     @IBOutlet weak var focusView: UIView!
     @IBOutlet weak var renderImage: UIImageView!
     @IBOutlet weak var layoutImage: UIImageView!
@@ -43,7 +43,7 @@ class ImageRenderVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        for view in saveView.subviews {
+        for view in layoutImage.subviews {
             if view is StickerLayout {
                 view.removeFromSuperview()
             }
@@ -109,7 +109,7 @@ extension ImageRenderVC {
         nameCollectionView.allowsMultipleSelection = false
         nameCollectionView.dataSource = self
         nameCollectionView.delegate = self
-        photoView = saveView
+        photoView = layoutImage
         completeBtn.addTarget(self, action: #selector(touchCompleteBtn), for: .touchUpInside)
     }
     
@@ -124,8 +124,8 @@ extension ImageRenderVC {
         renderImage = iPhone8Model() ? applyStickerLowDeviceImageViewLayout(selectedLayout: selectLayout, smallBig: deviceSize, imageView: renderImage, image: image!) : applyStickerHighDeviceImageViewLayout(selectedLayout: selectLayout, smallBig: deviceSize, imageView: renderImage, image: image!)
 
         // 뷰 위치 조정
-        setRenderSaveViewFrameSetting(view: saveView, selectLayout: selectLayout, size: deviceSize)
-        setRenderLayoutViewFrameSetting(view: saveView, imageView: layoutImage, top: 0, left: 0, right: 0, bottom: 0)
+        setRenderSaveViewFrameSetting(view: layoutImage, selectLayout: selectLayout, size: deviceSize)
+        //setRenderLayoutViewFrameSetting(view: view, imageView: layoutImage, top: 0, left: 0, right: 0, bottom: 0)
     }
     
     private func resetValues(){
@@ -158,10 +158,10 @@ extension ImageRenderVC {
     private func createStickerView(image : UIImage, indexPathRow : Int){
         sticker = StickerLayout.loadFromZib(image: image)
         sticker!.frame.size = CGSize(width: 120, height: 120)
-        sticker!.center = CGPoint(x: saveView.center.x - 30, y: saveView.center.y - 200)
+        sticker!.center = CGPoint(x: view.center.x - 30, y: view.center.y - 200)
         createGesture(view: sticker!.backImageView)
         focusView.isHidden = false
-        self.saveView.addSubview(sticker!)
+        self.layoutImage.addSubview(sticker!)
         stickerArray.append(sticker!)
     }
     
@@ -182,16 +182,16 @@ extension ImageRenderVC {
 
 extension ImageRenderVC {
     @objc private func touchCompleteBtn(){
-        for views in saveView.subviews {
-            if(views is StickerLayout){
+        for views in layoutImage.subviews {
+            if views is StickerLayout {
                 (views as! StickerLayout).cancleImageView.isHidden = true
                 (views as! StickerLayout).resizeImageView.isHidden = true
             }
         }
         
-        let renderer = UIGraphicsImageRenderer(size: saveView.bounds.size)
+        let renderer = UIGraphicsImageRenderer(size: layoutImage.bounds.size)
         let renderImage = renderer.image { ctx in
-            saveView.drawHierarchy(in: saveView.bounds, afterScreenUpdates: true)
+            layoutImage.drawHierarchy(in: layoutImage.bounds, afterScreenUpdates: true)
         }
         
         goToNextVC(image: renderImage)
@@ -276,5 +276,20 @@ extension ImageRenderVC : UICollectionViewDelegate, UICollectionViewDataSource, 
         } else {
             createStickerView(image: stickerImages[indexPath.row], indexPathRow: indexPath.row)
         }
+    }
+}
+
+
+class StickerHeaderCell: UICollectionViewCell {
+    @IBOutlet weak var label : UILabel!
+}
+
+
+class photoStickerCollectionCell: UICollectionViewCell {
+    @IBOutlet weak var imageView: UIImageView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.contentView.layer.cornerRadius = 40
     }
 }
