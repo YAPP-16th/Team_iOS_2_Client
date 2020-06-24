@@ -56,11 +56,11 @@ class TermViewController: UIViewController {
         
         if(isAllTermBtnClicked){
             agreeAllTermBtn.setBackgroundImage(UIImage(named: "checkboxInact"), for: .normal)
-            okBtn.backgroundColor = UIColor(displayP3Red: 227/255, green: 62/255, blue: 40/255, alpha: 1.0)
+            okBtn.backgroundColor = UIColor(red: 227/255, green: 62/255, blue: 40/255, alpha: 1.0)
             okBtn.isEnabled = true
         }else {
             agreeAllTermBtn.setBackgroundImage(UIImage(named: "checkboxgray"), for: .normal)
-            okBtn.backgroundColor = UIColor(displayP3Red: 199/255, green: 201/255, blue: 208/255, alpha: 1.0)
+            okBtn.backgroundColor = UIColor(red: 199/255, green: 201/255, blue: 208/255, alpha: 1.0)
             okBtn.isEnabled = false
         }
         self.termTableView.reloadData()
@@ -120,11 +120,11 @@ extension TermViewController : ClickDelegate {
         
         if(agreeCount == 3){
             agreeAllTermBtn.setBackgroundImage(UIImage(named: "checkboxInact"), for: .normal)
-            okBtn.backgroundColor = UIColor(displayP3Red: 227/255, green: 62/255, blue: 40/255, alpha: 1.0)
+            okBtn.backgroundColor = UIColor(red: 227/255, green: 62/255, blue: 40/255, alpha: 1.0)
             okBtn.isEnabled = true
         }else {
             agreeAllTermBtn.setBackgroundImage(UIImage(named: "checkboxgray"), for: .normal)
-            okBtn.backgroundColor = UIColor(displayP3Red: 199/255, green: 201/255, blue: 208/255, alpha: 1.0)
+            okBtn.backgroundColor = UIColor(red: 199/255, green: 201/255, blue: 208/255, alpha: 1.0)
             okBtn.isEnabled = false
         }
     }

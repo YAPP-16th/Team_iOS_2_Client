@@ -98,13 +98,13 @@ class TelephoneAuthenViewController: UIViewController {
                     self.isInitial2 = true
                 }
                 self.selectorImageView1.image = UIImage(named: "path378Black")
-                self.askNumberBtn.backgroundColor = UIColor(displayP3Red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
+                self.askNumberBtn.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
                 self.askNumberBtn.isEnabled = true
             }else {
                 self.isInitial1 = false
                 self.isInitial2 = false
                 self.selectorImageView1.image = UIImage(named: "path378Grey1")
-                self.askNumberBtn.backgroundColor = UIColor(displayP3Red: 199/255, green: 201/255, blue: 208/255, alpha: 1.0)
+                self.askNumberBtn.backgroundColor = UIColor(red: 199/255, green: 201/255, blue: 208/255, alpha: 1.0)
                 self.askNumberBtn.isEnabled = false
             }
             
@@ -116,11 +116,11 @@ class TelephoneAuthenViewController: UIViewController {
             
             if(str != ""){
                 self.selectorImageView2.image = UIImage(named: "path378Black")
-                self.okBtn.backgroundColor = UIColor(displayP3Red: 227/255, green: 62/255, blue: 40/255, alpha: 1.0)
+                self.okBtn.backgroundColor = UIColor(red: 227/255, green: 62/255, blue: 40/255, alpha: 1.0)
                 self.okBtn.isEnabled = true
             }else {
                 self.selectorImageView2.image = UIImage(named: "path378Grey1")
-                self.okBtn.backgroundColor =  UIColor(displayP3Red: 199/255, green: 201/255, blue: 208/255, alpha: 1.0)
+                self.okBtn.backgroundColor =  UIColor(red: 199/255, green: 201/255, blue: 208/255, alpha: 1.0)
                 self.okBtn.isEnabled = false
             }
             
