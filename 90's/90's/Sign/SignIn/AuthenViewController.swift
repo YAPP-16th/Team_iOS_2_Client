@@ -78,6 +78,7 @@ class AuthenViewController: UIViewController {
         okBtn.isEnabled = false
         okBtn.layer.cornerRadius = 8.0
         askNumberBtn.layer.cornerRadius = 8.0
+        titleLabel.textLineSpacing(firstText: "전화번호를", secondText: "인증해 주세요")
     }
     
     //Observer

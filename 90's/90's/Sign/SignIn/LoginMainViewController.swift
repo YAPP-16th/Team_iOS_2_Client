@@ -10,6 +10,7 @@ import UIKit
 
 
 class LoginMainViewController: UIViewController, UITextFieldDelegate {
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var emailValidationLabel: UILabel!
     @IBOutlet weak var selectorImageView1: UIImageView!
@@ -139,6 +140,7 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
         tfPass.isEnabled = false
         loginBtn.isEnabled = false
         loginBtn.layer.cornerRadius = 8.0
+        titleLabel.textLineSpacing(firstText: "환영합니다:)", secondText: "로그인해 주세요")
         
     }
     

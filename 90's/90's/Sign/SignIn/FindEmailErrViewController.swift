@@ -9,6 +9,7 @@
 import UIKit
 
 class FindEmailErrViewController: UIViewController {
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var findAgainBtn: UIButton!
     @IBOutlet weak var loginBtn: UIButton!
     
@@ -34,6 +35,7 @@ class FindEmailErrViewController: UIViewController {
     func setUI(){
         findAgainBtn.layer.cornerRadius = 8.0
         loginBtn.layer.cornerRadius = 8.0
+        titleLabel.textLineSpacing(firstText: "해당 번호로 등록된", secondText: "이메일이 없습니다")
     }
     
 }
