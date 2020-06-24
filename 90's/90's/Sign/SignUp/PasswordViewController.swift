@@ -18,6 +18,7 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var buttonConst: NSLayoutConstraint!
     @IBOutlet weak var topConst: NSLayoutConstraint!
+    @IBOutlet weak var titleLabel: UILabel!
     
     var keyboardFlag = false
     var email:String!
@@ -54,7 +55,7 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
         tfConfirmPass.isEnabled = false
         validationLabel.isHidden = true
         nextBtn.layer.cornerRadius = 8.0
-        
+         titleLabel.textLineSpacing(firstText: "비밀번호를", secondText: "입력해주세요")
     }
     
     func setObserver(){

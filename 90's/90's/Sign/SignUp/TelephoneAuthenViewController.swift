@@ -76,6 +76,7 @@ class TelephoneAuthenViewController: UIViewController {
         okBtn.isEnabled = false
         okBtn.layer.cornerRadius = 8.0
         askNumberBtn.layer.cornerRadius = 8.0
+         titleLabel.textLineSpacing(firstText: "마지막 단계입니다!", secondText: "전화번호를 입력해 주세요")
         
         if(isSocial){
             pathImageVIew.isHidden = true

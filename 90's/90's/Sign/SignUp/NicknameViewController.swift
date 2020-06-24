@@ -10,6 +10,7 @@ import UIKit
 
 class NicknameViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tfNickname: UITextField!
     @IBOutlet weak var selectorImageView: UIImageView!
     @IBOutlet weak var nextBtn: UIButton!
@@ -42,6 +43,7 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
     func setUI(){
         tfNickname.delegate = self
         nextBtn.layer.cornerRadius = 8.0
+         titleLabel.textLineSpacing(firstText: "닉네임을", secondText: "입력해 주세요")
     }
     
     func setObserver(){

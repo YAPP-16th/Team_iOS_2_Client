@@ -9,13 +9,14 @@
 import UIKit
 
 class CompleteViewController: UIViewController {
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var loginBtn: UIButton!
     var isSocial:Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loginBtn.layer.cornerRadius = 8.0
-        
+        titleLabel.textLineSpacing(firstText: "축하합니다!", secondText: "90's의 회원이 되었습니다")
     }
     
     @IBAction func goBack(_ sender: Any) {

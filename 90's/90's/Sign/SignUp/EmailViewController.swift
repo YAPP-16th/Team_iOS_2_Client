@@ -15,6 +15,7 @@ class EmailViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var emailValidationLabel: UILabel!
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var buttonConst: NSLayoutConstraint!
+    @IBOutlet weak var titleLabel: UILabel!
     
     var email:String!
     
@@ -46,6 +47,7 @@ class EmailViewController: UIViewController, UITextFieldDelegate{
         tfEmail.delegate = self
         emailValidationLabel.isHidden = true
         nextBtn.layer.cornerRadius = 8.0
+        titleLabel.textLineSpacing(firstText: "환영합니다!", secondText: "이메일을 입력해주세요")
     }
     
     func setObserver(){
