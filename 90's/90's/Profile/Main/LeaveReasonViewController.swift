@@ -13,6 +13,7 @@ protocol clickReasonDelegate: NSObjectProtocol {
 }
 
 class LeaveReasonViewController: UIViewController {
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var reasonTableView: UITableView!
     @IBOutlet weak var leaveBtn:UIButton!
     var reasonClickFlag = false
@@ -39,6 +40,7 @@ class LeaveReasonViewController: UIViewController {
         reasonTableView.dataSource = self
         leaveBtn.isEnabled = false
         leaveBtn.layer.cornerRadius = 8.0
+        titleLabel.textLineSpacing(firstText: "탈퇴를 결심한 이유는", secondText: "무엇인가요?")
     }
     
     func leave(){

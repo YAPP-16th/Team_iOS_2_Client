@@ -59,24 +59,11 @@ class ProfileAuthenViewController: UIViewController {
     func setUI(){
         
         titleLabel.text = authenType
-        switch authenType {
-        case "이메일 변경", "비밀번호 변경":
-            validationLabel.isHidden = true
-            okBtn.isEnabled = false
-            okBtn.layer.cornerRadius = 8.0
-            askNumberBtn.layer.cornerRadius = 8.0
-            break
-        case "전화번호 변경":
-            subTitleLabel.text = "새로운 전화번호를\n인증해주세요"
-            validationLabel.isHidden = true
-            okBtn.isEnabled = false
-            okBtn.layer.cornerRadius = 8.0
-            askNumberBtn.layer.cornerRadius = 8.0
-            break
-        default:
-            break
-        }
-        
+        subTitleLabel.textLineSpacing(firstText: "전화번호를", secondText: "입력해 주세요")
+        validationLabel.isHidden = true
+        okBtn.isEnabled = false
+        okBtn.layer.cornerRadius = 8.0
+        askNumberBtn.layer.cornerRadius = 8.0
         
     }
     
@@ -155,7 +142,6 @@ class ProfileAuthenViewController: UIViewController {
         let keyboardHeight = keyboardSize.cgRectValue.height
         
         let frameHeight = self.view.frame.height
-        print("\(frameHeight)")
         if(frameHeight >= 736.0){
             //iphone6+, iphoneX ... (화면이 큰 휴대폰)
             buttonConst.constant = keyboardHeight - 18

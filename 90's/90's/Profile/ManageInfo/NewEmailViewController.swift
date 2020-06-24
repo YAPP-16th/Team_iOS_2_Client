@@ -9,6 +9,7 @@
 import UIKit
 
 class NewEmailViewController: UIViewController, UITextFieldDelegate {
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var selectorImageView: UIImageView!
     @IBOutlet weak var emailValidationLabel: UILabel!
@@ -47,6 +48,7 @@ class NewEmailViewController: UIViewController, UITextFieldDelegate {
         tfEmail.delegate = self
         emailValidationLabel.isHidden = true
         nextBtn.layer.cornerRadius = 8.0
+        titleLabel.textLineSpacing(firstText: "새로운 이메일을", secondText: "입력해 주세요")
     }
     
     func setObserver(){

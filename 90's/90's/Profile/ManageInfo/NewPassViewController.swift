@@ -10,6 +10,7 @@ import Foundation
 
 
 class NewPassViewController: UIViewController, UITextFieldDelegate {
+    @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var tfNewPass: UITextField!
     @IBOutlet weak var tfConfirmPass: UITextField!
     @IBOutlet weak var selectorImageView1: UIImageView!
@@ -57,6 +58,7 @@ class NewPassViewController: UIViewController, UITextFieldDelegate {
         tfConfirmPass.isEnabled = false
         validationLabel.isHidden = true
         nextBtn.layer.cornerRadius = 8.0
+        subTitleLabel.textLineSpacing(firstText: "새로운 비밀번호를", secondText: "입력해 주세요")
         
         if let type = authenType {
             if(type == "MainFindPass"){
@@ -110,7 +112,6 @@ class NewPassViewController: UIViewController, UITextFieldDelegate {
         let keyboardHeight = keyboardSize.cgRectValue.height
         
         let frameHeight = self.view.frame.height
-        print("\(frameHeight)")
         if(frameHeight >= 736.0){
             //iphone6+, iphoneX ... (화면이 큰 휴대폰)
             buttonConst.constant = keyboardHeight - 18
