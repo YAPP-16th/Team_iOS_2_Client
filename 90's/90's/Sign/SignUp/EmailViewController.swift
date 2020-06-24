@@ -15,6 +15,7 @@ class EmailViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var emailValidationLabel: UILabel!
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var buttonConst: NSLayoutConstraint!
+    @IBOutlet weak var titleLabel: UILabel!
     
     var email:String!
     
@@ -46,6 +47,7 @@ class EmailViewController: UIViewController, UITextFieldDelegate{
         tfEmail.delegate = self
         emailValidationLabel.isHidden = true
         nextBtn.layer.cornerRadius = 8.0
+        titleLabel.textLineSpacing(firstText: "환영합니다!", secondText: "이메일을 입력해주세요")
     }
     
     func setObserver(){
@@ -56,11 +58,11 @@ class EmailViewController: UIViewController, UITextFieldDelegate{
             
             if(str != ""){
                 self.selectorImageView.image = UIImage(named: "path378Black")
-                self.nextBtn.backgroundColor = UIColor(displayP3Red: 227/255, green: 62/255, blue: 40/255, alpha: 1.0)
+                self.nextBtn.backgroundColor = UIColor(red: 227/255, green: 62/255, blue: 40/255, alpha: 1.0)
                 self.nextBtn.isEnabled = true
             }else {
                 self.selectorImageView.image = UIImage(named: "path378Grey1")
-                self.nextBtn.backgroundColor = UIColor(displayP3Red: 199/255,green: 201/255, blue: 208/255, alpha: 1.0)
+                self.nextBtn.backgroundColor = UIColor(red: 199/255,green: 201/255, blue: 208/255, alpha: 1.0)
                 self.nextBtn.isEnabled = false
             }
         })

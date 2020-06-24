@@ -26,7 +26,7 @@ class CompleteManageViewController: UIViewController {
         super.viewDidLoad()
         setUI()
     }
-
+    
     
     @IBAction func goBack(_ sender: Any) {
         navigationController?.popViewController(animated: true)
@@ -47,17 +47,17 @@ class CompleteManageViewController: UIViewController {
         case "이메일 변경":
             changeInfoLabel.text = email
             nickNameLabel.text = "받아올 수 없어요.."
-            subTitleLabel.text = "이메일이\n변경되었습니다!"
+            subTitleLabel.textLineSpacing(firstText: "이메일이", secondText: "변경되었습니다!")
             break
         case "비밀번호 변경":
             changeInfoLabel.text = pass
             nickNameLabel.isHidden = true
-            subTitleLabel.text = "비밀번호가\n변경되었습니다!"
+            subTitleLabel.textLineSpacing(firstText: "비밀번호가", secondText: "변경되었습니다!")
             break
         case "전화번호 변경":
             changeInfoLabel.text = telePhone
             nickNameLabel.isHidden = true
-            subTitleLabel.text = "전화번호가\n변경되었습니다!"
+            subTitleLabel.textLineSpacing(firstText: "전화번호가", secondText: "변경되었습니다!")
             break
         default:
             break

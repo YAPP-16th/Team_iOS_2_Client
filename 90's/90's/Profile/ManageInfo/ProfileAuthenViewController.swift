@@ -59,24 +59,11 @@ class ProfileAuthenViewController: UIViewController {
     func setUI(){
         
         titleLabel.text = authenType
-        switch authenType {
-        case "이메일 변경", "비밀번호 변경":
-            validationLabel.isHidden = true
-            okBtn.isEnabled = false
-            okBtn.layer.cornerRadius = 8.0
-            askNumberBtn.layer.cornerRadius = 8.0
-            break
-        case "전화번호 변경":
-            subTitleLabel.text = "새로운 전화번호를\n인증해주세요"
-            validationLabel.isHidden = true
-            okBtn.isEnabled = false
-            okBtn.layer.cornerRadius = 8.0
-            askNumberBtn.layer.cornerRadius = 8.0
-            break
-        default:
-            break
-        }
-        
+        subTitleLabel.textLineSpacing(firstText: "전화번호를", secondText: "입력해 주세요")
+        validationLabel.isHidden = true
+        okBtn.isEnabled = false
+        okBtn.layer.cornerRadius = 8.0
+        askNumberBtn.layer.cornerRadius = 8.0
         
     }
     
@@ -94,13 +81,13 @@ class ProfileAuthenViewController: UIViewController {
                     self.isInitial2 = true
                 }
                 self.selectorImageView1.image = UIImage(named: "path378Black")
-                self.askNumberBtn.backgroundColor = UIColor(displayP3Red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
+                self.askNumberBtn.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
                 self.askNumberBtn.isEnabled = true
             }else {
                 self.isInitial1 = false
                 self.isInitial2 = false
                 self.selectorImageView1.image = UIImage(named: "path378Grey1")
-                self.askNumberBtn.backgroundColor = UIColor(displayP3Red: 199/255, green: 201/255, blue: 208/255, alpha: 1.0)
+                self.askNumberBtn.backgroundColor = UIColor(red: 199/255, green: 201/255, blue: 208/255, alpha: 1.0)
                 self.askNumberBtn.isEnabled = false
             }
             
@@ -112,11 +99,11 @@ class ProfileAuthenViewController: UIViewController {
             
             if(str != ""){
                 self.selectorImageView2.image = UIImage(named: "path378Black")
-                self.okBtn.backgroundColor = UIColor(displayP3Red: 227/255, green: 62/255, blue: 40/255, alpha: 1.0)
+                self.okBtn.backgroundColor = UIColor(red: 227/255, green: 62/255, blue: 40/255, alpha: 1.0)
                 self.okBtn.isEnabled = true
             }else {
                 self.selectorImageView2.image = UIImage(named: "path378Grey1")
-                self.okBtn.backgroundColor =  UIColor(displayP3Red: 199/255, green: 201/255, blue: 208/255, alpha: 1.0)
+                self.okBtn.backgroundColor =  UIColor(red: 199/255, green: 201/255, blue: 208/255, alpha: 1.0)
                 self.okBtn.isEnabled = false
             }
             
@@ -155,7 +142,6 @@ class ProfileAuthenViewController: UIViewController {
         let keyboardHeight = keyboardSize.cgRectValue.height
         
         let frameHeight = self.view.frame.height
-        print("\(frameHeight)")
         if(frameHeight >= 736.0){
             //iphone6+, iphoneX ... (화면이 큰 휴대폰)
             buttonConst.constant = keyboardHeight - 18

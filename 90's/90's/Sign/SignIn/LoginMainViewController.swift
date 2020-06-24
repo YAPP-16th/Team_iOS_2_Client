@@ -10,6 +10,7 @@ import UIKit
 
 
 class LoginMainViewController: UIViewController, UITextFieldDelegate {
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var emailValidationLabel: UILabel!
     @IBOutlet weak var selectorImageView1: UIImageView!
@@ -139,6 +140,7 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
         tfPass.isEnabled = false
         loginBtn.isEnabled = false
         loginBtn.layer.cornerRadius = 8.0
+        titleLabel.textLineSpacing(firstText: "환영합니다:)", secondText: "로그인해 주세요")
         
     }
     
@@ -167,11 +169,11 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
             
             if(str != ""){
                 self.selectorImageView2.image = UIImage(named: "path378Black")
-                self.loginBtn.backgroundColor = UIColor(displayP3Red: 227/255, green: 62/255, blue: 40/255, alpha: 1.0)
+                self.loginBtn.backgroundColor = UIColor(red: 227/255, green: 62/255, blue: 40/255, alpha: 1.0)
                 self.loginBtn.isEnabled = true
             }else {
                 self.selectorImageView2.image = UIImage(named: "path378Grey1")
-                self.loginBtn.backgroundColor = UIColor(displayP3Red: 199/255,green: 201/255, blue: 208/255, alpha: 1.0)
+                self.loginBtn.backgroundColor = UIColor(red: 199/255,green: 201/255, blue: 208/255, alpha: 1.0)
                 self.loginBtn.isEnabled = false
             }
             

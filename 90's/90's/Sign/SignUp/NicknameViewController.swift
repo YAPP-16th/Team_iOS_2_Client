@@ -10,6 +10,7 @@ import UIKit
 
 class NicknameViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tfNickname: UITextField!
     @IBOutlet weak var selectorImageView: UIImageView!
     @IBOutlet weak var nextBtn: UIButton!
@@ -42,6 +43,7 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
     func setUI(){
         tfNickname.delegate = self
         nextBtn.layer.cornerRadius = 8.0
+         titleLabel.textLineSpacing(firstText: "닉네임을", secondText: "입력해 주세요")
     }
     
     func setObserver(){
@@ -52,11 +54,11 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
             
             if(str != ""){
                 self.selectorImageView.image = UIImage(named: "path378Black")
-                self.nextBtn.backgroundColor = UIColor(displayP3Red: 227/255, green: 62/255, blue: 40/255, alpha: 1.0)
+                self.nextBtn.backgroundColor = UIColor(red: 227/255, green: 62/255, blue: 40/255, alpha: 1.0)
                 self.nextBtn.isEnabled = true
             }else {
                 self.selectorImageView.image = UIImage(named: "path378Grey1")
-                self.nextBtn.backgroundColor = UIColor(displayP3Red: 199/255,green: 201/255, blue: 208/255, alpha: 1.0)
+                self.nextBtn.backgroundColor = UIColor(red: 199/255,green: 201/255, blue: 208/255, alpha: 1.0)
                 self.nextBtn.isEnabled = false
             }
         })

@@ -63,9 +63,9 @@ class AddressSearchViewController: UIViewController, UITextFieldDelegate {
             let str = self.tfQuery.text!.trimmingCharacters(in: .whitespaces)
             
             if(str != ""){
-                self.selectorImageView.backgroundColor = UIColor(displayP3Red: 0/255,green: 0/255, blue: 0/255, alpha: 1.0)
+                self.selectorImageView.backgroundColor = UIColor(red: 0/255,green: 0/255, blue: 0/255, alpha: 1.0)
             }else {
-                self.selectorImageView.backgroundColor = UIColor(displayP3Red: 218/255,green: 220/255, blue: 227/255, alpha: 1.0)
+                self.selectorImageView.backgroundColor = UIColor(red: 218/255,green: 220/255, blue: 227/255, alpha: 1.0)
             }
         })
     }

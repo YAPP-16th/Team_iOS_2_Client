@@ -18,6 +18,7 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var buttonConst: NSLayoutConstraint!
     @IBOutlet weak var topConst: NSLayoutConstraint!
+    @IBOutlet weak var titleLabel: UILabel!
     
     var keyboardFlag = false
     var email:String!
@@ -54,7 +55,7 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
         tfConfirmPass.isEnabled = false
         validationLabel.isHidden = true
         nextBtn.layer.cornerRadius = 8.0
-        
+         titleLabel.textLineSpacing(firstText: "비밀번호를", secondText: "입력해주세요")
     }
     
     func setObserver(){
@@ -80,11 +81,11 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
             
             if(str != ""){
                 self.selectorImageView2.image = UIImage(named: "path378Black")
-                self.nextBtn.backgroundColor = UIColor(displayP3Red: 227/255, green: 62/255, blue: 40/255, alpha: 1.0)
+                self.nextBtn.backgroundColor = UIColor(red: 227/255, green: 62/255, blue: 40/255, alpha: 1.0)
                 self.nextBtn.isEnabled = true
             }else {
                 self.selectorImageView2.image = UIImage(named: "path378Grey1")
-                self.nextBtn.backgroundColor = UIColor(displayP3Red: 199/255,green: 201/255, blue: 208/255, alpha: 1.0)
+                self.nextBtn.backgroundColor = UIColor(red: 199/255,green: 201/255, blue: 208/255, alpha: 1.0)
                 self.nextBtn.isEnabled = false
             }
             

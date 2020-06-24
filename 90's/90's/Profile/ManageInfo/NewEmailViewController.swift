@@ -9,6 +9,7 @@
 import UIKit
 
 class NewEmailViewController: UIViewController, UITextFieldDelegate {
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var selectorImageView: UIImageView!
     @IBOutlet weak var emailValidationLabel: UILabel!
@@ -47,6 +48,7 @@ class NewEmailViewController: UIViewController, UITextFieldDelegate {
         tfEmail.delegate = self
         emailValidationLabel.isHidden = true
         nextBtn.layer.cornerRadius = 8.0
+        titleLabel.textLineSpacing(firstText: "새로운 이메일을", secondText: "입력해 주세요")
     }
     
     func setObserver(){
@@ -57,11 +59,11 @@ class NewEmailViewController: UIViewController, UITextFieldDelegate {
             
             if(str != ""){
                 self.selectorImageView.image = UIImage(named: "path378Black")
-                self.nextBtn.backgroundColor = UIColor(displayP3Red: 227/255, green: 62/255, blue: 40/255, alpha: 1.0)
+                self.nextBtn.backgroundColor = UIColor(red: 227/255, green: 62/255, blue: 40/255, alpha: 1.0)
                 self.nextBtn.isEnabled = true
             }else {
                 self.selectorImageView.image = UIImage(named: "path378Grey1")
-                self.nextBtn.backgroundColor = UIColor(displayP3Red: 199/255,green: 201/255, blue: 208/255, alpha: 1.0)
+                self.nextBtn.backgroundColor = UIColor(red: 199/255,green: 201/255, blue: 208/255, alpha: 1.0)
                 self.nextBtn.isEnabled = false
             }
         })

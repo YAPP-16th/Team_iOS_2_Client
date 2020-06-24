@@ -19,6 +19,7 @@ class TermViewController: UIViewController {
     @IBOutlet weak var termTableView: UITableView!
     @IBOutlet weak var agreeAllTermBtn: UIButton!
     @IBOutlet weak var okBtn: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
     
     let termTitle = ["이용약관 (필수)", "개인정보 수집 및 이용동의 (필수)", "연령(만 14세 이상)확인 (필수)"]
     var isAllTermBtnClicked = false
@@ -56,12 +57,13 @@ class TermViewController: UIViewController {
         
         if(isAllTermBtnClicked){
             agreeAllTermBtn.setBackgroundImage(UIImage(named: "checkboxInact"), for: .normal)
-            okBtn.backgroundColor = UIColor(displayP3Red: 227/255, green: 62/255, blue: 40/255, alpha: 1.0)
+            okBtn.backgroundColor = UIColor(red: 227/255, green: 62/255, blue: 40/255, alpha: 1.0)
             okBtn.isEnabled = true
         }else {
             agreeAllTermBtn.setBackgroundImage(UIImage(named: "checkboxgray"), for: .normal)
-            okBtn.backgroundColor = UIColor(displayP3Red: 199/255, green: 201/255, blue: 208/255, alpha: 1.0)
+            okBtn.backgroundColor = UIColor(red: 199/255, green: 201/255, blue: 208/255, alpha: 1.0)
             okBtn.isEnabled = false
+            agreeCount = 0
         }
         self.termTableView.reloadData()
     }
@@ -78,6 +80,7 @@ class TermViewController: UIViewController {
         termTableView.dataSource = self
         okBtn.isEnabled = false
         okBtn.layer.cornerRadius = 8.0
+        titleLabel.textLineSpacing(firstText: "원활한 사용을 위해", secondText: "이용 약관에 동의해 주세요")
     }
     
 }
@@ -120,11 +123,11 @@ extension TermViewController : ClickDelegate {
         
         if(agreeCount == 3){
             agreeAllTermBtn.setBackgroundImage(UIImage(named: "checkboxInact"), for: .normal)
-            okBtn.backgroundColor = UIColor(displayP3Red: 227/255, green: 62/255, blue: 40/255, alpha: 1.0)
+            okBtn.backgroundColor = UIColor(red: 227/255, green: 62/255, blue: 40/255, alpha: 1.0)
             okBtn.isEnabled = true
         }else {
             agreeAllTermBtn.setBackgroundImage(UIImage(named: "checkboxgray"), for: .normal)
-            okBtn.backgroundColor = UIColor(displayP3Red: 199/255, green: 201/255, blue: 208/255, alpha: 1.0)
+            okBtn.backgroundColor = UIColor(red: 199/255, green: 201/255, blue: 208/255, alpha: 1.0)
             okBtn.isEnabled = false
         }
     }

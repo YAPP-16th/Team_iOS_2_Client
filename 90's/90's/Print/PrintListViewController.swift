@@ -184,9 +184,9 @@ extension PrintListViewController : UITableViewDelegate, UITableViewDataSource {
             break
         case "done":
             cell.orderBtn.setBackgroundImage(UIImage(named: "doneButton"), for: .normal)
-            cell.albumTitle.textColor = UIColor(displayP3Red: 153/255, green: 156/255, blue: 166/255, alpha: 1.0)
-            cell.albumDate.textColor = UIColor(displayP3Red: 153/255, green: 156/255, blue: 166/255, alpha: 1.0)
-            cell.pictureCount.textColor = UIColor(displayP3Red: 153/255, green: 156/255, blue: 166/255, alpha: 1.0)
+            cell.albumTitle.textColor = UIColor(red: 153/255, green: 156/255, blue: 166/255, alpha: 1.0)
+            cell.albumDate.textColor = UIColor(red: 153/255, green: 156/255, blue: 166/255, alpha: 1.0)
+            cell.pictureCount.textColor = UIColor(red: 153/255, green: 156/255, blue: 166/255, alpha: 1.0)
             break
         default:
             break

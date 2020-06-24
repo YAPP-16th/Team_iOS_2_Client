@@ -183,6 +183,7 @@
                         <outlet property="agreeAllTermBtn" destination="14N-0e-kDd" id="txG-5T-oCT"/>
                         <outlet property="okBtn" destination="pjP-gH-tG5" id="uM9-jW-Xtt"/>
                         <outlet property="termTableView" destination="wM9-d1-5LI" id="yj5-sn-nba"/>
+                        <outlet property="titleLabel" destination="QOI-Sz-Rv9" id="nFb-Wg-tYU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eyT-Va-X5D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -384,6 +385,7 @@
                         <outlet property="nextBtn" destination="pQx-uU-snb" id="Cv0-4O-8El"/>
                         <outlet property="selectorImageView" destination="Mxa-t2-3Sh" id="1b1-fj-MO0"/>
                         <outlet property="tfEmail" destination="JZG-SB-M17" id="kl6-BD-72d"/>
+                        <outlet property="titleLabel" destination="kSD-6t-9ix" id="ZvX-Ru-YSv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cOK-ya-Vmj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -532,6 +534,7 @@
                         <outlet property="selectorImageView2" destination="IFr-F7-iCH" id="Ns7-Od-UHK"/>
                         <outlet property="tfConfirmPass" destination="b9Z-Pe-r3g" id="oo4-wp-9Qc"/>
                         <outlet property="tfNewPass" destination="26A-k2-1jm" id="2da-AZ-QOb"/>
+                        <outlet property="titleLabel" destination="XHm-gr-qht" id="7ze-kB-woX"/>
                         <outlet property="topConst" destination="jeH-GH-6yT" id="kd5-JB-BH1"/>
                         <outlet property="validationLabel" destination="ZIp-u5-Thc" id="exc-vN-Sbl"/>
                     </connections>
@@ -650,6 +653,7 @@
                         <outlet property="nextBtn" destination="PdK-Hl-Lbp" id="yJU-gw-bdN"/>
                         <outlet property="selectorImageView" destination="rO7-iA-5QF" id="4NK-WP-zPN"/>
                         <outlet property="tfNickname" destination="GpC-bk-gkI" id="Jc1-Fo-jrZ"/>
+                        <outlet property="titleLabel" destination="VXv-w2-wQd" id="kQZ-Nx-c2j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VJc-jm-Za3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -886,6 +890,7 @@
                     </view>
                     <connections>
                         <outlet property="loginBtn" destination="HXV-vp-I2f" id="Ngb-BZ-mX1"/>
+                        <outlet property="titleLabel" destination="EG5-6H-8Hl" id="Tya-zj-EBP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0AE-Rw-oEI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
