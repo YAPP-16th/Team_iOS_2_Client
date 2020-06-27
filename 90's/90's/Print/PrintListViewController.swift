@@ -57,7 +57,7 @@ class PrintListViewController: UIViewController {
     }
     
     @IBAction func clickGoToAlbum(_ sender: Any) {
-        self.tabBarController?.selectedIndex = 0
+        self.tabBarController?.selectedIndex = 1
     }
     
     
