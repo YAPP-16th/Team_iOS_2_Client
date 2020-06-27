@@ -96,9 +96,11 @@ class PrintListViewController: UIViewController {
                     switch status {
                     case 200:
                         guard let data = response.data else {return}
-                        guard let value = try? JSONDecoder().decode([PhotoGetPhotoData].self, from: data) else {return}
+                        guard let value = try? JSONDecoder().decode([PhotoGetPhotosData].self, from: data) else {
+                            return}
                         self.photoUidArray.append(value.count)
                         self.dispatchGroup.leave()
+                        print("\(self.photoUidArray)")
                     case 401:
                         print("\(status) : bad request, no warning in Server")
                     case 404:
