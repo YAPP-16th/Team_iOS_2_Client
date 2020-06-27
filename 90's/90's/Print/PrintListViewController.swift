@@ -65,12 +65,14 @@ class PrintListViewController: UIViewController {
         AlbumService.shared.albumGetAlbums(completion: {
             response in
             if let status = response.response?.statusCode {
+                print("\(status)")
                 switch status {
                 case 200 :
                     guard let data = response.data else {return}
                     guard let value = try? JSONDecoder().decode([album].self, from: data) else {return}
                     self.completeAlbums = value.filter{ $0.complete == true }
                     if(self.completeAlbums.count != 0){
+                        print("\(self.completeAlbums)")
                         self.getPhotoCount()
                     }else {
                         self.setPrintMainUI()
@@ -89,16 +91,21 @@ class PrintListViewController: UIViewController {
     }
     
     func getPhotoCount(){
+        print("hihihihihihi2")
         for i in 0...completeAlbums.count-1 {
             dispatchGroup.enter()
+            print("uid : \(completeAlbums[i].uid)")
             AlbumService.shared.photoGetPhoto(albumUid: completeAlbums[i].uid, completion: { response in
                 if let status = response.response?.statusCode {
                     switch status {
                     case 200:
                         guard let data = response.data else {return}
-                        guard let value = try? JSONDecoder().decode([PhotoGetPhotoData].self, from: data) else {return}
+                        guard let value = try? JSONDecoder().decode([PhotoGetPhotosData].self, from: data) else {
+                            print("value is empty")
+                            return}
                         self.photoUidArray.append(value.count)
                         self.dispatchGroup.leave()
+                        print("\(self.photoUidArray)")
                     case 401:
                         print("\(status) : bad request, no warning in Server")
                     case 404:
