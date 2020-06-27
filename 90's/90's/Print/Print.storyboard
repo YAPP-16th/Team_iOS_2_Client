@@ -162,12 +162,12 @@
                                             <constraint firstAttribute="height" constant="24" id="ZIt-h3-8tt"/>
                                             <constraint firstAttribute="width" constant="193" id="iG8-7E-8ay"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="90SLogo" translatesAutoresizingMaskIntoConstraints="NO" id="iu6-Qd-Hqa">
-                                        <rect key="frame" x="30" y="28" width="41" height="20"/>
+                                        <rect key="frame" x="18" y="28" width="41" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="41" id="qRe-GW-kwA"/>
                                             <constraint firstAttribute="height" constant="20" id="xjh-8g-WRh"/>
@@ -186,14 +186,14 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="V0e-rQ-d4Z" firstAttribute="centerY" secondItem="PEH-8o-pWj" secondAttribute="centerY" id="DzY-nG-5pp"/>
+                                    <constraint firstItem="V0e-rQ-d4Z" firstAttribute="bottom" secondItem="y7K-k0-Ggr" secondAttribute="bottom" constant="-24" id="Du5-l2-KIy"/>
                                     <constraint firstAttribute="trailing" secondItem="y7K-k0-Ggr" secondAttribute="trailing" id="bEi-JK-iRQ"/>
                                     <constraint firstItem="V0e-rQ-d4Z" firstAttribute="centerX" secondItem="PEH-8o-pWj" secondAttribute="centerX" id="bgb-d2-jW6"/>
                                     <constraint firstItem="iu6-Qd-Hqa" firstAttribute="top" secondItem="PEH-8o-pWj" secondAttribute="top" constant="28" id="dVO-yS-YWW"/>
                                     <constraint firstItem="y7K-k0-Ggr" firstAttribute="leading" secondItem="etb-Wp-xJH" secondAttribute="leading" id="gjN-oD-aVZ"/>
                                     <constraint firstAttribute="bottom" secondItem="y7K-k0-Ggr" secondAttribute="bottom" id="r40-kR-1Za"/>
                                     <constraint firstAttribute="height" constant="72" id="tzR-Lm-m9p"/>
-                                    <constraint firstItem="iu6-Qd-Hqa" firstAttribute="leading" secondItem="PEH-8o-pWj" secondAttribute="leading" constant="30" id="zGv-mA-2vm"/>
+                                    <constraint firstItem="iu6-Qd-Hqa" firstAttribute="leading" secondItem="PEH-8o-pWj" secondAttribute="leading" constant="18" id="zGv-mA-2vm"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="PEH-8o-pWj"/>
                             </view>

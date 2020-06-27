@@ -211,12 +211,12 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="72"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="프로필" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jct-IJ-ItX">
-                                        <rect key="frame" x="110.5" y="24" width="193" height="24"/>
+                                        <rect key="frame" x="110.5" y="17" width="193" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="193" id="ODF-Fr-cjD"/>
                                             <constraint firstAttribute="height" constant="24" id="Xsb-yO-bYU"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -233,8 +233,8 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="jct-IJ-ItX" firstAttribute="centerY" secondItem="Qtp-zw-0mb" secondAttribute="centerY" id="6cW-IM-VEf"/>
                                     <constraint firstAttribute="height" constant="72" id="K4w-fE-xfz"/>
+                                    <constraint firstItem="jct-IJ-ItX" firstAttribute="bottom" secondItem="3SK-gb-KaQ" secondAttribute="bottom" constant="-24" id="NBc-58-89N"/>
                                     <constraint firstAttribute="bottom" secondItem="3SK-gb-KaQ" secondAttribute="bottom" constant="7" id="VAy-hm-lco"/>
                                     <constraint firstItem="jct-IJ-ItX" firstAttribute="centerX" secondItem="Qtp-zw-0mb" secondAttribute="centerX" id="gCe-5z-rQF"/>
                                     <constraint firstItem="3SK-gb-KaQ" firstAttribute="centerX" secondItem="Qtp-zw-0mb" secondAttribute="centerX" id="jhb-LR-DHs"/>
@@ -303,7 +303,7 @@
                                 </prototypes>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="90SLogo" translatesAutoresizingMaskIntoConstraints="NO" id="RNk-Rn-2LD">
-                                <rect key="frame" x="30" y="70" width="41" height="20"/>
+                                <rect key="frame" x="18" y="63" width="41" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="41" id="Txe-bs-cOg"/>
                                     <constraint firstAttribute="height" constant="20" id="cc0-7J-Sze"/>
@@ -341,11 +341,11 @@
                                     <action selector="goLeave:" destination="66W-9D-Q33" eventType="touchUpInside" id="iAN-Ug-TjT"/>
                                 </connections>
                             </button>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tWm-a4-aBt">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tWm-a4-aBt">
+                                <rect key="frame" x="0.0" y="179" width="414" height="717"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rectangleBlackopacity" translatesAutoresizingMaskIntoConstraints="NO" id="X5W-9B-tDV">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="rectangleBlackopacity" translatesAutoresizingMaskIntoConstraints="NO" id="X5W-9B-tDV">
+                                        <rect key="frame" x="0.0" y="406" width="414" height="490"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rectangle251Popup" translatesAutoresizingMaskIntoConstraints="NO" id="WdY-AC-BHY">
                                         <rect key="frame" x="36" y="209" width="342" height="330"/>
@@ -455,7 +455,7 @@
                             <constraint firstItem="130-eA-veS" firstAttribute="trailing" secondItem="j2p-lI-Pav" secondAttribute="trailing" id="OYM-GP-SyF"/>
                             <constraint firstItem="6Ni-Mp-TYX" firstAttribute="leading" secondItem="j2p-lI-Pav" secondAttribute="leading" id="OyS-xO-ts7"/>
                             <constraint firstItem="RNk-Rn-2LD" firstAttribute="centerY" secondItem="jct-IJ-ItX" secondAttribute="centerY" id="QsW-Th-sSi"/>
-                            <constraint firstItem="RNk-Rn-2LD" firstAttribute="leading" secondItem="Qtp-zw-0mb" secondAttribute="leading" constant="30" id="Tho-nB-utP"/>
+                            <constraint firstItem="RNk-Rn-2LD" firstAttribute="leading" secondItem="Qtp-zw-0mb" secondAttribute="leading" constant="18" id="Tho-nB-utP"/>
                             <constraint firstItem="7TB-N2-hQX" firstAttribute="centerX" secondItem="j2p-lI-Pav" secondAttribute="centerX" id="X7I-xk-Ydl"/>
                             <constraint firstItem="Fx5-Ee-u7p" firstAttribute="top" secondItem="Qtp-zw-0mb" secondAttribute="bottom" id="YIy-Ag-eu9"/>
                             <constraint firstItem="Qtp-zw-0mb" firstAttribute="leading" secondItem="j2p-lI-Pav" secondAttribute="leading" id="YJS-9Q-dIr"/>
