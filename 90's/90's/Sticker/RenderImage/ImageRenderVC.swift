@@ -33,7 +33,7 @@ class ImageRenderVC: UIViewController {
     // for sticker
     fileprivate var sticker : StickerLayout?
     fileprivate var stickerArray : [StickerLayout] = []
-    fileprivate var initialAngle = CGFloat(), saveAngle = CGFloat(), saveSize = CGFloat()
+    fileprivate var initialAngle = CGFloat(), saveAngle = CGFloat(), saveSize = CGFloat(), initialSize = CGPoint(x: 0, y: 0)
     
     // collection data
     fileprivate var isSelectedName : IndexPath = [0,0]
@@ -80,18 +80,18 @@ class ImageRenderVC: UIViewController {
             switch touch!.view {
             case sticker?.resizeImageView :
                 let position = touch!.location(in: self.view)
-                let size = max((position.x / sticker!.center.x), (position.y / sticker!.center.y))
+                let size = max(((position.x - initialSize.x) / sticker!.center.x), ((position.y - initialSize.y) / sticker!.center.y))
                 let scale = CGAffineTransform(scaleX: size, y: size)
-
                 let ang = pToA(touch!) - initialAngle
                 let absoluteAngle = saveAngle + ang
                 let rotate = CGAffineTransform(rotationAngle: absoluteAngle)
-              
+                
                 saveAngle = absoluteAngle
                 saveSize = size
                 sticker?.transform = scale.concatenating(rotate)
             case sticker?.cancleImageView :
                 sticker?.removeFromSuperview()
+                focusView.isHidden = true
                 sticker = nil
             default :
                 break
@@ -162,6 +162,7 @@ extension ImageRenderVC {
         createGesture(view: sticker!.backImageView)
         focusView.isHidden = false
         self.layoutImage.addSubview(sticker!)
+        initialSize = CGPoint(x: sticker!.resizeImageView.center.x - sticker!.center.x, y: sticker!.resizeImageView.center.y - sticker!.center.y)
         stickerArray.append(sticker!)
     }
     
