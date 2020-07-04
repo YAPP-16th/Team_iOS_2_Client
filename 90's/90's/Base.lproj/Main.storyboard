@@ -262,24 +262,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_1" translatesAutoresizingMaskIntoConstraints="NO" id="cLc-Up-v5T">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lhX-b7-yBD">
+                                <rect key="frame" x="0.0" y="236" width="414" height="434"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="434" id="Vv3-5o-cpG"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="cLc-Up-v5T" firstAttribute="top" secondItem="KdY-z6-iMw" secondAttribute="top" id="5dr-s3-Yst"/>
-                            <constraint firstAttribute="bottom" secondItem="cLc-Up-v5T" secondAttribute="bottom" id="Dt5-OF-Jtj"/>
-                            <constraint firstItem="cLc-Up-v5T" firstAttribute="leading" secondItem="KdY-z6-iMw" secondAttribute="leading" id="isL-Ed-QYh"/>
-                            <constraint firstAttribute="trailing" secondItem="cLc-Up-v5T" secondAttribute="trailing" id="oY5-yl-0ti"/>
+                            <constraint firstItem="lhX-b7-yBD" firstAttribute="leading" secondItem="swF-ul-XbH" secondAttribute="leading" id="Qab-8N-Ow8"/>
+                            <constraint firstItem="lhX-b7-yBD" firstAttribute="centerY" secondItem="swF-ul-XbH" secondAttribute="centerY" id="XTJ-3R-xMO"/>
+                            <constraint firstItem="swF-ul-XbH" firstAttribute="trailing" secondItem="lhX-b7-yBD" secondAttribute="trailing" id="qBR-81-9HO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="swF-ul-XbH"/>
                     </view>
                     <navigationItem key="navigationItem" id="9qD-b6-6kz"/>
+                    <connections>
+                        <outlet property="lottieView" destination="lhX-b7-yBD" id="Czi-X9-0Qj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ltC-x0-1EP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="226" y="-672"/>
+            <point key="canvasLocation" x="224.63768115942031" y="-672.32142857142856"/>
         </scene>
     </scenes>
     <resources>
@@ -287,6 +293,5 @@
         <image name="kakaoIcon" width="24" height="20"/>
         <image name="loginMainImage" width="361" height="475"/>
         <image name="path11Black" width="2" height="11"/>
-        <image name="splash_1" width="414" height="896"/>
     </resources>
 </document>
