@@ -100,7 +100,6 @@ class PrintListViewController: UIViewController {
                             return}
                         self.photoUidArray.append(value.count)
                         self.dispatchGroup.leave()
-                        print("\(self.photoUidArray)")
                     case 401:
                         print("\(status) : bad request, no warning in Server")
                     case 404:
