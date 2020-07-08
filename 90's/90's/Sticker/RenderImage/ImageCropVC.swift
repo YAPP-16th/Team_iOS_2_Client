@@ -47,7 +47,7 @@ extension ImageCropVC {
             CGSize(width: cropView.frame.width, height: ceil(cropView.frame.width * imageRatio)) :
             CGSize(width: ceil(cropView.frame.height * imageRatio), height: cropView.frame.height)
         // 이미지 크기 조절
-        photoImageView.image = image.imageResize(sizeChange: imageSize)
+        photoImageView.image = image//.imageResize(sizeChange: imageSize)
         
         let commonLayoutSize = iPhone8Model() ?
                 selectedLayout.innerFrameLowSize : selectedLayout.innerFrameHighSize

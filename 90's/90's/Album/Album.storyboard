@@ -113,9 +113,6 @@
                                             <constraint firstAttribute="height" constant="72" id="h2T-Aw-YDs"/>
                                         </constraints>
                                         <state key="normal" image="iconAdd"/>
-                                        <connections>
-                                            <action selector="clickMakeBtn:" destination="XpK-CZ-a6E" eventType="touchUpInside" id="kK3-7c-6c1"/>
-                                        </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="90SLogo" translatesAutoresizingMaskIntoConstraints="NO" id="2BB-eo-cQp">
                                         <rect key="frame" x="18" y="23" width="49" height="26"/>
@@ -255,6 +252,7 @@
                     <connections>
                         <outlet property="albumCollectionView" destination="S4X-TE-ijk" id="UMb-2R-LPg"/>
                         <outlet property="albumView" destination="99H-B4-m2j" id="Rtm-r7-xOR"/>
+                        <outlet property="createAlbumBtn" destination="ShH-fO-jmP" id="1G5-nf-jpZ"/>
                         <outlet property="emptyAlbumLabel" destination="mLE-Gr-vMT" id="kQw-Pa-gML"/>
                         <outlet property="emptyAlbumMakeBtn" destination="zKf-o7-Adc" id="Nq2-dU-pSi"/>
                         <outlet property="emptyAlbumView" destination="zLZ-aa-Qx3" id="yn3-tS-FeK"/>
@@ -2327,7 +2325,7 @@
         <image name="galleryIcon" width="108" height="67"/>
         <image name="iconAdd" width="22" height="22"/>
         <image name="iconAlbumAct" width="30" height="26"/>
-        <image name="iconAlbumInact" width="31" height="26"/>
+        <image name="iconAlbumInact" width="40" height="40"/>
         <image name="iconBack" width="14" height="23"/>
         <image name="iconCancel" width="21" height="21"/>
         <image name="iconInformation" width="24" height="25"/>

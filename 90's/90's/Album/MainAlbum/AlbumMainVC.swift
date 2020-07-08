@@ -15,10 +15,7 @@ protocol AlbumMainVCProtocol {
 class AlbumMainVC : UIViewController {
     @IBOutlet weak var albumView: UIView!
     @IBOutlet weak var albumCollectionView: UICollectionView!
-    @IBAction func clickMakeBtn(_ sender: Any){
-        let nextVC = storyboard?.instantiateViewController(withIdentifier : "AlbumNameController") as! AlbumNameVC
-        self.navigationController?.pushViewController(nextVC, animated: true)
-    }
+    @IBOutlet weak var createAlbumBtn: UIButton!
     @IBOutlet weak var emptyAlbumView: UIView!
     @IBOutlet weak var emptyAlbumMakeBtn: UIButton!
     @IBOutlet weak var emptyAlbumLabel: UILabel!
@@ -36,16 +33,18 @@ class AlbumMainVC : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        settingCollectionView()
+        defaultSetting()
     }
 }
 
 
 extension AlbumMainVC {
-    func settingCollectionView(){
+    func defaultSetting(){
         albumCollectionView.delegate = self
         albumCollectionView.dataSource = self
         emptyAlbumLabel.text = "앨범을 만들어\n소중한 추억을 쌓아보세요"
+        createAlbumBtn.isHidden = isDefaultUser ? true : false
+        createAlbumBtn.addTarget(self, action: #selector(setter: createAlbumBtn), for: .touchUpInside)
     }
     
     func switchAlbumEmptyView(value : Bool){
@@ -84,6 +83,11 @@ extension AlbumMainVC {
                 }
             }
         })
+    }
+    
+    @objc func clickCreateAlbumBtn(){
+        let nextVC = storyboard?.instantiateViewController(withIdentifier : "AlbumNameController") as! AlbumNameVC
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 

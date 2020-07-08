@@ -9,6 +9,8 @@
 import UIKit
 import AuthenticationServices
 
+var isDefaultUser : Bool = false
+
 class EnterViewController: UIViewController {
     
     @IBOutlet weak var loginBtn: UIButton!
@@ -206,6 +208,7 @@ class EnterViewController: UIViewController {
             if let status = response.response?.statusCode {
                 switch status {
                 case 200:
+                    isDefaultUser = true
                     guard let data = response.data else { return }
                     let decoder = JSONDecoder()
                     guard let defaultResult = try? decoder.decode(SignUpResult.self, from: data) else { return }
@@ -247,7 +250,7 @@ class EnterViewController: UIViewController {
                     UserDefaults.standard.set(social, forKey: "social")
                     UserDefaults.standard.set(self.isAppleId, forKey: "isAppleId")
                     
-                    
+                    isDefaultUser = false
                     //이미 가입된 애플아이디 && revoked상태 이면 탈퇴시키고 전화번호 입력화면으로 이동
                     if(self.isRevokedAppleId){
                         self.leave()
