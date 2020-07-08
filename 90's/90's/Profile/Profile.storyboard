@@ -385,8 +385,8 @@
                                             <action selector="clickThinkBtn:" destination="66W-9D-Q33" eventType="touchUpInside" id="bTc-1E-wjO"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sxl-AA-Xhu">
-                                        <rect key="frame" x="338" y="-220" width="21" height="21"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sxl-AA-Xhu">
+                                        <rect key="frame" x="338" y="228" width="21" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="21" id="BsR-tB-7hn"/>
                                             <constraint firstAttribute="height" constant="21" id="Phl-YQ-A9Z"/>
@@ -516,7 +516,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRK-b6-3hO">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRK-b6-3hO">
                                 <rect key="frame" x="18" y="69" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="546-D8-ywA"/>
@@ -1060,7 +1060,7 @@
                                     <constraint firstAttribute="height" constant="72" id="GBb-9B-yEY"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fq-YK-Ped">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fq-YK-Ped">
                                 <rect key="frame" x="18" y="69" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="14o-t4-Itu"/>
@@ -1208,7 +1208,7 @@
                                     <constraint firstAttribute="height" constant="72" id="n7h-xG-sUG"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9lM-mY-NbM">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9lM-mY-NbM">
                                 <rect key="frame" x="18" y="69" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="cLV-Rd-s0F"/>
@@ -1321,7 +1321,7 @@
                                     <constraint firstAttribute="height" constant="72" id="i2P-KM-RtP"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oNO-5J-loO">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oNO-5J-loO">
                                 <rect key="frame" x="18" y="69" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="T6D-sz-MBp"/>
@@ -1542,7 +1542,7 @@
                                     <constraint firstAttribute="height" constant="72" id="Kn7-6Z-5Yk"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bl5-u9-mMF">
+                            <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bl5-u9-mMF">
                                 <rect key="frame" x="18" y="69" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="eVV-ew-QS9"/>
@@ -1686,7 +1686,7 @@
                                     <action selector="clickOkBtn:" destination="QI4-I1-Xzy" eventType="touchUpInside" id="M32-Fi-Cqh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8y-Vi-t6e">
+                            <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8y-Vi-t6e">
                                 <rect key="frame" x="18" y="69" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="0E1-0O-4uR"/>
@@ -1844,7 +1844,7 @@
                                     <action selector="clickNextBtn:" destination="VyH-BY-6uJ" eventType="touchUpInside" id="NKM-gK-N5t"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1RE-Al-JRH">
+                            <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1RE-Al-JRH">
                                 <rect key="frame" x="18" y="69" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="VaF-KR-vuS"/>
@@ -1940,7 +1940,7 @@
                                     <action selector="goLogin:" destination="6wy-ab-118" eventType="touchUpInside" id="mHe-Ok-wWu"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rlx-X4-zBC">
+                            <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rlx-X4-zBC">
                                 <rect key="frame" x="18" y="69" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="8Pu-s1-0Cy"/>
@@ -2080,7 +2080,7 @@
                                     <action selector="clickNextBtn:" destination="izy-Hf-F5P" eventType="touchUpInside" id="D0v-ZH-Url"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hic-Rm-su9">
+                            <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hic-Rm-su9">
                                 <rect key="frame" x="18" y="69" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="fIS-Ne-nRI"/>
@@ -2157,7 +2157,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQ5-bm-udI">
+                            <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQ5-bm-udI">
                                 <rect key="frame" x="18" y="69" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="GPE-fb-0RO"/>
@@ -2270,7 +2270,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YdW-hx-hV1">
+                            <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YdW-hx-hV1">
                                 <rect key="frame" x="18" y="69" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="Mqm-kE-9xE"/>
@@ -2452,7 +2452,7 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cfP-Mq-ivl">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cfP-Mq-ivl">
                                 <rect key="frame" x="375" y="69" width="21" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="evz-Hb-qcN"/>
@@ -2536,7 +2536,7 @@
         <image name="iconBack" width="14" height="23"/>
         <image name="iconCancel" width="21" height="21"/>
         <image name="iconProfileAct" width="26" height="27"/>
-        <image name="iconProfileInact" width="26" height="27"/>
+        <image name="iconProfileInact" width="40" height="40"/>
         <image name="loginImage" width="198" height="228"/>
         <image name="moreProfile" width="64" height="14"/>
         <image name="nocompleteAlbum" width="210" height="216"/>

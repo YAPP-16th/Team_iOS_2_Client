@@ -30,12 +30,13 @@ class SavePhotoVC: UIViewController {
     
     var location = CGPoint(x: 0.0, y: 0.0)
     var deviceSize = CGSize(width: 0,height: 0)
+    var imageView : UIImageView = UIImageView()
     
     var originImage : UIImage!
     var selectedLayout : AlbumLayout!
     var albumUid : Int = 0
     var imageName : String = ""
-    var dateLabel : UILabel!
+    var dateLabel : UILabel = UILabel()
     var renderImage : UIImage?
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,14 +62,11 @@ extension SavePhotoVC {
     
     
     func defaultSetting(){
-        var imageView = UIImageView()
-        setRenderSaveViewFrameSetting(view: photoView, selectLayout: selectedLayout, size: deviceSize)
-        photoView.addSubview(imageView)
-        
+        view.addSubview(imageView)
         imageView = applyBackImageViewLayout(selectedLayout: selectedLayout, smallBig: deviceSize, imageView: imageView)
         imageView.image = originImage
         
-        setRenderLayoutViewFrameSetting(view: photoView, imageView: imageView, top: 0, left: 0, right: 0, bottom: 0)
+        setRenderSaveViewFrameSetting(view : imageView, selectLayout: selectedLayout, size: deviceSize)
         dateLabelSetting(imageView: imageView)
     }
     
@@ -79,8 +77,8 @@ extension SavePhotoVC {
         
         let datePosition = selectedLayout.dateLabelFrame
         let dateLabelSize = CGSize(width: 110, height: 30)
-        dateLabel = UILabel()
-        photoView.addSubview(dateLabel)
+        
+        imageView.addSubview(dateLabel)
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         
         dateLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -datePosition.height - 5).isActive = true
@@ -129,9 +127,9 @@ extension SavePhotoVC {
 
 extension SavePhotoVC {
     @objc func touchSaveBtn(){ // 이미지 저장
-        let renderer = UIGraphicsImageRenderer(size: photoView.bounds.size)
+        let renderer = UIGraphicsImageRenderer(size: imageView.bounds.size)
         renderImage = renderer.image { ctx in
-            photoView.drawHierarchy(in: photoView.bounds, afterScreenUpdates: true)
+            imageView.drawHierarchy(in: imageView.bounds, afterScreenUpdates: true)
         }
         guard let image = renderImage else {return}
         
@@ -176,3 +174,4 @@ extension SavePhotoVC {
         switchHideView(value: false)
     }
 }
+
