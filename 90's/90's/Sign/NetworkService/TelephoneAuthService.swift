@@ -27,7 +27,7 @@ struct TelephoneAuthService : APIManager {
             case .success:
                 completion(response)
             case .failure(let err):
-                print("signUp err : \(err)")
+                print("SignUp - telephone err : \(err)")
                 break
             }
         })

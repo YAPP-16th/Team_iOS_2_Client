@@ -134,7 +134,7 @@ class TelephoneAuthenViewController: UIViewController {
     
     func getAuthenNumber(){
         telephone = tfTelephone.text!.replacingOccurrences(of: "-", with: "")
-        print("\(telephone)")
+        
         //서버에서 문자를 보내고, 보낸 인증번호 받는 메소드
         TelephoneAuthService.shared.telephoneAuth(phone: telephone, completion: { response in
             if let status = response.response?.statusCode {
@@ -145,6 +145,7 @@ class TelephoneAuthenViewController: UIViewController {
                     let telephoneAuthResult = try? decoder.decode(TelephoneAuthResult.self, from: data)
                     guard let num = telephoneAuthResult?.num else { return }
                     self.authenNumber = num
+                    print("send telephone certification success")
                     break
                 case 401...404:
                     let alert = UIAlertController(title: "오류", message: "인증번호 전송 불가", preferredStyle: .alert)
