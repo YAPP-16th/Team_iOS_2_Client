@@ -415,15 +415,6 @@ SWIFT_CLASS("_TtC6Lottie10DebugLayer")
 @end
 
 
-SWIFT_CLASS("_TtC6Lottie17DisabledTextLayer")
-@interface DisabledTextLayer : CATextLayer
-- (id <CAAction> _Nullable)actionForKey:(NSString * _Nonnull)event SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
 SWIFT_CLASS("_TtC6Lottie21ImageCompositionLayer")
 @interface ImageCompositionLayer : CompositionLayer
 - (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
@@ -512,6 +503,16 @@ SWIFT_CLASS("_TtC6Lottie20TextCompositionLayer")
 @interface TextCompositionLayer : CompositionLayer
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC6Lottie9TextLayer")
+@interface TextLayer : CALayer
+- (id <CAAction> _Nullable)actionForKey:(NSString * _Nonnull)event SWIFT_WARN_UNUSED_RESULT;
+- (void)drawInContext:(CGContextRef _Nonnull)ctx;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -933,15 +934,6 @@ SWIFT_CLASS("_TtC6Lottie10DebugLayer")
 @end
 
 
-SWIFT_CLASS("_TtC6Lottie17DisabledTextLayer")
-@interface DisabledTextLayer : CATextLayer
-- (id <CAAction> _Nullable)actionForKey:(NSString * _Nonnull)event SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
 SWIFT_CLASS("_TtC6Lottie21ImageCompositionLayer")
 @interface ImageCompositionLayer : CompositionLayer
 - (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
@@ -1030,6 +1022,16 @@ SWIFT_CLASS("_TtC6Lottie20TextCompositionLayer")
 @interface TextCompositionLayer : CompositionLayer
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC6Lottie9TextLayer")
+@interface TextLayer : CALayer
+- (id <CAAction> _Nullable)actionForKey:(NSString * _Nonnull)event SWIFT_WARN_UNUSED_RESULT;
+- (void)drawInContext:(CGContextRef _Nonnull)ctx;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -1455,15 +1457,6 @@ SWIFT_CLASS("_TtC6Lottie10DebugLayer")
 @end
 
 
-SWIFT_CLASS("_TtC6Lottie17DisabledTextLayer")
-@interface DisabledTextLayer : CATextLayer
-- (id <CAAction> _Nullable)actionForKey:(NSString * _Nonnull)event SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
 SWIFT_CLASS("_TtC6Lottie21ImageCompositionLayer")
 @interface ImageCompositionLayer : CompositionLayer
 - (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
@@ -1552,6 +1545,16 @@ SWIFT_CLASS("_TtC6Lottie20TextCompositionLayer")
 @interface TextCompositionLayer : CompositionLayer
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC6Lottie9TextLayer")
+@interface TextLayer : CALayer
+- (id <CAAction> _Nullable)actionForKey:(NSString * _Nonnull)event SWIFT_WARN_UNUSED_RESULT;
+- (void)drawInContext:(CGContextRef _Nonnull)ctx;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -1973,15 +1976,6 @@ SWIFT_CLASS("_TtC6Lottie10DebugLayer")
 @end
 
 
-SWIFT_CLASS("_TtC6Lottie17DisabledTextLayer")
-@interface DisabledTextLayer : CATextLayer
-- (id <CAAction> _Nullable)actionForKey:(NSString * _Nonnull)event SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
 SWIFT_CLASS("_TtC6Lottie21ImageCompositionLayer")
 @interface ImageCompositionLayer : CompositionLayer
 - (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
@@ -2070,6 +2064,16 @@ SWIFT_CLASS("_TtC6Lottie20TextCompositionLayer")
 @interface TextCompositionLayer : CompositionLayer
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC6Lottie9TextLayer")
+@interface TextLayer : CALayer
+- (id <CAAction> _Nullable)actionForKey:(NSString * _Nonnull)event SWIFT_WARN_UNUSED_RESULT;
+- (void)drawInContext:(CGContextRef _Nonnull)ctx;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithLayer:(id _Nonnull)layer OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
