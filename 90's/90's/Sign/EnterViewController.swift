@@ -213,8 +213,10 @@ class EnterViewController: UIViewController {
                     let decoder = JSONDecoder()
                     guard let defaultResult = try? decoder.decode(SignUpResult.self, from: data) else { return }
                     guard let jwt = defaultResult.jwt else { return }
+                    
                     UserDefaults.standard.set(jwt, forKey: "defaultjwt")
-                    print("default user jwt : \(jwt)")
+                    print("--> Login as User!")
+                    
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.switchTab()
                     guard let tabBarVC = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") else { return }
@@ -239,9 +241,8 @@ class EnterViewController: UIViewController {
                 switch status {
                 case 200:
                     guard let data = response.data else { return }
-                    let decoder = JSONDecoder()
-                    let loginResult = try? decoder.decode(SignUpResult.self, from: data)
-                    guard let jwt = loginResult?.jwt else { return }
+                    guard let loginResult = try? JSONDecoder().decode(SignUpResult.self, from: data) else { return }
+                    guard let jwt = loginResult.jwt else { return }
                     
                     //로그인 될때마다 jwt 갱신해서 저장
                     UserDefaults.standard.set(jwt, forKey: "jwt")
@@ -316,6 +317,7 @@ class EnterViewController: UIViewController {
                 UserDefaults.standard.removeObject(forKey: "password")
                 UserDefaults.standard.removeObject(forKey: "social")
                 UserDefaults.standard.removeObject(forKey: "jwt")
+                UserDefaults.standard.removeObject(forKey: "defaultjwt")
                 
                 //전화번호 인증화면으로 이동
                 self.goAuthenView()

@@ -91,6 +91,8 @@ class LoginMainViewController: UIViewController, UITextFieldDelegate {
                     UserDefaults.standard.set(self.pass, forKey: "password")
                     UserDefaults.standard.set(false, forKey: "social")
                     UserDefaults.standard.set(jwt, forKey: "jwt")
+                    print("--> Login as User!")
+                    
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.switchTab()
                     break

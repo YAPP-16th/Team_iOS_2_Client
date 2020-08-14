@@ -33,6 +33,7 @@
 		9B67446124A20CFE007027B6 /* AlbumLayoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B67446024A20CFE007027B6 /* AlbumLayoutVC.swift */; };
 		9B6A134C2440CE9400E78E66 /* AlbumInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A134B2440CE9400E78E66 /* AlbumInfoVC.swift */; };
 		9B6A134E2440D0C500E78E66 /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6A134D2440D0C500E78E66 /* MemberTableViewCell.swift */; };
+		9B7CCA8D24E6C1A9004283E2 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7CCA8C24E6C1A9004283E2 /* KakaoOpenSDK.framework */; };
 		9B9ECDEA24721562007CBA58 /* AlbumInvitedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9ECDE924721562007CBA58 /* AlbumInvitedVC.swift */; };
 		9BA5A9452454021F003A55DC /* KakaoLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD31D3D243A110600D0D719 /* KakaoLink.framework */; };
 		9BA7A7EE2467D05E00C39B56 /* Digital-7 Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9BA7A7ED2467D05E00C39B56 /* Digital-7 Italic.ttf */; };
@@ -49,7 +50,6 @@
 		9BC4EBD62476CFED00A5D6A0 /* StickerImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC4EBD52476CFED00A5D6A0 /* StickerImage.swift */; };
 		9BC98F062448B3CD002629AF /* StickerLayout.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BC98F052448B3CD002629AF /* StickerLayout.xib */; };
 		9BC98F082448B74E002629AF /* StickerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC98F072448B74E002629AF /* StickerLayout.swift */; };
-		9BD31D37243A05F700D0D719 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD31D36243A05F700D0D719 /* KakaoOpenSDK.framework */; };
 		9BD31D40243A111A00D0D719 /* KakaoMessageTemplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD31D3F243A111A00D0D719 /* KakaoMessageTemplate.framework */; };
 		9BD31D42243A11BF00D0D719 /* KakaoCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD31D41243A11BF00D0D719 /* KakaoCommon.framework */; };
 		9BDC0979246FC703008233F3 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDC0978246FC703008233F3 /* AlamofireImage.framework */; };
@@ -245,6 +245,8 @@
 		9B67446024A20CFE007027B6 /* AlbumLayoutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumLayoutVC.swift; sourceTree = "<group>"; };
 		9B6A134B2440CE9400E78E66 /* AlbumInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumInfoVC.swift; sourceTree = "<group>"; };
 		9B6A134D2440D0C500E78E66 /* MemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTableViewCell.swift; sourceTree = "<group>"; };
+		9B7CCA7A24E6BF9C004283E2 /* KakaoOpenSDK-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KakaoOpenSDK-Bridging-Header.h"; sourceTree = "<group>"; };
+		9B7CCA8C24E6C1A9004283E2 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
 		9B986AEE24557E3600BE9E3C /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		9B986AF324557E3D00BE9E3C /* Alamofire 4.0 Migration Guide.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Alamofire 4.0 Migration Guide.md"; sourceTree = "<group>"; };
 		9B986AF424557E3D00BE9E3C /* Usage.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Usage.md; sourceTree = "<group>"; };
@@ -571,8 +573,6 @@
 		9BC4EBD52476CFED00A5D6A0 /* StickerImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerImage.swift; sourceTree = "<group>"; };
 		9BC98F052448B3CD002629AF /* StickerLayout.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StickerLayout.xib; sourceTree = "<group>"; };
 		9BC98F072448B74E002629AF /* StickerLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerLayout.swift; sourceTree = "<group>"; };
-		9BD31D36243A05F700D0D719 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
-		9BD31D38243A08CE00D0D719 /* KakaoOpenSDK-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KakaoOpenSDK-Bridging-Header.h"; sourceTree = "<group>"; };
 		9BD31D3D243A110600D0D719 /* KakaoLink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoLink.framework; sourceTree = "<group>"; };
 		9BD31D3F243A111A00D0D719 /* KakaoMessageTemplate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoMessageTemplate.framework; sourceTree = "<group>"; };
 		9BD31D41243A11BF00D0D719 /* KakaoCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoCommon.framework; sourceTree = "<group>"; };
@@ -668,7 +668,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3024430244CAE5E006C838F /* Alamofire.framework in Frameworks */,
-				9BD31D37243A05F700D0D719 /* KakaoOpenSDK.framework in Frameworks */,
+				9B7CCA8D24E6C1A9004283E2 /* KakaoOpenSDK.framework in Frameworks */,
 				9BA5A9452454021F003A55DC /* KakaoLink.framework in Frameworks */,
 				9BD31D42243A11BF00D0D719 /* KakaoCommon.framework in Frameworks */,
 				9BD31D40243A111A00D0D719 /* KakaoMessageTemplate.framework in Frameworks */,
@@ -773,7 +773,7 @@
 				9BD31D41243A11BF00D0D719 /* KakaoCommon.framework */,
 				9BD31D3F243A111A00D0D719 /* KakaoMessageTemplate.framework */,
 				9BD31D3D243A110600D0D719 /* KakaoLink.framework */,
-				9BD31D36243A05F700D0D719 /* KakaoOpenSDK.framework */,
+				9B7CCA8C24E6C1A9004283E2 /* KakaoOpenSDK.framework */,
 				9B142B10242F2475005ABE17 /* LUTFilter.framework */,
 			);
 			name = Frameworks;
@@ -1755,8 +1755,8 @@
 		A33376092420CFB3000DC7C4 = {
 			isa = PBXGroup;
 			children = (
+				9B7CCA7A24E6BF9C004283E2 /* KakaoOpenSDK-Bridging-Header.h */,
 				A35CFA2C24B05CBD00997A96 /* 90s_splash.json */,
-				9BD31D38243A08CE00D0D719 /* KakaoOpenSDK-Bridging-Header.h */,
 				A33376142420CFB3000DC7C4 /* 90's */,
 				A33376132420CFB3000DC7C4 /* Products */,
 				9B142B04242F2226005ABE17 /* Frameworks */,

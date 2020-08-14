@@ -19,6 +19,10 @@ class AlbumMainVC : UIViewController {
     @IBOutlet weak var emptyAlbumView: UIView!
     @IBOutlet weak var emptyAlbumMakeBtn: UIButton!
     @IBOutlet weak var emptyAlbumLabel: UILabel!
+    @IBAction func touchCreateBtn(_ sender: UIButton){
+        let nextVC = storyboard?.instantiateViewController(withIdentifier : "AlbumNameController") as! AlbumNameVC
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
     
     var albumUidArray : [Int] = []
     var albumNameArray : [String] = []
@@ -44,7 +48,6 @@ extension AlbumMainVC {
         albumCollectionView.dataSource = self
         emptyAlbumLabel.text = "앨범을 만들어\n소중한 추억을 쌓아보세요"
         createAlbumBtn.isHidden = isDefaultUser ? true : false
-        createAlbumBtn.addTarget(self, action: #selector(setter: createAlbumBtn), for: .touchUpInside)
     }
     
     func switchAlbumEmptyView(value : Bool){
@@ -83,11 +86,6 @@ extension AlbumMainVC {
                 }
             }
         })
-    }
-    
-    @objc func clickCreateAlbumBtn(){
-        let nextVC = storyboard?.instantiateViewController(withIdentifier : "AlbumNameController") as! AlbumNameVC
-        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 
